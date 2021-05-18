@@ -1,6 +1,6 @@
-<!-- 
+<!--
   This is the main layout where you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -14,7 +14,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  NHS.UK prototype kit
+  GP Registration prototypes
 {% endblock %}
 
 <!-- Edit the header -->
@@ -22,7 +22,7 @@
 {% block header %}
   {{ header({
     "service": {
-        "name": "Prototype kit",
+        "name": "GP Registration",
         "href": "/"
       },
       "showNav": "false",
@@ -39,10 +39,6 @@
       {
         "URL": "/",
         "label": "Home"
-      },
-      {
-        "URL": "/page-example",
-        "label": "Example page"
       }
     ]
   })}}
