@@ -1,0 +1,125 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            "href": "what-is-your-sexual-orientation",
+            "text": "Go back"
+          }) }}
+
+          <form action="emergency-contact" method="post">
+
+            {% set otherHtml %}
+              {{ input({
+                id: "other",
+                name: "other",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "Religion"
+                }
+              }) }}
+            {% endset -%}
+
+            {{ radios({
+              "idPrefix": "religion",
+              "name": "religion",
+              "fieldset": {
+                "legend": {
+                  "text": "What is your religion?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "Select one option"
+              },
+              "items": [
+                {
+                  "value": "buddhist",
+                  "text": "Buddhist"
+                },
+                {
+                  "value": "christian",
+                  "text": "Christian"
+                },
+                {
+                  "value": "hindu",
+                  "text": "Hindu"
+                },
+                {
+                  "value": "jewish",
+                  "text": "Jewish"
+                },
+                {
+                  "value": "muslim",
+                  "text": "Muslim"
+                },
+                {
+                  "value": "sikh",
+                  "text": "Sikh"
+                },
+                {
+                  "value": "other",
+                  "text": "Other religion",
+                  "conditional": {
+                    "html": otherHtml
+                  }
+                },
+                {
+                  "value": "none",
+                  "text": "No religion"
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "prefer-not-to-say",
+                  "text": "Prefer not to say"
+                }
+              ]
+            }) }}
+
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of religion.</p>"
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}

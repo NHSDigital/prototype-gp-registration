@@ -1,0 +1,132 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            "href": "current-uk-address",
+            "text": "Go back"
+          }) }}
+
+          <form action="what-is-your-gender" method="post">
+
+            {% call fieldset({
+              legend: {
+                text: "Which GP practice do you want to register with?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ radios({
+              "idPrefix": "gp-selection",
+              "name": "gp-selection",
+              "items": [
+                {
+                  "value": "One Medicare Llp - The Light",
+                  "text": "One Medicare Llp - The Light",
+                  "hint": {
+                    "html": "<p>
+                      Balcony Level 7, The Light,The Headrow, Leeds, West Yorkshire, LS1 8TL<br /><span class='nhsuk-body-s'>200 metres away</span>
+                    </p>"
+                  }
+                },
+                {
+                  "value": "Leeds Student Medical Practice",
+                  "text": "Leeds Student Medical Practice",
+                  "hint": {
+                    "html": "<p>
+                       4 Blenheim Court, Blenheim Walk, Leeds, West Yorkshire, LS2 9AE<br /><span class='nhsuk-body-s'>500 metres away</span>
+                    </p>"
+                  }
+                },
+                {
+                  "value": "Rutland Lodge Medical Practice",
+                  "text": "Rutland Lodge Medical Practice",
+                  "hint": {
+                    "html": "<p>
+                        27 Carlton Gardens, Leeds, West Yorkshire, LS7 1JL<br /><span class='nhsuk-body-s'>600 metres away</span>
+                    </p>"
+                  }
+                },
+                {
+                  "value": "Carlton Gardens Surgery",
+                  "text": "Carlton Gardens Surgery",
+                  "hint": {
+                    "html": "<p>
+                        27 Carlton Gardens, Leeds, West Yorkshire, LS7 1JL<br /><span class='nhsuk-body-s'>600 metres away</span>
+                    </p>"
+                  }
+                },
+                {
+                  "value": "This IS MY",
+                  "text": "This IS MY",
+                  "hint": {
+                    "html": "<p>
+                        93 Water Lane, Leeds, West Yorkshire, LS11 5QN<br /><span class='nhsuk-body-s'>600 metres away</span>
+                    </p>"
+                  }
+                },
+                {
+                  "value": "York Street Health Practice",
+                  "text": "York Street Health Practice",
+                  "hint": {
+                    "html": "<p>
+                         68 York Street, Leeds, West Yorkshire, LS9 8AA<br /><span class='nhsuk-body-s'>800 metres away</span>
+                    </p>"
+                  }
+                }
+              ]
+            }) }}
+
+            {{ details({
+              "text": "Why is my preferred GP practice not listed?",
+              "HTML": "<p>Some GP practices are not registering patients through this service.</p>
+
+      					<p>You can view a complete list of all GP practices near you using <a href='https://www.nhs.uk/service-search/find-a-gp/''>Find a GP.</a></p>
+
+      					<p>If your preferred practice is not registering patients through this service, you'll need to register with them directly. You can normally do this by visiting the practice in person and completing a registration form.</p>
+
+      					<p>However because of the coronavirus illness, do not visit the GP practice to register in person. Call the practice first for instructions.</p>"
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}
