@@ -28,7 +28,7 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {{ backLink({
-            "href": "are-you-a-member-of-armed-forces",
+            "href": "emergency-contact-details",
             "text": "Go back"
           }) }}
 
@@ -52,11 +52,14 @@
               "items": [
                 {
                   "value": "No",
-                  "text": "No"
+                  "text": "No",
+                  checked: checked("has-communication-needs", "No")
+
                 },
                 {
                   "value": "Yes",
-                  "text": "Yes"
+                  "text": "Yes",
+                  checked: checked("has-communication-needs", "Yes")
                 }
               ]
             }) }}

@@ -34,6 +34,17 @@
 
           <form action="what-is-your-ethnicity" method="post" autocomplete="off">
 
+            {% set otherHtml %}
+              {{ input({
+                id: "other",
+                name: "other",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "Gender"
+                }
+              }) }}
+            {% endset -%}
+
             {{ radios({
               "idPrefix": "gender",
               "name": "gender",
@@ -50,29 +61,35 @@
               "items": [
                 {
                   "value": "Female",
-                  "text": "Female"
+                  "text": "Female",
+                  checked: checked("gender", "Female")
                 },
                 {
                   "value": "Male",
-                  "text": "Male"
+                  "text": "Male",
+                  checked: checked("gender", "Male")
                 },
                 {
                   "value": "Trans",
-                  "text": "Trans"
+                  "text": "Trans",
+                  checked: checked("gender", "Trans")
                 },
                 {
                   "value": "Other",
                   "text": "Other",
                   "conditional": {
                     "html": otherHtml
-                  }
+                  },
+                  checked: checked("gender", "Other")
                 },
                 {
                   "divider": "or"
                 },
                 {
                   "value": "Prefer not to say",
-                  "text": "Prefer not to say"
+                  "text": "Prefer not to say",
+                  checked: checked("gender", "Prefer not to say")
+
                 }
               ]
             }) }}

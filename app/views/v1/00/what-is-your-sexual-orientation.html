@@ -34,6 +34,17 @@
 
           <form action="what-is-your-religion" method="post" autocomplete="off">
 
+            {% set otherHtml %}
+              {{ input({
+                id: "other",
+                name: "other",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "Sexual orientation"
+                }
+              }) }}
+            {% endset -%}
+
             {{ radios({
               "idPrefix": "sexual-orientation",
               "name": "sexual-orientation",
@@ -50,37 +61,44 @@
               "items": [
                 {
                   "value": "Asexual",
-                  "text": "Asexual"
+                  "text": "Asexual",
+                  checked: checked("sexual-orientation", "Asexual")
                 },
                 {
                   "value": "Bisexual",
-                  "text": "Bisexual"
+                  "text": "Bisexual",
+                  checked: checked("sexual-orientation", "Bisexual")
                 },
                 {
                   "value": "Gay or Lesbian",
-                  "text": "Gay or Lesbian"
+                  "text": "Gay or Lesbian",
+                  checked: checked("sexual-orientation", "Gay or Lesbian")
                 },
                 {
                   "value": "Heterosexual or straight",
-                  "text": "Heterosexual or straight"
+                  "text": "Heterosexual or straight",
+                  checked: checked("sexual-orientation", "Heterosexual or straight")
                 },
                 {
                   "value": "Other sexual orientation",
                   "text": "Other sexual orientation",
                   "conditional": {
                     "html": otherHtml
-                  }
+                  },
+                  checked: checked("sexual-orientation", "Other sexual orientation")
                 },
                 {
                   "value": "Don't know",
-                  "text": "Don't know"
+                  "text": "Don't know",
+                  checked: checked("sexual-orientation", "Don't know")
                 },
                 {
                   "divider": "or"
                 },
                 {
                   "value": "Prefer not to say",
-                  "text": "Prefer not to say"
+                  "text": "Prefer not to say",
+                  checked: checked("sexual-orientation", "Prefer not to say")
                 }
               ]
             }) }}

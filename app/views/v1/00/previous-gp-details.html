@@ -52,7 +52,8 @@
               },
                 "classes": "nhsuk-input-u-two-thirds",
                 "id": "previous-gp-name",
-                "name": "previous-gp-name"
+                "name": "previous-gp-name",
+                value: data['previous-gp-name']
               }) }}
 
               {{ input({
@@ -60,7 +61,8 @@
                   "html": 'Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>'
                 },
                 "id": "previous-gp-address-line-1",
-                "name": "previous-gp-address-line-1"
+                "name": "previous-gp-address-line-1",
+                value: data['previous-gp-address-line-1']
               }) }}
 
               {{ input({
@@ -68,7 +70,8 @@
                   "html": '<span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>'
                 },
                 "id": "previous-gp-address-line-2",
-                "name": "previous-gp-address-line-2"
+                "name": "previous-gp-address-line-2",
+                value: data['previous-gp-address-line-2']
               }) }}
 
             {{ input({
@@ -77,7 +80,8 @@
                 },
                 "classes": "nhsuk-u-width-two-thirds",
                 "id": "previous-gp-town",
-                "name": "previous-gp-town"
+                "name": "previous-gp-town",
+                value: data['previous-gp-town']
               }) }}
 
               {{ input({
@@ -86,7 +90,8 @@
                   },
                   "classes": "nhsuk-input--width-10",
                   "id": "previous-gp-postcode-",
-                  "name": "previous-gp-postcode"
+                  "name": "previous-gp-postcode",
+                  value: data['previous-gp-postcode']
                 }) }}
 
             {% endcall %}

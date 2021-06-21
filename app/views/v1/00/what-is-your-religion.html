@@ -34,6 +34,17 @@
 
           <form action="are-you-a-member-of-armed-forces" method="post" autocomplete="off">
 
+            {% set otherHtml %}
+              {{ input({
+                id: "other",
+                name: "other",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "Religion"
+                }
+              }) }}
+            {% endset -%}
+
             {{ radios({
               "idPrefix": "religion",
               "name": "religion",
@@ -50,45 +61,54 @@
               "items": [
                 {
                   "value": "Buddhist",
-                  "text": "Buddhist"
+                  "text": "Buddhist",
+                  checked: checked("religion", "Buddhist")
                 },
                 {
                   "value": "Christian",
-                  "text": "Christian"
+                  "text": "Christian",
+                  checked: checked("religion", "Christian")
                 },
                 {
                   "value": "Hindu",
-                  "text": "Hindu"
+                  "text": "Hindu",
+                  checked: checked("religion", "Hindu")
                 },
                 {
                   "value": "Jewish",
-                  "text": "Jewish"
+                  "text": "Jewish",
+                  checked: checked("religion", "Jewish")
                 },
                 {
                   "value": "Muslim",
-                  "text": "Muslim"
+                  "text": "Muslim",
+                  checked: checked("religion", "Muslim")
                 },
                 {
                   "value": "Sikh",
-                  "text": "Sikh"
+                  "text": "Sikh",
+                  checked: checked("religion", "Sikh")
                 },
                 {
                   "value": "Other religion",
                   "text": "Other religion",
                   "conditional": {
                     "html": otherHtml
-                  }
+                  },
+                  checked: checked("religion", "Other religion")
                 },
                 {
                   "value": "No religion",
-                  "text": "No religion"
+                  "text": "No religion",
+                  checked: checked("religion", "No religion")
                 },
                 {
                   "divider": "or"
                 },
                 {
                   "value": "Prefer not to say",
-                  "text": "Prefer not to say"
+                  "text": "Prefer not to say",
+                  checked: checked("religion", "Prefer not to say")
                 }
               ]
             }) }}

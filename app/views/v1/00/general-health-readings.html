@@ -55,7 +55,8 @@
                 },
                 "classes": "nhsuk-input--width-5",
                 "id": "weight",
-                "name": "weight"
+                "name": "weight",
+                value: data['weight']
               }) }}
 
               {{ input({
@@ -67,7 +68,8 @@
                   },
                   "classes": "nhsuk-input--width-5",
                   "id": "height",
-                  "name": "height"
+                  "name": "height",
+                  value: data['height']
                 }) }}
 
                 {{ input({
@@ -79,7 +81,8 @@
                     },
                     "classes": "nhsuk-input--width-5",
                     "id": "systolic-bp",
-                    "name": "systolic-bp"
+                    "name": "systolic-bp",
+                    value: data['systolic-bp']
                   }) }}
 
                   {{ input({
@@ -91,7 +94,8 @@
                       },
                       "classes": "nhsuk-input--width-5",
                       "id": "diastolic-bp",
-                      "name": "diastolic-bp"
+                      "name": "diastolic-bp",
+                      value: data['diastolic-bp']
                     }) }}
 
             {% endcall %}

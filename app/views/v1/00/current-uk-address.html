@@ -47,7 +47,8 @@
                   "html": 'Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>'
                 },
                 "id": "current-address-line-1",
-                "name": "current-address-line-1"
+                "name": "current-address-line-1",
+                value: data['current-address-line-1']
               }) }}
 
               {{ input({
@@ -55,7 +56,8 @@
                   "html": '<span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>'
                 },
                 "id": "current-address-line-2",
-                "name": "current-address-line-2"
+                "name": "current-address-line-2",
+                value: data['current-address-line-2']
               }) }}
 
             {{ input({
@@ -64,7 +66,8 @@
                 },
                 "classes": "nhsuk-u-width-two-thirds",
                 "id": "current-address-town",
-                "name": "current-address-town"
+                "name": "current-address-town",
+                value: data['current-address-town']
               }) }}
 
               {{ input({
@@ -73,7 +76,8 @@
                   },
                   "classes": "nhsuk-input--width-10",
                   "id": "current-address-postcode-",
-                  "name": "current-address-postcode"
+                  "name": "current-address-postcode",
+                  value: data['current-address-postcode']
                 }) }}
 
             {% endcall %}
