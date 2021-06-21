@@ -32,7 +32,7 @@
             "text": "Go back"
           }) }}
 
-          <form action="do-you-have-existing-conditions" method="post">
+          <form action="do-you-have-existing-conditions" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -51,16 +51,16 @@
             }) }}
 
             {{ radios({
-              "idPrefix": "do-you-know-nhs-number",
-              "name": "know-nhs-number",
+              "idPrefix": "takes-prescription-meds",
+              "name": "takes-prescription-meds",
               "items": [
                 {
-                  "value": "Yes",
-                  "text": "No, I do not currently take any prescription medication"
+                  "value": "No",
+                  "text": "No"
                 },
                 {
-                  "value": "No",
-                  "text": "Yes, I currently take prescription medication"
+                  "value": "Yes",
+                  "text": "Yes"
                 }
               ]
             }) }}

@@ -28,36 +28,43 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {{ backLink({
-            "href": "curent-uk-address",
+            "href": "how-often-do-you-drink-alcohol",
             "text": "Go back"
           }) }}
 
-          <form action="previous-uk-address" method="post" autocomplete="off">
-
-            {% call fieldset({
-              legend: {
-                text: "Have you ever lived at a previous UK address?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
+          <form action="how-can-we-contact-you" method="post" autocomplete="off">
 
             {{ radios({
-              "idPrefix": "previous-uk-address",
-              "name": "previous-uk-address",
+              "idPrefix": "smokes",
+              "name": "smokes",
+              "fieldset": {
+                "legend": {
+                  "text": "Do you smoke cigarettes or tobacco?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "Select one option"
+              },
               "items": [
+                {
+                  "value": "No",
+                  "text": "No"
+                },
                 {
                   "value": "Yes",
                   "text": "Yes"
                 },
                 {
-                  "value": "No",
-                  "text": "No"
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say",
+                  "text": "Prefer not to say"
                 }
               ]
             }) }}
-
-            {% endcall %}
 
             {{ button({
               "text": "Continue"

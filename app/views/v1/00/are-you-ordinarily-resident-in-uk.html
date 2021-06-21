@@ -28,23 +28,33 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {{ backLink({
-            "href": "curent-uk-address",
+            "href": "previous-gp-details",
             "text": "Go back"
           }) }}
 
-          <form action="previous-uk-address" method="post" autocomplete="off">
+          <form action="do-you-have-uk-address" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                text: "Have you ever lived at a previous UK address?",
+                text: "Are you ordinarily resident in the UK?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
+            {{ hint({
+              "text": "Being ordinarily resident means you normally live in the UK, apart from temporary or occasional absences.",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {{ hint({
+              "text": "If you're not ordinarily resident in the UK you may be charged for NHS services, however, you'll still be able to use GP services and receive emergency treatment free of charge.",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
             {{ radios({
-              "idPrefix": "previous-uk-address",
-              "name": "previous-uk-address",
+              "idPrefix": "ordinarily-resident",
+              "name": "ordinarily-resident",
               "items": [
                 {
                   "value": "Yes",

@@ -28,34 +28,48 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {{ backLink({
-            "href": "curent-uk-address",
+            "href": "how-can-we-contact-you",
             "text": "Go back"
           }) }}
 
-          <form action="previous-uk-address" method="post" autocomplete="off">
+          <form action="check-answers" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                text: "Have you ever lived at a previous UK address?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
+                "text": "What are your contact details?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
               }
             }) %}
 
-            {{ radios({
-              "idPrefix": "previous-uk-address",
-              "name": "previous-uk-address",
-              "items": [
-                {
-                  "value": "Yes",
-                  "text": "Yes"
+            {{ input({
+                label: {
+                  "text": "Email address"
                 },
-                {
-                  "value": "No",
-                  "text": "No"
-                }
-              ]
-            }) }}
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "contact-email",
+                "name": "contact-email"
+              }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Text message"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "contact-text",
+                  "name": "contact-text"
+                }) }}
+
+            {{ input({
+                label: {
+                  "text": "UK mobile telephone number"
+                },
+                "classes": "nhsuk-input--width-10",
+                "id": "contact-mobile-tel",
+                "name": "contact-mobile-tel"
+              }) }}
+
+
 
             {% endcall %}
 

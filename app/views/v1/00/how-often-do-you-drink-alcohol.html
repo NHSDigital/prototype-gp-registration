@@ -28,36 +28,55 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {{ backLink({
-            "href": "curent-uk-address",
+            "href": "general-health-readings",
             "text": "Go back"
           }) }}
 
-          <form action="previous-uk-address" method="post" autocomplete="off">
-
-            {% call fieldset({
-              legend: {
-                text: "Have you ever lived at a previous UK address?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
+          <form action="do-you-smoke" method="post" autocomplete="off">
 
             {{ radios({
-              "idPrefix": "previous-uk-address",
-              "name": "previous-uk-address",
+              "idPrefix": "alcohol-consumption",
+              "name": "alcohol-consumption",
+              "fieldset": {
+                "legend": {
+                  "text": "How often do you drink alcohol?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "Select one option"
+              },
               "items": [
                 {
-                  "value": "Yes",
-                  "text": "Yes"
+                  "value": "Never",
+                  "text": "Never"
                 },
                 {
-                  "value": "No",
-                  "text": "No"
+                  "value": "Less than monthly",
+                  "text": "Less than monthly"
+                },
+                {
+                  "value": "Monthly",
+                  "text": "Monthly"
+                },
+                {
+                  "value": "Weekly",
+                  "text": "Weekly"
+                },
+                {
+                  "value": "Daily or almost daily",
+                  "text": "Daily or almost daily"
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say",
+                  "text": "Prefer not to say"
                 }
               ]
             }) }}
-
-            {% endcall %}
 
             {{ button({
               "text": "Continue"

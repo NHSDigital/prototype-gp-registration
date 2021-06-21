@@ -28,11 +28,11 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {{ backLink({
-            "href": "emergency-contact-details",
+            "href": "are-you-a-member-of-armed-forces",
             "text": "Go back"
           }) }}
 
-          <form action="do-you-have-allergies" method="post">
+          <form action="do-you-have-allergies" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -47,16 +47,16 @@
             }) }}
 
             {{ radios({
-              "idPrefix": "do-you-know-nhs-number",
-              "name": "know-nhs-number",
+              "idPrefix": "has-communication-needs",
+              "name": "has-communication-needs",
               "items": [
                 {
-                  "value": "Yes",
-                  "text": "No, I do not have any communication needs"
+                  "value": "No",
+                  "text": "No"
                 },
                 {
-                  "value": "No",
-                  "text": "Yes, I have communication needs"
+                  "value": "Yes",
+                  "text": "Yes"
                 }
               ]
             }) }}

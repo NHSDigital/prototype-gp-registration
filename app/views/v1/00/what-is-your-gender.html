@@ -32,18 +32,7 @@
             "text": "Go back"
           }) }}
 
-          <form action="what-is-your-ethnicity" method="post">
-
-            {% set otherHtml %}
-              {{ input({
-                id: "other",
-                name: "other",
-                classes: "nhsuk-u-width-two-thirds",
-                label: {
-                  text: "Gender"
-                }
-              }) }}
-            {% endset -%}
+          <form action="what-is-your-ethnicity" method="post" autocomplete="off">
 
             {{ radios({
               "idPrefix": "gender",
@@ -60,19 +49,19 @@
               },
               "items": [
                 {
-                  "value": "female",
+                  "value": "Female",
                   "text": "Female"
                 },
                 {
-                  "value": "male",
+                  "value": "Male",
                   "text": "Male"
                 },
                 {
-                  "value": "trans",
+                  "value": "Trans",
                   "text": "Trans"
                 },
                 {
-                  "value": "other",
+                  "value": "Other",
                   "text": "Other",
                   "conditional": {
                     "html": otherHtml
@@ -82,7 +71,7 @@
                   "divider": "or"
                 },
                 {
-                  "value": "prefer-not-to-say",
+                  "value": "Prefer not to say",
                   "text": "Prefer not to say"
                 }
               ]

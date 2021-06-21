@@ -32,7 +32,7 @@
             "text": "Go back"
           }) }}
 
-          <form action="are-you-a-member-of-armed-forces" method="post">
+          <form action="how-often-do-you-drink-alcohol" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -54,8 +54,8 @@
                   "text": "For example, 70"
                 },
                 "classes": "nhsuk-input--width-5",
-                "id": "name-given-names",
-                "name": "name-given-names"
+                "id": "weight",
+                "name": "weight"
               }) }}
 
               {{ input({
@@ -66,8 +66,8 @@
                     "text": "For example, 170"
                   },
                   "classes": "nhsuk-input--width-5",
-                  "id": "name-given-names",
-                  "name": "name-given-names"
+                  "id": "height",
+                  "name": "height"
                 }) }}
 
                 {{ input({
@@ -78,8 +78,8 @@
                       "text": "For example, 120"
                     },
                     "classes": "nhsuk-input--width-5",
-                    "id": "name-given-names",
-                    "name": "name-given-names"
+                    "id": "systolic-bp",
+                    "name": "systolic-bp"
                   }) }}
 
                   {{ input({
@@ -90,8 +90,8 @@
                         "text": "For example, 80"
                       },
                       "classes": "nhsuk-input--width-5",
-                      "id": "name-given-names",
-                      "name": "name-given-names"
+                      "id": "diastolic-bp",
+                      "name": "diastolic-bp"
                     }) }}
 
             {% endcall %}

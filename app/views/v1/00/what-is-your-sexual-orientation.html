@@ -32,18 +32,7 @@
             "text": "Go back"
           }) }}
 
-          <form action="what-is-your-religion" method="post">
-
-            {% set otherHtml %}
-              {{ input({
-                id: "other",
-                name: "other",
-                classes: "nhsuk-u-width-two-thirds",
-                label: {
-                  text: "Sexual orientation"
-                }
-              }) }}
-            {% endset -%}
+          <form action="what-is-your-religion" method="post" autocomplete="off">
 
             {{ radios({
               "idPrefix": "sexual-orientation",
@@ -60,37 +49,37 @@
               },
               "items": [
                 {
-                  "value": "asexual",
+                  "value": "Asexual",
                   "text": "Asexual"
                 },
                 {
-                  "value": "bisexual",
+                  "value": "Bisexual",
                   "text": "Bisexual"
                 },
                 {
-                  "value": "gay",
+                  "value": "Gay or Lesbian",
                   "text": "Gay or Lesbian"
                 },
                 {
-                  "value": "straight",
+                  "value": "Heterosexual or straight",
                   "text": "Heterosexual or straight"
                 },
                 {
-                  "value": "other",
+                  "value": "Other sexual orientation",
                   "text": "Other sexual orientation",
                   "conditional": {
                     "html": otherHtml
                   }
                 },
                 {
-                  "value": "unknown",
+                  "value": "Don't know",
                   "text": "Don't know"
                 },
                 {
                   "divider": "or"
                 },
                 {
-                  "value": "prefer-not-to-say",
+                  "value": "Prefer not to say",
                   "text": "Prefer not to say"
                 }
               ]

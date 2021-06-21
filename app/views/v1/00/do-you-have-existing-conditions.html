@@ -28,11 +28,11 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {{ backLink({
-            "href": "do-you-have-take-prescription-medication",
+            "href": "do-you-take-prescription-medication",
             "text": "Go back"
           }) }}
 
-          <form action="do-you-have-family-history-of-conditions" method="post">
+          <form action="do-you-have-family-history-of-conditions" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -52,16 +52,16 @@
             }) }}
 
             {{ radios({
-              "idPrefix": "do-you-know-nhs-number",
-              "name": "know-nhs-number",
+              "idPrefix": "has-existing-conditions",
+              "name": "has-existing-conditions",
               "items": [
                 {
-                  "value": "Yes",
-                  "text": "No, I do not have any existing or pre-existing conditions"
+                  "value": "No",
+                  "text": "No"
                 },
                 {
-                  "value": "No",
-                  "text": "Yes, I have an existing or pre-existing condition(s)"
+                  "value": "Yes",
+                  "text": "Yes"
                 }
               ]
             }) }}

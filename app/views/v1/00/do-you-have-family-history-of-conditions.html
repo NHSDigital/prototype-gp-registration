@@ -28,11 +28,11 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {{ backLink({
-            "href": "do-you-have-family-history-of-conditions",
+            "href": "do-you-have-existing-conditions",
             "text": "Go back"
           }) }}
 
-          <form action="general-health-readings" method="post">
+          <form action="general-health-readings" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -47,16 +47,16 @@
             }) }}
 
             {{ radios({
-              "idPrefix": "do-you-know-nhs-number",
-              "name": "know-nhs-number",
+              "idPrefix": "has-family-medical-history",
+              "name": "has-family-medical-history",
               "items": [
                 {
-                  "value": "Yes",
-                  "text": "No, I do not have a family history of significant medical conditions"
+                  "value": "No",
+                  "text": "No"
                 },
                 {
-                  "value": "No",
-                  "text": "Yes, I have a family history of significant medical conditions"
+                  "value": "Yes",
+                  "text": "Yes"
                 }
               ]
             }) }}

@@ -32,18 +32,7 @@
             "text": "Go back"
           }) }}
 
-          <form action="emergency-contact-details" method="post">
-
-            {% set otherHtml %}
-              {{ input({
-                id: "other",
-                name: "other",
-                classes: "nhsuk-u-width-two-thirds",
-                label: {
-                  text: "Religion"
-                }
-              }) }}
-            {% endset -%}
+          <form action="are-you-a-member-of-armed-forces" method="post" autocomplete="off">
 
             {{ radios({
               "idPrefix": "religion",
@@ -60,45 +49,45 @@
               },
               "items": [
                 {
-                  "value": "buddhist",
+                  "value": "Buddhist",
                   "text": "Buddhist"
                 },
                 {
-                  "value": "christian",
+                  "value": "Christian",
                   "text": "Christian"
                 },
                 {
-                  "value": "hindu",
+                  "value": "Hindu",
                   "text": "Hindu"
                 },
                 {
-                  "value": "jewish",
+                  "value": "Jewish",
                   "text": "Jewish"
                 },
                 {
-                  "value": "muslim",
+                  "value": "Muslim",
                   "text": "Muslim"
                 },
                 {
-                  "value": "sikh",
+                  "value": "Sikh",
                   "text": "Sikh"
                 },
                 {
-                  "value": "other",
+                  "value": "Other religion",
                   "text": "Other religion",
                   "conditional": {
                     "html": otherHtml
                   }
                 },
                 {
-                  "value": "none",
+                  "value": "No religion",
                   "text": "No religion"
                 },
                 {
                   "divider": "or"
                 },
                 {
-                  "value": "prefer-not-to-say",
+                  "value": "Prefer not to say",
                   "text": "Prefer not to say"
                 }
               ]

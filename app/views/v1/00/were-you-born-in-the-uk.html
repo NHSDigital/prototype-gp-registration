@@ -32,7 +32,7 @@
             "text": "Go back"
           }) }}
 
-          <form action="which-town-were-you-born-in" method="post">
+          <form action="which-town-were-you-born-in" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -43,8 +43,8 @@
             }) %}
 
             {{ radios({
-              "idPrefix": "who-is-registering",
-              "name": "who-is-registering",
+              "idPrefix": "born-in-uk",
+              "name": "born-in-uk",
               "items": [
                 {
                   "value": "Yes",

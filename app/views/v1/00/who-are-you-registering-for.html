@@ -26,13 +26,13 @@
     <div class="nhsuk-width-container">
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-          
+
           {{ backLink({
             "href": "start",
             "text": "Go back"
           }) }}
 
-          <form action="what-is-your-name" method="post">
+          <form action="what-is-your-name" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -51,7 +51,7 @@
                   "text": "You"
                 },
                 {
-                  "value": "Dependant",
+                  "value": "A dependant in your care",
                   "text": "A dependant in your care"
                 }
               ]
