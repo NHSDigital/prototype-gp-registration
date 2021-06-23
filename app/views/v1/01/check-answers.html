@@ -42,11 +42,11 @@
               }
             }) }}
 
-            <h3>Name</h3>
+            <h3>Contact details</h3>
 
             <dl class="nhsuk-summary-list">
 
-              <!--- Personal details --->
+              <!--- Contact details --->
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
@@ -65,10 +65,11 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Given names
+                  Name
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['name-given-names'] }}
+                  {{ data['name-family-name'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="/examples/passing-data/passing-data-question-contact">
@@ -80,24 +81,9 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Family name
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['name-family-name'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden">
-                      family name</span>
-                  </a>
-                </dd>
-              </div>
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
                   Known as
                 </dt>
-                <dd class="nhsuk-summary-list__value">
+                <dd class="nhsuk-summary-list__value" id="check-name-known-as">
                   {{ data['name-known-as'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
@@ -112,7 +98,7 @@
                 <dt class="nhsuk-summary-list__key">
                   Previous surnames
                 </dt>
-                <dd class="nhsuk-summary-list__value">
+                <dd class="nhsuk-summary-list__value" id="check-name-previous-surnames">
                   {{ data['name-previous-surnames'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
@@ -136,6 +122,47 @@
                   <a href="/examples/passing-data/passing-data-question-contact">
                     Change<span class="nhsuk-u-visually-hidden">
                       date of birth</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row nhsuk-summary-list--no-border">
+                <dt class="nhsuk-summary-list__key">
+                  Contact methods
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['contact-prefs'][0] }}<br/>{{ data['contact-email'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      contact email address</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row nhsuk-summary-list--no-border">
+                <dt class="nhsuk-summary-list__key"></dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['contact-prefs'][1] }}<br/>{{ data['contact-text'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      contact text message number</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key"></dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['contact-prefs'][2] }}<br/>{{ data['contact-mobile-tel'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      contact UK telephone number</span>
                   </a>
                 </dd>
               </div>
@@ -166,6 +193,92 @@
                   <a href="/examples/passing-data/passing-data-question-contact">
                     Change<span class="nhsuk-u-visually-hidden">
                       place of birth</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Ordinarily resident in the UK
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['ordinarily-resident'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      if ordinarily resident in the UK</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Has UK address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['has-uk-address'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      if this person has a UK address</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['current-address-line-1'] }}<br/>
+                  {{ data['current-address-line-2'] }}<br/>
+                  {{ data['current-address-town'] }}<br/>
+                  {{ data['current-address-postcode'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      address</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Is this the address where you wish to register for a GP?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['is-register-location'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      if this person has a UK address</span>
+                  </a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <!--- Selected GP --->
+
+            <h3>Selected GP</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Selected GP
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['gp-selection'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      selected GP</span>
                   </a>
                 </dd>
               </div>
@@ -227,97 +340,6 @@
                   </a>
                 </dd>
               </div>
-            </dl>
-
-            <!--- Addresses --->
-
-            <h3>Address</h3>
-
-            <dl class="nhsuk-summary-list">
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Ordinarily resident in the UK
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['ordinarily-resident'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden">
-                      if ordinarily resident in the UK</span>
-                  </a>
-                </dd>
-              </div>
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Has UK address
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['has-uk-address'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden">
-                      if this person has a UK address</span>
-                  </a>
-                </dd>
-              </div>
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Address
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['current-address-line-1'] }}<br />
-                  {{ data['current-address-line-2'] }}<br />
-                  {{ data['current-address-town'] }}<br />
-                  {{ data['current-address-postcode'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> address</span>
-                  </a>
-                </dd>
-              </div>
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Is this the address where you wish to register for a GP?
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['is-register-location'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden">
-                      if this person has a UK address</span>
-                  </a>
-                </dd>
-              </div>
-
-            </dl>
-
-            <!--- Selected GP --->
-
-            <h3>Selected GP</h3>
-
-            <dl class="nhsuk-summary-list">
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Selected GP
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['gp-selection'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> selected GP</span>
-                  </a>
-                </dd>
-              </div>
 
             </dl>
 
@@ -336,7 +358,8 @@
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> selected gender</span>
+                    Change<span class="nhsuk-u-visually-hidden">
+                      selected gender</span>
                   </a>
                 </dd>
               </div>
@@ -350,7 +373,8 @@
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> selected ethnic group</span>
+                    Change<span class="nhsuk-u-visually-hidden">
+                      selected ethnic group</span>
                   </a>
                 </dd>
               </div>
@@ -364,7 +388,8 @@
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> selected sexual orientation</span>
+                    Change<span class="nhsuk-u-visually-hidden">
+                      selected sexual orientation</span>
                   </a>
                 </dd>
               </div>
@@ -378,7 +403,8 @@
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> selected religion</span>
+                    Change<span class="nhsuk-u-visually-hidden">
+                      selected religion</span>
                   </a>
                 </dd>
               </div>
@@ -391,7 +417,166 @@
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> if you were ever a member of armed forces</span>
+                    Change<span class="nhsuk-u-visually-hidden">
+                      if you were ever a member of armed forces</span>
+                  </a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <!--- Medical & lifestyle details --->
+
+            <h3>Medical & lifestyle details</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Allergies?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['has-allergies'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      whether you have allergies</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Prescription medication?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['takes-prescription-meds'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      whether you take prescription medication</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Existing medical conditions?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['has-existing-conditions'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      whether you have existing medical conditions</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Family history medical conditions?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['has-family-medical-history'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      whether you have a famiy history of medical conditions</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Weight
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['weight'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      weight</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Height
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['height'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      height</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Systolic Blood Pressure
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['systolic-bp'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      systolic blood pressure</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Diastolic Blood Pressure
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['diastolic-bp'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      diastolic blood pressure</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Alcohol frequency
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['alcohol-consumption'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      how often you drink alcohol</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Do you smoke?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['smokes'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="/examples/passing-data/passing-data-question-contact">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      how often you smoke</span>
                   </a>
                 </dd>
               </div>
@@ -413,7 +598,8 @@
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> emergency contact name</span>
+                    Change<span class="nhsuk-u-visually-hidden">
+                      emergency contact name</span>
                   </a>
                 </dd>
               </div>
@@ -427,7 +613,8 @@
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> emergency contact relationship to you</span>
+                    Change<span class="nhsuk-u-visually-hidden">
+                      emergency contact relationship to you</span>
                   </a>
                 </dd>
               </div>
@@ -441,7 +628,8 @@
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> emergency contact telephone number</span>
+                    Change<span class="nhsuk-u-visually-hidden">
+                      emergency contact telephone number</span>
                   </a>
                 </dd>
               </div>
@@ -463,211 +651,8 @@
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> whether you have communication needs</span>
-                  </a>
-                </dd>
-              </div>
-
-            </dl>
-
-            <!--- Medical details --->
-
-            <h3>Medical details</h3>
-
-            <dl class="nhsuk-summary-list">
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Allergies?
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['has-allergies'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> whether you have allergies</span>
-                  </a>
-                </dd>
-              </div>
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Prescription medication?
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['takes-prescription-meds'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> whether you take prescription medication</span>
-                  </a>
-                </dd>
-              </div>
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Existing medical conditions?
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['has-existing-conditions'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> whether you have existing medical conditions</span>
-                  </a>
-                </dd>
-              </div>
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Family history medical conditions?
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['has-family-medical-history'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> whether you have a famiy history of medical conditions</span>
-                  </a>
-                </dd>
-              </div>
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Weight
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['weight'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> weight</span>
-                  </a>
-                </dd>
-              </div>
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Height
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['height'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> height</span>
-                  </a>
-                </dd>
-              </div>
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Systolic Blood Pressure
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['systolic-bp'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> systolic blood pressure</span>
-                  </a>
-                </dd>
-              </div>
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Diastolic Blood Pressure
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['diastolic-bp'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> diastolic blood pressure</span>
-                  </a>
-                </dd>
-              </div>
-
-            </dl>
-
-            <!--- Lifestyle details --->
-
-            <h3>Lifestyle details</h3>
-
-            <dl class="nhsuk-summary-list">
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Alcohol frequency
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['alcohol-consumption'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> how often you drink alcohol</span>
-                  </a>
-                </dd>
-              </div>
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Do you smoke?
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['smokes'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> how often you smoke</span>
-                  </a>
-                </dd>
-              </div>
-
-            </dl>
-
-            <!--- Lifestyle details --->
-
-            <h3>Contact preferences</h3>
-
-            <dl class="nhsuk-summary-list">
-
-              <div class="nhsuk-summary-list__row nhsuk-summary-list--no-border">
-                <dt class="nhsuk-summary-list__key">
-                  Contact methods
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['contact-prefs'][0] }}<br />{{ data['contact-email'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> contact email address</span>
-                  </a>
-                </dd>
-              </div>
-              <div class="nhsuk-summary-list__row nhsuk-summary-list--no-border">
-                <dt class="nhsuk-summary-list__key">
-
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['contact-prefs'][1] }}<br />{{ data['contact-text'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> contact text message number</span>
-                  </a>
-                </dd>
-              </div>
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['contact-prefs'][2] }}<br />{{ data['contact-mobile-tel'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
-                    Change<span class="nhsuk-u-visually-hidden"> contact UK telephone number</span>
+                    Change<span class="nhsuk-u-visually-hidden">
+                      whether you have communication needs</span>
                   </a>
                 </dd>
               </div>
@@ -688,8 +673,9 @@
   </div>
 </div>
 
+{% endblock %}
+
 {%block pageScripts%}
 
-{% endblock %}
 
 {% endblock %}

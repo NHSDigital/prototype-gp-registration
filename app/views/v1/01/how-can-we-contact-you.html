@@ -28,11 +28,59 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {{ backLink({
-            "href": "do-you-smoke",
+            "href": "date-of-birth",
             "text": "Go back"
           }) }}
 
-          <form action="what-are-your-contact-details" method="post" autocomplete="off">
+          <form action="were-you-born-in-the-uk" method="post" autocomplete="off">
+
+            {% set emailAddress %}
+              {{ input({
+                id: "email-address",
+                name: "email-address",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "What is your email address?"
+                },
+                "value": data['email-address']
+              }) }}
+            {% endset -%}
+
+            {% set textMessage %}
+              {{ input({
+                id: "text-message",
+                name: "text-message",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "What is your text message phone number?"
+                },
+                "value": data['text-message']
+              }) }}
+            {% endset -%}
+
+            {% set homeTel %}
+              {{ input({
+                id: "home-telephone",
+                name: "home-telephone",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "What is your home telephone number?"
+                },
+                "value": data['home-telephone']
+              }) }}
+            {% endset -%}
+
+            {% set mobileTel %}
+              {{ input({
+                id: "mobile-telephone",
+                name: "mobile-telephone",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "What is your mobile telephone number?"
+                },
+                "value": data['mobile-telephone']
+              }) }}
+            {% endset -%}
 
             {{ checkboxes({
               "idPrefix": "contact-prefs",
@@ -51,21 +99,33 @@
                 {
                   "value": "Email",
                   "text": "Email",
+                  "conditional": {
+                    "html": emailAddress
+                  },
                   checked: checked("contact-prefs", "Email")
                 },
                 {
                   "value": "Text message",
                   "text": "Text message",
+                  "conditional": {
+                    "html": textMessage
+                  },
                   checked: checked("contact-prefs", "Text message")
                 },
                 {
                   "value": "UK home telephone number",
                   "text": "UK home telephone number",
+                  "conditional": {
+                    "html": homeTel
+                  },
                   checked: checked("contact-prefs", "UK home telephone number")
                 },
                 {
                   "value": "UK mobile telephone number",
                   "text": "UK mobile telephone number",
+                  "conditional": {
+                    "html": mobileTel
+                  },
                   checked: checked("contact-prefs", "UK mobile telephone number")
                 }
               ]
