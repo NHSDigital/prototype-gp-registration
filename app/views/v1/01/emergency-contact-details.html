@@ -1,0 +1,97 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            "href": "are-you-a-member-of-armed-forces",
+            "text": "Go back"
+          }) }}
+
+          <form action="do-you-have-communication-needs" method="post" autocomplete="off">
+
+            {% call fieldset({
+              legend: {
+                "text": "What are the details or your emergency contact or next of kin?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "This question is optional"
+            }) }}
+
+            {{ input({
+                label: {
+                  "text": "Full name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-full-name",
+                "name": "ec-full-name",
+                value: data['ec-full-name']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "Relationship to you"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-relationship",
+                "name": "ec-relationship",
+                value: data['ec-relationship']
+              }) }}
+
+              {{ input({
+                "label": {
+                  "text": "Contact telephone number"
+                },
+                  "hint": {
+                  "text": "For international number include the country code"
+                },
+                "classes": "nhsuk-input--width-10",
+                "id": "ec-contact-tel",
+                "name": "ec-contact-tel",
+                value: data['ec-contact-tel']
+              }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}
