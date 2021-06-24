@@ -56,7 +56,7 @@
                   {{ data['who-is-registering'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="#">
+                  <a href="who-are-you-registering-for">
                     Change<span class="nhsuk-u-visually-hidden">
                       who is registering</span>
                   </a>
@@ -72,7 +72,7 @@
                   {{ data['name-family-name'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="#">
+                  <a href="what-is-your-name">
                     Change<span class="nhsuk-u-visually-hidden">
                       given names</span>
                   </a>
@@ -87,7 +87,7 @@
                   {{ data['name-known-as'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="#">
+                  <a href="what-is-your-name">
                     Change<span class="nhsuk-u-visually-hidden">
                       what this person is known as</span>
                   </a>
@@ -102,7 +102,7 @@
                   {{ data['name-previous-surnames'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="#">
+                  <a href="what-is-your-name">
                     Change<span class="nhsuk-u-visually-hidden">
                       previous surnames</span>
                   </a>
@@ -119,50 +119,31 @@
                   <span id="dob-year">{{ data['dob-year'] }}</span>
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="#">
+                  <a href="date-of-birth">
                     Change<span class="nhsuk-u-visually-hidden">
                       date of birth</span>
                   </a>
                 </dd>
               </div>
 
-              <div class="nhsuk-summary-list__row nhsuk-summary-list--no-border">
+              <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                   Contact methods
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  {{ data['contact-prefs'][0] }}<br/>{{ data['contact-email'] }}
+                  <span class="contact-prefs-type">{{ data['contact-prefs-email'] }}</span>
+                  <span class="contact-prefs-entry">{{ data['email-address'] }}</span>
+                  <span class="contact-prefs-type">{{ data['contact-prefs-text'] }}</span>
+                  <span class="contact-prefs-entry">{{ data['text-message'] }}</span>
+                  <span class="contact-prefs-type">{{ data['contact-prefs-home-tel'] }}</span>
+                  <span class="contact-prefs-entry">{{ data['home-telephone'] }}</span>
+                  <span class="contact-prefs-type">{{ data['contact-prefs-mobile-tel'] }}</span>
+                  <span class="contact-prefs-entry">{{ data['mobile-telephone'] }}</span>
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="#">
+                  <a href="how-can-we-contact-you">
                     Change<span class="nhsuk-u-visually-hidden">
-                      contact email address</span>
-                  </a>
-                </dd>
-              </div>
-
-              <div class="nhsuk-summary-list__row nhsuk-summary-list--no-border">
-                <dt class="nhsuk-summary-list__key"></dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['contact-prefs'][1] }}<br/>{{ data['contact-text'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="#">
-                    Change<span class="nhsuk-u-visually-hidden">
-                      contact text message number</span>
-                  </a>
-                </dd>
-              </div>
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key"></dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['contact-prefs'][2] }}<br/>{{ data['contact-mobile-tel'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="#">
-                    Change<span class="nhsuk-u-visually-hidden">
-                      contact UK telephone number</span>
+                      contact preferences</span>
                   </a>
                 </dd>
               </div>
@@ -688,11 +669,13 @@
     });
 
 
+    // Add colon to contact method type if it isn't blank
+    $(".contact-prefs-type:not(:empty)").append(':');
 
     // Convert nunjucks date data to be used in JS
-    var dobDD = JSON.parse('{{ data["dob-day"] }}'.replace(/&quot;/g,'"'));
-    var dobMM = JSON.parse('{{ data["dob-month"] }}'.replace(/&quot;/g,'"'));
-    var dobYY = JSON.parse('{{ data["dob-year"] }}'.replace(/&quot;/g,'"'));
+    var dobDD = $('#dob-day').text();
+    var dobMM = $('#dob-month').text();
+    var dobYY = $('#dob-year').text();
 
     // Convert month format from mm to Mmm
     var date = new Date(dobYY, (dobMM - 1), dobDD); // 2009-11-10

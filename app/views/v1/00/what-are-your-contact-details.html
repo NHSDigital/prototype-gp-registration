@@ -34,47 +34,42 @@
 
           <form action="check-answers" method="post" autocomplete="off">
 
-            {% call fieldset({
-              legend: {
-                "text": "What are your contact details?",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
-              }
-            }) %}
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-fieldset__heading">
+                  What are your contact details?
+                </h1>
+              </legend>
 
-            {{ input({
-                label: {
-                  "text": "Email address"
-                },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "contact-email",
-                "name": "contact-email",
-                value: data['contact-email']
-              }) }}
+              <div class="nhsuk-form-group contact-email-section hidden-section">
+                <label class="nhsuk-label" for="contact-email">
+                  Email address
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-two-thirds" id="contact-email" name="contact-email" type="text">
+              </div>
 
-              {{ input({
-                  label: {
-                    "text": "Text message"
-                  },
-                  "classes": "nhsuk-input--width-10",
-                  "id": "contact-text",
-                  "name": "contact-text",
-                  value: data['contact-text']
-                }) }}
+              <div class="nhsuk-form-group contact-text-section hidden-section">
+                <label class="nhsuk-label" for="contact-text">
+                  Text message
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-10" id="contact-text" name="contact-text" type="text">
+              </div>
 
-            {{ input({
-                label: {
-                  "text": "UK mobile telephone number"
-                },
-                "classes": "nhsuk-input--width-10",
-                "id": "contact-mobile-tel",
-                "name": "contact-mobile-tel",
-                value: data['contact-mobile-tel']
-              }) }}
+              <div class="nhsuk-form-group contact-home-tel-section hidden-section">
+                <label class="nhsuk-label" for="contact-home-tel">
+                  UK home telephone number
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-10" id="contact-home-tel" name="contact-home-tel" type="text">
+              </div>
 
+              <div class="nhsuk-form-group contact-mobile-tel-section hidden-section">
+                <label class="nhsuk-label" for="contact-mobile-tel">
+                  UK mobile telephone number
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-10" id="contact-mobile-tel" name="contact-mobile-tel" type="text">
+              </div>
 
-
-            {% endcall %}
+            </fieldset>
 
             {{ button({
               "text": "Continue"
@@ -89,4 +84,31 @@
 
   </div>
 </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+
+  var emailChecked = "{{ data['contact-prefs-email'] }}";
+  var textChecked = "{{ data['contact-prefs-text'] }}";
+  var homeTelChecked = "{{ data['contact-prefs-home-tel'] }}";
+  var mobileTelChecked = "{{ data['contact-prefs-mobile-tel'] }}";
+
+  if (emailChecked) {
+    $('.contact-email-section').removeClass("hidden-section")
+  } else {}
+
+  if (textChecked) {
+    $('.contact-text-section').removeClass("hidden-section")
+  } else {}
+
+  if (homeTelChecked) {
+    $('.contact-home-tel-section').removeClass("hidden-section")
+  } else {}
+
+  if (mobileTelChecked) {
+    $('.contact-mobile-tel-section').removeClass("hidden-section")
+  } else {}
+</script>
+
 {% endblock %}
