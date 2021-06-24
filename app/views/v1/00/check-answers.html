@@ -128,9 +128,9 @@
                   Date of birth
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  {{ data['dob-day'] }}
-                  {{ data['dob-month'] }}
-                  {{ data['dob-year'] }}
+                  <span id="dob-day">{{ data['dob-day'] }}</span>
+                  <span id="dob-month">{{ data['dob-month'] }}</span>
+                  <span id="dob-year">{{ data['dob-year'] }}</span>
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="/examples/passing-data/passing-data-question-contact">
@@ -688,8 +688,38 @@
   </div>
 </div>
 
-{%block pageScripts%}
-
 {% endblock %}
+
+{% block pageScripts %}
+
+<script>
+
+  $(document).ready(function () {
+
+    // Populate any unanswered fields with "Not answered" text
+    $('.nhsuk-summary-list__value').filter(function () {
+      return $.trim($(this).text()) === "";
+    }).each(function (ind, obj) {
+      $(obj).closest('dd').html("<span class='summary-page-unanswered'>Not answered</span>");
+    });
+
+
+
+    // Convert nunjucks date data to be used in JS
+    var dobDD = JSON.parse('{{ data["dob-day"] }}'.replace(/&quot;/g,'"'));
+    var dobMM = JSON.parse('{{ data["dob-month"] }}'.replace(/&quot;/g,'"'));
+    var dobYY = JSON.parse('{{ data["dob-year"] }}'.replace(/&quot;/g,'"'));
+
+    // Convert month format from mm to Mmm
+    var date = new Date(dobYY, (dobMM - 1), dobDD); // 2009-11-10
+    var month = date.toLocaleString('default', {month: 'short'});
+
+    // Insert new month format into summary list
+
+    $("#dob-month").text(month);
+    console.log(month)
+
+  });
+</script>
 
 {% endblock %}

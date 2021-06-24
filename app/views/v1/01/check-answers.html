@@ -56,7 +56,7 @@
                   {{ data['who-is-registering'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-name">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       who is registering</span>
                   </a>
@@ -72,7 +72,7 @@
                   {{ data['name-family-name'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       given names</span>
                   </a>
@@ -87,7 +87,7 @@
                   {{ data['name-known-as'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       what this person is known as</span>
                   </a>
@@ -102,7 +102,7 @@
                   {{ data['name-previous-surnames'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       previous surnames</span>
                   </a>
@@ -114,12 +114,12 @@
                   Date of birth
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  {{ data['dob-day'] }}
-                  {{ data['dob-month'] }}
-                  {{ data['dob-year'] }}
+                  <span id="dob-day">{{ data['dob-day'] }}</span>
+                  <span id="dob-month">{{ data['dob-month'] }}</span>
+                  <span id="dob-year">{{ data['dob-year'] }}</span>
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       date of birth</span>
                   </a>
@@ -134,7 +134,7 @@
                   {{ data['contact-prefs'][0] }}<br/>{{ data['contact-email'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       contact email address</span>
                   </a>
@@ -147,7 +147,7 @@
                   {{ data['contact-prefs'][1] }}<br/>{{ data['contact-text'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       contact text message number</span>
                   </a>
@@ -160,7 +160,7 @@
                   {{ data['contact-prefs'][2] }}<br/>{{ data['contact-mobile-tel'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       contact UK telephone number</span>
                   </a>
@@ -175,7 +175,7 @@
                   {{ data['born-in-uk'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       whether this person was born in the UK</span>
                   </a>
@@ -190,7 +190,7 @@
                   {{ data['town-born'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       place of birth</span>
                   </a>
@@ -205,7 +205,7 @@
                   {{ data['ordinarily-resident'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       if ordinarily resident in the UK</span>
                   </a>
@@ -220,7 +220,7 @@
                   {{ data['has-uk-address'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       if this person has a UK address</span>
                   </a>
@@ -238,7 +238,7 @@
                   {{ data['current-address-postcode'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       address</span>
                   </a>
@@ -253,7 +253,7 @@
                   {{ data['is-register-location'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       if this person has a UK address</span>
                   </a>
@@ -276,7 +276,7 @@
                   {{ data['gp-selection'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       selected GP</span>
                   </a>
@@ -299,7 +299,7 @@
                   {{ data['nhs-number'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       NHS number</span>
                   </a>
@@ -314,7 +314,7 @@
                   {{ data['previously-registered-with-gp'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       if this person was previously registered with a GP</span>
                   </a>
@@ -334,7 +334,7 @@
 
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       previous GP address</span>
                   </a>
@@ -357,7 +357,7 @@
                   {{ data['gender'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       selected gender</span>
                   </a>
@@ -372,7 +372,7 @@
                   {{ data['ethnicity'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       selected ethnic group</span>
                   </a>
@@ -387,7 +387,7 @@
                   {{ data['sexual-orientation'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       selected sexual orientation</span>
                   </a>
@@ -402,7 +402,7 @@
                   {{ data['religion'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       selected religion</span>
                   </a>
@@ -416,7 +416,7 @@
                   {{ data['is-armed-forces-member'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       if you were ever a member of armed forces</span>
                   </a>
@@ -439,7 +439,7 @@
                   {{ data['has-allergies'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       whether you have allergies</span>
                   </a>
@@ -454,7 +454,7 @@
                   {{ data['takes-prescription-meds'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       whether you take prescription medication</span>
                   </a>
@@ -469,7 +469,7 @@
                   {{ data['has-existing-conditions'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       whether you have existing medical conditions</span>
                   </a>
@@ -484,7 +484,7 @@
                   {{ data['has-family-medical-history'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       whether you have a famiy history of medical conditions</span>
                   </a>
@@ -499,7 +499,7 @@
                   {{ data['weight'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       weight</span>
                   </a>
@@ -514,7 +514,7 @@
                   {{ data['height'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       height</span>
                   </a>
@@ -529,7 +529,7 @@
                   {{ data['systolic-bp'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       systolic blood pressure</span>
                   </a>
@@ -544,7 +544,7 @@
                   {{ data['diastolic-bp'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       diastolic blood pressure</span>
                   </a>
@@ -559,7 +559,7 @@
                   {{ data['alcohol-consumption'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       how often you drink alcohol</span>
                   </a>
@@ -574,7 +574,7 @@
                   {{ data['smokes'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       how often you smoke</span>
                   </a>
@@ -597,7 +597,7 @@
                   {{ data['ec-full-name'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       emergency contact name</span>
                   </a>
@@ -612,7 +612,7 @@
                   {{ data['ec-relationship'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       emergency contact relationship to you</span>
                   </a>
@@ -627,7 +627,7 @@
                   {{ data['ec-contact-tel'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       emergency contact telephone number</span>
                   </a>
@@ -650,7 +650,7 @@
                   {{ data['has-communication-needs'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="/examples/passing-data/passing-data-question-contact">
+                  <a href="#">
                     Change<span class="nhsuk-u-visually-hidden">
                       whether you have communication needs</span>
                   </a>
@@ -676,6 +676,32 @@
 {% endblock %}
 
 {%block pageScripts%}
+<script>
+
+  $(document).ready(function () {
+
+    // Populate any unanswered fields with "Not answered" text
+    $('.nhsuk-summary-list__value').filter(function () {
+      return $.trim($(this).text()) === "";
+    }).each(function (ind, obj) {
+      $(obj).closest('dd').html("<span class='summary-page-unanswered'>Not answered</span>");
+    });
 
 
+
+    // Convert nunjucks date data to be used in JS
+    var dobDD = JSON.parse('{{ data["dob-day"] }}'.replace(/&quot;/g,'"'));
+    var dobMM = JSON.parse('{{ data["dob-month"] }}'.replace(/&quot;/g,'"'));
+    var dobYY = JSON.parse('{{ data["dob-year"] }}'.replace(/&quot;/g,'"'));
+
+    // Convert month format from mm to Mmm
+    var date = new Date(dobYY, (dobMM - 1), dobDD); // 2009-11-10
+    var month = date.toLocaleString('default', {month: 'short'});
+
+    // Insert new month format into summary list
+
+    $("#dob-month").text(month);
+
+  });
+</script>
 {% endblock %}
