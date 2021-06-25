@@ -36,7 +36,7 @@
 
             {% call fieldset({
               legend: {
-                text: "Which GP practice do you want to register with?",
+                text: "Which GP surgery do you want to register with?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -77,14 +77,14 @@
                   checked: checked("gp-selection", "Rutland Lodge Medical Practice")
                 },
                 {
-                  "value": "Carlton Gardens Surgery",
-                  "text": "Carlton Gardens Surgery",
+                  "value": "Carlton Gardens surgery",
+                  "text": "Carlton Gardens surgery",
                   "hint": {
                     "html": "<p>
                         27 Carlton Gardens, Leeds, West Yorkshire, LS7 1JL<br /><span class='nhsuk-body-s'>600 metres away</span>
                     </p>"
                   },
-                  checked: checked("gp-selection", "Carlton Gardens Surgery")
+                  checked: checked("gp-selection", "Carlton Gardens surgery")
                 },
                 {
                   "value": "This IS MY",
@@ -110,14 +110,14 @@
             }) }}
 
             {{ details({
-              "text": "Why is my preferred GP practice not listed?",
-              "HTML": "<p>Some GP practices are not registering patients through this service.</p>
+              "text": "Why is my preferred GP surgery not listed?",
+              "HTML": "<p>Some GP surgeries are not registering patients through this service.</p>
 
-      					<p>You can view a complete list of all GP practices near you using <a href='https://www.nhs.uk/service-search/find-a-gp/''>Find a GP.</a></p>
+      					<p>You can view a complete list of all GP surgeries near you using <a href='https://www.nhs.uk/service-search/find-a-gp/''>Find a GP.</a></p>
 
-      					<p>If your preferred practice is not registering patients through this service, you'll need to register with them directly. You can normally do this by visiting the practice in person and completing a registration form.</p>
+      					<p>If your preferred surgery is not registering patients through this service, you'll need to register with them directly. You can normally do this by visiting the surgery in person and completing a registration form.</p>
 
-      					<p>However because of the coronavirus illness, do not visit the GP practice to register in person. Call the practice first for instructions.</p>"
+      					<p>However because of the coronavirus illness, do not visit the GP surgery to register in person. Call the surgery first for instructions.</p>"
             }) }}
 
             {% endcall %}

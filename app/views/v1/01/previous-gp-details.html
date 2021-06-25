@@ -36,19 +36,19 @@
 
             {% call fieldset({
               legend: {
-                "text": "What is the name and address of your previous GP practice?",
+                "text": "What is the name and address of your previous GP surgery?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
 
             {{ hint({
-                "text": "If you have been registered at more than one GP practice previousy, please enter the name and address of the most recent GP practice you were registered at."
+                "text": "If you have been registered at more than one GP surgery previousy, please enter the name and address of the most recent GP surgery you were registered at."
             }) }}
 
             {{ input({
               "label": {
-              "text": "Practice name"
+              "text": "Surgery name"
               },
                 "classes": "nhsuk-input-u-two-thirds",
                 "id": "previous-gp-name",
