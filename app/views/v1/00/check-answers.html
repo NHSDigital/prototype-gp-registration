@@ -307,6 +307,48 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
+                  Requires doctor to dispense?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['requires-dispensing-doctor'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="which-gp-do-you-want-register-with">
+                    Change<span class="nhsuk-u-visually-hidden"> whether you require a dispensing doctor</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Lives more than 1.6km away from nearest pharmacy
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['distance-from-pharmacy'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="which-gp-do-you-want-register-with">
+                    Change<span class="nhsuk-u-visually-hidden"> whether you live more than 1.6 kilometres from your nearest pharmacy</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Has difficulty in reaching pharmacy?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['difficulty-in-reaching-pharmacy'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="which-gp-do-you-want-register-with">
+                    Change<span class="nhsuk-u-visually-hidden"> whether you would have difficult in reaching a pharmacy</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
                   Selected GP
                 </dt>
                 <dd class="nhsuk-summary-list__value">

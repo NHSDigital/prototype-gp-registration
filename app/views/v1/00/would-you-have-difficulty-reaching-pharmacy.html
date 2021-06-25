@@ -28,38 +28,45 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {{ backLink({
-            "href": "current-uk-address",
+            "href": "distance-from-nearest-pharmacy",
             "text": "Go back"
           }) }}
 
-          <form action="do-you-need-your-doctor-to-dispense" method="post" autocomplete="off">
+          <form action="which-gp-do-you-want-register-with" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                text: "Is this the address where you wish to register for a GP?",
+                text: "Would you have serious difficulty in reaching a pharmacy to collect medicines or appliances?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
             {{ radios({
-              "idPrefix": "is-register-location",
-              "name": "is-register-location",
+              "idPrefix": "difficulty-in-reaching-pharmacy",
+              "name": "difficulty-in-reaching-pharmacy",
               "items": [
                 {
                   "value": "Yes",
                   "text": "Yes",
-                  checked: checked("is-register-location", "Yes")
+                  checked: checked("difficulty-in-reaching-pharmacy", "Yes")
                 },
                 {
                   "value": "No",
                   "text": "No",
-                  checked: checked("is-register-location", "No")
+                  checked: checked("difficulty-in-reaching-pharmacy", "No")
                 }
               ]
             }) }}
 
             {% endcall %}
+
+            {{ details({
+              "text": "Why are we asking this?",
+              "HTML": "
+              <p>If you live over 1.6km from your nearest pharmacy and would have serious difficulty in obtaining any necessary drugs or appliances from that pharmacy, it may be possible for you to receive your medicines from your doctor’s surgery.</p>
+              "
+            }) }}
 
             {{ button({
               "text": "Continue"

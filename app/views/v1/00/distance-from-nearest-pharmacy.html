@@ -28,38 +28,45 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {{ backLink({
-            "href": "current-uk-address",
+            "href": "do-you-need-your-doctor-to-dispense",
             "text": "Go back"
           }) }}
 
-          <form action="do-you-need-your-doctor-to-dispense" method="post" autocomplete="off">
+          <form action="would-you-have-difficulty-reaching-pharmacy" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                text: "Is this the address where you wish to register for a GP?",
+                text: "Do you live more than 1.6km in a straight line from your nearest pharmacy?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
             {{ radios({
-              "idPrefix": "is-register-location",
-              "name": "is-register-location",
+              "idPrefix": "distance-from-pharmacy",
+              "name": "distance-from-pharmacy",
               "items": [
                 {
                   "value": "Yes",
                   "text": "Yes",
-                  checked: checked("is-register-location", "Yes")
+                  checked: checked("distance-from-pharmacy", "Yes")
                 },
                 {
                   "value": "No",
                   "text": "No",
-                  checked: checked("is-register-location", "No")
+                  checked: checked("distance-from-pharmacy", "No")
                 }
               ]
             }) }}
 
             {% endcall %}
+
+            {{ details({
+              "text": "Why are we asking this?",
+              "HTML": "
+              <p>People who live within 1.6km of a pharmacy (in a straight line drawn on a map) are not normally eligible to receive their medicines from their doctor’s surgery.</p>
+              "
+            }) }}
 
             {{ button({
               "text": "Continue"

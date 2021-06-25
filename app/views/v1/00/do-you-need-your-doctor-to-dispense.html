@@ -28,38 +28,45 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {{ backLink({
-            "href": "current-uk-address",
+            "href": "is-this-the-address-where-you-wish-to-register",
             "text": "Go back"
           }) }}
 
-          <form action="do-you-need-your-doctor-to-dispense" method="post" autocomplete="off">
+          <form action="distance-from-nearest-pharmacy" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                text: "Is this the address where you wish to register for a GP?",
+                text: "Do you need your doctor to dispense medicines and appliances?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
             {{ radios({
-              "idPrefix": "is-register-location",
-              "name": "is-register-location",
+              "idPrefix": "requires-dispensing-doctor",
+              "name": "requires-dispensing-doctor",
               "items": [
                 {
                   "value": "Yes",
                   "text": "Yes",
-                  checked: checked("is-register-location", "Yes")
+                  checked: checked("requires-dispensing-doctor", "Yes")
                 },
                 {
                   "value": "No",
                   "text": "No",
-                  checked: checked("is-register-location", "No")
+                  checked: checked("requires-dispensing-doctor", "No")
                 }
               ]
             }) }}
 
             {% endcall %}
+
+            {{ details({
+              "text": "Why are we asking this?",
+              "HTML": "
+              <p>Some doctors are not authorised to dispense medicines. Asking this lets us know which GP practices would be most suitable for your needs.</p>
+              "
+            }) }}
 
             {{ button({
               "text": "Continue"
