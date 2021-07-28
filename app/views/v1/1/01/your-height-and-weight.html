@@ -1,0 +1,123 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            "href": "about-your-health-start",
+            "text": "Go back"
+          }) }}
+
+          <form action="your-blood-pressure" method="post" autocomplete="off">
+
+            {% call fieldset({
+              legend: {
+                "text": "What are your height and weight?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "This question is optional"
+            }) }}
+
+            <h2 class="nhsuk-heading-s">Height</h2>
+
+            <div class="weight-container">
+              {{ input({
+                  "label": {
+                    "text": "Feet"
+                  },"hint": {
+                    "text": "For example, 5"
+                  },
+                  "classes": "nhsuk-input--width-5",
+                  "id": "feet",
+                  "name": "feet",
+                  "value": data['feet']
+                }) }}
+
+                {{ input({
+                    "label": {
+                      "text": "Inches"
+                    },
+                    "hint": {
+                      "text": "For example, 10"
+                    },
+                    "classes": "nhsuk-input--width-5",
+                    "id": "inches",
+                    "name": "inches",
+                    "value": data['inches']
+                  }) }}
+            </div>
+
+            <h2 class="nhsuk-heading-s">Weight</h2>
+
+            <div class="weight-container">
+              {{ input({
+                  "label": {
+                    "text": "Stone"
+                  },
+                  "hint": {
+                    "text": "For example, 10"
+                  },
+                  "classes": "nhsuk-input--width-5",
+                  "id": "stone",
+                  "name": "stone",
+                  "value": data['stone']
+                }) }}
+
+                {{ input({
+                    "label": {
+                      "text": "Pounds"
+                    },
+                    "hint": {
+                      "text": "For example, 11"
+                    },
+                    "classes": "nhsuk-input--width-5",
+                    "id": "pounds",
+                    "name": "pounds",
+                    "value": data['pounds'] 
+                  }) }}
+            </div>
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}
