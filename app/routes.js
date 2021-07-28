@@ -16,7 +16,24 @@ router.post('*/who-is-registering-answer/', function (req, res) {
     res.redirect('continue-with-nhs-login')
   } else {
     // Send user to ineligible page
-    res.redirect('#')
+    res.redirect('continue-with-nhs-login')
+  }
+
+})
+
+// Does user have NHS login
+router.post('*/nhs-login-answer/', function (req, res) {
+
+  // Make a variable and give it the value from 'juggling-balls'
+  var hasLogin = req.session.data['nhs-login']
+
+  // Check whether the variable matches a condition
+  if (hasLogin == "Yes"){
+    // Send user to next page
+    res.redirect('nhs-login-email-address')
+  } else {
+    // Send user to ineligible page
+    res.redirect('do-you-know-nhs-number')
   }
 
 })

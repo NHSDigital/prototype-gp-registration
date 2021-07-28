@@ -28,36 +28,62 @@ GP Registration Prototypes
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
-<section class="nhsuk-section">
-  <div class="nhsuk-width-container">
-    <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-two-thirds">
-        <h1>
-          Register using NHS login
-        </h1>
-        <p>
-          If you already have an NHS login you can use this to register with a GP.
-        </p>
-
-      </div>
-    </div>
-  </div>
-</section>
 
 <section class="nhsuk-section">
   <div class="nhsuk-width-container">
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
-        <h2>
-          What is NHS login?
-        </h2>
-        <p>
-          NHS login is a way to access online health services wherever you see ’NHS login’. If you do not already have an NHS login, you can register using your email address.
-        </p>
-        <p>
-          <a href="#" class="nhsuk-button nhsuk-button--blue">Continue with NHS login</a>
-          <a href="do-you-know-nhs-number" class="nhsuk-button nhsuk-button--green">Continue without an NHS login</a>
-        </p>
+
+        <form action="nhs-login-answer" method="post" autocomplete="off">
+
+          {% call fieldset({
+            legend: {
+              text: "Would you like to sign in or create an account with NHS login?",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "nhs-login",
+            "name": "nhs-login",
+            "items": [
+              {
+                "value": "Yes",
+                "text": "Sign in or create an account",
+                "hint": {
+                  "text": "If you already have an account we'll use this to find your details and register you. This will save you around 5 minutes."
+                },
+                checked: checked("nhs-login", "Yes")
+              },
+              {
+                "value": "No",
+                "text": "Continue without an account",
+                "hint": {
+                  "text": "Your details will not be saved for future use."
+                },
+                checked: checked("nhs-login", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {{ details({
+            "text": "What is NHS login?",
+            "HTML": "
+            <p>NHS login is a way to access online health services wherever you see ’NHS login’. If you do not already have an NHS login, you can register using your email address.</p>
+            "
+          }) }}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+
+
       </div>
     </div>
   </div>
