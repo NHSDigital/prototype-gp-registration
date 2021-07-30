@@ -44,6 +44,16 @@
 
             {{ input({
                 label: {
+                  "text": "Title"
+                },
+                "classes": "nhsuk-input--width-4",
+                "id": "name-title",
+                "name": "name-title",
+                "value": data['name-title']
+              }) }}
+
+            {{ input({
+                label: {
                   "text": "Given names"
                 },
                 "classes": "nhsuk-u-width-two-thirds",
@@ -74,7 +84,7 @@
 
               {{ input({
                   label: {
-                    "text": "Previous surnames (optional)"
+                    "text": "Previous family names (optional)"
                   },
                   "classes": "nhsuk-u-width-two-thirds",
                   "id": "name-previous-surnames",

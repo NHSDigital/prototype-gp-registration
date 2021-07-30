@@ -32,7 +32,7 @@
             "text": "Go back"
           }) }}
 
-          <form action="what-is-your-previous-address" method="post" autocomplete="off">
+          <div id="current-address-lookup-container">
 
             {% call fieldset({
               legend: {
@@ -43,6 +43,106 @@
             }) %}
 
             {{ input({
+              label: {
+                "text": "Postcode"
+              },
+              "classes": "nhsuk-input--width-10",
+              "id": "find-current-address",
+              "name": "find-current-address",
+              value: data['find-current-address']
+          }) }}
+
+            {{ button({
+              "text": "Continue",
+              "classes": "postcode-lookup-btn"
+          }) }}
+
+            <p>
+              <a href="#" id="enter-address-manually-link">Enter address manually</a>
+            </p>
+
+          </div>
+
+          <form action="is-your-current-address-different" method="post" autocomplete="off">
+
+            <div id="select-address-section" class="hidden-section">
+              <h2 class="nhsuk-heading-xs">Postcode</h2>
+              <p id="postcode-input-data">
+                &nbsp;&nbsp;<a href="#" id="change-postcode-link">Change</a>
+              </p>
+
+              {{ select({
+                  "id": "select-current-address",
+                  "name": "select-current-address",
+                  "label": {
+                    "text": "Select an address"
+                  },
+                  "items": [
+                  {
+                    "value": 0,
+                    "text": "10 Addresses found",
+                    "selected": true,
+                    "disabled": true
+                  },
+                    {
+                      "value": "1 Town Street, London, SW1A 1AA",
+                      "text": "1 Town Street, London, SW1A 1AA"
+                    },
+                    {
+                      "value": "2 Town Street, London, SW1A 1AA",
+                      "text": "2 Town Street, London, SW1A 1AA"
+                    },
+                    {
+                      "value": "3 Town Street, London, SW1A 1AA",
+                      "text": "3 Town Street, London, SW1A 1AA"
+                    },
+                    {
+                      "value": "4 Town Street, London, SW1A 1AA",
+                      "text": "4 Town Street, London, SW1A 1AA"
+                    },
+                    {
+                      "value": "5 Town Street, London, SW1A 1AA",
+                      "text": "5 Town Street, London, SW1A 1AA"
+                    },
+                    {
+                      "value": "6 Town Street, London, SW1A 1AA",
+                      "text": "6 Town Street, London, SW1A 1AA"
+                    },
+                    {
+                      "value": "7 Town Street, London, SW1A 1AA",
+                      "text": "7 Town Street, London, SW1A 1AA"
+                    },
+                    {
+                      "value": "8 Town Street, London, SW1A 1AA",
+                      "text": "8 Town Street, London, SW1A 1AA"
+                    },{
+                      "value": "9 Town Street, London, SW1A 1AA",
+                      "text": "9 Town Street, London, SW1A 1AA"
+                    },{
+                      "value": "10 Town Street, London, SW1A 1AA",
+                      "text": "10 Town Street, London, SW1A 1AA"
+                    }
+                  ]
+                }) }}
+
+              {{ button({
+                  "text": "Continue"
+              }) }}
+
+            </div>
+
+            {% endcall %}
+
+            <div class="current-address-form hidden-section">
+
+              {% call fieldset({
+                legend: {
+                  "text": "Enter your address",
+                  "classes": "nhsuk-fieldset__legend--m"
+                }
+              }) %}
+
+              {{ input({
                 label: {
                   "html": 'Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>'
                 },
@@ -51,7 +151,7 @@
                 value: data['current-address-line-1']
               }) }}
 
-            {{ input({
+              {{ input({
                 label: {
                   "html": '<span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>'
                 },
@@ -60,7 +160,7 @@
                 value: data['current-address-line-2']
               }) }}
 
-            {{ input({
+              {{ input({
                 label: {
                   "text": "Town or city"
                 },
@@ -70,7 +170,7 @@
                 value: data['current-address-town']
               }) }}
 
-            {{ input({
+              {{ input({
                   label: {
                     "text": "Postcode"
                   },
@@ -80,22 +180,28 @@
                   value: data['current-address-postcode']
               }) }}
 
-            {{ checkboxes({
-              "idPrefix": "no-current-address",
-              "name": "no-current-address",
-              "items": [
-                {
-                  "value": "no-current-address",
-                  "text": "I do not have a current UK home address"
-                }
-              ]
-            }) }}
+              {{ checkboxes({
+                "idPrefix": "no-current-address",
+                "name": "no-current-address",
+                "items": [
+                  {
+                    "value": "no-current-address",
+                    "text": "I do not have a current UK home address"
+                  }
+                ]
+              }) }}
 
-            {% endcall %}
+              {% endcall %}
 
-            {{ button({
-              "text": "Continue"
-            }) }}
+              {{ button({
+                "text": "Continue"
+              }) }}
+
+              <p>
+                <a href="#" id="use-postcode-lookup-link">Return to postcode lookup</a>
+              </p>
+
+            </div>
 
           </form>
         </div>
@@ -107,15 +213,38 @@
   </div>
 </div>
 {% block pageScripts %}
-<script>
-$('#no-current-address-1').change(function(){
-    if ($('#no-current-address-1').is(':checked') == true){
+  <script>
+
+    $('.postcode-lookup-btn').click(function () {
+      $('#current-address-lookup-container').addClass("hidden-section");
+      $('#select-address-section').removeClass("hidden-section");
+      $('#postcode-input-data').prepend($('#find-current-address').val().toUpperCase());
+    });
+
+    $('#change-postcode-link').click(function () {
+      $('#current-address-lookup-container').removeClass("hidden-section");
+      $('#select-address-section').addClass("hidden-section");
+    });
+
+    $('#enter-address-manually-link').click(function () {
+      $('#current-address-lookup-container').addClass("hidden-section");
+      $('.current-address-form').removeClass("hidden-section");
+    });
+
+    $('#use-postcode-lookup-link').click(function () {
+      $('#current-address-lookup-container').removeClass("hidden-section");
+      $('#select-address-section').addClass("hidden-section");
+      $('.current-address-form').addClass("hidden-section");
+    });
+
+    $('#no-current-address-1').change(function () {
+      if ($('#no-current-address-1').is(':checked') == true) {
         $('input[type=text]').prop('disabled', true);
-    } else {
-      $('input[type=text]').prop('disabled', false);
-    }
-});
-</script>
+      } else {
+        $('input[type=text]').prop('disabled', false);
+      }
+    });
+  </script>
 {% endblock %}
 
 {% endblock %}

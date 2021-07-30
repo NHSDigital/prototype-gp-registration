@@ -28,39 +28,37 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {{ backLink({
-            "href": "what-is-your-phone-number",
+            "href": "what-is-your-gender",
             "text": "Go back"
           }) }}
 
-          <form action="how-can-we-contact-you" method="post" autocomplete="off">
+          <form action="different-current-address-answer" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                "text": "What is your email address?",
+                "text": "Is your current address different to the one held by your current GP?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
 
-              {{ input({
-                label: {
-                  "html": 'Email address'
+            {{ radios({
+              "idPrefix": "different-current-address",
+              "name": "different-current-address",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: checked("different-current-address", "Yes")
                 },
-                "classes": "nhsuk-input--width-20",
-                "id": "contact-email",
-                "name": "contact-email"
-              }) }}
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("different-current-address", "No")
+                }
 
-              {{ checkboxes({
-                "idPrefix": "no-email-address",
-                "name": "no-email-address",
-                "items": [
-                  {
-                    "value": "no-email-address",
-                    "text": "I do not have an email address"
-                  }
-                ]
-              }) }}
+              ]
+            }) }}
 
             {% endcall %}
 
@@ -79,8 +77,8 @@
 </div>
 {% block pageScripts %}
 <script>
-$('#no-email-address-1').change(function(){
-    if ($('#no-email-address-1').is(':checked') == true){
+$('#no-current-address-1').change(function(){
+    if ($('#no-current-address-1').is(':checked') == true){
         $('input[type=text]').prop('disabled', true);
     } else {
       $('input[type=text]').prop('disabled', false);
@@ -88,4 +86,5 @@ $('#no-email-address-1').change(function(){
 });
 </script>
 {% endblock %}
+
 {% endblock %}

@@ -55,6 +55,23 @@ router.post('*/what-is-your-nhs-number-answer/', function (req, res) {
 
 })
 
+// Does user know NHS Number branch
+router.post('*/different-current-address-answer/', function (req, res) {
+
+  // Make a variable and give it the value from 'juggling-balls'
+  var diffAddress = req.session.data['different-current-address']
+
+  // Check whether the variable matches a condition
+  if (diffAddress == "Yes"){
+    // Send user to next page
+    res.redirect('what-is-your-previous-address')
+  } else {
+    // Send user to next page they can answer
+    res.redirect('what-is-your-phone-number')
+  }
+
+})
+
 // Does user have communication needs
 router.post('*/do-you-have-communication-needs-answer/', function (req, res) {
 

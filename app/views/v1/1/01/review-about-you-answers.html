@@ -183,13 +183,18 @@
                   Current address
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  {{ data['current-address-line-1'] }}<br />
-                  {{ data['current-address-line-2'] }}<br />
-                  {{ data['current-address-town'] }}<br />
-                  {{ data['current-address-postcode'] }}
+                  {% if data['select-current-address'] %}
+                    {{ data['select-current-address'] }}
+                  {% else %}
+                    {{ data['select-current-address'] }}
+                    {{ data['current-address-line-1'] }}<br />
+                    {{ data['current-address-line-2'] }}<br />
+                    {{ data['current-address-town'] }}<br />
+                    {{ data['current-address-postcode'] }}
+                  {% endif %}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="current-uk-address">
+                  <a href="what-is-your-current-address">
                     Change<span class="nhsuk-u-visually-hidden"> address</span>
                   </a>
                 </dd>
