@@ -1,0 +1,114 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            "href": "how-can-we-contact-you",
+            "text": "Go back"
+          }) }}
+
+          <form action="check-answers" method="post" autocomplete="off">
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-fieldset__heading">
+                  What are your contact details?
+                </h1>
+              </legend>
+
+              <div class="nhsuk-form-group contact-email-section hidden-section">
+                <label class="nhsuk-label" for="contact-email">
+                  Email address
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-two-thirds" id="contact-email" name="contact-email" type="text">
+              </div>
+
+              <div class="nhsuk-form-group contact-text-section hidden-section">
+                <label class="nhsuk-label" for="contact-text">
+                  Text message
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-10" id="contact-text" name="contact-text" type="text">
+              </div>
+
+              <div class="nhsuk-form-group contact-home-tel-section hidden-section">
+                <label class="nhsuk-label" for="contact-home-tel">
+                  UK home telephone number
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-10" id="contact-home-tel" name="contact-home-tel" type="text">
+              </div>
+
+              <div class="nhsuk-form-group contact-mobile-tel-section hidden-section">
+                <label class="nhsuk-label" for="contact-mobile-tel">
+                  UK mobile telephone number
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-10" id="contact-mobile-tel" name="contact-mobile-tel" type="text">
+              </div>
+
+            </fieldset>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+
+  var emailChecked = "{{ data['contact-prefs-email'] }}";
+  var textChecked = "{{ data['contact-prefs-text'] }}";
+  var homeTelChecked = "{{ data['contact-prefs-home-tel'] }}";
+  var mobileTelChecked = "{{ data['contact-prefs-mobile-tel'] }}";
+
+  if (emailChecked) {
+    $('.contact-email-section').removeClass("hidden-section")
+  } else {}
+
+  if (textChecked) {
+    $('.contact-text-section').removeClass("hidden-section")
+  } else {}
+
+  if (homeTelChecked) {
+    $('.contact-home-tel-section').removeClass("hidden-section")
+  } else {}
+
+  if (mobileTelChecked) {
+    $('.contact-mobile-tel-section').removeClass("hidden-section")
+  } else {}
+</script>
+
+{% endblock %}

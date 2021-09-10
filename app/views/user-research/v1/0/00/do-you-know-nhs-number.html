@@ -1,0 +1,92 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            "href": "which-town-were-you-born-in",
+            "text": "Go back"
+          }) }}
+
+          <form action="what-is-your-nhs-number" method="post" autocomplete="off">
+
+            {% call fieldset({
+              legend: {
+                text: "Do you know your NHS Number?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "This is a 10 digit number, like 485 777 3456.",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {{ hint({
+              "text": "You can find it on any letter the NHS has sent you, on a prescription or by logging in to a GP surgery online service.",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {{ hint({
+              "html": "<p>
+                You can use the <a href='#'>NHS number finder service</a> to retrieve your NHS number by text message or email.</p>"
+            }) }}
+
+            {{ radios({
+              "idPrefix": "do-you-know-nhs-number",
+              "name": "know-nhs-number",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes, I know my NHS number",
+                  "checked": checked("know-nhs-number", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No, I do not know my NHS number",
+                  "checked": checked("know-nhs-number", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}
