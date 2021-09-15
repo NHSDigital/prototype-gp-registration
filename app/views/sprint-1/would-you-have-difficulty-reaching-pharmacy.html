@@ -1,0 +1,84 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            "href": "distance-from-nearest-pharmacy",
+            "text": "Go back"
+          }) }}
+
+          <form action="emergency-contact-details" method="post" autocomplete="off">
+
+            {% call fieldset({
+              legend: {
+                text: "Would you have serious difficulty in reaching a pharmacy to collect medicines or appliances?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ radios({
+              "idPrefix": "difficulty-in-reaching-pharmacy",
+              "name": "difficulty-in-reaching-pharmacy",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: checked("difficulty-in-reaching-pharmacy", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("difficulty-in-reaching-pharmacy", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ details({
+              "text": "Why are we asking this?",
+              "HTML": "
+              <p>If you live over 1.6km from your nearest pharmacy and would have serious difficulty in obtaining any necessary drugs or appliances from that pharmacy, it may be possible for you to receive your medicines from your doctor’s surgery.</p>
+              "
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}
