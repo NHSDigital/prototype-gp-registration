@@ -31,6 +31,19 @@
   }}
 {% endblock %}
 
+
+
+{% block content %}
+
+{% if showBackLink != false %}
+    {{ backLink({
+      text: "Back",
+      href: "javascript:history.go(-1)"
+    }) }}
+  {% endif %}
+
+{% endblock %}
+
 <!-- Edit the footer -->
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
