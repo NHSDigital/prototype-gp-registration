@@ -31,41 +31,25 @@
             text: "Back",
             href: "javascript:history.go(-1)"
           }) }}
-          
-          <form action="do-you-take-prescription-medication-answer" method="post" autocomplete="off">
+
+          <form action="nhs-login-password" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                text: "Do you currently take any prescription medication?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
+                "text": "Enter your email address",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
               }
             }) %}
 
-            {{ hint({
-              "text": "It is important to tell us about all the prescription medication you currently take so your GP can have these ready for you."
-            }) }}
-
-            {{ hint({
-              "text": "Please include prescription medication for contraception and medication from abroad"
-            }) }}
-
-            {{ radios({
-              "idPrefix": "takes-prescription-meds",
-              "name": "takes-prescription-meds",
-              "items": [
-                {
-                  "value": "Yes",
-                  "text": "Yes",
-                  checked: checked("takes-prescription-meds", "Yes")
+              {{ input({
+                label: {
+                  "html": 'Email address'
                 },
-                {
-                  "value": "No",
-                  "text": "No",
-                  checked: checked("takes-prescription-meds", "No")
-                }
-              ]
-            }) }}
+                "classes": "nhsuk-input--width-20",
+                "id": "nhs-login-email",
+                "name": "nhs-login-email"
+              }) }}
 
             {% endcall %}
 
@@ -82,4 +66,15 @@
 
   </div>
 </div>
+{% block pageScripts %}
+<script>
+$('#no-previous-address-1').change(function(){
+    if ($('#no-previous-address-1').is(':checked') == true){
+        $('input[type=text]').prop('disabled', true);
+    } else {
+      $('input[type=text]').prop('disabled', false);
+    }
+});
+</script>
+{% endblock %}
 {% endblock %}

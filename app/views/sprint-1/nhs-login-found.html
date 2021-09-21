@@ -31,41 +31,45 @@
             text: "Back",
             href: "javascript:history.go(-1)"
           }) }}
-          
-          <form action="do-you-take-prescription-medication-answer" method="post" autocomplete="off">
+
+          <form action="how-can-we-contact-you" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                text: "Do you currently take any prescription medication?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
+                "text": "Would you like to sign in with your NHS login account?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
               }
             }) %}
 
-            {{ hint({
-              "text": "It is important to tell us about all the prescription medication you currently take so your GP can have these ready for you."
-            }) }}
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>We found an NHS Login linked to <strong>{{ data['contact-email'] }}</strong></p>
 
-            {{ hint({
-              "text": "Please include prescription medication for contraception and medication from abroad"
-            }) }}
+            </div>
 
             {{ radios({
-              "idPrefix": "takes-prescription-meds",
-              "name": "takes-prescription-meds",
+              "idPrefix": "nhs-login",
+              "name": "nhs-login",
               "items": [
                 {
                   "value": "Yes",
                   "text": "Yes",
-                  checked: checked("takes-prescription-meds", "Yes")
+                  "hint": {
+                    "text": ""
+                  },
+                  checked: checked("nhs-login", "Yes")
                 },
                 {
                   "value": "No",
                   "text": "No",
-                  checked: checked("takes-prescription-meds", "No")
+                  "hint": {
+                    "text": ""
+                  },
+                  checked: checked("nhs-login", "No")
                 }
               ]
             }) }}
+
 
             {% endcall %}
 
@@ -82,4 +86,15 @@
 
   </div>
 </div>
+{% block pageScripts %}
+<script>
+$('#no-email-address-1').change(function(){
+    if ($('#no-email-address-1').is(':checked') == true){
+        $('input[type=text]').prop('disabled', true);
+    } else {
+      $('input[type=text]').prop('disabled', false);
+    }
+});
+</script>
+{% endblock %}
 {% endblock %}
