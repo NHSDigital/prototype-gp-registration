@@ -1,0 +1,156 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            "href": "date-of-birth",
+            "text": "Go back"
+          }) }}
+
+          <form action="were-you-born-in-the-uk" method="post" autocomplete="off">
+
+            {% set emailAddress %}
+              {{ input({
+                id: "email-address",
+                name: "email-address",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "What is your email address?"
+                },
+                "value": data['email-address']
+              }) }}
+            {% endset -%}
+
+            {% set textMessage %}
+              {{ input({
+                id: "text-message",
+                name: "text-message",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "What is your text message phone number?"
+                },
+                "value": data['text-message']
+              }) }}
+            {% endset -%}
+
+            {% set homeTel %}
+              {{ input({
+                id: "home-telephone",
+                name: "home-telephone",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "What is your home telephone number?"
+                },
+                "value": data['home-telephone']
+              }) }}
+            {% endset -%}
+
+            {% set mobileTel %}
+              {{ input({
+                id: "mobile-telephone",
+                name: "mobile-telephone",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "What is your mobile telephone number?"
+                },
+                "value": data['mobile-telephone']
+              }) }}
+            {% endset -%}
+
+            {{ checkboxes({
+              "idPrefix": "contact-prefs",
+              "name": "contact-prefs",
+              "fieldset": {
+                "legend": {
+                  "text": "How can we contact you?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "html": "<p>Your GP surgery will use these methods to contact you about your application, make appointments, provide prescriptions, and facilitate medical services</p><p>Select all contact methods that are acceptable to you.</p>"
+              },
+              "items": [
+                {
+                  "value": "Email",
+                  "text": "Email",
+                  "name":"contact-prefs-email",
+                  "conditional": {
+                    "html": emailAddress
+                  },
+                  checked: checked("contact-prefs", "Email")
+                },
+                {
+                  "value": "Text message",
+                  "text": "Text message",
+                  "name":"contact-prefs-text",
+                  "conditional": {
+                    "html": textMessage
+                  },
+                  checked: checked("contact-prefs", "Text message")
+                },
+                {
+                  "value": "UK home telephone number",
+                  "text": "UK home telephone number",
+                  "name":"contact-prefs-home-tel",
+                  "conditional": {
+                    "html": homeTel
+                  },
+                  checked: checked("contact-prefs", "UK home telephone number")
+                },
+                {
+                  "value": "UK mobile telephone number",
+                  "text": "UK mobile telephone number",
+                  "name":"contact-prefs-mobile-tel",
+                  "conditional": {
+                    "html": mobileTel
+                  },
+                  checked: checked("contact-prefs", "UK mobile telephone number")
+                }
+              ]
+            }) }}
+
+            {{ details({
+              "text": "What if I don't have direct access to a phone or email?",
+              "HTML": "<p>If you don't have direct access to a phone or email, you can also the contact details of a friend or relative you trust.</p>"
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}

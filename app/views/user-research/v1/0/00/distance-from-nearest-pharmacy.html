@@ -1,0 +1,84 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            "href": "do-you-need-your-doctor-to-dispense",
+            "text": "Go back"
+          }) }}
+
+          <form action="would-you-have-difficulty-reaching-pharmacy" method="post" autocomplete="off">
+
+            {% call fieldset({
+              legend: {
+                text: "Do you live more than 1.6km in a straight line from your nearest pharmacy?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ radios({
+              "idPrefix": "distance-from-pharmacy",
+              "name": "distance-from-pharmacy",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: checked("distance-from-pharmacy", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("distance-from-pharmacy", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ details({
+              "text": "Why are we asking this?",
+              "HTML": "
+              <p>People who live within 1.6km of a pharmacy (in a straight line drawn on a map) are not normally eligible to receive their medicines from their doctor’s surgery.</p>
+              "
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}

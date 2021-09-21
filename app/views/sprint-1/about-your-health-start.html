@@ -1,0 +1,88 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <h1>
+          Further questions about your health
+        </h1>
+        <p>
+          Thank you for confirming the details you have entered already.
+        </p>
+
+        <p>
+          To ensure you get the best possible care, we need to ask you some more questions about your health and lifestyle.
+        </p>
+        <p>
+          The things we'll ask about include:
+        </p>
+        <ul>
+          <li>
+            your height and weight
+          </li>
+          <li>
+            any alcohol consumption
+          </li>
+          <li>
+            any tobacco usage
+          </li>
+          <li>
+            your medical conditions
+          </li>
+          <li>
+            your medications
+          </li>
+          <li>
+            your ethnicity
+          </li>
+        </ul>
+        <p>
+          The process is confidential and any data entered is store securely following the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/711097/guide-to-the-general-data-protection-regulation-gdpr-1-0.pdf">UK government's data storage standards PDF, 2.25Mb</a>
+        </p>
+        <p>
+          These questions are optional and do not have to be completed in order to register with a GP.
+        </p>
+        <p>
+          <a href="your-height-and-weight" class="nhsuk-button nhsuk-button--green">Continue</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}

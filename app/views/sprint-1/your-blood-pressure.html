@@ -1,0 +1,91 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="how-often-do-you-drink-alcohol" method="post" autocomplete="off">
+
+            {% call fieldset({
+              legend: {
+                "text": "What is your blood pressure?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "This question is optional"
+            }) }}
+
+
+            {{ input({
+                "label": {
+                  "text": "Systolic blood pressure in mmHg"
+                },
+                "hint": {
+                  "text": "For example, 120"
+                },
+                "classes": "nhsuk-input--width-5",
+                "id": "systolic-bp",
+                "name": "systolic-bp",
+                value: data['systolic-bp']
+              }) }}
+
+              {{ input({
+                  "label": {
+                    "text": "Diastolic blood pressure in mmHg"
+                  },
+                  "hint": {
+                    "text": "For example, 80"
+                  },
+                  "classes": "nhsuk-input--width-5",
+                  "id": "diastolic-bp",
+                  "name": "diastolic-bp",
+                  value: data['diastolic-bp']
+              }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}

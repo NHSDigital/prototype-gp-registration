@@ -1,0 +1,391 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="about-your-health-start" method="post" autocomplete="off">
+
+            {{ fieldset({
+              "legend": {
+                "text": "Check your answers before submitting?",
+                "classes": "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-5",
+                "isPageHeading": true
+              }
+            }) }}
+
+            <h3>Personal Details</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <!--- Personal details --->
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  Mary Walsh
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="what-is-your-name">
+                    Change<span class="nhsuk-u-visually-hidden">
+                     name</span>
+                  </a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Known as
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['name-known-as'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="what-is-your-name">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      what this person is known as</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Previous surnames
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['name-previous-surnames'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="what-is-your-name">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      previous surnames</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Date of birth
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  23 May 1978
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="date-of-birth">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      date of birth</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  NHS Number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  485 777 3456
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="what-is-your-nhs-number">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      NHS number</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Gender
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  Female
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="what-is-your-gender">
+                    Change<span class="nhsuk-u-visually-hidden"> selected gender</span>
+                  </a>
+                </dd>
+              </div>
+
+            </dl>
+
+
+            <!--- Addresses --->
+
+            <h3>Address</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Current address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  115 Great North Road<br />
+                  Alstonefield<br />
+                  DE6 8BN
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="current-uk-address">
+                    Change<span class="nhsuk-u-visually-hidden"> address</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Previous address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  118 South Street<br />
+                  Monkshill<br />
+                  AB53 1NZ
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="current-uk-address">
+                    Change<span class="nhsuk-u-visually-hidden"> previous address</span>
+                  </a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <!--- Contact preferences details --->
+
+            <h3>Contact preferences</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Contact methods
+                </dt>
+                <dd class="nhsuk-summary-list__value nhsuk-summary-list__contact-prefs">
+                  <span class='contact-prefs-type'> Email: </span>
+                  <span class='contact-prefs-entry'> walsh.mary@example.com </span>
+                  <span class='contact-prefs-type'> Mobile telephone: </span>
+                  <span class='contact-prefs-entry'> 07079 57203 </span>
+                  <span class='contact-prefs-type'> Text message: </span>
+                  <span class='contact-prefs-entry'> 07079 57203 </span>
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="how-can-we-contact-you">
+                    Change<span class="nhsuk-u-visually-hidden"> contact email address</span>
+                  </a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <!--- Accessibility --->
+
+            <h3>Accessibility</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Communication needs
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  No
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="do-you-have-communication-needs">
+                    Change<span class="nhsuk-u-visually-hidden"> whether you have communication needs</span>
+                  </a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <!--- GP Details --->
+
+            <h3>Previous GP</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Previous GP address
+                </dt>
+                <dd class="nhsuk-summary-list__value previous-gp__value">
+                  A.N. Example GP Surgery<br/>
+                  39 Red Lane<br/>
+                  Monkshill<br/>
+                  AB53 5SA<br/>
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="previous-gp-details">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      previous GP address</span>
+                  </a>
+                </dd>
+              </div>
+            </dl>
+
+            <!--- Selected GP --->
+
+            <h3>Prescription collection details</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Collects prescriptions from
+                </dt>
+                <dd class="nhsuk-summary-list__value collects-prescriptions-from">
+
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="which-gp-do-you-want-register-with">
+                    Change<span class="nhsuk-u-visually-hidden"> where you collect prescriptions from</span>
+                  </a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <!--- Emergency Contact --->
+
+            <h3>Emergency Contact</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Emergency contact full name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  John Walsh
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="emergency-contact-details">
+                    Change<span class="nhsuk-u-visually-hidden"> emergency contact name</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Emergency contact relationship to you
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  Husband
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="emergency-contact-details">
+                    Change<span class="nhsuk-u-visually-hidden"> emergency contact relationship to you</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Emergency contact telephone number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  07777 09876
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="emergency-contact-details">
+                    Change<span class="nhsuk-u-visually-hidden"> emergency contact telephone number</span>
+                  </a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <h2 class="nhsuk-heading-l">Confirm these details are correct</h2>
+
+            <p>
+              By submitting these details you are confirming that, to the best of your knowledge, they are providing are correct.
+            </p>
+
+            {{ button({
+              "text": "Confirm and continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+
+  $(document).ready(function () {
+
+    // Hide subsequent dispensing doctor fields if user has chosen pharmacy
+
+    if ($('.collects-prescriptions-from').text().includes("Pharmacy")) {
+      $('.pharmacy-distance').hide();
+      $('.pharmacy-difficulty').hide();
+    } else {};
+
+    // Populate any unanswered fields with "Not answered" text
+    $('.nhsuk-summary-list__value').filter(function () {
+      return $.trim($(this).text()) === "";
+    }).each(function (ind, obj) {
+      $(obj).closest('dd').html("<span class='summary-page-unanswered'>Not known</span>");
+    });
+
+    // Add colon to contact method type if it isn't blank
+    $(".contact-prefs-type:not(:empty)").append(':');
+
+    // Convert nunjucks date data to be used in JS
+    var dobDD = JSON.parse('{{ data["dob-day"] }}'.replace(/&quot;/g,'"'));
+    var dobMM = JSON.parse('{{ data["dob-month"] }}'.replace(/&quot;/g,'"'));
+    var dobYY = JSON.parse('{{ data["dob-year"] }}'.replace(/&quot;/g,'"'));
+
+    // Convert month format from mm to Mmm
+    var date = new Date(dobYY, (dobMM - 1), dobDD); // 2009-11-10
+    var month = date.toLocaleString('default', {month: 'short'});
+
+    // Insert new month format into summary list
+
+    $("#dob-month").text(month);
+
+  });
+</script>
+
+{% endblock %}

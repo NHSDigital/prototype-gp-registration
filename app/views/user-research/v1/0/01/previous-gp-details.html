@@ -1,0 +1,112 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            "href": "registered-with-gp-previously",
+            "text": "Go back"
+          }) }}
+
+          <form action="what-is-your-gender" method="post" autocomplete="off">
+
+            {% call fieldset({
+              legend: {
+                "text": "What is the name and address of your previous GP surgery?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ hint({
+                "text": "If you have been registered at more than one GP surgery previousy, please enter the name and address of the most recent GP surgery you were registered at."
+            }) }}
+
+            {{ input({
+              "label": {
+              "text": "Surgery name"
+              },
+                "classes": "nhsuk-input-u-two-thirds",
+                "id": "previous-gp-name",
+                "name": "previous-gp-name",
+                value: data['previous-gp-name']
+              }) }}
+
+              {{ input({
+                label: {
+                  "html": 'Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>'
+                },
+                "id": "previous-gp-address-line-1",
+                "name": "previous-gp-address-line-1",
+                value: data['previous-gp-address-line-1']
+              }) }}
+
+              {{ input({
+                label: {
+                  "html": '<span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>'
+                },
+                "id": "previous-gp-address-line-2",
+                "name": "previous-gp-address-line-2",
+                value: data['previous-gp-address-line-2']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "Town or city"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "previous-gp-town",
+                "name": "previous-gp-town",
+                value: data['previous-gp-town']
+              }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "previous-gp-postcode-",
+                  "name": "previous-gp-postcode",
+                  value: data['previous-gp-postcode']
+                }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}

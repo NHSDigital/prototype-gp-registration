@@ -1,0 +1,523 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="details-submitted" method="post" autocomplete="off">
+
+            {{ fieldset({
+              "legend": {
+                "text": "Check your answers before submitting?",
+                "classes": "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-5",
+                "isPageHeading": true
+              }
+            }) }}
+
+            <h3>General health questions</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <!--- General details --->
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Height
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if data['feet'] %}
+                    {{ data['feet'] }} feet
+                  {% endif %}
+                  {% if data['inches'] %}
+                    {{ data['inches'] }} inches
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="your-height-and-weight">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      height</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Weight
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if data['stone'] %}
+                    {{ data['stone'] }} stone
+                  {% endif %}
+                  {% if data['pounds'] %}
+                    {{ data['pounds'] }} pounds
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="your-height-and-weight">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      weight</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Blood pressure
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if data['systolic-bp'] %}
+                    {{ data['systolic-bp'] }} over
+                  {% endif %}
+                  {% if data['diastolic-bp'] %}
+                    {{ data['diastolic-bp'] }}
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="your-blood-pressure">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      weight</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Alcohol frequency
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['alcohol-consumption'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="how-often-do-you-drink-alcohol">
+                    Change<span class="nhsuk-u-visually-hidden"> how often you drink alcohol</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Do you smoke?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['smokes'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="do-you-smoke">
+                    Change<span class="nhsuk-u-visually-hidden"> how often you smoke</span>
+                  </a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <h3>Medical conditions</h3>
+
+            <dl class="nhsuk-summary-list">
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Has existing medical conditions?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['has-existing-conditions'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="do-you-have-existing-conditions">
+                    Change<span class="nhsuk-u-visually-hidden"> whether you have existing medical conditions</span>
+                  </a>
+                </dd>
+              </div>
+
+              {% if data['has-existing-conditions'] == "Yes" %}
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Conditions
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {% if data['existing-conditions'] %}
+                      {{ data['existing-conditions'] }}
+                    {% endif %}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="what-existing-conditions-do-you-have">
+                      Change<span class="nhsuk-u-visually-hidden"> existing medical conditions</span>
+                    </a>
+                  </dd>
+                </div>
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Condition details
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['existing-medical-condition-details'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="existing-conditions-details">
+                      Change<span class="nhsuk-u-visually-hidden"> details about your existing conditions</span>
+                    </a>
+                  </dd>
+                </div>
+              {% endif %}
+
+            </dl>
+
+            <h3>Allergies</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Allergies?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['has-allergies'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="do-you-have-allergies">
+                    Change<span class="nhsuk-u-visually-hidden"> whether you have allergies</span>
+                  </a>
+                </dd>
+              </div>
+
+              {% if data['has-allergies'] == "Yes" %}
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Allergy details
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['allergies-details'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="allergies-details">
+                      Change<span class="nhsuk-u-visually-hidden"> whether you have allergies</span>
+                    </a>
+                  </dd>
+                </div>
+              {% endif %}
+
+            </dl>
+
+            <h3>Mental health conditions</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Mental health conditions?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['has-mental-health-conditions'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="do-you-have-any-mental-health-conditions">
+                    Change<span class="nhsuk-u-visually-hidden"> whether you have any mental health conditions</span>
+                  </a>
+                </dd>
+              </div>
+
+              {% if data['has-mental-health-conditions'] == "Yes" %}
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Mental health condition details
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['mental-health-details'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="mental-health-conditions">
+                      Change<span class="nhsuk-u-visually-hidden"> details about your mental health conditions</span>
+                    </a>
+                  </dd>
+                </div>
+              {% endif %}
+
+            </dl>
+
+            <h3>Disabilities</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Disabilities?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['has-disabilities'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="do-you-have-any-disabilities">
+                    Change<span class="nhsuk-u-visually-hidden"> whether you have any disabilities</span>
+                  </a>
+                </dd>
+              </div>
+
+              {% if data['has-disabilities'] == "Yes" %}
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Disability details
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['disabilities-details'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="disabilities-details">
+                      Change<span class="nhsuk-u-visually-hidden"> details about your disabilities</span>
+                    </a>
+                  </dd>
+                </div>
+              {% endif %}
+
+            </dl>
+
+            <h3>Carer details</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Are you a carer?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['is-carer'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="are-you-a-carer">
+                    Change<span class="nhsuk-u-visually-hidden"> whether you are a carer</span>
+                  </a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <h3>Prescription medication</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Takes prescription medication?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['takes-prescription-meds'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="do-you-take-prescription-medication">
+                    Change<span class="nhsuk-u-visually-hidden"> whether you take prescription medication</span>
+                  </a>
+                </dd>
+              </div>
+
+              {% if data['takes-prescription-meds'] == "Yes" %}
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Prescription medication details
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['medication-details'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="medication-details">
+                      Change<span class="nhsuk-u-visually-hidden"> details about your prescription medication</span>
+                    </a>
+                  </dd>
+                </div>
+              {% endif %}
+
+            </dl>
+
+            <h3>Preferred Pharmacy</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Has a preferred pharmacy?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['has-preferred-pharmacy'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="do-you-have-a-preferred-pharmacy">
+                    Change<span class="nhsuk-u-visually-hidden"> whether you have a preferred pharmacy</span>
+                  </a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <h3>Family medical conditions</h3>
+
+            <dl class="nhsuk-summary-list">
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Has family history of medical conditions?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['has-family-medical-history'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="do-you-have-family-history-of-conditions">
+                    Change<span class="nhsuk-u-visually-hidden"> whether you have existing family history of medical conditions</span>
+                  </a>
+                </dd>
+              </div>
+
+              {% if data['has-family-medical-history'] == "Yes" %}
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Conditions
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {% if data['family-conditions'] %}
+                      {{ data['family-conditions'] }}
+                    {% endif %}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="what-family-conditions-do-you-have">
+                      Change<span class="nhsuk-u-visually-hidden"> family medical conditions</span>
+                    </a>
+                  </dd>
+                </div>
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Condition details
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['family-conditions-details'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="family-conditions-details">
+                      Change<span class="nhsuk-u-visually-hidden"> details about your family medical conditions</span>
+                    </a>
+                  </dd>
+                </div>
+              {% endif %}
+
+            </dl>
+
+            <h3>Other supporting information</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Ethnic group
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['ethnicity'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="what-is-your-ethnicity">
+                    Change<span class="nhsuk-u-visually-hidden"> selected ethnic group</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Ever been a member of the Armed Forces?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['is-armed-forces-member'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="are-you-a-member-of-armed-forces">
+                    Change<span class="nhsuk-u-visually-hidden"> whether you were ever a member of armed forces</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Has a Living Will?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['has-living-will'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="do-you-have-a-living-well">
+                    Change<span class="nhsuk-u-visually-hidden"> whether you have a living will</span>
+                  </a>
+                </dd>
+              </div>
+
+            </dl>
+
+
+
+
+            <h2 class="nhsuk-heading-l">Now submit your application</h2>
+
+            <p>
+              By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.
+            </p>
+
+            {{ button({
+              "text": "Accept and submit"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+
+  $(document).ready(function () {
+
+    // Populate any unanswered fields with "Not answered" text
+    $('.nhsuk-summary-list__value').filter(function () {
+      return $.trim($(this).text()) === "";
+    }).each(function (ind, obj) {
+      $(obj).closest('dd').html("<span class='summary-page-unanswered'>Not answered</span>");
+    });
+
+    // Add colon to contact method type if it isn't blank
+    $(".contact-prefs-type:not(:empty)").append(':');
+
+  });
+</script>
+
+{% endblock %}

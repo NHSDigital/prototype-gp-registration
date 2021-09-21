@@ -1,8 +1,9 @@
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
-<!-- 
+{% from 'back-link/macro.njk' import backLink %}
+<!--
   In /views/layout.html you can:
-    - edit the header and footer 
+    - edit the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -23,11 +24,14 @@
 <!-- For adding a back link -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block outerContent %}
+
 {% endblock %}
 
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
+
+{% include "includes/back.html" %}
 
   <div class="nhsuk-grid-row">
 
@@ -43,7 +47,7 @@
       <p class="nhsuk-lede-text">
         This page example includes a selection of styles and components available to the prototype kit.
       </p>
-      
+
       <p>
         For more styles, code snippets and guidance on components visit the
         <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>.
@@ -117,7 +121,7 @@
         "heading": "School, nursery or work",
         "HTML": "<p>Stay away from school, nursery or work until all the spots have crusted over. This is usually 5 days after the spots first appeared.</p>"
       }) }}
-      
+
       <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-7 nhsuk-u-margin-bottom-0">
         Page last reviewed: 15 March 2021<br>
         Next review due: 15 March 2024
@@ -125,7 +129,7 @@
 
       <!-- End of content -->
 
-    </div>  
+    </div>
 
   </div>
 {% endblock %}

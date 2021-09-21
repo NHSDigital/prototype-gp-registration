@@ -1,0 +1,128 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <h1>
+          Register with a GP
+        </h1>
+        <p>
+          Use this service if you want to register with a GP. You can register for yourself or on behalf of a dependant in your care.
+        </p>
+
+        <p>
+          You do not have to have been previously registered with a GP to use this service.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <h2>
+          Before you start
+        </h2>
+        <p>
+          The registration process will take around 15 minutes, and we'll ask questions about the person being registered.
+        </p>
+        <p>
+          We need to ask these questions to help locate any previous medical records and ensure our that healthcare services are tailored to the needs of the person being registered.
+        </p>
+        <p>
+          The things we'll ask about include:
+        </p>
+        <ul>
+          <li>
+            name and address
+          </li>
+          <li>
+            date and place of birth
+          </li>
+          <li>
+            NHS number, if you know it
+          </li>
+          <li>
+            previous GP Surgeries, if there are any
+          </li>
+          <li>
+            health and medical information
+          </li>
+          <li>
+            contact details
+          </li>
+        </ul>
+        <p>
+          The process is confidential and any data entered is store securely following the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/711097/guide-to-the-general-data-protection-regulation-gdpr-1-0.pdf">UK government's data storage standards PDF, 2.25Mb</a>
+        </p>
+        <p>
+          You'll need to complete your application in one session, so please have these details to hand before you start.
+        </p>
+        <p>
+          <a href="enter-your-email" class="nhsuk-button nhsuk-button--green">Start now</a>
+        </p>
+        <p>
+          By using this service you are agreeing to our <a href="#">terms of use</a> and <a href="#">privacy policy</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <h2>
+          Other ways to register
+        </h2>
+        <p>
+          You can also register with a GP surgery by visiting them in person and completing a <a href="#">GMS1 registration form</a> or other registration form. However, some surgeries may not be accepting visitors in person due to the COVID-19 pandemic. Call the surgery first for instructions.
+        </p>
+
+        <p>
+          You can view <a href="https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/">guidance about how to register with a GP</a> or find a GP surgery using the <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a> service
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}
