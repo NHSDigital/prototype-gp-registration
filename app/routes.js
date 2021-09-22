@@ -89,6 +89,23 @@ router.post('*/current-address-answer/', function (req, res) {
 
 })
 
+// Does user know Current GP
+router.post('*/current-gp-answer/', function (req, res) {
+
+  // Make a variable and give it the value from 'juggling-balls'
+  var currGP = req.session.data['current-gp']
+
+  // Check whether the variable matches a condition
+  if (currGP == "yes"){
+    // Send user to next page
+    res.redirect('how-do-you-normally-collect-your-prescriptions')
+  } else {
+    // Send user to next page they can answer
+    res.redirect('what-is-your-gp-address')
+  }
+
+})
+
 // Is your current address differet to the one held?
 router.post('*/different-current-address-answer/', function (req, res) {
 

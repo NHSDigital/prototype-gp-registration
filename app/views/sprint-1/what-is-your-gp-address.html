@@ -32,11 +32,11 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <div id="current-address-lookup-container">
+          <div id="gp-address-lookup-container">
 
             {% call fieldset({
               legend: {
-                "text": "What was your previous UK address?",
+                "text": "Enter the name and address of your current GP practice",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -44,12 +44,12 @@
 
             {{ input({
               label: {
-                "text": "Postcode"
+                "text": "Surgery name"
               },
               "classes": "nhsuk-input--width-10",
-              "id": "find-previous-address",
-              "name": "find-previous-address",
-              value: data['find-previous-address']
+              "id": "find-gp-address",
+              "name": "find-gp-address",
+              value: data['find-gp-address']
           }) }}
 
             {{ button({
@@ -63,17 +63,17 @@
 
           </div>
 
-          <form action="do-you-have-communication-needs" method="post" autocomplete="off">
+          <form action="how-do-you-normally-collect-your-prescriptions" method="post" autocomplete="off">
 
             <div id="select-address-section" class="hidden-section">
-              <h2 class="nhsuk-heading-xs">Postcode</h2>
+              <h2 class="nhsuk-heading-xs">Surgery name</h2>
               <p id="postcode-input-data">
                 &nbsp;&nbsp;<a href="#" id="change-postcode-link">Change</a>
               </p>
 
               {{ select({
-                  "id": "select-previous-address",
-                  "name": "select-previous-address",
+                  "id": "select-gp-address",
+                  "name": "select-gp-address",
                   "label": {
                     "text": "Select an address"
                   },
@@ -133,11 +133,11 @@
 
             {% endcall %}
 
-            <div class="current-address-form hidden-section">
+            <div class="gp-address-form hidden-section">
 
               {% call fieldset({
                 legend: {
-                  "text": "What was your previous UK address?",
+                  "text": "Enter the name and address of your current GP practice",
                   "classes": "nhsuk-fieldset__legend--m"
                 }
               }) %}
@@ -146,18 +146,18 @@
                 label: {
                   "html": 'Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>'
                 },
-                "id": "previous-address-line-1",
-                "name": "previous-address-line-1",
-                value: data['previous-address-line-1']
+                "id": "gp-address-line-1",
+                "name": "gp-address-line-1",
+                value: data['gp-address-line-1']
               }) }}
 
               {{ input({
                 label: {
                   "html": '<span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>'
                 },
-                "id": "previous-address-line-2",
-                "name": "previous-line-2",
-                value: data['previous-address-line-2']
+                "id": "gp-address-line-2",
+                "name": "gp-address-line-2",
+                value: data['gp-address-line-2']
               }) }}
 
               {{ input({
@@ -165,9 +165,9 @@
                   "text": "Town or city"
                 },
                 "classes": "nhsuk-u-width-two-thirds",
-                "id": "previous-address-town",
-                "name": "previous-address-town",
-                value: data['previous-address-town']
+                "id": "gp-address-town",
+                "name": "gp-address-town",
+                value: data['gp-address-town']
               }) }}
 
               {{ input({
@@ -175,17 +175,17 @@
                     "text": "Postcode"
                   },
                   "classes": "nhsuk-input--width-10",
-                  "id": "previous-address-postcode",
-                  "name": "previous-address-postcode",
-                  value: data['previous-address-postcode']
+                  "id": "gp-address-postcode",
+                  "name": "gp-address-postcode",
+                  value: data['gp-address-postcode']
               }) }}
 
               {{ checkboxes({
-                "idPrefix": "no-previous-address",
-                "name": "no-previous-address",
+                "idPrefix": "no-gp-address",
+                "name": "no-gp-address",
                 "items": [
                   {
-                    "value": "no-previous-address",
+                    "value": "no-gp-address",
                     "text": "I do not have a current UK home address"
                   }
                 ]
@@ -198,7 +198,7 @@
               }) }}
 
               <p>
-                <a href="#" id="use-postcode-lookup-link">Return to postcode lookup</a>
+                <a href="#" id="use-postcode-lookup-link">Return to surgery name lookup</a>
               </p>
 
             </div>
@@ -216,13 +216,13 @@
   <script>
 
     $('.postcode-lookup-btn').click(function () {
-      $('#current-address-lookup-container').addClass("hidden-section");
+      $('#gp-address-lookup-container').addClass("hidden-section");
       $('#select-address-section').removeClass("hidden-section");
-      $('#postcode-input-data').prepend($('#find-previous-address').val().toUpperCase());
+      $('#postcode-input-data').prepend($('#find-gp-address').val().toUpperCase());
     });
 
     $('#change-postcode-link').click(function () {
-      $('#current-address-lookup-container').removeClass("hidden-section");
+      $('#gp-address-lookup-container').removeClass("hidden-section");
       $('#select-address-section').addClass("hidden-section");
     });
 
