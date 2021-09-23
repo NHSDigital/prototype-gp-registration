@@ -32,33 +32,61 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="previous-gp-details" method="post" autocomplete="off">
+          <form action="is-this-your-current-gp" method="post" autocomplete="off">
 
-            {% call fieldset({
-              legend: {
-                text: "Can you provide details of your communication needs?",
-                classes: "nhsuk-fieldset__legend--l",
+
+            {% set otherHtml %}
+              {{ textarea({
+                id: "other",
+                name: "other",
+
+                label: {
+                  text: "Please add additional information about this need "
+                }
+              }) }}
+            {% endset -%}
+
+
+          {{ checkboxes({
+            "idPrefix": "contact",
+            "name": "contact",
+            "fieldset": {
+              "legend": {
+                "text": "What best describes your communication needs?",
+                "classes": "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
-            }) %}
-
-            {{ hint({
-              "text": "Provide details about your accessibility needs. These might include difficulty hearing other people, difficulty reading printed information, difficulty speaking and difficulty writing."
-            }) }}
-
-            {{ textarea({
-              "name": "example",
-              "id": "example",
-              "label": {
-                "text": "Can you provide more detail?"
+            },
+            "hint": {
+              "text": "Select all options that are relevant to you."
+            },
+            "items": [
+              {
+                "value": "autism",
+                "text": "Autism",
+                id: "contact"
+              },
+              {
+                "value": "learning disability",
+                "text": "Learning disability"
+              },
+              {
+                "value": "language Difficulty ",
+                "text": "Language Difficulty "
+              },
+              {
+                "value": "other",
+                "text": "Other",
+                "conditional": {
+                "html": otherHtml
               }
-            }) }}
+              }
+            ]
+          }) }}
 
-            {% endcall %}
-
-            {{ button({
-              "text": "Continue"
-            }) }}
+          {{ button({
+            "text": "Continue"
+          }) }}
 
           </form>
         </div>

@@ -1,0 +1,71 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Pre-load - GP registration - NHS
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+
+        <h1 class="app-page-heading">
+            User research
+        </h1>
+
+        <ul class="nhsuk-list nhsuk-body-s">
+          <li>Last updated: 10 Sept 2021</li>
+          </ul>
+
+
+          <h2 class="nhsuk-heading-l">P5/P9 journey</h2>
+          <p>Research for testing NHS login + Gender + Questionaire split</p>
+
+
+          <form action="/sprint-1/start" method="post" autocomplete="off">
+
+          <input type="hidden" name="user-auth" id="user-auth" value="p5-p9" />
+
+          {{ button({
+            "text": "Continue",
+                "href": ""
+          }) }}
+
+          </form>
+
+
+  </div>
+</section>
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}
