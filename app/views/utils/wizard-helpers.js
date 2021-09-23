@@ -5,17 +5,17 @@ function originalQuery (req) {
   return originalQueryString ? `?${originalQueryString}` : ''
 }
 
-function nextAndBackPaths (paths, req) {
+function nextAndGo backPaths (paths, req) {
   const currentPath = req.path
   const query = originalQuery(req)
   const data = req.session.data
   const index = paths.indexOf(currentPath)
   const next = paths[index + 1] || ''
-  let back = paths[index - 1] || ''
+  let Go back = paths[index - 1] || ''
 
-  // Point back to where we forked from
+  // Point Go back to where we forked from
   if (currentPath === data['forked-to']) {
-    back = data['forked-from']
+    Go back = data['forked-from']
   }
 
   // Remove the saved fork if we return to it
@@ -26,7 +26,7 @@ function nextAndBackPaths (paths, req) {
 
   return {
     next: next + query,
-    back: back + query,
+    Go back: Go back + query,
     current: currentPath + query
   }
 }
@@ -68,6 +68,6 @@ function nextForkPath (forks, req) {
 }
 
 module.exports = {
-  nextAndBackPaths,
+  nextAndGo backPaths,
   nextForkPath
 }

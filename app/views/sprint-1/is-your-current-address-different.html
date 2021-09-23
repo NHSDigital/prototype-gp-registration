@@ -15,8 +15,8 @@
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}{% endblock %}
 
-<!-- For adding a back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
 {% block outerContent %}{% endblock %}
 
 <!-- For adding page content -->
@@ -28,11 +28,11 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {{ backLink({
-            text: "Back",
+            text: "Go back",
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="different-current-address-answer" method="post" autocomplete="off">
+          <form class='form' action="" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -43,28 +43,30 @@
             }) %}
 
             {{ radios({
-              "idPrefix": "different-current-address",
-              "name": "different-current-address",
+              "idPrefix": "diffaddress",
+              "name": "diffaddress",
               "items": [
                 {
-                  "value": "Yes",
+                  "value": "Yes~/sprint-1/is-this-your-current-gp",
                   "text": "Yes",
-                  checked: checked("different-current-address", "Yes")
+                  checked: checked("diffaddress", "Yes")
                 },
                 {
-                  "value": "No",
+                  "value": "No~/sprint-1/what-is-your-previous-address",
                   "text": "No",
-                  checked: checked("different-current-address", "No")
+                  checked: checked("diffaddress", "No")
                 }
 
               ]
             }) }}
 
-            {% endcall %}
-
             {{ button({
               "text": "Continue"
             }) }}
+
+            {% endcall %}
+
+
 
           </form>
         </div>

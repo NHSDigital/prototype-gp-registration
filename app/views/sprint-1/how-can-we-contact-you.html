@@ -15,8 +15,8 @@ GP Registration Prototypes
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}{% endblock %}
 
-<!-- For adding a back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
 {% block outerContent %}{% endblock %}
 
 <!-- For adding page content -->
@@ -28,7 +28,7 @@ GP Registration Prototypes
       <div class="nhsuk-grid-column-two-thirds">
 
         {{ backLink({
-          text: "Back",
+          text: "Go back",
           href: "javascript:history.go(-1)"
         }) }}
 
@@ -48,29 +48,35 @@ GP Registration Prototypes
 
             <div class="nhsuk-checkboxes nhsuk-u-margin-bottom-5">
 
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="contact-prefs-1" name="contact-prefs-email" type="checkbox" value="Email">
+              <div class="nhsuk-checkboxes__item contact-email-section hidden-section">
+                <input class="nhsuk-checkboxes__input contact-email-section hidden-section" id="contact-prefs-1" name="contact-prefs-email" type="checkbox" value="Email">
                 <label class="nhsuk-label nhsuk-checkboxes__label" for="contact-prefs-1">
                   Email
                 </label>
-
+                <div class="nhsuk-hint nhsuk-checkboxes__hint" id="contact-prefs-1-hint">
+                  {{ data['contact-email'] }}
+                </div>
               </div>
 
 
-              <div class="nhsuk-checkboxes__item">
+              <div class="nhsuk-checkboxes__item contact-home-tel-section hidden-section">
                 <input class="nhsuk-checkboxes__input" id="contact-prefs-3" name="contact-prefs-home-tel" type="checkbox" value="Home telephone">
                 <label class="nhsuk-label nhsuk-checkboxes__label" for="contact-prefs-3">
                   UK Home telephone number
                 </label>
-
+                <div class="nhsuk-hint nhsuk-checkboxes__hint" id="contact-prefs-3-hint">
+                  {{ data['contact-home-tel'] }}
+                </div>
               </div>
 
-              <div class="nhsuk-checkboxes__item">
+              <div class="nhsuk-checkboxes__item contact-mobile-tel-section hidden-section">
                 <input class="nhsuk-checkboxes__input" id="contact-prefs-4" name="contact-prefs-mobile-tel" type="checkbox" value="Mobile Telephone">
                 <label class="nhsuk-label nhsuk-checkboxes__label" for="contact-prefs-4">
                   UK Mobile telephone number
                 </label>
-
+                <div class="nhsuk-hint nhsuk-checkboxes__hint" id="contact-prefs-4-hint">
+                  {{ data['contact-mobile-tel'] }}
+                </div>
               </div>
 
               <div class="nhsuk-checkboxes__item no-contact-prefs-section">

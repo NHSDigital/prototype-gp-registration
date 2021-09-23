@@ -1,6 +1,8 @@
 // External dependencies
 const express = require('express');
 const router = express.Router();
+const radioButtonRedirect = require('radio-button-redirect')
+router.use(radioButtonRedirect)
 
 // Add your routes here - above the module.exports line
 
@@ -106,22 +108,22 @@ router.post('*/current-gp-answer/', function (req, res) {
 
 })
 
-// Is your current address differet to the one held?
-router.post('*/different-current-address-answer/', function (req, res) {
-
-  // Make a variable and give it the value from 'juggling-balls'
-  var diffAddress = req.session.data['different-current-address']
-
-  // Check whether the variable matches a condition
-  if (diffAddress == "Yes"){
-    // Send user to next page
-    res.redirect('do-you-have-communication-needs')
-  } else {
-    // Send user to next page they can answer
-    res.redirect('what-is-your-previous-address')
-  }
-
-})
+// // Is your current address differet to the one held?
+// router.post('*/different-current-address-answer/', function (req, res) {
+//
+//   // Make a variable and give it the value from 'juggling-balls'
+//   var diffAddress = req.session.data['different-current-address']
+//
+//   // Check whether the variable matches a condition
+//   if (diffAddress == "Yes"){
+//     // Send user to next page
+//     res.redirect('what-is-your-phone-number')
+//   } else {
+//     // Send user to next page they can answer
+//     res.redirect('what-is-your-previous-address')
+//   }
+//
+// })
 
 // Does user have communication needs
 router.post('*/do-you-have-communication-needs-answer/', function (req, res) {
