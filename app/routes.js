@@ -152,7 +152,7 @@ router.post('*/how-do-you-collect-prescriptions-answer/', function (req, res) {
     res.redirect('distance-from-nearest-pharmacy')
   } else {
     // Send user to next page they can answer
-    res.redirect('emergency-contact-details')
+    res.redirect('do-you-have-emergency-contact')
   }
 
 })
@@ -171,6 +171,24 @@ router.post('*/do-you-have-existing-conditions-answer/', function (req, res) {
   } else {
     // Send user to next page they can answer
     res.redirect('do-you-have-allergies')
+  }
+
+})
+
+// Does user have an emergency contact
+
+router.post('*/emergency-contact-details/', function (req, res) {
+
+  // Make a variable and give it the value from 'juggling-balls'
+  var emergencyContact = req.session.data['emergency-contact']
+
+  // Check whether the variable matches a condition
+  if (emergencyContact == "Yes"){
+    // Send user to next page
+    res.redirect('emergency-contact-details')
+  } else {
+    // Send user to next page they can answer
+    res.redirect('review-about-you-answers')
   }
 
 })
