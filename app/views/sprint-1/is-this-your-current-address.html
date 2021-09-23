@@ -32,7 +32,7 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="current-address-answer" method="post" autocomplete="off">
+          <form action="" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -53,12 +53,12 @@
               "classes": "nhsuk-radios--inline",
               "items": [
                 {
-                  "value": "Yes",
+                  "value": "Yes~/sprint-1/is-your-current-address-different",
                   "text": "Yes",
                   checked: checked("current-address", "Yes")
                 },
                 {
-                  "value": "No",
+                  "value": "No~/sprint-1/what-is-your-current-address",
                   "text": "No",
                   checked: checked("current-address", "No")
                 }

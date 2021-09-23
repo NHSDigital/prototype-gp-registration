@@ -32,48 +32,62 @@ GP Registration Prototypes
   <div class="nhsuk-width-container">
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
+
+
+
+
         <h1>
-          Further questions about your health
+          We have received your application
         </h1>
         <p>
-          Thank you for confirming the details you have entered already.
+          Your application has now been sent to your GP who will process it.
         </p>
+        <h3>
+          Do you want to answer the New Patient Health Questionnaire?
+        </h3>
 
         <p>
-          To ensure you get the best possible care, we need to ask you some more questions about your health and lifestyle.
+          The questionnaire helps your new GP understand more about you and your lifestyle. This can be useful when you are new to a GP or a surgery.
         </p>
         <p>
-          The things we'll ask about include:
+          These questions are optional and will not affect the outcome of your application.
         </p>
-        <ul>
-          <li>
-            your height and weight
-          </li>
-          <li>
-            any alcohol consumption
-          </li>
-          <li>
-            any tobacco usage
-          </li>
-          <li>
-            your medical conditions
-          </li>
-          <li>
-            your medications
-          </li>
-          <li>
-            your ethnicity
-          </li>
-        </ul>
-        <p>
-          The process is confidential and any data entered is store securely following the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/711097/guide-to-the-general-data-protection-regulation-gdpr-1-0.pdf">UK government's data storage standards PDF, 2.25Mb</a>
-        </p>
-        <p>
-          These questions are optional and do not have to be completed in order to register with a GP.
-        </p>
-        <p>
-          <a href="your-height-and-weight" class="nhsuk-button nhsuk-button--green">Continue</a>
-        </p>
+
+        <form class='form' action="" method="post" autocomplete="off">
+
+        {% call fieldset({
+          legend: {
+            "text": "",
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        }) %}
+
+        {{ radios({
+          "idPrefix": "healthQuestions",
+          "name": "healthQuestions",
+          "items": [
+            {
+              "value": "Yes~/sprint-1/your-height-and-weight",
+              "text": "Yes, answer the questionnaire",
+              checked: checked("healthQuestions", "Yes")
+            },
+            {
+              "value": "No~/sprint-1/confirmation-page",
+              "text": "No, skip the questionnaire",
+              checked: checked("healthQuestions", "No")
+            }
+
+          ]
+        }) }}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+        {% endcall %}
+
+
       </div>
     </div>
   </div>

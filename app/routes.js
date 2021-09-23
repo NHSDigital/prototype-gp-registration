@@ -40,56 +40,56 @@ router.post('*/nhs-login-found-answer/', function (req, res) {
 
 })
 
-// Does user have NHS login
-router.post('*/nhs-login-answer/', function (req, res) {
+// // Does user have NHS login
+// router.post('*/nhs-login-answer/', function (req, res) {
+//
+//   // Make a variable and give it the value from 'juggling-balls'
+//   var hasLogin = req.session.data['nhs-login']
+//
+//   // Check whether the variable matches a condition
+//   if (hasLogin == "Yes"){
+//     // Send user to next page
+//     res.redirect('nhs-login-email-address')
+//   } else {
+//     // Send user to ineligible page
+//     res.redirect('do-you-know-nhs-number')
+//   }
+//
+// })
 
-  // Make a variable and give it the value from 'juggling-balls'
-  var hasLogin = req.session.data['nhs-login']
+// // Does user know NHS Number branch
+// router.post('*/what-is-your-nhs-number-answer/', function (req, res) {
+//
+//   // Make a variable and give it the value from 'juggling-balls'
+//   var nhsNumKnown = req.session.data['know-nhs-number']
+//
+//   // Check whether the variable matches a condition
+//   if (nhsNumKnown == "Yes"){
+//     // Send user to next page
+//     res.redirect('what-is-your-nhs-number')
+//   } else {
+//     // Send user to next page they can answer
+//     res.redirect('what-is-your-gender')
+//   }
+//
+// })
 
-  // Check whether the variable matches a condition
-  if (hasLogin == "Yes"){
-    // Send user to next page
-    res.redirect('nhs-login-email-address')
-  } else {
-    // Send user to ineligible page
-    res.redirect('do-you-know-nhs-number')
-  }
-
-})
-
-// Does user know NHS Number branch
-router.post('*/what-is-your-nhs-number-answer/', function (req, res) {
-
-  // Make a variable and give it the value from 'juggling-balls'
-  var nhsNumKnown = req.session.data['know-nhs-number']
-
-  // Check whether the variable matches a condition
-  if (nhsNumKnown == "Yes"){
-    // Send user to next page
-    res.redirect('what-is-your-nhs-number')
-  } else {
-    // Send user to next page they can answer
-    res.redirect('what-is-your-gender')
-  }
-
-})
-
-// Does user know Current address
-router.post('*/current-address-answer/', function (req, res) {
-
-  // Make a variable and give it the value from 'juggling-balls'
-  var currAddress = req.session.data['current-address']
-
-  // Check whether the variable matches a condition
-  if (currAddress == "Yes"){
-    // Send user to next page
-    res.redirect('is-your-current-address-different')
-  } else {
-    // Send user to next page they can answer
-    res.redirect('what-is-your-current-address')
-  }
-
-})
+// // Does user know Current address
+// router.post('*/current-address-answer/', function (req, res) {
+//
+//   // Make a variable and give it the value from 'juggling-balls'
+//   var currAddress = req.session.data['current-address']
+//
+//   // Check whether the variable matches a condition
+//   if (currAddress == "Yes"){
+//     // Send user to next page
+//     res.redirect('is-your-current-address-different')
+//   } else {
+//     // Send user to next page they can answer
+//     res.redirect('what-is-your-current-address')
+//   }
+//
+// })
 
 // Does user know Current GP
 router.post('*/current-gp-answer/', function (req, res) {
@@ -142,22 +142,22 @@ router.post('*/do-you-have-communication-needs-answer/', function (req, res) {
 
 })
 
-// Does user need a dispensing doctor
-router.post('*/how-do-you-collect-prescriptions-answer/', function (req, res) {
-
-  // Make a variable and give it the value from 'juggling-balls'
-  var dispensingMethod = req.session.data['how-do-you-collect-prescriptions']
-
-  // Check whether the variable matches a condition
-  if (dispensingMethod == "GP"){
-    // Send user to next page
-    res.redirect('distance-from-nearest-pharmacy')
-  } else {
-    // Send user to next page they can answer
-    res.redirect('do-you-have-emergency-contact')
-  }
-
-})
+// // Does user need a dispensing doctor
+// router.post('*/how-do-you-collect-prescriptions-answer/', function (req, res) {
+//
+//   // Make a variable and give it the value from 'juggling-balls'
+//   var dispensingMethod = req.session.data['how-do-you-collect-prescriptions']
+//
+//   // Check whether the variable matches a condition
+//   if (dispensingMethod == "GP"){
+//     // Send user to next page
+//     res.redirect('distance-from-nearest-pharmacy')
+//   } else {
+//     // Send user to next page they can answer
+//     res.redirect('do-you-have-emergency-contact')
+//   }
+//
+// })
 
 // Does user have existing medical conditions
 
@@ -177,23 +177,23 @@ router.post('*/do-you-have-existing-conditions-answer/', function (req, res) {
 
 })
 
-// Does user have an emergency contact
-
-router.post('*/emergency-contact-details/', function (req, res) {
-
-  // Make a variable and give it the value from 'juggling-balls'
-  var emergencyContact = req.session.data['emergency-contact']
-
-  // Check whether the variable matches a condition
-  if (emergencyContact == "Yes"){
-    // Send user to next page
-    res.redirect('emergency-contact-details')
-  } else {
-    // Send user to next page they can answer
-    res.redirect('review-about-you-answers')
-  }
-
-})
+// // Does user have an emergency contact
+//
+// router.post('*/emergency-contact-details/', function (req, res) {
+//
+//   // Make a variable and give it the value from 'juggling-balls'
+//   var emergencyContact = req.session.data['emergency-contact']
+//
+//   // Check whether the variable matches a condition
+//   if (emergencyContact == "Yes"){
+//     // Send user to next page
+//     res.redirect('emergency-contact-details')
+//   } else {
+//     // Send user to next page they can answer
+//     res.redirect('review-about-you-answers')
+//   }
+//
+// })
 
 // Does user have allergies
 
