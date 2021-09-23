@@ -21,6 +21,23 @@ router.post('*/who-is-registering-answer/', function (req, res) {
 
 })
 
+// Does user have NHS login acc
+router.post('*/nhs-login-found-answer/', function (req, res) {
+
+  // Make a variable and give it the value from 'juggling-balls'
+  var nhsAcc = req.session.data['nhs-acc']
+
+  // Check whether the variable matches a condition
+  if (nhsAcc == "yes"){
+    // Send user to next page
+    res.redirect('nhs-login-password')
+  } else {
+    // Send user to ineligible page
+    res.redirect('do-you-know-nhs-number')
+  }
+
+})
+
 // Does user have NHS login
 router.post('*/nhs-login-answer/', function (req, res) {
 
@@ -55,7 +72,41 @@ router.post('*/what-is-your-nhs-number-answer/', function (req, res) {
 
 })
 
-// Does user know NHS Number branch
+// Does user know Current address
+router.post('*/current-address-answer/', function (req, res) {
+
+  // Make a variable and give it the value from 'juggling-balls'
+  var currAddress = req.session.data['current-address']
+
+  // Check whether the variable matches a condition
+  if (currAddress == "Yes"){
+    // Send user to next page
+    res.redirect('is-your-current-address-different')
+  } else {
+    // Send user to next page they can answer
+    res.redirect('what-is-your-current-address')
+  }
+
+})
+
+// Does user know Current GP
+router.post('*/current-gp-answer/', function (req, res) {
+
+  // Make a variable and give it the value from 'juggling-balls'
+  var currGP = req.session.data['current-gp']
+
+  // Check whether the variable matches a condition
+  if (currGP == "yes"){
+    // Send user to next page
+    res.redirect('how-do-you-normally-collect-your-prescriptions')
+  } else {
+    // Send user to next page they can answer
+    res.redirect('what-is-your-gp-address')
+  }
+
+})
+
+// Is your current address differet to the one held?
 router.post('*/different-current-address-answer/', function (req, res) {
 
   // Make a variable and give it the value from 'juggling-balls'
@@ -64,10 +115,10 @@ router.post('*/different-current-address-answer/', function (req, res) {
   // Check whether the variable matches a condition
   if (diffAddress == "Yes"){
     // Send user to next page
-    res.redirect('what-is-your-previous-address')
+    res.redirect('do-you-have-communication-needs')
   } else {
     // Send user to next page they can answer
-    res.redirect('what-is-your-phone-number')
+    res.redirect('what-is-your-previous-address')
   }
 
 })
@@ -101,7 +152,7 @@ router.post('*/how-do-you-collect-prescriptions-answer/', function (req, res) {
     res.redirect('distance-from-nearest-pharmacy')
   } else {
     // Send user to next page they can answer
-    res.redirect('emergency-contact-details')
+    res.redirect('do-you-have-emergency-contact')
   }
 
 })
@@ -120,6 +171,24 @@ router.post('*/do-you-have-existing-conditions-answer/', function (req, res) {
   } else {
     // Send user to next page they can answer
     res.redirect('do-you-have-allergies')
+  }
+
+})
+
+// Does user have an emergency contact
+
+router.post('*/emergency-contact-details/', function (req, res) {
+
+  // Make a variable and give it the value from 'juggling-balls'
+  var emergencyContact = req.session.data['emergency-contact']
+
+  // Check whether the variable matches a condition
+  if (emergencyContact == "Yes"){
+    // Send user to next page
+    res.redirect('emergency-contact-details')
+  } else {
+    // Send user to next page they can answer
+    res.redirect('review-about-you-answers')
   }
 
 })

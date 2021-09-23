@@ -32,39 +32,47 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="different-current-address-answer" method="post" autocomplete="off">
+          <form action="current-address-answer" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                "text": "Is this the address associated with your current GP?",
+                "text": "Is this your current address?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
 
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>Address line 1 <br> Address line 2 <br> Address line 3 <br> Address line 4 </p>
+
+            </div>
+
             {{ radios({
-              "idPrefix": "different-current-address",
-              "name": "different-current-address",
+              "idPrefix": "current-address",
+              "name": "current-address",
+              "classes": "nhsuk-radios--inline",
               "items": [
                 {
                   "value": "Yes",
                   "text": "Yes",
-                  checked: checked("different-current-address", "Yes")
+                  checked: checked("current-address", "Yes")
                 },
                 {
                   "value": "No",
                   "text": "No",
-                  checked: checked("different-current-address", "No")
+                  checked: checked("current-address", "No")
                 }
 
               ]
             }) }}
 
-            {% endcall %}
-
             {{ button({
               "text": "Continue"
             }) }}
+
+            {% endcall %}
+
+
 
           </form>
         </div>

@@ -32,7 +32,7 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="how-can-we-contact-you" method="post" autocomplete="off">
+          <form action="nhs-login-found-answer" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -48,34 +48,36 @@
             </div>
 
             {{ radios({
-              "idPrefix": "nhs-login",
-              "name": "nhs-login",
+              "idPrefix": "nhs-acc",
+              "name": "nhs-acc",
               "items": [
                 {
-                  "value": "Yes",
+                  "value": "yes",
                   "text": "Yes",
                   "hint": {
                     "text": ""
                   },
-                  checked: checked("nhs-login", "Yes")
+                  checked: checked("nhs-acc", "yes")
                 },
                 {
-                  "value": "No",
+                  "value": "no",
                   "text": "No",
                   "hint": {
                     "text": ""
                   },
-                  checked: checked("nhs-login", "No")
+                  checked: checked("nhs-acc", "no")
                 }
               ]
+            }) }}
+
+            {{ button({
+              "text": "Continue"
             }) }}
 
 
             {% endcall %}
 
-            {{ button({
-              "text": "Continue"
-            }) }}
+
 
           </form>
         </div>
@@ -87,14 +89,6 @@
   </div>
 </div>
 {% block pageScripts %}
-<script>
-$('#no-email-address-1').change(function(){
-    if ($('#no-email-address-1').is(':checked') == true){
-        $('input[type=text]').prop('disabled', true);
-    } else {
-      $('input[type=text]').prop('disabled', false);
-    }
-});
-</script>
+
 {% endblock %}
 {% endblock %}
