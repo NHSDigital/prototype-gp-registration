@@ -15,8 +15,8 @@
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}{% endblock %}
 
-<!-- For adding a back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
 {% block outerContent %}{% endblock %}
 
 <!-- For adding page content -->
@@ -28,7 +28,7 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {{ backLink({
-            text: "Back",
+            text: "Go back",
             href: "javascript:history.go(-1)"
           }) }}
 
@@ -63,7 +63,7 @@
 
           </div>
 
-          <form action="do-you-have-communication-needs" method="post" autocomplete="off">
+          <form action="how-can-we-contact-you" method="post" autocomplete="off">
 
             <div id="select-address-section" class="hidden-section">
               <h2 class="nhsuk-heading-xs">Postcode</h2>

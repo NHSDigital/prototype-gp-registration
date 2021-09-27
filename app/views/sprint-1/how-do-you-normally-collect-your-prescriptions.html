@@ -15,8 +15,8 @@
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}{% endblock %}
 
-<!-- For adding a back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
 {% block outerContent %}{% endblock %}
 
 <!-- For adding page content -->
@@ -28,11 +28,11 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {{ backLink({
-            text: "Back",
+            text: "Go back",
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="how-do-you-collect-prescriptions-answer" method="post" autocomplete="off">
+          <form action="" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -57,12 +57,12 @@
               "name": "how-do-you-collect-prescriptions",
               "items": [
                 {
-                  "value": "Pharmacy",
+                  "value": "Pharmacy~/sprint-1/do-you-have-emergency-contact",
                   "text": "From a pharmacy",
                   "checked": checked("how-do-you-collect-prescriptions", "Pharmacy")
                 },
                 {
-                  "value": "GP",
+                  "value": "GP~/sprint-1/distance-from-nearest-pharmacy",
                   "text": "Directly from my GP",
                   "checked": checked("how-do-you-collect-prescriptions", "GP")
                 }

@@ -20,8 +20,8 @@ Pre-load - GP registration - NHS
 {% block beforeContent %}
 {% endblock %}
 
-<!-- For adding a back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
 {% block outerContent %}
 {% endblock %}
 
@@ -43,19 +43,29 @@ Pre-load - GP registration - NHS
           </ul>
 
 
-          <h2 class="nhsuk-heading-l">P5/P9 journey</h2>
+          <h2 class="nhsuk-heading-l">P9 journey</h2>
           <p>Research for testing NHS login + Gender + Questionaire split</p>
 
 
           <form action="/sprint-1/start" method="post" autocomplete="off">
-
           <input type="hidden" name="user-auth" id="user-auth" value="p5-p9" />
-
           {{ button({
             "text": "Continue",
                 "href": ""
           }) }}
+          </form>
 
+            <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+          <h2 class="nhsuk-heading-l">No auth journey</h2>
+          <p>New flow for unauth journey + Gender + Questionaire split</p>
+
+          <form action="/sprint-1/start" method="post" autocomplete="off">
+          <input type="hidden" name="user-auth" id="user-auth" value="un-authed" />
+          {{ button({
+            "text": "Continue",
+                "href": ""
+          }) }}
           </form>
 
 

@@ -15,8 +15,8 @@
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}{% endblock %}
 
-<!-- For adding a back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
 {% block outerContent %}{% endblock %}
 
 <!-- For adding page content -->
@@ -28,8 +28,8 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {{ backLink({
-            "href": "emergency-contact-details",
-            "text": "Go back"
+            text: "Go back",
+            href: "javascript:history.go(-1)"
           }) }}
 
           <form action="about-your-health-start" method="post" autocomplete="off">
@@ -50,15 +50,15 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Who is registering
+                  Email address
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  {{ data['who-is-registering'] }}
+                  {{ data['contact-email'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="who-are-you-registering-for">
                     Change<span class="nhsuk-u-visually-hidden">
-                      who is registering</span>
+                      Email address</span>
                   </a>
                 </dd>
               </div>
@@ -68,7 +68,7 @@
                   Given names
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  {{ data['name-given-names'] }}
+                  {{ data['userFullName'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="what-is-your-name">
