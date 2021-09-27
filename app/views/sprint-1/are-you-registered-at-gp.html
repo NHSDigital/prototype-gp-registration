@@ -32,36 +32,36 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="how-can-we-contact-you" method="post" autocomplete="off">
+          <form action="do-you-have-communication-needs-answer" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                "text": "What is your mobile telephone number?",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
+                text: "Are you currently registered at a GP surgery?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
               }
             }) %}
 
+            {{ hint({
+              "text": "Communication needs may include difficulty hearing other people, reading printed information, speaking or writing"
+            }) }}
 
-              {{ input({
-                  label: {
-                    "text": "Mobile telephone"
-                  },
-                  "classes": "nhsuk-input--width-10",
-                  "id": "contact-mobile-tel",
-                  "name": "contact-mobile-tel"
-                }) }}
+            {{ radios({
+              "idPrefix": "registered-gp",
+              "name": "registered-gp",
+              "items": [
+                {
+                  "value": "Yes~/sprint-1/what-is-your-gp-address",
+                  "text": "Yes",
+                  checked: checked("registered-gp", "Yes")
+                },{
+                  "value": "No~/sprint-1/how-do-you-normally-collect-your-prescriptions",
+                  "text": "No",
+                  checked: checked("registered-gp", "No")
 
-                {{ checkboxes({
-                  "idPrefix": "no-mobile-number",
-                  "name": "no-mobile-number",
-                  "items": [
-                    {
-                      "value": "no-mobile-number",
-                      "text": "I do not have a mobile telephone"
-                    }
-                  ]
-                }) }}
+                }
+              ]
+            }) }}
 
             {% endcall %}
 
@@ -78,15 +78,4 @@
 
   </div>
 </div>
-{% block pageScripts %}
-<script>
-$('#no-mobile-number-1').change(function(){
-    if ($('#no-mobile-number-1').is(':checked') == true){
-        $('input[type=text]').prop('disabled', true);
-    } else {
-      $('input[type=text]').prop('disabled', false);
-    }
-});
-</script>
-{% endblock %}
 {% endblock %}
