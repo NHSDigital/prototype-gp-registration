@@ -63,7 +63,15 @@
 
           </div>
 
+          {% if data['user-auth'] == "p5-p9" %}
+
           <form action="how-can-we-contact-you" method="post" autocomplete="off">
+
+          {% else %}
+
+          <form action="what-is-your-phone-number" method="post" autocomplete="off">
+
+          {% endif %}
 
             <div id="select-address-section" class="hidden-section">
               <h2 class="nhsuk-heading-xs">Postcode</h2>

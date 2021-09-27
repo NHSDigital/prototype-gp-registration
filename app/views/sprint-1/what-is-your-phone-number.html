@@ -36,7 +36,7 @@
 
             {% call fieldset({
               legend: {
-                "text": "What is your contact telephone number?",
+                "text": "What is your home telephone number?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -44,20 +44,23 @@
 
               {{ input({
                 label: {
-                  "html": 'Home telephone (optional)'
+                  "html": 'Home telephone'
                 },
                 "classes": "nhsuk-input--width-10",
                 "id": "contact-home-tel",
                 "name": "contact-home-tel"
               }) }}
 
-              {{ input({
-                  label: {
-                    "text": "Mobile telephone (optional)"
-                  },
-                  "classes": "nhsuk-input--width-10",
-                  "id": "contact-mobile-tel",
-                  "name": "contact-mobile-tel"
+
+                {{ checkboxes({
+                  "idPrefix": "no-home-number",
+                  "name": "no-home-number",
+                  "items": [
+                    {
+                      "value": "no-home-number",
+                      "text": "I do not have a home telephone number"
+                    }
+                  ]
                 }) }}
 
             {% endcall %}
@@ -77,13 +80,13 @@
 </div>
 {% block pageScripts %}
 <script>
-$('#no-previous-address-1').change(function(){
-    if ($('#no-previous-address-1').is(':checked') == true){
-        $('input[type=text]').prop('disabled', true);
-    } else {
-      $('input[type=text]').prop('disabled', false);
-    }
-});
-</script>
+  $('#no-home-number-1').change(function(){
+      if ($('#no-home-number-1').is(':checked') == true){
+          $('input[type=text]').prop('disabled', true);
+      } else {
+        $('input[type=text]').prop('disabled', false);
+      }
+  });
+  </script>
 {% endblock %}
 {% endblock %}

@@ -32,41 +32,50 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form class='form' action="" method="post" autocomplete="off">
+          <form action="how-can-we-contact-you" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                "text": "Was this your address when you were with your last GP?",
+                "text": "What is your mobile telephone number?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
 
-            {{ radios({
-              "idPrefix": "diffaddress",
-              "name": "diffaddress",
-              "items": [
-                {
-                  "value": "Yes~/sprint-1/how-can-we-contact-you",
-                  "text": "Yes",
-                  checked: checked("diffaddress", "Yes")
+              {{ input({
+                label: {
+                  "html": 'Home telephone (optional)'
                 },
-                {
-                  "value": "No~/sprint-1/what-is-your-previous-address",
-                  "text": "No",
-                  checked: checked("diffaddress", "No")
-                }
+                "classes": "nhsuk-input--width-10",
+                "id": "contact-home-tel",
+                "name": "contact-home-tel"
+              }) }}
 
-              ]
-            }) }}
+              {{ input({
+                  label: {
+                    "text": "Mobile telephone"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "contact-mobile-tel",
+                  "name": "contact-mobile-tel"
+                }) }}
+
+                {{ checkboxes({
+                  "idPrefix": "no-email-address",
+                  "name": "no-email-address",
+                  "items": [
+                    {
+                      "value": "no-email-address",
+                      "text": "I do not have an email address"
+                    }
+                  ]
+                }) }}
+
+            {% endcall %}
 
             {{ button({
               "text": "Continue"
             }) }}
-
-            {% endcall %}
-
-
 
           </form>
         </div>
@@ -79,8 +88,8 @@
 </div>
 {% block pageScripts %}
 <script>
-$('#no-current-address-1').change(function(){
-    if ($('#no-current-address-1').is(':checked') == true){
+$('#no-previous-address-1').change(function(){
+    if ($('#no-previous-address-1').is(':checked') == true){
         $('input[type=text]').prop('disabled', true);
     } else {
       $('input[type=text]').prop('disabled', false);
@@ -88,5 +97,4 @@ $('#no-current-address-1').change(function(){
 });
 </script>
 {% endblock %}
-
 {% endblock %}
