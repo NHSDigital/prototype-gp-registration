@@ -32,14 +32,14 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="do-you-have-existing-conditions" method="post" autocomplete="off">
+          <form action="do-you-smoke" method="post" autocomplete="off">
 
             {{ radios({
-              "idPrefix": "smokes",
-              "name": "smokes",
+              "idPrefix": "alcohol-consumption",
+              "name": "alcohol-consumption",
               "fieldset": {
                 "legend": {
-                  "text": "Do you smoke     ?",
+                  "text": "How often have you had six or more units of alcohol on a single occasion in the last year?",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
@@ -48,15 +48,30 @@
                 "text": "Select one option"
               },
               "items": [
-              {
-                "value": "Yes",
-                "text": "Yes",
-                checked: checked("smokes", "Yes")
-              },
                 {
-                  "value": "No",
-                  "text": "No",
-                  checked: checked("smokes", "No")
+                  "value": "Never",
+                  "text": "Never",
+                  checked: checked("alcohol-consumption", "Never")
+                },
+                {
+                  "value": "Less than monthly",
+                  "text": "Less than monthly",
+                  checked: checked("alcohol-consumption", "Less than monthly")
+                },
+                {
+                  "value": "Monthly",
+                  "text": "Monthly",
+                  checked: checked("alcohol-consumption", "Monthly")
+                },
+                {
+                  "value": "Weekly",
+                  "text": "Weekly",
+                  checked: checked("alcohol-consumption", "Weekly")
+                },
+                {
+                  "value": "Daily or almost daily",
+                  "text": "Daily or almost daily",
+                  checked: checked("alcohol-consumption", "Daily or almost daily")
                 },
                 {
                   "divider": "or"
@@ -64,7 +79,7 @@
                 {
                   "value": "Prefer not to say",
                   "text": "Prefer not to say",
-                  checked: checked("smokes", "Prefer not to say")
+                  checked: checked("alcohol-consumption", "Prefer not to say")
                 }
               ]
             }) }}
