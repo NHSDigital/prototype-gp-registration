@@ -102,7 +102,7 @@ GP Registration Prototypes
 
         {% else %}
 
-        <form action="do-you-have-communication-needs" method="post" autocomplete="off">
+        <form action="are-you-registered-at-gp" method="post" autocomplete="off">
 
           <fieldset class="nhsuk-fieldset">
             <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
@@ -182,17 +182,12 @@ GP Registration Prototypes
   $(document).ready(function() {
 
     var email = "{{ data['contact-email'] }}";
-    var text = "{{ data['contact-mobile-tel'] }}";
     var homeTel = "{{ data['contact-home-tel'] }}";
     var mobileTel = "{{ data['contact-mobile-tel'] }}";
     var noContact = "{{ data['contact-prefs-none'] }}"
 
     if (email) {
       $('.contact-email-section').removeClass("hidden-section")
-    } else {}
-
-    if (text) {
-      $('.contact-text-section').removeClass("hidden-section")
     } else {}
 
     if (homeTel) {

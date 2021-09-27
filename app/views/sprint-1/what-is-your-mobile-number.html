@@ -32,39 +32,38 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="what-is-your-gender" method="post" autocomplete="off">
+          <form action="how-can-we-contact-you" method="post" autocomplete="off">
 
-            {{ dateInput({
-              "id": "dob",
-              "namePrefix": "dob",
-              "fieldset": {
-                "legend": {
-                  "text": "What is your date of birth?",
-                  "classes": "nhsuk-label--l",
-                  "isPageHeading": true
-                }
-              },
-              "hint": {
-                "text": "For example, 15 3 1984"
-              },
-              "items": [
-                {
-                  "name": "day",
-                  "classes": "nhsuk-input--width-2",
-                  "value": data['dob-day']
-                },
-                {
-                  "name": "month",
-                  "classes": "nhsuk-input--width-2",
-                  "value": data['dob-month']
-                },
-                {
-                  "name": "year",
-                  "classes": "nhsuk-input--width-4",
-                  "value": data['dob-year']
-                }
-              ]
-            }) }}
+            {% call fieldset({
+              legend: {
+                "text": "What is your mobile telephone number?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+
+              {{ input({
+                  label: {
+                    "text": "Mobile telephone"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "contact-mobile-tel",
+                  "name": "contact-mobile-tel"
+                }) }}
+
+                {{ checkboxes({
+                  "idPrefix": "no-mobile-number",
+                  "name": "no-mobile-number",
+                  "items": [
+                    {
+                      "value": "no-mobile-number",
+                      "text": "I do not have a mobile telephone"
+                    }
+                  ]
+                }) }}
+
+            {% endcall %}
 
             {{ button({
               "text": "Continue"
@@ -79,4 +78,15 @@
 
   </div>
 </div>
+{% block pageScripts %}
+<script>
+$('#no-mobile-number-1').change(function(){
+    if ($('#no-mobile-number-1').is(':checked') == true){
+        $('input[type=text]').prop('disabled', true);
+    } else {
+      $('input[type=text]').prop('disabled', false);
+    }
+});
+</script>
+{% endblock %}
 {% endblock %}

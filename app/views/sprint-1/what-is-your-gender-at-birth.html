@@ -32,38 +32,49 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="what-is-your-gender" method="post" autocomplete="off">
+          <form action="what-is-your-ethnicity" method="post" autocomplete="off">
 
-            {{ dateInput({
-              "id": "dob",
-              "namePrefix": "dob",
+            {% set otherHtml %}
+              {{ input({
+                id: "other",
+                name: "other",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "Gender"
+                }
+              }) }}
+            {% endset -%}
+
+            {{ radios({
+              "idPrefix": "gender",
+              "name": "gender",
               "fieldset": {
                 "legend": {
-                  "text": "What is your date of birth?",
-                  "classes": "nhsuk-label--l",
-                  "isPageHeading": true
+                  "text": "Is your gender identity the same as the gender you were assigned at birth?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
                 }
               },
               "hint": {
-                "text": "For example, 15 3 1984"
+                "text": "We are asking for this information to match you to your GP record."
               },
               "items": [
                 {
-                  "name": "day",
-                  "classes": "nhsuk-input--width-2",
-                  "value": data['dob-day']
+                  "value": "yes",
+                  "text": "Yes",
+                  checked: checked("gender", "Yes")
                 },
                 {
-                  "name": "month",
-                  "classes": "nhsuk-input--width-2",
-                  "value": data['dob-month']
-                },
-                {
-                  "name": "year",
-                  "classes": "nhsuk-input--width-4",
-                  "value": data['dob-year']
+                  "value": "no",
+                  "text": "No",
+                  checked: checked("gender", "no")
                 }
               ]
+            }) }}
+
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of gender.</p>"
             }) }}
 
             {{ button({

@@ -32,7 +32,7 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="what-is-your-gender-at-birth" method="post" autocomplete="off">
+          <form action="what-is-your-ethnicity" method="post" autocomplete="off">
 
             {% set otherHtml %}
               {{ input({
@@ -50,37 +50,46 @@
               "name": "gender",
               "fieldset": {
                 "legend": {
-                  "text": "Which of the following options best describes how you think of yourself?",
+                  "text": "What is your gender?",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
               },
               "hint": {
-                "text": "You can choose any of these options and we should be able to match your records accurately. Your answer does not have to match the sex you were you were given at birth."
+                "text": "Select one option"
               },
               "items": [
                 {
-                  "value": "woman [including trans woman]",
-                  "text": "Woman",
-                  checked: checked("gender", "woman")
+                  "value": "Female",
+                  "text": "Female",
+                  checked: checked("gender", "Female")
                 },
                 {
-                  "value": "man [including trans man]",
-                  "text": "Man",
-                  checked: checked("gender", "man")
+                  "value": "Male",
+                  "text": "Male",
+                  checked: checked("gender", "Male")
                 },
                 {
-                  "value": "non-binary",
-                  "text": "Non-binary",
-                  checked: checked("gender", "non-binary")
+                  "value": "Trans",
+                  "text": "Trans",
+                  checked: checked("gender", "Trans")
                 },
                 {
-                  "value": "in-another-way",
-                  "text": "In another way",
+                  "value": "Other",
+                  "text": "Other",
                   "conditional": {
                     "html": otherHtml
                   },
-                  checked: checked("gender", "in-another-way")
+                  checked: checked("gender", "Other")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say",
+                  "text": "Prefer not to say",
+                  checked: checked("gender", "Prefer not to say")
+
                 }
               ]
             }) }}

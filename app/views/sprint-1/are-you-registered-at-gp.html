@@ -32,39 +32,38 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="what-is-your-gender" method="post" autocomplete="off">
+          <form action="do-you-have-communication-needs-answer" method="post" autocomplete="off">
 
-            {{ dateInput({
-              "id": "dob",
-              "namePrefix": "dob",
-              "fieldset": {
-                "legend": {
-                  "text": "What is your date of birth?",
-                  "classes": "nhsuk-label--l",
-                  "isPageHeading": true
-                }
-              },
-              "hint": {
-                "text": "For example, 15 3 1984"
-              },
+            {% call fieldset({
+              legend: {
+                text: "Are you currently registered at a GP surgery?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "Communication needs may include difficulty hearing other people, reading printed information, speaking or writing"
+            }) }}
+
+            {{ radios({
+              "idPrefix": "registered-gp",
+              "name": "registered-gp",
               "items": [
                 {
-                  "name": "day",
-                  "classes": "nhsuk-input--width-2",
-                  "value": data['dob-day']
-                },
-                {
-                  "name": "month",
-                  "classes": "nhsuk-input--width-2",
-                  "value": data['dob-month']
-                },
-                {
-                  "name": "year",
-                  "classes": "nhsuk-input--width-4",
-                  "value": data['dob-year']
+                  "value": "Yes~/sprint-1/what-is-your-gp-address",
+                  "text": "Yes",
+                  checked: checked("registered-gp", "Yes")
+                },{
+                  "value": "No~/sprint-1/how-do-you-normally-collect-your-prescriptions",
+                  "text": "No",
+                  checked: checked("registered-gp", "No")
+
                 }
               ]
             }) }}
+
+            {% endcall %}
 
             {{ button({
               "text": "Continue"
