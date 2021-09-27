@@ -35,13 +35,12 @@ GP Registration Prototypes
         <h1>
           Register with a GP
         </h1>
-        <p>
-          Use this service if you want to register with a GP. You can register for yourself or on behalf of a dependant in your care.
-        </p>
 
-        <p>
-          You do not have to have been previously registered with a GP to use this service.
-        </p>
+        {{ warningCallout({
+          "heading": "Important",
+          "HTML": "<p>You can only use this service if you are already with a GP and wish to move to a new practice.</p>"
+        }) }}
+
       </div>
     </div>
   </div>
@@ -55,26 +54,20 @@ GP Registration Prototypes
           Before you start
         </h2>
         <p>
-          The registration process will take around 15 minutes, and we'll ask questions about the person being registered.
+          The registration process will take around 15 minutes to complete. You will need to complete the process in one session.
         </p>
         <p>
-          We need to ask these questions to help locate any previous medical records and ensure our that healthcare services are tailored to the needs of the person being registered.
-        </p>
-        <p>
-          The things we'll ask about include:
+          We'll ask you for your:
         </p>
         <ul>
           <li>
             name and address
           </li>
           <li>
-            date and place of birth
+            date of birth
           </li>
           <li>
-            NHS number, if you know it
-          </li>
-          <li>
-            previous GP Surgeries, if there are any
+            previous GP Surgeries
           </li>
           <li>
             health and medical information
@@ -84,17 +77,26 @@ GP Registration Prototypes
           </li>
         </ul>
         <p>
-          The process is confidential and any data entered is store securely following the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/711097/guide-to-the-general-data-protection-regulation-gdpr-1-0.pdf">UK government's data storage standards PDF, 2.25Mb</a>
+          You do not need your NHS number but it might make the process easier.
         </p>
         <p>
-          You'll need to complete your application in one session, so please have these details to hand before you start.
+          Your answers will help us find the correct medical records. We use these records to offer relevant and appropriate healthcare services for the person being registered.
         </p>
-        <p>
-          <a href="enter-your-email" class="nhsuk-button nhsuk-button--green">Start now</a>
-        </p>
+
+        {% from 'inset-text/macro.njk' import insetText %}
+
+        <div class="nhsuk-inset-text">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>The process is confidential and any data entered is store securely following the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/711097/guide-to-the-general-data-protection-regulation-gdpr-1-0.pdf">UK government's data storage standards PDF, 2.25Mb</a></p>
+        </div>
         <p>
           By using this service you are agreeing to our <a href="#">terms of use</a> and <a href="#">privacy policy</a>.
         </p>
+
+        <p>
+          <a href="enter-your-email" class="nhsuk-button nhsuk-button--green">Start now</a>
+        </p>
+
       </div>
     </div>
   </div>
