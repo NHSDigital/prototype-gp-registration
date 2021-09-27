@@ -32,7 +32,7 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="what-is-your-gender-at-birth" method="post" autocomplete="off">
+          <form action="what-is-your-ethnicity" method="post" autocomplete="off">
 
             {% set otherHtml %}
               {{ input({
@@ -50,37 +50,24 @@
               "name": "gender",
               "fieldset": {
                 "legend": {
-                  "text": "Which of the following options best describes how you think of yourself?",
+                  "text": "Is your gender identity the same as the gender you were assigned at birth?",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
               },
               "hint": {
-                "text": "You can choose any of these options and we should be able to match your records accurately. Your answer does not have to match the sex you were you were given at birth."
+                "text": "We are asking for this information to match you to your GP record."
               },
               "items": [
                 {
-                  "value": "woman [including trans woman]",
-                  "text": "Woman",
-                  checked: checked("gender", "woman")
+                  "value": "yes",
+                  "text": "Yes",
+                  checked: checked("gender", "Yes")
                 },
                 {
-                  "value": "man [including trans man]",
-                  "text": "Man",
-                  checked: checked("gender", "man")
-                },
-                {
-                  "value": "non-binary",
-                  "text": "Non-binary",
-                  checked: checked("gender", "non-binary")
-                },
-                {
-                  "value": "in-another-way",
-                  "text": "In another way",
-                  "conditional": {
-                    "html": otherHtml
-                  },
-                  checked: checked("gender", "in-another-way")
+                  "value": "no",
+                  "text": "No",
+                  checked: checked("gender", "no")
                 }
               ]
             }) }}
