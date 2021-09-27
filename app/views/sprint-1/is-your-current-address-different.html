@@ -32,6 +32,8 @@
             href: "javascript:history.go(-1)"
           }) }}
 
+
+
           <form class='form' action="" method="post" autocomplete="off">
 
             {% call fieldset({
@@ -41,6 +43,28 @@
                 "isPageHeading": true
               }
             }) %}
+
+            {% if data['user-auth'] == "p5-p9" %}
+
+            {{ radios({
+              "idPrefix": "diffaddress",
+              "name": "diffaddress",
+              "items": [
+                {
+                  "value": "Yes~/sprint-1/how-can-we-contact-you",
+                  "text": "Yes",
+                  checked: checked("diffaddress", "Yes")
+                },
+                {
+                  "value": "No~/sprint-1/what-is-your-previous-address",
+                  "text": "No",
+                  checked: checked("diffaddress", "No")
+                }
+
+              ]
+            }) }}
+
+            {% else %}
 
             {{ radios({
               "idPrefix": "diffaddress",
@@ -59,6 +83,9 @@
 
               ]
             }) }}
+
+
+            {% endif %}
 
             {{ button({
               "text": "Continue"
