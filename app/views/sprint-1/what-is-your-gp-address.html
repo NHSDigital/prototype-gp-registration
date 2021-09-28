@@ -36,11 +36,16 @@
 
             {% call fieldset({
               legend: {
-                "text": "Enter the name and address of your current GP practice",
+                "text": "What is the name of the GP surgery you want to leave?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
+
+            {{ hint({
+              "text": "If you have been registered at more than one GP surgery previousy, please enter the name and address of the most recent GP surgery you were registered at.",
+              "classes": ""
+            }) }}
 
             {{ input({
               label: {
