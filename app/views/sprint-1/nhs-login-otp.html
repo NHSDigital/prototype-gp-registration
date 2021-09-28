@@ -32,7 +32,11 @@ GP Registration Prototypes
           href: "javascript:history.go(-1)"
         }) }}
 
+        {% if data['user-auth'] == "p9" %}
         <form action="is-this-your-current-address" method="post" autocomplete="off">
+        {% else %}
+        <form action="what-is-your-current-address" method="post" autocomplete="off">
+        {% endif %}
 
           {% call fieldset({
               legend: {
