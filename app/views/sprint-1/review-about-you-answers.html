@@ -411,13 +411,27 @@
               </div>
 
 
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Title
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['name-title'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="what-is-your-name">
+                    Change<span class="nhsuk-u-visually-hidden">
+                      Title</span>
+                  </a>
+                </dd>
+              </div>
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                   First name
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  {{ data['name-ffirst-name'] }}
+                  {{ data['name-first-name'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="what-is-your-name">
@@ -439,7 +453,7 @@
                 <dd class="nhsuk-summary-list__actions">
                   <a href="what-is-your-name">
                     Change<span class="nhsuk-u-visually-hidden">
-                      previous surnames</span>
+                      middle name</span>
                   </a>
                 </dd>
               </div>
@@ -449,12 +463,12 @@
                   Last name
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  {{ data['name-previous-surnames'] }}
+                  {{ data['name-last-name'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="what-is-your-name">
                     Change<span class="nhsuk-u-visually-hidden">
-                      previous surnames</span>
+                      last name</span>
                   </a>
                 </dd>
               </div>
@@ -505,6 +519,20 @@
                 </dd>
               </div>
 
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Ethnicity
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['ethnicity'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="what-is-your-gender">
+                    Change<span class="nhsuk-u-visually-hidden"> selected gender</span>
+                  </a>
+                </dd>
+              </div>
+
             </dl>
 
 
@@ -541,10 +569,15 @@
                   Previous address
                 </dt>
                 <dd class="nhsuk-summary-list__value">
+                  {% if data['select-previous-address'] %}
+                    {{ data['select-previous-address'] }}
+                  {% else %}
+                  {{ data['select-previous-address'] }}
                   {{ data['previous-address-line-1'] }}<br />
                   {{ data['previous-address-line-2'] }}<br />
                   {{ data['previous-address-town'] }}<br />
                   {{ data['previous-address-postcode'] }}
+                  {% endif %}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="current-uk-address">
