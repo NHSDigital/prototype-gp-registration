@@ -643,11 +643,16 @@
                   Previous GP address
                 </dt>
                 <dd class="nhsuk-summary-list__value previous-gp__value">
+                  {% if data['select-gp-address'] %}
+                    {{ data['select-gp-address'] }}
+                  {% else %}
+                  {{ data['select-gp-address'] }}
                   {{ data['previous-gp-name'] }}<br/>
                   {{ data['previous-gp-address-line-1'] }}<br/>
                   {{ data['previous-gp-address-line-2'] }}<br/>
                   {{ data['previous-gp-town'] }}<br/>
                   {{ data['previous-gp-postcode'] }}
+                  {% endif %}
 
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
