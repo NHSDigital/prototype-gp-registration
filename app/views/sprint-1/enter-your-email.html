@@ -33,10 +33,10 @@
           }) }}
 
 
-          {% if data['user-auth'] == "un-authed" %}
-          <form action="do-you-know-nhs-number" method="post" autocomplete="off">
-          {% else %}
+          {% if ((data['user-auth'] == "p5") or (data['user-auth'] == "p5")) %}
           <form action="nhs-login-found" method="post" autocomplete="off">
+          {% else %}
+          <form action="do-you-know-nhs-number" method="post" autocomplete="off">
           {% endif %}
 
             {% call fieldset({
