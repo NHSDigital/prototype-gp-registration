@@ -1,0 +1,88 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <h1>
+          GP Registration
+          <span class="nhsuk-caption-xl nhsuk-caption--bottom">Discovery</span>
+        </h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <h2>
+          Discovery prototype
+        </h2>
+
+        <p>
+          This prototype contains an updated flow based upon feedGo back from our initial round of user testing.
+        </p>
+
+        <p>
+          <a class="nhsuk-button nhsuk-button--green" href="start">View prototype</a>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <h2>
+          Hypotheses
+        </h2>
+
+        <p>
+          We will include the hypotheses to be tested in this section.
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}
