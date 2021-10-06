@@ -1,0 +1,86 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <div class="nhsuk-card nhsuk-card--confirmation nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
+
+            <div class="nhsuk-card__content">
+
+              <h1 class="nhsuk-card__title nhsuk-u-margin-bottom-4">
+                Application complete
+              </h1>
+
+              <p class="nhsuk-u-font-size-24">
+                Your reference number
+                <br>
+                <strong class="nhsuk-u-font-size-32">HDJ2123F</strong>
+              </p>
+
+            </div>
+
+          </div>
+
+          <p>Thank you for using this service. We have sent you a confirmation email using the address you provided.</p>
+
+          <h2>What happens next</h2>
+
+          <p>The details you gave us will be sent to your chosen GP. They will then register you at their practice.</p>
+          <p>This usually takes no longer than 2 weeks.</p>
+          <p>If you need an appointment urgently you can contact the practice to make one or use the 111 service.</p>
+
+
+          <div class="nhsuk-inset-text">
+            <h3 class="nhsuk-heading-s">Blood and organ donation</h3>
+            <span class="nhsuk-u-visually-hidden">Information: </span>
+            <p><p>On 20 May 2020, the law around organ donation in England was changed to allow more people to save more lives.</p>
+            <p>You still have a choice whether or not you want to become an organ donor, and can register or amend your decision at any time on <a href="https://www.organdonation.nhs.uk/" title="External website">Blood and transplant organ donation</a>.</p>
+          </div>
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}

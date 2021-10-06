@@ -1,0 +1,91 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <h1>
+          Your details have been submitted.
+        </h1>
+        <p>
+          Thank you. We are now processing your request to register with a new GP and we will contact you via the details you submitted once this is complete.</p>
+
+          <p>
+            This process usually only takes a few days but may take up to two weeks
+          </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <h2 class="nhsuk-heading-m">
+          Next steps
+        </h2>
+        <h3 class="nhsuk-heading-s">Blood and organ donation</h3>
+        <p>On 20 May 2020, the law around organ donation in England was changed to allow more people to save more lives. It will be considered that you agree to become an organ donor when you die, if:</p>
+        <ul>
+          <li>
+            you are over 18;
+          </li>
+          <li>
+            you have not opted out;
+          </li>
+          <li>
+            you are not in an <a href="#">excluded group</a>
+          </li>
+        </ul>
+
+        <p>
+          You still have a choice whether or not you want to become an organ donor, and can register or amend your decision at any time. Follow the link below for more information.
+        </p>
+
+        {{ actionLink({
+          "text": "Register your blood and organ donation decision",
+          "href": "#"
+        }) }}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}
