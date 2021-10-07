@@ -1,0 +1,34 @@
+
+{% extends 'layout.html' %}
+
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+          <div class="pseudo-bg"></div>
+          <div class="email-metadata">
+            <p><strong>From: </strong>NHS: GP Registration </p>
+            <p><strong>Subject: </strong>Confirmation of service</p>
+          </div>
+          <div class="pseudo-email-template">
+          <p>Hello [full name],</p>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet efficitur varius. Etiam ornare feugiat dapibus. Phasellus at nibh commodo ante blandit dictum </p>
+          <p><br/><a href="../signed-in">NHS links</a>
+          <br/>(This link will expire at 1pm)</p>
+
+          <p>NHS<br />
+          <span style="color:#888888;">GP Registration service</span></p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}
