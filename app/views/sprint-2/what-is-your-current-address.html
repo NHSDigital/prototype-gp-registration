@@ -52,14 +52,23 @@
               value: data['find-current-address']
           }) }}
 
+          {{ checkboxes({
+            "idPrefix": "no-current-address",
+            "name": "no-current-address",
+            "items": [
+              {
+                "value": "no-current-address",
+                "text": "I do not have a current UK home address"
+              }
+            ]
+          }) }}
+
             {{ button({
               "text": "Continue",
               "classes": "postcode-lookup-btn"
           }) }}
 
-            <p>
-              <a href="#" id="enter-address-manually-link">Enter address manually</a>
-            </p>
+
 
           </div>
 
@@ -125,9 +134,17 @@
                   ]
                 }) }}
 
+
               {{ button({
                   "text": "Continue"
               }) }}
+
+              <p>
+                <a href="#" id="enter-address-manually-link">I cant find my address in the list</a>
+              </p>
+
+
+
 
             </div>
 
@@ -180,18 +197,10 @@
                   value: data['current-address-postcode']
               }) }}
 
-              {{ checkboxes({
-                "idPrefix": "no-current-address",
-                "name": "no-current-address",
-                "items": [
-                  {
-                    "value": "no-current-address",
-                    "text": "I do not have a current UK home address"
-                  }
-                ]
-              }) }}
+
 
               {% endcall %}
+
 
               {{ button({
                 "text": "Continue"
@@ -227,7 +236,7 @@
     });
 
     $('#enter-address-manually-link').click(function () {
-      $('#current-address-lookup-container').addClass("hidden-section");
+      $('#select-address-section').addClass("hidden-section");
       $('.current-address-form').removeClass("hidden-section");
     });
 

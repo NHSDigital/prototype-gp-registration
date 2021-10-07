@@ -1,7 +1,13 @@
 
 {% extends 'layout.html' %}
 
-{% block outerContent %}{% endblock %}
+{% block customStyles %}
+
+      <STYLE type="text/css">
+            font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+      </STYLE>
+
+{% endblock %}
 
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
@@ -17,7 +23,7 @@
 
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet efficitur varius. Etiam ornare feugiat dapibus. Phasellus at nibh commodo ante blandit dictum </p>
           <p><br/><a href="../signed-in">NHS links</a>
-          <br/>(This link will expire at 1pm)</p>
+          <br/><strong>(This link will expire at 1pm)</strong></p>
 
           <p>NHS<br />
           <span style="color:#888888;">GP Registration service</span></p>
