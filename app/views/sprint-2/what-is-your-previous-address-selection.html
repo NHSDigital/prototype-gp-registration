@@ -28,19 +28,22 @@
         <div class="nhsuk-grid-column-two-thirds">
 
 
+          {% if data['user-auth'] == "p9" %}
+          <form action="how-can-we-contact-you" method="post" autocomplete="off">
+          {% else %}
+          <form action="what-is-your-phone-number" method="post" autocomplete="off">
+          {% endif %}
 
-
-          <form action="is-your-current-address-different" method="post" autocomplete="off">
 
             <div id="select-address-section">
               <h2 class="nhsuk-heading-xs">Postcode</h2>
               <p id="postcode-input-data">
-                {{ data['find-current-address'] }} &nbsp;&nbsp;<a href="what-is-your-current-address" id="change-postcode-link">Change</a>
+              {{ data['find-previous-address'] }}  &nbsp;&nbsp;<a href="what-is-your-previous-address" id="change-postcode-link">Change</a>
               </p>
 
               {{ select({
-                  "id": "select-current-address",
-                  "name": "select-current-address",
+                  "id": "select-previous-address",
+                  "name": "select-previous-address",
                   "label": {
                     "text": "Select an address"
                   },
@@ -92,7 +95,6 @@
                   ]
                 }) }}
 
-
               {{ button({
                   "text": "Continue"
               }) }}
@@ -102,17 +104,14 @@
               </p>
 
 
-
-
             </div>
 
 
-
-            <div class="current-address-form hidden-section">
+            <div class="previous-address-form hidden-section">
 
               {% call fieldset({
                 legend: {
-                  "text": "What is your current UK home address?",
+                  "text": "What was your previous UK address?",
                   "classes": "nhsuk-fieldset__legend--m"
                 }
               }) %}
@@ -121,18 +120,18 @@
                 label: {
                   "html": 'Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>'
                 },
-                "id": "current-address-line-1",
-                "name": "current-address-line-1",
-                value: data['current-address-line-1']
+                "id": "previous-address-line-1",
+                "name": "previous-address-line-1",
+                value: data['previous-address-line-1']
               }) }}
 
               {{ input({
                 label: {
                   "html": '<span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>'
                 },
-                "id": "current-address-line-2",
-                "name": "current-address-line-2",
-                value: data['current-address-line-2']
+                "id": "previous-address-line-2",
+                "name": "previous-line-2",
+                value: data['previous-address-line-2']
               }) }}
 
               {{ input({
@@ -140,9 +139,9 @@
                   "text": "Town or city"
                 },
                 "classes": "nhsuk-u-width-two-thirds",
-                "id": "current-address-town",
-                "name": "current-address-town",
-                value: data['current-address-town']
+                "id": "previous-address-town",
+                "name": "previous-address-town",
+                value: data['previous-address-town']
               }) }}
 
               {{ input({
@@ -150,23 +149,33 @@
                     "text": "Postcode"
                   },
                   "classes": "nhsuk-input--width-10",
-                  "id": "current-address-postcode",
-                  "name": "current-address-postcode",
-                  value: data['current-address-postcode']
+                  "id": "previous-address-postcode",
+                  "name": "previous-address-postcode",
+                  value: data['previous-address-postcode']
               }) }}
 
-
+              {{ checkboxes({
+                "idPrefix": "no-previous-address",
+                "name": "no-previous-address",
+                "items": [
+                  {
+                    "value": "no-previous-address",
+                    "text": "I do not have a current UK home address"
+                  }
+                ]
+              }) }}
 
               {% endcall %}
-
 
               {{ button({
                 "text": "Continue"
               }) }}
 
               <p>
-                <a href="what-is-your-current-address" id="use-postcode-lookup-link">Return to postcode lookup</a>
+                <a href="what-is-your-previous-address" id="use-postcode-lookup-link">Return to postcode lookup</a>
               </p>
+
+
 
             </div>
 
@@ -183,16 +192,15 @@
   <script>
 
     $('.postcode-lookup-btn').click(function () {
-      $('#current-address-lookup-container').addClass("hidden-section");
+      $('#previous-address-lookup-container').addClass("hidden-section");
       $('#select-address-section').removeClass("hidden-section");
-      $('#postcode-input-data').prepend($('#find-current-address').val().toUpperCase());
+      $('#postcode-input-data').prepend($('#find-previous-address').val().toUpperCase());
     });
 
     $('#enter-address-manually-link').click(function () {
       $('#select-address-section').addClass("hidden-section");
-      $('.current-address-form').removeClass("hidden-section");
+      $('.previous-address-form').removeClass("hidden-section");
     });
-
 
   </script>
 {% endblock %}
