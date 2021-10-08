@@ -1,0 +1,210 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+
+
+
+          <form action="is-your-current-address-different" method="post" autocomplete="off">
+
+            <div id="select-address-section">
+              <h2 class="nhsuk-heading-xs">Postcode</h2>
+              <p id="postcode-input-data">
+                {{ data['find-current-address'] }} &nbsp;&nbsp;<a href="what-is-your-current-address" id="change-postcode-link">Change</a>
+              </p>
+
+              {{ select({
+                  "id": "select-current-address",
+                  "name": "select-current-address",
+                  "label": {
+                    "text": "Select an address"
+                  },
+                  "items": [
+                  {
+                    "value": 0,
+                    "text": "10 Addresses found",
+                    "selected": true,
+                    "disabled": true
+                  },
+                    {
+                      "value": "1 Town Street, London, SW1A 1AA",
+                      "text": "1 Town Street, London, SW1A 1AA"
+                    },
+                    {
+                      "value": "2 Town Street, London, SW1A 1AA",
+                      "text": "2 Town Street, London, SW1A 1AA"
+                    },
+                    {
+                      "value": "3 Town Street, London, SW1A 1AA",
+                      "text": "3 Town Street, London, SW1A 1AA"
+                    },
+                    {
+                      "value": "4 Town Street, London, SW1A 1AA",
+                      "text": "4 Town Street, London, SW1A 1AA"
+                    },
+                    {
+                      "value": "5 Town Street, London, SW1A 1AA",
+                      "text": "5 Town Street, London, SW1A 1AA"
+                    },
+                    {
+                      "value": "6 Town Street, London, SW1A 1AA",
+                      "text": "6 Town Street, London, SW1A 1AA"
+                    },
+                    {
+                      "value": "7 Town Street, London, SW1A 1AA",
+                      "text": "7 Town Street, London, SW1A 1AA"
+                    },
+                    {
+                      "value": "8 Town Street, London, SW1A 1AA",
+                      "text": "8 Town Street, London, SW1A 1AA"
+                    },{
+                      "value": "9 Town Street, London, SW1A 1AA",
+                      "text": "9 Town Street, London, SW1A 1AA"
+                    },{
+                      "value": "10 Town Street, London, SW1A 1AA",
+                      "text": "10 Town Street, London, SW1A 1AA"
+                    }
+                  ]
+                }) }}
+
+
+              {{ button({
+                  "text": "Continue"
+              }) }}
+
+              <p>
+                <a href="#" id="enter-address-manually-link">I cant find my address in the list</a>
+              </p>
+
+
+
+
+            </div>
+
+
+
+            <div class="current-address-form hidden-section">
+
+              {% call fieldset({
+                legend: {
+                  "text": "What is your current UK home address?",
+                  "classes": "nhsuk-fieldset__legend--m"
+                }
+              }) %}
+
+              {{ input({
+                label: {
+                  "html": 'Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>'
+                },
+                "id": "current-address-line-1",
+                "name": "current-address-line-1",
+                value: data['current-address-line-1']
+              }) }}
+
+              {{ input({
+                label: {
+                  "html": '<span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>'
+                },
+                "id": "current-address-line-2",
+                "name": "current-address-line-2",
+                value: data['current-address-line-2']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Town or city"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "current-address-town",
+                "name": "current-address-town",
+                value: data['current-address-town']
+              }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "current-address-postcode",
+                  "name": "current-address-postcode",
+                  value: data['current-address-postcode']
+              }) }}
+
+
+
+              {% endcall %}
+
+
+              {{ button({
+                "text": "Continue"
+              }) }}
+
+              <p>
+                <a href="what-is-your-current-address" id="use-postcode-lookup-link">Return to postcode lookup</a>
+              </p>
+
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% block pageScripts %}
+  <script>
+
+    $('.postcode-lookup-btn').click(function () {
+      $('#current-address-lookup-container').addClass("hidden-section");
+      $('#select-address-section').removeClass("hidden-section");
+      $('#postcode-input-data').prepend($('#find-current-address').val().toUpperCase());
+    });
+
+    $('#change-postcode-link').click(function () {
+      $('#current-address-lookup-container').removeClass("hidden-section");
+      $('#select-address-section').addClass("hidden-section");
+    });
+
+    $('#enter-address-manually-link').click(function () {
+      $('#select-address-section').addClass("hidden-section");
+      $('.current-address-form').removeClass("hidden-section");
+    });
+
+    $('#use-postcode-lookup-link').click(function () {
+      $('#current-address-lookup-container').removeClass("hidden-section");
+      $('#select-address-section').addClass("hidden-section");
+      $('.current-address-form').addClass("hidden-section");
+    });
+
+  </script>
+{% endblock %}
+
+{% endblock %}

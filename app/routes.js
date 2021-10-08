@@ -40,6 +40,25 @@ router.post('*/nhs-login-found-answer/', function (req, res) {
 
 })
 
+
+// Does user have no Address
+router.post('*/what-is-your-current-address/', function (req, res) {
+
+  // Make a variable and give it the value from 'juggling-balls'
+  var noAddress = req.session.data['what-is-your-current-address']
+
+  // Check whether the variable matches a condition
+  if (noAddress == "no-current-address"){
+    // Send user to next page
+    res.redirect('do-you-know-nhs-number')
+  } else {
+    // Send user to ineligible page
+    res.redirect('what-is-your-gp-address')
+
+  }
+
+})
+
 // // Does user have NHS login
 // router.post('*/nhs-login-answer/', function (req, res) {
 //
