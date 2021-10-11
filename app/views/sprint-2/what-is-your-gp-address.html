@@ -32,7 +32,8 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <div id="gp-address-lookup-container">
+          <form action="what-is-your-gp-address-selection" method="post" autocomplete="off">
+
 
             {% call fieldset({
               legend: {
@@ -57,158 +58,27 @@
               value: data['find-gp-address']
           }) }}
 
+          {{ checkboxes({
+            "idPrefix": "no-gp-address",
+            "name": "no-gp-address",
+            "items": [
+              {
+                "value": "no-gp-address",
+                "text": "I do not have a current UK home address"
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
             {{ button({
               "text": "Continue",
               "classes": "postcode-lookup-btn"
           }) }}
 
-            <p>
-              <a href="#" id="enter-address-manually-link">Enter address manually</a>
-            </p>
-
-          </div>
-
-          <form action="how-do-you-normally-collect-your-prescriptions" method="post" autocomplete="off">
-
-            <div id="select-address-section" class="hidden-section">
-              <h2 class="nhsuk-heading-xs">Surgery name</h2>
-              <p id="postcode-input-data">
-                &nbsp;&nbsp;<a href="#" id="change-postcode-link">Change</a>
-              </p>
-
-              {{ select({
-                  "id": "select-gp-address",
-                  "name": "select-gp-address",
-                  "label": {
-                    "text": "Select an address"
-                  },
-                  "items": [
-                  {
-                    "value": 0,
-                    "text": "10 Addresses found",
-                    "selected": true,
-                    "disabled": true
-                  },
-                    {
-                      "value": "1 Town Street, London, SW1A 1AA",
-                      "text": "1 Town Street, London, SW1A 1AA"
-                    },
-                    {
-                      "value": "2 Town Street, London, SW1A 1AA",
-                      "text": "2 Town Street, London, SW1A 1AA"
-                    },
-                    {
-                      "value": "3 Town Street, London, SW1A 1AA",
-                      "text": "3 Town Street, London, SW1A 1AA"
-                    },
-                    {
-                      "value": "4 Town Street, London, SW1A 1AA",
-                      "text": "4 Town Street, London, SW1A 1AA"
-                    },
-                    {
-                      "value": "5 Town Street, London, SW1A 1AA",
-                      "text": "5 Town Street, London, SW1A 1AA"
-                    },
-                    {
-                      "value": "6 Town Street, London, SW1A 1AA",
-                      "text": "6 Town Street, London, SW1A 1AA"
-                    },
-                    {
-                      "value": "7 Town Street, London, SW1A 1AA",
-                      "text": "7 Town Street, London, SW1A 1AA"
-                    },
-                    {
-                      "value": "8 Town Street, London, SW1A 1AA",
-                      "text": "8 Town Street, London, SW1A 1AA"
-                    },{
-                      "value": "9 Town Street, London, SW1A 1AA",
-                      "text": "9 Town Street, London, SW1A 1AA"
-                    },{
-                      "value": "10 Town Street, London, SW1A 1AA",
-                      "text": "10 Town Street, London, SW1A 1AA"
-                    }
-                  ]
-                }) }}
-
-              {{ button({
-                  "text": "Continue"
-              }) }}
-
-            </div>
-
-            {% endcall %}
-
-            <div class="gp-address-form hidden-section">
-
-              {% call fieldset({
-                legend: {
-                  "text": "Enter the name and address of your current GP practice",
-                  "classes": "nhsuk-fieldset__legend--m"
-                }
-              }) %}
-
-              {{ input({
-                label: {
-                  "html": 'Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>'
-                },
-                "id": "gp-address-line-1",
-                "name": "gp-address-line-1",
-                value: data['gp-address-line-1']
-              }) }}
-
-              {{ input({
-                label: {
-                  "html": '<span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>'
-                },
-                "id": "gp-address-line-2",
-                "name": "gp-address-line-2",
-                value: data['gp-address-line-2']
-              }) }}
-
-              {{ input({
-                label: {
-                  "text": "Town or city"
-                },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "gp-address-town",
-                "name": "gp-address-town",
-                value: data['gp-address-town']
-              }) }}
-
-              {{ input({
-                  label: {
-                    "text": "Postcode"
-                  },
-                  "classes": "nhsuk-input--width-10",
-                  "id": "gp-address-postcode",
-                  "name": "gp-address-postcode",
-                  value: data['gp-address-postcode']
-              }) }}
-
-              {{ checkboxes({
-                "idPrefix": "no-gp-address",
-                "name": "no-gp-address",
-                "items": [
-                  {
-                    "value": "no-gp-address",
-                    "text": "I do not have a current UK home address"
-                  }
-                ]
-              }) }}
-
-              {% endcall %}
-
-              {{ button({
-                "text": "Continue"
-              }) }}
-
-              <p>
-                <a href="#" id="use-postcode-lookup-link">Return to surgery name lookup</a>
-              </p>
-
-            </div>
 
           </form>
+        </div>
         </div>
       </div>
     </section>
@@ -220,30 +90,8 @@
 {% block pageScripts %}
   <script>
 
-    $('.postcode-lookup-btn').click(function () {
-      $('#gp-address-lookup-container').addClass("hidden-section");
-      $('#select-address-section').removeClass("hidden-section");
-      $('#postcode-input-data').prepend($('#find-gp-address').val().toUpperCase());
-    });
-
-    $('#change-postcode-link').click(function () {
-      $('#gp-address-lookup-container').removeClass("hidden-section");
-      $('#select-address-section').addClass("hidden-section");
-    });
-
-    $('#enter-address-manually-link').click(function () {
-      $('#gp-address-lookup-container').addClass("hidden-section");
-      $('.gp-address-form').removeClass("hidden-section");
-    });
-
-    $('#use-postcode-lookup-link').click(function () {
-      $('#gp-address-lookup-container').removeClass("hidden-section");
-      $('#select-address-section').addClass("hidden-section");
-      $('.gp-address-form').addClass("hidden-section");
-    });
-
-    $('#no-current-address-1').change(function () {
-      if ($('#no-current-address-1').is(':checked') == true) {
+    $('#no-gp-address-1').change(function () {
+      if ($('#no-gp-address-1').is(':checked') == true) {
         $('input[type=text]').prop('disabled', true);
       } else {
         $('input[type=text]').prop('disabled', false);
