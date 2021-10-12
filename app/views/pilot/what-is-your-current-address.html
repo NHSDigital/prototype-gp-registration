@@ -33,7 +33,7 @@
           }) }}
 
           <div id="current-address-lookup-container">
-
+            
             {% call fieldset({
               legend: {
                 "text": "What is your current UK home address?",
@@ -41,6 +41,9 @@
                 "isPageHeading": true
               }
             }) %}
+            <div class="nhsuk-hint" id="contact-hint">
+            <p>Please enter the address you lived at most recently.</p>
+            </div>
 
             {{ input({
               label: {
@@ -52,21 +55,28 @@
               value: data['find-current-address']
           }) }}
 
+          {{ checkboxes({
+            "idPrefix": "no-email-address",
+            "name": "no-email-address",
+            "items": [
+              {
+                "value": "no-current-address",
+                "text": "I do not have a current UK home address"
+              }
+            ]
+          }) }}
+
             {{ button({
               "text": "Continue",
               "classes": "postcode-lookup-btn"
           }) }}
-
-            <p>
-              <a href="#" id="enter-address-manually-link">Enter address manually</a>
-            </p>
 
           </div>
 
           <form action="is-your-current-address-different" method="post" autocomplete="off">
 
             <div id="select-address-section" class="hidden-section">
-              <h2 class="nhsuk-heading-xs">Postcode</h2>
+              <h1 class="nhsuk-heading-xs">Current postcode</h1>
               <p id="postcode-input-data">
                 &nbsp;&nbsp;<a href="#" id="change-postcode-link">Change</a>
               </p>
@@ -125,6 +135,7 @@
                   ]
                 }) }}
 
+                <p><a href="#" id="enter-address-manually-link">Can't find my address in the list</a></p>
               {{ button({
                   "text": "Continue"
               }) }}
@@ -227,7 +238,7 @@
     });
 
     $('#enter-address-manually-link').click(function () {
-      $('#current-address-lookup-container').addClass("hidden-section");
+      $('#select-address-section').addClass("hidden-section");
       $('.current-address-form').removeClass("hidden-section");
     });
 
