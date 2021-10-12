@@ -47,15 +47,31 @@
 <!-- Edit the footer -->
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
-  {{ footer({
+{{ footer({
     "links": [
       {
-        "URL": "/",
-        "label": "Home"
+        "URL": "/set-up/v-9/legal/terms",
+        "label": "Terms of use"
+      },
+      {
+        "URL": "/set-up/v8/legal/cookies",
+        "label": "Cookies"
+      },
+      {
+        "URL": "/set-up/v-9/legal/accessibility",
+        "label": "Accessibility"
+      },
+      {
+        "URL": "https://support-nhslogin.herokuapp.com/",
+        "label": "Help centre"
       },
       {
         "URL": "../../../examples/passing-data/clear-data",
         "label": "Clear data"
+      },
+      {
+        "URL": "#",
+        "label": "devMode ™"
       }
     ]
   })}}

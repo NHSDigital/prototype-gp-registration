@@ -1,8 +1,4 @@
-<!-- Use this page as the index for your project -->
 
-<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-
-<!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
 <!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
 
@@ -79,6 +75,32 @@
             }) }}
 
           </form>
+
+
+    {% if data['devMode'] %}
+    <details class="nhsuk-details dev-mode" role="group">
+      <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+        <span class="nhsuk-details__summary-text">
+          Continue with testing scenario
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+        <p>Routes</p>
+        <ul>
+          <li>
+            <a href="">Link 1</a>
+          </li>
+        </ul>
+        <p>Errors</p>
+        <ul>
+          <li>
+            <a href="">Error 1</a>
+          </li>
+        </ul>
+      </div>
+    </details>
+    {% endif %}
+
         </div>
       </div>
     </section>

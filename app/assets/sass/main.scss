@@ -3,6 +3,7 @@
 
 // Components that are not in the NHS.UK frontend library
 @import 'components/related-nav';
+@import 'components/devmode';
 
 
 
@@ -13,6 +14,7 @@
 @import 'components/forms';
 @import 'components/summary-page';
 @import 'components/global-components';
+
 
 .pseudo-bg {
   position: fixed;
@@ -48,4 +50,3 @@
 .email-metadata p {
   font-size: 14px;
   margin:0 0 5px;
-}
