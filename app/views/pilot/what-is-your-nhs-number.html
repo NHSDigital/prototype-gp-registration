@@ -32,7 +32,7 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="what-is-your-gender" method="post" autocomplete="off">
+          <form action="what-is-your-name" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -43,7 +43,7 @@
             }) %}
 
             {{ hint({
-                "text": "Your NHS number is a 10 digit number that you find on any letter the NHS has sent you. For example, 485 777 3456."
+                "text": "Please enter your NHS number to continue."
             }) }}
 
             {{ input({

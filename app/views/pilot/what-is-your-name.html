@@ -41,8 +41,50 @@
                 "isPageHeading": true
               }
             }) %}
+            <!-- SELECT FOR TITLE -->
+            {{ select({
+              "id": "name-title",
+              "name": "name-title",
+              "label": {
+                "text": "Title"
+              },
+              "items": [
+                {
+                  "value": 1,
+                  "text": "Mr"
+                },
+                {
+                  "value": 2,
+                  "text": "Mrs"
+                },
+                {
+                  "value": 3,
+                  "text": "Ms"
+                },
+                {
+                  "value": 4,
+                  "text": "Dr"
+                },
+                {
+                  "value": 5,
+                  "text": "Rev"
+                },
+                {
+                  "value": 6,
+                  "text": "Sir"
+                },
+                {
+                  "value": 7,
+                  "text": "Lady"
+                },
+                {
+                  "value": 8,
+                  "text": "Lord"
+                }
+                ]
+              }) }}
 
-             {{ input({
+             <!-- {{ input({
                 label: {
                   "text": "Title"
                 },
@@ -50,7 +92,7 @@
                 "id": "name-title",
                 "name": "name-title",
                 "value": data['name-title']
-              }) }} 
+              }) }}  -->
 
             {{ input({
                 label: {
@@ -90,6 +132,16 @@
                   "id": "name-last-name",
                   "name": "name-last-name",
                   "value": data['name-last-name']
+                }) }}
+
+                {{ input({
+                  label: {
+                    "text": "Previous Last name"
+                  },
+                  "classes": "nhsuk-u-width-two-thirds",
+                  "id": "name-previous-last-name",
+                  "name": "name-previous-last-name",
+                  "value": data['name-previous-last-name']
                 }) }}
 
             {% endcall %}
