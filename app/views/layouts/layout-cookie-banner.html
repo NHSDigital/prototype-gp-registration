@@ -20,7 +20,7 @@
 {% from 'pagination/macro.njk' import pagination %}
 {% from 'card/macro.njk' import card %}
 {% from 'card/macro.njk' import card %}
- 
+
 {% from 'skip-link/macro.njk' import skipLink %}
 {% from 'tables/macro.njk' import table %}
 {% from 'warning-callout/macro.njk' import warningCallout %}
@@ -68,17 +68,17 @@ NHS.UK prototype kit
                         service.
                     </p>
 
-                    <a href="#" tabindex="1">
+                    <!-- <a href="" tabindex="1"> -->
                         <button class="nhsuk-button full-width" id="nhsuk-cookie-banner__link_accept">
                             Accept all cookies
                         </button>
-                    </a>
+                    <!-- </a> -->
 
-                    <a href="/set-up/v-9/legal/manage-cookies" tabindex="2">
+                    <!-- <a href="" tabindex="2"> -->
                         <button class="nhsuk-button full-width" id="nhsuk-cookie-banner__link">
                             Choose your cookies
                         </button>
-                    </a>
+                    <!-- </a> -->
 
                 </div>
             </div>
@@ -88,7 +88,7 @@ NHS.UK prototype kit
             <div class="page-section" style="padding: 0px !important;">
                 <div class="nhsuk-width-container">
                     <p class="nhsuk-body accepted-cookies">You can change your cookie settings at any time using our <a
-                            href="../v-9/legal/manage-cookies" class="nhsuk-link">cookies page</a>.</p>
+                            href="" class="nhsuk-link">cookies page</a>.</p>
                 </div>
             </div>
         </div>
@@ -123,7 +123,7 @@ NHS.UK prototype kit
                     <image src="https://assets.nhs.uk/images/nhs-logo.png" xlink:href=""></image>
                 </svg>
                 <span class="nhsuk-header__service-name">
-                    NHS login
+                    GP Registration
                 </span>
             </a>
         </div>
@@ -135,7 +135,7 @@ NHS.UK prototype kit
 
         var cookieBannerSuccess = document.querySelector('.nhsuk-success-banner');
 
-        if (document.cookie.indexOf("cookiePreference=") >= 0) {
+        if (document.cookie.indexOf("cookiePreference=") >= 1) {
             document.getElementById('nhsuk-cookie-banner').style.display = "none";
         } else {
             document.getElementById('nhsuk-cookie-banner').style.display = "block";
