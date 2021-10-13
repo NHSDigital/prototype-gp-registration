@@ -33,7 +33,7 @@
           }) }}
 
           
-          <form action="" method="post" autocomplete="off">
+          <form action="what-is-your-nhs-number.html" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -44,6 +44,11 @@
             }) %}
 
             {{ hint({
+              "text": "It will be easier to find if you do.",
+              "classes": "nhsuk-u-margin-bottom-4"
+            }) }}
+
+            <!-- {{ hint({
               "text": "This is a 10 digit number, like 485 777 3456.",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
@@ -56,23 +61,38 @@
             {{ hint({
               "html": "<p>
                 You can use the <a href='#'>NHS number finder service</a> to retrieve your NHS number by text message or email.</p>"
-            }) }}
+            }) }} -->
 
             {{ radios({
               "idPrefix": "do-you-know-nhs-number",
               "name": "know-nhs-number",
               "items": [
                 {
-                  "value": "Yes~/sprint-1/what-is-your-nhs-number",
+                  "value": "Yes~/pilot/what-is-your-nhs-number",
                   "text": "Yes, I know my NHS number",
                   "checked": checked("know-nhs-number", "Yes")
                 },
                 {
-                  "value": "No~/sprint-1/what-is-your-name",
+                  "value": "No~/pilot/what-is-your-name",
                   "text": "No, I do not know my NHS number",
                   "checked": checked("know-nhs-number", "No")
                 }
               ]
+            }) }}
+
+            {{ details({
+              "text": "How to find your NHS number",
+              "HTML": "
+              <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
+                <p>You can find your NHS number by logging in to a GP online service or on any document the NHS has sent you, such as your:</p>
+                <ul>
+                    <li>prescriptions</li>
+                    <li>test results</li>
+                    <li>hospital referral letters</li>
+                    <li>appointment letters</li>
+                </ul>
+                <p>Ask your GP surgery for help if you can't find your NHS number.</p>
+              "
             }) }}
 
             {% endcall %}
