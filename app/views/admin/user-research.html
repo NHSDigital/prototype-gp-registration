@@ -49,7 +49,19 @@ User research - GP registration - NHS
         <br>
 
           <h2 class="nhsuk-heading-l">Unauth from find a GP</h2>
-          <p>Research for testing NHS login + Gender + Questionaire split</p>
+          <p>Find Gp entry to service</p>
+
+
+          <form action="" method="post" autocomplete="off">
+          <input type="hidden" name="user-auth" id="user-auth" value="p9" />
+          {{ button({
+            "text": "Continue",
+                "href": ""
+          }) }}
+          </form>
+
+          <h2 class="nhsuk-heading-l">GP Admin outlook</h2>
+          <p>GP Admin email inbox</p>
 
 
           <form action="/user-research/gp-admin/admin-email" method="post" autocomplete="off">
