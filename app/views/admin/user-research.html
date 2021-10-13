@@ -12,7 +12,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Pre-load - GP registration - NHS
+User research - GP registration - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -34,16 +34,21 @@ Pre-load - GP registration - NHS
       <div class="nhsuk-grid-column-two-thirds">
 
 
-        <h1 class="app-page-heading">
-            User research
-        </h1>
+        <h1 class="app-page-heading">User research</h1>
 
         <ul class="nhsuk-list nhsuk-body-s">
-          <li>Last updated: 28 Sept 2021</li>
-          </ul>
+          <li>Last updated: 13 Oct 2021</li>
+        </ul>
 
 
-          <h2 class="nhsuk-heading-l">P9 journey</h2>
+        <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary details-index">
+        <span class="nhsuk-details__summary-text">22-24 Oct 2021 (GP admin)</span>
+        </summary>
+        <div class="nhsuk-details__text version-text">
+        <br>
+
+          <h2 class="nhsuk-heading-l">Unauth from find a GP</h2>
           <p>Research for testing NHS login + Gender + Questionaire split</p>
 
 
@@ -55,32 +60,60 @@ Pre-load - GP registration - NHS
           }) }}
           </form>
 
-          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
-
-          <h2 class="nhsuk-heading-l">P5 journey</h2>
-          <p>Research for testing NHS login + Gender + Questionaire split</p>
 
 
-          <form action="/sprint-1/start" method="post" autocomplete="off">
-          <input type="hidden" name="user-auth" id="user-auth" value="p5" />
-          {{ button({
-            "text": "Continue",
-                "href": ""
-          }) }}
-          </form>
+          </div>
+          </details>
 
-          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+          <details class="nhsuk-details nhsuk-expander version-list">
+          <summary class="nhsuk-details__summary details-index">
+          <span class="nhsuk-details__summary-text">28-30 Sept 2021 (unauthed/p5/p9)</span>
+          </summary>
+          <div class="nhsuk-details__text version-text">
+          <br>
 
-          <h2 class="nhsuk-heading-l">No auth journey</h2>
-          <p>New flow for unauth journey + Gender + Questionaire split</p>
+            <h2 class="nhsuk-heading-l">P9 journey</h2>
+            <p>Research for testing NHS login + Gender + Questionaire split</p>
 
-          <form action="/sprint-1/start" method="post" autocomplete="off">
-          <input type="hidden" name="user-auth" id="user-auth" value="un-authed" />
-          {{ button({
-            "text": "Continue",
-                "href": ""
-          }) }}
-          </form>
+
+            <form action="/sprint-1/start" method="post" autocomplete="off">
+            <input type="hidden" name="user-auth" id="user-auth" value="p9" />
+            {{ button({
+              "text": "Continue",
+                  "href": ""
+            }) }}
+            </form>
+
+            <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+            <h2 class="nhsuk-heading-l">P5 journey</h2>
+            <p>Research for testing NHS login + Gender + Questionaire split</p>
+
+
+            <form action="/sprint-1/start" method="post" autocomplete="off">
+            <input type="hidden" name="user-auth" id="user-auth" value="p5" />
+            {{ button({
+              "text": "Continue",
+                  "href": ""
+            }) }}
+            </form>
+
+            <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+            <h2 class="nhsuk-heading-l">No auth journey</h2>
+            <p>New flow for unauth journey + Gender + Questionaire split</p>
+
+            <form action="/sprint-1/start" method="post" autocomplete="off">
+            <input type="hidden" name="user-auth" id="user-auth" value="un-authed" />
+            {{ button({
+              "text": "Continue",
+                  "href": ""
+            }) }}
+            </form>
+
+            </div>
+            </details>
+
 
 
   </div>
