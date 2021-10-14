@@ -32,19 +32,24 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          
+
           <form action="what-is-your-nhs-number.html" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                text: "Do you know your NHS Number?",
+                text: "Do you know your NHS number?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
             {{ hint({
-              "text": "It will be easier to find if you do.",
+              "text": "Telling us your NHS number will give us the best chance of matching you to your NHS record.",
+              "classes": "nhsuk-u-margin-bottom-4"
+            }) }}
+
+            {{ hint({
+              "text": "You do not need to know your NHS number to continue. If you do not know it, you can tell us your full name instead.",
               "classes": "nhsuk-u-margin-bottom-4"
             }) }}
 

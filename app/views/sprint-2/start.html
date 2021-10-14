@@ -65,6 +65,22 @@ GP Registration Prototypes
         </ul>
 
         <p>You do not need your NHS number but it might make the process easier.</p>
+
+        {{ details({
+          "text": "How to find your NHS number",
+          "HTML": "
+          <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
+            <p>You can find your NHS number by logging in to a GP online service or on any document the NHS has sent you, such as your:</p>
+            <ul>
+                <li>prescriptions</li>
+                <li>test results</li>
+                <li>hospital referral letters</li>
+                <li>appointment letters</li>
+            </ul>
+            <p>Ask your GP surgery for help if you can't find your NHS number.</p>
+          "
+        }) }}
+
         <p>Your answers will help us find the correct medical records. We use these records to offer relevant and appropriate healthcare services for the person being registered.</p>
 
         {% from 'inset-text/macro.njk' import insetText %}
@@ -87,12 +103,13 @@ GP Registration Prototypes
       <div class="nhsuk-grid-column-two-thirds">
 
         <h2>Other ways to register</h2>
-        <p>You can also register with a GP surgery by visiting them in person and completing a <a href="#">GMS1 registration form</a> or other registration form. However, some surgeries may not be accepting visitors in person due to the COVID-19 pandemic. Call the surgery first for instructions.</p>
+        <p>You can also register with a GP surgery by visiting them in person and completing a <a href="https://www.gov.uk/government/publications/gms1">GMS1 registration form</a> or other registration form. However, some surgeries may not be accepting visitors in person due to the COVID-19 pandemic. Call the surgery first for instructions.</p>
         <p>You can view <a href="https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/">guidance about how to register with a GP</a> or find a GP surgery using the <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a> service</p>
       </div>
     </div>
   </div>
 </section>
+
 
 
 
