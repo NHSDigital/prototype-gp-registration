@@ -36,7 +36,7 @@
 
             {% call fieldset({
               legend: {
-                "text": "What are the details of your emergency contact or next of kin?",
+                "text": "What are the details of your emergency contact?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -61,6 +61,17 @@
                 "id": "ec-relationship",
                 "name": "ec-relationship",
                 value: data['ec-relationship']
+              }) }}
+              
+              {{ checkboxes({
+                "idPrefix": "no-home-number",
+                "name": "no-home-number",
+                "items": [
+                  {
+                    "value": "no-home-number",
+                    "text": "This person is my next of kin"
+                  }
+                ]
               }) }}
 
               {{ input({
