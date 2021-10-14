@@ -14,7 +14,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  GP Registration prototypes
+  GP Registration
 {% endblock %}
 
 <!-- Edit the header -->
@@ -31,52 +31,30 @@
   }}
 {% endblock %}
 
-
-
-{% block content %}
-
-{% if showBackLink != false %}
-    {{ backLink({
-      text: "Go back",
-      href: "javascript:history.go(-1)"
-    }) }}
-  {% endif %}
-
-
-
-{% endblock %}
-
 <!-- Edit the footer -->
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
-{{ footer({
+  {{ footer({
     "links": [
       {
-        "URL": "",
+        "URL": "/",
         "label": "Terms of use"
       },
       {
-        "URL": "",
+        "URL": "/",
         "label": "Cookies"
       },
       {
-        "URL": "",
-        "label": "Accessibility"
+      "URL": "/",
+      "label": "Accessibilty"
       },
       {
-        "URL": "../../../examples/passing-data/clear-data",
+        "URL": "/examples/passing-data/clear-data",
         "label": "Clear data"
-      },
-      {
-        "URL": "#",
-        "label": "devMode ™"
       }
     ]
   })}}
 {% endblock %}
-
-
-
 
 {% block bodyEnd %}
   {% block scripts %}

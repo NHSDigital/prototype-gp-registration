@@ -1,3 +1,4 @@
+
 // reveal password script
 
 function setUpButton(button, input) {

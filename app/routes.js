@@ -41,23 +41,23 @@ router.post('*/nhs-login-found-answer/', function (req, res) {
 })
 
 
-// Does user have no Address
-router.post('*/what-is-your-current-address/', function (req, res) {
-
-  // Make a variable and give it the value from 'juggling-balls'
-  var noAddress = req.session.data['what-is-your-current-address']
-
-  // Check whether the variable matches a condition
-  if (noAddress == "no-current-address"){
-    // Send user to next page
-    res.redirect('do-you-know-nhs-number')
-  } else {
-    // Send user to ineligible page
-    res.redirect('what-is-your-gp-address')
-
-  }
-
-})
+// // Does user have no Address
+// router.post('*/what-is-your-current-address/', function (req, res) {
+//
+//   // Make a variable and give it the value from 'juggling-balls'
+//   var noAddress = req.session.data['what-is-your-current-address']
+//
+//   // Check whether the variable matches a condition
+//   if (noAddress == "no-current-address"){
+//     // Send user to next page
+//     res.redirect('do-you-know-nhs-number')
+//   } else {
+//     // Send user to ineligible page
+//     res.redirect('what-is-your-gp-address')
+//
+//   }
+//
+// })
 
 // // Does user have NHS login
 // router.post('*/nhs-login-answer/', function (req, res) {
@@ -305,25 +305,3 @@ router.post('*/what-is-your-current-address/', function (req, res) {
 // })
 
 module.exports = router;
-
-// Dev Mode
-
-function devModeRoute(req, res, next) {
-  if (!req.session.data['devMode']) {
-    console.log('no data found');
-    var devMode = req.query.devMode;
-    if (devMode === 'true') {
-      console.log('devmode detected');
-      req.session.data['devMode'] = 'true'
-      console.log('local storage updated');
-    } else {
-      console.log('devmode not detected');
-    }
-  } else {
-    console.log('data found and set to ' + req.session.data['devMode'])
-  }
-  next()
-}
-
-router.get("/*", devModeRoute);
-router.get("/", devModeRoute);
