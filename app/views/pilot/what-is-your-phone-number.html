@@ -41,10 +41,12 @@
                 "isPageHeading": true
               }
             }) %}
-
+            {{ hint({
+              "text": "Enter a UK landline number in the format 01632 960000"
+          }) }}
               {{ input({
                 label: {
-                  "html": 'Home telephone'
+                  "html": ''
                 },
                 "classes": "nhsuk-input--width-10",
                 "id": "contact-home-tel",
@@ -52,7 +54,7 @@
               }) }}
 
 
-                <!-- {{ checkboxes({
+                {{ checkboxes({
                   "idPrefix": "no-home-number",
                   "name": "no-home-number",
                   "items": [
@@ -61,7 +63,7 @@
                       "text": "I do not have a home telephone"
                     }
                   ]
-                }) }} -->
+                }) }}
 
             {% endcall %}
 

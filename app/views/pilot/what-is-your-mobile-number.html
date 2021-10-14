@@ -41,11 +41,14 @@
                 "isPageHeading": true
               }
             }) %}
-
+            
+            {{ hint({
+              "text": "Enter a UK mobile number in the format 07700 900000"
+          }) }}
 
               {{ input({
                   label: {
-                    "text": "Mobile telephone"
+                    "text": ""
                   },
                   "classes": "nhsuk-input--width-10",
                   "id": "contact-mobile-tel",
