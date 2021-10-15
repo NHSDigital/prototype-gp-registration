@@ -32,7 +32,7 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="current-gp-answer" method="post" autocomplete="off">
+          <form action="" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -42,23 +42,39 @@
               }
             }) %}
 
-            <div class="nhsuk-hint" id="contact-hint">
-              <p><strong>Surgery name</strong><br> Address line 1 <br> Address line 2 <br> Address line 3 <br> Address line 4 </p>
-
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Surgery Name
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                Abracadabra Medical Practice
+              </dd>
             </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Address
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                <p>69 Medical Lane</p>
+                <p>YT788TY</p>
+                <p>Painchester</p>
+              </dd>
+            </div>
+
 
             {{ radios({
               "idPrefix": "current-gp",
               "name": "current-gp",
-              "classes": "nhsuk-radios--inline",
+              "classes": "nhsuk-radios nhsuk-u-margin-top-3",
               "items": [
                 {
-                  "value": "yes",
+                  "value": "Yes~/pilot/how-do-you-normally-collect-your-prescriptions",
                   "text": "Yes",
                   checked: checked("current-gp", "Yes")
                 },
                 {
-                  "value": "no",
+                  "value": "No~/pilot/what-is-your-gp-name",
                   "text": "No",
                   checked: checked("current-gp", "No")
                 }

@@ -42,23 +42,29 @@
               }
             }) %}
 
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>Address line 1 <br> Address line 2 <br> Address line 3 <br> Address line 4 </p>
-
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Address
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                <p>69 Patient Lane</p>
+                <p>YT588TY</p>
+                <p>Painchester</p>
+              </dd>
             </div>
 
             {{ radios({
               "idPrefix": "current-address",
               "name": "current-address",
-              "classes": "nhsuk-radios--inline",
+              "classes": "nhsuk-radios nhsuk-u-margin-top-3",
               "items": [
                 {
-                  "value": "Yes~/sprint-1/is-your-current-address-different",
+                  "value": "Yes~/pilot/is-your-current-address-different",
                   "text": "Yes",
                   checked: checked("current-address", "Yes")
                 },
                 {
-                  "value": "No~/sprint-1/what-is-your-current-address",
+                  "value": "No~/pilot/what-is-your-current-address",
                   "text": "No",
                   checked: checked("current-address", "No")
                 }
