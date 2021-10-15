@@ -32,7 +32,7 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="do-you-have-existing-conditions-answer" method="post" autocomplete="off">
+          <form action="" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -56,12 +56,12 @@
               "name": "has-existing-conditions",
               "items": [
                 {
-                  "value": "Yes",
+                  "value": "Yes~/pilot/do-you-have-existing-conditions-answer",
                   "text": "Yes",
                   checked: checked("has-existing-conditions", "Yes")
                 },
                 {
-                  "value": "No",
+                  "value": "No~/pilot/do-you-have-allergies",
                   "text": "No",
                   checked: checked("has-existing-conditions", "No")
                 }

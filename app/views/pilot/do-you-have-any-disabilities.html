@@ -32,7 +32,7 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="do-you-have-disabilities-answer" method="post" autocomplete="off">
+          <form action="" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -52,12 +52,12 @@
               "name": "has-disabilities",
               "items": [
                 {
-                  "value": "Yes",
+                  "value": "Yes~/pilot/disabilities-details",
                   "text": "Yes",
                   checked: checked("has-disabilities", "Yes")
                 },
                 {
-                  "value": "No",
+                  "value": "No~/pilot/do-you-take-prescription-medication",
                   "text": "No",
                   checked: checked("has-disabilities", "No")
                 }

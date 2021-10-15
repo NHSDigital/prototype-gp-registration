@@ -42,7 +42,7 @@
               }
             }) }}
 
-            <h3>General health questions</h3>
+            <h3>Health Questionnaire</h3>
 
             <dl class="nhsuk-summary-list">
 
@@ -110,10 +110,38 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Alcohol frequency
+                  How often do you drink alcohol?
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['alcohol-consumption'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="how-often-do-you-drink-alcohol">
+                    Change<span class="nhsuk-u-visually-hidden"> how often you drink alcohol</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  How many units of alcohol?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['alcohol-units'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="how-often-do-you-drink-alcohol">
+                    Change<span class="nhsuk-u-visually-hidden"> how often you drink alcohol</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  How often have you had six or more units of alcohol on a single occasion in the last year?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['alcohol-units-more'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="how-often-do-you-drink-alcohol">
