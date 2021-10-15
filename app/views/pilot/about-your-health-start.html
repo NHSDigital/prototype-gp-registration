@@ -33,22 +33,21 @@ GP Registration Prototypes
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
-
-
-
-        <h1>
-          Your registration details are ready to be sent to<br> [New Surgery Name]
-        </h1>
-        <h3>
-          As a new patient we would like to know more about you. Would you want to answer the New Patient Health Questionnaire?
-        </h3>
-
-        <p>
-          The questionnaire helps your new GP understand more about you and your lifestyle. This can be useful when you are new to a GP or a surgery.
-        </p>
-        <p>
-          These questions are optional and will not affect the outcome of your application.
-        </p>
+        <div class="nhsuk-card nhsuk-card--confirmation nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
+          <div class="nhsuk-card__content">
+            <h1 class="nhsuk-card__title nhsuk-u-margin-bottom-4">
+              Your registration details are ready to be sent to [New Surgery Name]
+            </h1>
+          </div>
+        </div>
+        <h3>As a new patient would you want to answer the New Patient Health Questionnaire?</h3>
+        <p>The questionnaire helps your new GP Surgery understand more about you and your lifestyle. We'll ask you for your:</p>
+          <ul>
+            <li>health conditions</li>
+            <li>lifestyle</li>
+          </ul>
+        <p>If you do not wish to fill this out now, your new GP surgery may still request that you complete one.</p>
+        <p>The Health Questionnaire will take around 10 minutes to complete. You will need to complete the process in one session.</p>
 
         <form class='form' action="" method="post" autocomplete="off">
 
@@ -65,12 +64,12 @@ GP Registration Prototypes
           "name": "healthQuestions",
           "items": [
             {
-              "value": "Yes~/sprint-1/how-often-do-you-drink-alcohol?",
+              "value": "Yes~/pilot/how-often-do-you-drink-alcohol",
               "text": "Yes, answer the questionnaire",
               checked: checked("healthQuestions", "Yes")
             },
             {
-              "value": "No~/sprint-1/confirmation-page",
+              "value": "No~/pilot/application-complete",
               "text": "No, skip the questionnaire",
               checked: checked("healthQuestions", "No")
             }
