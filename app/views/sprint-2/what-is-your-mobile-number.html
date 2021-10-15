@@ -32,7 +32,7 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="how-can-we-contact-you" method="post" autocomplete="off">
+          <form action="what-is-your-phone-number" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -52,16 +52,6 @@
                   "name": "contact-mobile-tel"
                 }) }}
 
-                {{ checkboxes({
-                  "idPrefix": "no-mobile-number",
-                  "name": "no-mobile-number",
-                  "items": [
-                    {
-                      "value": "no-mobile-number",
-                      "text": "I do not have a mobile telephone"
-                    }
-                  ]
-                }) }}
 
             {% endcall %}
 
@@ -80,13 +70,7 @@
 </div>
 {% block pageScripts %}
 <script>
-$('#no-mobile-number-1').change(function(){
-    if ($('#no-mobile-number-1').is(':checked') == true){
-        $('input[type=text]').prop('disabled', true);
-    } else {
-      $('input[type=text]').prop('disabled', false);
-    }
-});
+
 </script>
 {% endblock %}
 {% endblock %}

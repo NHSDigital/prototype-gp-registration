@@ -38,7 +38,7 @@
 
             {% call fieldset({
               legend: {
-                "text": "Was this your address when you were with your last GP?",
+                "text": "Is this the address your last GP holds for you?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -71,13 +71,18 @@
               "name": "diffaddress",
               "items": [
                 {
-                  "value": "Yes~/sprint-2/what-is-your-phone-number",
+                  "value": "Yes~/sprint-2/what-is-your-mobile-number",
                   "text": "Yes",
                   checked: checked("diffaddress", "Yes")
                 },
                 {
                   "value": "No~/sprint-2/what-is-your-previous-address",
                   "text": "No",
+                  checked: checked("diffaddress", "No")
+                },
+                {
+                  "value": "No~/pilot/what-is-your-previous-address",
+                  "text": "Don't know",
                   checked: checked("diffaddress", "No")
                 }
 
