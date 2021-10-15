@@ -32,7 +32,7 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="do-you-have-allergies-answer" method="post" autocomplete="off">
+          <form action="" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -51,12 +51,12 @@
               "name": "has-allergies",
               "items": [
                 {
-                  "value": "Yes",
+                  "value": "Yes~/pilot/allergies-details",
                   "text": "Yes",
                   checked: checked("has-allergies", "Yes")
                 },
                 {
-                  "value": "No",
+                  "value": "No~/pilot/do-you-have-any-mental-health-conditions",
                   "text": "No",
                   checked: checked("has-allergies", "No")
                 }
