@@ -41,7 +41,7 @@ Pre-load - GP registration - NHS
           <p class="nhsuk-body">Preload the prototype with user data otherwise it will use default details.</p>
 
 
-            <form action="/sprint-1/start" method="post" autocomplete="off">
+            <form action="" method="post" autocomplete="off">
 
               {% call fieldset({
                 legend: {
@@ -69,6 +69,25 @@ Pre-load - GP registration - NHS
                     "value": "p5",
                     "text": "p5",
                     checked: checked("user-auth", "p5")
+                  }
+                ]
+              }) }}
+
+              <h3>Prototype version</h3>
+
+              {{ radios({
+                "idPrefix": "Prototype version",
+                "name": "proto-version",
+                "items": [
+                  {
+                    "value": "Sprint-2~/sprint-2/start",
+                    "text": "Sprint 2",
+                    "checked": checked("proto-version", "sprint-2")
+                  },
+                  {
+                    "value": "Pilot~/pilot",
+                    "text": "Pilot",
+                    "checked": checked("proto-version", "pilot")
                   }
                 ]
               }) }}
