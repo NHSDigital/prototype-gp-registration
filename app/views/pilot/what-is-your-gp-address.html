@@ -32,46 +32,43 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="what-is-your-previous-address-selection" method="post" autocomplete="off">
+          <form action="what-is-your-gp-address-selection" method="post" autocomplete="off">
+
 
             {% call fieldset({
               legend: {
-                "text": "What was your previous UK address?",
+                "text": "What is the name of the GP surgery you want to leave?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
 
+            {{ hint({
+              "text": "If you have been registered at more than one GP surgery previousy, please enter the name and address of the most recent GP surgery you were registered at.",
+              "classes": ""
+            }) }}
+
             {{ input({
               label: {
-                "text": "Postcode"
+                "text": "Surgery name"
               },
               "classes": "nhsuk-input--width-10",
-              "id": "find-previous-address",
-              "name": "find-previous-address",
-              value: data['find-previous-address']
+              "id": "find-gp-address",
+              "name": "find-gp-address",
+              value: data['find-gp-address']
           }) }}
 
-          {{ checkboxes({
-            "idPrefix": "no-previous-address",
-            "name": "no-previous-address",
-            "items": [
-              {
-                "value": "no-current-address~/pilot/what-is-your-phone-number",
-                "text": "I do not have a current UK home address"
-              }
-            ]
-          }) }}
 
           {% endcall %}
 
             {{ button({
-              "text": "Continue"
+              "text": "Continue",
+              "classes": "postcode-lookup-btn"
           }) }}
 
 
-
           </form>
+        </div>
         </div>
       </div>
     </section>
@@ -81,17 +78,16 @@
   </div>
 </div>
 {% block pageScripts %}
-
   <script>
-    $('#no-previous-address-1').change(function () {
-      if ($('#no-previous-address-1').is(':checked') == true) {
+
+    $('#no-gp-address-1').change(function () {
+      if ($('#no-gp-address-1').is(':checked') == true) {
         $('input[type=text]').prop('disabled', true);
       } else {
         $('input[type=text]').prop('disabled', false);
       }
     });
   </script>
-
 {% endblock %}
 
 {% endblock %}
