@@ -4,29 +4,20 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
-<!--
-  In /views/layout.html you can:
-    - change the header and footer
-    - add custom CSS and JavaScript
--->
-
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
 
 <!-- Set the page title -->
 {% block pageTitle %}
-GP Registration Prototypes
+  GP Registration Prototypes
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
-{% block beforeContent %}
-{% endblock %}
+{% block beforeContent %}{% endblock %}
 
 <!-- For adding a Go back link -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
-{% block outerContent %}
-
-
-{% endblock %}
+{% block outerContent %}{% endblock %}
 
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
@@ -42,45 +33,48 @@ GP Registration Prototypes
           href: "javascript:history.go(-1)"
         }) }}
 
-        <form action="" method="post" autocomplete="off">
+        <form action="nhs-login" method="post">
 
-          {% call fieldset({
-            legend: {
-              text: "Would you like to sign in or create an account with NHS login?",
-              classes: "nhsuk-fieldset__legend--l",
-              isPageHeading: true
-            }
-          }) %}
-
-          {{ radios({
-            "idPrefix": "nhs-login",
-            "name": "nhs-login",
-            "items": [
-              {
-                "value": "Yes~/pilot/nhs-login-email-address",
-                "text": "Sign in or create an account",
-                "hint": {
-                  "text": "If you already have an account we'll use this to find your details and register you. This will save you around 5 minutes."
-                },
-                checked: checked("nhs-login", "Yes")
-              },
-              {
-                "value": "No~/pilot/enter-your-email",
-                "text": "Continue without an account",
-                "hint": {
-                  "text": "Your details will not be saved for future use."
-                },
-                checked: checked("nhs-login", "No")
+            {% call fieldset({
+              legend: {
+                "text": "Would you like to sign in or create an account with NHS login?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
               }
-            ]
-          }) }}
+              }) %}
 
-          {% endcall %}
+              {{ hint({
+                "text": "You'll have a login account if you have used the NHS app or COVID booking app.",
+                "classes": "nhsuk-u-margin-bottom-2"
+              }) }}
+              
+              {{ radios({
+                "idPrefix": "nhs-login",
+                "name": "nhs-login",
+                "items": [
+                  {
+                    "value": "Yes~/pilot/nhs-login-email-address",
+                    "text": "Yes, sign in with NHS login",
+                    "hint": {
+                      "text": "If you already have an account we'll use this to find your details and register you. This will save you around 5 minutes."
+                    }
+                  },
+                  {
+                    "value": "No~/pilot/enter-your-email",
+                    "text": "No, continue without an account",
+                    "hint": {
+                      "text": "Your details will not be saved for future use."
+                    }
+                  }
+                ]
+              }) }}
+            {% endcall %}
+          
 
           {{ details({
             "text": "What is NHS login?",
             "HTML": "
-            <p>NHS login is a way to access online health services wherever you see ’NHS login’. If you do not already have an NHS login, you can register using your email address.</p>
+            <p>NHS login is a way to access online health services wherever you see 'NHS login'. If you do not already have an NHS login, you can register using your email address.</p>
             "
           }) }}
 
@@ -89,19 +83,9 @@ GP Registration Prototypes
           }) }}
 
         </form>
-
-
-
       </div>
     </div>
   </div>
 </section>
 
-
-
-
-<!-- End of content -->
-
-</div>
-</div>
 {% endblock %}
