@@ -1,0 +1,28 @@
+
+{% extends 'layout.html' %}
+
+{% from 'button/macro.njk' import button %}
+{% from 'back-link/macro.njk' import backLink %}
+
+{% block pageTitle %}
+Enter your email address
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+        <h1 class="nhsuk-heading-l">Your session has ended due to inactivity</h1>
+
+        <p class="nhsuk-body-l">Your session has ended because you haven't done anything for 15 minutes.</p>
+
+          <p class="nhsuk-body">We've deleted all the details you've entered to protect your data.</p>
+
+          {{ button({
+            "text": "Start again"
+        }) }}
+    </div>
+</div>
+
+
+{% endblock %}
