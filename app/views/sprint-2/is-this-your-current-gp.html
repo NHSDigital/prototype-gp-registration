@@ -32,7 +32,7 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="current-gp-answer" method="post" autocomplete="off">
+          <form action="what-is-your-gp-address" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -52,16 +52,16 @@
               "name": "current-gp",
               "classes": "nhsuk-radios--inline",
               "items": [
-                {
-                  "value": "yes",
-                  "text": "Yes",
-                  checked: checked("current-gp", "Yes")
-                },
-                {
-                  "value": "no",
-                  "text": "No",
-                  checked: checked("current-gp", "No")
-                }
+              {
+                "value": "yes~/sprint-2/do-you-have-emergency-contact",
+                "text": "Yes",
+                checked: checked("current-gp", "Yes")
+              },
+              {
+                "value": "no~/sprint-2/what-is-your-gp-address",
+                "text": "No",
+                checked: checked("current-gp", "No")
+              }
 
               ]
             }) }}
