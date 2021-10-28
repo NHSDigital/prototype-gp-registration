@@ -81,3 +81,13 @@
   background-color: $color_nhsuk-grey-5;
   padding: 24px 0px 0px 0px !important;
 }
+
+.mural-link a {
+  background: #e4e4e4 url(../images/mural.png) no-repeat 4px center;
+  background-size: 16px;
+  display: inline-block;
+  padding: 1px 3px 1px 24px;
+  border-radius: 3px;
+  font-size: 15px;
+  color: #000;
+}
