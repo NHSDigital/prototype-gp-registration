@@ -1,0 +1,115 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Your privacy on NHS login
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <!-- Change the page heading -->
+    <h1>
+      Page heading goes here
+    </h1>
+
+    <!-- Add content here -->
+    <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+    <p class="nhsuk-lede-text">
+      This page example includes a selection of styles and components available to the prototype kit.
+    </p>
+
+    <p>
+      For more styles, code snippets and guidance on components visit the
+      <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>.
+    </p>
+
+    <figure class="nhsuk-image">
+      <img class="nhsuk-image__img" src="/images/placeholder-image-16-9.jpg" alt="A 16:9 image placeholder">
+      <figcaption class="nhsuk-image__caption">
+        Image example
+      </figcaption>
+    </figure>
+
+    <h2>Level heading two</h2>
+
+    {{ list({
+      "title": "Do",
+      "type": "tick",
+      "items": [
+        {
+          "item": "cover blisters that are likely to burst with a soft plaster or dressing"
+        },
+        {
+          "item": "wash your hands before touching a burst blister"
+        },
+        {
+          "item": "allow the fluid in a burst blister to drain before covering it with a plaster or dressing"
+        }
+      ]
+    }) }}
+
+    {{ list({
+      "title": "Don't",
+      "type": "cross",
+      "items": [
+        {
+          "item": "burst a blister yourself"
+        },
+        {
+          "item": "peel the skin off a burst blister"
+        },
+        {
+          "item": "pick at the edges of the remaining skin"
+        },
+        {
+          "item": "wear the shoes or use the equipment that caused your blister until it heals"
+        }
+      ]
+    }) }}
+
+    <h3>
+      Level heading three
+    </h3>
+
+    <p>
+      Body text:
+    </p>
+
+    <ul>
+      <li>
+        The quick brown
+      </li>
+      <li>
+        fox jumps over
+      </li>
+      <li>
+        the lazy dog
+      </li>
+    </ul>
+
+    {{ warningCallout({
+      "heading": "School, nursery or work",
+      "HTML": "<p>Stay away from school, nursery or work until all the spots have crusted over. This is usually 5 days after the spots first appeared.</p>"
+    }) }}
+
+    <p class="nhsuk-body-m nhsuk-u-secondary-text-color nhsuk-u-margin-top-7 nhsuk-u-margin-bottom-0">
+      Would you like to <a href="/feedback-page" target="_blank" rel="noopener noreferrer">give feedback (opens in new tab)</a>  about this page?<br>
+    </p>
+
+    <!-- End of content -->
+
+  </div>
+
+</div>
+{% endblock %}
+
+{% block bodyEnd %}
+{% block scripts %}
+<!-- Custom JavaScript files can be added to this file -->
+{% include "includes/scripts.html" %}
+{% block pageScripts %}{% endblock %}
+{% endblock %}
+{% endblock %}
