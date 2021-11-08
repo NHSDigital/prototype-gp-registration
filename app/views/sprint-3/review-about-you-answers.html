@@ -1,0 +1,1422 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="about-your-health-start" method="post" autocomplete="off">
+
+            {{ fieldset({
+              "legend": {
+                "text": "Check your answers before submitting?",
+                "classes": "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-5",
+                "isPageHeading": true
+              }
+            }) }}
+
+            <div class="nhsuk-inset-text">
+              <span class="nhsuk-u-visually-hidden">Information: </span>
+              <p>If you have logged in using the NHS app you will not be able to change some of the answers. You will still be able to change answers you have given as part of the application.</p>
+              <p>If some of your information on NHS app is incorrect, please contact your current GP Surgery.</p>
+            </div>
+
+
+
+            <!-- P9 - NHS Login -->
+
+            {% if data['user-auth'] == "p9" %}
+
+            <!--- Personal details --->
+
+            <h3>Personal Details</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Email address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['contact-email'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden">Email address</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  First name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  Jo
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden">First name</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Middle name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  Furst
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden">middle name</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Last name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  Bloggs
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden">last name</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Date of birth
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  01/09/1980
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden">date of birth</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  NHS Number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  485 777 3456
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden">NHS number</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Gender
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  Female
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden"> selected gender</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Ethnicity
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  Mixed or multiple ethnic groups
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <!--- Addresses --->
+
+            <h3>Address</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Current address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  Address line 1<br>
+                  Address line 2<br>
+                  Address line 3<br>
+                  Address line 4<br>
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Previous address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['previous-address-line-1'] }}<br />
+                  {{ data['previous-address-line-2'] }}<br />
+                  {{ data['previous-address-town'] }}<br />
+                  {{ data['previous-address-postcode'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <!--- Contact preferences details --->
+
+            <h3>Contact preferences</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Contact methods
+                </dt>
+                <dd class="nhsuk-summary-list__value nhsuk-summary-list__contact-prefs">
+
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden"> contact email address</span></a>
+                </dd>
+              </div>
+
+            </dl>
+
+
+            <!--- GP Details --->
+
+            <h3>Previous GP</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Previous GP address
+                </dt>
+                <dd class="nhsuk-summary-list__value previous-gp__value">
+                  {{ data['previous-gp-name'] }}<br/>
+                  {{ data['previous-gp-address-line-1'] }}<br/>
+                  {{ data['previous-gp-address-line-2'] }}<br/>
+                  {{ data['previous-gp-town'] }}<br/>
+                  {{ data['previous-gp-postcode'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden">previous GP address</span></a>
+                </dd>
+              </div>
+            </dl>
+
+            <!--- Selected GP --->
+
+            <h3>Prescription collection details</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Collects prescriptions from
+                </dt>
+                <dd class="nhsuk-summary-list__value collects-prescriptions-from">
+                  {{ data['how-do-you-collect-prescriptions'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> where you collect prescriptions from</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row pharmacy-distance">
+                <dt class="nhsuk-summary-list__key">
+                  Lives more than 1.6km away from nearest pharmacy
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['distance-from-pharmacy'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> whether you live more than 1.6 kilometres from your nearest pharmacy</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row pharmacy-difficulty">
+                <dt class="nhsuk-summary-list__key">
+                  Has difficulty in reaching pharmacy?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['difficulty-in-reaching-pharmacy'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> whether you would have difficult in reaching a pharmacy</span></a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <!--- Emergency Contact --->
+
+            <h3>Emergency Contact</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Emergency contact full name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['ec-full-name'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency contact name</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Emergency contact relationship to you
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['ec-relationship'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">
+                    Change<span class="nhsuk-u-visually-hidden"> emergency contact relationship to you</span>
+                  </a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Emergency contact telephone number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['ec-contact-tel'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency contact telephone number</span></a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <h2 class="nhsuk-heading-l">Confirm these details are correct</h2>
+
+            <p>By submitting these details you are confirming that, to the best of your knowledge, they are providing are correct.</p>
+
+            {{ button({
+              "text": "Confirm and continue"
+            }) }}
+
+
+            <!-- P5 - NHS Login -->
+
+            {% elif data['user-auth'] == "p5" %}
+
+
+            <h3>Personal Details</h3>
+
+            <dl class="nhsuk-summary-list">
+
+
+              <!--- Personal details --->
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Email address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['contact-email'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden">Email address</span>
+                  </a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  First name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  Jo
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden">First name</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Middle name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  Furst
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden">previous surnames</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Last name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  Bloggs
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden">previous surnames</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Date of birth
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  01/09/1980
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden">date of birth</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  NHS Number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  485 777 3456
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden">NHS number</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Gender
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  Female
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden"> selected gender</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Ethnicity
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  Mixed or multiple ethnic groups
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
+                </dd>
+              </div>
+
+            </dl>
+
+
+            <!--- Addresses --->
+
+            <h3>Address</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Current address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if data['select-current-address'] %}
+                  {{ data['select-current-address'] }}
+                  {% else %}
+                  {{ data['select-current-address'] }}
+                  {{ data['current-address-line-1'] }}<br />
+                  {{ data['current-address-line-2'] }}<br />
+                  {{ data['current-address-town'] }}<br />
+                  {{ data['current-address-postcode'] }}
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Previous address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['previous-address-line-1'] }}<br />
+                  {{ data['previous-address-line-2'] }}<br />
+                  {{ data['previous-address-town'] }}<br />
+                  {{ data['previous-address-postcode'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden">Previous address</span></a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <!--- Contact preferences details --->
+
+            <h3>Contact preferences</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Contact methods
+                </dt>
+                <dd class="nhsuk-summary-list__value nhsuk-summary-list__contact-prefs">
+
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden"> contact email address</span></a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <!--- GP Details --->
+
+            <h3>Previous GP</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Previous GP address
+                </dt>
+                <dd class="nhsuk-summary-list__value previous-gp__value">
+                  {{ data['previous-gp-name'] }}<br/>
+                  {{ data['previous-gp-address-line-1'] }}<br/>
+                  {{ data['previous-gp-address-line-2'] }}<br/>
+                  {{ data['previous-gp-town'] }}<br/>
+                  {{ data['previous-gp-postcode'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden">previous GP address</span></a>
+                </dd>
+              </div>
+            </dl>
+
+
+            <!--- Selected GP --->
+
+            <h3>Prescription collection details</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Collects prescriptions from
+                </dt>
+                <dd class="nhsuk-summary-list__value collects-prescriptions-from">
+                  {{ data['how-do-you-collect-prescriptions'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> where you collect prescriptions from</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row pharmacy-distance">
+                <dt class="nhsuk-summary-list__key">
+                  Lives more than 1.6km away from nearest pharmacy
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['distance-from-pharmacy'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> whether you live more than 1.6 kilometres from your nearest pharmacy</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row pharmacy-difficulty">
+                <dt class="nhsuk-summary-list__key">
+                  Has difficulty in reaching pharmacy?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['difficulty-in-reaching-pharmacy'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> whether you would have difficult in reaching a pharmacy</span></a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <!--- Emergency Contact --->
+
+            <h3>Emergency Contact</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Emergency contact full name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['ec-full-name'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency contact name</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Emergency contact relationship to you
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['ec-relationship'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency contact relationship to you</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Emergency contact telephone number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['ec-contact-tel'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency contact telephone number</span></a>
+                </dd>
+              </div>
+
+
+            </dl>
+
+            <h2 class="nhsuk-heading-l">Confirm these details are correct</h2>
+
+            <p>By submitting these details you are confirming that, to the best of your knowledge, they are providing are correct.</p>
+
+
+            {{ button({
+              "text": "Confirm and continue"
+            }) }}
+
+
+            <!--- NHS number known --->
+
+            {% elif data['know-nhs-number'] == "Yes" %}
+
+
+            <h3>Personal Details</h3>
+
+            <dl class="nhsuk-summary-list">
+
+              <!--- Personal details --->
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Email address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['contact-email'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">
+                    <span class="nhsuk-u-visually-hidden">
+                      Email address</span>
+                    </a>
+                  </dd>
+                </div>
+
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    First name
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    Jo
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">
+                      <span class="nhsuk-u-visually-hidden">
+                        First name</span>
+                      </a>
+                    </dd>
+                  </div>
+
+
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Middle name
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      Furst
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        <span class="nhsuk-u-visually-hidden">
+                          previous surnames</span>
+                        </a>
+                      </dd>
+                    </div>
+
+
+                    <div class="nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__key">
+                        Last name
+                      </dt>
+                      <dd class="nhsuk-summary-list__value">
+                        Bloggs
+                      </dd>
+                      <dd class="nhsuk-summary-list__actions">
+                        <a href="">
+                          <span class="nhsuk-u-visually-hidden">
+                            previous surnames</span>
+                          </a>
+                        </dd>
+                      </div>
+
+
+                      <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                          Date of birth
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                          01/09/1980
+                        </dd>
+                        <dd class="nhsuk-summary-list__actions">
+                          <a href="">
+                            <span class="nhsuk-u-visually-hidden">
+                              date of birth</span>
+                            </a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            NHS Number
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['nhs-number'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden">NHS number</span>
+                            </a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Gender
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['gender'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Ethnicity
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['ethnicity'] }}
+                            {{ data['ethnicity-detail-white'] }}<br />
+                            {{ data['ethnicity-detail-mixed'] }}<br />
+                            {{ data['ethnicity-detail-black'] }}<br />
+                            {{ data['ethnicity-detail-asian'] }}<br />
+                            {{ data['ethnicity-detail-another'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
+                          </dd>
+                        </div>
+
+                      </dl>
+
+
+                      <!--- Addresses --->
+
+                      <h3>Address</h3>
+
+                      <dl class="nhsuk-summary-list">
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Current address
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {% if data['select-current-address'] %}
+                            {{ data['select-current-address'] }}
+                            {% else %}
+                            {{ data['select-current-address'] }}
+                            {{ data['current-address-line-1'] }}<br />
+                            {{ data['current-address-line-2'] }}<br />
+                            {{ data['current-address-town'] }}<br />
+                            {{ data['current-address-postcode'] }}
+                            {% endif %}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Previous address
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {% if data['select-previous-address'] %}
+                            {{ data['select-previous-address'] }}
+                            {% else %}
+                            {{ data['select-previous-address'] }}
+                            {{ data['previous-address-line-1'] }}<br />
+                            {{ data['previous-address-line-2'] }}<br />
+                            {{ data['previous-address-town'] }}<br />
+                            {{ data['previous-address-postcode'] }}
+                            {% endif %}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                          </dd>
+                        </div>
+
+                      </dl>
+
+                      <!--- Contact preferences details --->
+
+                      <h3>Contact preferences</h3>
+
+                      <dl class="nhsuk-summary-list">
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Contact methods
+                          </dt>
+                          <dd class="nhsuk-summary-list__value nhsuk-summary-list__contact-prefs">
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> contact email address</span></a>
+                          </dd>
+                        </div>
+
+                      </dl>
+
+
+                      <h3>Previous GP</h3>
+
+                      <dl class="nhsuk-summary-list">
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Previous GP address
+                          </dt>
+                          <dd class="nhsuk-summary-list__value previous-gp__value">
+                            {% if data['select-gp-address'] %}
+                            {{ data['select-gp-address'] }}
+                            {% else %}
+                            {{ data['select-gp-address'] }}
+                            {{ data['previous-gp-name'] }}<br/>
+                            {{ data['previous-gp-address-line-1'] }}<br/>
+                            {{ data['previous-gp-address-line-2'] }}<br/>
+                            {{ data['previous-gp-town'] }}<br/>
+                            {{ data['previous-gp-postcode'] }}
+                            {% endif %}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="previous-gp-details">Change<span class="nhsuk-u-visually-hidden">previous GP address</span></a>
+                          </dd>
+                        </div>
+                      </dl>
+
+
+                      <!--- Selected GP --->
+
+                      <h3>Prescription collection details</h3>
+
+                      <dl class="nhsuk-summary-list">
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Collects prescriptions from
+                          </dt>
+                          <dd class="nhsuk-summary-list__value collects-prescriptions-from">
+                            {{ data['how-do-you-collect-prescriptions'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="which-gp-do-you-want-register-with">Change<span class="nhsuk-u-visually-hidden"> where you collect prescriptions from</span></a>
+                          </dd>
+                        </div>
+
+                        <div class="nhsuk-summary-list__row pharmacy-distance">
+                          <dt class="nhsuk-summary-list__key">
+                            Lives more than 1.6km away from nearest pharmacy
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['distance-from-pharmacy'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="which-gp-do-you-want-register-with">Change<span class="nhsuk-u-visually-hidden"> whether you live more than 1.6 kilometres from your nearest pharmacy</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row pharmacy-difficulty">
+                          <dt class="nhsuk-summary-list__key">
+                            Has difficulty in reaching pharmacy?
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['difficulty-in-reaching-pharmacy'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="which-gp-do-you-want-register-with">Change<span class="nhsuk-u-visually-hidden"> whether you would have difficult in reaching a pharmacy</span></a>
+                          </dd>
+                        </div>
+
+                      </dl>
+
+
+                      <!--- Emergency Contact --->
+
+                      <h3>Emergency Contact</h3>
+
+                      <dl class="nhsuk-summary-list">
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Emergency contact full name
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['ec-full-name'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="emergency-contact-details">Change<span class="nhsuk-u-visually-hidden"> emergency contact name</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Emergency contact relationship to you
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['ec-relationship'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="emergency-contact-details">Change<span class="nhsuk-u-visually-hidden"> emergency contact relationship to you</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Emergency contact telephone number
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['ec-contact-tel'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="emergency-contact-details">Change<span class="nhsuk-u-visually-hidden"> emergency contact telephone number</span></a>
+                          </dd>
+                        </div>
+
+                      </dl>
+
+                      <h2 class="nhsuk-heading-l">Confirm these details are correct</h2>
+
+                      <p>By submitting these details you are confirming that, to the best of your knowledge, they are providing are correct.</p>
+
+                      {{ button({
+                        "text": "Confirm and continue"
+                      }) }}
+
+
+
+                      <!--- Unauthed users --->
+
+                      {% else %}
+
+
+                      <h3>Personal Details</h3>
+
+                      <dl class="nhsuk-summary-list">
+
+                        <!--- Personal details --->
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Email address
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['contact-email'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden">Email address</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Title
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['name-title'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden">Title</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            First name
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['name-first-name'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden">First name</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Middle name
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['name-middle-name'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden">middle name</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Last name
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['name-last-name'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden">last name</span>
+                            </a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Date of birth
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            <span id="dob-day">{{ data['dob-day'] }}</span>
+                            <span id="dob-month">{{ data['dob-month'] }}</span>
+                            <span id="dob-year">{{ data['dob-year'] }}</span>
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden">date of birth</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            NHS Number
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['nhs-number'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden">NHS number</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Gender
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['gender'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Ethnicity
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['ethnicity-detail-white'] }}
+                            {{ data['ethWhite'] }}
+                            {{ data['ethnicity-detail-asian'] }}
+                            {{ data['ethAsian'] }}
+                            {{ data['ethnicity-detail-black'] }}
+                            {{ data['ethBlack'] }}
+                            {{ data['ethnicity-detail-mixed'] }}
+                            {{ data['ethMixed'] }}
+                            {{ data['ethnicity-detail-another'] }}
+                            {{ data['ethOther'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
+                          </dd>
+                        </div>
+
+                      </dl>
+
+
+                      <!--- Addresses --->
+
+                      <h3>Address</h3>
+
+                      <dl class="nhsuk-summary-list">
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Current address
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {% if data['select-current-address'] %}
+                            {{ data['select-current-address'] }}
+                            {% else %}
+                            {{ data['select-current-address'] }}
+                            {{ data['current-address-line-1'] }}<br />
+                            {{ data['current-address-line-2'] }}<br />
+                            {{ data['current-address-town'] }}<br />
+                            {{ data['current-address-postcode'] }}
+                            {% endif %}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Previous address
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {% if data['select-previous-address'] %}
+                            {{ data['select-previous-address'] }}
+                            {% else %}
+                            {{ data['select-previous-address'] }}
+                            {{ data['previous-address-line-1'] }}<br />
+                            {{ data['previous-address-line-2'] }}<br />
+                            {{ data['previous-address-town'] }}<br />
+                            {{ data['previous-address-postcode'] }}
+                            {% endif %}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                          </dd>
+                        </div>
+
+                      </dl>
+
+
+                      <!--- Contact preferences details --->
+
+                      <h3>Contact preferences</h3>
+
+                      <dl class="nhsuk-summary-list">
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Contact methods
+                          </dt>
+                          <dd class="nhsuk-summary-list__value nhsuk-summary-list__contact-prefs">
+
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> contact email address</span></a>
+                          </dd>
+                        </div>
+
+                      </dl>
+
+
+                      <!--- GP Details --->
+
+                      <h3>Previous GP</h3>
+
+                      <dl class="nhsuk-summary-list">
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Previous GP address
+                          </dt>
+                          <dd class="nhsuk-summary-list__value previous-gp__value">
+                            {% if data['select-gp-address'] %}
+                            {{ data['select-gp-address'] }}
+                            {% else %}
+                            {{ data['select-gp-address'] }}
+                            {{ data['previous-gp-name'] }}<br/>
+                            {{ data['previous-gp-address-line-1'] }}<br/>
+                            {{ data['previous-gp-address-line-2'] }}<br/>
+                            {{ data['previous-gp-town'] }}<br/>
+                            {{ data['previous-gp-postcode'] }}
+                            {% endif %}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden">previous GP address</span></a>
+                          </dd>
+                        </div>
+                      </dl>
+
+
+                      <!--- Selected GP --->
+
+                      <h3>Prescription collection details</h3>
+
+                      <dl class="nhsuk-summary-list">
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Collects prescriptions from
+                          </dt>
+                          <dd class="nhsuk-summary-list__value collects-prescriptions-from">
+                            {{ data['how-do-you-collect-prescriptions'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> where you collect prescriptions from</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row pharmacy-distance">
+                          <dt class="nhsuk-summary-list__key">
+                            Lives more than 1.6km away from nearest pharmacy
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['distance-from-pharmacy'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> whether you live more than 1.6 kilometres from your nearest pharmacy</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row pharmacy-difficulty">
+                          <dt class="nhsuk-summary-list__key">
+                            Has difficulty in reaching pharmacy?
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['difficulty-in-reaching-pharmacy'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> whether you would have difficult in reaching a pharmacy</span></a>
+                          </dd>
+                        </div>
+
+                      </dl>
+
+
+                      <!--- Emergency Contact --->
+
+                      <h3>Emergency Contact</h3>
+
+                      <dl class="nhsuk-summary-list">
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Emergency contact full name
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['ec-full-name'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency contact name</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Emergency contact relationship to you
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['ec-relationship'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency contact relationship to you</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Emergency contact telephone number
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['ec-contact-tel'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency contact telephone number</span></a>
+                          </dd>
+                        </div>
+
+                      </dl>
+
+
+                      <h2 class="nhsuk-heading-l">Confirm these details are correct</h2>
+
+                      <p>By submitting these details you are confirming that, to the best of your knowledge, they are providing are correct.</p>
+
+                      {{ button({
+                        "text": "Confirm and continue"
+                      }) }}
+
+                    </form>
+                  </div>
+                </div>
+              </section>
+
+    <!-- End of content -->
+{% endif %}
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+
+  $(document).ready(function () {
+
+    // Hide subsequent dispensing doctor fields if user has chosen pharmacy
+
+    if ($('.collects-prescriptions-from').text().includes("Pharmacy")) {
+      console.log("true");
+      $('.pharmacy-distance').hide();
+      $('.pharmacy-difficulty').hide();
+    } else {};
+
+    // Populate contact preferences accordingly
+
+    var contactPrefsEmail = "{{ data['contact-prefs-email'] }}";
+    var contactPrefsText = "{{ data['contact-prefs-text'] }}";
+    var contactPrefsMobileTel = "{{ data['contact-prefs-mobile-tel'] }}";
+    var contactPrefsHomeTel =  "{{ data['contact-prefs-home-tel'] }}";
+    var contactPrefsNone = "{{ data['contact-prefs-none'] }}";
+
+    if (contactPrefsEmail) {
+      $('.nhsuk-summary-list__contact-prefs').append("<span class='contact-prefs-type'> {{ data['contact-prefs-email'] }} </span><span class='contact-prefs-entry'> {{ data['contact-email'] }} </span>");
+    } else {}
+
+    if (contactPrefsText) {
+      $('.nhsuk-summary-list__contact-prefs').append("<span class='contact-prefs-type'> {{ data['contact-prefs-text'] }} </span><span class='contact-prefs-entry'> {{ data['contact-mobile-tel'] }} </span>");
+    } else {}
+
+    if (contactPrefsMobileTel) {
+      $('.nhsuk-summary-list__contact-prefs').append("<span class='contact-prefs-type'> {{ data['contact-prefs-mobile-tel'] }} </span><span class='contact-prefs-entry'> {{ data['contact-mobile-tel'] }} </span>");
+    } else {}
+
+    if (contactPrefsHomeTel) {
+      $('.nhsuk-summary-list__contact-prefs').append("<span class='contact-prefs-type'> {{ data['contact-prefs-home-tel'] }} </span><span class='contact-prefs-entry'> {{ data['contact-home-tel'] }} </span>");
+    } else {}
+
+    if (contactPrefsNone) {
+      $('.nhsuk-summary-list__contact-prefs').append("<span class='contact-prefs-entry'> {{ data['contact-prefs-none'] }} </span>");
+    } else {}
+
+    // Populate any unanswered fields with "Not answered" text
+    $('.nhsuk-summary-list__value').filter(function () {
+      return $.trim($(this).text()) === "";
+    }).each(function (ind, obj) {
+      $(obj).closest('dd').html("<span class='summary-page-unanswered'>Not answered</span>");
+    });
+
+    // Add colon to contact method type if it isn't blank
+    $(".contact-prefs-type:not(:empty)").append(':');
+
+    // Convert nunjucks date data to be used in JS
+    var dobDD = JSON.parse('{{ data["dob-day"] }}'.replace(/&quot;/g,'"'));
+    var dobMM = JSON.parse('{{ data["dob-month"] }}'.replace(/&quot;/g,'"'));
+    var dobYY = JSON.parse('{{ data["dob-year"] }}'.replace(/&quot;/g,'"'));
+
+    // Convert month format from mm to Mmm
+    var date = new Date(dobYY, (dobMM - 1), dobDD); // 2009-11-10
+    var month = date.toLocaleString('default', {month: 'short'});
+
+    // Insert new month format into summary list
+
+    $("#dob-month").text(month);
+
+  });
+</script>
+
+{% endblock %}

@@ -1,0 +1,120 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <h1>
+          Register with a GP
+        </h1>
+
+        {{ warningCallout({
+          "heading": "Important",
+          "HTML": "<p>You can only use this service if you are already with a GP and wish to move to a new practice.</p>"
+        }) }}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+
+        <h2>Before you start</h2>
+        <p>The registration process will take around 15 minutes to complete. You will need to complete the process in one session.</p>
+        <p>We'll ask you for your:</p>
+
+        <ul>
+          <li>name and address</li>
+          <li>date of birth</li>
+          <li>previous GP surgery</li>
+          <li>health and medical information</li>
+          <li>contact details</li>
+        </ul>
+
+        <p>You do not need your NHS number but it might make the process easier.</p>
+
+        {{ details({
+          "text": "How to find your NHS number",
+          "HTML": "
+          <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
+            <p>You can find your NHS number by logging in to a GP online service or on any document the NHS has sent you, such as your:</p>
+            <ul>
+                <li>prescriptions</li>
+                <li>test results</li>
+                <li>hospital referral letters</li>
+                <li>appointment letters</li>
+            </ul>
+            <p>Ask your GP surgery for help if you can't find your NHS number.</p>
+          "
+        }) }}
+
+        <p>Your answers will help us find the correct medical records. We use these records to offer relevant and appropriate healthcare services for the person being registered.</p>
+
+        {% from 'inset-text/macro.njk' import insetText %}
+
+        <div class="nhsuk-inset-text">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>The process is confidential and any data entered is store securely following the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/711097/guide-to-the-general-data-protection-regulation-gdpr-1-0.pdf">UK government's data storage standards PDF, 2.25Mb</a></p>
+        </div>
+        <p>By using this service you are agreeing to our <a href="#">terms of use</a> and <a href="#">privacy policy</a>.</p>
+        <p><a href="continue-with-nhs-login" class="nhsuk-button nhsuk-button--green">Start now</a></p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <h2>Other ways to register</h2>
+        <p>You can also register with a GP surgery by visiting them in person and completing a <a href="https://www.gov.uk/government/publications/gms1">GMS1 registration form</a> or other registration form. However, some surgeries may not be accepting visitors in person due to the COVID-19 pandemic. Call the surgery first for instructions.</p>
+        <p>You can view <a href="https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/">guidance about how to register with a GP</a> or find a GP surgery using the <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a> service</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}

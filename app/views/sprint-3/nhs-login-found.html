@@ -1,0 +1,111 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="nhs-login-found-answer" method="post" autocomplete="off">
+
+            {% call fieldset({
+              legend: {
+                "text": "Would you like to sign in with your NHS login account?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>We found an NHS Login linked to <strong>{{ data['contact-email'] }}</strong></p>
+
+            </div>
+
+            {{ radios({
+              "idPrefix": "nhs-acc",
+              "name": "nhs-acc",
+              "items": [
+                {
+                  "value": "Yes~/sprint-3/nhs-login-password",
+                  "text": "Yes",
+                  "hint": {
+                    "text": ""
+                  },
+                  checked: checked("nhs-acc", "yes")
+                },
+                {
+                  "value": "no~/sprint-3/do-you-know-nhs-number",
+                  "text": "No",
+                  "hint": {
+                    "text": ""
+                  },
+                  checked: checked("nhs-acc", "no")
+                }
+              ]
+            }) }}
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">Don't remember setting up an account?</span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  <p>You may have set up an NHS login when using other health websites or apps, like a COVID-19 service.</p>
+
+
+              </div>
+          </details>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+
+            {% endcall %}
+
+            <div class="nhsuk-inset-text">
+            <span class="nhsuk-u-visually-hidden">Information: </span>
+            <h3> What is NHS login?</h3>
+            <p>NHS login allows you to securely access health websites and apps with just one username and password.</p>
+            </div>
+
+
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% block pageScripts %}
+
+{% endblock %}
+{% endblock %}
