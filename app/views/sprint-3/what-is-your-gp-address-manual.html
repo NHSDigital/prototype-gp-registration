@@ -32,47 +32,67 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="how-can-we-contact-you" method="post" autocomplete="off">
 
-            {% call fieldset({
-              legend: {
-                "text": "What is your home telephone number?",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
-              }
-            }) %}
+          <form action="is-your-current-address-different" method="post" autocomplete="off">
+
+
+
+              {% call fieldset({
+                legend: {
+                  "text": "What is the address of the GP surgery you want to leave?",
+                  "classes": "nhsuk-fieldset__legend--m"
+                }
+              }) %}
 
               {{ input({
                 label: {
-                  "text": 'Home telephone (optional)'
+                  "html": 'Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>'
                 },
-                "hint": {
-                  "text": "Also known as landline, for example 01330 825690"
+                "id": "previous-gp-address-line-1",
+                "name": "previous-gp-address-line-1",
+                value: data['previous-gp-address-line-1']
+              }) }}
+
+              {{ input({
+                label: {
+                  "html": '<span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>'
                 },
-                "classes": "nhsuk-input--width-10",
-                "id": "contact-home-tel",
-                "name": "contact-home-tel"
+                "id": "previous-gp-address-line-2",
+                "name": "previous-gp-address-line-2",
+                value: data['previous-gp-address-line-2']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Town or city"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "previous-gp-town",
+                "name": "previous-gp-town",
+                value: data['previous-gp-town']
               }) }}
 
               {{ input({
                   label: {
-                    "text": "Mobile telephone (optional)"
-                  },
-                  "hint": {
-                    "text": "For example 07712345789"
+                    "text": "Postcode"
                   },
                   "classes": "nhsuk-input--width-10",
-                  "id": "contact-mobile-tel",
-                  "name": "contact-mobile-tel"
-                }) }}
+                  "id": "previous-gp-postcode",
+                  "name": "previous-gp-postcode",
+                  value: data['previous-gp-postcode']
+              }) }}
 
 
 
-            {% endcall %}
+              {% endcall %}
 
-            {{ button({
-              "text": "Continue"
-            }) }}
+
+              {{ button({
+                "text": "Continue"
+              }) }}
+
+
+
 
           </form>
         </div>
@@ -84,14 +104,6 @@
   </div>
 </div>
 {% block pageScripts %}
-<script>
-  $('#no-home-number-1').change(function(){
-      if ($('#no-home-number-1').is(':checked') == true){
-          $('input[type=text]').prop('disabled', true);
-      } else {
-        $('input[type=text]').prop('disabled', false);
-      }
-  });
-  </script>
 {% endblock %}
+
 {% endblock %}

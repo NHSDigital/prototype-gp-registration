@@ -27,159 +27,99 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
 
           {% if data['user-auth'] == "p9" %}
           <form action="how-can-we-contact-you" method="post" autocomplete="off">
           {% else %}
-          <form action="what-is-your-phone-number" method="post" autocomplete="off">
+          <form action="are-you-registered-at-gp" method="post" autocomplete="off">
           {% endif %}
 
 
-            <div id="select-address-section">
-              <h2 class="nhsuk-heading-xs">Postcode</h2>
-              <p id="postcode-input-data">
-              {{ data['find-previous-address'] }}  &nbsp;&nbsp;<a href="what-is-your-previous-address" id="change-postcode-link">Change</a>
-              </p>
+          {% call fieldset({
+            legend: {
+              text: "Select your previous address",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
 
-              {{ select({
-                  "id": "select-previous-address",
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>6 addresses found for <strong>{{ data['prev-house-number-address'] }}</strong> <strong>{{ data['find-previous-address'] }}</strong></p>
+          </div>
+
+
+              {{ radios({
+                  "idPrefix": "select-previous-address",
                   "name": "select-previous-address",
-                  "label": {
-                    "text": "Select an address"
-                  },
-                  "items": [
-                  {
-                    "value": 0,
-                    "text": "10 Addresses found",
-                    "selected": true,
-                    "disabled": true
-                  },
-                    {
-                      "value": "1 Town Street, London, SW1A 1AA",
-                      "text": "1 Town Street, London, SW1A 1AA"
-                    },
-                    {
-                      "value": "2 Town Street, London, SW1A 1AA",
-                      "text": "2 Town Street, London, SW1A 1AA"
-                    },
-                    {
-                      "value": "3 Town Street, London, SW1A 1AA",
-                      "text": "3 Town Street, London, SW1A 1AA"
-                    },
-                    {
-                      "value": "4 Town Street, London, SW1A 1AA",
-                      "text": "4 Town Street, London, SW1A 1AA"
-                    },
-                    {
-                      "value": "5 Town Street, London, SW1A 1AA",
-                      "text": "5 Town Street, London, SW1A 1AA"
-                    },
-                    {
-                      "value": "6 Town Street, London, SW1A 1AA",
-                      "text": "6 Town Street, London, SW1A 1AA"
-                    },
-                    {
-                      "value": "7 Town Street, London, SW1A 1AA",
-                      "text": "7 Town Street, London, SW1A 1AA"
-                    },
-                    {
-                      "value": "8 Town Street, London, SW1A 1AA",
-                      "text": "8 Town Street, London, SW1A 1AA"
-                    },{
-                      "value": "9 Town Street, London, SW1A 1AA",
-                      "text": "9 Town Street, London, SW1A 1AA"
-                    },{
-                      "value": "10 Town Street, London, SW1A 1AA",
-                      "text": "10 Town Street, London, SW1A 1AA"
-                    }
-                  ]
-                }) }}
-
-              {{ button({
-                  "text": "Continue"
-              }) }}
-
-              <p>
-                <a href="#" id="enter-address-manually-link">I cant find my address in the list</a>
-              </p>
 
 
-            </div>
-
-
-            <div class="previous-address-form hidden-section">
-
-              {% call fieldset({
-                legend: {
-                  "text": "What was your previous UK address?",
-                  "classes": "nhsuk-fieldset__legend--m"
-                }
-              }) %}
-
-              {{ input({
-                label: {
-                  "html": 'Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>'
-                },
-                "id": "previous-address-line-1",
-                "name": "previous-address-line-1",
-                value: data['previous-address-line-1']
-              }) }}
-
-              {{ input({
-                label: {
-                  "html": '<span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>'
-                },
-                "id": "previous-address-line-2",
-                "name": "previous-line-2",
-                value: data['previous-address-line-2']
-              }) }}
-
-              {{ input({
-                label: {
-                  "text": "Town or city"
-                },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "previous-address-town",
-                "name": "previous-address-town",
-                value: data['previous-address-town']
-              }) }}
-
-              {{ input({
-                  label: {
-                    "text": "Postcode"
-                  },
-                  "classes": "nhsuk-input--width-10",
-                  "id": "previous-address-postcode",
-                  "name": "previous-address-postcode",
-                  value: data['previous-address-postcode']
-              }) }}
-
-              {{ checkboxes({
-                "idPrefix": "no-previous-address",
-                "name": "no-previous-address",
                 "items": [
                   {
-                    "value": "no-previous-address",
-                    "text": "I do not have a current UK home address"
+                    "value": "1 Town Street, London, SW1A 1AA",
+                    "text": "1 Town Street, London, SW1A 1AA",
+                    "hint": {
+                  },
+                    checked: checked("select-previous-address", "1 Town Street, London, SW1A 1AA")
+                  },
+                  {
+                    "value": "2 Town Street, London, SW1A 1AA",
+                    "text": "2 Town Street, London, SW1A 1AA",
+                    "hint": {
+                  },
+                    checked: checked("select-previous-address", "2 Town Street, London, SW1A 1AA")
+                  },    {
+                        "value": "3 Town Street, London, SW1A 1AA",
+                        "text": "3 Town Street, London, SW1A 1AA",
+                        "hint": {
+                      },
+                        checked: checked("select-previous-addresss", "3 Town Street, London, SW1A 1AA")
+                      },
+                      {
+                        "value": "4 Town Street, London, SW1A 1AA",
+                        "text": "4 Town Street, London, SW1A 1AA",
+                        "hint": {
+                      },
+                        checked: checked("select-previous-addresss", "4 Town Street, London, SW1A 1AA")
+                      },
+                      {
+                        "value": "5 Town Street, London, SW1A 1AA",
+                        "text": "5 Town Street, London, SW1A 1AA",
+                        "hint": {
+                      },
+                        checked: checked("select-previous-address", "5 Town Street, London, SW1A 1AA")
+                      },
+                      {
+                        "value": "6 Town Street, London, SW1A 1AA",
+                        "text": "6 Town Street, London, SW1A 1AA",
+                        "hint": {
+                      },
+                        checked: checked("select-previous-address", "6 Town Street, London, SW1A 1AA")
                   }
                 ]
               }) }}
 
               {% endcall %}
 
-              {{ button({
-                "text": "Continue"
-              }) }}
-
               <p>
-                <a href="what-is-your-previous-address" id="use-postcode-lookup-link">Return to postcode lookup</a>
+                <a href="/sprint-3/what-is-your-previous-address-manual" id="enter-address-manually-link">I cannot find my address on the list</a>
               </p>
 
 
+            {{ button({
+                "text": "Continue"
+            }) }}
 
-            </div>
+
+
+
 
           </form>
+
         </div>
       </div>
     </section>
@@ -189,20 +129,7 @@
   </div>
 </div>
 {% block pageScripts %}
-  <script>
 
-    $('.postcode-lookup-btn').click(function () {
-      $('#previous-address-lookup-container').addClass("hidden-section");
-      $('#select-address-section').removeClass("hidden-section");
-      $('#postcode-input-data').prepend($('#find-previous-address').val().toUpperCase());
-    });
-
-    $('#enter-address-manually-link').click(function () {
-      $('#select-address-section').addClass("hidden-section");
-      $('.previous-address-form').removeClass("hidden-section");
-    });
-
-  </script>
 {% endblock %}
 
 {% endblock %}

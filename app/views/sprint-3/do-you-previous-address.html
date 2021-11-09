@@ -43,18 +43,18 @@
             }) %}
 
             {{ radios({
-              "idPrefix": "have-current-uk-address",
-              "name": "have-current-uk-address",
+              "idPrefix": "have-previous-uk-address",
+              "name": "have-previous-uk-address",
               "items": [
                 {
-                  "value": "Yes",
+                  "value": "Yes~/sprint-3/what-is-your-previous-address",
                   "text": "Yes",
-                  checked: checked("have-current-uk-address", "Yes")
+                  checked: checked("have-previous-uk-address", "Yes")
                 },
                 {
-                  "value": "No",
+                  "value": "No~/sprint-3/are-you-registered-at-gp",
                   "text": "No",
-                  checked: checked("have-current-uk-address", "No")
+                  checked: checked("have-previous-uk-address", "No")
                 }
               ]
             }) }}

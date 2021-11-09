@@ -36,7 +36,7 @@
 
             {% call fieldset({
               legend: {
-                "text": "What was your previous UK address?",
+                "text": "What is your previous UK home address?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -44,7 +44,23 @@
 
             {{ input({
               label: {
+                "text": "House number or name"
+              },
+              "hint": {
+                "text": "For example, flat 20A"
+              },
+              "classes": "nhsuk-input--width-10",
+              "id": "prev-house-number-address",
+              "name": "prev-house-number-address",
+              value: data['prev-house-number-address']
+          }) }}
+
+            {{ input({
+              label: {
                 "text": "Postcode"
+              },
+              "hint": {
+                "text": "For example, AB12 P12"
               },
               "classes": "nhsuk-input--width-10",
               "id": "find-previous-address",
@@ -52,18 +68,12 @@
               value: data['find-previous-address']
           }) }}
 
-          {{ checkboxes({
-            "idPrefix": "no-previous-address",
-            "name": "no-previous-address",
-            "items": [
-              {
-                "value": "no-current-address~/sprint-3/what-is-your-phone-number",
-                "text": "I do not have a previous UK address"
-              }
-            ]
-          }) }}
 
           {% endcall %}
+
+          <p>
+            <a href="/sprint-3/what-is-your-previous-address-manual" id="enter-address-manually-link">Enter my address manually</a>
+          </p>
 
             {{ button({
               "text": "Continue"

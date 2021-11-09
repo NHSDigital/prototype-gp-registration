@@ -37,7 +37,7 @@
 
             {% call fieldset({
               legend: {
-                "text": "What is the name of the GP surgery you want to leave?",
+                "text": "What is the address of the GP surgery you want to leave?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -52,14 +52,34 @@
               label: {
                 "text": "Surgery name"
               },
-              "classes": "nhsuk-input--width-10",
+              "hint": {
+                "text": "For example, Leeds general practice"
+              },
+              "classes": "nhsuk-input--width-20",
               "id": "find-gp-address",
               "name": "find-gp-address",
               value: data['find-gp-address']
           }) }}
 
+          {{ input({
+            label: {
+              "text": "Postcode"
+            },
+            "hint": {
+              "text": "For example, AB12 P12"
+            },
+            "classes": "nhsuk-input--width-10",
+            "id": "current-gp-address",
+            "name": "current-gp-address",
+            value: data['current-gp-address']
+        }) }}
+
 
           {% endcall %}
+
+          <p>
+            <a href="/sprint-3/what-is-your-gp-address-manual" id="enter-address-manually-link">Enter my address manually</a>
+          </p>
 
             {{ button({
               "text": "Continue",
