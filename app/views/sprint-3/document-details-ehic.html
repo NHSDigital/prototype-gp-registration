@@ -1,0 +1,158 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+
+<!-- Set the page title -->
+{% block pageTitle %}
+GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+
+        {{ backLink({
+          text: "Go back",
+          href: "javascript:history.go(-1)"
+        }) }}
+
+        <form action="do-you-know-nhs-number" method="post" autocomplete="off">
+
+          {% call fieldset({
+            legend: {
+              text: "European health insurance card details",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          <div class="nhsuk-hint" id="contact-hint">
+            <p></p>
+          </div>
+
+         <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="example">
+             <strong> What is your EHIC number?</strong>
+            </label>
+            <div class="nhsuk-hint" id="example-with-hint-text-hint">
+                 This can be found on the front of you EHIC card. For example, 485 777 3456.
+               </div>
+               <input class="nhsuk-input nhsuk-input--width-10" id="example-with-hint-text" name="example-with-hint-text" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
+             </div>
+
+
+ <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-third">
+          {{ dateInput({
+            "id": "example",
+            "namePrefix": "example",
+            "fieldset": {
+              "legend": {
+                "text": "Enter a date from:",
+                "classes": "nhsuk-label--s",
+                "isPageHeading": false
+              }
+            },
+            "hint": {
+              "text": "For example, 15 3 2011"
+            },
+            "items": [
+              {
+                "name": "day",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "month",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "year",
+                "classes": "nhsuk-input--width-4"
+              }
+            ]
+          }) }}
+        </div>
+        <div class="nhsuk-grid-column-one-third">
+          {{ dateInput({
+            "id": "example",
+            "namePrefix": "example",
+            "fieldset": {
+              "legend": {
+                "text": "Enter a date to:",
+                "classes": "nhsuk-label--s",
+                "isPageHeading": false
+              }
+            },
+            "hint": {
+              "text": "For example, 15 3 2021"
+            },
+            "items": [
+              {
+                "name": "day",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "month",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "year",
+                "classes": "nhsuk-input--width-4"
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+
+         
+          {% endcall %}
+
+         
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+ </form>
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}
