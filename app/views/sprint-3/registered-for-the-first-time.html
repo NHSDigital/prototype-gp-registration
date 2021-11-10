@@ -46,7 +46,7 @@ GP Registration Prototypes
 
           {% call fieldset({
             legend: {
-              text: "Are you registering with a general parctice in the UK for the first time?",
+              text: "Are you registering with a GP in the UK for the first time?",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
@@ -58,31 +58,31 @@ GP Registration Prototypes
           </div>
 
           {{ radios({
-            "idPrefix": "who-is-being registered",
-            "name": "register",
+            "idPrefix": "registering-first-time",
+            "name": "registering-first-time",
             "items": [
               {
                 "value": "Yes~/sprint-3/recently-move-to-the-uk",
-                "text": "Yes, this is my first time registering with a GP in the UK.",
+                "text": "Yes, this is my first time registering with a GP in the UK",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("nhs-login", "Yes")
+                checked: checked("registering-first-time", "Yes")
               },
               {
                 "value": "No~/sprint-3/continue-with-nhs-login",
-                "text": "No, I have been registered to a GP in the UK before.",
+                "text": "No, I have been registered to a GP in the UK before",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("nhs-login", "No")
+                checked: checked("registering-first-time", "No")
               }
             ]
           }) }}
 
           {% endcall %}
 
-         
+
 
           {{ button({
             "text": "Continue"

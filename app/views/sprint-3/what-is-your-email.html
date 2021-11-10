@@ -1,0 +1,111 @@
+
+{% extends 'layout.html' %}
+
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+
+          <form action="nhs-login-found" method="post" autocomplete="off">
+
+
+            {% call fieldset({
+              legend: {
+                "text": "What is your email address?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>We'll use it to send a confirmation at the end of the process</p>
+
+            </div>
+
+              {{ input({
+                label: {
+                  "text": 'Email address (Optional)'
+                },
+                "classes": "nhsuk-input--width-20",
+                "id": "contact-email",
+                "name": "contact-email"
+              }) }}
+
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+
+
+    {% if data['devMode'] %}
+    <details class="nhsuk-details dev-mode" role="group">
+      <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+        <span class="nhsuk-details__summary-text">
+          Continue with testing scenario
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+        <p>Routes</p>
+        <ul>
+          <li>
+            <a href="">Link 1</a>
+          </li>
+        </ul>
+        <p>Errors</p>
+        <ul>
+          <li>
+            <a href="">Error 1</a>
+          </li>
+        </ul>
+      </div>
+    </details>
+    {% endif %}
+
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% block pageScripts %}
+<script>
+$('#no-email-address-1').change(function(){
+    if ($('#no-email-address-1').is(':checked') == true){
+        $('input[type=text]').prop('disabled', true);
+    } else {
+      $('input[type=text]').prop('disabled', false);
+    }
+});
+</script>
+{% endblock %}
+{% endblock %}

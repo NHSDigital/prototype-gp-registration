@@ -63,31 +63,31 @@ GP Registration Prototypes
           </div>
 
           {{ radios({
-            "idPrefix": "who-is-being registered",
-            "name": "register",
+            "idPrefix": "recently-moved",
+            "name": "recently-moved",
             "items": [
               {
                 "value": "Yes~/sprint-3/recently-moved-date",
-                "text": "Yes, I have recently moved to the uk.",
+                "text": "Yes, I have recently moved to the UK",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("nhs-login", "Yes")
+                checked: checked("recently-moved", "Yes")
               },
               {
-                "value": "No~/sprint-3/continue-with-nhs-login",
-                "text": "No, I have not recently moved to the uk.",
+                "value": "No~/sprint-3/do-you-know-nhs-number",
+                "text": "No, I have not recently moved to the UK",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("nhs-login", "No")
+                checked: checked("recently-moved", "No")
               }
             ]
           }) }}
 
           {% endcall %}
 
-         
+
 
           {{ button({
             "text": "Continue"
