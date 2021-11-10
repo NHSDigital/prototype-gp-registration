@@ -1005,6 +1005,20 @@
 
                         <!--- Personal details --->
 
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Date moved to the UK
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            <span id="dob-day">{{ data['moved-day'] }}</span>
+                            <span id="dob-month">{{ data['moved-month'] }}</span>
+                            <span id="dob-year">{{ data['moved-year'] }}</span>
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden">Title</span></a>
+                          </dd>
+                        </div>
+
 
                         <div class="nhsuk-summary-list__row">
                           <dt class="nhsuk-summary-list__key">
@@ -1223,9 +1237,9 @@
                       </dl>
 
 
-                      <h2 class="nhsuk-heading-l">Confirm these details are correct</h2>
+                      <h2 class="nhsuk-heading-l">Declaration</h2>
 
-                      <p>By submitting these details you are confirming that, to the best of your knowledge, they are providing are correct.</p>
+                      <p>I declare that the information I give on this form is correct and complete. I understand that if it is not correct, appropriate action may be taken against me. I also understand that I may need to pay for treatment outside of the GP surgery.</p>
 
                       {{ button({
                         "text": "Confirm and continue"
