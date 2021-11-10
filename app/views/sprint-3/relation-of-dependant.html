@@ -62,7 +62,7 @@ GP Registration Prototypes
             "items": [
               {
                 "value": "Gardian~/sprint-3/registered-for-the-first-time",
-                "text": "Parent or gardian",
+                "text": "Guardian or Parent",
                 "hint": {
                   "text": ""
                 },
@@ -70,26 +70,18 @@ GP Registration Prototypes
               },
                {
                 "value": "Gardian~/sprint-3/registered-for-the-first-time",
-                "text": "Family member",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("nhs-login", "Yes")
-              },
-              {
-                "value": "Carer~/sprint-3/registered-for-the-first-time",
                 "text": "Carer",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("nhs-login", "No")
+                checked: checked("nhs-login", "Yes")
               }
             ]
           }) }}
 
           {% endcall %}
 
-         
+
 
           {{ button({
             "text": "Continue"

@@ -52,9 +52,9 @@ GP Registration Prototypes
             }
           }) %}
 
-          <div class="nhsuk-hint" id="contact-hint">
+          <!-- <div class="nhsuk-hint" id="contact-hint">
             <p>need content here</p>
-          </div>
+          </div> -->
 
           {{ radios({
             "idPrefix": "health-documents",
@@ -104,6 +104,11 @@ GP Registration Prototypes
           }) }}
 
         </form>
+
+        {{ details({
+          "text": "Why are you asking this?",
+          "HTML": "<p>If you are visiting from another EEA country and do not hold a current EHIC (or Provisional Replacement Certificate (PRC))/S1, you may be billed for the cost of any treatment received outside of the GP practice, including at a hospital.</p>"
+        }) }}
 
 
 
