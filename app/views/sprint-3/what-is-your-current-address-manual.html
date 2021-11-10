@@ -33,7 +33,11 @@
           }) }}
 
 
+          {% if data['recently-moved'] == "Yes" %}
+          <form action="what-is-your-email" method="post" autocomplete="off">
+          {% else %}
           <form action="is-your-current-address-different" method="post" autocomplete="off">
+          {% endif %}
 
 
 

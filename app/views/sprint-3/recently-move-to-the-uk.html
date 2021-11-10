@@ -53,13 +53,7 @@ GP Registration Prototypes
           }) %}
 
           <div class="nhsuk-hint" id="contact-hint">
-            <p>For example have (you/they):
-               <li>
-               Lived in the EU<li>
-               Moved to the UK to study<li>
-               Moved to the UK to retire</li>
-
-</p>
+            <p>This could be because you have recently moved to the UK or you a registering a new born child.</p>
           </div>
 
           {{ radios({
@@ -68,7 +62,7 @@ GP Registration Prototypes
             "items": [
               {
                 "value": "Yes~/sprint-3/recently-moved-date",
-                "text": "Yes, I have recently moved to the UK",
+                "text": "Yes",
                 "hint": {
                   "text": ""
                 },
@@ -76,7 +70,7 @@ GP Registration Prototypes
               },
               {
                 "value": "No~/sprint-3/do-you-know-nhs-number",
-                "text": "No, I have not recently moved to the UK",
+                "text": "No",
                 "hint": {
                   "text": ""
                 },
@@ -94,6 +88,10 @@ GP Registration Prototypes
           }) }}
 
         </form>
+        {{ details({
+          "text": "Why are you asking this?",
+          "HTML": "<p>Anybody in England can register with a GP surgery and receive free medical care. You do not need to be 'ordinarily resident' in UK to register. However, if you are not 'ordinarily resident' in UK you may have to pay for NHS treatment outside the GP surgery. </p>"
+        }) }}
 
 
 

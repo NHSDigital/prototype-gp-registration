@@ -34,6 +34,8 @@
 
           <form action="" method="post" autocomplete="off">
 
+            {% if data['recently-moved'] == "Yes" %}
+
             {% call fieldset({
               legend: {
                 text: "Do you have a current UK address?",
@@ -56,14 +58,51 @@
                   checked: checked("have-current-uk-address", "Yes")
                 },
                 {
-                  "value": "No~/sprint-3/do-you-previous-address",
+                  "value": "No~/sprint-3/what-is-your-email",
                   "text": "No",
                   checked: checked("have-current-uk-address", "No")
                 }
               ]
             }) }}
 
+            {{ button({
+              "text": "Continue"
+            }) }}
+
             {% endcall %}
+
+        {% else %}
+
+        {% call fieldset({
+          legend: {
+            text: "Do you have a current UK address?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <div class="nhsuk-hint" id="contact-hint">
+          <p>This includes if you are living at a temporary address.</p>
+        </div>
+
+        {{ radios({
+          "idPrefix": "have-current-uk-address",
+          "name": "have-current-uk-address",
+          "items": [
+            {
+              "value": "Yes~/sprint-3/what-is-your-current-address",
+              "text": "Yes",
+              checked: checked("have-current-uk-address", "Yes")
+            },
+            {
+              "value": "No~/sprint-3/do-you-previous-address",
+              "text": "No",
+              checked: checked("have-current-uk-address", "No")
+            }
+          ]
+        }) }}
+
+        {% endcall %}
 
             {{ button({
               "text": "Continue"
@@ -73,7 +112,7 @@
         </div>
       </div>
     </section>
-
+{% endif %}
     <!-- End of content -->
 
   </div>

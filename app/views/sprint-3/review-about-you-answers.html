@@ -995,6 +995,244 @@
 
 
 
+                      <!--- Recently moved to uk --->
+
+                      {% elif data['recently-moved'] == "Yes" %}
+
+                      <h3>Personal Details</h3>
+
+                      <dl class="nhsuk-summary-list">
+
+                        <!--- Personal details --->
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Title
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['name-title'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden">Title</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            First name
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['name-first-name'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden">First name</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Middle name
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['name-middle-name'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden">middle name</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Last name
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['name-last-name'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden">last name</span>
+                            </a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Date of birth
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            <span id="dob-day">{{ data['dob-day'] }}</span>
+                            <span id="dob-month">{{ data['dob-month'] }}</span>
+                            <span id="dob-year">{{ data['dob-year'] }}</span>
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden">date of birth</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            NHS Number
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['nhs-number'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden">NHS number</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Gender
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['gender'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Ethnicity
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['ethnicity-detail-white'] }}
+                            {{ data['ethWhite'] }}
+                            {{ data['ethnicity-detail-asian'] }}
+                            {{ data['ethAsian'] }}
+                            {{ data['ethnicity-detail-black'] }}
+                            {{ data['ethBlack'] }}
+                            {{ data['ethnicity-detail-mixed'] }}
+                            {{ data['ethMixed'] }}
+                            {{ data['ethnicity-detail-another'] }}
+                            {{ data['ethOther'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
+                          </dd>
+                        </div>
+
+                      </dl>
+
+
+                      <!--- Addresses --->
+
+                      <h3>Address</h3>
+
+                      <dl class="nhsuk-summary-list">
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Current address
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {% if data['select-current-address'] %}
+                            {{ data['select-current-address'] }}
+                            {% else %}
+                            {{ data['select-current-address'] }}
+                            {{ data['current-address-line-1'] }}<br />
+                            {{ data['current-address-line-2'] }}<br />
+                            {{ data['current-address-town'] }}<br />
+                            {{ data['current-address-postcode'] }}
+                            {% endif %}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                          </dd>
+                        </div>
+
+                      </dl>
+
+
+                      <!--- Contact preferences details --->
+
+                      <h3>Contact preferences</h3>
+
+                      <dl class="nhsuk-summary-list">
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Contact methods
+                          </dt>
+                          <dd class="nhsuk-summary-list__value nhsuk-summary-list__contact-prefs">
+
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> contact email address</span></a>
+                          </dd>
+                        </div>
+
+                      </dl>
+
+
+
+
+                      <!--- Emergency Contact --->
+
+                      <h3>Emergency Contact</h3>
+
+                      <dl class="nhsuk-summary-list">
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Emergency contact full name
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['ec-full-name'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency contact name</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Emergency contact relationship to you
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['ec-relationship'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency contact relationship to you</span></a>
+                          </dd>
+                        </div>
+
+
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Emergency contact telephone number
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['ec-contact-tel'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency contact telephone number</span></a>
+                          </dd>
+                        </div>
+
+                      </dl>
+
+
+                      <h2 class="nhsuk-heading-l">Confirm these details are correct</h2>
+
+                      <p>By submitting these details you are confirming that, to the best of your knowledge, they are providing are correct.</p>
+
+                      {{ button({
+                        "text": "Confirm and continue"
+                      }) }}
+
+
+
                       <!--- Unauthed users --->
 
                       {% else %}

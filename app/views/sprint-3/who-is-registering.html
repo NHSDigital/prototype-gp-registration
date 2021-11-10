@@ -46,7 +46,7 @@ GP Registration Prototypes
 
           {% call fieldset({
             legend: {
-              text: "Who are you registering to a GP?",
+              text: "Who is registering for a GP?",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
@@ -62,19 +62,19 @@ GP Registration Prototypes
             "items": [
               {
                 "value": "Myself~/sprint-3/registered-for-the-first-time",
-                "text": "Myself, I wish to register with a GP",
+                "text": "Myself",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("who-is-being-registered", "Myself")
+                checked: checked("who-is-being-registered", "myself")
               },
               {
                 "value": "Not myself~/sprint-3/relation-of-dependant",
-                "text": "Not myself, I am helping someone regester for a GP",
+                "text": "A dependant in your care",
                 "hint": {
-                  "text": "This could be your child or someone you care for"
+                  "text": "This could be your child, someone you care for or someone who needs help to complete the registration process."
                 },
-                checked: checked("who-is-being-registered", "Not myself")
+                checked: checked("who-is-being-registered", "dependant")
               }
             ]
           }) }}
