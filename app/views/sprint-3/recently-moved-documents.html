@@ -57,8 +57,8 @@ GP Registration Prototypes
           </div>
 
           {{ radios({
-            "idPrefix": "who-is-being registered",
-            "name": "register",
+            "idPrefix": "health-documents",
+            "name": "health-documents",
             "items": [
               {
                 "value": "Yes~/sprint-3/document-details-ehic",
@@ -66,7 +66,7 @@ GP Registration Prototypes
                 "hint": {
                   "text": ""
                 },
-                checked: checked("nhs-login", "Yes")
+                checked: checked("health-documents", "EHIC")
               },
                {
                 "value": "Yes~/sprint-3/recently-moved-documents",
@@ -74,7 +74,7 @@ GP Registration Prototypes
                 "hint": {
                   "text": ""
                 },
-                checked: checked("nhs-login", "Yes")
+                checked: checked("health-documents", "PRC")
               },
               {
                 "value": "No~/sprint-3/continue-with-nhs-login",
@@ -82,14 +82,14 @@ GP Registration Prototypes
                 "hint": {
                   "text": ""
                 },
-                checked: checked("nhs-login", "No")
+                checked: checked("health-documents", "No")
               }
             ]
           }) }}
 
           {% endcall %}
 
-         
+
 
           {{ button({
             "text": "Continue"

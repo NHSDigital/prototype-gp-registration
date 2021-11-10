@@ -46,7 +46,7 @@ GP Registration Prototypes
 
           {% call fieldset({
             legend: {
-              text: "Who are you registering to a general practice?",
+              text: "Who are you registering to a GP?",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
@@ -57,31 +57,31 @@ GP Registration Prototypes
           </div>
 
           {{ radios({
-            "idPrefix": "who-is-being registered",
-            "name": "register",
+            "idPrefix": "who-is-being-registered",
+            "name": "who-is-being-registered",
             "items": [
               {
                 "value": "Myself~/sprint-3/registered-for-the-first-time",
-                "text": "Myself, I wish to register with a GP.",
+                "text": "Myself, I wish to register with a GP",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("nhs-login", "Yes")
+                checked: checked("who-is-being-registered", "Myself")
               },
               {
                 "value": "Not myself~/sprint-3/relation-of-dependant",
-                "text": "Not myself, I am helping someone regester for a GP.",
+                "text": "Not myself, I am helping someone regester for a GP",
                 "hint": {
                   "text": "This could be your child or someone you care for"
                 },
-                checked: checked("nhs-login", "No")
+                checked: checked("who-is-being-registered", "Not myself")
               }
             ]
           }) }}
 
           {% endcall %}
 
-         
+
 
           {{ button({
             "text": "Continue"
