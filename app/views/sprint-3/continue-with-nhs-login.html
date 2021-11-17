@@ -53,7 +53,7 @@ GP Registration Prototypes
           }) %}
 
           <div class="nhsuk-hint" id="contact-hint">
-            <p>You’ll have a login account if you have used the NHS app, COVID booking app or another service?</p>
+            <p>You may have set up an NHS login when using other health websites or apps, like a COVID-19 service or the NHS App.</p>
           </div>
 
           {{ radios({
@@ -62,17 +62,17 @@ GP Registration Prototypes
             "items": [
               {
                 "value": "Yes~/sprint-3/nhs-login-email-address",
-                "text": "Yes, sign in with NHS Login",
+                "text": "Sign in with NHS login",
                 "hint": {
-                  "text": "If you already have an account we'll use this to find your details and register you. This will save you around 5 minutes."
+                  "text": "We will use details from your NHS login and share them with your new GP. This is the quickest way to complete your registration."
                 },
                 checked: checked("nhs-login", "Yes")
               },
               {
                 "value": "No~/sprint-3/do-you-know-nhs-number",
-                "text": "No, continue without",
+                "text": "Continue without NHS login",
                 "hint": {
-                  "text": "Your details will not be saved for future use."
+                  "text": "We will need to ask you some more questions to help us find your patient record."
                 },
                 checked: checked("nhs-login", "No")
               }
@@ -84,7 +84,7 @@ GP Registration Prototypes
           {{ details({
             "text": "What is NHS login?",
             "HTML": "
-            <p>NHS login is a way to access online health services wherever you see ’NHS login’. If you do not already have an NHS login, you can register using your email address.</p>
+            <p>NHS login allows you to securely access health and care websites and apps with just one set of login details.</p>
             "
           }) }}
 
