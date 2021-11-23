@@ -1,0 +1,98 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+
+
+
+        <h1>
+          Your registration details are ready to be sent to<br> [New Surgery Name]
+        </h1>
+        <h3>
+          As a new patient we would like to know more about you. Would you want to answer the New Patient Health Questionnaire?
+        </h3>
+
+        <p>
+          The questionnaire helps your new GP understand more about you and your lifestyle. This can be useful when you are new to a GP or a surgery.
+        </p>
+        <p>
+          These questions are optional and will not affect the outcome of your application.
+        </p>
+
+        <form class='form' action="" method="post" autocomplete="off">
+
+        {% call fieldset({
+          legend: {
+            "text": "",
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        }) %}
+
+        {{ radios({
+          "idPrefix": "healthQuestions",
+          "name": "healthQuestions",
+          "items": [
+            {
+              "value": "Yes~/sprint-4/how-often-do-you-drink-alcohol?",
+              "text": "Yes, answer the questionnaire",
+              checked: checked("healthQuestions", "Yes")
+            },
+            {
+              "value": "No~/sprint-4/confirmation-page",
+              "text": "No, skip the questionnaire",
+              checked: checked("healthQuestions", "No")
+            }
+
+          ]
+        }) }}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+        {% endcall %}
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}
