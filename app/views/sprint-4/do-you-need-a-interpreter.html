@@ -32,30 +32,46 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="what-is-your-name" method="post" autocomplete="off">
+          <form action="what-is-your-ethnicity" method="post" autocomplete="off">
 
-            {% call fieldset({
-              legend: {
-                "text": "What is your NHS number?",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
-              }
-            }) %}
+            {% set otherHtml %}
+              {{ input({
+                id: "other",
+                name: "other",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "Gender"
+                }
+              }) }}
+            {% endset -%}
 
-            {{ hint({
-                "text": "Your NHS number is a 10 digit number that you find on any letter the NHS has sent you. For example, 485 777 3456."
+            {{ radios({
+              "idPrefix": "interpreter",
+              "name": "interpreter",
+              "fieldset": {
+                "legend": {
+                  "text": "Do you need an language interpreter?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "The GP surgery might arrange an interpreter for appointments in person or over the phone or video call."
+              },
+              "items": [
+                {
+                  "value": "yes",
+                  "text": "Yes",
+                  checked: checked("interpreter", "Yes")
+                },
+                {
+                  "value": "no",
+                  "text": "No",
+                  checked: checked("interpreter", "no")
+                }
+              ]
             }) }}
 
-            {{ input({
-              "label": {
-              },
-                "classes": "nhsuk-input nhsuk-input--width-10",
-                "id": "nhs-number",
-                "name": "nhs-number",
-                "value": data['nhs-number']
-              }) }}
-
-            {% endcall %}
 
             {{ button({
               "text": "Continue"

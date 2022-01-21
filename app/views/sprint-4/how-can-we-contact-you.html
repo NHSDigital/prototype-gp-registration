@@ -33,65 +33,32 @@ GP Registration Prototypes
         }) }}
 
 
-        {% if data['user-auth'] == "p9" %}
 
-        <form action="do-you-have-emergency-contact" method="post" autocomplete="off">
-
-          <fieldset class="nhsuk-fieldset">
-            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-              <h1 class="nhsuk-fieldset__heading">
-                How can we contact you?
-              </h1>
-            </legend>
-
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>Your GP surgery will use these methods to contact you about your application, make appointments, provide prescriptions, and facilitate medical services</p>
-              <p>Select all contact methods that are acceptable to you.</p>
-            </div>
-
-            <div class="nhsuk-checkboxes nhsuk-u-margin-bottom-5">
-
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input contact-email-section" id="contact-prefs-1" name="contact-prefs-email" type="checkbox" value="Email">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="contact-prefs-1">
-                  Email
-                </label>
-                <div class="nhsuk-hint nhsuk-checkboxes__hint" id="contact-prefs-1-hint">
-                  {{ data['contact-email'] }}
-                </div>
-              </div>
+        <form action="how-can-we-contact-inputs" method="post" autocomplete="off">
 
 
-              <div class="nhsuk-checkboxes__item contact-home-tel-section">
-                <input class="nhsuk-checkboxes__input" id="contact-prefs-3" name="contact-prefs-home-tel" type="checkbox" value="Home telephone">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="contact-prefs-3">
-                  UK Home telephone number
-                </label>
-                <div class="nhsuk-hint nhsuk-checkboxes__hint" id="contact-prefs-3-hint">
-                  01234 567 890
-                </div>
-              </div>
+              {{ checkboxes({
+                "idPrefix": "contact",
+                "name": "contact",
+                "fieldset": {
+                  "legend": {
+                    "text": "How would you like to be contacted?",
+                    "classes": "nhsuk-fieldset__legend--l",
+                    isPageHeading: true
+                  }
+                },
 
-              <div class="nhsuk-checkboxes__item contact-mobile-tel-section">
-                <input class="nhsuk-checkboxes__input" id="contact-prefs-4" name="contact-prefs-mobile-tel" type="checkbox" value="Mobile Telephone">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="contact-prefs-4">
-                  UK Mobile telephone number
-                </label>
-                <div class="nhsuk-hint nhsuk-checkboxes__hint" id="contact-prefs-4-hint">
-                  07712345678
-                </div>
-              </div>
+                "hint": {
+                  "html": "<p>Your GP surgery will use these methods to contact you about your application, make appointments, provide prescriptions, and facilitate medical services.</p><p>Select all contact methods that are acceptable to you.</p>"
+                },
 
-              <div class="nhsuk-checkboxes__item no-contact-prefs-section">
-                <input class="nhsuk-checkboxes__input" id="contact-prefs-5" name="contact-prefs-none" type="checkbox" value="I do not want to be contacted">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="contact-prefs-5">
-                  I do not want to be contacted
-                </label>
-              </div>
+                items: [
+                  { value: "home", text: "UK home telephone number", checked: checked("contact", "home")},
+                  { value: "phone", text: "UK mobile telephone number", checked: checked("contact", "phone")},
+                  { value: "email", text: "Email address", checked: checked("contact", "email")}
+              ]
+              }) }}
 
-            </div>
-
-          </fieldset>
 
           <button class="nhsuk-button" type="submit">
             Continue
@@ -100,73 +67,6 @@ GP Registration Prototypes
         </form>
 
 
-        {% else %}
-
-        <form action="do-you-have-emergency-contact" method="post" autocomplete="off">
-
-          <fieldset class="nhsuk-fieldset">
-            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-              <h1 class="nhsuk-fieldset__heading">
-                How can we contact you?
-              </h1>
-            </legend>
-
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>Your GP surgery will use these methods to contact you about your application, make appointments, provide prescriptions, and facilitate medical services</p>
-              <p>Select all contact methods that are acceptable to you.</p>
-            </div>
-
-            <div class="nhsuk-checkboxes nhsuk-u-margin-bottom-5">
-
-              <div class="nhsuk-checkboxes__item contact-email-section hidden-section">
-                <input class="nhsuk-checkboxes__input contact-email-section hidden-section" id="contact-prefs-1" name="contact-prefs-email" type="checkbox" value="Email">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="contact-prefs-1">
-                  Email
-                </label>
-                <div class="nhsuk-hint nhsuk-checkboxes__hint" id="contact-prefs-1-hint">
-                  {{ data['contact-email'] }}
-                </div>
-              </div>
-
-
-              <div class="nhsuk-checkboxes__item contact-home-tel-section hidden-section">
-                <input class="nhsuk-checkboxes__input" id="contact-prefs-3" name="contact-prefs-home-tel" type="checkbox" value="Home telephone">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="contact-prefs-3">
-                  UK Home telephone number
-                </label>
-                <div class="nhsuk-hint nhsuk-checkboxes__hint" id="contact-prefs-3-hint">
-                  {{ data['contact-home-tel'] }}
-                </div>
-              </div>
-
-              <div class="nhsuk-checkboxes__item contact-mobile-tel-section hidden-section">
-                <input class="nhsuk-checkboxes__input" id="contact-prefs-4" name="contact-prefs-mobile-tel" type="checkbox" value="Mobile Telephone">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="contact-prefs-4">
-                  UK Mobile telephone number
-                </label>
-                <div class="nhsuk-hint nhsuk-checkboxes__hint" id="contact-prefs-4-hint">
-                  {{ data['contact-mobile-tel'] }}
-                </div>
-              </div>
-
-              <div class="nhsuk-checkboxes__item no-contact-prefs-section">
-                <input class="nhsuk-checkboxes__input" id="contact-prefs-5" name="contact-prefs-none" type="checkbox" value="I do not want to be contacted">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="contact-prefs-5">
-                  I do not want to be contacted
-                </label>
-              </div>
-
-            </div>
-
-          </fieldset>
-
-          <button class="nhsuk-button" type="submit">
-            Continue
-          </button>
-
-        </form>
-
-        {% endif %}
 
       </div>
     </div>
@@ -178,31 +78,7 @@ GP Registration Prototypes
 </div>
 
 {% block pageScripts %}
-<script>
-  $(document).ready(function() {
 
-    var email = "{{ data['contact-email'] }}";
-    var homeTel = "{{ data['contact-home-tel'] }}";
-    var mobileTel = "{{ data['contact-mobile-tel'] }}";
-    var noContact = "{{ data['contact-prefs-none'] }}"
 
-    if (email) {
-      $('.contact-email-section').removeClass("hidden-section")
-    } else {}
-
-    if (homeTel) {
-      $('.contact-home-tel-section').removeClass("hidden-section")
-    } else {}
-
-    if (mobileTel) {
-      $('.contact-mobile-tel-section').removeClass("hidden-section")
-    } else {}
-
-    if (noContact) {
-      $('.no-contact-prefs-section').removeClass("hidden-section")
-    } else {}
-
-  });
-</script>
 {% endblock %}
 {% endblock %}
