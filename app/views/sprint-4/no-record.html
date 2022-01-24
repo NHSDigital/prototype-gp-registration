@@ -1,0 +1,67 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <h1>
+          We can't find your record at the moment. 
+        </h1>
+
+        <p>This could be because you;</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>have recently moved to the country</li>
+        <li>are returning from overseas</li>
+        <li>have been in the armed forces </li>
+        </ul>
+        <p>We need to ask you some more questions. </p>
+
+      </div>
+    </div>
+  </div>
+  </section>
+
+      <p><a href="registered-for-the-first-time" class="nhsuk-button nhsuk-button--green">Start now</a></p>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}

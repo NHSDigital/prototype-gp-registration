@@ -49,39 +49,78 @@ GP Registration Prototypes
           These questions are optional and will not affect the outcome of your application.
         </p>
 
+        {% if data['user-auth'] == "nomatch" %}
+
         <form class='form' action="" method="post" autocomplete="off">
-
-        {% call fieldset({
-          legend: {
-            "text": "",
-            "classes": "nhsuk-fieldset__legend--l",
-            "isPageHeading": true
-          }
-        }) %}
-
-        {{ radios({
-          "idPrefix": "healthQuestions",
-          "name": "healthQuestions",
-          "items": [
-            {
-              "value": "Yes~/sprint-4/how-often-do-you-drink-alcohol?",
-              "text": "Yes, answer the questionnaire",
-              checked: checked("healthQuestions", "Yes")
-            },
-            {
-              "value": "No~/sprint-4/confirmation-page",
-              "text": "No, skip the questionnaire",
-              checked: checked("healthQuestions", "No")
+          {% call fieldset({
+            legend: {
+              "text": "",
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
             }
+          }) %}
 
-          ]
-        }) }}
+          {{ radios({
+            "idPrefix": "healthQuestions",
+            "name": "healthQuestions",
+            "items": [
+              {
+                "value": "Yes~/sprint-4/how-often-do-you-drink-alcohol?",
+                "text": "Yes, answer the questionnaire",
+                checked: checked("healthQuestions", "Yes")
+              },
+              {
+                "value": "No~/sprint-4/no-record",
+                "text": "No, skip the questionnaire",
+                checked: checked("healthQuestions", "No")
+              }
 
-        {{ button({
-          "text": "Continue"
-        }) }}
+            ]
+          }) }}
 
-        {% endcall %}
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+          {% endcall %}
+
+        {% else %}
+        <form class='form' action="" method="post" autocomplete="off">
+          {% call fieldset({
+            legend: {
+              "text": "",
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "healthQuestions",
+            "name": "healthQuestions",
+            "items": [
+              {
+                "value": "Yes~/sprint-4/how-often-do-you-drink-alcohol?",
+                "text": "Yes, answer the questionnaire",
+                checked: checked("healthQuestions", "Yes")
+              },
+              {
+                "value": "No~/sprint-4/confirmation-page",
+                "text": "No, skip the questionnaire",
+                checked: checked("healthQuestions", "No")
+              }
+
+            ]
+          }) }}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+          {% endcall %}
+
+        {% endif %}
+
+
 
 
       </div>

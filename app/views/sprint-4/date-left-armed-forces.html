@@ -32,39 +32,38 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="do-you-have-a-living-will" method="post" autocomplete="off">
+          <form action="date-left-armed-forces" method="post" autocomplete="off">
 
-            {% call fieldset({
-              legend: {
-                text: "Have you ever been a member of the armed forces?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ radios({
-              "idPrefix": "is-armed-forces-member",
-              "name": "is-armed-forces-member",
+            {{ dateInput({
+              "id": "af-left",
+              "namePrefix": "af-left",
+              "fieldset": {
+                "legend": {
+                  "text": "What was the date you left the Armed forces?",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": true
+                }
+              },
+              "hint": {
+                "text": "For example, 15 3 1984"
+              },
               "items": [
                 {
-                  "value": "Yes~/sprint-4/date-enlisted-armed-forces",
-                  "text": "Yes",
-                  checked: checked("is-armed-forces-member", "Yes")
+                  "name": "day",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['left-day']
                 },
                 {
-                  "value": "No~/sprint-4/are-you-returning-from-overseas",
-                  "text": "No",
-                  checked: checked("is-armed-forces-member", "No")
-
+                  "name": "month",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['left-month']
+                },
+                {
+                  "name": "year",
+                  "classes": "nhsuk-input--width-4",
+                  "value": data['left-year']
                 }
               ]
-            }) }}
-
-            {% endcall %}
-
-            {{ details({
-              "text": "Why are you asking this?",
-              "HTML": "<p>If you've served in the armed forces you're entitled to priority care for any conditions relating to that time.</p><p>Telling us about your service will start the transfer of your medical records from the Ministry of Defence and allow you to benefit from special services, like prosthetics and mental health.</p>"
             }) }}
 
             {{ button({
