@@ -1,0 +1,358 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="about-your-health-start" method="post" autocomplete="off">
+
+            {{ fieldset({
+              "legend": {
+                "text": "Check your answers before submitting?",
+                "classes": "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-5",
+                "isPageHeading": true
+              }
+            }) }}
+
+
+          <h3>Supplementary information</h3>
+
+            <!-- First time + not moved -->
+
+            {% if ((data['registering-first-time'] == "Yes") and (data['recently-moved'] == "No"))  %}
+
+          <dl class="nhsuk-summary-list">
+
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Are you registering with a UK GP for the first time?
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['registering-first-time'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">Change<span class="nhsuk-u-visually-hidden"></span></a>
+              </dd>
+            </div>
+
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Have you recently moved to the UK from another country?
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['recently-moved'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">Change<span class="nhsuk-u-visually-hidden">Title</span></a>
+              </dd>
+            </div>
+
+            </dl>
+
+
+            <!-- First time + recently moved -->
+
+            {% elif ((data['registering-first-time'] == "Yes") and (data['recently-moved'] == "Yes"))  %}
+
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Are you registering with a UK GP for the first time?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['registering-first-time'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">First time</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Have you recently moved to the UK from another country?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['recently-moved'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">Moved</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  What was the address where you applied for your visa including the country?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['moved-address-line-1'] }}<br />
+                  {{ data['moved-address-line-2'] }}<br />
+                  {{ data['moved-address-town'] }}<br />
+                  {{ data['moved-address-country'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">Date moved</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  When did you enter the UK?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['moved-day'] }} -
+                  {{ data['moved-month'] }} -
+                  {{ data['moved-year'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">moved date</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Have you moved to UK from EU, EEA or Switzerland?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['eea'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">eea</span></a>
+                </dd>
+              </div>
+
+
+              </dl>
+
+
+              <!-- Not first time + not armed forces + not returning -->
+
+              {% elif ((data['registering-first-time'] == "No") and (data['is-armed-forces-member'] == "No") and (data['overseas'] == "No"))  %}
+
+
+              <dl class="nhsuk-summary-list">
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Are you registering with a UK GP for the first time?
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['registering-first-time'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden">First time</span></a>
+                  </dd>
+                </div>
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Have you ever been a member of the armed forces?
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['is-armed-forces-member'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden">Armed forces</span></a>
+                  </dd>
+                </div>
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Are you returning from overseas?
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['overseas'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden">Armed forces</span></a>
+                  </dd>
+                </div>
+
+                </dl>
+
+
+                <!-- Not first time + armed forces + not returning -->
+
+                {% elif ((data['registering-first-time'] == "No") and (data['is-armed-forces-member'] == "Yes"))  %}
+
+
+                <dl class="nhsuk-summary-list">
+
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Are you registering with a UK GP for the first time?
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['registering-first-time'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">Change<span class="nhsuk-u-visually-hidden">First time</span></a>
+                    </dd>
+                  </div>
+
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Have you ever been a member of the armed forces?
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['is-armed-forces-member'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">Change<span class="nhsuk-u-visually-hidden">Armed forces</span></a>
+                    </dd>
+                  </div>
+
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Date enlisted in Armed forces
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['af-enlisted-day'] }} -
+                      {{ data['af-enlisted-month'] }} -
+                      {{ data['af-enlisted-year'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">Change<span class="nhsuk-u-visually-hidden">enlisted date</span></a>
+                    </dd>
+                  </div>
+
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Date left Armed forces
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['afleft-day'] }} -
+                      {{ data['afleft-month'] }} -
+                      {{ data['afleft-year'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">Change<span class="nhsuk-u-visually-hidden">enlisted date</span></a>
+                    </dd>
+                  </div>
+
+                  </dl>
+
+                  {% else %}
+
+
+          <!--- GP Details --->
+
+          <!-- <h3>Previous GP</h3>
+
+          <dl class="nhsuk-summary-list">
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Previous GP address
+              </dt>
+              <dd class="nhsuk-summary-list__value previous-gp__value">
+                {% if data['select-gp-address'] %}
+                {{ data['select-gp-address'] }}
+                {% else %}
+                {{ data['select-gp-address'] }}
+                {{ data['previous-gp-name'] }}<br/>
+                {{ data['previous-gp-address-line-1'] }}<br/>
+                {{ data['previous-gp-address-line-2'] }}<br/>
+                {{ data['previous-gp-town'] }}<br/>
+                {{ data['previous-gp-postcode'] }}
+                {% endif %}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">Change<span class="nhsuk-u-visually-hidden">previous GP address</span></a>
+              </dd>
+            </div>
+          </dl> -->
+
+
+          {% endif %}
+
+
+
+
+          <h2 class="nhsuk-heading-l">Confirm these details are correct</h2>
+
+          <p>By submitting these details you are confirming that, to the best of your knowledge, they are providing are correct.</p>
+
+          {{ button({
+            "text": "Confirm and continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  </section>
+
+    <!-- End of content -->
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+
+  $(document).ready(function () {
+
+
+    // Populate any unanswered fields with "Not answered" text
+    $('.nhsuk-summary-list__value').filter(function () {
+      return $.trim($(this).text()) === "";
+    }).each(function (ind, obj) {
+      $(obj).closest('dd').html("<span class='summary-page-unanswered'>Not answered</span>");
+    });
+
+    // Convert nunjucks date data to be used in JS
+    var dobDD = JSON.parse('{{ data["dob-day"] }}'.replace(/&quot;/g,'"'));
+    var dobMM = JSON.parse('{{ data["dob-month"] }}'.replace(/&quot;/g,'"'));
+    var dobYY = JSON.parse('{{ data["dob-year"] }}'.replace(/&quot;/g,'"'));
+
+
+
+    // Convert month format from mm to Mmm
+    var date = new Date(dobYY, (dobMM - 1), dobDD); // 2009-11-10
+    var month = date.toLocaleString('default', {month: 'short'});
+
+    // Insert new month format into summary list
+
+    $("#dob-month").text(month);
+    $("#enlisted-month").text(month);
+
+  });
+</script>
+
+{% endblock %}

@@ -33,14 +33,14 @@
           }) }}
 
 
-          <form action="do-you-previous-address" method="post" autocomplete="off">
+          <form action="recently-moved-date" method="post" autocomplete="off">
 
 
 
               {% call fieldset({
                 legend: {
-                  "text": "What is the address of the GP surgery you want to leave?",
-                  "classes": "nhsuk-fieldset__legend--m"
+                  "text": "What was the address where you applied for your visa including the country?",
+                  "classes": "nhsuk-fieldset__legend--l"
                 }
               }) %}
 
@@ -48,18 +48,18 @@
                 label: {
                   "html": 'Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>'
                 },
-                "id": "previous-gp-address-line-1",
-                "name": "previous-gp-address-line-1",
-                value: data['previous-gp-address-line-1']
+                "id": "moved-address-line-1",
+                "name": "moved-address-line-1",
+                value: data['moved-address-line-1']
               }) }}
 
               {{ input({
                 label: {
                   "html": '<span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>'
                 },
-                "id": "previous-gp-address-line-2",
-                "name": "previous-gp-address-line-2",
-                value: data['previous-gp-address-line-2']
+                "id": "moved-address-line-2",
+                "name": "moved-address-line-2",
+                value: data['moved-address-line-2']
               }) }}
 
               {{ input({
@@ -67,19 +67,19 @@
                   "text": "Town or city"
                 },
                 "classes": "nhsuk-u-width-two-thirds",
-                "id": "previous-gp-town",
-                "name": "previous-gp-town",
-                value: data['previous-gp-town']
+                "id": "moved-address-town",
+                "name": "moved-address-town",
+                value: data['moved-address-town']
               }) }}
 
               {{ input({
                   label: {
-                    "text": "Postcode"
+                    "text": "Country"
                   },
                   "classes": "nhsuk-input--width-10",
-                  "id": "previous-gp-postcode",
-                  "name": "previous-gp-postcode",
-                  value: data['previous-gp-postcode']
+                  "id": "moved-address-country",
+                  "name": "moved-address-country",
+                  value: data['moved-address-country']
               }) }}
 
 

@@ -32,36 +32,39 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="do-you-have-a-living-will" method="post" autocomplete="off">
+          <form action="date-returned-uk" method="post" autocomplete="off">
 
-            {% call fieldset({
-              legend: {
-                text: "Are you returning from overseas?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ radios({
-              "idPrefix": "overseas",
-              "name": "overseas",
+            {{ dateInput({
+              "id": "left-uk",
+              "namePrefix": "left-uk",
+              "fieldset": {
+                "legend": {
+                  "text": "What was the date you left the UK?",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": true
+                }
+              },
+              "hint": {
+                "text": "For example, 15 3 1984"
+              },
               "items": [
                 {
-                  "value": "Yes~/sprint-4/date-left-uk",
-                  "text": "Yes",
-                  checked: checked("overseas", "Yes")
+                  "name": "day",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['leftuk-day']
                 },
                 {
-                  "value": "No~/sprint-4/review-about-you-answers-nomatch",
-                  "text": "No",
-                  checked: checked("overseas", "No")
-
+                  "name": "month",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['leftuk-month']
+                },
+                {
+                  "name": "year",
+                  "classes": "nhsuk-input--width-4",
+                  "value": data['leftuk-year']
                 }
               ]
             }) }}
-
-            {% endcall %}
-
 
             {{ button({
               "text": "Continue"
