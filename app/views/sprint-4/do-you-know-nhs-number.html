@@ -35,6 +35,54 @@
 
           <form action="" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                text: "Do you know their NHS Number?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "Telling us their NHS number will give us the best chance of matching them to their NHS record.",
+              "classes": "nhsuk-u-margin-bottom-4"
+            }) }}
+
+            {{ hint({
+              "text": "You do not need to know their NHS number to continue. If you do not know it, you can tell us their full name instead.",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {{ hint({
+              "html": "<p>
+                You can use the <a href='#'>NHS number finder service</a> to retrieve their NHS number by text message or email.</p>"
+            }) }}
+
+
+            {{ radios({
+              "idPrefix": "do-you-know-nhs-number",
+              "name": "know-nhs-number",
+              "items": [
+                {
+                  "value": "Yes~/sprint-4/what-is-your-nhs-number",
+                  "text": "Yes, I know their NHS number",
+                  "checked": checked("know-nhs-number", "Yes")
+                },
+                {
+                  "value": "No~/sprint-4/what-is-your-name",
+                  "text": "No, continue without",
+                  "checked": checked("know-nhs-number", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+
+            {% else %}
+
             {% call fieldset({
               legend: {
                 text: "Do you know your NHS Number?",
@@ -75,7 +123,11 @@
               ]
             }) }}
 
+
             {% endcall %}
+
+
+            {% endif %}
 
             {{ button({
               "text": "Continue"
@@ -83,29 +135,8 @@
 
           </form>
 
-          {% if data['devMode'] %}
-          <details class="nhsuk-details dev-mode" role="group">
-            <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
-              <span class="nhsuk-details__summary-text">
-                Continue with testing scenario
-              </span>
-            </summary>
-            <div class="nhsuk-details__text">
-              <p>Routes</p>
-              <ul>
-                <li>
-                  <a href="">Link 1</a>
-                </li>
-              </ul>
-              <p>Errors</p>
-              <ul>
-                <li>
-                  <a href="">Error 1</a>
-                </li>
-              </ul>
-            </div>
-          </details>
-          {% endif %}
+
+
 
 
         </div>

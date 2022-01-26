@@ -34,6 +34,42 @@
 
           <form action="do-you-current-address" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {{ dateInput({
+              "id": "dob",
+              "namePrefix": "dob",
+              "fieldset": {
+                "legend": {
+                  "text": "What is their date of birth?",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": true
+                }
+              },
+              "hint": {
+                "text": "For example, 15 3 1984"
+              },
+              "items": [
+                {
+                  "name": "day",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['dob-day']
+                },
+                {
+                  "name": "month",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['dob-month']
+                },
+                {
+                  "name": "year",
+                  "classes": "nhsuk-input--width-4",
+                  "value": data['dob-year']
+                }
+              ]
+            }) }}
+
+            {% else %}
+
             {{ dateInput({
               "id": "dob",
               "namePrefix": "dob",
@@ -65,6 +101,8 @@
                 }
               ]
             }) }}
+
+            {% endif %}
 
             {{ button({
               "text": "Continue"

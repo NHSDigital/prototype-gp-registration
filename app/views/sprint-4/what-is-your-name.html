@@ -34,12 +34,15 @@
 
           <form action="what-is-your-date-of-birth" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
             {% call fieldset({
               legend: {
-                "text": "What is your name?",
+                "text": "What is their name?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
+
             }) %}
 
              {{ input({
@@ -50,7 +53,7 @@
                 "id": "name-title",
                 "name": "name-title",
                 "value": data['name-title']
-              }) }} 
+              }) }}
 
             {{ input({
                 label: {
@@ -72,15 +75,6 @@
                 "value": data['name-middle-name']
               }) }}
 
-            <!-- {{ input({
-                label: {
-                  "text": "Known as (optional)"
-                },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "name-known-as",
-                "name": "name-known-as",
-                "value": data['name-known-as']
-              }) }} -->
 
               {{ input({
                   label: {
@@ -93,6 +87,67 @@
                 }) }}
 
             {% endcall %}
+
+
+            {% else %}
+
+
+            {% call fieldset({
+              legend: {
+                "text": "What is your name?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+
+            }) %}
+
+             {{ input({
+                label: {
+                  "text": "Title"
+                },
+                "classes": "nhsuk-input--width-4",
+                "id": "name-title",
+                "name": "name-title",
+                "value": data['name-title']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "First name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "name-first-name",
+                "name": "name-first-name",
+                "value": data['name-first-name']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "Middle name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "name-middle-name",
+                "name": "name-middle-name",
+                "value": data['name-middle-name']
+              }) }}
+
+
+              {{ input({
+                  label: {
+                    "text": "Last name"
+                  },
+                  "classes": "nhsuk-u-width-two-thirds",
+                  "id": "name-last-name",
+                  "name": "name-last-name",
+                  "value": data['name-last-name']
+                }) }}
+
+            {% endcall %}
+
+            {% endif %}
+
+
+
 
             {{ button({
               "text": "Continue"
