@@ -495,20 +495,7 @@
               </div>
 
 
-              <!-- <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Previous address
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['previous-address-line-1'] }}<br />
-                  {{ data['previous-address-line-2'] }}<br />
-                  {{ data['previous-address-town'] }}<br />
-                  {{ data['previous-address-postcode'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href=""><span class="nhsuk-u-visually-hidden">Previous address</span></a>
-                </dd>
-              </div> -->
+
 
             </dl>
 
@@ -646,6 +633,54 @@
                 </dd>
               </div>
 
+
+            </dl>
+
+            <!--- Armed forces --->
+
+            <h3>Armed forces</h3>
+
+            <dl class="nhsuk-summary-list">
+
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Have you ever been a member of the armed forces?
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['is-armed-forces-member'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">Change<span class="nhsuk-u-visually-hidden">Armed forces</span></a>
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Date enlisted in Armed forces
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['af-enlisted-day'] }} -
+                {{ data['af-enlisted-month'] }} -
+                {{ data['af-enlisted-year'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">Change<span class="nhsuk-u-visually-hidden">enlisted date</span></a>
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Date left Armed forces
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['afleft-day'] }} -
+                {{ data['afleft-month'] }} -
+                {{ data['afleft-year'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">Change<span class="nhsuk-u-visually-hidden">enlisted date</span></a>
+              </dd>
+            </div>
 
             </dl>
 
@@ -1030,6 +1065,52 @@
                             <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency contact telephone number</span></a>
                           </dd>
                         </div>
+
+                      </dl>
+
+                      <h3>Armed forces</h3>
+
+                      <dl class="nhsuk-summary-list">
+
+                    <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                          Have you ever been a member of the armed forces?
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                          {{ data['is-armed-forces-member'] }}
+                        </dd>
+                        <dd class="nhsuk-summary-list__actions">
+                          <a href="">Change<span class="nhsuk-u-visually-hidden">Armed forces</span></a>
+                        </dd>
+                      </div>
+
+                      <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                          Date enlisted in Armed forces
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                          {{ data['af-enlisted-day'] }} -
+                          {{ data['af-enlisted-month'] }} -
+                          {{ data['af-enlisted-year'] }}
+                        </dd>
+                        <dd class="nhsuk-summary-list__actions">
+                          <a href="">Change<span class="nhsuk-u-visually-hidden">enlisted date</span></a>
+                        </dd>
+                      </div>
+
+                      <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                          Date left Armed forces
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                          {{ data['afleft-day'] }} -
+                          {{ data['afleft-month'] }} -
+                          {{ data['afleft-year'] }}
+                        </dd>
+                        <dd class="nhsuk-summary-list__actions">
+                          <a href="">Change<span class="nhsuk-u-visually-hidden">enlisted date</span></a>
+                        </dd>
+                      </div>
 
                       </dl>
 

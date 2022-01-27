@@ -63,15 +63,16 @@ GP Registration Prototypes
             <div class="nhsuk-hint" id="example-with-hint-text-hint">
                  This can be found on the front of you EHIC card. For example, 485 777 3456.
                </div>
-               <input class="nhsuk-input nhsuk-input--width-10" id="example-with-hint-text" name="example-with-hint-text" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
+               <input class="nhsuk-input nhsuk-input--width-10" id="ehic" name="ehic" type="text" aria-describedby="ehic" inputmode="numeric">
              </div>
 
 
         <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-one-third">
+
           {{ dateInput({
-            "id": "example",
-            "namePrefix": "example",
+            "id": "ehic-from",
+            "namePrefix": "ehic-from",
             "fieldset": {
               "legend": {
                 "text": "Enter a date from:",
@@ -85,23 +86,28 @@ GP Registration Prototypes
             "items": [
               {
                 "name": "day",
-                "classes": "nhsuk-input--width-2"
+                "classes": "nhsuk-input--width-2",
+                "value": data['ehic-from-day']
               },
               {
                 "name": "month",
-                "classes": "nhsuk-input--width-2"
+                "classes": "nhsuk-input--width-2",
+                "value": data['ehic-from-month']
               },
               {
                 "name": "year",
-                "classes": "nhsuk-input--width-4"
+                "classes": "nhsuk-input--width-4",
+                "value": data['ehic-from-year']
               }
             ]
           }) }}
         </div>
+
+
         <div class="nhsuk-grid-column-one-third">
           {{ dateInput({
-            "id": "example",
-            "namePrefix": "example",
+            "id": "ehic-to",
+            "namePrefix": "ehic-to",
             "fieldset": {
               "legend": {
                 "text": "Enter a date to:",
@@ -115,15 +121,18 @@ GP Registration Prototypes
             "items": [
               {
                 "name": "day",
-                "classes": "nhsuk-input--width-2"
+                "classes": "nhsuk-input--width-2",
+                "value": data['ehic-to-day']
               },
               {
                 "name": "month",
-                "classes": "nhsuk-input--width-2"
+                "classes": "nhsuk-input--width-2",
+                  "value": data['ehic-to-month']
               },
               {
                 "name": "year",
-                "classes": "nhsuk-input--width-4"
+                "classes": "nhsuk-input--width-4",
+                  "value": data['ehic-to-year']
               }
             ]
           }) }}

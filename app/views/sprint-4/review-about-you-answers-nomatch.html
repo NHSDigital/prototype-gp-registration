@@ -79,10 +79,107 @@
 
             </dl>
 
+            <!-- First time + recently moved + eea yes -->
 
-            <!-- First time + recently moved -->
+            {% elif ((data['registering-first-time'] == "Yes") and (data['recently-moved'] == "Yes") and (data['eea'] == "Yes"))  %}
 
-            {% elif ((data['registering-first-time'] == "Yes") and (data['recently-moved'] == "Yes"))  %}
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Are you registering with a UK GP for the first time?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['registering-first-time'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">First time</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Have you recently moved to the UK from another country?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['recently-moved'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">Moved</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  What was the address where you applied for your visa including the country?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['moved-address-line-1'] }}<br />
+                  {{ data['moved-address-line-2'] }}<br />
+                  {{ data['moved-address-town'] }}<br />
+                  {{ data['moved-address-country'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">Date moved</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  When did you enter the UK?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['moved-day'] }} -
+                  {{ data['moved-month'] }} -
+                  {{ data['moved-year'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">moved date</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Have you moved to UK from EU, EEA or Switzerland?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['eea'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">eea</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  European health insurance card details
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['ehic'] }} <br />
+                  From :  {{ data['ehic-from-day'] }} -
+                          {{ data['ehic-from-month'] }} -
+                          {{ data['ehic-from-year'] }}<br />
+                  To :    {{ data['ehic-to-day'] }} -
+                          {{ data['ehic-to-month'] }} -
+                          {{ data['ehic-to-year'] }}
+
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">eea</span></a>
+                </dd>
+              </div>
+
+
+
+
+              </dl>
+
+
+            <!-- First time + recently moved + eea no -->
+
+            {% elif ((data['registering-first-time'] == "Yes") and (data['recently-moved'] == "Yes") and (data['eea'] == "No"))  %}
 
 
             <dl class="nhsuk-summary-list">
@@ -157,55 +254,13 @@
               </dl>
 
 
-              <!-- Not first time + not armed forces + not returning -->
-
-              {% elif ((data['registering-first-time'] == "No") and (data['is-armed-forces-member'] == "No") and (data['overseas'] == "No"))  %}
 
 
-              <dl class="nhsuk-summary-list">
-
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Are you registering with a UK GP for the first time?
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['registering-first-time'] }}
-                  </dd>
-                  <dd class="nhsuk-summary-list__actions">
-                    <a href="">Change<span class="nhsuk-u-visually-hidden">First time</span></a>
-                  </dd>
-                </div>
-
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Have you ever been a member of the armed forces?
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['is-armed-forces-member'] }}
-                  </dd>
-                  <dd class="nhsuk-summary-list__actions">
-                    <a href="">Change<span class="nhsuk-u-visually-hidden">Armed forces</span></a>
-                  </dd>
-                </div>
-
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Are you returning from overseas?
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['overseas'] }}
-                  </dd>
-                  <dd class="nhsuk-summary-list__actions">
-                    <a href="">Change<span class="nhsuk-u-visually-hidden">Armed forces</span></a>
-                  </dd>
-                </div>
-
-                </dl>
 
 
-                <!-- Not first time + armed forces + not returning -->
+                <!-- Not first time + not returning -->
 
-                {% elif ((data['registering-first-time'] == "No") and (data['is-armed-forces-member'] == "Yes"))  %}
+                {% elif ((data['registering-first-time'] == "No") and (data['overseas'] == "No"))  %}
 
 
                 <dl class="nhsuk-summary-list">
@@ -224,76 +279,24 @@
 
                   <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
-                      Have you ever been a member of the armed forces?
+                      Are you returning from overseas?
                     </dt>
                     <dd class="nhsuk-summary-list__value">
-                      {{ data['is-armed-forces-member'] }}
+                      {{ data['overseas'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                      <a href="">Change<span class="nhsuk-u-visually-hidden">Armed forces</span></a>
+                      <a href="">Change<span class="nhsuk-u-visually-hidden">overseas</span></a>
                     </dd>
                   </div>
 
-                  <div class="nhsuk-summary-list__row">
-                    <dt class="nhsuk-summary-list__key">
-                      Date enlisted in Armed forces
-                    </dt>
-                    <dd class="nhsuk-summary-list__value">
-                      {{ data['af-enlisted-day'] }} -
-                      {{ data['af-enlisted-month'] }} -
-                      {{ data['af-enlisted-year'] }}
-                    </dd>
-                    <dd class="nhsuk-summary-list__actions">
-                      <a href="">Change<span class="nhsuk-u-visually-hidden">enlisted date</span></a>
-                    </dd>
-                  </div>
-
-                  <div class="nhsuk-summary-list__row">
-                    <dt class="nhsuk-summary-list__key">
-                      Date left Armed forces
-                    </dt>
-                    <dd class="nhsuk-summary-list__value">
-                      {{ data['afleft-day'] }} -
-                      {{ data['afleft-month'] }} -
-                      {{ data['afleft-year'] }}
-                    </dd>
-                    <dd class="nhsuk-summary-list__actions">
-                      <a href="">Change<span class="nhsuk-u-visually-hidden">enlisted date</span></a>
-                    </dd>
-                  </div>
 
                   </dl>
+
+
 
                   {% else %}
 
 
-          <!--- GP Details --->
-
-          <!-- <h3>Previous GP</h3>
-
-          <dl class="nhsuk-summary-list">
-
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Previous GP address
-              </dt>
-              <dd class="nhsuk-summary-list__value previous-gp__value">
-                {% if data['select-gp-address'] %}
-                {{ data['select-gp-address'] }}
-                {% else %}
-                {{ data['select-gp-address'] }}
-                {{ data['previous-gp-name'] }}<br/>
-                {{ data['previous-gp-address-line-1'] }}<br/>
-                {{ data['previous-gp-address-line-2'] }}<br/>
-                {{ data['previous-gp-town'] }}<br/>
-                {{ data['previous-gp-postcode'] }}
-                {% endif %}
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="">Change<span class="nhsuk-u-visually-hidden">previous GP address</span></a>
-              </dd>
-            </div>
-          </dl> -->
 
 
           {% endif %}
