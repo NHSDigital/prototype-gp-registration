@@ -32,40 +32,44 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="do-you-have-a-living-will" method="post" autocomplete="off">
+          <form action="armed-forces-service-number" method="post" autocomplete="off">
 
-            {% call fieldset({
-              legend: {
-                text: "Have you ever been a member of the armed forces?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
 
-            {{ radios({
-              "idPrefix": "is-armed-forces-member",
-              "name": "is-armed-forces-member",
-              "items": [
-                {
-                  "value": "Yes~/sprint-4/armed-forces-role",
-                  "text": "Yes",
-                  checked: checked("is-armed-forces-member", "Yes")
-                },
-                {
-                  "value": "No~/sprint-4/review-about-you-answers",
-                  "text": "No",
-                  checked: checked("is-armed-forces-member", "No")
+        {% call fieldset({
+          legend: {
+            text: "What was your role in the Armed forces?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
 
-                }
-              ]
-            }) }}
+        <!-- <div class="nhsuk-hint" id="contact-hint">
+          <p>This includes if they are living at a temporary address.</p>
+        </div> -->
 
-            {% endcall %}
+        {{ radios({
+          "idPrefix": "af-role",
+          "name": "af-role",
+          "items": [
+            {
+              "value": "Regular",
+              "text": "Regular",
+              checked: checked("af-role", "Regular")
+            },
+            {
+              "value": "Reservist",
+              "text": "Reservist",
+              checked: checked("af-role", "Reservist")
+            },
+            {
+              "value": "Veteran",
+              "text": "Veteran",
+              checked: checked("af-role", "Veteran")
+            }
+          ]
+        }) }}
 
-            {{ details({
-              "text": "Why are you asking this?",
-              "HTML": "<p>If you've served in the armed forces you're entitled to priority care for any conditions relating to that time.</p><p>Telling us about your service will start the transfer of your medical records from the Ministry of Defence and allow you to benefit from special services, like prosthetics and mental health.</p>"
-            }) }}
+        {% endcall %}
 
             {{ button({
               "text": "Continue"
@@ -80,4 +84,7 @@
 
   </div>
 </div>
+{% block pageScripts %}
+<script></script>
+{% endblock %}
 {% endblock %}
