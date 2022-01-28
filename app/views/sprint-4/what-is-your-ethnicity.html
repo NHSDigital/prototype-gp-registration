@@ -34,6 +34,81 @@
 
           <form action="/sprint-4/do-you-need-a-interpreter" method="post" autocomplete="off">
 
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+
+            {{ radios({
+              "idPrefix": "ethnicity",
+              "name": "ethnicity",
+              "fieldset": {
+                "legend": {
+                  "text": "What is their ethnic group?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+
+              "items": [
+                {
+                  "value": "Asian or Asian British~/sprint-4/what-is-your-ethnicity-background-asian",
+                  "text": "Asian or Asian British",
+                  "hint": {
+                    "text": "Includes any Asian background, for example, Bangladeshi, Chinese, Indian, Pakistani"
+                  },
+                  checked: checked("ethnicity", "Asian or Asian British")
+                },
+                {
+                  "value": "Black African, Black British or Caribbean~/sprint-4/what-is-your-ethnicity-background-black",
+                  "text": "Black African, Black British or Caribbean",
+                  "hint": {
+                    "text": "Includes any Black background"
+                  },
+                  checked: checked("ethnicity", "Black African, Black British or Caribbean")
+                },
+                {
+                  "value": "Mixed or multiple ethnic groups~/sprint-4/what-is-your-ethnicity-background-mixed",
+                  "text": "Mixed or multiple ethnic groups",
+                  "hint": {
+                    "text": "Includes any Mixed background"
+                  },
+                  checked: checked("ethnicity", "Mixed or multiple ethnic groups")
+                },
+                {
+                  "value": "White~/sprint-4/what-is-your-ethnicity-background-white",
+                  "text": "White",
+                  "hint": {
+                    "text": "Includes any White background"
+                  },
+                  checked: checked("ethnicity", "White")
+                },
+                {
+                  "value": "Another ethnic group~/sprint-4/what-is-your-ethnicity-background-another",
+                  "text": "Another ethnic group",
+                  "hint": {
+                    "text": "Includes any other ethnic background, for example, Arab"
+                  },
+                  checked: checked("ethnicity", "Another ethnic group")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say~/sprint-4/do-you-need-a-interpreter",
+                  "text": "Prefer not to say",
+                  checked: checked("ethnicity", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of ethnicity.</p>"
+            }) }}
+
+
+            {% else %}
+
             {{ radios({
               "idPrefix": "ethnicity",
               "name": "ethnicity",
@@ -101,6 +176,10 @@
               "text": "Why are you asking this?",
               "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of ethnicity.</p>"
             }) }}
+
+
+            {% endif %}
+
 
             {{ button({
               "text": "Continue"

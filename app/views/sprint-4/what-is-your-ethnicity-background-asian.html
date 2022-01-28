@@ -35,69 +35,139 @@
           <form action="/sprint-4/do-you-need-a-interpreter" method="post" autocomplete="off">
 
 
+          {% if (data['who-is-being-registered'] == "dependant") %}
+
           {% set ethnicityHtml %}
             {{ input({
               id: "ethAsian",
               name: "ethAsian",
               classes: "nhsuk-u-width-two-thirds",
               label: {
-              text: "How would you describe your background? (optional)"
+              text: "How would you describe their background? (optional)"
 
-      }
-    }) }}
-  {% endset -%}
+                }
+              }) }}
+            {% endset -%}
 
-  {{ radios({
-    idPrefix: "ethnicity-detail-asian",
-    name: "ethnicity-detail-asian",
-    fieldset: {
-      legend: {
-        text: "Which of the following best describes your Asian or Asian British background?",
-        isPageHeading: true,
-        classes: "nhsuk-fieldset__legend--l"
-      }
-    },
-    items: [
-      {
-        value: "Indian",
-        text: "Indian",
-        checked: checked("ethnicity-detail-asian", "Indian")
-      },
-      {
-        value: "Pakistani",
-        text: "Pakistani",
-        checked: checked("ethnicity-detail-asian", "Pakistani")
-      },
-      {
-        value: "Bangladeshi",
-        text: "Bangladeshi",
-        checked: checked("ethnicity-detail-asian", "Bangladeshi")
-      },
-      {
-        value: "Chinese",
-        text: "Chinese",
-        checked: checked("ethnicity-detail-asian", "Chinese")
-      },
-      {
-        value: "other",
-        text: "Any other Asian background",
-        conditional: {
-          html: ethnicityHtml
-        }
-      },
-      {
-        divider: "or"
-      },
-      {
-        value: "skip",
-        text: "Prefer not to say"
-      }
-    ]
-  }) }}
+            {{ radios({
+              idPrefix: "ethnicity-detail-asian",
+              name: "ethnicity-detail-asian",
+              fieldset: {
+                legend: {
+                  text: "Which of the following best describes their Asian or Asian British background?",
+                  isPageHeading: true,
+                  classes: "nhsuk-fieldset__legend--l"
+                }
+              },
+              items: [
+                {
+                  value: "Indian",
+                  text: "Indian",
+                  checked: checked("ethnicity-detail-asian", "Indian")
+                },
+                {
+                  value: "Pakistani",
+                  text: "Pakistani",
+                  checked: checked("ethnicity-detail-asian", "Pakistani")
+                },
+                {
+                  value: "Bangladeshi",
+                  text: "Bangladeshi",
+                  checked: checked("ethnicity-detail-asian", "Bangladeshi")
+                },
+                {
+                  value: "Chinese",
+                  text: "Chinese",
+                  checked: checked("ethnicity-detail-asian", "Chinese")
+                },
+                {
+                  value: "other",
+                  text: "Any other Asian background",
+                  conditional: {
+                    html: ethnicityHtml
+                  }
+                },
+                {
+                  divider: "or"
+                },
+                {
+                  value: "skip",
+                  text: "Prefer not to say"
+                }
+              ]
+            }) }}
 
-  {{ button({
-    "text": "Continue"
-  }) }}
+
+            {% else %}
+
+            {% set ethnicityHtml %}
+              {{ input({
+                id: "ethAsian",
+                name: "ethAsian",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                text: "How would you describe your background? (optional)"
+
+                  }
+                }) }}
+              {% endset -%}
+
+              {{ radios({
+                idPrefix: "ethnicity-detail-asian",
+                name: "ethnicity-detail-asian",
+                fieldset: {
+                  legend: {
+                    text: "Which of the following best describes your Asian or Asian British background?",
+                    isPageHeading: true,
+                    classes: "nhsuk-fieldset__legend--l"
+                  }
+                },
+                items: [
+                  {
+                    value: "Indian",
+                    text: "Indian",
+                    checked: checked("ethnicity-detail-asian", "Indian")
+                  },
+                  {
+                    value: "Pakistani",
+                    text: "Pakistani",
+                    checked: checked("ethnicity-detail-asian", "Pakistani")
+                  },
+                  {
+                    value: "Bangladeshi",
+                    text: "Bangladeshi",
+                    checked: checked("ethnicity-detail-asian", "Bangladeshi")
+                  },
+                  {
+                    value: "Chinese",
+                    text: "Chinese",
+                    checked: checked("ethnicity-detail-asian", "Chinese")
+                  },
+                  {
+                    value: "other",
+                    text: "Any other Asian background",
+                    conditional: {
+                      html: ethnicityHtml
+                    }
+                  },
+                  {
+                    divider: "or"
+                  },
+                  {
+                    value: "skip",
+                    text: "Prefer not to say"
+                  }
+                ]
+              }) }}
+
+
+              {% endif %}
+
+
+
+            {{ button({
+              "text": "Continue"
+            }) }}
 
           </form>
         </div>

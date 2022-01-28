@@ -35,6 +35,60 @@
           <form action="/sprint-4/do-you-need-a-interpreter" method="post" autocomplete="off">
 
 
+          {% if (data['who-is-being-registered'] == "dependant") %}
+
+          {% set ethnicityHtml %}
+            {{ input({
+              id: "ethBlack",
+              name: "ethBlack",
+              classes: "nhsuk-u-width-two-thirds",
+              label: {
+              text: "How would you describe their background? (optional)"
+
+              }
+            }) }}
+          {% endset -%}
+
+          {{ radios({
+            idPrefix: "ethnicity-detail-black",
+            name: "ethnicity-detail-black",
+            fieldset: {
+              legend: {
+                text: "Which of the following best describes their Black, African, Caribbean or Black British background?",
+                isPageHeading: true,
+                classes: "nhsuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "African",
+                text: "African",
+                checked: checked("ethnicity-detail-black", "African")
+              },
+              {
+                value: "Caribbean",
+                text: "Caribbean",
+                checked: checked("ethnicity-detail-black", "Caribbean")
+              },
+              {
+                value: "other",
+                text: "Any other Black, African or Caribbean background",
+                conditional: {
+                  html: ethnicityHtml
+                }
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "skip",
+                text: "Prefer not to say"
+              }
+            ]
+          }) }}
+
+          {% else %}
+
           {% set ethnicityHtml %}
             {{ input({
               id: "ethBlack",
@@ -43,51 +97,53 @@
               label: {
               text: "How would you describe your background? (optional)"
 
-      }
-    }) }}
-  {% endset -%}
+              }
+            }) }}
+          {% endset -%}
 
-  {{ radios({
-    idPrefix: "ethnicity-detail-black",
-    name: "ethnicity-detail-black",
-    fieldset: {
-      legend: {
-        text: "Which of the following best describes your Black, African, Caribbean or Black British background?",
-        isPageHeading: true,
-        classes: "nhsuk-fieldset__legend--l"
-      }
-    },
-    items: [
-      {
-        value: "African",
-        text: "African",
-        checked: checked("ethnicity-detail-black", "African")
-      },
-      {
-        value: "Caribbean",
-        text: "Caribbean",
-        checked: checked("ethnicity-detail-black", "Caribbean")
-      },
-      {
-        value: "other",
-        text: "Any other Black, African or Caribbean background",
-        conditional: {
-          html: ethnicityHtml
-        }
-      },
-      {
-        divider: "or"
-      },
-      {
-        value: "skip",
-        text: "Prefer not to say"
-      }
-    ]
-  }) }}
+          {{ radios({
+            idPrefix: "ethnicity-detail-black",
+            name: "ethnicity-detail-black",
+            fieldset: {
+              legend: {
+                text: "Which of the following best describes your Black, African, Caribbean or Black British background?",
+                isPageHeading: true,
+                classes: "nhsuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "African",
+                text: "African",
+                checked: checked("ethnicity-detail-black", "African")
+              },
+              {
+                value: "Caribbean",
+                text: "Caribbean",
+                checked: checked("ethnicity-detail-black", "Caribbean")
+              },
+              {
+                value: "other",
+                text: "Any other Black, African or Caribbean background",
+                conditional: {
+                  html: ethnicityHtml
+                }
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "skip",
+                text: "Prefer not to say"
+              }
+            ]
+          }) }}
 
-  {{ button({
-    "text": "Continue"
-  }) }}
+          {% endif %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
 
           </form>
         </div>

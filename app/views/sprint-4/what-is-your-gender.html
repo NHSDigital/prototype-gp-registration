@@ -34,6 +34,8 @@
 
           <form action="what-is-your-gender-at-birth" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
             {% set otherHtml %}
               {{ input({
                 id: "other",
@@ -50,15 +52,15 @@
               "name": "gender",
               "fieldset": {
                 "legend": {
-                  "text": "Which of the following options best describes how you think of yourself?",
+                  "text": "Which of the following options best describes how they think of yourself?",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
               },
               "hint": {
                 "html": "<p>
-                  You can choose any of these options and we should be able to match your records accurately.</p>
-                  <p>Your answer does not have to match the sex you were you were given at birth.</p>"
+                  You can choose any of these options and we should be able to match their records accurately.</p>
+                  <p>Your answer does not have to match the sex they were given at birth.</p>"
               },
 
               "items": [
@@ -93,9 +95,74 @@
               "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of gender.</p>"
             }) }}
 
+            {% else %}
+
+            {% set otherHtml %}
+              {{ input({
+                id: "other",
+                name: "other",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "Gender"
+                }
+              }) }}
+            {% endset -%}
+
+            {{ radios({
+              "idPrefix": "gender",
+              "name": "gender",
+              "fieldset": {
+                "legend": {
+                  "text": "Which of the following options best describes how you think of yourself?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "html": "<p>
+                  You can choose any of these options and we should be able to match your records accurately.</p>
+                  <p>Your answer does not have to match the sex you were given at birth.</p>"
+              },
+
+              "items": [
+                {
+                  "value": "woman (including trans woman)",
+                  "text": "Woman (including trans woman)",
+                  checked: checked("gender", "woman")
+                },
+                {
+                  "value": "man (including trans man)",
+                  "text": "Man (including trans man)",
+                  checked: checked("gender", "man")
+                },
+                {
+                  "value": "non-binary",
+                  "text": "Non-binary",
+                  checked: checked("gender", "non-binary")
+                },
+                {
+                  "value": "in-another-way",
+                  "text": "In another way",
+                  "conditional": {
+                    "html": otherHtml
+                  },
+                  checked: checked("gender", "in-another-way")
+                }
+              ]
+            }) }}
+
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of gender.</p>"
+            }) }}
+
+            {% endif %}
+
             {{ button({
               "text": "Continue"
             }) }}
+
+
 
           </form>
         </div>

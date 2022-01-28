@@ -35,6 +35,8 @@
           <form action="/sprint-4/do-you-need-a-interpreter" method="post" autocomplete="off">
 
 
+          {% if (data['who-is-being-registered'] == "dependant") %}
+
           {% set ethnicityHtml %}
             {{ input({
               id: "ethOther",
@@ -43,46 +45,99 @@
               label: {
               text: "How would you describe your background? (optional)"
 
-      }
-    }) }}
-  {% endset -%}
+                }
+              }) }}
+              {% endset -%}
 
-  {{ radios({
-    idPrefix: "ethnicity-detail-asian",
-    name: "ethnicity-detail-asian",
-    fieldset: {
-      legend: {
-        text: "Which of the following best describes your background?",
-        isPageHeading: true,
-        classes: "nhsuk-fieldset__legend--l"
-      }
-    },
-    items: [
-      {
-        value: "Arab",
-        text: "Arab",
-        checked: checked("ethnicity-detail-other", "Arab")
-      },
-      {
-        value: "other",
-        text: "Any other ethnic group",
-        conditional: {
-          html: ethnicityHtml
-        }
-      },
-      {
-        divider: "or"
-      },
-      {
-        value: "skip",
-        text: "Prefer not to say"
-      }
-    ]
-  }) }}
+              {{ radios({
+                idPrefix: "ethnicity-detail-asian",
+                name: "ethnicity-detail-asian",
+                fieldset: {
+                  legend: {
+                    text: "Which of the following best describes their background?",
+                    isPageHeading: true,
+                    classes: "nhsuk-fieldset__legend--l"
+                  }
+                },
+                items: [
+                  {
+                    value: "Arab",
+                    text: "Arab",
+                    checked: checked("ethnicity-detail-other", "Arab")
+                  },
+                  {
+                    value: "other",
+                    text: "Any other ethnic group",
+                    conditional: {
+                      html: ethnicityHtml
+                    }
+                  },
+                  {
+                    divider: "or"
+                  },
+                  {
+                    value: "skip",
+                    text: "Prefer not to say"
+                  }
+                ]
+              }) }}
 
-  {{ button({
-    "text": "Continue"
-  }) }}
+
+              {% else %}
+
+
+              {% set ethnicityHtml %}
+                {{ input({
+                  id: "ethOther",
+                  name: "ethOther",
+                  classes: "nhsuk-u-width-two-thirds",
+                  label: {
+                  text: "How would you describe your background? (optional)"
+
+                    }
+                  }) }}
+                  {% endset -%}
+
+                  {{ radios({
+                    idPrefix: "ethnicity-detail-asian",
+                    name: "ethnicity-detail-asian",
+                    fieldset: {
+                      legend: {
+                        text: "Which of the following best describes your background?",
+                        isPageHeading: true,
+                        classes: "nhsuk-fieldset__legend--l"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Arab",
+                        text: "Arab",
+                        checked: checked("ethnicity-detail-other", "Arab")
+                      },
+                      {
+                        value: "other",
+                        text: "Any other ethnic group",
+                        conditional: {
+                          html: ethnicityHtml
+                        }
+                      },
+                      {
+                        divider: "or"
+                      },
+                      {
+                        value: "skip",
+                        text: "Prefer not to say"
+                      }
+                    ]
+                  }) }}
+
+
+                  {% endif %}
+
+
+                  {{ button({
+                    "text": "Continue"
+                  }) }}
 
           </form>
         </div>

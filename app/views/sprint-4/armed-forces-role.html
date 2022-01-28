@@ -34,6 +34,46 @@
 
           <form action="armed-forces-service-number" method="post" autocomplete="off">
 
+        {% if (data['who-is-being-registered'] == "dependant") %}
+
+
+        {% call fieldset({
+          legend: {
+            text: "What was their role in the Armed forces?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <!-- <div class="nhsuk-hint" id="contact-hint">
+          <p>This includes if they are living at a temporary address.</p>
+        </div> -->
+
+        {{ radios({
+          "idPrefix": "af-role",
+          "name": "af-role",
+          "items": [
+            {
+              "value": "Regular",
+              "text": "Regular",
+              checked: checked("af-role", "Regular")
+            },
+            {
+              "value": "Reservist",
+              "text": "Reservist",
+              checked: checked("af-role", "Reservist")
+            },
+            {
+              "value": "Veteran",
+              "text": "Veteran",
+              checked: checked("af-role", "Veteran")
+            }
+          ]
+        }) }}
+
+        {% endcall %}
+
+        {% else %}
 
         {% call fieldset({
           legend: {
@@ -70,6 +110,8 @@
         }) }}
 
         {% endcall %}
+
+        {% endif %}
 
             {{ button({
               "text": "Continue"

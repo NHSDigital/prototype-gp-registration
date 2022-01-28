@@ -34,6 +34,53 @@
 
           <form action="what-is-your-ethnicity" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% set otherHtml %}
+              {{ input({
+                id: "other",
+                name: "other",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "Gender"
+                }
+              }) }}
+            {% endset -%}
+
+            {{ radios({
+              "idPrefix": "gender",
+              "name": "gender",
+              "fieldset": {
+                "legend": {
+                  "text": "Is their gender identity the same as the gender they were assigned at birth?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "We are asking for this information to match you to your GP record."
+              },
+              "items": [
+                {
+                  "value": "male",
+                  "text": "Yes",
+                  checked: checked("gender", "Yes")
+                },
+                {
+                  "value": "female",
+                  "text": "No",
+                  checked: checked("gender", "no")
+                }
+              ]
+            }) }}
+
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of gender.</p>"
+            }) }}
+
+            {% else %}
+
             {% set otherHtml %}
               {{ input({
                 id: "other",
@@ -76,6 +123,8 @@
               "text": "Why are you asking this?",
               "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of gender.</p>"
             }) }}
+
+            {% endif %}
 
             {{ button({
               "text": "Continue"

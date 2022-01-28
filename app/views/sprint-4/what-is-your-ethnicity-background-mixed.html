@@ -35,6 +35,65 @@
           <form action="/sprint-4/do-you-need-a-interpreter" method="post" autocomplete="off">
 
 
+          {% if (data['who-is-being-registered'] == "dependant") %}
+
+          {% set ethnicityHtml %}
+            {{ input({
+              id: "ethMix",
+              name: "ethMix",
+              classes: "nhsuk-u-width-two-thirds",
+              label: {
+              text: "How would you describe their background? (optional)"
+
+              }
+            }) }}
+          {% endset -%}
+
+          {{ radios({
+            idPrefix: "ethnicity-detail-mixed",
+            name: "ethnicity-detail-mixed",
+            fieldset: {
+              legend: {
+                text: "Which of the following best describes their Mixed or Multiple ethnic groups background?",
+                isPageHeading: true,
+                classes: "nhsuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "White and Black Caribbean",
+                text: "White and Black Caribbean",
+                checked: checked("ethnicity-detail-mixed", "White and Black Caribbean")
+              },
+              {
+                value: "White and Black African",
+                text: "White and Black African",
+                checked: checked("ethnicity-detail-mixed", "White and Black African")
+              },
+              {
+                value: "White and Asian",
+                text: "White and Asian",
+                checked: checked("ethnicity-detail-mixed", "White and Asian")
+              },
+              {
+                value: "other",
+                text: "Any other Mixed or Multiple ethnic background",
+                conditional: {
+                  html: ethnicityHtml
+                }
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "skip",
+                text: "Prefer not to say"
+              }
+            ]
+          }) }}
+
+          {% else %}
+
           {% set ethnicityHtml %}
             {{ input({
               id: "ethMix",
@@ -43,56 +102,58 @@
               label: {
               text: "How would you describe your background? (optional)"
 
-      }
-    }) }}
-  {% endset -%}
+              }
+            }) }}
+          {% endset -%}
 
-  {{ radios({
-    idPrefix: "ethnicity-detail-mixed",
-    name: "ethnicity-detail-mixed",
-    fieldset: {
-      legend: {
-        text: "Which of the following best describes your Mixed or Multiple ethnic groups background?",
-        isPageHeading: true,
-        classes: "nhsuk-fieldset__legend--l"
-      }
-    },
-    items: [
-      {
-        value: "White and Black Caribbean",
-        text: "White and Black Caribbean",
-        checked: checked("ethnicity-detail-mixed", "White and Black Caribbean")
-      },
-      {
-        value: "White and Black African",
-        text: "White and Black African",
-        checked: checked("ethnicity-detail-mixed", "White and Black African")
-      },
-      {
-        value: "White and Asian",
-        text: "White and Asian",
-        checked: checked("ethnicity-detail-mixed", "White and Asian")
-      },
-      {
-        value: "other",
-        text: "Any other Mixed or Multiple ethnic background",
-        conditional: {
-          html: ethnicityHtml
-        }
-      },
-      {
-        divider: "or"
-      },
-      {
-        value: "skip",
-        text: "Prefer not to say"
-      }
-    ]
-  }) }}
+          {{ radios({
+            idPrefix: "ethnicity-detail-mixed",
+            name: "ethnicity-detail-mixed",
+            fieldset: {
+              legend: {
+                text: "Which of the following best describes your Mixed or Multiple ethnic groups background?",
+                isPageHeading: true,
+                classes: "nhsuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "White and Black Caribbean",
+                text: "White and Black Caribbean",
+                checked: checked("ethnicity-detail-mixed", "White and Black Caribbean")
+              },
+              {
+                value: "White and Black African",
+                text: "White and Black African",
+                checked: checked("ethnicity-detail-mixed", "White and Black African")
+              },
+              {
+                value: "White and Asian",
+                text: "White and Asian",
+                checked: checked("ethnicity-detail-mixed", "White and Asian")
+              },
+              {
+                value: "other",
+                text: "Any other Mixed or Multiple ethnic background",
+                conditional: {
+                  html: ethnicityHtml
+                }
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "skip",
+                text: "Prefer not to say"
+              }
+            ]
+          }) }}
 
-  {{ button({
-    "text": "Continue"
-  }) }}
+            {% endif%}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
 
           </form>
         </div>

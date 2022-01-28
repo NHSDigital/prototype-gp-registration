@@ -34,6 +34,30 @@
 
           <form action="review-about-you-answers" method="post" autocomplete="off">
 
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                "text": "What was their service number?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+              {{ input({
+                label: {
+                  "html": 'Service number'
+                },
+                "classes": "nhsuk-input--width-20",
+                "id": "service-number",
+                "name": "service-number"
+              }) }}
+
+            {% endcall %}
+
+            {% else %}
+
             {% call fieldset({
               legend: {
                 "text": "What was your service number?",
@@ -53,6 +77,8 @@
 
             {% endcall %}
 
+            {% endif %}
+
             {{ button({
               "text": "Continue"
             }) }}
@@ -67,14 +93,6 @@
   </div>
 </div>
 {% block pageScripts %}
-<script>
-$('#no-previous-address-1').change(function(){
-    if ($('#no-previous-address-1').is(':checked') == true){
-        $('input[type=text]').prop('disabled', true);
-    } else {
-      $('input[type=text]').prop('disabled', false);
-    }
-});
-</script>
+
 {% endblock %}
 {% endblock %}

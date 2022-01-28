@@ -34,16 +34,37 @@
 
           <form action="what-is-your-ethnicity" method="post" autocomplete="off">
 
-            {% set otherHtml %}
-              {{ input({
-                id: "other",
-                name: "other",
-                classes: "nhsuk-u-width-two-thirds",
-                label: {
-                  text: "Gender"
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {{ radios({
+              "idPrefix": "interpreter",
+              "name": "interpreter",
+              "fieldset": {
+                "legend": {
+                  "text": "Do they need an language interpreter?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
                 }
-              }) }}
-            {% endset -%}
+              },
+              "hint": {
+                "text": "The GP surgery might arrange an interpreter for appointments in person or over the phone or video call."
+              },
+              "items": [
+                {
+                  "value": "yes~/sprint-4/do-you-need-a-interpreter-language",
+                  "text": "Yes",
+                  checked: checked("interpreter", "Yes")
+                },
+                {
+                  "value": "no~/sprint-4/do-you-have-emergency-contact",
+                  "text": "No",
+                  checked: checked("interpreter", "no")
+                }
+              ]
+            }) }}
+
+            {% else %}
+
 
             {{ radios({
               "idPrefix": "interpreter",
@@ -71,6 +92,8 @@
                 }
               ]
             }) }}
+
+            {% endif %}
 
 
             {{ button({
