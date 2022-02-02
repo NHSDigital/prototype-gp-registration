@@ -1,5 +1,6 @@
-pool:
-  vmImage: 'ubuntu-latest'
+queue:
+  name: Hosted Ubuntu 1604
+  demands: npm
 
 steps:
 - task: Npm@1
