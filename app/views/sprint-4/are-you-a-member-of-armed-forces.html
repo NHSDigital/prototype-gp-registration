@@ -38,7 +38,7 @@
 
             {% call fieldset({
               legend: {
-                text: "Have they ever been a member of the armed forces?",
+                text: "Have you recently left the Armed Forces?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -69,11 +69,11 @@
               "HTML": "<p>If they have served in the armed forces they are entitled to priority care for any conditions relating to that time.</p><p>Telling us about your service will start the transfer of your medical records from the Ministry of Defence and allow you to benefit from special services, like prosthetics and mental health.</p>"
             }) }}
 
-            {% else %}
+            {% elif (data['ab'] == "b") %}
 
             {% call fieldset({
               legend: {
-                text: "Have you ever been a member of the armed forces?",
+                text: "Have you recently left the Armed Forces?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -89,7 +89,7 @@
                   checked: checked("is-armed-forces-member", "Yes")
                 },
                 {
-                  "value": "No~/sprint-4/review-about-you-answers",
+                  "value": "No~/sprint-4/do-you-have-existing-conditions",
                   "text": "No",
                   checked: checked("is-armed-forces-member", "No")
 

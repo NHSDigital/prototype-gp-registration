@@ -62,7 +62,7 @@ Pre-load - GP registration - NHS
                   },
                   {
                     "value": "nomatch",
-                    "text": "nomatch",
+                    "text": "No match PDS",
                     checked: checked("user-auth", "nomatch")
                   },
                   {
@@ -111,6 +111,26 @@ Pre-load - GP registration - NHS
                   }
                 ]
               }) }}
+
+              <h3>Sprint 4 A/B for Questionairre</h3>
+
+              {{ radios({
+                "idPrefix": "ab",
+                "name": "ab",
+                "items": [
+                {
+                  "value": "a",
+                  "text": "A (Questionnaire post search)",
+                  "checked": checked("ab", "a")
+                },
+                {
+                  "value": "b",
+                  "text": "B (Questionnaire upfront)",
+                  "checked": checked("ab", "b")
+                }
+                ]
+              }) }}
+
 
               {% endcall %}
 

@@ -32,7 +32,12 @@
             href: "javascript:history.go(-1)"
           }) }}
 
+
+          {% if (data['ab'] == "b") %}
+          <form action="do-you-have-existing-conditions" method="post" autocomplete="off">
+          {% else %}
           <form action="review-about-you-answers" method="post" autocomplete="off">
+          {% endif %}
 
 
             {% if (data['who-is-being-registered'] == "dependant") %}

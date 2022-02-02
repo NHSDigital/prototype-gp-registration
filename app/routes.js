@@ -263,7 +263,7 @@ router.post('*/do-you-have-disabilities-answer/', function (req, res) {
     res.redirect('disabilities-details')
   } else {
     // Send user to next page they can answer
-    res.redirect('are-you-a-carer')
+    res.redirect('do-you-take-prescription-medication')
   }
 
 })
