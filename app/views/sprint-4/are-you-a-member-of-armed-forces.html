@@ -32,13 +32,13 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="do-you-have-a-living-will" method="post" autocomplete="off">
+          <form action="" method="post" autocomplete="off">
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
             {% call fieldset({
               legend: {
-                text: "Have you recently left the Armed Forces?",
+                text: "Have they recently left the Armed Forces?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -99,10 +99,40 @@
 
             {% endcall %}
 
+              {% else %}
+
+              {% call fieldset({
+                legend: {
+                  text: "Have else recently left the Armed Forces?",
+                  classes: "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              }) %}
+
+              {{ radios({
+                "idPrefix": "is-armed-forces-member",
+                "name": "is-armed-forces-member",
+                "items": [
+                  {
+                    "value": "Yes~/sprint-4/armed-forces-role",
+                    "text": "Yes",
+                    checked: checked("is-armed-forces-member", "Yes")
+                  },
+                  {
+                    "value": "No~/sprint-4/review-about-you-answers",
+                    "text": "No",
+                    checked: checked("is-armed-forces-member", "No")
+
+                  }
+                ]
+              }) }}
+
             {{ details({
               "text": "Why are you asking this?",
               "HTML": "<p>If you've served in the armed forces you're entitled to priority care for any conditions relating to that time.</p><p>Telling us about your service will start the transfer of your medical records from the Ministry of Defence and allow you to benefit from special services, like prosthetics and mental health.</p>"
             }) }}
+
+            {% endcall %}
 
             {% endif %}
 
