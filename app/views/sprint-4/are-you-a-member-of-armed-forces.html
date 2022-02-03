@@ -38,18 +38,22 @@
 
             {% call fieldset({
               legend: {
-                text: "Have they recently left the Armed Forces?",
+                text: "Have they recently left the Armed Forces or are they family member registered with the Defence Medical Services?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
+
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>If yes, you will find more information about your FMED133A form at the end of your application. </p>
+            </div>
 
             {{ radios({
               "idPrefix": "is-armed-forces-member",
               "name": "is-armed-forces-member",
               "items": [
                 {
-                  "value": "Yes~/sprint-4/armed-forces-role",
+                  "value": "Yes~/sprint-4/are-you-a-member-of-armed-forces-details",
                   "text": "Yes",
                   checked: checked("is-armed-forces-member", "Yes")
                 },
@@ -64,27 +68,27 @@
 
             {% endcall %}
 
-            {{ details({
-              "text": "Why are you asking this?",
-              "HTML": "<p>If they have served in the armed forces they are entitled to priority care for any conditions relating to that time.</p><p>Telling us about your service will start the transfer of your medical records from the Ministry of Defence and allow you to benefit from special services, like prosthetics and mental health.</p>"
-            }) }}
-
+    
             {% elif (data['ab'] == "b") %}
 
             {% call fieldset({
               legend: {
-                text: "Have you recently left the Armed Forces?",
+                text: "Have you recently left the Armed Forces or are a family member registered with the Defence Medical Services?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
+
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>If yes, you will find more information about your FMED133A form at the end of your application. </p>
+            </div>
 
             {{ radios({
               "idPrefix": "is-armed-forces-member",
               "name": "is-armed-forces-member",
               "items": [
                 {
-                  "value": "Yes~/sprint-4/armed-forces-role",
+                  "value": "Yes~/sprint-4/are-you-a-member-of-armed-forces-details",
                   "text": "Yes",
                   checked: checked("is-armed-forces-member", "Yes")
                 },
@@ -103,18 +107,22 @@
 
               {% call fieldset({
                 legend: {
-                  text: "Have else recently left the Armed Forces?",
+                  text: "Have you recently left the Armed Forces or are a family member registered with the Defence Medical Services?",
                   classes: "nhsuk-fieldset__legend--l",
                   isPageHeading: true
                 }
               }) %}
+
+              <div class="nhsuk-hint" id="contact-hint">
+                <p>If yes, you will find more information about your FMED133A form at the end of your application. </p>
+              </div>
 
               {{ radios({
                 "idPrefix": "is-armed-forces-member",
                 "name": "is-armed-forces-member",
                 "items": [
                   {
-                    "value": "Yes~/sprint-4/armed-forces-role",
+                    "value": "Yes~/sprint-4/are-you-a-member-of-armed-forces-details",
                     "text": "Yes",
                     checked: checked("is-armed-forces-member", "Yes")
                   },
@@ -127,10 +135,6 @@
                 ]
               }) }}
 
-            {{ details({
-              "text": "Why are you asking this?",
-              "HTML": "<p>If you've served in the armed forces you're entitled to priority care for any conditions relating to that time.</p><p>Telling us about your service will start the transfer of your medical records from the Ministry of Defence and allow you to benefit from special services, like prosthetics and mental health.</p>"
-            }) }}
 
             {% endcall %}
 
