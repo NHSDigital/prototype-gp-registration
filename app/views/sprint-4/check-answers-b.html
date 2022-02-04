@@ -32,7 +32,13 @@
             href: "javascript:history.go(-1)"
           }) }}
 
+
+          {% if data['user-auth'] == "nomatch" %}
+          <form action="no-record" method="post" autocomplete="off">
+          {% else %}
           <form action="confirmation-page" method="post" autocomplete="off">
+          {% endif %}
+
 
             {{ fieldset({
               "legend": {

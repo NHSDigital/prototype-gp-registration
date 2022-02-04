@@ -32,7 +32,13 @@
             href: "javascript:history.go(-1)"
           }) }}
 
+
+          {% if data['ab'] == "b" %}
+          <form action="confirmation-page" method="post" autocomplete="off">
+          {% else %}
           <form action="about-your-health-start" method="post" autocomplete="off">
+          {% endif %}
+
 
             {{ fieldset({
               "legend": {

@@ -52,13 +52,27 @@ User research - GP registration - NHS
           <p>Research for testing Questionairre upfront + New Review page </p>
 
 
+
           <form action="/sprint-4/start" method="post" autocomplete="off">
           <input type="hidden" name="ab" id="ab" value="b" />
+
           {{ button({
-            "text": "Continue",
+            "text": "Route b",
                 "href": ""
           }) }}
           </form>
+
+          <form action="/sprint-4/start" method="post" autocomplete="off">
+          <input type="hidden" name="ab" id="ab" value="b" />
+          <input type="hidden" name="user-auth" id="user-auth" value="nomatch" />
+          {{ button({
+            "text": "Route b - no match",
+                "href": ""
+          }) }}
+          </form>
+
+
+
 
           </div>
           </details>
@@ -72,7 +86,7 @@ User research - GP registration - NHS
         <br>
 
           <h2 class="nhsuk-heading-l">Journey from find a GP</h2>
-          <p>Testing user routing</p>    
+          <p>Testing user routing</p>
 
 
           <form action="/user-research/18-nov/find-gp/google" method="post" autocomplete="off">
