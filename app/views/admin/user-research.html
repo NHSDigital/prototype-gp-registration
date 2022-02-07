@@ -49,15 +49,29 @@ User research - GP registration - NHS
 
 
           <h2 class="nhsuk-heading-l">Questionairre unfront</h2>
-          <p>Research for testing Questionairre upfront + New Review page </p>
+          <p>Research for testing (B) Questionairre upfront + no match against pds</p>
 
+          <form action="/sprint-4/start" method="post" autocomplete="off">
 
+          {{ button({
+            "text": "Route A match",
+                "href": ""
+          }) }}
+          </form>
+
+          <form action="/sprint-4/start" method="post" autocomplete="off">
+          <input type="hidden" name="user-auth" id="user-auth" value="nomatch" />
+          {{ button({
+            "text": "Route A (no match)",
+                "href": ""
+          }) }}
+          </form>
 
           <form action="/sprint-4/start" method="post" autocomplete="off">
           <input type="hidden" name="ab" id="ab" value="b" />
 
           {{ button({
-            "text": "Route b",
+            "text": "Route B match",
                 "href": ""
           }) }}
           </form>
@@ -66,7 +80,7 @@ User research - GP registration - NHS
           <input type="hidden" name="ab" id="ab" value="b" />
           <input type="hidden" name="user-auth" id="user-auth" value="nomatch" />
           {{ button({
-            "text": "Route b - no match",
+            "text": "Route B (no match)",
                 "href": ""
           }) }}
           </form>
