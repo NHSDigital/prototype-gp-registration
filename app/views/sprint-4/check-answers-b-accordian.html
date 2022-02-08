@@ -55,15 +55,21 @@
         <div class="nhsuk-grid-column-full">
              <div class="nhsuk-inset-text">
               <span class="nhsuk-u-visually-hidden">Information: </span>
-              <p>If you have logged in using the NHS app you will not be able to change some of the answers. Please contact your GP surgery if you information on the NHS app is incorrect. </p>
+              <p>As you have used your NHS login account, some of the answers here have been populated from that account. If they are incorrect, you can change them here and your new answers will be sent to your new GP. You will need to update NHS login separately. </p>
 
             </div>
 
             {% if data['user-auth'] == "p9" %}
 
-            <h2>Personal Details</h2>
-
-            <dl class="nhsuk-summary-list">
+            <details class="nhsuk-details nhsuk-expander">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Personal Details
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p></p>
+                 <dl class="nhsuk-summary-list">
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
@@ -252,16 +258,25 @@
                 </dd>
               </div>
 
-
+            </dl>
+              </div>
+            </details>
 
             {% elif data['user-auth'] == "p5" %}
 
+             <details class="nhsuk-details nhsuk-expander">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Personal Details
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p></p>
+                 <dl class="nhsuk-summary-list">
+                 <dl class="nhsuk-summary-list">
+
 
               <!-- Personal details -->
-
-              <h2>Personal Details</h2>
-
-              <dl class="nhsuk-summary-list">
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
@@ -508,13 +523,22 @@
             </div> -->
 
                  </dl>
-
+                </div>
+              </details>
 
       {% else %}
 
-      <h2>Personal Details</h2>
+      <details class="nhsuk-details nhsuk-expander">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Personal details
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p></p>
+                 <dl class="nhsuk-summary-list">
 
-      <dl class="nhsuk-summary-list">
+                 <dl class="nhsuk-summary-list">
 
                         <!-- Personal details -->
 
@@ -820,15 +844,20 @@
                       </div> -->
 
                       </dl>
-
+                </div>
+              </details>
 
         {% endif %}
 
-        <h2>Health questions</h2>
-
-        <dl class="nhsuk-summary-list">
-
-
+            <details class="nhsuk-details nhsuk-expander">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  General health questions
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p></p>
+                 <dl class="nhsuk-summary-list">
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                   Alcohol frequency
@@ -1077,9 +1106,7 @@
             </dl>
 
               </div>
-
-            </div>
-
+            </details>
 
 
 
@@ -1095,7 +1122,7 @@
               "text": "Accept and submit"
             }) }}
 
-
+          </form>
         </div>
       </div>
     </section>
