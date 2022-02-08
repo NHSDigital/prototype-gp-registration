@@ -37,7 +37,7 @@ User research - GP registration - NHS
         <h1 class="app-page-heading">User research</h1>
 
         <ul class="nhsuk-list nhsuk-body-s">
-          <li>Last updated: 17 Nov 2021</li>
+          <li>Last updated: 08 Feb 2022</li>
         </ul>
 
         <details class="nhsuk-details nhsuk-expander version-list">
@@ -49,15 +49,15 @@ User research - GP registration - NHS
 
 
           <h2 class="nhsuk-heading-l">Questionairre unfront</h2>
-          <p>Research for testing (B) Questionairre upfront + no match against pds</p>
+          <p>Route A has health questionairre as optional</p>
 
-          <form action="/sprint-4/start" method="post" autocomplete="off">
+          <!-- <form action="/sprint-4/start" method="post" autocomplete="off">
 
           {{ button({
             "text": "Route A match",
                 "href": ""
           }) }}
-          </form>
+          </form>  -->
 
           <form action="/sprint-4/start" method="post" autocomplete="off">
           <input type="hidden" name="user-auth" id="user-auth" value="nomatch" />
@@ -67,14 +67,17 @@ User research - GP registration - NHS
           }) }}
           </form>
 
-          <form action="/sprint-4/start" method="post" autocomplete="off">
+          <!-- <form action="/sprint-4/start" method="post" autocomplete="off">
           <input type="hidden" name="ab" id="ab" value="b" />
 
           {{ button({
             "text": "Route B match",
                 "href": ""
           }) }}
-          </form>
+          </form> -->
+
+          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+          <p>Route B has health questionairre included</p>
 
           <form action="/sprint-4/start" method="post" autocomplete="off">
           <input type="hidden" name="ab" id="ab" value="b" />
