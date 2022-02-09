@@ -61,18 +61,6 @@
 
             <dl class="nhsuk-summary-list">
 
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Email address
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['contact-email'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href=""><span class="nhsuk-u-visually-hidden">Email address</span></a>
-                </dd>
-              </div>
-
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
@@ -144,10 +132,10 @@
                   Gender
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  Female
+                  {{ data['gender'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href=""><span class="nhsuk-u-visually-hidden"> selected gender</span></a>
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
                 </dd>
               </div>
 
@@ -157,7 +145,16 @@
                   Ethnicity
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  Mixed or multiple ethnic groups
+                  {{ data['ethnicity-detail-white'] }}
+                  {{ data['ethWhite'] }}
+                  {{ data['ethnicity-detail-asian'] }}
+                  {{ data['ethAsian'] }}
+                  {{ data['ethnicity-detail-black'] }}
+                  {{ data['ethBlack'] }}
+                  {{ data['ethnicity-detail-mixed'] }}
+                  {{ data['ethMixed'] }}
+                  {{ data['ethnicity-detail-another'] }}
+                  {{ data['ethOther'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
@@ -188,20 +185,6 @@
               </div>
 
 
-              <!-- <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Previous address
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['previous-address-line-1'] }}<br />
-                  {{ data['previous-address-line-2'] }}<br />
-                  {{ data['previous-address-town'] }}<br />
-                  {{ data['previous-address-postcode'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href=""><span class="nhsuk-u-visually-hidden"> address</span></a>
-                </dd>
-              </div> -->
 
             </dl>
 
@@ -216,7 +199,8 @@
                   Contact methods
                 </dt>
                 <dd class="nhsuk-summary-list__value nhsuk-summary-list__contact-prefs">
-
+                  email@email.com<br />
+                  07700112234
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href=""><span class="nhsuk-u-visually-hidden"> contact email address</span></a>
@@ -225,74 +209,6 @@
 
             </dl>
 
-
-            <!-- GP Details -->
-
-            <!-- <h3>Previous GP</h3>
-
-            <dl class="nhsuk-summary-list">
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Previous GP address
-                </dt>
-                <dd class="nhsuk-summary-list__value previous-gp__value">
-                  {{ data['previous-gp-name'] }}<br/>
-                  {{ data['previous-gp-address-line-1'] }}<br/>
-                  {{ data['previous-gp-address-line-2'] }}<br/>
-                  {{ data['previous-gp-town'] }}<br/>
-                  {{ data['previous-gp-postcode'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href=""><span class="nhsuk-u-visually-hidden">previous GP address</span></a>
-                </dd>
-              </div>
-            </dl> -->
-
-            <!-- Selected GP -->
-
-            <!-- <h3>Prescription collection details</h3>
-
-            <dl class="nhsuk-summary-list">
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Collects prescriptions from
-                </dt>
-                <dd class="nhsuk-summary-list__value collects-prescriptions-from">
-                  {{ data['how-do-you-collect-prescriptions'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">Change<span class="nhsuk-u-visually-hidden"> where you collect prescriptions from</span></a>
-                </dd>
-              </div>
-
-              <div class="nhsuk-summary-list__row pharmacy-distance">
-                <dt class="nhsuk-summary-list__key">
-                  Lives more than 1.6km away from nearest pharmacy
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['distance-from-pharmacy'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">Change<span class="nhsuk-u-visually-hidden"> whether you live more than 1.6 kilometres from your nearest pharmacy</span></a>
-                </dd>
-              </div>
-
-
-              <div class="nhsuk-summary-list__row pharmacy-difficulty">
-                <dt class="nhsuk-summary-list__key">
-                  Has difficulty in reaching pharmacy?
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['difficulty-in-reaching-pharmacy'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">Change<span class="nhsuk-u-visually-hidden"> whether you would have difficult in reaching a pharmacy</span></a>
-                </dd>
-              </div>
-
-            </dl> -->
 
             <!-- Emergency Contact -->
 
@@ -338,6 +254,23 @@
                   <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency contact telephone number</span></a>
                 </dd>
               </div>
+                </dl>
+
+              <h3>Armed forces</h3>
+
+              <dl class="nhsuk-summary-list">
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Have you ever been a member of the armed forces?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['is-armed-forces-member'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">Armed forces</span></a>
+                </dd>
+              </div>
 
             </dl>
 
@@ -362,19 +295,6 @@
 
 
               <!-- Personal details -->
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Email address
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['contact-email'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href=""><span class="nhsuk-u-visually-hidden">Email address</span>
-                  </a>
-                </dd>
-              </div>
 
 
               <div class="nhsuk-summary-list__row">
@@ -447,10 +367,10 @@
                   Gender
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  Female
+                  {{ data['gender'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href=""><span class="nhsuk-u-visually-hidden"> selected gender</span></a>
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
                 </dd>
               </div>
 
@@ -460,7 +380,16 @@
                   Ethnicity
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  Mixed or multiple ethnic groups
+                  {{ data['ethnicity-detail-white'] }}
+                  {{ data['ethWhite'] }}
+                  {{ data['ethnicity-detail-asian'] }}
+                  {{ data['ethAsian'] }}
+                  {{ data['ethnicity-detail-black'] }}
+                  {{ data['ethBlack'] }}
+                  {{ data['ethnicity-detail-mixed'] }}
+                  {{ data['ethMixed'] }}
+                  {{ data['ethnicity-detail-another'] }}
+                  {{ data['ethOther'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
@@ -512,7 +441,8 @@
                   Contact methods
                 </dt>
                 <dd class="nhsuk-summary-list__value nhsuk-summary-list__contact-prefs">
-
+                  email@email.com<br />
+                  07700112234
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href=""><span class="nhsuk-u-visually-hidden"> contact email address</span></a>
@@ -521,75 +451,6 @@
 
             </dl>
 
-            <!-- GP Details -->
-
-            <!-- <h3>Previous GP</h3>
-
-            <dl class="nhsuk-summary-list">
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Previous GP address
-                </dt>
-                <dd class="nhsuk-summary-list__value previous-gp__value">
-                  {{ data['previous-gp-name'] }}<br/>
-                  {{ data['previous-gp-address-line-1'] }}<br/>
-                  {{ data['previous-gp-address-line-2'] }}<br/>
-                  {{ data['previous-gp-town'] }}<br/>
-                  {{ data['previous-gp-postcode'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href=""><span class="nhsuk-u-visually-hidden">previous GP address</span></a>
-                </dd>
-              </div>
-            </dl> -->
-
-
-            <!-- Selected GP -->
-<!--
-            <h3>Prescription collection details</h3>
-
-            <dl class="nhsuk-summary-list">
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Collects prescriptions from
-                </dt>
-                <dd class="nhsuk-summary-list__value collects-prescriptions-from">
-                  {{ data['how-do-you-collect-prescriptions'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">Change<span class="nhsuk-u-visually-hidden"> where you collect prescriptions from</span></a>
-                </dd>
-              </div>
-
-
-              <div class="nhsuk-summary-list__row pharmacy-distance">
-                <dt class="nhsuk-summary-list__key">
-                  Lives more than 1.6km away from nearest pharmacy
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['distance-from-pharmacy'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">Change<span class="nhsuk-u-visually-hidden"> whether you live more than 1.6 kilometres from your nearest pharmacy</span></a>
-                </dd>
-              </div>
-
-
-              <div class="nhsuk-summary-list__row pharmacy-difficulty">
-                <dt class="nhsuk-summary-list__key">
-                  Has difficulty in reaching pharmacy?
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['difficulty-in-reaching-pharmacy'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">Change<span class="nhsuk-u-visually-hidden"> whether you would have difficult in reaching a pharmacy</span></a>
-                </dd>
-              </div>
-
-            </dl> -->
 
             <!-- Emergency Contact -->
 
@@ -656,29 +517,6 @@
               </dd>
             </div>
 
-            <!-- <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Armed forces role
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ data['af-role'] }}
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="">Change<span class="nhsuk-u-visually-hidden">enlisted date</span></a>
-              </dd>
-            </div>
-
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-              Service number
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ data['service-number'] }}
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="">Change<span class="nhsuk-u-visually-hidden">enlisted date</span></a>
-              </dd>
-            </div> -->
 
             </dl>
 
@@ -866,27 +704,6 @@
                           </dd>
                         </div>
 
-
-                        <!-- <div class="nhsuk-summary-list__row">
-                          <dt class="nhsuk-summary-list__key">
-                            Previous address
-                          </dt>
-                          <dd class="nhsuk-summary-list__value">
-                            {% if data['select-previous-address'] %}
-                            {{ data['select-previous-address'] }}
-                            {% else %}
-                            {{ data['select-previous-address'] }}
-                            {{ data['previous-address-line-1'] }}<br />
-                            {{ data['previous-address-line-2'] }}<br />
-                            {{ data['previous-address-town'] }}<br />
-                            {{ data['previous-address-postcode'] }}
-                            {% endif %}
-                          </dd>
-                          <dd class="nhsuk-summary-list__actions">
-                            <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
-                          </dd>
-                        </div> -->
-
                       </dl>
 
 
@@ -912,81 +729,6 @@
 
                       </dl>
 
-
-                      <!-- GP Details -->
-
-                      <!-- <h3>Previous GP</h3>
-
-                      <dl class="nhsuk-summary-list">
-
-                        <div class="nhsuk-summary-list__row">
-                          <dt class="nhsuk-summary-list__key">
-                            Previous GP address
-                          </dt>
-                          <dd class="nhsuk-summary-list__value previous-gp__value">
-                            {% if data['select-gp-address'] %}
-                            {{ data['select-gp-address'] }}
-                            {% else %}
-                            {{ data['select-gp-address'] }}
-                            {{ data['previous-gp-name'] }}<br/>
-                            {{ data['previous-gp-address-line-1'] }}<br/>
-                            {{ data['previous-gp-address-line-2'] }}<br/>
-                            {{ data['previous-gp-town'] }}<br/>
-                            {{ data['previous-gp-postcode'] }}
-                            {% endif %}
-                          </dd>
-                          <dd class="nhsuk-summary-list__actions">
-                            <a href="">Change<span class="nhsuk-u-visually-hidden">previous GP address</span></a>
-                          </dd>
-                        </div>
-                      </dl> -->
-
-
-                      <!-- Selected GP -->
-
-                      <!-- <h3>Prescription collection details</h3>
-
-                      <dl class="nhsuk-summary-list">
-
-                        <div class="nhsuk-summary-list__row">
-                          <dt class="nhsuk-summary-list__key">
-                            Collects prescriptions from
-                          </dt>
-                          <dd class="nhsuk-summary-list__value collects-prescriptions-from">
-                            {{ data['how-do-you-collect-prescriptions'] }}
-                          </dd>
-                          <dd class="nhsuk-summary-list__actions">
-                            <a href="">Change<span class="nhsuk-u-visually-hidden"> where you collect prescriptions from</span></a>
-                          </dd>
-                        </div>
-
-
-                        <div class="nhsuk-summary-list__row pharmacy-distance">
-                          <dt class="nhsuk-summary-list__key">
-                            Lives more than 1.6km away from nearest pharmacy
-                          </dt>
-                          <dd class="nhsuk-summary-list__value">
-                            {{ data['distance-from-pharmacy'] }}
-                          </dd>
-                          <dd class="nhsuk-summary-list__actions">
-                            <a href="">Change<span class="nhsuk-u-visually-hidden"> whether you live more than 1.6 kilometres from your nearest pharmacy</span></a>
-                          </dd>
-                        </div>
-
-
-                        <div class="nhsuk-summary-list__row pharmacy-difficulty">
-                          <dt class="nhsuk-summary-list__key">
-                            Has difficulty in reaching pharmacy?
-                          </dt>
-                          <dd class="nhsuk-summary-list__value">
-                            {{ data['difficulty-in-reaching-pharmacy'] }}
-                          </dd>
-                          <dd class="nhsuk-summary-list__actions">
-                            <a href="">Change<span class="nhsuk-u-visually-hidden"> whether you would have difficult in reaching a pharmacy</span></a>
-                          </dd>
-                        </div>
-
-                      </dl> -->
 
                       <!-- Language interpreter -->
 
@@ -1085,29 +827,6 @@
                         </dd>
                       </div>
 
-                      <!-- <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                          Armed forces role
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-                          {{ data['af-role'] }}
-                        </dd>
-                        <dd class="nhsuk-summary-list__actions">
-                          <a href="">Change<span class="nhsuk-u-visually-hidden">enlisted date</span></a>
-                        </dd>
-                      </div>
-
-                      <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                        Service number
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-                          {{ data['service-number'] }}
-                        </dd>
-                        <dd class="nhsuk-summary-list__actions">
-                          <a href="">Change<span class="nhsuk-u-visually-hidden">enlisted date</span></a>
-                        </dd>
-                      </div> -->
 
                       </dl>
 
