@@ -299,6 +299,108 @@
                   </dl>
 
 
+                  <!-- Not first time + not returning -->
+
+                  {% elif ((data['registering-first-time'] == "No") and (data['overseas'] == "Yes"))  %}
+
+
+                  <dl class="nhsuk-summary-list">
+
+                    <div class="nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__key">
+                        Are you registering with a UK GP for the first time?
+                      </dt>
+                      <dd class="nhsuk-summary-list__value">
+                        {{ data['registering-first-time'] }}
+                      </dd>
+                      <dd class="nhsuk-summary-list__actions">
+                        <a href="">Change<span class="nhsuk-u-visually-hidden">First time</span></a>
+                      </dd>
+                    </div>
+
+                    <div class="nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__key">
+                        Are you returning from overseas?
+                      </dt>
+                      <dd class="nhsuk-summary-list__value">
+                        {{ data['overseas'] }}
+                      </dd>
+                      <dd class="nhsuk-summary-list__actions">
+                        <a href="">Change<span class="nhsuk-u-visually-hidden">overseas</span></a>
+                      </dd>
+                    </div>
+
+                    <div class="nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__key">
+                        What was the date you left the UK?
+                      </dt>
+                      <dd class="nhsuk-summary-list__value">
+                        {{ data['left-uk-day'] }} -
+                        {{ data['left-uk-month'] }} -
+                        {{ data['left-uk-year'] }}
+                      </dd>
+                      <dd class="nhsuk-summary-list__actions">
+                        <a href="">Change<span class="nhsuk-u-visually-hidden">moved date</span></a>
+                      </dd>
+                    </div>
+
+                    <div class="nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__key">
+                        What was the date you returned to the UK?
+                      </dt>
+                      <dd class="nhsuk-summary-list__value">
+                        {{ data['returned-uk-day'] }} -
+                        {{ data['returned-uk-month'] }} -
+                        {{ data['returned-uk-year'] }}
+                      </dd>
+                      <dd class="nhsuk-summary-list__actions">
+                        <a href="">Change<span class="nhsuk-u-visually-hidden">moved date</span></a>
+                      </dd>
+                    </div>
+
+                    <div class="nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__key">
+                        Previous GP address
+                      </dt>
+                      <dd class="nhsuk-summary-list__value previous-gp__value">
+                        {% if data['select-gp-address'] %}
+                        {{ data['select-gp-address'] }}
+                        {% else %}
+                        {{ data['select-gp-address'] }}
+                        {{ data['previous-gp-address-line-1'] }}<br />
+                        {{ data['previous-gp-address-line-2'] }}<br />
+                        {{ data['previous-gp-town'] }}<br />
+                        {{ data['previous-gp-postcode'] }}
+                        {% endif %}
+                      </dd>
+                      <dd class="nhsuk-summary-list__actions">
+                        <a href=""><span class="nhsuk-u-visually-hidden">previous GP address</span></a>
+                      </dd>
+                    </div>
+
+                    <div class="nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__key">
+                        Previous address
+                      </dt>
+                      <dd class="nhsuk-summary-list__value">
+                        {% if data['select-previous-address'] %}
+                        {{ data['select-previous-address'] }}
+                        {% else %}
+                        {{ data['select-previous-address'] }}
+                        {{ data['previous-address-line-1'] }}<br />
+                        {{ data['previous-address-line-2'] }}<br />
+                        {{ data['previous-address-town'] }}<br />
+                        {{ data['previous-address-postcode'] }}
+                        {% endif %}
+                      </dd>
+                      <dd class="nhsuk-summary-list__actions">
+                        <a href=""><span class="nhsuk-u-visually-hidden"> address</span></a>
+                      </dd>
+                    </div>
+
+                    </dl>
+
+
 
                   {% else %}
 
