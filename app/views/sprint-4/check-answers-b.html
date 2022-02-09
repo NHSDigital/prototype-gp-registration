@@ -148,10 +148,10 @@
                   Gender
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  Female
+                  {{ data['gender'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href=""><span class="nhsuk-u-visually-hidden"> selected gender</span></a>
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
                 </dd>
               </div>
 
@@ -161,7 +161,16 @@
                   Ethnicity
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  Mixed or multiple ethnic groups
+                  {{ data['ethnicity-detail-white'] }}
+                  {{ data['ethWhite'] }}
+                  {{ data['ethnicity-detail-asian'] }}
+                  {{ data['ethAsian'] }}
+                  {{ data['ethnicity-detail-black'] }}
+                  {{ data['ethBlack'] }}
+                  {{ data['ethnicity-detail-mixed'] }}
+                  {{ data['ethMixed'] }}
+                  {{ data['ethnicity-detail-another'] }}
+                  {{ data['ethOther'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
@@ -252,6 +261,26 @@
                 </dd>
               </div>
 
+              </dl>
+
+              <h3>Armed forces</h3>
+
+              <dl class="nhsuk-summary-list">
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Have you ever been a member of the armed forces?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['is-armed-forces-member'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">Armed forces</span></a>
+                </dd>
+              </div>
+
+            </dl>
+
 
 
             {% elif data['user-auth'] == "p5" %}
@@ -262,19 +291,6 @@
               <h2>Personal Details</h2>
 
               <dl class="nhsuk-summary-list">
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Email address
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['contact-email'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href=""><span class="nhsuk-u-visually-hidden">Email address</span>
-                  </a>
-                </dd>
-              </div>
 
 
               <div class="nhsuk-summary-list__row">
@@ -342,15 +358,16 @@
               </div>
 
 
+
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                   Gender
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  Female
+                  {{ data['gender'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href=""><span class="nhsuk-u-visually-hidden"> selected gender</span></a>
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
                 </dd>
               </div>
 
@@ -360,7 +377,16 @@
                   Ethnicity
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  Mixed or multiple ethnic groups
+                  {{ data['ethnicity-detail-white'] }}
+                  {{ data['ethWhite'] }}
+                  {{ data['ethnicity-detail-asian'] }}
+                  {{ data['ethAsian'] }}
+                  {{ data['ethnicity-detail-black'] }}
+                  {{ data['ethBlack'] }}
+                  {{ data['ethnicity-detail-mixed'] }}
+                  {{ data['ethMixed'] }}
+                  {{ data['ethnicity-detail-another'] }}
+                  {{ data['ethOther'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
@@ -483,31 +509,8 @@
               </dd>
             </div>
 
-            <!-- <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Armed forces role
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ data['af-role'] }}
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="">Change<span class="nhsuk-u-visually-hidden">enlisted date</span></a>
-              </dd>
-            </div>
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-              Service number
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ data['service-number'] }}
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="">Change<span class="nhsuk-u-visually-hidden">enlisted date</span></a>
-              </dd>
-            </div> -->
-
-                 </dl>
+          </dl>
 
 
       {% else %}
