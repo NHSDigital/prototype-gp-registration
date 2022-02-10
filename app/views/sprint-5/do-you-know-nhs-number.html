@@ -1,0 +1,150 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+
+          <form action="" method="post" autocomplete="off">
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                text: "Do you know their NHS Number?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "Telling us their NHS number will give us the best chance of matching them to their NHS record.",
+              "classes": "nhsuk-u-margin-bottom-4"
+            }) }}
+
+            {{ hint({
+              "text": "You do not need to know their NHS number to continue. If you do not know it, you can tell us their full name instead.",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {{ hint({
+              "html": "<p>
+                You can use the <a href='#'>NHS number finder service</a> to retrieve their NHS number by text message or email.</p>"
+            }) }}
+
+
+            {{ radios({
+              "idPrefix": "do-you-know-nhs-number",
+              "name": "know-nhs-number",
+              "items": [
+                {
+                  "value": "Yes~/sprint-4/what-is-your-nhs-number",
+                  "text": "Yes, I know their NHS number",
+                  "checked": checked("know-nhs-number", "Yes")
+                },
+                {
+                  "value": "No~/sprint-4/what-is-your-name",
+                  "text": "No, continue without",
+                  "checked": checked("know-nhs-number", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+
+            {% else %}
+
+            {% call fieldset({
+              legend: {
+                text: "Do you know your NHS Number?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "Telling us your NHS number will give us the best chance of matching you to your NHS record.",
+              "classes": "nhsuk-u-margin-bottom-4"
+            }) }}
+
+            {{ hint({
+              "text": "You do not need to know your NHS number to continue. If you do not know it, you can tell us your full name instead.",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {{ hint({
+              "html": "<p>
+                You can use the <a href='#'>NHS number finder service</a> to retrieve your NHS number by text message or email.</p>"
+            }) }}
+
+            {{ radios({
+              "idPrefix": "do-you-know-nhs-number",
+              "name": "know-nhs-number",
+              "items": [
+                {
+                  "value": "Yes~/sprint-4/what-is-your-nhs-number",
+                  "text": "Yes, I know my NHS number",
+                  "checked": checked("know-nhs-number", "Yes")
+                },
+                {
+                  "value": "No~/sprint-4/what-is-your-name",
+                  "text": "No, continue without",
+                  "checked": checked("know-nhs-number", "No")
+                }
+              ]
+            }) }}
+
+
+            {% endcall %}
+
+
+            {% endif %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+
+
+
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}

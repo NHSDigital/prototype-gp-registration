@@ -1,0 +1,142 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="what-is-your-ethnicity" method="post" autocomplete="off">
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% set otherHtml %}
+              {{ input({
+                id: "other",
+                name: "other",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "Gender"
+                }
+              }) }}
+            {% endset -%}
+
+            {{ radios({
+              "idPrefix": "gender",
+              "name": "gender",
+              "fieldset": {
+                "legend": {
+                  "text": "Is their gender identity the same as the gender they were assigned at birth?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "We are asking for this information to match you to your GP record."
+              },
+              "items": [
+                {
+                  "value": "male",
+                  "text": "Yes",
+                  checked: checked("gender", "Yes")
+                },
+                {
+                  "value": "female",
+                  "text": "No",
+                  checked: checked("gender", "no")
+                }
+              ]
+            }) }}
+
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of gender.</p>"
+            }) }}
+
+            {% else %}
+
+            {% set otherHtml %}
+              {{ input({
+                id: "other",
+                name: "other",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "Gender"
+                }
+              }) }}
+            {% endset -%}
+
+            {{ radios({
+              "idPrefix": "gender",
+              "name": "gender",
+              "fieldset": {
+                "legend": {
+                  "text": "Is your gender identity the same as the gender you were assigned at birth?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "We are asking for this information to match you to your GP record."
+              },
+              "items": [
+                {
+                  "value": "male",
+                  "text": "Yes",
+                  checked: checked("gender", "Yes")
+                },
+                {
+                  "value": "female",
+                  "text": "No",
+                  checked: checked("gender", "no")
+                }
+              ]
+            }) }}
+
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of gender.</p>"
+            }) }}
+
+            {% endif %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}
