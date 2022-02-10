@@ -32,39 +32,22 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="" method="post" autocomplete="off">
+          <form action="how-often-do-you-drink-alcohol" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                text: "Do you currently take any prescription medication?",
+                text: "Can you provide more details about your prescription medication?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
-            {{ hint({
-              "text": "It is important to tell us about all the prescription medication you currently take so your GP can have these ready for you."
-            }) }}
-
-            {{ hint({
-              "text": "Please include prescription medication for contraception and medication from abroad"
-            }) }}
-
-            {{ radios({
-              "idPrefix": "takes-prescription-meds",
-              "name": "takes-prescription-meds",
-              "items": [
-                {
-                  "value": "Yes~/sprint-4/medication-details",
-                  "text": "Yes",
-                  checked: checked("takes-prescription-meds", "Yes")
-                },
-                {
-                  "value": "No~/sprint-4/how-often-do-you-drink-alcohol",
-                  "text": "No",
-                  checked: checked("takes-prescription-meds", "No")
-                }
-              ]
+            {{ textarea({
+              "name": "medication-details",
+              "id": "medication-details",
+              "hint": {
+                "text": "This question is optional."
+              }
             }) }}
 
             {% endcall %}

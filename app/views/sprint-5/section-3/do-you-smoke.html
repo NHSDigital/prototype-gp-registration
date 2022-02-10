@@ -33,11 +33,9 @@
           }) }}
 
 
-          {% if (data['ab'] == "b") %}
-          <form action="check-answers-b" method="post" autocomplete="off">
-          {% else %}
-          <form action="do-you-have-existing-conditions" method="post" autocomplete="off">
-          {% endif %}
+
+          <form action="/sprint-5/section-4/check-answers-b" method="post" autocomplete="off">
+
 
             {{ radios({
               "idPrefix": "smokes",
