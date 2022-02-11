@@ -1,0 +1,187 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="../section-2/do-you-current-address" method="post" autocomplete="off">
+
+            {{ fieldset({
+              "legend": {
+                "text": "Please confirm these are the correct details for the person registering with {GP practice}",
+                "classes": "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-5",
+                "isPageHeading": true
+              }
+            }) }}
+
+  
+
+            <dl class="nhsuk-summary-list">
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  NHS Number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  485 777 3456
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">NHS number</span></a>
+                </dd>
+             
+              </div>
+
+             <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  First name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  Jo
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">First name</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Middle name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  Furst
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">middle name</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Last name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  Bloggs
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">last name</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Date of birth
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  01/09/1980
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">date of birth</span></a>
+                </dd>
+                 
+              </div>
+                  <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Registered with GP perviously
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {% if (data['have-you-been-reg-with-gp-before'] == "No") %}
+                            No
+                            {% else %}
+                            Yes
+                            {% endif %}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                          </dd>
+                        </div>
+
+                  <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Postcode previous GP has
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {% if (data['have-you-been-reg-with-gp-before'] == "No") %}
+                            No current UK address
+                            {% else %}
+                            {{ data['current-address-postcode'] }}
+                            {% endif %}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                          </dd>
+                        </div>
+
+            </dl>
+
+           
+
+             <p>This information allows us to match you to your existing medical record.<p>By continuing you are confirming that, to the best of your knowledge, they are providing are correct.</p>
+
+            {{ button({
+              "text": "Confirm and continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+
+  $(document).ready(function () {
+
+    // Populate any unanswered fields with "Not answered" text
+    $('.nhsuk-summary-list__value').filter(function () {
+      return $.trim($(this).text()) === "";
+    }).each(function (ind, obj) {
+      $(obj).closest('dd').html("<span class='summary-page-unanswered'>Not answered</span>");
+    });
+
+    // Add colon to contact method type if it isn't blank
+    $(".contact-prefs-type:not(:empty)").append(':');
+
+  });
+</script>
+
+{% endblock %}
