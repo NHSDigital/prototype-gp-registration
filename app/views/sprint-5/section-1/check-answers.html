@@ -42,7 +42,9 @@
               }
             }) }}
 
-  
+
+
+            {% if data['user-auth'] == "p9" %}
 
             <dl class="nhsuk-summary-list">
 
@@ -57,7 +59,7 @@
                 <dd class="nhsuk-summary-list__actions">
                   <a href="">Change<span class="nhsuk-u-visually-hidden">NHS number</span></a>
                 </dd>
-             
+
               </div>
 
              <div class="nhsuk-summary-list__row">
@@ -109,43 +111,152 @@
                 <dd class="nhsuk-summary-list__actions">
                   <a href="">Change<span class="nhsuk-u-visually-hidden">date of birth</span></a>
                 </dd>
-                 
+
               </div>
                   <div class="nhsuk-summary-list__row">
-                          <dt class="nhsuk-summary-list__key">
-                            Registered with GP perviously
-                          </dt>
-                          <dd class="nhsuk-summary-list__value">
-                            {% if (data['have-you-been-reg-with-gp-before'] == "No") %}
-                            No
-                            {% else %}
-                            Yes
-                            {% endif %}
-                          </dd>
-                          <dd class="nhsuk-summary-list__actions">
-                            <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
-                          </dd>
-                        </div>
+                  <dt class="nhsuk-summary-list__key">
+                    Registered with GP perviously
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {% if (data['have-you-been-reg-with-gp-before'] == "No") %}
+                    No
+                    {% else %}
+                    Yes
+                    {% endif %}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                  </dd>
+                </div>
 
                   <div class="nhsuk-summary-list__row">
-                          <dt class="nhsuk-summary-list__key">
-                            Postcode previous GP has
-                          </dt>
-                          <dd class="nhsuk-summary-list__value">
-                            {% if (data['have-you-been-reg-with-gp-before'] == "No") %}
-                            No current UK address
-                            {% else %}
-                            {{ data['current-address-postcode'] }}
-                            {% endif %}
-                          </dd>
-                          <dd class="nhsuk-summary-list__actions">
-                            <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
-                          </dd>
-                        </div>
+                  <dt class="nhsuk-summary-list__key">
+                    Postcode previous GP has
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {% if (data['current-gp'] == "No") %}
+                    No current UK address
+                    {% else %}
+                    {{ data['gp-postcode'] }}
+                    {% endif %}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                  </dd>
+                </div>
 
             </dl>
 
-           
+
+
+              {% else %}
+
+              <dl class="nhsuk-summary-list">
+
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    NHS Number
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['nhs-number'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden">NHS number</span></a>
+                  </dd>
+
+                </div>
+
+               <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    First name
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['name-first-name'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden">First name</span></a>
+                  </dd>
+                </div>
+
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Middle name
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['name-middle-name'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden">middle name</span></a>
+                  </dd>
+                </div>
+
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Last name
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['name-last-name'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden">last name</span></a>
+                  </dd>
+                </div>
+
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Date of birth
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    <span id="dob-day">{{ data['dob-day'] }}</span>
+                    <span id="dob-month">{{ data['dob-month'] }}</span>
+                    <span id="dob-year">{{ data['dob-year'] }}</span>
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden">date of birth</span></a>
+                  </dd>
+
+                </div>
+                    <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Registered with GP perviously
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {% if (data['current-gp'] == "No") %}
+                      No
+                      {% else %}
+                      Yes
+                      {% endif %}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                    </dd>
+                  </div>
+
+                    <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Postcode previous GP has
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {% if (data['current-gp'] == "No") %}
+                      No current UK address
+                      {% else %}
+                      {{ data['gp-postcode'] }}
+                      {% endif %}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                    </dd>
+                  </div>
+
+              </dl>
+
+              {% endif %}
+
+
 
              <p>This information allows us to match you to your existing medical record.<p>By continuing you are confirming that, to the best of your knowledge, they are providing are correct.</p>
 
