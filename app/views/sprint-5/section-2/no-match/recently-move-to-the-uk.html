@@ -46,36 +46,35 @@ GP Registration Prototypes
 
           {% call fieldset({
             legend: {
-              text: "Have you moved to UK from EU, EEA or Switzerland?",
+              text: "Have you recently moved to the UK from another country?",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
           }) %}
 
-          <div class="nhsuk-hint" id="contact-hint">
-            <p>The European Economic Area (EEA) includes European Union (EU) countries and also Iceland, Liechtenstein and Norway. It allows them to be part of the EU 's single market. Switzerland is not an EU or EEA member but is part of the single market.</p>
+        <div class="nhsuk-hint" id="contact-hint">
+            <p>Anybody in England can register with a GP surgery and receive free medical care. If you are not 'ordinarily resident' in UK you may have to pay for NHS treatment outside the GP surgery.</p>
           </div>
 
-
           {{ radios({
-            "idPrefix": "eea",
-            "name": "eea",
+            "idPrefix": "recently-moved",
+            "name": "recently-moved",
             "items": [
               {
-                "value": "Yes~/sprint-4/recently-moved-documents",
+                "value": "Yes~/sprint-5/section-2/no-match/what-address-for-recently-moved",
                 "text": "Yes",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("eea", "Yes")
+                checked: checked("recently-moved", "Yes")
               },
               {
-                "value": "No~/sprint-4/review-about-you-answers-nomatch",
+                "value": "No~/sprint-5/section-3/do-you-have-existing-conditions",
                 "text": "No",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("eea", "No")
+                checked: checked("recently-moved", "No")
               }
             ]
           }) }}
@@ -89,6 +88,11 @@ GP Registration Prototypes
           }) }}
 
         </form>
+
+        {{ details({
+          "text": "Why are you asking this?",
+          "HTML": "<p>TBC</p>"
+        }) }}
 
 
 

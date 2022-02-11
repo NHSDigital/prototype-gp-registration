@@ -46,51 +46,36 @@ GP Registration Prototypes
 
           {% call fieldset({
             legend: {
-              text: "Do you have any of these documents?",
+              text: "Have you moved to UK from EU, EEA or Switzerland?",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
           }) %}
 
-          <!-- <div class="nhsuk-hint" id="contact-hint">
-            <p>need content here</p>
-          </div> -->
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>The European Economic Area (EEA) includes European Union (EU) countries and also Iceland, Liechtenstein and Norway. It allows them to be part of the EU 's single market. Switzerland is not an EU or EEA member but is part of the single market.</p>
+          </div>
+
 
           {{ radios({
-            "idPrefix": "health-documents",
-            "name": "health-documents",
+            "idPrefix": "eea",
+            "name": "eea",
             "items": [
               {
-                "value": "Yes~/sprint-4/document-details-ehic",
-                "text": "European health insurance card (EHIC)",
+                "value": "Yes~/sprint-5/section-2/no-match/recently-moved-documents",
+                "text": "Yes",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("health-documents", "EHIC")
-              },
-               {
-                "value": "Yes~/sprint-4/document-details-ehic",
-                "text": "Provisional replacement certificate (PRC)",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("health-documents", "PRC")
+                checked: checked("eea", "Yes")
               },
               {
-               "value": "Yes~/sprint-4/document-details-ehic",
-               "text": "S1 form",
-               "hint": {
-                 "text": ""
-               },
-               checked: checked("health-documents", "S1")
-             },
-              {
-                "value": "No~/sprint-4/do-you-know-nhs-number",
-                "text": "I don't have any of these documents.",
+                "value": "No~/sprint-5/section-3/do-you-have-existing-conditions",
+                "text": "No",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("health-documents", "No")
+                checked: checked("eea", "No")
               }
             ]
           }) }}
@@ -104,11 +89,6 @@ GP Registration Prototypes
           }) }}
 
         </form>
-
-        {{ details({
-          "text": "Why are you asking this?",
-          "HTML": "<p>If you are visiting from another EEA country and do not hold a current EHIC (or Provisional Replacement Certificate (PRC))/S1, you may be billed for the cost of any treatment received outside of the GP practice, including at a hospital.</p>"
-        }) }}
 
 
 

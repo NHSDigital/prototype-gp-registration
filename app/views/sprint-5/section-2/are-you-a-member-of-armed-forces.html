@@ -66,7 +66,7 @@
             {% endcall %}
 
 
-      {% elif ((data['user-auth'] == "nomatch") and (data['current-gp'] == "No"))  %}
+            {% elif ((data['user-auth'] == "nomatch") and (data['current-gp'] == "No"))  %}
 
 
             {% call fieldset({
@@ -88,7 +88,7 @@
                   checked: checked("is-armed-forces-member", "Yes")
                 },
                 {
-                  "value": "No~/sprint-5/section-3/no-match/recently-move-to-the-uk",
+                  "value": "No~/sprint-5/section-2/no-match/recently-move-to-the-uk",
                   "text": "No",
                   checked: checked("is-armed-forces-member", "No")
 
@@ -99,7 +99,7 @@
             {% endcall %}
 
 
-      {% elif ((data['user-auth'] == "nomatch") and (data['current-gp'] == "Yes"))  %}
+      {% elif (data['user-auth'] == "nomatch")  %}
 
 
             {% call fieldset({
@@ -121,7 +121,7 @@
                   checked: checked("is-armed-forces-member", "Yes")
                 },
                 {
-                  "value": "No~/sprint-5/section-3/no-match/are-you-returning-from-overseas",
+                  "value": "No~/sprint-5/section-2/no-match/are-you-returning-from-overseas",
                   "text": "No",
                   checked: checked("is-armed-forces-member", "No")
 

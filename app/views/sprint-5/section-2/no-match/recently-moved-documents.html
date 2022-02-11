@@ -46,35 +46,51 @@ GP Registration Prototypes
 
           {% call fieldset({
             legend: {
-              text: "Have you recently moved to the UK from another country?",
+              text: "Do you have any of these documents?",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
           }) %}
 
-        <div class="nhsuk-hint" id="contact-hint">
-            <p>Anybody in England can register with a GP surgery and receive free medical care. If you are not 'ordinarily resident' in UK you may have to pay for NHS treatment outside the GP surgery.</p>
-          </div>
+          <!-- <div class="nhsuk-hint" id="contact-hint">
+            <p>need content here</p>
+          </div> -->
 
           {{ radios({
-            "idPrefix": "recently-moved",
-            "name": "recently-moved",
+            "idPrefix": "health-documents",
+            "name": "health-documents",
             "items": [
               {
-                "value": "Yes~/sprint-4/what-address-for-recently-moved",
-                "text": "Yes",
+                "value": "Yes~/sprint-5/section-2/no-match/document-details-ehic",
+                "text": "European health insurance card (EHIC)",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("recently-moved", "Yes")
+                checked: checked("health-documents", "EHIC")
+              },
+               {
+                "value": "Yes~/sprint-5/section-2/no-match/document-details-ehic",
+                "text": "Provisional replacement certificate (PRC)",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("health-documents", "PRC")
               },
               {
-                "value": "No~/sprint-4/review-about-you-answers-nomatch",
-                "text": "No",
+               "value": "Yes~/sprint-5/section-2/no-match/document-details-ehic",
+               "text": "S1 form",
+               "hint": {
+                 "text": ""
+               },
+               checked: checked("health-documents", "S1")
+             },
+              {
+                "value": "No~/sprint-5/section-3/do-you-have-existing-conditions",
+                "text": "I don't have any of these documents.",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("recently-moved", "No")
+                checked: checked("health-documents", "No")
               }
             ]
           }) }}
@@ -91,7 +107,7 @@ GP Registration Prototypes
 
         {{ details({
           "text": "Why are you asking this?",
-          "HTML": "<p>TBC</p>"
+          "HTML": "<p>If you are visiting from another EEA country and do not hold a current EHIC (or Provisional Replacement Certificate (PRC))/S1, you may be billed for the cost of any treatment received outside of the GP practice, including at a hospital.</p>"
         }) }}
 
 
