@@ -32,57 +32,34 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-
-          {% if (data['ab'] == "b") %}
-          <form action="do-you-have-existing-conditions" method="post" autocomplete="off">
-          {% else %}
-          <form action="review-about-you-answers" method="post" autocomplete="off">
-          {% endif %}
-
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
+          <form action="" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                "text": "What was their service number?",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
+                text: "Do you have a previous UK address?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
               }
             }) %}
 
-              {{ input({
-                label: {
-                  "html": 'Service number'
+            {{ radios({
+              "idPrefix": "have-previous-uk-address",
+              "name": "have-previous-uk-address",
+              "items": [
+                {
+                  "value": "Yes~/sprint-5/section-2/no-match/what-is-your-previous-address",
+                  "text": "Yes",
+                  checked: checked("have-previous-uk-address", "Yes")
                 },
-                "classes": "nhsuk-input--width-20",
-                "id": "service-number",
-                "name": "service-number"
-              }) }}
+                {
+                  "value": "No~/sprint-5/section-3/do-you-have-existing-conditions",
+                  "text": "No",
+                  checked: checked("have-previous-uk-address", "No")
+                }
+              ]
+            }) }}
 
             {% endcall %}
-
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                "text": "What was your service number?",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
-              }
-            }) %}
-
-              {{ input({
-                label: {
-                  "html": 'Service number'
-                },
-                "classes": "nhsuk-input--width-20",
-                "id": "service-number",
-                "name": "service-number"
-              }) }}
-
-            {% endcall %}
-
-            {% endif %}
 
             {{ button({
               "text": "Continue"
@@ -98,6 +75,6 @@
   </div>
 </div>
 {% block pageScripts %}
-
+<script></script>
 {% endblock %}
 {% endblock %}
