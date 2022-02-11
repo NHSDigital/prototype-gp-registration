@@ -48,8 +48,8 @@ User research - GP registration - NHS
         <br>
 
 
-          <h2 class="nhsuk-heading-l">Questionairre unfront</h2>
-          <p>Route A has health questionairre as optional</p>
+          <h2 class="nhsuk-heading-l">PDS match upfront</h2>
+          <p>Route for no match depends on if they are currently registered with a GP</p>
 
           <!-- <form action="/sprint-4/start" method="post" autocomplete="off">
 
@@ -59,7 +59,7 @@ User research - GP registration - NHS
           }) }}
           </form>  -->
 
-          <form action="/sprint-4/start" method="post" autocomplete="off">
+          <form action="/sprint-5/section-1/start" method="post" autocomplete="off">
           <input type="hidden" name="user-auth" id="user-auth" value="nomatch" />
           {{ button({
             "text": "Route A (no match)",
@@ -76,17 +76,7 @@ User research - GP registration - NHS
           }) }}
           </form> -->
 
-          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
-          <p>Route B has health questionairre included</p>
 
-          <form action="/sprint-4/start" method="post" autocomplete="off">
-          <input type="hidden" name="ab" id="ab" value="b" />
-          <input type="hidden" name="user-auth" id="user-auth" value="nomatch" />
-          {{ button({
-            "text": "Route B (no match)",
-                "href": ""
-          }) }}
-          </form>
 
 
 
