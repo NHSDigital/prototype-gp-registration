@@ -35,8 +35,13 @@
 
           <form action="" method="post" autocomplete="off">
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
+ {{ hint({
+              "text": "Step 1 of 3 - Intial Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+            
             {% call fieldset({
               legend: {
                 text: "Do you know their NHS Number?",
