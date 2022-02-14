@@ -33,7 +33,11 @@
           }) }}
 
           <form action="../section-2/do-you-current-address" method="post" autocomplete="off">
-
+            {{ hint({
+              "text": "Step 1 of 3 - Initial Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+            
             {{ fieldset({
               "legend": {
                 "text": "Please confirm these are the correct details for the person registering with {GP practice}",

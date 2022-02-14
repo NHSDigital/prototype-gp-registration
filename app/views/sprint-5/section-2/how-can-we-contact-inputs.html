@@ -35,6 +35,11 @@ GP Registration Prototypes
 
         <form action="what-is-your-gender" method="post" autocomplete="off">
 
+            {{ hint({
+              "text": "Step 2 of 3 - Personal Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+            
           {% if (data['contact'] == "home") %}
 
           <fieldset class="nhsuk-fieldset">

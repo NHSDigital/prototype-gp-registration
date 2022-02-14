@@ -34,6 +34,11 @@
 
           <form action="do-you-have-allergies-answer" method="post" autocomplete="off">
 
+           {{ hint({
+              "text": "Step 3 of 3 - Health questionnaire",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+            
             {% if (data['who-is-being-registered'] == "dependant") %}
 
             {% call fieldset({

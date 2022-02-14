@@ -40,9 +40,14 @@
           {% else %}
           <form action="/sprint-5/section-3/do-you-have-existing-conditions" method="post" autocomplete="off">
           {% endif %}
+           
+            {{ hint({
+              "text": "Step 2 of 3 - Personal Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
 
-          <h1 class="nhsuk-heading-xl">Recent Armed Forces leavers and their families</h1>
-
+          <h1 class="nhsuk-heading--l">Recent Armed Forces leavers and their families</h1>
+          
           <p>After submitting your registration:</p>
 
             <ul class="nhsuk-list nhsuk-list--bullet">

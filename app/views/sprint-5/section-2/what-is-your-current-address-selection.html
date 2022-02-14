@@ -32,6 +32,11 @@
             href: "javascript:history.go(-1)"
           }) }}
 
+            {{ hint({
+              "text": "Step 2 of 3 - Personal Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+            
           {% if data['user-auth'] == "p9" %}
           <form action="what-is-your-gender" method="post" autocomplete="off">
           {% else %}

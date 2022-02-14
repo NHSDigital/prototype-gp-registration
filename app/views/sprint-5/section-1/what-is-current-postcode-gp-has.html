@@ -33,7 +33,11 @@
           }) }}
 
           <form action="check-answers" method="post" autocomplete="off">
-
+            {{ hint({
+              "text": "Step 1 of 3 - Initial Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+            
             {% if (data['who-is-being-registered'] == "dependant") %}
 
             {% call fieldset({

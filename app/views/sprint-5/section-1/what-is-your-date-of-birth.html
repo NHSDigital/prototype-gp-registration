@@ -33,7 +33,10 @@
           }) }}
 
           <form action="have-you-been-reg-with-gp-before" method="post" autocomplete="off">
-
+             {{ hint({
+              "text": "Step 1 of 3 - Initial Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
             {% if (data['who-is-being-registered'] == "dependant") %}
 
             {{ dateInput({
