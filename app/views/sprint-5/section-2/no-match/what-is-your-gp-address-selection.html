@@ -35,9 +35,11 @@
 
           <form action="do-you-previous-address" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
             {% call fieldset({
               legend: {
-                text: "Select your current GP address",
+                text: "Select their current GP address",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -99,6 +101,75 @@
                 }) }}
 
                 {% endcall %}
+
+                {% else %}
+
+                {% call fieldset({
+                  legend: {
+                    text: "Select your current GP address",
+                    classes: "nhsuk-fieldset__legend--l",
+                    isPageHeading: true
+                  }
+                }) %}
+
+                <div class="nhsuk-hint" id="contact-hint">
+                  <p>6 addresses found for <strong>{{ data['find-gp-address'] }}</strong> <strong>{{ data['current-gp-address'] }}</strong></p>
+                </div>
+
+
+                    {{ radios({
+                        "idPrefix": "select-gp-address",
+                        "name": "select-gp-address",
+
+
+                      "items": [
+                        {
+                          "value": "1 Town Street, London, SW1A 1AA",
+                          "text": "1 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-gp-address", "1 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "value": "2 Town Street, London, SW1A 1AA",
+                          "text": "2 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-gp-address", "2 Town Street, London, SW1A 1AA")
+                        },    {
+                              "value": "3 Town Street, London, SW1A 1AA",
+                              "text": "3 Town Street, London, SW1A 1AA",
+                              "hint": {
+                            },
+                              checked: checked("select-gp-address", "3 Town Street, London, SW1A 1AA")
+                            },
+                            {
+                              "value": "4 Town Street, London, SW1A 1AA",
+                              "text": "4 Town Street, London, SW1A 1AA",
+                              "hint": {
+                            },
+                              checked: checked("select-gp-address", "4 Town Street, London, SW1A 1AA")
+                            },
+                            {
+                              "value": "5 Town Street, London, SW1A 1AA",
+                              "text": "5 Town Street, London, SW1A 1AA",
+                              "hint": {
+                            },
+                              checked: checked("select-gp-address", "5 Town Street, London, SW1A 1AA")
+                            },
+                            {
+                              "value": "6 Town Street, London, SW1A 1AA",
+                              "text": "6 Town Street, London, SW1A 1AA",
+                              "hint": {
+                            },
+                              checked: checked("select-gp-address", "6 Town Street, London, SW1A 1AA")
+                        }
+                      ]
+                    }) }}
+
+                    {% endcall %}
+
+                    {% endif %}
 
                 <p>
                   <a href="/sprint-4/what-is-your-gp-address-manual" id="enter-address-manually-link">I cannot find my address on the list</a>

@@ -34,16 +34,18 @@
 
           <form action="check-answers" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
             {% call fieldset({
               legend: {
-                "text": "What postcode does your previous GP surgery have for you?",
+                "text": "What postcode does their current GP hold for them?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
 
             {{ hint({
-                "text": "If you have been registered at more than one GP surgery previousy, please enter the postcode your most recent GP surgery has for you."
+                "text": "Enter the postcode for the address that is currently registered with the GP surgery they are moving from."
             }) }}
 
 
@@ -59,6 +61,36 @@
 
 
             {% endcall %}
+
+            {% else %}
+
+            {% call fieldset({
+              legend: {
+                "text": "What postcode does your current GP hold for you?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ hint({
+                "text": "Enter the postcode for the address that is currently registered with the GP surgery you are moving from."
+            }) }}
+
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "gp-postcode",
+                  "name": "gp-postcode",
+                  value: data['gp-postcode']
+                }) }}
+
+
+            {% endcall %}
+
+            {% endif %}
 
             {{ button({
               "text": "Continue"

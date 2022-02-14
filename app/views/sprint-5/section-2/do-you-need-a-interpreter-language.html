@@ -34,6 +34,9 @@
 
           <form action="do-you-have-emergency-contact" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+
             {% set languageHtml %}
               {{ input({
                 id: "other",
@@ -50,7 +53,7 @@
               "name": "language",
               "fieldset": {
                 "legend": {
-                  "text": "Which language do you need an interpreter for?",
+                  "text": "Which language do they need an interpreter for?",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
@@ -173,6 +176,154 @@
                 }
               ]
             }) }}
+
+
+            {% else %}
+
+
+
+                        {% set languageHtml %}
+                          {{ input({
+                            id: "other",
+                            name: "other",
+                            classes: "nhsuk-u-width-two-thirds",
+                            label: {
+                              text: "Language"
+                            }
+                          }) }}
+                        {% endset %}
+
+                        {{ radios({
+                          "idPrefix": "language",
+                          "name": "language",
+                          "fieldset": {
+                            "legend": {
+                              "text": "Which language do you need an interpreter for?",
+                              "classes": "nhsuk-fieldset__legend--l",
+                              "isPageHeading": "true"
+                            }
+                          },
+                          "items": [
+                            {
+                              "value": "British Sign Language",
+                              "text": "British Sign Language",
+                              checked: checked("language", "British Sign Language")
+                            },
+                            {
+                              "value": "Arabic",
+                              "text": "Arabic",
+                              checked: checked("language", "Arabic")
+                            },
+                            {
+                              "value": "Bengali - Chatgaya",
+                              "text": "Bengali - Chatgaya",
+                              checked: checked("language", "Bengali - Chatgaya")
+                            },
+                            {
+                              "value": "Bengali - Sylheti",
+                              "text": "Bengali - Sylheti",
+                              checked: checked("language", "Bengali - Sylheti")
+                            },
+                            {
+                              "value": "Chinese - Mandarin",
+                              "text": "Chinese - Mandarin",
+                              checked: checked("language", "Chinese - Mandarin")
+                            },
+                            {
+                              "value": "Chinese - Simplified",
+                              "text": "Chinese - Simplified",
+                              checked: checked("language", "Chinese - Simplified")
+                            },
+                            {
+                              "value": "Farsi",
+                              "text": "Farsi",
+                              checked: checked("language", "Farsi")
+                            },
+                            {
+                              "value": "French",
+                              "text": "French",
+                              checked: checked("language", "French")
+                            },
+                            {
+                              "value": "Gaelic",
+                              "text": "Gaelic",
+                              checked: checked("language", "Gaelic")
+                            },
+                            {
+                              "value": "German",
+                              "text": "German",
+                              checked: checked("language", "German")
+                            },
+                            {
+                              "value": "Gujarati",
+                              "text": "Gujarati",
+                              checked: checked("language", "Gujarati")
+                            },
+                            {
+                              "value": "Italian",
+                              "text": "Italian",
+                              checked: checked("language", "Italian")
+                            },
+                            {
+                              "value": "Lithuanian",
+                              "text": "Lithuanian",
+                              checked: checked("language", "Lithuanian")
+                            },
+                            {
+                              "value": "Polish",
+                              "text": "Polish",
+                              checked: checked("language", "Polish")
+                            },
+                            {
+                              "value": "Portuguese",
+                              "text": "Portuguese",
+                              checked: checked("language", "Portuguese")
+                            },
+                            {
+                              "value": "Punjabi",
+                              "text": "Punjabi",
+                              checked: checked("language", "Punjabi")
+                            },
+                            {
+                              "value": "Somali",
+                              "text": "Somali",
+                              checked: checked("language", "Somali")
+                            },
+                            {
+                              "value": "Spanish",
+                              "text": "Spanish",
+                              checked: checked("language", "Spanish")
+                            },
+                            {
+                              "value": "Tamil",
+                              "text": "Tamil",
+                              checked: checked("language", "Tamil")
+                            },
+                            {
+                              "value": "Turkish",
+                              "text": "Turkish",
+                              checked: checked("language", "Turkish")
+                            },
+                            {
+                              "value": "Urdu",
+                              "text": "Urdu",
+                              checked: checked("language", "Urdu")
+                            },
+                            {
+                              divider: "or"
+                            },
+                            {
+                              value: "Other language",
+                              text: "Other",
+                              conditional: {
+                                html: languageHtml
+                            }
+                            }
+                          ]
+                        }) }}
+
+                        {% endif %}
+
 
 
             {{ button({

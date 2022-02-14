@@ -34,9 +34,11 @@
 
           <form action="what-is-your-previous-address-selection" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
             {% call fieldset({
               legend: {
-                "text": "What is your previous UK home address?",
+                "text": "What is their previous UK home address?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -68,8 +70,47 @@
               value: data['find-previous-address']
           }) }}
 
-
           {% endcall %}
+
+          {% else %}
+
+          {% call fieldset({
+            legend: {
+              "text": "What is your previous UK home address?",
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          }) %}
+
+          {{ input({
+            label: {
+              "text": "House number or name"
+            },
+            "hint": {
+              "text": "For example, flat 20A"
+            },
+            "classes": "nhsuk-input--width-10",
+            "id": "prev-house-number-address",
+            "name": "prev-house-number-address",
+            value: data['prev-house-number-address']
+        }) }}
+
+          {{ input({
+            label: {
+              "text": "Postcode"
+            },
+            "hint": {
+              "text": "For example, AB12 P12"
+            },
+            "classes": "nhsuk-input--width-10",
+            "id": "find-previous-address",
+            "name": "find-previous-address",
+            value: data['find-previous-address']
+        }) }}
+
+        {% endcall %}
+
+        {% endif %}
 
           <p>
             <a href="/sprint-5/section-2/no-match/what-is-your-previous-address-manual" id="enter-address-manually-link">Enter my address manually</a>

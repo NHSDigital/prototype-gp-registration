@@ -34,6 +34,27 @@
 
           <form action="do-you-take-prescription-medication" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                text: "Can you provide more details about their disabilities?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ textarea({
+              "name": "disabilities-details",
+              "id": "disabilities-details",
+              "hint": {
+                "text": "This question is optional."
+              }
+            }) }}
+
+            {% endcall %}
+            {% else %}
+
             {% call fieldset({
               legend: {
                 text: "Can you provide more details about your disabilities?",
@@ -51,6 +72,7 @@
             }) }}
 
             {% endcall %}
+            {% endif %}
 
             {{ button({
               "text": "Continue"

@@ -34,17 +34,18 @@
 
           <form action="what-is-your-gp-address-selection" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
 
             {% call fieldset({
               legend: {
-                "text": "What is the address of the GP surgery you want to leave?",
+                "text": "What is the address of the GP surgery they want to leave?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
 
             {{ hint({
-              "text": "If you have been registered at more than one GP surgery previousy, please enter the name and address of the most recent GP surgery you were registered at.",
+              "text": "If they have been registered at more than one GP surgery previousy, please enter the name and address of the most recent GP surgery they were registered at.",
               "classes": ""
             }) }}
 
@@ -76,6 +77,51 @@
 
 
           {% endcall %}
+
+          {% else %}
+
+          {% call fieldset({
+            legend: {
+              "text": "What is the address of the GP surgery you want to leave?",
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          }) %}
+
+          {{ hint({
+            "text": "If you have been registered at more than one GP surgery previousy, please enter the name and address of the most recent GP surgery you were registered at.",
+            "classes": ""
+          }) }}
+
+          {{ input({
+            label: {
+              "text": "Surgery name"
+            },
+            "hint": {
+              "text": "For example, Leeds general practice"
+            },
+            "classes": "nhsuk-input--width-20",
+            "id": "find-gp-address",
+            "name": "find-gp-address",
+            value: data['find-gp-address']
+        }) }}
+
+        {{ input({
+          label: {
+            "text": "Postcode"
+          },
+          "hint": {
+            "text": "For example, AB12 P12"
+          },
+          "classes": "nhsuk-input--width-10",
+          "id": "current-gp-address",
+          "name": "current-gp-address",
+          value: data['current-gp-address']
+      }) }}
+
+        {% endcall %}
+
+          {% endif %}
 
           <p>
             <a href="/sprint-4/what-is-your-gp-address-manual" id="enter-address-manually-link">Enter my address manually</a>

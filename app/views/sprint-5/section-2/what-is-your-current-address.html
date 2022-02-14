@@ -35,9 +35,11 @@
     <form action="what-is-your-current-address-selection" method="post" autocomplete="off">
 
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
             {% call fieldset({
               legend: {
-                "text": "What is your current UK home address?",
+                "text": "What is their current UK home address?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -70,12 +72,57 @@
             value: data['find-current-address']
         }) }}
 
+        {% endcall %}
+
+        {% else %}
+
+        {% call fieldset({
+          legend: {
+            "text": "What is your current UK home address?",
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        }) %}
+
+
+        {{ input({
+          label: {
+            "text": "House number or name"
+          },
+          "hint": {
+            "text": "For example, flat 20A"
+          },
+          "classes": "nhsuk-input--width-10",
+          "id": "house-number-address",
+          "name": "house-number-address",
+          value: data['house-number-address']
+      }) }}
+
+      {{ input({
+        label: {
+          "text": "Postcode"
+        },
+        "hint": {
+          "text": "For example, AB12 P12"
+        },
+        "classes": "nhsuk-input--width-10",
+        "id": "find-current-address",
+        "name": "find-current-address",
+        value: data['find-current-address']
+    }) }}
+
+    {% endcall %}
+
+    {% endif %}
+
+
+
+
         <p>
-          <a href="what-is-your-current-address-manual" id="enter-address-manually-link">Enter my address manually</a>
+          <a href="what-is-your-current-address-manual" id="enter-address-manually-link">Enter the address manually</a>
         </p>
 
 
-          {% endcall %}
 
             {{ button({
               "text": "Continue"

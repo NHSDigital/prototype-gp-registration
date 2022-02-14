@@ -34,6 +34,42 @@
 
           <form action="" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                text: "Do they have an emergency contact?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>This can be a someone like a family member, friend or support worker.</p>
+
+            </div>
+
+            {{ radios({
+              "idPrefix": "emergency-contact",
+              "name": "emergency-contact",
+              "items": [
+                {
+                  "value": "Yes~/sprint-5/section-2/emergency-contact-details",
+                  "text": "Yes",
+                  checked: checked("emergency-contact", "Yes")
+                },
+                {
+                  "value": "No~/sprint-5/section-2/are-you-a-member-of-armed-forces",
+                  "text": "No",
+                  checked: checked("emergency-contact", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {% else %}
+
             {% call fieldset({
               legend: {
                 text: "Do you have an emergency contact?",
@@ -65,6 +101,8 @@
             }) }}
 
             {% endcall %}
+
+            {% endif %}
 
 
 

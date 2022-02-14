@@ -36,41 +36,14 @@
           <form action="recently-moved-date" method="post" autocomplete="off">
 
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
 
               {% call fieldset({
                 legend: {
-                  "text": "What is your country of birth?",
+                  "text": "What is their country of birth?",
                   "classes": "nhsuk-fieldset__legend--l"
                 }
               }) %}
-
-              <!-- {{ input({
-                label: {
-                  "html": 'Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>'
-                },
-                "id": "moved-address-line-1",
-                "name": "moved-address-line-1",
-                value: data['moved-address-line-1']
-              }) }}
-
-              {{ input({
-                label: {
-                  "html": '<span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>'
-                },
-                "id": "moved-address-line-2",
-                "name": "moved-address-line-2",
-                value: data['moved-address-line-2']
-              }) }}
-
-              {{ input({
-                label: {
-                  "text": "Town or city"
-                },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "moved-address-town",
-                "name": "moved-address-town",
-                value: data['moved-address-town']
-              }) }} -->
 
               {{ input({
                   label: {
@@ -82,9 +55,32 @@
                   value: data['moved-address-country']
               }) }}
 
+              {% endcall %}
 
+              {% else %}
+
+              {% call fieldset({
+                legend: {
+                  "text": "What is your country of birth?",
+                  "classes": "nhsuk-fieldset__legend--l"
+                }
+              }) %}
+
+              {{ input({
+                  label: {
+                    "text": "Country"
+                  },
+                  "classes": "nhsuk-u-width-two-thirds",
+                  "id": "moved-address-country",
+                  "name": "moved-address-country",
+                  value: data['moved-address-country']
+              }) }}
 
               {% endcall %}
+
+              {% endif %}
+
+
 
 
               {{ button({

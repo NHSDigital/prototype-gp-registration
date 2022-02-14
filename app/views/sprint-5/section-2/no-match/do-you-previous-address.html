@@ -34,6 +34,8 @@
 
           <form action="" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
             {% call fieldset({
               legend: {
                 text: "Do you have a previous UK address?",
@@ -60,6 +62,37 @@
             }) }}
 
             {% endcall %}
+
+            {% else %}
+
+            {% call fieldset({
+              legend: {
+                text: "Do they have a previous UK address?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ radios({
+              "idPrefix": "have-previous-uk-address",
+              "name": "have-previous-uk-address",
+              "items": [
+                {
+                  "value": "Yes~/sprint-5/section-2/no-match/what-is-your-previous-address",
+                  "text": "Yes",
+                  checked: checked("have-previous-uk-address", "Yes")
+                },
+                {
+                  "value": "No~/sprint-5/section-3/do-you-have-existing-conditions",
+                  "text": "No",
+                  checked: checked("have-previous-uk-address", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {% endif %}
 
             {{ button({
               "text": "Continue"

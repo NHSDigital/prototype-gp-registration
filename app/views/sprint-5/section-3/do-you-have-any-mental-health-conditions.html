@@ -34,6 +34,42 @@
 
           <form action="do-you-have-mental-health-conditions-answer" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                text: "Do they have any mental health conditions?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "It is important to tell us about all existing or pre-existing mental health conditions they may have, so their GP can ensure they are given the necessary treatment."
+            }) }}
+
+
+            {{ radios({
+              "idPrefix": "has-mental-health-conditions",
+              "name": "has-mental-health-conditions",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: checked("has-mental-health-conditions", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("has-mental-health-conditions", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+            {% else %}
+
+
             {% call fieldset({
               legend: {
                 text: "Do you have any mental health conditions?",
@@ -65,6 +101,9 @@
             }) }}
 
             {% endcall %}
+            {% endif %}
+
+
 
             {{ button({
               "text": "Continue"

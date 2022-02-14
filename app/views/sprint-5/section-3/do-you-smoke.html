@@ -37,12 +37,14 @@
           <form action="/sprint-5/section-4/check-answers-b" method="post" autocomplete="off">
 
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
             {{ radios({
               "idPrefix": "smokes",
               "name": "smokes",
               "fieldset": {
                 "legend": {
-                  "text": "Do you smoke     ?",
+                  "text": "Do they smoke?",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
@@ -71,6 +73,45 @@
                 }
               ]
             }) }}
+
+            {% else %}
+
+            {{ radios({
+              "idPrefix": "smokes",
+              "name": "smokes",
+              "fieldset": {
+                "legend": {
+                  "text": "Do you smoke?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "Select one option"
+              },
+              "items": [
+              {
+                "value": "Yes",
+                "text": "Yes",
+                checked: checked("smokes", "Yes")
+              },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("smokes", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say",
+                  "text": "Prefer not to say",
+                  checked: checked("smokes", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {% endif %}
 
             {{ button({
               "text": "Continue"

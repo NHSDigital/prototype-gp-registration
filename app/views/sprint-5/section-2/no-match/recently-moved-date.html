@@ -44,6 +44,42 @@ GP Registration Prototypes
 
         <form action="recently-moved-eea" method="post" autocomplete="off">
 
+          {% if (data['who-is-being-registered'] == "dependant") %}
+
+          {{ dateInput({
+            "id": "moved",
+            "namePrefix": "moved",
+            "fieldset": {
+              "legend": {
+                "text": "When did they enter the UK?",
+                "classes": "nhsuk-label--l",
+                "isPageHeading": true
+              }
+            },
+            "hint": {
+              "text": "For example 09 10 2021."
+            },
+            "items": [
+              {
+                "name": "day",
+                "classes": "nhsuk-input--width-2",
+                "value": data['moved-day']
+              },
+              {
+                "name": "month",
+                "classes": "nhsuk-input--width-2",
+                "value": data['moved-month']
+              },
+              {
+                "name": "year",
+                "classes": "nhsuk-input--width-4",
+                "value": data['moved-year']
+              }
+            ]
+          }) }}
+
+
+          {% else %}
 
           {{ dateInput({
             "id": "moved",
@@ -76,6 +112,8 @@ GP Registration Prototypes
               }
             ]
           }) }}
+
+          {% endif %}
 
           {{ button({
             "text": "Continue"

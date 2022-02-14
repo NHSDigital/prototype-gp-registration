@@ -34,6 +34,31 @@
 
           <form action="how-often-six-or-more-units" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                "text": "How many units of alcohol do they consume in an average week?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ input({
+                label: {
+                  "text": "For example, 2.5"
+                },
+                "classes": "nhsuk-input--width-4",
+                "id": "name-title",
+                "name": "name-title",
+                "value": data['name-title']
+              }) }}
+
+
+            {% endcall %}
+            {% else %}
+
+
             {% call fieldset({
               legend: {
                 "text": "How many units of alcohol do you consume in an average week?",
@@ -54,96 +79,73 @@
 
 
             {% endcall %}
-            <!-- HINT TEXT -->
-            {% from 'details/macro.njk' import details %}
+            {% endif %}
 
-                        {{ table({
-                          panel: false,
-                          caption: "Units of alcoholic drinks",
-                          firstCellIsHeader: false,
-                          head: [
-                            {
-                              text: "Types of drinks"
-                            },
-                            {
-                              text: "Units of alcohol"
-                            }
-                          ],
-                          rows: [
-                            [
-                              {
-                                text: "Single small shot of spirits * (25ml, ABV 40%)"
-                              },
-                              {
-                                text: "1 unit"
-                              }
-                            ],
-                            [
-                              {
-                                text: "Alcopop (275ml, ABV 5.5%)"
-                              },
-                              {
-                                text: "1.5 units"
-                              }
-                            ],
-                            [
-                              {
-                                text: "Small glass of red/white/rosé wine (125ml, ABV 12%)"
-                              },
-                              {
-                                text: "1.5 units"
-                              }
-                            ],
-                            [
-                              {
-                                text: "Bottle of lager/beer/cider (330ml, ABV 5%)"
-                              },
-                              {
-                                text: "1.7 units"
-                              }
-                            ],
-                            [
-                              {
-                                text: "Can of lager/beer/cider (440ml, ABV 5.5%)Bottle of lager/beer/cider (330ml, ABV 5%)"
-                              },
-                              {
-                                text: "2 units"
-                              }
-                            ],
-                            [
-                              {
-                                text: "Pint of lower-strength lager/beer/cider (ABV 3.6%)"
-                              },
-                              {
-                                text: "2 units"
-                              }
-                            ],
-                            [
-                              {
-                                text: "Standard glass of red/white/rosé wine (175ml, ABV 12%)"
-                              },
-                              {
-                                text: "2.1 units"
-                              }
-                            ],
-                            [
-                            {
-                              text: "Pint of higher-strength lager/beer/cider (ABV 5.2%)"
-                            },
-                            {
-                              text: "3 units"
-                            }
-                          ],
-                          [
-                            {
-                              text: "Large glass of red/white/rosé wine (250ml, ABV 12%)"
-                            },
-                            {
-                              text: "3 units"
-                            }
-                          ]
-                          ]
-                        }) }} ,
+
+
+            <!-- HINT TEXT -->
+
+
+            <details class="nhsuk-details">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Units of alcoholic drinks
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                            <table class="nhsuk-table">
+                  <caption class="nhsuk-table__caption"></caption>
+                  <thead role="rowgroup" class="nhsuk-table__head">
+                    <tr role="row">
+                      <th role="columnheader" class="" scope="col">
+                        Types of drinks
+                      </th>
+                      <th role="columnheader" class="" scope="col">
+                        Units of alcohol
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="nhsuk-table__body">
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Single small shot of spirits * (25ml, ABV 40%)</td>
+                      <td class="nhsuk-table__cell ">cold sores</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Alcopop (275ml, ABV 5.5%)</td>
+                      <td class="nhsuk-table__cell ">1.5 units</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Small glass of red/white/rosé wine (125ml, ABV 12%)</td>
+                      <td class="nhsuk-table__cell ">1.5 units</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Bottle of lager/beer/cider (330ml, ABV 5%)</td>
+                      <td class="nhsuk-table__cell ">1.7 units</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Can of lager/beer/cider (440ml, ABV 5.5%)Bottle of lager/beer/cider (330ml, ABV 5%)</td>
+                      <td class="nhsuk-table__cell ">2 units</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Pint of lower-strength lager/beer/cider (ABV 3.6%)</td>
+                      <td class="nhsuk-table__cell ">2 units</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Standard glass of red/white/rosé wine (175ml, ABV 12%)</td>
+                      <td class="nhsuk-table__cell ">2.1 units</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Pint of higher-strength lager/beer/cider (ABV 5.2%)</td>
+                      <td class="nhsuk-table__cell ">3 units</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Large glass of red/white/rosé wine (250ml, ABV 12%)</td>
+                      <td class="nhsuk-table__cell ">3 units</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </details>
+                      
             {{ button({
               "text": "Continue"
             }) }}

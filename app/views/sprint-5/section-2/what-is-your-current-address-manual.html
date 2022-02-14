@@ -37,12 +37,60 @@
           <form action="how-can-we-contact-you" method="post" autocomplete="off">
 
 
-
+            {% if (data['who-is-being-registered'] == "dependant") %}
 
               {% call fieldset({
                 legend: {
-                  "text": "What is your current UK home address?",
-                  "classes": "nhsuk-fieldset__legend--m"
+                  "text": "What is their current UK home address?",
+                  "classes": "nhsuk-fieldset__legend--l"
+                }
+              }) %}
+
+              {{ input({
+                label: {
+                  "html": 'Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>'
+                },
+                "id": "current-address-line-1",
+                "name": "current-address-line-1",
+                value: data['current-address-line-1']
+              }) }}
+
+              {{ input({
+                label: {
+                  "html": '<span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>'
+                },
+                "id": "current-address-line-2",
+                "name": "current-address-line-2",
+                value: data['current-address-line-2']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Town or city"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "current-address-town",
+                "name": "current-address-town",
+                value: data['current-address-town']
+              }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "current-address-postcode",
+                  "name": "current-address-postcode",
+                  value: data['current-address-postcode']
+              }) }}
+
+              {% endcall %}
+              {% else %}
+
+              {% call fieldset({
+                legend: {
+                  "text": "What is their current UK home address?",
+                  "classes": "nhsuk-fieldset__legend--l"
                 }
               }) %}
 
@@ -85,18 +133,17 @@
               }) }}
 
 
-
-              {% endcall %}
-
-
               {{ button({
                 "text": "Continue"
               }) }}
 
+              {% endcall %}
+              {% endif %}
+
 
             </div>
 
-          </form>
+      
         </div>
       </div>
     </section>

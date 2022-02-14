@@ -56,6 +56,8 @@ GP Registration Prototypes
             <p></p>
           </div>
 
+          {% if (data['who-is-being-registered'] == "dependant") %}
+
          <div class="nhsuk-form-group">
             <label class="nhsuk-label" for="example">
              <strong> What is your EHIC number?</strong>
@@ -65,6 +67,20 @@ GP Registration Prototypes
                </div>
                <input class="nhsuk-input nhsuk-input--width-10" id="ehic" name="ehic" type="text" aria-describedby="ehic" inputmode="numeric">
              </div>
+
+             {% else %}
+
+             <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="example">
+                 <strong> What is their EHIC number?</strong>
+                </label>
+                <div class="nhsuk-hint" id="example-with-hint-text-hint">
+                     This can be found on the front of you EHIC card. For example, 485 777 3456.
+                   </div>
+                   <input class="nhsuk-input nhsuk-input--width-10" id="ehic" name="ehic" type="text" aria-describedby="ehic" inputmode="numeric">
+                 </div>
+
+                 {% endif %}
 
 
         <div class="nhsuk-grid-row">

@@ -44,17 +44,15 @@ GP Registration Prototypes
 
         <form action="" method="post" autocomplete="off">
 
+          {% if (data['who-is-being-registered'] == "dependant") %}
+
           {% call fieldset({
             legend: {
-              text: "Have you recently moved to the UK from another country?",
+              text: "Have they recently moved to the UK from another country?",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
           }) %}
-
-        <div class="nhsuk-hint" id="contact-hint">
-            <p>Anybody in England can register with a GP surgery and receive free medical care. If you are not 'ordinarily resident' in UK you may have to pay for NHS treatment outside the GP surgery.</p>
-          </div>
 
           {{ radios({
             "idPrefix": "recently-moved",
@@ -81,6 +79,47 @@ GP Registration Prototypes
 
           {% endcall %}
 
+          {% else %}
+
+          {% call fieldset({
+            legend: {
+              text: "Have you recently moved to the UK from another country?",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "recently-moved",
+            "name": "recently-moved",
+            "items": [
+              {
+                "value": "Yes~/sprint-5/section-2/no-match/what-address-for-recently-moved",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("recently-moved", "Yes")
+              },
+              {
+                "value": "No~/sprint-5/section-3/do-you-have-existing-conditions",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("recently-moved", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {% endif %}
+
+          {{ details({
+            "text": "Why are you asking this?",
+            "HTML": "<p>Anybody in England can register with a GP surgery and receive free medical care. If you do not normally live in UK you may have to pay for NHS treatment outside the GP surgery, for example, if you are referred to hospital.</p>"
+          }) }}
 
 
           {{ button({
@@ -89,10 +128,7 @@ GP Registration Prototypes
 
         </form>
 
-        {{ details({
-          "text": "Why are you asking this?",
-          "HTML": "<p>TBC</p>"
-        }) }}
+
 
 
 

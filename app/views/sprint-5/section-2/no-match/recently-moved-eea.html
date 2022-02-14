@@ -44,9 +44,11 @@ GP Registration Prototypes
 
         <form action="" method="post" autocomplete="off">
 
+          {% if (data['who-is-being-registered'] == "dependant") %}
+
           {% call fieldset({
             legend: {
-              text: "Have you moved to UK from EU, EEA or Switzerland?",
+              text: "Have they moved to UK from living in  EU, EEA or Switzerland?",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
@@ -81,6 +83,48 @@ GP Registration Prototypes
           }) }}
 
           {% endcall %}
+
+          {% else %}
+
+          {% call fieldset({
+            legend: {
+              text: "Have you moved to UK from living in  EU, EEA or Switzerland?",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>The European Economic Area (EEA) includes European Union (EU) countries and also Iceland, Liechtenstein and Norway. It allows them to be part of the EU 's single market. Switzerland is not an EU or EEA member but is part of the single market.</p>
+          </div>
+
+
+          {{ radios({
+            "idPrefix": "eea",
+            "name": "eea",
+            "items": [
+              {
+                "value": "Yes~/sprint-5/section-2/no-match/recently-moved-documents",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("eea", "Yes")
+              },
+              {
+                "value": "No~/sprint-5/section-3/do-you-have-existing-conditions",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("eea", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {% endif %}
 
 
 

@@ -256,8 +256,13 @@
               {% endif %}
 
 
-
-             <p>This information allows us to match you to your existing medical record.<p>By continuing you are confirming that, to the best of your knowledge, they are providing are correct.</p>
+            {% if (data['who-is-being-registered'] == "dependant") %}
+             <p>We use this information to match their details to their NHS record. This is not their patient record and includes no medical information.</p>
+             <p>By submitting these details they are confirming that, to the best of their knowledge, they are correct.</p>
+            {% else %}
+            <p>We use this information to match your details to your NHS record. This is not your patient record and includes no medical information.</p>
+            <p>By submitting these details you are confirming that, to the best of your knowledge, they are correct.</p>
+            {% endif %}
 
             {{ button({
               "text": "Confirm and continue"

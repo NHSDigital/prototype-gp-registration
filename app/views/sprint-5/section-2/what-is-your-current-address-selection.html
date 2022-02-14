@@ -39,9 +39,11 @@
           {% endif %}
 
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
             {% call fieldset({
               legend: {
-                text: "Select your address",
+                text: "Select their address",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -103,6 +105,75 @@
                 }) }}
 
                 {% endcall %}
+
+                {% else %}
+
+                {% call fieldset({
+                  legend: {
+                    text: "Select your address",
+                    classes: "nhsuk-fieldset__legend--l",
+                    isPageHeading: true
+                  }
+                }) %}
+
+                <div class="nhsuk-hint" id="contact-hint">
+                  <p>6 addresses found for <strong>{{ data['house-number-address'] }}</strong> <strong>{{ data['find-current-address'] }}</strong></p>
+                </div>
+
+
+                    {{ radios({
+                        "idPrefix": "select-current-address",
+                        "name": "select-current-address",
+
+
+                      "items": [
+                        {
+                          "value": "1 Town Street, London, SW1A 1AA",
+                          "text": "1 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-current-address", "1 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "value": "2 Town Street, London, SW1A 1AA",
+                          "text": "2 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-current-address", "2 Town Street, London, SW1A 1AA")
+                        },    {
+                              "value": "3 Town Street, London, SW1A 1AA",
+                              "text": "3 Town Street, London, SW1A 1AA",
+                              "hint": {
+                            },
+                              checked: checked("select-current-addresss", "3 Town Street, London, SW1A 1AA")
+                            },
+                            {
+                              "value": "4 Town Street, London, SW1A 1AA",
+                              "text": "4 Town Street, London, SW1A 1AA",
+                              "hint": {
+                            },
+                              checked: checked("select-current-addresss", "4 Town Street, London, SW1A 1AA")
+                            },
+                            {
+                              "value": "5 Town Street, London, SW1A 1AA",
+                              "text": "5 Town Street, London, SW1A 1AA",
+                              "hint": {
+                            },
+                              checked: checked("select-current-address", "5 Town Street, London, SW1A 1AA")
+                            },
+                            {
+                              "value": "6 Town Street, London, SW1A 1AA",
+                              "text": "6 Town Street, London, SW1A 1AA",
+                              "hint": {
+                            },
+                              checked: checked("select-current-address", "6 Town Street, London, SW1A 1AA")
+                        }
+                      ]
+                    }) }}
+
+                    {% endcall %}
+
+                    {% endif %}
 
                 <p>
                   <a href="what-is-your-current-address-manual" id="enter-address-manually-link">I cannot find my address on the list</a>

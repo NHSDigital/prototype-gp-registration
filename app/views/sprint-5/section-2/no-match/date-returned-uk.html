@@ -34,6 +34,42 @@
 
           <form action="what-is-your-gp-address" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {{ dateInput({
+              "id": "returned-uk",
+              "namePrefix": "returned-uk",
+              "fieldset": {
+                "legend": {
+                  "text": "What was the date they returned to the UK?",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": true
+                }
+              },
+              "hint": {
+                "text": "For example, 15 3 1984"
+              },
+              "items": [
+                {
+                  "name": "day",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['returnuk-day']
+                },
+                {
+                  "name": "month",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['returnuk-month']
+                },
+                {
+                  "name": "year",
+                  "classes": "nhsuk-input--width-4",
+                  "value": data['returnuk-year']
+                }
+              ]
+            }) }}
+
+            {% else %}
+
             {{ dateInput({
               "id": "returned-uk",
               "namePrefix": "returned-uk",
@@ -65,6 +101,8 @@
                 }
               ]
             }) }}
+
+            {% endif %}
 
             {{ button({
               "text": "Continue"

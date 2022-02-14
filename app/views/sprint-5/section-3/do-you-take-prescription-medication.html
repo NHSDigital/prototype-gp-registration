@@ -34,6 +34,44 @@
 
           <form action="" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                text: "Do they currently take any prescription medication?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "It is important to tell us about all the prescription medication they currently take so their GP can have these ready for them."
+            }) }}
+
+            {{ hint({
+              "text": "Please include prescription medication for contraception and medication from abroad"
+            }) }}
+
+            {{ radios({
+              "idPrefix": "takes-prescription-meds",
+              "name": "takes-prescription-meds",
+              "items": [
+                {
+                  "value": "Yes~/sprint-5/section-3/medication-details",
+                  "text": "Yes",
+                  checked: checked("takes-prescription-meds", "Yes")
+                },
+                {
+                  "value": "No~/sprint-5/section-3/how-often-do-you-drink-alcohol",
+                  "text": "No",
+                  checked: checked("takes-prescription-meds", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+            {% else %}
+
             {% call fieldset({
               legend: {
                 text: "Do you currently take any prescription medication?",
@@ -68,6 +106,7 @@
             }) }}
 
             {% endcall %}
+            {% endif %}
 
             {{ button({
               "text": "Continue"

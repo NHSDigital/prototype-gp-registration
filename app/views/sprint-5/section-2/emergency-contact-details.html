@@ -34,6 +34,54 @@
 
           <form action="are-you-a-member-of-armed-forces" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                "text": "What are the details of their emergency contact?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+
+            {{ input({
+                label: {
+                  "text": "Full name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-full-name",
+                "name": "ec-full-name",
+                value: data['ec-full-name']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "Relationship to them"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-relationship",
+                "name": "ec-relationship",
+                value: data['ec-relationship']
+              }) }}
+
+              {{ input({
+                "label": {
+                  "text": "Contact telephone number"
+                },
+                  "hint": {
+                  "text": "For international number include the country code"
+                },
+                "classes": "nhsuk-input--width-10",
+                "id": "ec-contact-tel",
+                "name": "ec-contact-tel",
+                value: data['ec-contact-tel']
+              }) }}
+
+            {% endcall %}
+
+            {% else %}
+
             {% call fieldset({
               legend: {
                 "text": "What are the details of your emergency contact?",
@@ -77,6 +125,8 @@
               }) }}
 
             {% endcall %}
+
+            {% endif %}
 
             {{ button({
               "text": "Continue"

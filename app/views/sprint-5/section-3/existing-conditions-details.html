@@ -34,6 +34,27 @@
 
           <form action="do-you-have-allergies" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                text: "Can you provide more details about their current and pre-existing medical conditions?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ textarea({
+              "name": "existing-medical-condition-details",
+              "id": "existing-medical-condition-details",
+              "hint": {
+                "text": "This question is optional."
+              }
+            }) }}
+
+            {% endcall %}
+            {% else %}
+
             {% call fieldset({
               legend: {
                 text: "Can you provide more details about your current and pre-existing medical conditions?",
@@ -51,6 +72,7 @@
             }) }}
 
             {% endcall %}
+            {% endif %}
 
             {{ button({
               "text": "Continue"

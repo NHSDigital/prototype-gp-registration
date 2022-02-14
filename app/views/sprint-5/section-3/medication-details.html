@@ -34,6 +34,27 @@
 
           <form action="how-often-do-you-drink-alcohol" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                text: "Can you provide more details about their prescription medication?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ textarea({
+              "name": "medication-details",
+              "id": "medication-details",
+              "hint": {
+                "text": "This question is optional."
+              }
+            }) }}
+
+            {% endcall %}
+            {% else %}
+
             {% call fieldset({
               legend: {
                 text: "Can you provide more details about your prescription medication?",
@@ -51,6 +72,7 @@
             }) }}
 
             {% endcall %}
+            {% endif %}
 
             {{ button({
               "text": "Continue"

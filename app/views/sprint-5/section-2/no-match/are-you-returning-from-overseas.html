@@ -34,6 +34,38 @@
 
           <form action="do-you-have-a-living-will" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                text: "Are they returning from overseas?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ radios({
+              "idPrefix": "overseas",
+              "name": "overseas",
+              "items": [
+                {
+                  "value": "Yes~/sprint-5/section-2/no-match/date-left-uk",
+                  "text": "Yes",
+                  checked: checked("overseas", "Yes")
+                },
+                {
+                  "value": "No~/sprint-5/section-3/do-you-have-existing-conditions",
+                  "text": "No",
+                  checked: checked("overseas", "No")
+
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {% else %}
+
             {% call fieldset({
               legend: {
                 text: "Are you returning from overseas?",
@@ -61,6 +93,8 @@
             }) }}
 
             {% endcall %}
+
+            {% endif %}
 
 
             {{ button({

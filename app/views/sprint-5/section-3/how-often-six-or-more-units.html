@@ -34,6 +34,60 @@
 
           <form action="do-you-smoke" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {{ radios({
+              "idPrefix": "alcohol-consumption",
+              "name": "alcohol-consumption",
+              "fieldset": {
+                "legend": {
+                  "text": "How often have they had six or more units of alcohol on a single occasion in the last year?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "Select one option"
+              },
+              "items": [
+                {
+                  "value": "Never",
+                  "text": "Never",
+                  checked: checked("alcohol-consumption", "Never")
+                },
+                {
+                  "value": "Less than monthly",
+                  "text": "Less than monthly",
+                  checked: checked("alcohol-consumption", "Less than monthly")
+                },
+                {
+                  "value": "Monthly",
+                  "text": "Monthly",
+                  checked: checked("alcohol-consumption", "Monthly")
+                },
+                {
+                  "value": "Weekly",
+                  "text": "Weekly",
+                  checked: checked("alcohol-consumption", "Weekly")
+                },
+                {
+                  "value": "Daily or almost daily",
+                  "text": "Daily or almost daily",
+                  checked: checked("alcohol-consumption", "Daily or almost daily")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say",
+                  "text": "Prefer not to say",
+                  checked: checked("alcohol-consumption", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {% else %}
+
             {{ radios({
               "idPrefix": "alcohol-consumption",
               "name": "alcohol-consumption",
@@ -83,6 +137,8 @@
                 }
               ]
             }) }}
+
+            {% endif %}
 
             {{ button({
               "text": "Continue"

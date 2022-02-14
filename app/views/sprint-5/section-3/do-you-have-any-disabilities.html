@@ -34,6 +34,42 @@
 
           <form action="do-you-have-disabilities-answer" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                text: "Do they have any disabilities?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "It is important to tell us about any disabilities they may have, so their GP can ensure they are given the necessary treatment."
+            }) }}
+
+
+            {{ radios({
+              "idPrefix": "has-disabilities",
+              "name": "has-disabilities",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: checked("has-disabilities", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("has-disabilities", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {% else %}
+
             {% call fieldset({
               legend: {
                 text: "Do you have any disabilities?",
@@ -65,6 +101,8 @@
             }) }}
 
             {% endcall %}
+
+            {% endif %}
 
             {{ button({
               "text": "Continue"
