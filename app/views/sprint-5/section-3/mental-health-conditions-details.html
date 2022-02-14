@@ -34,6 +34,27 @@
 
           <form action="do-you-have-any-disabilities" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                text: "Can you provide more details about their mental health conditions?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ textarea({
+              "name": "mental-health-details",
+              "id": "mental-health-details",
+              "hint": {
+                "text": "This question is optional."
+              }
+            }) }}
+
+            {% endcall %}
+            {% else %}
+
             {% call fieldset({
               legend: {
                 text: "Can you provide more details about your mental health conditions?",
@@ -51,6 +72,7 @@
             }) }}
 
             {% endcall %}
+            {% endif %}
 
             {{ button({
               "text": "Continue"
