@@ -39,77 +39,78 @@
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% if ((data['user-auth'] == "nomatch") and (data['current-gp'] == "No"))  %}
+
+
+            {% call fieldset({
+              legend: {
+                text: "Have you ever been a member of the Armed Forces or are a family member registered with the Defence Medical Services?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+
+            {{ radios({
+              "idPrefix": "is-armed-forces-member",
+              "name": "is-armed-forces-member",
+              "items": [
+                {
+                  "value": "Yes~/sprint-5/section-2/are-you-a-member-of-armed-forces-details",
+                  "text": "Yes",
+                  checked: checked("is-armed-forces-member", "Yes")
+                },
+                {
+                  "value": "No~/sprint-5/section-2/no-match/recently-move-to-the-uk",
+                  "text": "No",
+                  checked: checked("is-armed-forces-member", "No")
+
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+
+            {% elif ((data['user-auth'] == "nomatch") and (data['current-gp'] == "Yes"))  %}
+
+
+             {% call fieldset({
+               legend: {
+                 text: "Have you ever been a member of the Armed Forces or are a family member registered with the Defence Medical Services?",
+                 classes: "nhsuk-fieldset__legend--l",
+                 isPageHeading: true
+               }
+             }) %}
+
+
+             {{ radios({
+               "idPrefix": "is-armed-forces-member",
+               "name": "is-armed-forces-member",
+               "items": [
+                 {
+                   "value": "Yes~/sprint-5/section-2/are-you-a-member-of-armed-forces-details",
+                   "text": "Yes",
+                   checked: checked("is-armed-forces-member", "Yes")
+                 },
+                 {
+                   "value": "No~/sprint-5/section-2/no-match/are-you-returning-from-overseas",
+                   "text": "No",
+                   checked: checked("is-armed-forces-member", "No")
+
+                 }
+               ]
+             }) }}
+
+             {% endcall %}
+
+
+            {% elif (((data['who-is-being-registered'] == "dependant") and (data['user-auth'] == "nomatch") and (data['current-gp'] == "Yes"))) %}
 
             {% call fieldset({
               legend: {
                 text: "Have they ever been a member of the Armed Forces or have had a family member registered with the Defence Medical Services?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-
-            {{ radios({
-              "idPrefix": "is-armed-forces-member",
-              "name": "is-armed-forces-member",
-              "items": [
-                {
-                  "value": "Yes~/sprint-5/section-2/are-you-a-member-of-armed-forces-details",
-                  "text": "Yes",
-                  checked: checked("is-armed-forces-member", "Yes")
-                },
-                {
-                  "value": "No~/sprint-5/section-2/no-match/recently-move-to-the-uk",
-                  "text": "No",
-                  checked: checked("is-armed-forces-member", "No")
-
-                }
-              ]
-            }) }}
-
-            {% endcall %}
-
-
-            {% elif ((data['user-auth'] == "nomatch") and (data['current-gp'] == "No"))  %}
-
-
-            {% call fieldset({
-              legend: {
-                text: "Have you ever been a member of the Armed Forces or are a family member registered with the Defence Medical Services?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-
-            {{ radios({
-              "idPrefix": "is-armed-forces-member",
-              "name": "is-armed-forces-member",
-              "items": [
-                {
-                  "value": "Yes~/sprint-5/section-2/are-you-a-member-of-armed-forces-details",
-                  "text": "Yes",
-                  checked: checked("is-armed-forces-member", "Yes")
-                },
-                {
-                  "value": "No~/sprint-5/section-2/no-match/recently-move-to-the-uk",
-                  "text": "No",
-                  checked: checked("is-armed-forces-member", "No")
-
-                }
-              ]
-            }) }}
-
-            {% endcall %}
-
-
-           {% elif (data['user-auth'] == "nomatch")  %}
-
-
-            {% call fieldset({
-              legend: {
-                text: "Have you ever been a member of the Armed Forces or are a family member registered with the Defence Medical Services?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -135,6 +136,8 @@
             }) }}
 
             {% endcall %}
+
+
 
               {% else %}
 

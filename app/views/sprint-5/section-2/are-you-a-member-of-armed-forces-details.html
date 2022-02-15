@@ -35,7 +35,7 @@
 
           {% if ((data['user-auth'] == "nomatch") and (data['current-gp'] == "No"))  %}
           <form action="/sprint-5/section-2/no-match/recently-move-to-the-uk" method="post" autocomplete="off">
-          {% elif (data['user-auth'] == "nomatch") and (data['current-gp'] == "Yes")) %}
+          {% elif ((data['user-auth'] == "nomatch") and (data['current-gp'] == "Yes")) %}
           <form action="/sprint-5/section-2/no-match/are-you-returning-from-overseas" method="post" autocomplete="off">
           {% else %}
           <form action="/sprint-5/section-3/do-you-have-existing-conditions" method="post" autocomplete="off">
