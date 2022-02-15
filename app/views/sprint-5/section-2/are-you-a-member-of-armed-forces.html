@@ -38,7 +38,7 @@
               "text": "Step 2 of 3 - Personal Details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
+
             {% if (data['who-is-being-registered'] == "dependant") %}
 
             {% call fieldset({
@@ -93,7 +93,7 @@
                   checked: checked("is-armed-forces-member", "Yes")
                 },
                 {
-                  "value": "No~/sprint-5/section-2/no-match/do-you-have-existing-conditions",
+                  "value": "No~/sprint-5/section-3/do-you-have-existing-conditions",
                   "text": "No",
                   checked: checked("is-armed-forces-member", "No")
 
@@ -104,7 +104,7 @@
             {% endcall %}
 
 
-      {% elif (data['user-auth'] == "nomatch")  %}
+           {% elif (data['user-auth'] == "nomatch")  %}
 
 
             {% call fieldset({
