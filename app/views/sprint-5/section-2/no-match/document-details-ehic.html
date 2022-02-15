@@ -43,6 +43,11 @@ GP Registration Prototypes
         }) }}
 
         <form action="/sprint-5/section-3/do-you-have-existing-conditions" method="post" autocomplete="off">
+            
+            {{ hint({
+              "text": "Step 2 of 3 - Personal Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
 
           {% call fieldset({
             legend: {

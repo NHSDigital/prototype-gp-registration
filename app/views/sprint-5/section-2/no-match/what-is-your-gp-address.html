@@ -34,6 +34,11 @@
 
           <form action="what-is-your-gp-address-selection" method="post" autocomplete="off">
 
+            {{ hint({
+              "text": "Step 2 of 3 - Personal Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+            
             {% if (data['who-is-being-registered'] == "dependant") %}
 
             {% call fieldset({

@@ -39,6 +39,11 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
+            {{ hint({
+              "text": "Step 2 of 3 - Personal Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+            
             {% call fieldset({
                 legend: {
                   "text": "What is the address of the GP surgery they want to leave?",
