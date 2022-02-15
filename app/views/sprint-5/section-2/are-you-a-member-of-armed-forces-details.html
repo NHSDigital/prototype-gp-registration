@@ -35,19 +35,19 @@
 
           {% if ((data['user-auth'] == "nomatch") and (data['current-gp'] == "No"))  %}
           <form action="/sprint-5/section-2/no-match/recently-move-to-the-uk" method="post" autocomplete="off">
-          {% elif (data['user-auth'] == "nomatch") %}
+          {% elif (data['user-auth'] == "nomatch") and (data['current-gp'] == "Yes")) %}
           <form action="/sprint-5/section-2/no-match/are-you-returning-from-overseas" method="post" autocomplete="off">
           {% else %}
           <form action="/sprint-5/section-3/do-you-have-existing-conditions" method="post" autocomplete="off">
           {% endif %}
-           
+
             {{ hint({
               "text": "Step 2 of 3 - Personal Details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
           <h1 class="nhsuk-heading--l">Recent Armed Forces leavers and their families</h1>
-          
+
           <p>After submitting your registration:</p>
 
             <ul class="nhsuk-list nhsuk-list--bullet">
