@@ -43,8 +43,12 @@ GP Registration Prototypes
         }) }}
 
         <form action="" method="post" autocomplete="off">
-         
 
+{{ hint({
+              "text": "Step 2 of 3 - Personal Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+            
           {% call fieldset({
             legend: {
               text: "Have you recently moved to the UK from another country?",
@@ -62,7 +66,7 @@ GP Registration Prototypes
             "name": "recently-moved",
             "items": [
               {
-                "value": "Yes~/sprint-4/what-address-for-recently-moved",
+                "value": "Yes~/sprint-5/section-2/what-address-for-recently-moved",
                 "text": "Yes",
                 "hint": {
                   "text": ""
