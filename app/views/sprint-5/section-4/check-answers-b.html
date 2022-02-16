@@ -462,6 +462,66 @@
                 {% endif %}
                 {% endif %}
 
+                {% if data['overseas'] == "No" %}
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Previous GP address
+                  </dt>
+                  <dd class="nhsuk-summary-list__value previous-gp__value">
+                    {% if data['select-gp-address'] %}
+                    {{ data['select-gp-address'] }}
+                    {% else %}
+                    {{ data['select-gp-address'] }}
+                    {{ data['previous-gp-address-line-1'] }}<br />
+                    {{ data['previous-gp-address-line-2'] }}<br />
+                    {{ data['previous-gp-town'] }}<br />
+                    {{ data['previous-gp-postcode'] }}
+                    {% endif %}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href=""><span class="nhsuk-u-visually-hidden">previous GP address</span></a>
+                  </dd>
+                </div>
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Do you have a previous UK address?
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['have-previous-uk-address'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden">overseas</span></a>
+                  </dd>
+                </div>
+
+                {% if data['have-previous-uk-address'] == "Yes" %}
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Previous address
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {% if data['select-previous-address'] %}
+                    {{ data['select-previous-address'] }}
+                    {% else %}
+                    {{ data['select-previous-address'] }}
+                    {{ data['previous-address-line-1'] }}<br />
+                    {{ data['previous-address-line-2'] }}<br />
+                    {{ data['previous-address-town'] }}<br />
+                    {{ data['previous-address-postcode'] }}
+                    {% endif %}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href=""><span class="nhsuk-u-visually-hidden"> address</span></a>
+                  </dd>
+                </div>
+
+              
+                {% endif %}
+                {% endif %}
+
                 </dl>
 
 
@@ -647,7 +707,7 @@
 
 
           <h2 class="nhsuk-heading-l">Submit your application</h2>
-          
+
        <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
           <span class="nhsuk-u-visually-hidden">Information:</span>
