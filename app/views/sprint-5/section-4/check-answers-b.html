@@ -672,6 +672,39 @@
               </div>
             {% endif %}
 
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Prescription medication
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['takes-prescription-meds'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">
+                  Change<span class="nhsuk-u-visually-hidden"> prescription medication</span>
+                </a>
+              </dd>
+            </div>
+
+            {% if data['takes-prescription-meds'] == "Yes" %}
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Prescription details
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['medication-details'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">
+                    Change<span class="nhsuk-u-visually-hidden"> details about your medications</span>
+                  </a>
+                </dd>
+              </div>
+            {% endif %}
+
+
+
+
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
