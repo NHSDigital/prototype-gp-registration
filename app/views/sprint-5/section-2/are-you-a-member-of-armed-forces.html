@@ -70,6 +70,7 @@
               ]
             }) }}
 
+          
             {% endcall %}
 
 
@@ -172,6 +173,12 @@
             {% endcall %}
 
             {% endif %}
+
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>This helps us understand where to request your medical record from.</p>
+                        <p>If you have previously been a member of the Armed Forces you may also be able to access additional services for former service members.</p>"
+            }) }}
 
             {{ button({
               "text": "Continue"
