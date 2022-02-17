@@ -36,12 +36,10 @@
               "text": "Step 2 of 3 - Personal Details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
-          {% if data['user-auth'] == "p9" %}
-          <form action="what-is-your-gender" method="post" autocomplete="off">
-          {% else %}
+
+
           <form action="how-can-we-contact-you" method="post" autocomplete="off">
-          {% endif %}
+    
 
 
             {% if (data['who-is-being-registered'] == "dependant") %}

@@ -85,6 +85,11 @@ Pre-load - GP registration - NHS
                 "name": "proto-version",
                 "items": [
                 {
+                  "value": "Sprint-5~/sprint-5/section-1/start",
+                  "text": "Sprint 5",
+                  "checked": checked("proto-version", "sprint-5")
+                },
+                {
                   "value": "Sprint-4~/sprint-4/start",
                   "text": "Sprint 4",
                   "checked": checked("proto-version", "sprint-4")
@@ -112,7 +117,7 @@ Pre-load - GP registration - NHS
                 ]
               }) }}
 
-              <h3>Sprint 4 A/B for Questionairre</h3>
+              <!-- <h3>Sprint 4 A/B for Questionairre</h3>
 
               {{ radios({
                 "idPrefix": "ab",
@@ -129,8 +134,8 @@ Pre-load - GP registration - NHS
                   "checked": checked("ab", "b")
                 }
                 ]
-              }) }}
- 
+              }) }} -->
+
 
               {% endcall %}
 
