@@ -91,3 +91,21 @@
   font-size: 15px;
   color: #000;
 }
+
+
+.nhslogin-button {
+  background-color: #005bb3;
+  box-shadow: 0 4px 0 #002a52;
+}
+.nhslogin-button:hover {
+  background-color: #003f7b;
+  cursor: default;
+}
+.nhslogin-button:focus {
+  outline: none;
+  background-color: #003f7b;
+}
+.nhslogin-button:active {
+  box-shadow: 0 4px 0 #003f7b;
+  top: 0;
+}
