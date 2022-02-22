@@ -33,7 +33,7 @@
           }) }}
 
           <form action="" method="post" autocomplete="off">
-          
+
             {{ hint({
               "text": "Step 1 of 3 - Matching you to your record",
               "classes": "nhsuk-u-margin-bottom-2"
@@ -43,7 +43,7 @@
 
         {% call fieldset({
           legend: {
-            text: "Have they been registered with a GP practice before?",
+            text: "Are they currently registered with a GP in the UK?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
@@ -63,7 +63,7 @@
               checked: checked("current-gp", "Yes")
             },
             {
-              "value": "No~/sprint-5/section-1/check-answers",
+              "value": "No~/sprint-5/section-1/registered-for-the-first-time",
               "text": "No",
               checked: checked("current-gp", "No")
             }
@@ -76,7 +76,7 @@
 
         {% call fieldset({
           legend: {
-            text: "Have you been registered with a GP practice before?",
+            text: "Are you currently registered with a GP in the UK?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
@@ -96,7 +96,7 @@
               checked: checked("current-gp", "Yes")
             },
             {
-              "value": "No~/sprint-5/section-1/check-answers",
+              "value": "No~/sprint-5/section-1/registered-for-the-first-time",
               "text": "No",
               checked: checked("current-gp", "No")
             }

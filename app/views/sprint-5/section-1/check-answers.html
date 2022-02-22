@@ -37,7 +37,7 @@
               "text": "Step 1 of 3 - Matching you to your record",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
+
             {{ fieldset({
               "legend": {
                 "text": "Please confirm these are the correct details for the person registering with {GP practice}",
@@ -224,9 +224,10 @@
                   </dd>
 
                 </div>
+
                     <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
-                      Registered with GP perviously
+                      Currently registered with GP
                     </dt>
                     <dd class="nhsuk-summary-list__value">
                       {% if (data['current-gp'] == "No") %}
@@ -254,6 +255,37 @@
                     </dd>
                   </div>
                   {% endif %}
+
+                  <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Registering with a UK GP for the first time?
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {% if (data['registering-first-time'] == "No") %}
+                    No
+                    {% else %}
+                    Yes
+                    {% endif %}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                  </dd>
+                </div>
+
+
+                  {% if (data['registering-first-time'] == "No") %}
+                  <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Postcode previous GP has
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['gp-postcode-prev'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                  </dd>
+                </div>
+                {% endif %}
 
               </dl>
 

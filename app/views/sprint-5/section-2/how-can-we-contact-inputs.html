@@ -39,7 +39,7 @@ GP Registration Prototypes
               "text": "Step 2 of 3 - Personal Details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
+
           {% if (data['contact'] == "home") %}
 
           <fieldset class="nhsuk-fieldset">
@@ -56,7 +56,39 @@ GP Registration Prototypes
               <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
             </div>
 
+            {% elif (data['contact'] == "home,post") %}
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-fieldset__heading">
+                  What are your contact details?
+                </h1>
+              </legend>
+
+              <div class="nhsuk-form-group contact-home-section">
+                <label class="nhsuk-label" for="contact-prefs-1">
+                  UK home telephone number
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
+              </div>
+
             {% elif (data['contact'] == "phone") %}
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-fieldset__heading">
+                  What are your contact details?
+                </h1>
+              </legend>
+
+            <div class="nhsuk-form-group contact-home-section">
+              <label class="nhsuk-label" for="contact-prefs-2">
+                UK mobile telephone number
+              </label>
+              <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
+            </div>
+
+            {% elif (data['contact'] == "phone,post") %}
 
             <fieldset class="nhsuk-fieldset">
               <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
@@ -88,6 +120,23 @@ GP Registration Prototypes
               <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
             </div>
 
+            {% elif (data['contact'] == "email,post") %}
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-fieldset__heading">
+                  What are your contact details?
+                </h1>
+              </legend>
+
+            <div class="nhsuk-form-group contact-home-section">
+              <label class="nhsuk-label" for="contact-prefs-2">
+                Email address
+              </label>
+              <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
+            </div>
+
+
             {% elif (data['contact'] == "home,phone")  %}
 
             <fieldset class="nhsuk-fieldset">
@@ -110,6 +159,30 @@ GP Registration Prototypes
                 </label>
                 <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
               </div>
+
+              {% elif (data['contact'] == "home,phone,post")  %}
+
+              <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                  <h1 class="nhsuk-fieldset__heading">
+                    What are your contact details?
+                  </h1>
+                </legend>
+
+                <div class="nhsuk-form-group contact-home-section">
+                  <label class="nhsuk-label" for="contact-prefs-1">
+                    UK home telephone number
+                  </label>
+                  <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
+                </div>
+
+                <div class="nhsuk-form-group contact-home-section">
+                  <label class="nhsuk-label" for="contact-prefs-2">
+                    UK mobile telephone number
+                  </label>
+                  <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
+                </div>
+
 
               {% elif (data['contact'] == "home,email")  %}
 
@@ -134,6 +207,30 @@ GP Registration Prototypes
                   <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
                 </div>
 
+                {% elif (data['contact'] == "home,email,post")  %}
+
+                <fieldset class="nhsuk-fieldset">
+                  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                    <h1 class="nhsuk-fieldset__heading">
+                      What are your contact details?
+                    </h1>
+                  </legend>
+
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-prefs-1">
+                      UK home telephone number
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
+                  </div>
+
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-prefs-2">
+                      Email address
+                    </label>
+                    <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
+                  </div>
+
+
                 {% elif (data['contact'] == "phone,email")  %}
 
                 <fieldset class="nhsuk-fieldset">
@@ -156,6 +253,30 @@ GP Registration Prototypes
                     </label>
                     <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
                   </div>
+
+
+                  {% elif (data['contact'] == "phone,email,post")  %}
+
+                  <fieldset class="nhsuk-fieldset">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                      <h1 class="nhsuk-fieldset__heading">
+                        What are your contact details?
+                      </h1>
+                    </legend>
+
+                    <div class="nhsuk-form-group contact-home-section">
+                      <label class="nhsuk-label" for="contact-prefs-2">
+                        UK mobile telephone number
+                      </label>
+                      <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
+                    </div>
+
+                    <div class="nhsuk-form-group contact-home-section">
+                      <label class="nhsuk-label" for="contact-prefs-2">
+                        Email address
+                      </label>
+                      <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
+                    </div>
 
 
               {% elif (data['contact'] == "home,phone,email")  %}
@@ -187,6 +308,38 @@ GP Registration Prototypes
                   </label>
                   <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
                 </div>
+
+
+
+                  {% elif (data['contact'] == "home,phone,email,post")  %}
+
+                  <fieldset class="nhsuk-fieldset">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                      <h1 class="nhsuk-fieldset__heading">
+                        What are your contact details?
+                      </h1>
+                    </legend>
+
+                    <div class="nhsuk-form-group contact-home-section">
+                      <label class="nhsuk-label" for="contact-prefs-1">
+                        UK home telephone number
+                      </label>
+                      <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
+                    </div>
+
+                    <div class="nhsuk-form-group contact-home-section">
+                      <label class="nhsuk-label" for="contact-prefs-2">
+                        UK mobile telephone number
+                      </label>
+                      <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
+                    </div>
+
+                    <div class="nhsuk-form-group contact-home-section">
+                      <label class="nhsuk-label" for="contact-prefs-2">
+                        Email address
+                      </label>
+                      <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
+                    </div>
 
 
             {% else %}
