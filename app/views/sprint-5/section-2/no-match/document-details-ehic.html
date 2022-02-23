@@ -35,7 +35,7 @@ GP Registration Prototypes
 <section class="nhsuk-section">
   <div class="nhsuk-width-container">
     <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-grid-column-two-thirds">
 
         {{ backLink({
           text: "Go back",
@@ -43,7 +43,7 @@ GP Registration Prototypes
         }) }}
 
         <form action="/sprint-5/section-3/do-you-have-existing-conditions" method="post" autocomplete="off">
-            
+
             {{ hint({
               "text": "Step 2 of 3 - Personal Details",
               "classes": "nhsuk-u-margin-bottom-2"
@@ -58,45 +58,44 @@ GP Registration Prototypes
           }) %}
 
           <div class="nhsuk-hint" id="contact-hint">
-            <p></p>
+            <p>You should keep your EHIC card with you at any medical appointment as you may be asked to show it. </p>
           </div>
 
-          {% if (data['who-is-being-registered'] == "dependant") %}
+          <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="example">
+               Personal Identification number
+              </label>
 
-         <div class="nhsuk-form-group">
-            <label class="nhsuk-label" for="example">
-             <strong> What is your EHIC number?</strong>
-            </label>
-            <div class="nhsuk-hint" id="example-with-hint-text-hint">
-                 This can be found on the front of you EHIC card. For example, 485 777 3456.
+                 <input class="nhsuk-input nhsuk-input--width-20" id="ehic-id" name="ehic-id" type="text" aria-describedby="ehic-id" inputmode="numeric">
                </div>
-               <input class="nhsuk-input nhsuk-input--width-10" id="ehic" name="ehic" type="text" aria-describedby="ehic" inputmode="numeric">
-             </div>
 
-             {% else %}
+           <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="example">
+               Identification number of the card
+              </label>
 
-             <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="example">
-                 <strong> What is their EHIC number?</strong>
-                </label>
-                <div class="nhsuk-hint" id="example-with-hint-text-hint">
-                     This can be found on the front of you EHIC card. For example, 485 777 3456.
+                 <input class="nhsuk-input nhsuk-input--width-20" id="ehic-id-2" name="ehic-id-2" type="text" aria-describedby="ehic-id-2" inputmode="numeric">
+               </div>
+
+               <div class="nhsuk-form-group">
+                  <label class="nhsuk-label" for="example">
+                   Identification number of the institution
+                  </label>
+
+                     <input class="nhsuk-input nhsuk-input--width-20" id="ehic-id-3" name="ehic-id-3" type="text" aria-describedby="ehic-id-3" inputmode="numeric">
                    </div>
-                   <input class="nhsuk-input nhsuk-input--width-10" id="ehic" name="ehic" type="text" aria-describedby="ehic" inputmode="numeric">
-                 </div>
-
-                 {% endif %}
 
 
-        <div class="nhsuk-grid-row">
-        <div class="nhsuk-grid-column-one-third">
+
+
+
 
           {{ dateInput({
             "id": "ehic-from",
             "namePrefix": "ehic-from",
             "fieldset": {
               "legend": {
-                "text": "Enter a date from:",
+                "text": "Expiry date",
                 "classes": "nhsuk-label--s",
                 "isPageHeading": false
               }
@@ -125,38 +124,7 @@ GP Registration Prototypes
         </div>
 
 
-        <div class="nhsuk-grid-column-one-third">
-          {{ dateInput({
-            "id": "ehic-to",
-            "namePrefix": "ehic-to",
-            "fieldset": {
-              "legend": {
-                "text": "Enter a date to:",
-                "classes": "nhsuk-label--s",
-                "isPageHeading": false
-              }
-            },
-            "hint": {
-              "text": "For example, 15 3 2021"
-            },
-            "items": [
-              {
-                "name": "day",
-                "classes": "nhsuk-input--width-2",
-                "value": data['ehic-to-day']
-              },
-              {
-                "name": "month",
-                "classes": "nhsuk-input--width-2",
-                  "value": data['ehic-to-month']
-              },
-              {
-                "name": "year",
-                "classes": "nhsuk-input--width-4",
-                  "value": data['ehic-to-year']
-              }
-            ]
-          }) }}
+
         </div>
       </div>
 
@@ -169,13 +137,13 @@ GP Registration Prototypes
               "text": "Continue"
             }) }}
 
- </form>
+
 
 
 
       </div>
     </div>
-  </div>
+
 </section>
 
 
