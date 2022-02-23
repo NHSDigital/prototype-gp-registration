@@ -335,9 +335,10 @@
                   European health insurance card details
                 </dt>
                 <dd class="nhsuk-summary-list__value">
+                  Country code:                   <br /> {{ data['ehic-cc'] }} <br />
                   Personal Identification number: <br /> {{ data['ehic-id'] }} <br />
                   Number of the card:             <br /> {{ data['ehic-id-2'] }} <br />
-                  Number of the institution:       <br />{{ data['ehic-id-3'] }} <br />
+                  Number of the institution:      <br /> {{ data['ehic-id-3'] }} <br />
                   Expiry date:  {{ data['ehic-from-day'] }} -
                                 {{ data['ehic-from-month'] }} -
                                 {{ data['ehic-from-year'] }}<br />
