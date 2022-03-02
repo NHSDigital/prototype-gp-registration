@@ -37,7 +37,7 @@
               "text": "Step 2 of 3 - Personal Details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
+
             {% if (data['who-is-being-registered'] == "dependant") %}
 
             {% set otherHtml %}
@@ -56,7 +56,7 @@
               "name": "gender",
               "fieldset": {
                 "legend": {
-                  "text": "Which of the following options best describes how they think of themself?",
+                  "text": "Which of the following best describes them?",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
@@ -69,14 +69,14 @@
 
               "items": [
                 {
-                  "value": "woman (including trans woman)",
-                  "text": "Woman (including trans woman)",
-                  checked: checked("gender", "woman")
+                  "value": "female",
+                  "text": "Female",
+                  checked: checked("gender", "female")
                 },
                 {
-                  "value": "man (including trans man)",
-                  "text": "Man (including trans man)",
-                  checked: checked("gender", "man")
+                  "value": "male",
+                  "text": "Male",
+                  checked: checked("gender", "male")
                 },
                 {
                   "value": "non-binary",
@@ -84,12 +84,12 @@
                   checked: checked("gender", "non-binary")
                 },
                 {
-                  "value": "in-another-way",
-                  "text": "In another way",
+                  "value": "prefer-to-self-describe",
+                  "text": "Prefer to self-describe",
                   "conditional": {
                     "html": otherHtml
                   },
-                  checked: checked("gender", "in-another-way")
+                  checked: checked("gender", "prefer-to-self-describe")
                 }
               ]
             }) }}
@@ -117,7 +117,7 @@
               "name": "gender",
               "fieldset": {
                 "legend": {
-                  "text": "Which of the following options best describes how you think of yourself?",
+                  "text": "Which of the following best describes you?",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
@@ -130,14 +130,14 @@
 
               "items": [
                 {
-                  "value": "woman (including trans woman)",
-                  "text": "Woman (including trans woman)",
-                  checked: checked("gender", "woman")
+                  "value": "female",
+                  "text": "Female",
+                  checked: checked("gender", "female")
                 },
                 {
-                  "value": "man (including trans man)",
-                  "text": "Man (including trans man)",
-                  checked: checked("gender", "man")
+                  "value": "male",
+                  "text": "Male",
+                  checked: checked("gender", "male")
                 },
                 {
                   "value": "non-binary",
@@ -145,12 +145,12 @@
                   checked: checked("gender", "non-binary")
                 },
                 {
-                  "value": "in-another-way",
-                  "text": "In another way",
+                  "value": "prefer-to-self-describe",
+                  "text": "Prefer to self-describe",
                   "conditional": {
                     "html": otherHtml
                   },
-                  checked: checked("gender", "in-another-way")
+                  checked: checked("gender", "prefer-to-self-describe")
                 }
               ]
             }) }}
