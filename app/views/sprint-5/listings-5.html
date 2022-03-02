@@ -1,0 +1,221 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Page listings - GP registration - NHS
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+
+        <h1 class="app-page-heading">
+            <span class="nhsuk-caption-l">Prototype work</span>
+            Page by page listings
+        </h1>
+
+          <p class="nhsuk-body-s">Last updated 26 Jan 2022</p>
+          <p><a href="data">Data been stored as part of current session</a></p>
+
+  <h2 class="nhsuk-heading-l">Section 1 (PDS details)</h2>
+
+          <h4 class="nhsuk-heading-s">Start</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+              <li><a href="/sprint-5/section-1/start" >Service start page</a></li>
+              <li><a href="/sprint-5/section-1/who-is-registering" >Who is registering with a GP?</a></li>
+              <li><a href="/sprint-5/section-1/relation-of-dependant" >What is your relation to the dependant?</a></li>
+          </ul>
+
+          <h4 class="nhsuk-heading-s">Login options</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+              <li><a href="/sprint-5/section-1/continue-with-nhs-login" >Would you like to sign in?</a></li>
+                <li><a href="/sprint-5/section-1/continue-with-nhs-login-btn" >Would you like to sign in? (buttons)</a></li>
+          </ul>
+
+          <h4 class="nhsuk-heading-s">NHS Login</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+              <li><a href="/sprint-5/section-1/nhs-login-email-address" >Enter your email address</a></li>
+              <li><a href="/sprint-5/section-1/nhs-login-password" >Enter your password</a></li>
+              <li><a href="/sprint-5/section-1/nhs-login-otp" >Check your mobile phone</a></li>
+          </ul>
+
+
+          <h4 class="nhsuk-heading-s">NHS number</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+              <li><a href="/sprint-5/section-1/do-you-know-nhs-number" >Do you know your NHS Number?</a></li>
+              <li><a href="/sprint-5/section-1/what-is-your-nhs-number" >What is your NHS number?</a></li>
+          </ul>
+
+          <h4 class="nhsuk-heading-s">Demographics</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+              <li><a href="/sprint-5/section-1/what-is-your-name" >What is your name?</a></li>
+              <li><a href="/sprint-5/section-1/what-is-your-date-of-birth" >What is your date of birth?</a></li>
+          </ul>
+
+          <h4 class="nhsuk-heading-s">Registered with a GP?</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+              <!-- <li><a href="/sprint-5/section-1/have-you-been-reg-with-gp-before" >Are you currently registered with a GP in the UK?</a></li>
+              <li><a href="/sprint-5/section-1/what-is-current-postcode-gp-has" >What postcode does your previous GP surgery have for you?</a></li> -->
+              <li><a href="/sprint-5/section-1/registered-for-the-first-time" >Are you registering with a UK GP for the first time?</a></li>
+              <li><a href="/sprint-5/section-1/what-is-previous-postcode-gp-has" >What postcode does your last GP hold for you?</a></li>
+          </ul>
+
+          <h4 class="nhsuk-heading-s">Check answers for PDS</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+              <li><a href="/sprint-5/section-1/check-answers" >Confirm details for PDS</a></li>
+          </ul>
+
+
+  <h2 class="nhsuk-heading-l">Section 2 (Patient details)</h2>
+
+
+          <h4 class="nhsuk-heading-s">Address</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+              <li><a href="/sprint-5/section-2/do-you-current-address" >Do you have a current UK address?</a></li>
+              <li><a href="/sprint-5/section-2/what-is-your-current-address" >What is your current UK home address?</a></li>
+          </ul>
+
+          <h4 class="nhsuk-heading-s">Contact preferences</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+            <li><a href="/sprint-5/section-2/how-can-we-contact-you" >How can we contact you?</a></li>
+            <li><a href="/sprint-5/section-2/how-can-we-contact-inputs" >What are your contact details?</a></li>
+          </ul>
+
+          <h4 class="nhsuk-heading-s">Gender</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+              <li><a href="/sprint-5/section-2/what-is-your-gender" >What is your gender?</a></li>
+              <li><a href="/sprint-5/section-2/what-is-your-gender-at-birth" >What is was your gender at birth?</a></li>
+          </ul>
+
+          <h4 class="nhsuk-heading-s">Ethnicity</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+              <li><a href="/sprint-5/section-2/what-is-your-ethnicity" >What is your ethnic group?</a></li>
+              <li><a href="/sprint-5/section-2/what-is-your-ethnicity-background-white" >Which of the following best describes your White background?</a></li>
+              <li><a href="/sprint-5/section-2/what-is-your-ethnicity-background-mixed" >Which of the following best describes your Mixed or Multiple ethnic groups background?</a></li>
+              <li><a href="/sprint-5/section-2/what-is-your-ethnicity-background-asian" >Which of the following best describes your Asian or Asian British background?</a></li>
+              <li><a href="/sprint-5/section-2/what-is-your-ethnicity-background-black" >Which of the following best describes your Black, African, Caribbean or Black British background?</a></li>
+              <li><a href="/sprint-5/section-2/what-is-your-ethnicity-background-another" >Which of the following best describes your background?</a></li>
+          </ul>
+
+          <h4 class="nhsuk-heading-s">Language interpreter</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+              <li><a href="/sprint-5/section-2/do-you-need-a-interpreter" >Do you need an language interpreter?</a></li>
+              <li><a href="/sprint-5/section-2/do-you-need-a-interpreter-language" >Which language do you need an interpreter for?</a></li>
+          </ul>
+
+
+          <h4 class="nhsuk-heading-s">Emergency contact</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+                <li><a href="/sprint-5/section-2/do-you-have-emergency-contact" >Do you have an emergency contact?</a></li>
+                <li><a href="/sprint-5/section-2/emergency-contact-details" >What are the details of your emergency contact?</a></li>
+          </ul>
+
+          <h4 class="nhsuk-heading-s">Armed forces</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+              <li><a href="/sprint-5/section-2/are-you-a-member-of-armed-forces" >Have you ever been a member of the armed forces?</a></li>
+              <li><a href="/sprint-5/section-2/are-you-a-member-of-armed-forces-details" >Recent Armed Forces leavers and their families</a></li>
+              <!-- <li><a href="/sprint-5/armed-forces-role" >What was your role in the Armed forces?</a></li>
+              <li><a href="/sprint-5/armed-forces-service-number" >What was your service number?</a></li> -->
+          </ul>
+
+
+  <h2 class="nhsuk-heading-l">Section 2 (No Match)</h2>
+
+
+          <h4 class="nhsuk-heading-s">Recently moved to uk</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+              <li><a href="/sprint-5/section-2/no-match/recently-move-to-the-uk" >Have you recently moved to the UK from another country?</a></li>
+              <li><a href="/sprint-5/section-2/no-match/what-address-for-recently-moved" >What is your country of birth?</a></li>
+              <li><a href="/sprint-5/section-2/no-match/recently-moved-date" >When did you enter the UK?</a></li>
+              <li><a href="/sprint-5/section-2/no-match/recently-moved-eea" >Have you moved to UK from EU, EEA or Switzerland?</a></li>
+              <li><a href="/sprint-5/section-2/no-match/recently-moved-documents" >Do you have any of these documents?</a></li>
+              <li><a href="/sprint-5/section-2/no-match/recently-moved-s1-details" >S1 form details</a></li>
+              <li><a href="/sprint-5/section-2/no-match/document-details-ehic" >European health insurance card details</a></li>
+          </ul>
+
+          <h4 class="nhsuk-heading-s">Returning from overseas</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+              <li><a href="/sprint-5/section-2/no-match/are-you-returning-from-overseas" >Are you returning from overseas?</a></li>
+              <li><a href="/sprint-5/section-2/no-match/date-left-uk" >What was the date you left the UK?</a></li>
+              <li><a href="/sprint-5/section-2/no-match/date-returned-uk" >What was the date you returned to the UK?</a></li>
+              <li><a href="/sprint-5/section-2/no-match/what-is-your-gp-address" >What is the address of the GP surgery you want to leave?</a></li>
+              <li><a href="/sprint-5/section-2/no-match/do-you-previous-address" >Do you have a previous UK address?</a></li>
+              <li><a href="/sprint-5/section-2/no-match/what-is-your-previous-address" >What is your previous UK home address?</a></li>
+          </ul>
+
+
+  <h2 class="nhsuk-heading-l">Section 3 (Health questions)</h2>
+
+
+          <ul class="nhsuk-list nhsuk-list--bullet">
+              <li><a href="/sprint-5/section-3/do-you-have-existing-conditions" >Do you have existing conditions?</a></li>
+              <li><a href="/sprint-5/section-3/what-existing-conditions-do-you-have" >More details about your current and pre-existing medical conditions?</a></li>
+              <li><a href="/sprint-5/section-3/do-you-have-allergies" >Do you have any allergies?</a></li>
+              <li><a href="/sprint-5/section-3/do-you-have-any-mental-health-conditions" >Do you have any mental health conditions?</a></li>
+              <li><a href="/sprint-5/section-3/do-you-have-any-disabilities" >Do you have any disabilities?</a></li>
+              <li><a href="/sprint-5/section-3/do-you-take-prescription-medication" >Do you currently take any prescription medication?</a></li>
+              <li><a href="/sprint-5/section-3/how-often-do-you-drink-alcohol" >How often do you drink alcohol?</a></li>
+              <li><a href="/sprint-5/section-3/how-many-units-of-alcohol" >How many units of alcohol do you consume in an average week?</a></li>
+              <li><a href="/sprint-5/section-3/how-often-six-or-more-units" >How often have you had six or more units of alcohol on a single occasion in the last year?</a></li>
+              <li><a href="/sprint-5/section-3/do-you-smoke" >Do you smoke?</a></li>
+
+          </ul>
+
+
+    <h2 class="nhsuk-heading-l">Section 4 (review and submit)</h2>
+
+            <ul class="nhsuk-list nhsuk-list--bullet">
+                  <li><a href="/sprint-5/section-4/check-answers-b" >Check your answers before submitting?</a></li>
+                  <li><a href="/sprint-5/section-4/confirmation-page" >Confirmation</a></li>
+                  <li><a href="/emails/patient-submission-email" >Patient email</a></li>
+            </ul>
+
+
+    <h2 class="nhsuk-heading-l">Common pages</h2>
+
+              <p>Common components and pages across the service</p>
+                  <ul class="nhsuk-list nhsuk-list--bullet">
+                  <li><a href="/cookie-banner" >Cookie banner</a></li>
+                  <li><a href="/legal/privacy" >Your privacy on NHS GP Registration</a></li>
+                  <li><a href="/legal/terms" >Terms and conditions</a></li>
+                  <li><a href="" >Cookies</a></li>
+                  <li><a href="" >Accessbility</a></li>
+                  <li><a href="/feedback-link" >Feedback link</a></li>
+                  <li><a href="/errors/error-session-timeout" >Error: Session timeout</a></li>
+                    <li><a href="/errors/error-404" >Error: 404</a></li>
+              </ul>
+  </div>
+</section>
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}
