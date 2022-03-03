@@ -78,6 +78,20 @@ Pre-load - GP registration - NHS
                 ]
               }) }}
 
+              <h3>Under 12 months</h3>
+
+              {{ radios({
+                "idPrefix": "under-12-months",
+                "name": "under-12-months",
+                "items": [
+                {
+                  "value": "under-12-months",
+                  "text": "Under 12 months",
+                  "checked": checked("under-12-months", "under-12-months")
+                }
+                ]
+              }) }}
+
               <h3>Prototype version</h3>
 
               {{ radios({

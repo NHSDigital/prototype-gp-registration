@@ -44,10 +44,13 @@ GP Registration Prototypes
 
         <form action="" method="post" autocomplete="off">
 
+
           {{ hint({
             "text": "Step 1 of 3 - Matching you to your record",
             "classes": "nhsuk-u-margin-bottom-2"
           }) }}
+
+          {% if (data['under-12-months'] == "under-12-months") %}
 
           {% call fieldset({
             legend: {
@@ -61,12 +64,13 @@ GP Registration Prototypes
             <p>A GP is your first point of contact for health problems.
           </div>
 
+
           {{ radios({
             "idPrefix": "registering-first-time",
             "name": "registering-first-time",
             "items": [
               {
-                "value": "Yes~/sprint-5/section-1/check-answers",
+                "value": "Yes~/sprint-6/section-1/what-is-previous-postcode-of-mother",
                 "text": "Yes",
                 "hint": {
                   "text": ""
@@ -74,7 +78,7 @@ GP Registration Prototypes
                 checked: checked("registering-first-time", "Yes")
               },
               {
-                "value": "No~/sprint-5/section-1/what-is-previous-postcode-gp-has",
+                "value": "No~/sprint-6/section-1/what-is-previous-postcode-gp-has",
                 "text": "No",
                 "hint": {
                   "text": ""
@@ -85,6 +89,49 @@ GP Registration Prototypes
           }) }}
 
           {% endcall %}
+
+          {% else %}
+
+
+          {% call fieldset({
+            legend: {
+              text: "Are you registering with a UK GP for the first time?",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>A GP is your first point of contact for health problems.
+          </div>
+
+
+          {{ radios({
+            "idPrefix": "registering-first-time",
+            "name": "registering-first-time",
+            "items": [
+              {
+                "value": "Yes~/sprint-6/section-1/check-answers",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("registering-first-time", "Yes")
+              },
+              {
+                "value": "No~/sprint-6/section-1/what-is-previous-postcode-gp-has",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("registering-first-time", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+        {% endif %}
 
 
 

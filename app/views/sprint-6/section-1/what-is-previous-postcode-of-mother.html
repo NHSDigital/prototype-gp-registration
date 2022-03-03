@@ -32,47 +32,47 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="" method="post" autocomplete="off">
+          <form action="check-answers" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Step 1 of 3 - Matching you to your record",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
 
             {% call fieldset({
               legend: {
-                "text": "Is this your current address?",
+                "text": "What was the child's mother postcode at the time of the child's birth.",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
 
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>Address line 1 <br> Address line 2 <br> Address line 3 <br> Address line 4 </p>
-
-            </div>
-
-            {{ radios({
-              "idPrefix": "current-address",
-              "name": "current-address",
-              "classes": "nhsuk-radios--inline",
-              "items": [
-                {
-                  "value": "Yes~/sprint-6/section-2/how-can-we-contact-you",
-                  "text": "Yes",
-                  checked: checked("current-address", "Yes")
-                },
-                {
-                  "value": "No~/sprint-6/section-2/what-is-your-current-address",
-                  "text": "No",
-                  checked: checked("current-address", "No")
-                }
-
-              ]
+            {{ hint({
+                "text": "Enter the postcode for the address that you were living at when your baby was born."
             }) }}
 
-            {{ button({
-              "text": "Continue"
-            }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "hint": {
+                    "text": "For example, flat 20A"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "mother-postcode",
+                  "name": "mother-postcode",
+                  value: data['mother-postcode']
+                }) }}
+
 
             {% endcall %}
 
 
+
+            {{ button({
+              "text": "Continue"
+            }) }}
 
           </form>
         </div>
@@ -85,8 +85,8 @@
 </div>
 {% block pageScripts %}
 <script>
-$('#no-current-address-1').change(function(){
-    if ($('#no-current-address-1').is(':checked') == true){
+$('#no-previous-gp-1').change(function(){
+    if ($('#no-previous-gp-1').is(':checked') == true){
         $('input[type=text]').prop('disabled', true);
     } else {
       $('input[type=text]').prop('disabled', false);
@@ -94,5 +94,4 @@ $('#no-current-address-1').change(function(){
 });
 </script>
 {% endblock %}
-
 {% endblock %}
