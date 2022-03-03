@@ -40,7 +40,7 @@
 
             {{ fieldset({
               "legend": {
-                "text": "Please confirm these are the correct details for the person registering with {GP practice}",
+                "text": "Please confirm these are the correct details for the person registering with {GP surgery}",
                 "classes": "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-5",
                 "isPageHeading": true
               }
@@ -279,10 +279,10 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
              <p>We use this information to match their details to their NHS record. This is not their patient record and includes no medical information.</p>
-             <p>By submitting these details they are confirming that, to the best of their knowledge, they are correct.</p>
+
             {% else %}
             <p>We use this information to match your details to your NHS record. This is not your patient record and includes no medical information.</p>
-            <p>By submitting these details you are confirming that, to the best of your knowledge, they are correct.</p>
+
             {% endif %}
 
             {{ button({

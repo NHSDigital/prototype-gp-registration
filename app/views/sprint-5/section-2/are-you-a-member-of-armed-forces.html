@@ -40,7 +40,7 @@
             }) }}
 
 
-            {% if ((data['user-auth'] == "nomatch") and (data['current-gp'] == "No"))  %}
+            {% if ((data['user-auth'] == "nomatch") and (data['registering-first-time'] == "No"))  %}
 
 
             {% call fieldset({
@@ -74,7 +74,7 @@
             {% endcall %}
 
 
-            {% elif ((data['user-auth'] == "nomatch") and (data['current-gp'] == "Yes"))  %}
+            {% elif ((data['user-auth'] == "nomatch") and (data['registering-first-time'] == "Yes"))  %}
 
 
              {% call fieldset({
@@ -107,7 +107,7 @@
              {% endcall %}
 
 
-            {% elif (((data['who-is-being-registered'] == "dependant") and (data['user-auth'] == "nomatch") and (data['current-gp'] == "Yes"))) %}
+            {% elif (((data['who-is-being-registered'] == "dependant") and (data['user-auth'] == "nomatch") and (data['registering-first-time'] == "Yes"))) %}
 
             {% call fieldset({
               legend: {

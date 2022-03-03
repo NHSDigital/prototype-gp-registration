@@ -41,7 +41,7 @@
             }) }}
 
             {% if (data['who-is-being-registered'] == "dependant") %}
-            
+
             {% call fieldset({
               legend: {
                 text: "Do you know their NHS Number?",
@@ -58,11 +58,6 @@
             {{ hint({
               "text": "You do not need to know their NHS number to continue. If you do not know it, you can tell us their full name instead.",
               "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {{ hint({
-              "html": "<p>
-                You can use the <a href='#'>NHS number finder service</a> to retrieve their NHS number by text message or email.</p>"
             }) }}
 
 
