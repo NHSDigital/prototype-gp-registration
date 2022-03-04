@@ -1,0 +1,40 @@
+
+{% extends 'layout.html' %}
+
+{% from 'button/macro.njk' import button %}
+{% from 'back-link/macro.njk' import backLink %}
+
+{% block pageTitle %}
+Register with a GP Surgery
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-width-container">
+
+
+    <form action="auth" method="post">
+      <section class="loading-container" id="gp-connect-0" style="display:block; min-height: 16em;">
+
+        <div class="bar_container">
+          <div id="main_container">
+            <div id="pbar" class="progress-spinner" data-percent="0">
+              <img src="/images/loader-spinner.svg" width="200px" height="200px" id="spinner" class="" />
+              <div class="ppc-loading">
+                <div class="pcc-percents-wrapper">
+                  <span id="spinner-status" class="nhsuk-body">Loading</span><span aria-hidden="true">...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </form>
+
+  </div>
+</div>
+
+
+{% endblock %}
