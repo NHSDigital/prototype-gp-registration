@@ -35,7 +35,7 @@
 
           <form action="" method="post" autocomplete="off">
 
- {{ hint({
+            {{ hint({
               "text": "Step 1 of 3 - Intial Details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
@@ -57,7 +57,7 @@
 
             {{ hint({
               "text": "You do not need to know their NHS number to continue. If you do not know it, you can tell us their full name instead.",
-              "classes": "nhsuk-u-margin-bottom-2"
+              "classes": "nhsuk-u-margin-bottom-4"
             }) }}
 
 
@@ -98,13 +98,9 @@
 
             {{ hint({
               "text": "You do not need to know your NHS number to continue. If you do not know it, you can tell us your full name instead.",
-              "classes": "nhsuk-u-margin-bottom-2"
+              "classes": "nhsuk-u-margin-bottom-4"
             }) }}
 
-            {{ hint({
-              "html": "<p>
-                You can use the <a href='#'>NHS number finder service</a> to retrieve your NHS number by text message or email.</p>"
-            }) }}
 
             {{ radios({
               "idPrefix": "do-you-know-nhs-number",
@@ -128,6 +124,27 @@
 
 
             {% endif %}
+
+
+            <details class="nhsuk-details">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  How to find your NHS number
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
+                <p>You can find your NHS number by logging in to a GP online service or on any document the NHS has sent you, such as your:</p>
+                <ul>
+                  <li>prescriptions</li>
+                  <li>test results</li>
+                  <li>hospital referral letters</li>
+                  <li>appointment letters</li>
+                </ul>
+                <p>Ask your GP surgery for help if you can't find your NHS number.</p>
+
+              </div>
+            </details>
 
             {{ button({
               "text": "Continue"

@@ -38,7 +38,7 @@
               "text": "Step 3 of 3 - Health questions",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
+
             {% if (data['who-is-being-registered'] == "dependant") %}
 
             {% call fieldset({
@@ -50,7 +50,8 @@
             }) %}
 
             {{ hint({
-              "text": "This may include food, drug, and environmental allergies"
+              "text": "<p>This may include food, drug, and environmental allergies</p>
+                      <p>This question is optional.</p>"
             }) }}
 
             {{ radios({
@@ -83,8 +84,9 @@
             }) %}
 
             {{ hint({
-              "text": "This may include food, drug, and environmental allergies"
+              "text": "This may include food, drug, and environmental allergies. This question is optional."
             }) }}
+
 
             {{ radios({
               "idPrefix": "has-allergies",

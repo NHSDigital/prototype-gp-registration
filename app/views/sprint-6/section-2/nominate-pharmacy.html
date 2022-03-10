@@ -33,72 +33,44 @@
           }) }}
 
           <form action="" method="post" autocomplete="off">
-
             {{ hint({
               "text": "Step 2 of 3 - Personal Details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
 
             {{ radios({
-              "idPrefix": "interpreter",
-              "name": "interpreter",
+              "idPrefix": "nominate-pharmacy",
+              "name": "nominate-pharmacy",
               "fieldset": {
                 "legend": {
-                  "text": "Do they need a language interpreter for their GP appointments?",
+                  "text": "Would you like to nominate a pharmacy for your prescriptions?",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
               },
               "hint": {
-                "text": "The GP surgery might arrange an interpreter for appointments in person or over the phone or video call."
+                "text": "Nominating a pharmacy means you no longer have to collect paper prescriptions from your GP practice, and instead can go straight to your nominated pharmacy to pick up your medicines."
               },
               "items": [
                 {
-                  "value": "yes~/sprint-6/section-2/do-you-need-a-interpreter-language",
+                  "value": "yes~/sprint-6/section-2/nominate-pharmacy-selection",
                   "text": "Yes",
-                  checked: checked("interpreter", "Yes")
+                  checked: checked("nominate-pharmacy", "Yes")
                 },
                 {
-                  "value": "no~/sprint-6/section-2/nominate-pharmacy",
+                  "value": "no~/sprint-6/section-2/are-you-a-member-of-armed-forces",
                   "text": "No",
-                  checked: checked("interpreter", "no")
+                  checked: checked("nominate-pharmacy", "no")
                 }
               ]
             }) }}
 
-            {% else %}
+            <!-- {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of gender.</p>"
+            }) }} -->
 
-
-            {{ radios({
-              "idPrefix": "interpreter",
-              "name": "interpreter",
-              "fieldset": {
-                "legend": {
-                  "text": "Do you need a language interpreter for your GP appointments?",
-                  "classes": "nhsuk-fieldset__legend--l",
-                  "isPageHeading": "true"
-                }
-              },
-              "hint": {
-                "text": "The GP surgery might arrange an interpreter for appointments in person or over the phone or video call."
-              },
-              "items": [
-                {
-                  "value": "yes~/sprint-6/section-2/do-you-need-a-interpreter-language",
-                  "text": "Yes",
-                  checked: checked("interpreter", "Yes")
-                },
-                {
-                  "value": "no~/sprint-6/section-2/do-you-have-emergency-contact",
-                  "text": "No",
-                  checked: checked("interpreter", "no")
-                }
-              ]
-            }) }}
-
-            {% endif %}
 
 
             {{ button({
