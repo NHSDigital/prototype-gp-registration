@@ -261,16 +261,46 @@
                 {% if (data['under-12-months'] == "under-12-months") %}
                 <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Child's mother postcode at the time of the child's birth
+                  Where were they born?
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  {{ data['mother-postcode'] }}
+                  {{ data['child-born'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
                 </dd>
               </div>
-              {% endif %}
+
+              <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Postcode for the address where you were living when your baby was born
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['do-you-know-previous-postcode'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+              </dd>
+            </div>
+
+
+            {% if (data['do-you-know-previous-postcode'] == "Yes") %}
+            <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Address where you were living when your baby was born
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['mother-postcode'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+            </dd>
+          </div>
+          {% endif %}
+
+            {% endif %}
+
+
 
               </dl>
 

@@ -41,15 +41,12 @@
 
             {% call fieldset({
               legend: {
-                "text": "What was the child's mother postcode at the time of the child's birth.",
+                "text": "Enter the postcode for the address where you were living when your baby was born",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
 
-            {{ hint({
-                "text": "Enter the postcode for the address that you were living at when your baby was born."
-            }) }}
 
 
               {{ input({
@@ -57,7 +54,7 @@
                     "text": "Postcode"
                   },
                   "hint": {
-                    "text": "For example, flat 20A"
+                    "text": "For example LS13 9PO"
                   },
                   "classes": "nhsuk-input--width-10",
                   "id": "mother-postcode",
