@@ -237,6 +237,24 @@
               </dd>
             </div>
 
+            <h3>Armed forces</h3>
+
+            <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Have you ever been a member of the armed forces?
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['is-armed-forces-member'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">Change<span class="nhsuk-u-visually-hidden">Armed forces</span></a>
+              </dd>
+            </div>
+
+            </dl>
+
 
             {% if data['emergency-contact'] == "Yes" %}
             <div class="nhsuk-summary-list__row">
@@ -279,23 +297,6 @@
           </dl>
 
 
-          <h3>Armed forces</h3>
-
-          <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Have you ever been a member of the armed forces?
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {{ data['is-armed-forces-member'] }}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="">Change<span class="nhsuk-u-visually-hidden">Armed forces</span></a>
-            </dd>
-          </div>
-
-          </dl>
 
 
 
