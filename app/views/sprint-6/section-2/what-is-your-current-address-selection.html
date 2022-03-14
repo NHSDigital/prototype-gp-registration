@@ -39,7 +39,7 @@
 
 
           <form action="how-can-we-contact-you" method="post" autocomplete="off">
-    
+
 
 
             {% if (data['who-is-being-registered'] == "dependant") %}
@@ -103,7 +103,17 @@
                           "hint": {
                         },
                           checked: checked("select-current-address", "6 Town Street, London, SW1A 1AA")
-                    }
+                        },
+                        {
+                          "divider": "or"
+                        },
+                        {
+                          "value": "wrong address~/sprint-6/section-2/what-is-your-current-address",
+                          "text": "The address is not listed here.",
+                          "hint": {
+                        },
+                          checked: checked("select-current-address", "")
+                        }
                   ]
                 }) }}
 
@@ -170,7 +180,17 @@
                               "hint": {
                             },
                               checked: checked("select-current-address", "6 Town Street, London, SW1A 1AA")
-                        }
+                            },
+                            {
+                              "divider": "or"
+                            },
+                            {
+                              "value": "wrong address~/sprint-6/section-2/what-is-your-current-address",
+                              "text": "The address is not listed here.",
+                              "hint": {
+                            },
+                              checked: checked("select-current-address", "")
+                            }
                       ]
                     }) }}
 
@@ -179,7 +199,7 @@
                     {% endif %}
 
                 <p>
-                  <a href="what-is-your-current-address-manual" id="enter-address-manually-link">I cannot find my address on the list</a>
+                  <a href="what-is-your-current-address-manual" id="enter-address-manually-link">Enter the address manually</a>
                 </p>
 
 
