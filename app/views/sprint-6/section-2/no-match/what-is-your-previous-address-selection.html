@@ -101,7 +101,17 @@
                         "hint": {
                       },
                         checked: checked("select-previous-address", "6 Town Street, London, SW1A 1AA")
-                  }
+                      },
+                      {
+                        "divider": "or"
+                      },
+                      {
+                        "value": "wrong address~/sprint-6/section-2/no-match/what-is-your-previous-address",
+                        "text": "The address is not listed here.",
+                        "hint": {
+                      },
+                        checked: checked("select-current-address", "")
+                      }
                 ]
               }) }}
 
@@ -168,7 +178,17 @@
                             "hint": {
                           },
                             checked: checked("select-previous-address", "6 Town Street, London, SW1A 1AA")
-                      }
+                          },
+                          {
+                            "divider": "or"
+                          },
+                          {
+                            "value": "wrong address~/sprint-6/section-2/no-match/what-is-your-previous-address",
+                            "text": "The address is not listed here.",
+                            "hint": {
+                          },
+                            checked: checked("select-current-address", "")
+                          }
                     ]
                   }) }}
 
@@ -177,7 +197,7 @@
                   {% endif %}
 
               <p>
-                <a href="/sprint-6/section-2/no-match/what-is-your-previous-address-manual" id="enter-address-manually-link">I cannot find my address on the list</a>
+                <a href="/sprint-6/section-2/no-match/what-is-your-previous-address-manual" id="enter-address-manually-link">Enter the address manually</a>
               </p>
 
 
