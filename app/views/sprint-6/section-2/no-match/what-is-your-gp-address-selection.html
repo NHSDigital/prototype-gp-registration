@@ -41,7 +41,7 @@
               "text": "Step 2 of 3 - Personal Details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
+
             {% call fieldset({
               legend: {
                 text: "Select their current GP address",
@@ -101,7 +101,17 @@
                           "hint": {
                         },
                           checked: checked("select-gp-address", "6 Town Street, London, SW1A 1AA")
-                    }
+                        },
+                      {
+                        "divider": "or"
+                      },
+                      {
+                        "value": "wrong address~/sprint-6/section-2/no-match/what-is-your-gp-address",
+                        "text": "The address is not listed here.",
+                        "hint": {
+                      },
+                        checked: checked("select-current-address", "")
+                      }
                   ]
                 }) }}
 
@@ -168,7 +178,17 @@
                               "hint": {
                             },
                               checked: checked("select-gp-address", "6 Town Street, London, SW1A 1AA")
-                        }
+                            },
+                          {
+                            "divider": "or"
+                          },
+                          {
+                            "value": "wrong address~/sprint-6/section-2/no-match/what-is-your-gp-address",
+                            "text": "The address is not listed here.",
+                            "hint": {
+                          },
+                            checked: checked("select-current-address", "")
+                          }
                       ]
                     }) }}
 
@@ -177,7 +197,7 @@
                     {% endif %}
 
                 <p>
-                  <a href="/sprint-4/what-is-your-gp-address-manual" id="enter-address-manually-link">I cannot find my address on the list</a>
+                  <a href="/sprint-4/what-is-your-gp-address-manual" id="enter-address-manually-link">Enter the address manually</a>
                 </p>
 
 
