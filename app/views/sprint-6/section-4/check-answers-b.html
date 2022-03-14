@@ -147,6 +147,124 @@
         </dl>
 
 
+        <h3>Carer</h3>
+
+        <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
+
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Do you have a carer?
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['need-carer'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
+            </dd>
+          </div>
+
+
+          {% if data['need-carer'] == "yes" %}
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Company or Council
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['carer-company'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">
+                  Change<span class="nhsuk-u-visually-hidden"> language</span>
+                </a>
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Full name
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['carer-full-name'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">
+                  Change<span class="nhsuk-u-visually-hidden"> language</span>
+                </a>
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Relationship
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['carer-relationship'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">
+                  Change<span class="nhsuk-u-visually-hidden"> language</span>
+                </a>
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Contact telephone number
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['carer-telephone'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">
+                  Change<span class="nhsuk-u-visually-hidden"> language</span>
+                </a>
+              </dd>
+            </div>
+
+
+          {% endif %}
+
+
+                      <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                          Are you a carer?
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                          {{ data['are-carer'] }}
+                        </dd>
+                        <dd class="nhsuk-summary-list__actions">
+                          <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
+                        </dd>
+                      </div>
+
+
+                      {% if data['are-carer'] == "yes" %}
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            What type of carer best describes you?
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            {{ data['carer-type'] }}
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a href="">
+                              Change<span class="nhsuk-u-visually-hidden"> language</span>
+                            </a>
+                          </dd>
+                        </div>
+                      {% endif %}
+
+
+          </dL>
+
+
+
+
+
+
+
+
         <h3>Language interpreter</h3>
 
         <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
@@ -219,41 +337,43 @@
 
             </dL>
 
-          <!-- Emergency Contact -->
-          <h3>Emergency Contact</h3>
 
-          <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
-
-
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Do you have an emergency contact?
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ data['emergency-contact'] }}
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
-              </dd>
-            </div>
-
-            <h3>Armed forces</h3>
+            <h3>UK Armed forces</h3>
 
             <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Have you ever been a member of the armed forces?
+                Have you ever been a member of the UK Armed forces?
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['is-armed-forces-member'] }}
               </dd>
               <dd class="nhsuk-summary-list__actions">
-                <a href="">Change<span class="nhsuk-u-visually-hidden">Armed forces</span></a>
+                <a href="">Change<span class="nhsuk-u-visually-hidden">UK Armed forces</span></a>
               </dd>
             </div>
 
             </dl>
+
+            <!-- Emergency Contact -->
+            <h3>Emergency Contact</h3>
+
+            <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Do you have an emergency contact?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['emergency-contact'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
+                </dd>
+              </div>
+
 
 
             {% if data['emergency-contact'] == "Yes" %}
@@ -564,7 +684,7 @@
 
 
 
-          <h2>Health questions</h2>
+          <h3>Health questions</h3>
 
           <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
 
