@@ -32,37 +32,56 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="" method="post" autocomplete="off">
+          <form action="do-you-take-prescription-medication" method="post" autocomplete="off">
 
             {{ hint({
-              "text": "Step 2 of 3 - Personal Details",
+              "text": "Step 3 of 3 - Health questions",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
+            {% set otherHtml %}
+              {{ input({
+                id: "other",
+                name: "other",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "Carer type"
+                }
+              }) }}
+            {% endset -%}
+
 
             {{ radios({
-              "idPrefix": "need-carer",
-              "name": "need-carer",
+              "idPrefix": "carer-type",
+              "name": "carer-type",
               "fieldset": {
                 "legend": {
-                  "text": "Do you have a carer?",
+                  "text": "What type of carer best describes you?",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
               },
-              "hint": {
-                "text": "A carer is anyone, including children and adults who looks after a family member, partner or friend who needs help because of their illness, frailty, disability, a mental health problem or an addiction and cannot cope without their support. The care they give is unpaid. When we refer to carers in this document, this is inclusive of both adult and young carers"
-              },
               "items": [
                 {
-                  "value": "yes~/sprint-6/section-2/carer-details",
-                  "text": "Yes",
-                  checked: checked("need-carer", "Yes")
+                  "value": "Informal (Unpaid Carer)",
+                  "text": "Informal (Unpaid Carer)",
+                  checked: checked("carer-type", "informal")
                 },
                 {
-                  "value": "no~/sprint-6/section-2/are-you-a-carer",
-                  "text": "No",
-                  checked: checked("need-carer", "no")
+                  "value": "Occupational (Paid Care)",
+                  "text": "Occupational (Paid Care)",
+                  checked: checked("carer-type", "occupational")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "other",
+                  "text": "Other",
+                  "conditional": {
+                    "html": otherHtml
+                  },
+                  checked: checked("carer-type", "other")
                 }
               ]
             }) }}

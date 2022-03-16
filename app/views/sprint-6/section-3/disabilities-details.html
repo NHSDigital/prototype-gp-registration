@@ -32,13 +32,13 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="do-you-take-prescription-medication" method="post" autocomplete="off">
+          <form action="do-you-have-a-carer" method="post" autocomplete="off">
 
            {{ hint({
               "text": "Step 3 of 3 - Health questions",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
+
             {% if (data['who-is-being-registered'] == "dependant") %}
 
             {% call fieldset({

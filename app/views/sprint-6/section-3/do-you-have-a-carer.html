@@ -35,53 +35,34 @@
           <form action="" method="post" autocomplete="off">
 
             {{ hint({
-              "text": "Step 2 of 3 - Personal Details",
+              "text": "Step 3 of 3 - Health questions",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-            {% set otherHtml %}
-              {{ input({
-                id: "other",
-                name: "other",
-                classes: "nhsuk-u-width-two-thirds",
-                label: {
-                  text: "Carer type"
-                }
-              }) }}
-            {% endset -%}
-
 
             {{ radios({
-              "idPrefix": "carer-type",
-              "name": "carer-type",
+              "idPrefix": "need-carer",
+              "name": "need-carer",
               "fieldset": {
                 "legend": {
-                  "text": "What type of carer best describes you?",
+                  "text": "Do you have a carer?",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
               },
+              "hint": {
+                "text": "A carer is anyone, including children and adults who looks after a family member, partner or friend who needs help because of their illness, frailty, disability, a mental health problem or an addiction and cannot cope without their support. The care they give is unpaid. When we refer to carers in this document, this is inclusive of both adult and young carers"
+              },
               "items": [
                 {
-                  "value": "Informal (Unpaid Carer)~/sprint-6/section-2/do-you-need-a-interpreter-language",
-                  "text": "Informal (Unpaid Carer)",
-                  checked: checked("carer-type", "informal")
+                  "value": "yes~/sprint-6/section-3/carer-details",
+                  "text": "Yes",
+                  checked: checked("need-carer", "Yes")
                 },
                 {
-                  "value": "Occupational (Paid Care)~/sprint-6/section-2/do-you-need-a-interpreter",
-                  "text": "Occupational (Paid Care)",
-                  checked: checked("carer-type", "occupational")
-                },
-                {
-                  "divider": "or"
-                },
-                {
-                  "value": "other",
-                  "text": "Other",
-                  "conditional": {
-                    "html": otherHtml
-                  },
-                  checked: checked("carer-type", "other")
+                  "value": "no~/sprint-6/section-3/are-you-a-carer",
+                  "text": "No",
+                  checked: checked("need-carer", "no")
                 }
               ]
             }) }}

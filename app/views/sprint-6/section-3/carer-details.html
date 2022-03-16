@@ -35,14 +35,14 @@
           <form action="are-you-a-carer" method="post" autocomplete="off">
 
            {{ hint({
-              "text": "Step 1 of 3 - Matching you to your record",
+              "text": "Step 3 of 3 - Health questions",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
 
             {% call fieldset({
               legend: {
-                "text": "What are the details of your second carer?",
+                "text": "What are the details of your carer?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -54,9 +54,9 @@
                   "text": "Company or Council name (Optional)"
                 },
                 "classes": "nhsuk-u-width-two-thirds",
-                "id": "carer-company-2",
-                "name": "carer-company-2",
-                "value": data['carer-company-2']
+                "id": "carer-company",
+                "name": "carer-company",
+                "value": data['carer-company']
               }) }}
 
             {{ input({
@@ -64,9 +64,9 @@
                   "text": "Full name"
                 },
                 "classes": "nhsuk-u-width-two-thirds",
-                "id": "carer-full-name-2",
-                "name": "carer-full-name-2",
-                "value": data['carer-full-name-2']
+                "id": "carer-full-name",
+                "name": "carer-full-name",
+                "value": data['carer-full-name']
               }) }}
 
             {{ input({
@@ -74,9 +74,9 @@
                   "text": "Relationship to you"
                 },
                 "classes": "nhsuk-u-width-two-thirds",
-                "id": "carer-relationship-2",
-                "name": "carer-relationship-2",
-                "value": data['carer-relationship-2']
+                "id": "carer-relationship",
+                "name": "carer-relationship",
+                "value": data['carer-relationship']
               }) }}
 
 
@@ -85,9 +85,9 @@
                     "text": "Contact telephone number"
                   },
                   "classes": "nhsuk-u-width-two-thirds",
-                  "id": "carer-telephone-2",
-                  "name": "carer-telephone-2",
-                  "value": data['carer-telephone-2']
+                  "id": "carer-telephone",
+                  "name": "carer-telephone",
+                  "value": data['carer-telephone']
                 }) }}
 
 
