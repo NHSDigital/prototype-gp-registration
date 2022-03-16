@@ -50,24 +50,24 @@
                 }
               }) %}
 
-              
+
 
               {{ input({
                 label: {
                   "html": 'Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>'
                 },
-                "id": "previous-gp-address-line-1",
-                "name": "previous-gp-address-line-1",
-                value: data['previous-gp-address-line-1']
+                "id": "pharmacy-address-line-1",
+                "name": "pharmacy-address-line-1",
+                value: data['pharmacy-address-line-1']
               }) }}
 
               {{ input({
                 label: {
                   "html": '<span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>'
                 },
-                "id": "previous-gp-address-line-2",
-                "name": "previous-gp-address-line-2",
-                value: data['previous-gp-address-line-2']
+                "id": "pharmacy-address-line-2",
+                "name": "pharmacy-address-line-2",
+                value: data['pharmacy-address-line-2']
               }) }}
 
               {{ input({
@@ -75,9 +75,9 @@
                   "text": "Town or city"
                 },
                 "classes": "nhsuk-u-width-two-thirds",
-                "id": "previous-gp-town",
-                "name": "previous-gp-town",
-                value: data['previous-gp-town']
+                "id": "pharmacy-town",
+                "name": "pharmacy-town",
+                value: data['pharmacy-town']
               }) }}
 
               {{ input({
@@ -85,9 +85,9 @@
                     "text": "Postcode"
                   },
                   "classes": "nhsuk-input--width-10",
-                  "id": "previous-gp-postcode",
-                  "name": "previous-gp-postcode",
-                  value: data['previous-gp-postcode']
+                  "id": "pharmacy-postcode",
+                  "name": "pharmacy-postcode",
+                  value: data['pharmacy-postcode']
               }) }}
 
               {% endcall %}
