@@ -33,12 +33,13 @@
           }) }}
           <form action="what-is-your-name" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Step 1 of 3 - Matching you to your record",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
             
             {% if (data['who-is-being-registered'] == "dependant") %}
+
+           {{ hint({
+              "text": "Step 1 of 3 - Matching patient to their record",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
 
             {% call fieldset({
               legend: {
@@ -66,6 +67,11 @@
 
             {% else %}
 
+            {{ hint({
+              "text": "Step 1 of 3 - Matching you to your record",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}  
+            
             {% call fieldset({
               legend: {
                 "text": "What is your NHS number?",

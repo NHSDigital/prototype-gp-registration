@@ -32,57 +32,57 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="do-you-know-nhs-number" method="post" autocomplete="off">
+          <form action="what-is-your-date-of-birth" method="post" autocomplete="off">
 
            <!--{{ hint({
-              "text": "Step 1 of 3 - Matching patient to their record",
+              "text": "Step 1 of 3 - Matching you to your record",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}-->
 
 
             {% call fieldset({
               legend: {
-                "text": "What are your details?",
+                "text": "What type of carer best discribes you?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
 
             }) %}
-  
-
-            {{ input({
-                label: {
-                  "text": "Full name"
+<br>
+           {{ radios({
+            "idPrefix": "who-is-registering",
+            "name": "register",
+            "items": [
+              {
+                "value": "Gardian~/sprint-7/section-1/carer-details",
+                "text": "Young carer",
+                "hint": {
+                  "text": ""
                 },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "carer-full-name",
-                "name": "carer-full-name",
-                "value": data['carer-full-name']
-              }) }}
-
-            {{ input({
-                label: {
-                  "text": "Relationship to patient"
+                checked: checked("nhs-login", "Yes")
+              },
+               {
+                "value": "Gardian~/sprint-7/section-1/carer-details",
+                "text": "Informal carer(unpaid carer)",
+                "hint": {
+                  "text": ""
                 },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "carer-relationship",
-                "name": "carer-relationship",
-                "value": data['carer-relationship']
-              }) }}
+                checked: checked("nhs-login", "Yes")
+              },
+              {
+                "value": "Gardian~/sprint-7/section-1/occupation-carer-details",
+                "text": "Occupational Carer (Paid carer)",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("nhs-login", "Yes")
+              }
 
-
-              {{ input({
-                  label: {
-                    "text": "Contact telephone number"
-                  },
-                  "classes": "nhsuk-u-width-two-thirds",
-                  "id": "carer-telephone",
-                  "name": "carer-telephone",
-                  "value": data['carer-telephone']
-                }) }}
-
+              ]
+          }) }}
 
             {% endcall %}
+
 
 
             <br>

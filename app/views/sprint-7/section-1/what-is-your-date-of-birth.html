@@ -33,11 +33,13 @@
           }) }}
 
           <form action="registered-for-the-first-time" method="post" autocomplete="off">
-             {{ hint({
-              "text": "Step 1 of 3 - Matching you to your record",
+            
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+           {{ hint({
+              "text": "Step 1 of 3 - Matching patient to their record",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            {% if (data['who-is-being-registered'] == "dependant") %}
 
             {{ dateInput({
               "id": "dob",
@@ -72,6 +74,11 @@
             }) }}
 
             {% else %}
+
+           {{ hint({
+              "text": "Step 1 of 3 - Matching you to your record",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
 
             {{ dateInput({
               "id": "dob",

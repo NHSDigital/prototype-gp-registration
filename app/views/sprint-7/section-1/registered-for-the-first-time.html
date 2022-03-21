@@ -43,26 +43,44 @@ GP Registration Prototypes
         }) }}
 
         <form action="" method="post" autocomplete="off">
+       {% if (data['who-is-being-registered'] == "dependant") %}
 
-
+           {{ hint({
+              "text": "Step 1 of 3 - Matching patient to their record",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+            
+            <h2> Are they registering with a UK GP for the first time?</h2>
+            <div class="nhsuk-hint" id="contact-hint">
+            <p>A GP is your first point of contact for health problems.
+          </div>
+          
+            {% else %}
+          
           {{ hint({
-            "text": "Step 1 of 3 - Matching you to your record",
-            "classes": "nhsuk-u-margin-bottom-2"
-          }) }}
+              "text": "Step 1 of 3 - Matching you to your record",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+        
+           <h2> Are you registering with a UK GP for the first time?</h2>
+            <div class="nhsuk-hint" id="contact-hint">
+            <p>A GP is your first point of contact for health problems.
+          </div>
+
+        {% endif %}
+
 
           {% if (data['under-12-months'] == "under-12-months") %}
 
           {% call fieldset({
             legend: {
-              text: "Are you registering with a UK GP for the first time?",
+              text: "",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
           }) %}
 
-          <div class="nhsuk-hint" id="contact-hint">
-            <p>A GP is your first point of contact for health problems.
-          </div>
+          
 
 
           {{ radios({
@@ -92,18 +110,13 @@ GP Registration Prototypes
 
           {% else %}
 
-
           {% call fieldset({
             legend: {
-              text: "Are you registering with a UK GP for the first time?",
+              text: "",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
           }) %}
-
-          <div class="nhsuk-hint" id="contact-hint">
-            <p>A GP is your first point of contact for health problems.
-          </div>
 
 
           {{ radios({
@@ -132,6 +145,7 @@ GP Registration Prototypes
           {% endcall %}
 
         {% endif %}
+        
 
 
 

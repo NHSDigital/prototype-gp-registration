@@ -48,7 +48,6 @@
               }
 
             }) %}
-  
 
             {{ input({
                 label: {
@@ -58,16 +57,6 @@
                 "id": "carer-full-name",
                 "name": "carer-full-name",
                 "value": data['carer-full-name']
-              }) }}
-
-            {{ input({
-                label: {
-                  "text": "Relationship to patient"
-                },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "carer-relationship",
-                "name": "carer-relationship",
-                "value": data['carer-relationship']
               }) }}
 
 
@@ -80,6 +69,31 @@
                   "name": "carer-telephone",
                   "value": data['carer-telephone']
                 }) }}
+              
+              {{ input({
+                label: {
+                  "text": "Agency or Council name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "carer-company",
+                "name": "carer-company",
+                "value": data['carer-company']
+              }) }}
+
+              
+
+              {% from 'textarea/macro.njk' import textarea %}
+
+{{ textarea({
+  "name": "carer-company",
+  "id": "carer-company",
+  "label": {
+    "text": "Carer agency or Council details"
+  },
+  "hint": {
+    "text": "Please include details about the company providing carer for this patient."
+  }
+}) }}
 
 
             {% endcall %}
