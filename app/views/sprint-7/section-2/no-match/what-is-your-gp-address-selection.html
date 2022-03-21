@@ -1,0 +1,216 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+
+          <form action="do-you-previous-address" method="post" autocomplete="off">
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {{ hint({
+              "text": "Step 2 of 3 - Personal Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% call fieldset({
+              legend: {
+                text: "Select their current GP address",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>6 addresses found for <strong>{{ data['find-gp-address'] }}</strong> <strong>{{ data['current-gp-address'] }}</strong></p>
+            </div>
+
+
+                {{ radios({
+                    "idPrefix": "select-gp-address",
+                    "name": "select-gp-address",
+
+
+                  "items": [
+                    {
+                      "value": "1 Town Street, London, SW1A 1AA",
+                      "text": "1 Town Street, London, SW1A 1AA",
+                      "hint": {
+                    },
+                      checked: checked("select-gp-address", "1 Town Street, London, SW1A 1AA")
+                    },
+                    {
+                      "value": "2 Town Street, London, SW1A 1AA",
+                      "text": "2 Town Street, London, SW1A 1AA",
+                      "hint": {
+                    },
+                      checked: checked("select-gp-address", "2 Town Street, London, SW1A 1AA")
+                    },    {
+                          "value": "3 Town Street, London, SW1A 1AA",
+                          "text": "3 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-gp-address", "3 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "value": "4 Town Street, London, SW1A 1AA",
+                          "text": "4 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-gp-address", "4 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "value": "5 Town Street, London, SW1A 1AA",
+                          "text": "5 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-gp-address", "5 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "value": "6 Town Street, London, SW1A 1AA",
+                          "text": "6 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-gp-address", "6 Town Street, London, SW1A 1AA")
+                        },
+                      {
+                        "divider": "or"
+                      },
+                      {
+                        "value": "wrong address~/sprint-6/section-2/no-match/what-is-your-gp-address",
+                        "text": "The address is not listed here.",
+                        "hint": {
+                      },
+                        checked: checked("select-current-address", "")
+                      }
+                  ]
+                }) }}
+
+                {% endcall %}
+
+                {% else %}
+
+                {% call fieldset({
+                  legend: {
+                    text: "Select your current GP address",
+                    classes: "nhsuk-fieldset__legend--l",
+                    isPageHeading: true
+                  }
+                }) %}
+
+                <div class="nhsuk-hint" id="contact-hint">
+                  <p>6 addresses found for <strong>{{ data['find-gp-address'] }}</strong> <strong>{{ data['current-gp-address'] }}</strong></p>
+                </div>
+
+
+                    {{ radios({
+                        "idPrefix": "select-gp-address",
+                        "name": "select-gp-address",
+
+
+                      "items": [
+                        {
+                          "value": "1 Town Street, London, SW1A 1AA",
+                          "text": "1 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-gp-address", "1 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "value": "2 Town Street, London, SW1A 1AA",
+                          "text": "2 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-gp-address", "2 Town Street, London, SW1A 1AA")
+                        },    {
+                              "value": "3 Town Street, London, SW1A 1AA",
+                              "text": "3 Town Street, London, SW1A 1AA",
+                              "hint": {
+                            },
+                              checked: checked("select-gp-address", "3 Town Street, London, SW1A 1AA")
+                            },
+                            {
+                              "value": "4 Town Street, London, SW1A 1AA",
+                              "text": "4 Town Street, London, SW1A 1AA",
+                              "hint": {
+                            },
+                              checked: checked("select-gp-address", "4 Town Street, London, SW1A 1AA")
+                            },
+                            {
+                              "value": "5 Town Street, London, SW1A 1AA",
+                              "text": "5 Town Street, London, SW1A 1AA",
+                              "hint": {
+                            },
+                              checked: checked("select-gp-address", "5 Town Street, London, SW1A 1AA")
+                            },
+                            {
+                              "value": "6 Town Street, London, SW1A 1AA",
+                              "text": "6 Town Street, London, SW1A 1AA",
+                              "hint": {
+                            },
+                              checked: checked("select-gp-address", "6 Town Street, London, SW1A 1AA")
+                            },
+                          {
+                            "divider": "or"
+                          },
+                          {
+                            "value": "wrong address~/sprint-6/section-2/no-match/what-is-your-gp-address",
+                            "text": "The address is not listed here.",
+                            "hint": {
+                          },
+                            checked: checked("select-current-address", "")
+                          }
+                      ]
+                    }) }}
+
+                    {% endcall %}
+
+                    {% endif %}
+
+                <p>
+                  <a href="/sprint-4/what-is-your-gp-address-manual" id="enter-address-manually-link">Enter the address manually</a>
+                </p>
+
+
+              {{ button({
+                  "text": "Continue"
+              }) }}
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% block pageScripts %}
+
+{% endblock %}
+
+{% endblock %}
