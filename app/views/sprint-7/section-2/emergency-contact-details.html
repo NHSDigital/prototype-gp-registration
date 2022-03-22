@@ -31,8 +31,12 @@
             text: "Go back",
             href: "javascript:history.go(-1)"
           }) }}
-
+         {% if (data['who-is-being-registered'] == "dependant") %}
+          <form action="/sprint-7/section-3/are-you-immunised" method="post" autocomplete="off">
+          {%else%}
           <form action="/sprint-7/section-3/do-you-have-existing-conditions" method="post" autocomplete="off">
+          {%endif%}
+
             {{ hint({
               "text": "Step 2 of 3 - Personal Details",
               "classes": "nhsuk-u-margin-bottom-2"
