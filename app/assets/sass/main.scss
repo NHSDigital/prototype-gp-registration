@@ -110,3 +110,29 @@
   box-shadow: 0 4px 0 #003f7b;
   top: 0;
 }
+
+// Med input
+
+.nhsuk-med-input {
+  font-size: 0;
+  /* 1 */
+}
+.nhsuk-med-input:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.nhsuk-med-input__item {
+  display: inline-block;
+  margin-bottom: 0;
+  margin-right: 24px;
+}
+
+.nhsuk-med-input__label {
+  display: block;
+}
+
+.nhsuk-med-input__input {
+  margin-bottom: 0;
+}
