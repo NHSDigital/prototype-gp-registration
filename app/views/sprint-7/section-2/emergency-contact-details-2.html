@@ -32,11 +32,11 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-        {% if (data['who-is-being-registered'] == "dependant") %}
-        <form action="/sprint-7/section-3/are-you-immunised" method="post" autocomplete="off">
-        {% else %}
-        <form action="/sprint-7/section-3/do-you-have-existing-conditions" method="post" autocomplete="off">
-        {% endif %}
+          {% if (data['who-is-being-registered'] == "dependant") %}
+          <form action="/sprint-7/section-3/are-you-immunised" method="post" autocomplete="off">
+          {% else %}
+          <form action="/sprint-7/section-3/do-you-have-existing-conditions" method="post" autocomplete="off">
+          {% endif %}
 
             {{ hint({
               "text": "Step 2 of 3 - Personal Details",
@@ -47,7 +47,7 @@
 
             {% call fieldset({
               legend: {
-                "text": "What are the details of their emergency contact?",
+                "text": "What are the details of their second emergency contact?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -59,9 +59,9 @@
                   "text": "Full name"
                 },
                 "classes": "nhsuk-u-width-two-thirds",
-                "id": "ec-full-name",
-                "name": "ec-full-name",
-                value: data['ec-full-name']
+                "id": "ec-full-name-2",
+                "name": "ec-full-name-2",
+                value: data['ec-full-name-2']
               }) }}
 
             {{ input({
@@ -69,9 +69,9 @@
                   "text": "Relationship to them"
                 },
                 "classes": "nhsuk-u-width-two-thirds",
-                "id": "ec-relationship",
-                "name": "ec-relationship",
-                value: data['ec-relationship']
+                "id": "ec-relationship-2",
+                "name": "ec-relationship-2",
+                value: data['ec-relationship-2']
               }) }}
 
               {{ input({
@@ -82,9 +82,9 @@
                   "text": "For international number include the country code"
                 },
                 "classes": "nhsuk-input--width-10",
-                "id": "ec-contact-tel",
-                "name": "ec-contact-tel",
-                value: data['ec-contact-tel']
+                "id": "ec-contact-tel-2",
+                "name": "ec-contact-tel-2",
+                value: data['ec-contact-tel-2']
               }) }}
 
               {{ input({
@@ -95,14 +95,14 @@
                   "text": "For international number include the country code"
                 },
                 "classes": "nhsuk-input--width-10",
-                "id": "ec-contact-tel-alt",
-                "name": "ec-contact-tel-alt",
-                value: data['ec-contact-tel-alt']
+                "id": "ec-contact-tel-alt-2",
+                "name": "ec-contact-tel-alt-2",
+                value: data['ec-contact-tel-alt-2']
               }) }}
 
               {{ textarea({
-                "name": "contact-time",
-                "id": "contact-time",
+                "name": "contact-time-2",
+                "id": "contact-time-2",
                 "label": {
                   "text": "Best time to contact (Optional)"
                 }
@@ -114,7 +114,7 @@
 
             {% call fieldset({
               legend: {
-                "text": "What are the details of your emergency contact?",
+                "text": "What are the details of your second emergency contact?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -126,19 +126,19 @@
                   "text": "Full name"
                 },
                 "classes": "nhsuk-u-width-two-thirds",
-                "id": "ec-full-name",
-                "name": "ec-full-name",
-                value: data['ec-full-name']
+                "id": "ec-full-name-2",
+                "name": "ec-full-name-2",
+                value: data['ec-full-name-2']
               }) }}
 
             {{ input({
                 label: {
-                  "text": "Relationship to you"
+                  "text": "Relationship to them"
                 },
                 "classes": "nhsuk-u-width-two-thirds",
-                "id": "ec-relationship",
-                "name": "ec-relationship",
-                value: data['ec-relationship']
+                "id": "ec-relationship-2",
+                "name": "ec-relationship-2",
+                value: data['ec-relationship-2']
               }) }}
 
               {{ input({
@@ -149,9 +149,9 @@
                   "text": "For international number include the country code"
                 },
                 "classes": "nhsuk-input--width-10",
-                "id": "ec-contact-tel",
-                "name": "ec-contact-tel",
-                value: data['ec-contact-tel']
+                "id": "ec-contact-tel-2",
+                "name": "ec-contact-tel-2",
+                value: data['ec-contact-tel-2']
               }) }}
 
               {{ input({
@@ -162,14 +162,14 @@
                   "text": "For international number include the country code"
                 },
                 "classes": "nhsuk-input--width-10",
-                "id": "ec-contact-tel-alt",
-                "name": "ec-contact-tel-alt",
-                value: data['ec-contact-tel-alt']
+                "id": "ec-contact-tel-alt-2",
+                "name": "ec-contact-tel-alt-2",
+                value: data['ec-contact-tel-alt-2']
               }) }}
 
               {{ textarea({
-                "name": "contact-time",
-                "id": "contact-time",
+                "name": "contact-time-2",
+                "id": "contact-time-2",
                 "label": {
                   "text": "Best time to contact (Optional)"
                 }
