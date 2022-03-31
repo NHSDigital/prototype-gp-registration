@@ -40,6 +40,8 @@
               "text": "Step 1 of 3 - Matching patient to their record",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
+            
+            <H1>What is {{ data ['name-first-name'] }} 's' date of birth?</H1>
 
             {{ dateInput({
               "id": "dob",
@@ -48,7 +50,7 @@
                 "legend": {
                   "text": "What is {% data ['name-first-name'] %} 's' date of birth?,",
                   "classes": "nhsuk-label--l",
-                  "isPageHeading": true
+                  "isPageHeading": false
                 }
               },
               "hint": {
