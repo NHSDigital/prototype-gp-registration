@@ -43,7 +43,7 @@
 
             {% call fieldset({
               legend: {
-                text: "Have they got all their immunisations?",
+                text: "Did they get the immunisations in the UK?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -57,18 +57,18 @@
 
 
             {{ radios({
-              "idPrefix": "are-you-immunised",
-              "name": "are-you-immunised",
+              "idPrefix": "are-you-immunised-uk",
+              "name": "are-you-immunised-uk",
               "items": [
                 {
-                  "value": "Yes~/sprint-7/section-3/are-you-immunised-uk",
+                  "value": "Yes",
                   "text": "Yes",
-                  checked: checked("are-you-immunised", "Yes")
+                  checked: checked("are-you-immunised-uk", "Yes")
                 },
                 {
                   "value": "No",
                   "text": "No",
-                  checked: checked("are-you-immunised", "No")
+                  checked: checked("are-you-immunised-uk", "No")
                 },
                 {
                   "divider": "or"
@@ -76,7 +76,7 @@
                 {
                   "value": "I don't know",
                   "text": "I don't know",
-                  checked: checked("are-you-immunised", "I don't know")
+                  checked: checked("are-you-immunised-uk", "I don't know")
                 }
               ]
             }) }}
@@ -86,7 +86,7 @@
 
             {% call fieldset({
               legend: {
-                text: "Have you got all your immunisations?",
+                text: "Did you get the immunisations in the UK?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -100,18 +100,18 @@
 
 
             {{ radios({
-              "idPrefix": "are-you-immunised",
-              "name": "are-you-immunised",
+              "idPrefix": "are-you-immunised-uk",
+              "name": "are-you-immunised-uk",
               "items": [
                 {
-                   "value": "Yes~/sprint-7/section-3/are-you-immunised-uk",
+                   "value": "Yes",
                   "text": "Yes",
-                  checked: checked("are-you-immunised", "Yes")
+                  checked: checked("are-you-immunised-uk", "Yes")
                 },
                 {
                   "value": "No",
                   "text": "No",
-                  checked: checked("are-you-immunised", "No")
+                  checked: checked("are-you-immunised-uk", "No")
                 },
                 {
                   "divider": "or"
@@ -119,7 +119,7 @@
                 {
                   "value": "I don't know",
                   "text": "I don't know",
-                  checked: checked("are-you-immunised", "I don't know")
+                  checked: checked("are-you-immunised-uk", "I don't know")
                 }
               ]
             }) }}
