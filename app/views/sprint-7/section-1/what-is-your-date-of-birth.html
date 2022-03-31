@@ -33,7 +33,7 @@
           }) }}
 
           <form action="what-is-your-nhs-number" method="post" autocomplete="off">
-            
+
             {% if (data['who-is-being-registered'] == "dependant") %}
 
            {{ hint({
@@ -46,7 +46,7 @@
               "namePrefix": "dob",
               "fieldset": {
                 "legend": {
-                  "text": "What is {{ data ['name-first-name'] }} 's' date of birth?",
+                  "text": "What is {% data ['name-first-name'] %} 's' date of birth?,",
                   "classes": "nhsuk-label--l",
                   "isPageHeading": true
                 }
