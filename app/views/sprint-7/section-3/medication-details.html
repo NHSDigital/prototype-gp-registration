@@ -32,13 +32,13 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="how-often-do-you-drink-alcohol" method="post" autocomplete="off">
+          <form action="medication-details-repeat" method="post" autocomplete="off">
 
            {{ hint({
               "text": "Step 3 of 3 - Health questions",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
+
             {% if (data['who-is-being-registered'] == "dependant") %}
 
             {% call fieldset({
@@ -53,7 +53,7 @@
               "name": "medication-details",
               "id": "medication-details",
               "hint": {
-                "text": "This question is optional."
+                "text": "Give further information about what medications they are currently taking including the name and the dosage if known. This question is optional."
               }
             }) }}
 
@@ -72,7 +72,8 @@
               "name": "medication-details",
               "id": "medication-details",
               "hint": {
-                "text": "This question is optional."
+                "text": "Give further information about what medications you are currently taking including the name and the dosage if known. This question is optional."
+
               }
             }) }}
 

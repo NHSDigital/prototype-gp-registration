@@ -32,58 +32,56 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="" method="post" autocomplete="off">
+          <form action="how-often-do-you-drink-alcohol" method="post" autocomplete="off">
+
+           {{ hint({
+              "text": "Step 3 of 3 - Health questions",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
 
             {% call fieldset({
               legend: {
-                "text": "Is this your current address?",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
+                text: "Are any of these repeat prescriptions?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
               }
             }) %}
 
-      <div class="nhsuk-card nhsuk-card--care nhsuk-card--care--non-urgent">
-      <div class="nhsuk-card--care__heading-container">
-        <h2 class="nhsuk-card--care__heading">
-          <span role="text"><span class="nhsuk-u-visually-hidden">
-        </h2>
-        <span class="nhsuk-card--care__arrow" aria-hidden="true"></span>
-      </div>
-
-      <div class="nhsuk-card__content">
+            {{ hint({
+              "text": "If you are currently on a repeat prescription your new GP will be made aware to avoid any delays in your medications."
+            }) }}
 
 
-        <p>Address line 1 <br> Address line 2 <br> Address line 3 <br> Address line 4 </p>
+            {{ hint({
+              "text": "Your new GP may ask to speak to you for a review of your prescriptions."
+            }) }}
 
-      </div>
-    </div>
 
             {{ radios({
-              "idPrefix": "current-address",
-              "name": "current-address",
-              "classes": "nhsuk-radios--inline",
+              "idPrefix": "repeat-medication",
+              "name": "repeat-medication",
               "items": [
                 {
-                  "value": "Yes~/sprint-7/section-2/how-can-we-contact-you",
+                  "value": "Yes",
                   "text": "Yes",
-                  checked: checked("current-address", "Yes")
+                  checked: checked("repeat-medication", "Yes")
                 },
                 {
-                  "value": "No~/sprint-7/section-2/what-is-your-current-address",
+                  "value": "No",
                   "text": "No",
-                  checked: checked("current-address", "No")
+                  checked: checked("repeat-medication", "No")
                 }
 
               ]
             }) }}
 
-            {{ button({
-              "text": "Continue"
-            }) }}
-
             {% endcall %}
 
 
+            {{ button({
+              "text": "Continue"
+            }) }}
 
           </form>
         </div>
@@ -94,16 +92,4 @@
 
   </div>
 </div>
-{% block pageScripts %}
-<script>
-$('#no-current-address-1').change(function(){
-    if ($('#no-current-address-1').is(':checked') == true){
-        $('input[type=text]').prop('disabled', true);
-    } else {
-      $('input[type=text]').prop('disabled', false);
-    }
-});
-</script>
-{% endblock %}
-
 {% endblock %}
