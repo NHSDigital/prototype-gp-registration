@@ -57,8 +57,8 @@ GP Registration Prototypes
           </div>
 
           {{ radios({
-            "idPrefix": "who-is-being-registered",
-            "name": "who-is-being-registered",
+            "idPrefix": "relation",
+            "name": "relation",
             "items": [
               {
                 "value": "Guardian/Parent~/sprint-7/section-1/carer-details",
@@ -66,7 +66,7 @@ GP Registration Prototypes
                 "hint": {
                   "text": ""
                 },
-                checked: checked("who-is-being-registered", "Guardian/Parent")
+                checked: checked("relation", "Guardian/Parent")
               },
               {
                 "value": "Carer~/sprint-7/section-1/carer-type",
@@ -74,7 +74,7 @@ GP Registration Prototypes
                 "hint": {
                   "text": ""
                 },
-                checked: checked("who-is-being-registered", "Carer")
+                checked: checked("relation", "Carer")
               },
                {
                 "value": "Family member~/sprint-7/section-1/carer-details",
@@ -82,7 +82,7 @@ GP Registration Prototypes
                 "hint": {
                   "text": ""
                 },
-                checked: checked("who-is-being-registered", "Family member")
+                checked: checked("relation", "Family member")
               },
               {
                 "value": "Friend~/sprint-7/section-1/carer-details",
@@ -90,7 +90,7 @@ GP Registration Prototypes
                 "hint": {
                   "text": ""
                 },
-                checked: checked("who-is-being-registered", "Friend")
+                checked: checked("relation", "Friend")
               },
               {
                 "value": "Other~/sprint-7/section-1/carer-details",
@@ -98,7 +98,7 @@ GP Registration Prototypes
                 "hint": {
                   "text": ""
                 },
-                checked: checked("who-is-being-registered", "Other")
+                checked: checked("relation", "Other")
               }
             ]
           }) }}
