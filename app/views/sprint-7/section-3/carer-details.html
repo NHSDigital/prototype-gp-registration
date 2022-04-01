@@ -49,24 +49,26 @@
 
             }) %}
 
-            {{ input({
-                label: {
-                  "text": "Company or Council name (Optional)"
-                },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "carer-company",
-                "name": "carer-company",
-                "value": data['carer-company']
-              }) }}
+            
 
             {{ input({
                 label: {
-                  "text": "Full name"
+                  "text": "First name"
                 },
                 "classes": "nhsuk-u-width-two-thirds",
-                "id": "carer-full-name",
-                "name": "carer-full-name",
-                "value": data['carer-full-name']
+                "id": "carer-first-name",
+                "name": "carer-first-name",
+                "value": data['carer-first-name']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Last name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "carer-last-name",
+                "name": "carer-last-name",
+                "value": data['carer-last-name']
               }) }}
 
             {{ input({
@@ -88,6 +90,16 @@
                   "id": "carer-telephone",
                   "name": "carer-telephone",
                   "value": data['carer-telephone']
+                }) }}
+
+                {{ input({
+                  label: {
+                    "text": "Agency or Council name (Optional)"
+                  },
+                  "classes": "nhsuk-u-width-two-thirds",
+                  "id": "carer-company",
+                  "name": "carer-company",
+                  "value": data['carer-company']
                 }) }}
 
 
