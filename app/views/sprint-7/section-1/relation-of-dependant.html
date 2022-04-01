@@ -44,21 +44,6 @@ GP Registration Prototypes
 
         <form action="" method="post" autocomplete="off">
 
-          {% call fieldset({
-            legend: {
-              text: "What is your relation to the dependant?",
-              classes: "nhsuk-fieldset__legend--l",
-              isPageHeading: true
-            }
-          }) %}
-
-          <div class="nhsuk-hint" id="contact-hint">
-            <p></p>
-          </div>
-
-          {% from 'radios/macro.njk' import radios %}
-          {% from 'input/macro.njk' import input %}
-
          {% set otherHtml %}
            {{ input({
              id: "other",
@@ -68,12 +53,19 @@ GP Registration Prototypes
                text: ""
              }
            }) }}
-         {% endset -%}
+         {% endset %}
 
-         
+
           {{ radios({
             "idPrefix": "relation",
             "name": "relation",
+            fieldset: {
+              legend: {
+                text: "What is your relation to the dependant?",
+                isPageHeading: true,
+                classes: "nhsuk-fieldset__legend--l"
+              }
+              },
             "items": [
               {
                 "value": "Guardian/Parent~/sprint-7/section-1/carer-details",
@@ -103,18 +95,15 @@ GP Registration Prototypes
                 "divider": "or"
               },
               {
-                "value": "Other~/sprint-7/section-1/carer-details",
-                "text": "Other",
-                "contitional": {
-                    "html": otherHtml
-                },
-                checked: checked("relation", "Other")
+                value: "other",
+                text: "Other",
+                conditional: {
+                  html: otherHtml
+              }
               }
             ]
           }) }}
-       
 
-          {% endcall %}
 
 
 
