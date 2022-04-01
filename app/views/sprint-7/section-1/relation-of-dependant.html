@@ -56,6 +56,21 @@ GP Registration Prototypes
             <p></p>
           </div>
 
+          {% from 'radios/macro.njk' import radios %}
+          {% from 'input/macro.njk' import input %}
+
+         {% set otherHtml %}
+           {{ input({
+             id: "other",
+             name: "other",
+             classes: "nhsuk-u-width-two-thirds",
+             label: {
+               text: ""
+             }
+           }) }}
+         {% endset -%}
+
+         
           {{ radios({
             "idPrefix": "relation",
             "name": "relation",
@@ -85,23 +100,19 @@ GP Registration Prototypes
                 checked: checked("relation", "Family member")
               },
               {
-                "value": "Friend~/sprint-7/section-1/carer-details",
-                "text": "Friend",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("relation", "Friend")
+                "divider": "or"
               },
               {
                 "value": "Other~/sprint-7/section-1/carer-details",
                 "text": "Other",
-                "hint": {
-                  "text": ""
+                "contitional": {
+                    "html": otherHtml
                 },
                 checked: checked("relation", "Other")
               }
             ]
           }) }}
+       
 
           {% endcall %}
 
