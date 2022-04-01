@@ -33,10 +33,10 @@
           }) }}
 
           <form action="check-answers" method="post" autocomplete="off">
-           
+
 
             {% if (data['who-is-being-registered'] == "dependant") %}
-           
+
            {{ hint({
               "text": "Step 1 of 3 - Matching patient to their record",
               "classes": "nhsuk-u-margin-bottom-2"
@@ -44,14 +44,14 @@
 
             {% call fieldset({
               legend: {
-                "text": "What postcode did they last register with a UK GP?",
+                "text": "What postcode did their last UK GP have for them?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
 
             {{ hint({
-                "text": "This will be the postcode they used last time they registered with a GP surgery."
+                "text": "Enter the postcode for the address they were living at when they were last registered for a UK GP"
             }) }}
 
 
@@ -79,14 +79,14 @@
             }) }}
             {% call fieldset({
               legend: {
-                "text": "What postcode did you last register with a UK GP?",
+                "text": "What postcode did your last UK GP have for you?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
 
             {{ hint({
-                "text": "This will be the postcode you used last time you registered with a GP surgery."
+                "text": "Enter the postcode for the address you were living at when you were last registered for a UK GP"
             }) }}
 
 
