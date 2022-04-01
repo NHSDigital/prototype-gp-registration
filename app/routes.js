@@ -304,4 +304,22 @@ router.post('*/do-you-have-family-history-of-conditions-answer/', function (req,
 
 })
 
+
+router.post("*/what-schooling-do-you-have", function(req, res) {
+  var schooling = req.session.data["schooling"];
+  // Check whether the variable matches a condition
+  if (
+    schooling == "school" ||
+    schooling == "nursery" ||
+    schooling == "homeschool" 
+  ) {
+    // Send user to add details page
+    res.redirect("schooling-details");
+  } else {
+    // Send user to next page
+    res.redirect("professional-involvement"
+    );
+  }
+});
+
 module.exports = router;
