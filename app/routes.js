@@ -320,6 +320,22 @@ router.post("*/what-schooling-do-you-have", function(req, res) {
     res.redirect("professional-involvement"
     );
   }
+})
+//console.log('looking up age!')
+router.post('*/do-you-have-emergency-contact', function (req, res) {
+
+  // Make 
+  var youngEnough = req.session.data['dob-year']
+//console.log('looking up age')
+  // Check whether the variable matches a condition
+  if (youngEnough == ">=2004"){
+    // Send user to immunisation page
+    res.redirect('are-you-immunised')
+  } else {
+    // Send user to next page 
+    res.redirect('do-you-have-existing-conditions')
+  }
+
 });
 
 module.exports = router;
