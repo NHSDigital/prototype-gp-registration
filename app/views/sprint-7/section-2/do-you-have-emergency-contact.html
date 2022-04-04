@@ -42,11 +42,19 @@
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-         
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Does {{ data ['name-first-name'] }} have an emergency contact?</H2>
+
+            {% else %}
+
+            <H2>Do you have an emergency contact?</H2>
+
+            {% endif %}
 
             {% call fieldset({
               legend: {
-                text: "Do they have an emergency contact?",
+                text: "",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }

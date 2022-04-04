@@ -41,16 +41,18 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
+            <H2>Has {{ data ['name-first-name'] }} had all their routine vaccinations?</H2>
+
             {% call fieldset({
               legend: {
-                text: "Have they got all their immunisations?",
+                text: "",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
             {{ hint({
-              "text": "infomation around immunisation."
+              "text": "These are the immunisations that you get as a child, either in school or at a previous GP surgery."
             }) }}
 
 
@@ -93,7 +95,7 @@
             }) %}
 
             {{ hint({
-              "text": "infomation around immunisation."
+              "text": "These are the immunisations that you get as a child, either in school or at a previous GP surgery."
             }) }}
 
 
