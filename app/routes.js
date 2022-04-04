@@ -321,11 +321,9 @@ router.post("*/check-schooling", function(req, res) {
   ) {
     // Send user to add details page
     res.redirect("schooling-details");
-  } 
-  else {
+  } else {
     // Send user to next page
-    res.redirect("professional-involvement"
-    );
+    res.redirect("professional-involvement");
   }
 })
 //console.log('looking up age!')
