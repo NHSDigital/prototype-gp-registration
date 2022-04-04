@@ -32,11 +32,7 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          {% if (data['who-is-being-registered'] == "dependant") %}
-          <form action="/sprint-7/section-3/are-you-immunised" method="post" autocomplete="off">
-          {% else %}
-          <form action="/sprint-7/section-3/do-you-have-existing-conditions" method="post" autocomplete="off">
-          {% endif %}
+          <form id="youngEnough" action="check-age" method="post" autocomplete="off">
 
             {{ hint({
               "text": "Step 2 of 3 - Personal Details",
@@ -44,6 +40,14 @@
             }) }}
 
             {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Does {{ data ['name-first-name'] }} have an emergency contact</H2>
+
+            {% else %}
+
+            <H2>Do you have an emergency contact?</H2>
+
+            {% endif %}
 
             {% call fieldset({
               legend: {
@@ -55,14 +59,24 @@
 
 
             {{ input({
-                label: {
-                  "text": "Full name"
-                },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "ec-full-name-2",
-                "name": "ec-full-name-2",
-                value: data['ec-full-name-2']
-              }) }}
+              label: {
+                "text": "First name"
+              },
+              "classes": "nhsuk-u-width-two-thirds",
+              "id": "ec-first-name",
+              "name": "ec-first-name",
+              value: data['ec-first-name']
+            }) }}
+
+            {{ input({
+              label: {
+                "text": "Last name"
+              },
+              "classes": "nhsuk-u-width-two-thirds",
+              "id": "ec-last-name",
+              "name": "ec-last-name",
+              value: data['ec-last-name']
+            }) }}
 
             {{ input({
                 label: {
@@ -110,76 +124,7 @@
 
             {% endcall %}
 
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                "text": "What are the details of your second emergency contact?",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
-              }
-            }) %}
-
-
-            {{ input({
-                label: {
-                  "text": "Full name"
-                },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "ec-full-name-2",
-                "name": "ec-full-name-2",
-                value: data['ec-full-name-2']
-              }) }}
-
-            {{ input({
-                label: {
-                  "text": "Relationship to them"
-                },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "ec-relationship-2",
-                "name": "ec-relationship-2",
-                value: data['ec-relationship-2']
-              }) }}
-
-              {{ input({
-                "label": {
-                  "text": "Contact telephone number"
-                },
-                  "hint": {
-                  "text": "For international number include the country code"
-                },
-                "classes": "nhsuk-input--width-10",
-                "id": "ec-contact-tel-2",
-                "name": "ec-contact-tel-2",
-                value: data['ec-contact-tel-2']
-              }) }}
-
-              {{ input({
-                "label": {
-                  "text": "Alternate telephone number (Optional)"
-                },
-                  "hint": {
-                  "text": "For international number include the country code"
-                },
-                "classes": "nhsuk-input--width-10",
-                "id": "ec-contact-tel-alt-2",
-                "name": "ec-contact-tel-alt-2",
-                value: data['ec-contact-tel-alt-2']
-              }) }}
-
-              {{ textarea({
-                "name": "contact-time-2",
-                "id": "contact-time-2",
-                "label": {
-                  "text": "Best time to contact (Optional)"
-                }
-              }) }}
-
-
-            {% endcall %}
-
-            {% endif %}
-
+            
             {{ button({
               "text": "Add another emergency contact",
               "classes": "nhsuk-button--secondary",
