@@ -313,11 +313,16 @@ router.post("*/check-schooling", function(req, res) {
   if (
     schooling == "school" ||
     schooling == "nursery" ||
-    schooling == "homeschool" 
+    schooling == "homeschool" ||
+    schooling == "school","nursery" ||
+    schooling == "school","nursery","homeschool" ||
+    schooling == "school","homeschool" ||
+    schooling == "nursery","homeschool" 
   ) {
     // Send user to add details page
     res.redirect("schooling-details");
-  } else {
+  } 
+  else {
     // Send user to next page
     res.redirect("professional-involvement"
     );
