@@ -38,14 +38,22 @@
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
             
-        {% if (data['who-is-being-registered'] == "dependant") %}
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Are any of the following people involved in {{ data ['name-first-name'] }}'s care?</H2>
+
+            {% else %}
+
+            <H2>Are any of the following people involved in your care?</H2>
+
+            {% endif %}
 
      {{ checkboxes({
                 "idPrefix": "schooling",
                 "name": "schooling",
                 "fieldset": {
                   "legend": {
-                    "text": "Are any of the following people involved in their care?",
+                    "text": "",
                     "classes": "nhsuk-fieldset__legend--l",
                     isPageHeading: true
                   }
@@ -60,39 +68,11 @@
                   { value: "health-worker", text: "A health worker", checked: checked("health-contact", "health-worker")},
                   { value: "social-worker", text: "A social worker", checked: checked("health-contact", "social-worker")},
                   { value: "other", text: "Any other health profession", checked: checked("health-contact", "other")}
+
               ]
               }) }}
 
-        {% else %}
-
-
-         {{ checkboxes({
-                "idPrefix": "schooling",
-                "name": "schooling",
-                "fieldset": {
-                  "legend": {
-                    "text": "Are any of the following people involved in your care?",
-                    "classes": "nhsuk-fieldset__legend--l",
-                    isPageHeading: true
-                  }
-                },
-
-                "hint": {
-                  "html": "<p>Infomation on why the GP is collecting this information.</p>"
-                },
-
-               items: [
-                  { value: "hospital-specialist", text: "A hospital specialist", checked: checked("health-contact", "hospital-specialist")},
-                  { value: "health-worker", text: "A health worker", checked: checked("health-contact", "health-worker")},
-                  { value: "social-worker", text: "A social worker", checked: checked("health-contact", "social-worker")},
-                  { value: "other", text: "Any other health profession", checked: checked("health-contact", "other")}
-              ]
-              }) }}
-
-           
         
-
-        {% endif %}
 
             {{ button({
               "text": "Continue"

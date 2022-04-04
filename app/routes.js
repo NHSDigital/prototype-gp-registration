@@ -306,8 +306,9 @@ router.post('*/do-you-have-family-history-of-conditions-answer/', function (req,
 })
 
 
-router.post("*/what-schooling-do-you-have", function(req, res) {
+router.post("*/check-schooling", function(req, res) {
   var schooling = req.session.data["schooling"];
+  console.log('check-schooling')
   // Check whether the variable matches a condition
   if (
     schooling == "school" ||
@@ -332,7 +333,7 @@ router.post('*/check-age', function (req, res) {
   console.log(`number of years ${years}`)
 console.log('looking up age')
   // Check whether the variable matches a condition
-  if (years <= 18){
+  if (years <= 18) {
     // Send user to immunisation page
     res.redirect('../section-3/are-you-immunised')
   } else {
