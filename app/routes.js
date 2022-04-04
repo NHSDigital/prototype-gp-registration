@@ -328,12 +328,12 @@ router.post('*/do-you-have-emergency-contact', function (req, res) {
   var youngEnough = req.session.data['dob-year']
 //console.log('looking up age')
   // Check whether the variable matches a condition
-  if (youngEnough == ">=2004"){
+  if (youngEnough == "2004 or >2004"){
     // Send user to immunisation page
-    res.redirect('are-you-immunised')
+    res.redirect('../section-3/are-you-immunised')
   } else {
     // Send user to next page 
-    res.redirect('do-you-have-existing-conditions')
+    res.redirect('../section-3/do-you-have-existing-conditions')
   }
 
 });

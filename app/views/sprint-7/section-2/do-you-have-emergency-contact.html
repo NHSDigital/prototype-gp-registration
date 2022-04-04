@@ -32,7 +32,10 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form id="youngEnough" action="do-you-have-emergency-contact" method="post" autocomplete="off"></form>
+          {% if (data['emergency-contact'] == "No") %}
+          <form id="youngEnough" action="do-you-have-emergency-contact" method="post" autocomplete="off">
+          {% else %}
+          <form  action="emergency-contact-details" method="post" autocomplete="off">
 
             {{ hint({
               "text": "Step 2 of 3 - Personal Details",
@@ -54,17 +57,17 @@
 
             </div>
 
-            {{ radios({
+           {{ radios({
               "idPrefix": "emergency-contact",
               "name": "emergency-contact",
               "items": [
                 {
-                  "value": "Yes~/sprint-7/section-2/emergency-contact-details",
+                  "value": "Yes~/sprint-6/section-2/emergency-contact-details",
                   "text": "Yes",
                   checked: checked("emergency-contact", "Yes")
                 },
                 {
-                  "value": "No~/sprint-7/section-3/do-you-have-existing-conditions",
+                  "value": "No~/sprint-6/section-3/do-you-have-existing-conditions",
                   "text": "No",
                   checked: checked("emergency-contact", "No")
                 }
@@ -88,17 +91,17 @@
 
             </div>
 
-            {{ radios({
+           {{ radios({
               "idPrefix": "emergency-contact",
               "name": "emergency-contact",
               "items": [
                 {
-                  "value": "Yes~/sprint-7/section-2/emergency-contact-details",
+                  "value": "Yes~/sprint-6/section-2/emergency-contact-details",
                   "text": "Yes",
                   checked: checked("emergency-contact", "Yes")
                 },
                 {
-                  "value": "No~/sprint-7/section-3/do-you-have-existing-conditions",
+                  "value": "No~/sprint-6/section-3/do-you-have-existing-conditions",
                   "text": "No",
                   checked: checked("emergency-contact", "No")
                 }
@@ -108,14 +111,12 @@
             {% endcall %}
 
             {% endif %}
-
-
-
             {{ button({
               "text": "Continue"
             }) }}
-
+            {% endif %}
           </form>
+        </form>
         </div>
       </div>
     </section>
