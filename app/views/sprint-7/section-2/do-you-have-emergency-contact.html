@@ -32,17 +32,17 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          {% if (data['emergency-contact'] == "No") %}
-          <form id="youngEnough" action="do-you-have-emergency-contact" method="post" autocomplete="off">
-          {% else %}
-          <form  action="emergency-contact-details" method="post" autocomplete="off">
+         
+          <form id="youngEnough" action="check-age" method="post" autocomplete="off">
+          
+
 
             {{ hint({
               "text": "Step 2 of 3 - Personal Details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
+         
 
             {% call fieldset({
               legend: {
@@ -62,12 +62,12 @@
               "name": "emergency-contact",
               "items": [
                 {
-                  "value": "Yes~/sprint-6/section-2/emergency-contact-details",
+                  "value": "Yes",
                   "text": "Yes",
                   checked: checked("emergency-contact", "Yes")
                 },
                 {
-                  "value": "No~/sprint-6/section-3/do-you-have-existing-conditions",
+                  "value": "No",
                   "text": "No",
                   checked: checked("emergency-contact", "No")
                 }
@@ -76,45 +76,14 @@
 
             {% endcall %}
 
-            {% else %}
+           
+           
 
-            {% call fieldset({
-              legend: {
-                text: "Do you have an emergency contact?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>This can be a someone like a family member, friend or support worker.</p>
-
-            </div>
-
-           {{ radios({
-              "idPrefix": "emergency-contact",
-              "name": "emergency-contact",
-              "items": [
-                {
-                  "value": "Yes~/sprint-6/section-2/emergency-contact-details",
-                  "text": "Yes",
-                  checked: checked("emergency-contact", "Yes")
-                },
-                {
-                  "value": "No~/sprint-6/section-3/do-you-have-existing-conditions",
-                  "text": "No",
-                  checked: checked("emergency-contact", "No")
-                }
-              ]
-            }) }}
-
-            {% endcall %}
-
-            {% endif %}
+           
             {{ button({
               "text": "Continue"
             }) }}
-            {% endif %}
+            
           </form>
         </form>
         </div>

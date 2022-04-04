@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const radioButtonRedirect = require('radio-button-redirect')
+const moment=require('moment')
 router.use(radioButtonRedirect)
 
 // Add your routes here - above the module.exports line
@@ -322,13 +323,16 @@ router.post("*/what-schooling-do-you-have", function(req, res) {
   }
 })
 //console.log('looking up age!')
-router.post('*/do-you-have-emergency-contact', function (req, res) {
+router.post('*/check-age', function (req, res) {
 
   // Make 
+  var dob = req.session.data['dob-year']+ '-'+ req.session.data['dob-month']+ '-'+ req.session.data['dob-day']
   var youngEnough = req.session.data['dob-year']
-//console.log('looking up age')
+  var years = moment().diff(dob, 'years');
+  console.log(`number of years ${years}`)
+console.log('looking up age')
   // Check whether the variable matches a condition
-  if (youngEnough == "2004 or >2004"){
+  if (years <= 18){
     // Send user to immunisation page
     res.redirect('../section-3/are-you-immunised')
   } else {
