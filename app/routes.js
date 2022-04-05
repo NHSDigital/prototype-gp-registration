@@ -306,27 +306,31 @@ router.post('*/do-you-have-family-history-of-conditions-answer/', function (req,
 })
 
 
-router.post("*/check-schooling", function(req, res) {
+router.post("*/check-schooling", function(req,res) {
   var schooling = req.session.data["schooling"];
   console.log('check-schooling')
   // Check whether the variable matches a condition
-  if (schooling == "none"){
+  if (schooling == "None"){
     // Send user to next page
     res.redirect("professional-involvement");
   }
   if (
-    schooling == "school" ||
-    schooling == "nursery" ||
-    schooling == "homeschool" ||
-    schooling == "school","nursery" ||
-    schooling == "school","nursery","homeschool" ||
-    schooling == "school","homeschool" ||
-    schooling == "nursery","homeschool" 
+    schooling == "School" ||
+    schooling == "Nursery" ||
+    schooling == "Homeschool" ||
+    schooling == "School","Nursery" ||
+    schooling == "School","Nursery","Homeschool" ||
+    schooling == "School","Homeschool" ||
+    schooling == "Nursery","Homeschool" 
   ) {
     // Send user to add details page
     res.redirect("schooling-details");
   } 
 })
+
+
+
+
 //console.log('looking up age!')
 router.post('*/check-age', function (req, res) {
 
