@@ -39,6 +39,39 @@
             }) }}
 
 
+          {% if (data['who-is-being-registered'] == "dependant") %}
+
+          <H2>Would you like to nominate a pharmacy for {{ data ['name-first-name'] }} prescriptions?</H2>
+
+            {{ radios({
+              "idPrefix": "nominate-pharmacy",
+              "name": "nominate-pharmacy",
+              "fieldset": {
+                "legend": {
+                  "text": "",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "Nominating a pharmacy means you no longer have to collect paper prescriptions from your GP practice, and instead can go straight to your nominated pharmacy to pick up your medicines."
+              },
+              "items": [
+                {
+                  "value": "yes~/sprint-7/section-2/nominate-pharmacy-selection",
+                  "text": "Yes",
+                  checked: checked("nominate-pharmacy", "Yes")
+                },
+                {
+                  "value": "no~/sprint-7/section-2/are-you-a-member-of-armed-forces",
+                  "text": "No",
+                  checked: checked("nominate-pharmacy", "no")
+                }
+              ]
+            }) }}
+
+            {% else %}
+
             {{ radios({
               "idPrefix": "nominate-pharmacy",
               "name": "nominate-pharmacy",
@@ -66,11 +99,7 @@
               ]
             }) }}
 
-            <!-- {{ details({
-              "text": "Why are you asking this?",
-              "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of gender.</p>"
-            }) }} -->
-
+            {% endif %}
 
 
             {{ button({

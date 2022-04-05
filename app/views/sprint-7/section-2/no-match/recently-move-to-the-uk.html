@@ -51,9 +51,11 @@ GP Registration Prototypes
 
           {% if (data['who-is-being-registered'] == "dependant") %}
 
+          <H2>Has {{ data ['name-first-name'] }} recently moved to the UK from another country?</H2>
+
           {% call fieldset({
             legend: {
-              text: "Have they recently moved to the UK from another country?",
+              text: "",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }

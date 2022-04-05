@@ -40,15 +40,17 @@
               "text": "Step 3 of 3 - Health questions",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
+
             {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Does {{ data ['name-first-name'] }} smoke?</H2>
 
             {{ radios({
               "idPrefix": "smokes",
               "name": "smokes",
               "fieldset": {
                 "legend": {
-                  "text": "Do they smoke?",
+                  "text": "",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }

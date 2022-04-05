@@ -38,12 +38,14 @@
               "text": "Step 3 of 3 - Health questions",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
+
             {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Does {{ data ['name-first-name'] }} have any existing or pre-existing medical conditions?</H2>
 
             {% call fieldset({
               legend: {
-                text: "Do they have any mental health conditions?",
+                text: "",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }

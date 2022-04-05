@@ -42,47 +42,42 @@ User research - GP registration - NHS
 
         <details class="nhsuk-details nhsuk-expander version-list">
         <summary class="nhsuk-details__summary details-index">
+        <span class="nhsuk-details__summary-text">05 Feb 2022 (Dependant Journey)</span>
+        </summary>
+        <div class="nhsuk-details__text version-text">
+        <br>
+
+        <h2 class="nhsuk-heading-l">Dependant Journey</h2>
+        <p></p>
+
+        <form action="/sprint-7/section-1/start" method="post" autocomplete="off">
+        {{ button({
+          "text": "Route A (no match)",
+              "href": ""
+        }) }}
+        </form>
+        </div>
+        </details>
+
+        <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary details-index">
         <span class="nhsuk-details__summary-text">02 Feb 2022 (Questionairre upfront)</span>
         </summary>
         <div class="nhsuk-details__text version-text">
         <br>
 
+        <h2 class="nhsuk-heading-l">PDS match upfront</h2>
+        <p>Route for no match depends on if they are currently registered with a GP</p>
 
-          <h2 class="nhsuk-heading-l">PDS match upfront</h2>
-          <p>Route for no match depends on if they are currently registered with a GP</p>
-
-          <!-- <form action="/sprint-4/start" method="post" autocomplete="off">
-
-          {{ button({
-            "text": "Route A match",
-                "href": ""
-          }) }}
-          </form>  -->
-
-          <form action="/sprint-5/section-1/start" method="post" autocomplete="off">
-          <input type="hidden" name="user-auth" id="user-auth" value="nomatch" />
-          {{ button({
-            "text": "Route A (no match)",
-                "href": ""
-          }) }}
-          </form>
-
-          <!-- <form action="/sprint-4/start" method="post" autocomplete="off">
-          <input type="hidden" name="ab" id="ab" value="b" />
-
-          {{ button({
-            "text": "Route B match",
-                "href": ""
-          }) }}
-          </form> -->
-
-
-
-
-
-
-          </div>
-          </details>
+        <form action="/sprint-5/section-1/start" method="post" autocomplete="off">
+        <input type="hidden" name="user-auth" id="user-auth" value="nomatch" />
+        {{ button({
+          "text": "Route A (no match)",
+              "href": ""
+        }) }}
+        </form>
+        </div>
+        </details>
 
 
         <details class="nhsuk-details nhsuk-expander version-list">

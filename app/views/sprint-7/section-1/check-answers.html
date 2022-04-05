@@ -351,6 +351,8 @@
                 </dd>
               </div>
 
+
+              {% if (data['registering-first-time'] == "No") %}
               <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
                 Do you know the postcode you last registered with a UK GP?
@@ -366,7 +368,8 @@
                 <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
               </dd>
             </div>
-
+            {% endif %}
+            
 
                 {% if (data['do-you-know-previous-postcode'] == "Yes") %}
                 <div class="nhsuk-summary-list__row">
@@ -381,7 +384,7 @@
                 </dd>
               </div>
               {% endif %}
-            
+
 
             {% if (data['under-12-months'] == "under-12-months") %}
             <div class="nhsuk-summary-list__row">

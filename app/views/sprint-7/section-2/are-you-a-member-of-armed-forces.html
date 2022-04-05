@@ -107,6 +107,41 @@
              {% endcall %}
 
 
+
+             {% elif (data['who-is-being-registered'] == "dependant") %}
+
+             <H2>Has {{ data ['name-first-name'] }} ever been a member of the UK Armed forces or do they have a family member registered with the Defence Medical Services?</H2>
+
+             {% call fieldset({
+               legend: {
+                 text: "",
+                 classes: "nhsuk-fieldset__legend--l",
+                 isPageHeading: true
+               }
+             }) %}
+
+
+             {{ radios({
+               "idPrefix": "is-armed-forces-member",
+               "name": "is-armed-forces-member",
+               "items": [
+                 {
+                   "value": "Yes~/sprint-7/section-2/are-you-a-member-of-armed-forces-details",
+                   "text": "Yes",
+                   checked: checked("is-armed-forces-member", "Yes")
+                 },
+                 {
+                   "value": "No~/sprint-7/section-2/do-you-have-emergency-contact",
+                   "text": "No",
+                   checked: checked("is-armed-forces-member", "No")
+
+                 }
+               ]
+             }) }}
+
+             {% endcall %}
+
+
             {% elif (((data['who-is-being-registered'] == "dependant") and (data['user-auth'] == "nomatch") and (data['registering-first-time'] == "Yes"))) %}
 
             {% call fieldset({
@@ -140,7 +175,7 @@
 
 
 
-              {% else %}
+            {% else %}
 
               {% call fieldset({
                 legend: {

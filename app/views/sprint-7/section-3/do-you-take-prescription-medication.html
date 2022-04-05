@@ -41,9 +41,11 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
+              <H2>Does {{ data ['name-first-name'] }} currently take any prescription medication?</H2>
+
             {% call fieldset({
               legend: {
-                text: "Do they currently take any prescription medication?",
+                text: "",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }

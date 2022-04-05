@@ -41,12 +41,14 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
+            <H2>Does {{ data ['name-first-name'] }}'s need a language interpreter for their GP appointments?</H2>
+
             {{ radios({
               "idPrefix": "interpreter",
               "name": "interpreter",
               "fieldset": {
                 "legend": {
-                  "text": "Do they need a language interpreter for their GP appointments?",
+                  "text": "",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }

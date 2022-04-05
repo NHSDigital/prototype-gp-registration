@@ -38,15 +38,17 @@
               "text": "Step 3 of 3 - Health questions",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
+
             {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>How often does {{ data ['name-first-name'] }} drink alcohol?</H2>
 
             {{ radios({
               "idPrefix": "alcohol-consumption",
               "name": "alcohol-consumption",
               "fieldset": {
                 "legend": {
-                  "text": "How often do they drink alcohol?",
+                  "text": "",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
