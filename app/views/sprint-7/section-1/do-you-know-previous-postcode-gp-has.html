@@ -45,16 +45,26 @@ GP Registration Prototypes
         <form action="" method="post" autocomplete="off">
 
 
-          {% if (data['who-is-being-registered'] == "dependant") %}
-
+          
            {{ hint({
               "text": "Step 1 of 3 - Matching patient to their record",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Does {{ data ['name-first-name'] }} know the postcode they last registered with a UK GP?</H2>
+
+            {% else %}
+
+            <H2>Do you know the postcode they last registered with a UK GP?</H2>
+
+            {% endif %}
+
             {% call fieldset({
             legend: {
-              text: "Do they know the postcode they last registered with a UK GP?",
+              text: "",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
@@ -88,50 +98,7 @@ GP Registration Prototypes
             ]
           }) }}
            {% endcall %}
-            {% else %}
-
-          {{ hint({
-              "text": "Step 1 of 3 - Matching you to your record",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% call fieldset({
-            legend: {
-              text: "Do you know the postcode you last registered with a UK GP?",
-              classes: "nhsuk-fieldset__legend--l",
-              isPageHeading: true
-            }
-          }) %}
-
-          <div class="nhsuk-hint" id="contact-hint">
-            <p>This will be the postcode you used last time you registered with a GP surgery.
-          </div>
-
-
-          {{ radios({
-            "idPrefix": "do-you-know-previous-postcode",
-            "name": "do-you-know-previous-postcode",
-            "items": [
-              {
-                "value": "Yes~/sprint-7/section-1/what-is-previous-postcode-gp-has",
-                "text": "Yes",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("do-you-know-previous-postcode", "Yes")
-              },
-              {
-                "value": "No~/sprint-7/section-1/check-answers",
-                "text": "No",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("do-you-know-previous-postcode", "No")
-              }
-            ]
-          }) }}
- {% endcall %}
-        {% endif %}
+           
 
 
 

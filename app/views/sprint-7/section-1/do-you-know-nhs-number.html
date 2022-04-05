@@ -35,18 +35,25 @@
 
           <form action="" method="post" autocomplete="off">
 
-
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-           {{ hint({
+            {{ hint({
               "text": "Step 1 of 3 - Matching patient to their record",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Do you know {{ data ['name-first-name'] }}'s NHS Number?</H2>
+
+            {% else %}
+
+            <H2>Do you know your NHS Number?</H2>
+
+            {% endif %}
+
+
             {% call fieldset({
               legend: {
-                text: "Do you know their NHS Number?",
+                text: "",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -83,53 +90,6 @@
             {% endcall %}
 
 
-            {% else %}
-             {{ hint({
-              "text": "Step 1 of 3 - Matching you to your record",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% call fieldset({
-              legend: {
-                text: "Do you know your NHS Number?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ hint({
-              "text": "Telling us your NHS number will give us the best chance of matching you to your NHS record.",
-              "classes": "nhsuk-u-margin-bottom-4"
-            }) }}
-
-            {{ hint({
-              "text": "You do not need to know your NHS number to continue. If you do not know it, you can tell us your full name instead.",
-              "classes": "nhsuk-u-margin-bottom-4"
-            }) }}
-
-
-            {{ radios({
-              "idPrefix": "know-nhs-number",
-              "name": "know-nhs-number",
-              "items": [
-                {
-                  "value": "Yes~/sprint-7/section-1/what-is-your-nhs-number",
-                  "text": "Yes, I know my NHS number",
-                  "checked": checked("know-nhs-number", "Yes")
-                },
-                {
-                  "value": "No~/sprint-7/section-1/registered-for-the-first-time",
-                  "text": "No, continue without",
-                  "checked": checked("know-nhs-number", "No")
-                }
-              ]
-            }) }}
-
-
-            {% endcall %}
-
-
-            {% endif %}
 
 
             <details class="nhsuk-details">

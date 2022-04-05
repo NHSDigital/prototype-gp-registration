@@ -38,11 +38,19 @@
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
             
-        {% if (data['who-is-being-registered'] == "dependant") %}
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Does {{ data ['name-first-name'] }} have a current UK address?</H2>
+
+            {% else %}
+
+            <H2>Do you have a current UK address?</H2>
+
+            {% endif %}
 
         {% call fieldset({
           legend: {
-            text: "Do they have a current UK address?",
+            text: "",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
@@ -71,40 +79,7 @@
 
         {% endcall %}
 
-        {% else %}
-
-        {% call fieldset({
-          legend: {
-            text: "Do you have a current UK address?",
-            classes: "nhsuk-fieldset__legend--l",
-            isPageHeading: true
-          }
-        }) %}
-
-        <div class="nhsuk-hint" id="contact-hint">
-          <p>This includes if you are living at a temporary address.</p>
-        </div>
-
-        {{ radios({
-          "idPrefix": "have-current-uk-address",
-          "name": "have-current-uk-address",
-          "items": [
-            {
-              "value": "Yes~/sprint-7/section-2/what-is-your-current-address",
-              "text": "Yes",
-              checked: checked("have-current-uk-address", "Yes")
-            },
-            {
-              "value": "No~/sprint-7/section-2/how-can-we-contact-you",
-              "text": "No",
-              checked: checked("have-current-uk-address", "No")
-            }
-          ]
-        }) }}
-
-        {% endcall %}
-
-        {% endif %}
+       
 
             {{ button({
               "text": "Continue"

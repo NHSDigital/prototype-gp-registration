@@ -39,13 +39,23 @@ GP Registration Prototypes
               "text": "Step 2 of 3 - Personal Details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
+            
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>How would {{ data ['name-first-name'] }} like to be contacted?</H2>
+
+            {% else %}
+
+            <H2>How would you like to be contacted?</H2>
+
+            {% endif %}
 
               {{ checkboxes({
                 "idPrefix": "contact",
                 "name": "contact",
                 "fieldset": {
                   "legend": {
-                    "text": "How would you like to be contacted?",
+                    "text": "",
                     "classes": "nhsuk-fieldset__legend--l",
                     isPageHeading: true
                   }
