@@ -153,8 +153,11 @@
 
               {% elif data['who-is-being-registered'] == "dependant" %}
 
+              <h3>Your details</h3>
 
               <dl class="nhsuk-summary-list">
+
+                <!-- Relation info -->
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
@@ -179,9 +182,8 @@
                 <dd class="nhsuk-summary-list__actions">
                   <a href="">Change<span class="nhsuk-u-visually-hidden"> carer type</span></a>
                 </dd>
-              </div>
-              {% endif %}
-
+                </div>
+                {% endif %}
 
 
                 <div class="nhsuk-summary-list__row">
@@ -231,6 +233,187 @@
                      <a href="">Change<span class="nhsuk-u-visually-hidden">contact</span></a>
                    </dd>
                  </div>
+
+                 </dl>
+
+                 <!-- Patient info -->
+
+                  <h3>Patient details</h3>
+
+                  <dl class="nhsuk-summary-list">
+
+                 <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Patient title
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['name-title'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">Change<span class="nhsuk-u-visually-hidden">First name</span></a>
+                    </dd>
+                  </div>
+
+                 <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Patient name
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['name-first-name'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">Change<span class="nhsuk-u-visually-hidden">First name</span></a>
+                    </dd>
+                  </div>
+
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Patient middle name
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['name-middle-name'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">Change<span class="nhsuk-u-visually-hidden">middle name</span></a>
+                    </dd>
+                  </div>
+
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Patient last name
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['name-last-name'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">Change<span class="nhsuk-u-visually-hidden">relationship</span></a>
+                    </dd>
+                  </div>
+
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Patients date of birth
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      <span id="dob-day">{{ data['dob-day'] }}</span>
+                      <span id="dob-month">{{ data['dob-month'] }}</span>
+                      <span id="dob-year">{{ data['dob-year'] }}</span>
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">Change<span class="nhsuk-u-visually-hidden">date of birth</span></a>
+                    </dd>
+                  </div>
+
+                  <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Do you know their NHS Number?
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {% if (data['know-nhs-number'] == "No") %}
+                    No
+                    {% else %}
+                    Yes
+                    {% endif %}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                  </dd>
+                </div>
+
+
+                  {% if (data['know-nhs-number'] == "Yes") %}
+                  <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    What is their NHS number?
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['nhs-number'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                  </dd>
+                </div>
+                {% endif %}
+
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Are they registering with a UK GP for the first time?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if (data['registering-first-time'] == "No") %}
+                  No
+                  {% else %}
+                  Yes
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+
+              {% if (data['registering-first-time'] == "No") %}
+              <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Postcode previous GP has
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['gp-postcode-prev'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+              </dd>
+            </div>
+            {% endif %}
+
+
+            {% if (data['under-12-months'] == "under-12-months") %}
+            <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Where were they born?
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['child-born'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+            </dd>
+          </div>
+          
+
+          <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Postcode for the address where you were living when your baby was born
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['do-you-know-previous-postcode'] }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+          </dd>
+        </div>
+
+
+        {% if (data['do-you-know-previous-postcode'] == "Yes") %}
+        <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Address where you were living when your baby was born
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['mother-postcode'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+        </dd>
+      </div>
+      {% endif %}
+
+
+
+      {% endif %}
+
+
+
+
 
                 </dl>
 
@@ -304,7 +487,6 @@
                   <dd class="nhsuk-summary-list__actions">
                     <a href="">Change<span class="nhsuk-u-visually-hidden">date of birth</span></a>
                   </dd>
-
                 </div>
 
 
@@ -340,47 +522,7 @@
                 </div>
                 {% endif %}
 
-                {% if (data['under-12-months'] == "under-12-months") %}
-                <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Where were they born?
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['child-born'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
-                </dd>
-              </div>
 
-              <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Postcode for the address where you were living when your baby was born
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ data['do-you-know-previous-postcode'] }}
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
-              </dd>
-            </div>
-
-
-            {% if (data['do-you-know-previous-postcode'] == "Yes") %}
-            <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Address where you were living when your baby was born
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {{ data['mother-postcode'] }}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
-            </dd>
-          </div>
-          {% endif %}
-
-          {% endif %}
 
 
 
@@ -390,7 +532,7 @@
 
 
             {% if (data['who-is-being-registered'] == "dependant") %}
-            <p>We use this information to match them details to our database. We cannot access their medical record and no medical information will be shared at this stage.</p>
+            <p>We use this information to match their details to our database. We cannot access their medical record and no medical information will be shared at this stage.</p>
             <p>By submitting these details you they confirming that, to the best of their knowledge, they are correct.</p>
             {% else %}
             <p>We use this information to match your details to our database. We cannot access your medical record and no medical information will be shared at this stage.</p>
