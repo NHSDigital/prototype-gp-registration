@@ -52,7 +52,6 @@
 
             <dl class="nhsuk-summary-list">
 
-
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                   NHS Number
@@ -152,11 +151,94 @@
             </dl>
 
 
+              {% elif data['who-is-being-registered'] == "dependant" %}
+
+
+              <dl class="nhsuk-summary-list">
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Relation to the dependant
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['relation'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden">relation</span></a>
+                  </dd>
+                </div>
+
+                {% if (data['relation'] == "Carer") %}
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  What type of carer are you?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['type-carer'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> carer type</span></a>
+                </dd>
+              </div>
+              {% endif %}
+
+
+
+                <div class="nhsuk-summary-list__row">
+                   <dt class="nhsuk-summary-list__key">
+                     First name
+                   </dt>
+                   <dd class="nhsuk-summary-list__value">
+                     {{ data['carer-first-name'] }}
+                   </dd>
+                   <dd class="nhsuk-summary-list__actions">
+                     <a href="">Change<span class="nhsuk-u-visually-hidden">First name</span></a>
+                   </dd>
+                 </div>
+
+                 <div class="nhsuk-summary-list__row">
+                   <dt class="nhsuk-summary-list__key">
+                     Last name
+                   </dt>
+                   <dd class="nhsuk-summary-list__value">
+                     {{ data['carer-last-name'] }}
+                   </dd>
+                   <dd class="nhsuk-summary-list__actions">
+                     <a href="">Change<span class="nhsuk-u-visually-hidden">middle name</span></a>
+                   </dd>
+                 </div>
+
+                 <div class="nhsuk-summary-list__row">
+                   <dt class="nhsuk-summary-list__key">
+                     Relationship to patient
+                   </dt>
+                   <dd class="nhsuk-summary-list__value">
+                     {{ data['carer-relationship'] }}
+                   </dd>
+                   <dd class="nhsuk-summary-list__actions">
+                     <a href="">Change<span class="nhsuk-u-visually-hidden">relationship</span></a>
+                   </dd>
+                 </div>
+
+                 <div class="nhsuk-summary-list__row">
+                   <dt class="nhsuk-summary-list__key">
+                     Contact telephone number
+                   </dt>
+                   <dd class="nhsuk-summary-list__value">
+                     {{ data['carer-telephone'] }}
+                   </dd>
+                   <dd class="nhsuk-summary-list__actions">
+                     <a href="">Change<span class="nhsuk-u-visually-hidden">contact</span></a>
+                   </dd>
+                 </div>
+
+                </dl>
+
+
 
               {% else %}
 
               <dl class="nhsuk-summary-list">
-
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
@@ -298,7 +380,7 @@
           </div>
           {% endif %}
 
-            {% endif %}
+          {% endif %}
 
 
 
