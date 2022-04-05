@@ -37,10 +37,10 @@
               "text": "Step 2 of 3 - Personal Details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
+
         {% if (data['who-is-being-registered'] == "dependant") %}
 
-     {{ checkboxes({
+              {{ checkboxes({
                 "idPrefix": "schooling",
                 "name": "schooling",
                 "fieldset": {
@@ -59,6 +59,7 @@
                   { value: "school", text: "School", checked: checked("schooling", "school")},
                   { value: "nursery", text: "Nursery", checked: checked("schooling", "nursery")},
                   { value: "Home Schooled", text: "home-school", checked: checked("schooling", "home-school")},
+                  { divider: "or" },
                   { value: "none", text: "None of the above", checked: checked("schooling", "none")}
               ]
               }) }}
@@ -85,12 +86,13 @@
                   { value: "school", text: "School", checked: checked("schooling", "school")},
                   { value: "nursery", text: "Nursery", checked: checked("schooling", "nursery")},
                   { value: "homeschool", text: "Home school", checked: checked("schooling", "homeschool")},
+                  { divider: "or" },
                   { value: "none", text: "None of the above", checked: checked("schooling", "none")}
               ]
               }) }}
 
-           
-        
+
+
 
         {% endif %}
 

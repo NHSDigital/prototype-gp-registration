@@ -37,7 +37,7 @@
               "text": "Step 2 of 3 - Personal Details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
+
             {% if (data['who-is-being-registered'] == "dependant") %}
 
             <H2>Are any of the following people involved in {{ data ['name-first-name'] }}'s care?</H2>
@@ -49,8 +49,8 @@
             {% endif %}
 
      {{ checkboxes({
-                "idPrefix": "schooling",
-                "name": "schooling",
+                "idPrefix": "health-contact",
+                "name": "health-contact",
                 "fieldset": {
                   "legend": {
                     "text": "",
@@ -64,15 +64,15 @@
                 },
 
                 items: [
-                  { value: "hospital-specialist", text: "A hospital specialist", checked: checked("health-contact", "hospital-specialist")},
-                  { value: "health-worker", text: "A health worker", checked: checked("health-contact", "health-worker")},
-                  { value: "social-worker", text: "A social worker", checked: checked("health-contact", "social-worker")},
-                  { value: "other", text: "Any other health profession", checked: checked("health-contact", "other")}
+                  { value: "Hospital specialist", text: "A hospital specialist", checked: checked("health-contact", "hospital-specialist")},
+                  { value: "Health worker", text: "A health worker", checked: checked("health-contact", "health-worker")},
+                  { value: "Social worker", text: "A social worker", checked: checked("health-contact", "social-worker")},
+                  { value: "Other", text: "Any other health profession", checked: checked("health-contact", "other")}
 
               ]
               }) }}
 
-        
+
 
             {{ button({
               "text": "Continue"

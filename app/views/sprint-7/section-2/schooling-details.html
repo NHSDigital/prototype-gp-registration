@@ -40,9 +40,9 @@ GP Registration Prototypes
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-  
+
             {% if (data['schooling'] == "school") %}
-  
+
             <fieldset class="nhsuk-fieldset">
               <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
                 <h1 class="nhsuk-fieldset__heading">
@@ -53,14 +53,14 @@ GP Registration Prototypes
 
               <h3>School details:</h3>
               <div class="nhsuk-form-group contact-home-section">
-                <label class="nhsuk-label" for="contact-prefs-1">
+                <label class="nhsuk-label" for="school-name">
                   School name
                 </label>
                 <input class="nhsuk-input nhsuk-input--width-20" id="school-name" name="school-name" type="text">
               </div>
 
               <div class="nhsuk-form-group contact-home-section">
-                <label class="nhsuk-label" for="contact-prefs-1">
+                <label class="nhsuk-label" for="contact-school">
                   Contact telephone number
                 </label>
                 <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
@@ -78,14 +78,14 @@ GP Registration Prototypes
 
               <h3>School details:</h3>
                 <div class="nhsuk-form-group contact-home-section">
-                  <label class="nhsuk-label" for="contact-prefs-1">
+                  <label class="nhsuk-label" for="school-name">
                     School name
                   </label>
                   <input class="nhsuk-input nhsuk-input--width-20" id="school-name" name="school-name" type="text">
                 </div>
-  
+
                 <div class="nhsuk-form-group contact-home-section">
-                  <label class="nhsuk-label" for="contact-prefs-1">
+                  <label class="nhsuk-label" for="contact-school">
                     Contact telephone number
                   </label>
                   <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
@@ -93,66 +93,66 @@ GP Registration Prototypes
 
                 <h3>Nursery details:</h3>
                   <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-prefs-1">
+                    <label class="nhsuk-label" for="nursery-name">
                       Nursery name
                     </label>
-                    <input class="nhsuk-input nhsuk-input--width-20" id="school-name" name="school-name" type="text">
+                    <input class="nhsuk-input nhsuk-input--width-20" id="nursery-name" name="nursery-name" type="text">
                   </div>
-    
+
                   <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-prefs-1">
+                    <label class="nhsuk-label" for="contact-nursery">
                       Contact telephone number
                     </label>
-                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
+                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-nursery" name="contact-nursery" type="text">
                   </div>
 
                   {% elif (data['schooling'] == "school,nursery,homeschool") %}
 
-              <fieldset class="nhsuk-fieldset">
-                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                  <h1 class="nhsuk-fieldset__heading">
-                    What are the contact details?
-                  </h1>
-                </legend>
-                <br>
+                  <fieldset class="nhsuk-fieldset">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                      <h1 class="nhsuk-fieldset__heading">
+                        What are the contact details?
+                      </h1>
+                    </legend>
+                    <br>
 
-              <h3>School details:</h3>
-                <div class="nhsuk-form-group contact-home-section">
-                  <label class="nhsuk-label" for="contact-prefs-1">
-                    School name
-                  </label>
-                  <input class="nhsuk-input nhsuk-input--width-20" id="school-name" name="school-name" type="text">
-                </div>
-  
-                <div class="nhsuk-form-group contact-home-section">
-                  <label class="nhsuk-label" for="contact-prefs-1">
-                    Contact telephone number
-                  </label>
-                  <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
-                </div>
+                  <h3>School details:</h3>
+                    <div class="nhsuk-form-group contact-home-section">
+                      <label class="nhsuk-label" for="school-name">
+                        School name
+                      </label>
+                      <input class="nhsuk-input nhsuk-input--width-20" id="school-name" name="school-name" type="text">
+                    </div>
 
-                <h3>Nursery details:</h3>
-                  <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-prefs-1">
-                      Nursery name
-                    </label>
-                    <input class="nhsuk-input nhsuk-input--width-20" id="school-name" name="school-name" type="text">
-                  </div>
-    
-                  <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-prefs-1">
-                      Contact telephone number
-                    </label>
-                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
-                  </div>
+                    <div class="nhsuk-form-group contact-home-section">
+                      <label class="nhsuk-label" for="contact-school">
+                        Contact telephone number
+                      </label>
+                      <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
+                    </div>
+
+                  <h3>Nursery details:</h3>
+                    <div class="nhsuk-form-group contact-home-section">
+                      <label class="nhsuk-label" for="nursery-name">
+                        Nursery name
+                      </label>
+                      <input class="nhsuk-input nhsuk-input--width-20" id="nursery-name" name="nursery-name" type="text">
+                    </div>
+
+                    <div class="nhsuk-form-group contact-home-section">
+                      <label class="nhsuk-label" for="contact-nursery">
+                        Contact telephone number
+                      </label>
+                      <input class="nhsuk-input nhsuk-input--width-20" id="contact-nursery" name="contact-nursery" type="text">
+                    </div>
 
                   <h3>Home school details:</h3>
 
                   <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-prefs-1">
+                    <label class="nhsuk-label" for="contact-home-school">
                       Contact telephone number
                     </label>
-                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
+                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-home-school" name="contact-home-school" type="text">
                   </div>
 
                   {% elif (data['schooling'] == "nursery,homeschool") %}
@@ -167,26 +167,27 @@ GP Registration Prototypes
 
                 <h3>Nursery details:</h3>
                   <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-prefs-1">
+                    <label class="nhsuk-label" for="nursery-name">
                       Nursery name
                     </label>
-                    <input class="nhsuk-input nhsuk-input--width-20" id="school-name" name="school-name" type="text">
-                  </div>
-    
-                  <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-prefs-1">
-                      Contact telephone number
-                    </label>
-                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
+                    <input class="nhsuk-input nhsuk-input--width-20" id="nursery-name" name="nursery-name" type="text">
                   </div>
 
-                  <h3>Home School details:</h3>
-
                   <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-prefs-1">
+                    <label class="nhsuk-label" for="contact-nursery">
                       Contact telephone number
                     </label>
-                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
+                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-nursery" name="contact-nursery" type="text">
+                  </div>
+
+
+                  <h3>Home school details:</h3>
+
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-home-school">
+                      Contact telephone number
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-home-school" name="contact-home-school" type="text">
                   </div>
 
                   {% elif (data['schooling'] == "homeschool") %}
@@ -199,13 +200,13 @@ GP Registration Prototypes
                 </legend>
                 <br>
 
-              <h3>Home School details:</h3>
+                <h3>Home school details:</h3>
 
                 <div class="nhsuk-form-group contact-home-section">
-                  <label class="nhsuk-label" for="contact-prefs-1">
+                  <label class="nhsuk-label" for="contact-home-school">
                     Contact telephone number
                   </label>
-                  <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
+                  <input class="nhsuk-input nhsuk-input--width-20" id="contact-home-school" name="contact-home-school" type="text">
                 </div>
 
                 {% elif (data['schooling'] == "nursery") %}
@@ -218,22 +219,20 @@ GP Registration Prototypes
                 </legend>
                 <br>
 
+              <h3>Nursery details:</h3>
+                <div class="nhsuk-form-group contact-home-section">
+                  <label class="nhsuk-label" for="nursery-name">
+                    Nursery name
+                  </label>
+                  <input class="nhsuk-input nhsuk-input--width-20" id="nursery-name" name="nursery-name" type="text">
+                </div>
 
-                <h3>Nursery details:</h3>
-                  <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-prefs-1">
-                      Nursery name
-                    </label>
-                    <input class="nhsuk-input nhsuk-input--width-20" id="school-name" name="school-name" type="text">
-                  </div>
-    
-                  <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-prefs-1">
-                      Contact telephone number
-                    </label>
-                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
-                  </div>
-
+                <div class="nhsuk-form-group contact-home-section">
+                  <label class="nhsuk-label" for="contact-nursery">
+                    Contact telephone number
+                  </label>
+                  <input class="nhsuk-input nhsuk-input--width-20" id="contact-nursery" name="contact-nursery" type="text">
+                </div>
 
                   {% elif (data['schooling'] == "school,homeschool") %}
 
@@ -247,26 +246,26 @@ GP Registration Prototypes
 
                 <h3>School details:</h3>
                   <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-prefs-1">
+                    <label class="nhsuk-label" for="school-name">
                       School name
                     </label>
                     <input class="nhsuk-input nhsuk-input--width-20" id="school-name" name="school-name" type="text">
                   </div>
-    
+
                   <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-prefs-1">
+                    <label class="nhsuk-label" for="contact-school">
                       Contact telephone number
                     </label>
                     <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
                   </div>
 
-                  <h3>Home School details:</h3>
+                  <h3>Home school details:</h3>
 
                   <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-prefs-1">
+                    <label class="nhsuk-label" for="contact-home-school">
                       Contact telephone number
                     </label>
-                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
+                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-home-school" name="contact-home-school" type="text">
                   </div>
 
 
