@@ -40,14 +40,30 @@ GP Registration Prototypes
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-fieldset__heading">
+                  What are {{ data ['name-first-name'] }}'s contact details?
+                </h1>
+              </legend>
+
+            {% else %}
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-fieldset__heading">
+                  What are your contact details?
+                </h1>
+              </legend>
+           
+
+            {% endif %}
+
           {% if (data['contact'] == "home") %}
 
-          <fieldset class="nhsuk-fieldset">
-            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-              <h1 class="nhsuk-fieldset__heading">
-                What are your contact details?
-              </h1>
-            </legend>
+          
 
             <div class="nhsuk-form-group contact-home-section">
               <label class="nhsuk-label" for="contact-prefs-1">
@@ -58,12 +74,7 @@ GP Registration Prototypes
 
             {% elif (data['contact'] == "home,post") %}
 
-            <fieldset class="nhsuk-fieldset">
-              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                <h1 class="nhsuk-fieldset__heading">
-                  What are your contact details?
-                </h1>
-              </legend>
+      
 
               <div class="nhsuk-form-group contact-home-section">
                 <label class="nhsuk-label" for="contact-prefs-1">
@@ -74,12 +85,7 @@ GP Registration Prototypes
 
             {% elif (data['contact'] == "phone") %}
 
-            <fieldset class="nhsuk-fieldset">
-              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                <h1 class="nhsuk-fieldset__heading">
-                  What are your contact details?
-                </h1>
-              </legend>
+     
 
             <div class="nhsuk-form-group contact-home-section">
               <label class="nhsuk-label" for="contact-prefs-2">
@@ -90,12 +96,7 @@ GP Registration Prototypes
 
             {% elif (data['contact'] == "phone,post") %}
 
-            <fieldset class="nhsuk-fieldset">
-              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                <h1 class="nhsuk-fieldset__heading">
-                  What are your contact details?
-                </h1>
-              </legend>
+            
 
             <div class="nhsuk-form-group contact-home-section">
               <label class="nhsuk-label" for="contact-prefs-2">
@@ -106,12 +107,7 @@ GP Registration Prototypes
 
             {% elif (data['contact'] == "email") %}
 
-            <fieldset class="nhsuk-fieldset">
-              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                <h1 class="nhsuk-fieldset__heading">
-                  What are your contact details?
-                </h1>
-              </legend>
+    
 
             <div class="nhsuk-form-group contact-home-section">
               <label class="nhsuk-label" for="contact-prefs-2">
@@ -122,12 +118,7 @@ GP Registration Prototypes
 
             {% elif (data['contact'] == "email,post") %}
 
-            <fieldset class="nhsuk-fieldset">
-              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                <h1 class="nhsuk-fieldset__heading">
-                  What are your contact details?
-                </h1>
-              </legend>
+     
 
             <div class="nhsuk-form-group contact-home-section">
               <label class="nhsuk-label" for="contact-prefs-2">
@@ -139,12 +130,7 @@ GP Registration Prototypes
 
             {% elif (data['contact'] == "home,phone")  %}
 
-            <fieldset class="nhsuk-fieldset">
-              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                <h1 class="nhsuk-fieldset__heading">
-                  What are your contact details?
-                </h1>
-              </legend>
+        
 
               <div class="nhsuk-form-group contact-home-section">
                 <label class="nhsuk-label" for="contact-prefs-1">
@@ -162,12 +148,7 @@ GP Registration Prototypes
 
               {% elif (data['contact'] == "home,phone,post")  %}
 
-              <fieldset class="nhsuk-fieldset">
-                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                  <h1 class="nhsuk-fieldset__heading">
-                    What are your contact details?
-                  </h1>
-                </legend>
+        
 
                 <div class="nhsuk-form-group contact-home-section">
                   <label class="nhsuk-label" for="contact-prefs-1">
@@ -186,12 +167,6 @@ GP Registration Prototypes
 
               {% elif (data['contact'] == "home,email")  %}
 
-              <fieldset class="nhsuk-fieldset">
-                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                  <h1 class="nhsuk-fieldset__heading">
-                    What are your contact details?
-                  </h1>
-                </legend>
 
                 <div class="nhsuk-form-group contact-home-section">
                   <label class="nhsuk-label" for="contact-prefs-1">
@@ -209,12 +184,7 @@ GP Registration Prototypes
 
                 {% elif (data['contact'] == "home,email,post")  %}
 
-                <fieldset class="nhsuk-fieldset">
-                  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                    <h1 class="nhsuk-fieldset__heading">
-                      What are your contact details?
-                    </h1>
-                  </legend>
+             
 
                   <div class="nhsuk-form-group contact-home-section">
                     <label class="nhsuk-label" for="contact-prefs-1">
@@ -233,12 +203,7 @@ GP Registration Prototypes
 
                 {% elif (data['contact'] == "phone,email")  %}
 
-                <fieldset class="nhsuk-fieldset">
-                  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                    <h1 class="nhsuk-fieldset__heading">
-                      What are your contact details?
-                    </h1>
-                  </legend>
+               
 
                   <div class="nhsuk-form-group contact-home-section">
                     <label class="nhsuk-label" for="contact-prefs-2">
@@ -257,12 +222,7 @@ GP Registration Prototypes
 
                   {% elif (data['contact'] == "phone,email,post")  %}
 
-                  <fieldset class="nhsuk-fieldset">
-                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                      <h1 class="nhsuk-fieldset__heading">
-                        What are your contact details?
-                      </h1>
-                    </legend>
+                
 
                     <div class="nhsuk-form-group contact-home-section">
                       <label class="nhsuk-label" for="contact-prefs-2">
@@ -281,12 +241,7 @@ GP Registration Prototypes
 
               {% elif (data['contact'] == "home,phone,email")  %}
 
-              <fieldset class="nhsuk-fieldset">
-                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                  <h1 class="nhsuk-fieldset__heading">
-                    What are your contact details?
-                  </h1>
-                </legend>
+             
 
                 <div class="nhsuk-form-group contact-home-section">
                   <label class="nhsuk-label" for="contact-prefs-1">
@@ -313,12 +268,7 @@ GP Registration Prototypes
 
                   {% elif (data['contact'] == "home,phone,email,post")  %}
 
-                  <fieldset class="nhsuk-fieldset">
-                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                      <h1 class="nhsuk-fieldset__heading">
-                        What are your contact details?
-                      </h1>
-                    </legend>
+                  
 
                     <div class="nhsuk-form-group contact-home-section">
                       <label class="nhsuk-label" for="contact-prefs-1">

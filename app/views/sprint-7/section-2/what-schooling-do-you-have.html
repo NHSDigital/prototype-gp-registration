@@ -38,21 +38,29 @@
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
             
-        {% if (data['who-is-being-registered'] == "dependant") %}
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Does {{ data ['name-first-name'] }} attend any of the following?</H2>
+
+            {% else %}
+
+            <H2>Do you attend any of the following?</H2>
+
+            {% endif %}
 
      {{ checkboxes({
                 "idPrefix": "schooling",
                 "name": "schooling",
                 "fieldset": {
                   "legend": {
-                    "text": "Do they attend any of the following?",
+                    "text": "",
                     "classes": "nhsuk-fieldset__legend--l",
                     isPageHeading: true
                   }
                 },
 
                 "hint": {
-                  "html": "<p>Infomation on why the GP is collecting this information.</p>"
+                  "html": "<p>We ask this so the GP can make sure the patient is getting their correct vaccinations.</p>"
                 },
 
                 items: [
@@ -63,36 +71,7 @@
               ]
               }) }}
 
-        {% else %}
-
-
-         {{ checkboxes({
-                "idPrefix": "schooling",
-                "name": "schooling",
-                "fieldset": {
-                  "legend": {
-                    "text": "Do you attend any of the following?",
-                    "classes": "nhsuk-fieldset__legend--l",
-                    isPageHeading: true
-                  }
-                },
-
-                "hint": {
-                  "html": "<p>Infomation on why the GP is collecting this information.</p>"
-                },
-
-                items: [
-                  { value: "school", text: "School", checked: checked("schooling", "school")},
-                  { value: "nursery", text: "Nursery", checked: checked("schooling", "nursery")},
-                  { value: "homeschool", text: "Home school", checked: checked("schooling", "homeschool")},
-                  { value: "none", text: "None of the above", checked: checked("schooling", "none")}
-              ]
-              }) }}
-
-           
         
-
-        {% endif %}
 
             {{ button({
               "text": "Continue"
