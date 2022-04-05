@@ -332,6 +332,7 @@ router.post('*/check-age', function (req, res) {
   // Make 
   var dob = req.session.data['dob-year']+ '-'+ req.session.data['dob-month']+ '-'+ req.session.data['dob-day']
   var youngEnough = req.session.data['dob-year']
+  var emergencyContact = req.session.data['yes']
   var years = moment().diff(dob, 'years');
   console.log(`number of years ${years}`)
 console.log('looking up age')
