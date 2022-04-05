@@ -310,6 +310,10 @@ router.post("*/check-schooling", function(req, res) {
   var schooling = req.session.data["schooling"];
   console.log('check-schooling')
   // Check whether the variable matches a condition
+  if (schooling == "none"){
+    // Send user to next page
+    res.redirect("professional-involvement");
+  }
   if (
     schooling == "school" ||
     schooling == "nursery" ||
@@ -321,18 +325,37 @@ router.post("*/check-schooling", function(req, res) {
   ) {
     // Send user to add details page
     res.redirect("schooling-details");
-  } else {
-    // Send user to next page
-    res.redirect("professional-involvement");
-  }
+  } 
 })
 //console.log('looking up age!')
 router.post('*/check-age', function (req, res) {
 
   // Make 
+  var emergencyContact = req.session.data['emergency-contact']
+  if (emergencyContact == 'Yes'){ 
+    res.redirect('../section-2/emergency-contact-details')
+  }
   var dob = req.session.data['dob-year']+ '-'+ req.session.data['dob-month']+ '-'+ req.session.data['dob-day']
-  var youngEnough = req.session.data['dob-year']
-  var emergencyContact = req.session.data['yes']
+  var years = moment().diff(dob, 'years');
+  console.log(`number of years ${years}`)
+console.log('looking up age')
+  // Check whether the variable matches a condition
+  if (years <= 18) {
+    // Send user to immunisation page
+    res.redirect('../section-3/are-you-immunised')
+  } else {
+    // Send user to next page 
+    res.redirect('../section-3/do-you-have-existing-conditions')
+  }
+
+});
+
+//console.log('looking up age!')
+router.post('*/check-age-2', function (req, res) {
+
+  // Make 
+  var dob = req.session.data['dob-year']+ '-'+ req.session.data['dob-month']+ '-'+ req.session.data['dob-day']
+  var emergencyContact = req.session.data['emergency-contact']
   var years = moment().diff(dob, 'years');
   console.log(`number of years ${years}`)
 console.log('looking up age')
