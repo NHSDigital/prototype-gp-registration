@@ -34,15 +34,23 @@
 
           <form action="carer-details" method="post" autocomplete="off">
 
-           <!--{{ hint({
-              "text": "Step 1 of 3 - Matching you to your record",
+           {{ hint({
+              "text": "Step 3 of 3 - Health questions",
               "classes": "nhsuk-u-margin-bottom-2"
-            }) }}-->
+            }) }}
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
 
+            <H2>What type of carer do they have?</H2>
+
+            {% else %}
+
+            <H2>What type of carer are they?</H2>
+
+            {% endif %}
             {% call fieldset({
               legend: {
-                "text": "What type of carer are they?",
+                "text": "",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }

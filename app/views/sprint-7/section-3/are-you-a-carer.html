@@ -39,13 +39,22 @@
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Is {{ data ['name-first-name'] }} a carer?</H2>
+
+            {% else %}
+
+            <H2>Are you a carer?</H2>
+
+            {% endif %}
 
             {{ radios({
               "idPrefix": "are-carer",
               "name": "are-carer",
               "fieldset": {
                 "legend": {
-                  "text": "Are you a carer?",
+                  "text": "",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }

@@ -40,9 +40,20 @@
             }) }}
 
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>What are the details of their carer?</H2>
+
+            {% else %}
+
+            <H2>What are the details of your carer?</H2>
+
+            {% endif %}
+
+
             {% call fieldset({
               legend: {
-                "text": "What are the details of your carer?",
+                "text": "",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }

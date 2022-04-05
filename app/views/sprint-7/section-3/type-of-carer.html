@@ -39,6 +39,17 @@
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>What type of carer best describes them?</H2>
+
+            {% else %}
+
+            <H2>What type of carer best describes you?</H2>
+
+            {% endif %}
+
             {% set otherHtml %}
               {{ input({
                 id: "other",
@@ -56,7 +67,7 @@
               "name": "carer-type",
               "fieldset": {
                 "legend": {
-                  "text": "What type of carer best describes you?",
+                  "text": "",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
