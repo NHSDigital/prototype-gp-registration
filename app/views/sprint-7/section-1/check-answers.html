@@ -351,20 +351,37 @@
                 </dd>
               </div>
 
-              {% if (data['registering-first-time'] == "No") %}
               <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Postcode previous GP has
+                Do you know the postcode you last registered with a UK GP?
               </dt>
               <dd class="nhsuk-summary-list__value">
-                {{ data['gp-postcode-prev'] }}
+                {% if (data['do-you-know-previous-postcode'] == "No") %}
+                No
+                {% else %}
+                Yes
+                {% endif %}
               </dd>
               <dd class="nhsuk-summary-list__actions">
                 <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
               </dd>
             </div>
-            {% endif %}
 
+
+                {% if (data['do-you-know-previous-postcode'] == "Yes") %}
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Postcode previous GP has
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['gp-postcode-prev'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              {% endif %}
+            
 
             {% if (data['under-12-months'] == "under-12-months") %}
             <div class="nhsuk-summary-list__row">
@@ -378,7 +395,7 @@
               <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
             </dd>
           </div>
-          
+
 
           <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
@@ -507,8 +524,24 @@
                   </dd>
                 </div>
 
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Do you know the postcode you last registered with a UK GP?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if (data['do-you-know-previous-postcode'] == "No") %}
+                  No
+                  {% else %}
+                  Yes
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                </dd>
+              </div>
 
-                  {% if (data['registering-first-time'] == "No") %}
+
+                  {% if (data['do-you-know-previous-postcode'] == "Yes") %}
                   <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
                     Postcode previous GP has

@@ -51,17 +51,17 @@ GP Registration Prototypes
               "text": "Step 1 of 3 - Matching patient to their record",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
+
             {% call fieldset({
             legend: {
-              text: "Do they know the postcode their last registered with a UK GP?",
+              text: "Do they know the postcode they last registered with a UK GP?",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
           }) %}
 
           <div class="nhsuk-hint" id="contact-hint">
-            <p>This will be the postcode you used last time you registered with a GP surgery.
+            <p>This will be the postcode they used last time they registered with a GP surgery.
           </div>
 
 
@@ -89,12 +89,12 @@ GP Registration Prototypes
           }) }}
            {% endcall %}
             {% else %}
-          
+
           {{ hint({
               "text": "Step 1 of 3 - Matching you to your record",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-        
+
             {% call fieldset({
             legend: {
               text: "Do you know the postcode you last registered with a UK GP?",
