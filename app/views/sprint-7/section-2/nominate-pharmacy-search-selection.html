@@ -42,12 +42,19 @@
 
             <div class="nhsuk-form-group">
 
-              <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
-                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                  <h1 class="nhsuk-fieldset__heading">
-                    Pharmacies near {{ data['pharmacy-postcode'] }}
-                  </h1>
-                </legend>
+
+
+                <fieldset class="nhsuk-fieldset" aria-describedby="nominated-pharmacy">
+                  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                    <h1 class="nhsuk-fieldset__heading">
+                      Select a pharmacy
+                    </h1>
+                  </legend>
+
+
+                  <div class="nhsuk-hint" id="pharmacy-hint">
+                    <p>10 address found for<strong>{{ data['pharmacy-postcode'] }}</strong> <strong>{{ data['find-current-address'] }}</strong></p>
+                  </div>
 
 
 

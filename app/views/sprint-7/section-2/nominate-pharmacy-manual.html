@@ -50,7 +50,14 @@
                 }
               }) %}
 
-
+              {{ input({
+                label: {
+                  "text": "Pharmacy name"
+                },
+                "id": "pharmacy-name",
+                "name": "pharmacy-name",
+                value: data['pharmacy-name']
+              }) }}
 
               {{ input({
                 label: {

@@ -287,6 +287,7 @@
                 {{ data['practice'] }}
                 {% else %}
                 {{ data['practice'] }}
+                {{ data['pharmacy-name'] }}<br />
                 {{ data['pharmacy-address-line-1'] }}<br />
                 {{ data['pharmacy-address-line-2'] }}<br />
                 {{ data['pharmacy-address-town'] }}<br />
@@ -387,7 +388,7 @@
 
 
 
-          {% if ((data['user-auth'] == "nomatch") and (data['current-gp'] == "No"))  %}
+          {% if ((data['user-auth'] == "nomatch") and (data['registering-first-time'] == "Yes"))  %}
 
           <h3>Have you recently moved to the UK?</h3>
 
@@ -405,6 +406,22 @@
                 <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
               </dd>
             </div>
+
+            {% if data['recently-moved'] == "No" %}
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  What is your town of birth?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['town'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">
+                    Change<span class="nhsuk-u-visually-hidden"> country</span>
+                  </a>
+                </dd>
+              </div>
+              {% endif %}
 
 
             {% if data['recently-moved'] == "Yes" %}

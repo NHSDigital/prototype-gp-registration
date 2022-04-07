@@ -53,6 +53,10 @@ GP Registration Prototypes
 
           <H2>Has {{ data ['name-first-name'] }} recently moved to the UK from another country?</H2>
 
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>Anybody in England can register with a GP surgery and receive free medical care. To get free NHS healthcare in England you need to be "ordinarily resident" in the UK. This means you must be living in the UK on a lawful and properly settled basis for the time being. You may be asked for evidence of this.</p>
+          </div>
+
           {% call fieldset({
             legend: {
               text: "",
@@ -74,7 +78,7 @@ GP Registration Prototypes
                 checked: checked("recently-moved", "Yes")
               },
               {
-                "value": "No~/sprint-7/section-3/do-you-have-existing-conditions",
+                "value": "No~/sprint-7/section-2/no-match/what-is-place-of-birth",
                 "text": "No",
                 "hint": {
                   "text": ""
@@ -96,6 +100,10 @@ GP Registration Prototypes
             }
           }) %}
 
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>Anybody in England can register with a GP surgery and receive free medical care. To get free NHS healthcare in England you need to be "ordinarily resident" in the UK. This means you must be living in the UK on a lawful and properly settled basis for the time being. You may be asked for evidence of this.</p>
+          </div>
+
           {{ radios({
             "idPrefix": "recently-moved",
             "name": "recently-moved",
@@ -109,7 +117,7 @@ GP Registration Prototypes
                 checked: checked("recently-moved", "Yes")
               },
               {
-                "value": "No~/sprint-7/section-3/do-you-have-existing-conditions",
+                "value": "No~/sprint-7/section-2/no-match/what-is-place-of-birth",
                 "text": "No",
                 "hint": {
                   "text": ""
@@ -123,10 +131,10 @@ GP Registration Prototypes
 
           {% endif %}
 
-          {{ details({
+          <!-- {{ details({
             "text": "Why are you asking this?",
             "HTML": "<p>Anybody in England can register with a GP surgery and receive free medical care. To get free NHS healthcare in England you need to be 'ordinarily resident' in the UK. This means you must be living in the UK on a lawful and properly settled basis for the time being. You may be asked for evidence of this.</p>"
-          }) }}
+          }) }} -->
 
 
           {{ button({

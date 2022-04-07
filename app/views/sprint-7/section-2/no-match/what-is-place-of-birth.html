@@ -33,7 +33,7 @@
           }) }}
 
 
-          <form action="recently-moved-date" method="post" autocomplete="off">
+          <form action="/sprint-7/section-3/do-you-have-existing-conditions" method="post" autocomplete="off">
 
             {{ hint({
               "text": "Step 2 of 3 - Personal Details",
@@ -45,7 +45,7 @@
 
               {% call fieldset({
                 legend: {
-                  "text": "What is their country of birth?",
+                  "text": "What is their place of birth?",
                   "classes": "nhsuk-fieldset__legend--l"
                 }
               }) %}
@@ -54,10 +54,13 @@
                   label: {
                     "text": ""
                   },
+                  "hint": {
+                    "text": "This can be the town, city or other location you were born in."
+                  },
                   "classes": "nhsuk-u-width-two-thirds",
-                  "id": "moved-address-country",
-                  "name": "moved-address-country",
-                  value: data['moved-address-country']
+                  "id": "town",
+                  "name": "town",
+                  value: data['town']
               }) }}
 
               {% endcall %}
@@ -66,19 +69,22 @@
 
               {% call fieldset({
                 legend: {
-                  "text": "What is your country of birth?",
+                  "text": "What is your place of birth?",
                   "classes": "nhsuk-fieldset__legend--l"
                 }
               }) %}
 
               {{ input({
                   label: {
-                    "text": "Country"
+                    "text": ""
+                  },
+                  "hint": {
+                    "text": "This can be the town, city or other location you were born in."
                   },
                   "classes": "nhsuk-u-width-two-thirds",
-                  "id": "moved-address-country",
-                  "name": "moved-address-country",
-                  value: data['moved-address-country']
+                  "id": "town",
+                  "name": "town",
+                  value: data['town']
               }) }}
 
               {% endcall %}
