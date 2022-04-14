@@ -1,0 +1,150 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form id="youngEnough" action="check-age-2" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Step 2 of 3 - Personal Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Do they have an emergency contact</H2>
+
+            {% else %}
+
+            <H2>Do you have an emergency contact?</H2>
+
+            {% endif %}
+
+            {% call fieldset({
+              legend: {
+                "text": "",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+
+            {{ input({
+                label: {
+                  "text": "First name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-first-name",
+                "name": "ec-first-name",
+                value: data['ec-first-name']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Last name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-last-name",
+                "name": "ec-last-name",
+                value: data['ec-last-name']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "Relationship to them"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-relationship",
+                "name": "ec-relationship",
+                value: data['ec-relationship']
+              }) }}
+
+              {{ input({
+                "label": {
+                  "text": "Contact telephone number"
+                },
+                  "hint": {
+                  "text": "For international number include the country code"
+                },
+                "classes": "nhsuk-input--width-10",
+                "id": "ec-contact-tel",
+                "name": "ec-contact-tel",
+                value: data['ec-contact-tel']
+              }) }}
+
+              {{ input({
+                "label": {
+                  "text": "Alternate telephone number (Optional)"
+                },
+                  "hint": {
+                  "text": "For international number include the country code"
+                },
+                "classes": "nhsuk-input--width-10",
+                "id": "ec-contact-tel-alt",
+                "name": "ec-contact-tel-alt",
+                value: data['ec-contact-tel-alt']
+              }) }}
+
+              {{ textarea({
+                "name": "contact-time",
+                "id": "contact-time",
+                "label": {
+                  "text": "Best time to contact (Optional)"
+                }
+              }) }}
+
+            {% endcall %}
+
+
+
+            {{ button({
+              "text": "Add another emergency contact",
+              "classes": "nhsuk-button--secondary",
+                  "href": ""
+            }) }}
+
+            <br>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}

@@ -51,19 +51,12 @@ GP Registration Prototypes
 
           {% if (data['who-is-being-registered'] == "dependant") %}
 
-          <H2>Has {{ data ['name-first-name'] }} recently moved to the UK from another country?</H2>
+          <H2>Has {{ data ['name-first-name'] }} paid their Immigration Health Surcharge?</H2>
 
           <div class="nhsuk-hint" id="contact-hint">
-            <p>Anybody in England can register with a GP surgery and receive free medical care. To get free NHS healthcare in England you need to be "ordinarily resident" in the UK. This means you must be living in the UK on a lawful and properly settled basis for the time being. You may be asked for evidence of this.</p>
+            <p>You may have paid an Immigration Health Surcharge online as part of your application for a visa. The amount you pay depends on your visa type and length of stay.</p>
 
-            <p>If you are not “ordinarily resident”, you may also be exempt from paying for most secondary NHS healthcare. For instance, if</p>
-              <ul class="nhsuk-list nhsuk-list--bullet">
-                <li>you have paid the Immigration Health Surcharge</li>
-                <li>you have a valid EHIC or S1 form</li>
-                <li>you are a refugee, asylum seeker or victim of modern slavery</li>
-              </ul>
-
-              <p>Some hospital care, such as treatment for infectious diseases or types of violence, is free for all.</p>
+            <p>You do not need to pay if you're visiting for a holiday or you have applied to stay in UK permanently.</p>
 
           </div>
 
@@ -77,8 +70,8 @@ GP Registration Prototypes
           }) %}
 
           {{ radios({
-            "idPrefix": "recently-moved",
-            "name": "recently-moved",
+            "idPrefix": "health-surcharge",
+            "name": "health-surcharge",
             "items": [
               {
                 "value": "Yes~/sprint-7/section-2/no-match/what-address-for-recently-moved",
@@ -86,7 +79,7 @@ GP Registration Prototypes
                 "hint": {
                   "text": ""
                 },
-                checked: checked("recently-moved", "Yes")
+                checked: checked("health-surcharge", "Yes")
               },
               {
                 "value": "No~/sprint-7/section-2/no-match/what-is-place-of-birth",
@@ -94,7 +87,15 @@ GP Registration Prototypes
                 "hint": {
                   "text": ""
                 },
-                checked: checked("recently-moved", "No")
+                checked: checked("health-surcharge", "No")
+              },
+              {
+                "divider": "or"
+              },
+              {
+                "value": "I don't know",
+                "text": "I don't know",
+                checked: checked("health-surcharge", "I don't know")
               }
             ]
           }) }}
@@ -105,30 +106,25 @@ GP Registration Prototypes
 
           {% call fieldset({
             legend: {
-              text: "Have you recently moved to the UK from another country?",
+              text: "Have you paid your Immigration Health Surcharge?",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
           }) %}
 
           <div class="nhsuk-hint" id="contact-hint">
-            <p>Anybody in England can register with a GP surgery and receive free medical care. To get free NHS healthcare in England you need to be "ordinarily resident" in the UK. This means you must be living in the UK on a lawful and properly settled basis for the time being. You may be asked for evidence of this.</p>
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>You may have paid an Immigration Health Surcharge online as part of your application for a visa. The amount you pay depends on your visa type and length of stay.</p>
 
-            <p>If you are not “ordinarily resident”, you may also be exempt from paying for most secondary NHS healthcare. For instance, if</p>
-              <ul class="nhsuk-list nhsuk-list--bullet">
-                <li>you have paid the Immigration Health Surcharge</li>
-                <li>you have a valid EHIC or S1 form</li>
-                <li>you are a refugee, asylum seeker or victim of modern slavery</li>
-              </ul>
+              <p>You do not need to pay if you're visiting for a holiday or you have applied to stay in UK permanently.</p>
 
-              <p>Some hospital care, such as treatment for infectious diseases or types of violence, is free for all.</p>
-
+            </div>
           </div>
 
 
           {{ radios({
-            "idPrefix": "recently-moved",
-            "name": "recently-moved",
+            "idPrefix": "health-surcharge",
+            "name": "health-surcharge",
             "items": [
               {
                 "value": "Yes~/sprint-7/section-2/no-match/what-address-for-recently-moved",
@@ -136,7 +132,7 @@ GP Registration Prototypes
                 "hint": {
                   "text": ""
                 },
-                checked: checked("recently-moved", "Yes")
+                checked: checked("health-surcharge", "Yes")
               },
               {
                 "value": "No~/sprint-7/section-2/no-match/what-is-place-of-birth",
@@ -144,7 +140,15 @@ GP Registration Prototypes
                 "hint": {
                   "text": ""
                 },
-                checked: checked("recently-moved", "No")
+                checked: checked("health-surcharge", "No")
+              },
+              {
+                "divider": "or"
+              },
+              {
+                "value": "I don't know",
+                "text": "I don't know",
+                checked: checked("health-surcharge", "I don't know")
               }
             ]
           }) }}

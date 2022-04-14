@@ -1,0 +1,77 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Page listings - GP registration - NHS
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+
+        <h1 class="app-page-heading">
+            <span class="nhsuk-caption-l">Archived prototype work</span>
+            GP Registration
+        </h1>
+
+          <p>Use this service to register to change to a new GP surgery</p>
+          <p class="nhsuk-body-s">Last updated 21 March 2022</p>
+
+          <h2 class="nhsuk-heading-l">Sprint 7</h2>
+          <p>PDS matching upfront testing with type 4 (immigration) and Dependant journeys and ex UK armed forces</p>
+
+          {{ button({
+            "text": "Continue",
+            "href": "/sprint-7/section-1/start"
+          }) }}
+
+          {{ button({
+            "text": "Page by page listings and scenarios",
+            "classes": "nhsuk-button--secondary",
+                "href": "/sprint-7/listings-7"
+          }) }}
+
+          <h2 class="nhsuk-heading-l">Test sessions</h2>
+
+          <p><span class="mural-link"><a href="https://app.mural.co/t/nhsdigital8118/m/nhsdigital8118/1649023303374/0ccb61198b6a2cc07cf7cdc740d1d1b6d7737b06?sender=ua9bf4937daf7aa422ca34982">Test sessions</a></span></p>
+
+
+
+          <p><br/><a href="/index">Return to main service page</a>
+
+
+  </div>
+</section>
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}
