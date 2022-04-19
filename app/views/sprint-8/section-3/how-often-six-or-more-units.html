@@ -1,0 +1,161 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="do-you-smoke" method="post" autocomplete="off">
+
+           {{ hint({
+              "text": "Step 3 of 3 - Health questions",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+            
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {{ radios({
+              "idPrefix": "alcohol-consumption",
+              "name": "alcohol-consumption",
+              "fieldset": {
+                "legend": {
+                  "text": "How often have they had six or more units of alcohol on a single occasion in the last year?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "Select one option"
+              },
+              "items": [
+                {
+                  "value": "Never",
+                  "text": "Never",
+                  checked: checked("alcohol-consumption", "Never")
+                },
+                {
+                  "value": "Less than monthly",
+                  "text": "Less than monthly",
+                  checked: checked("alcohol-consumption", "Less than monthly")
+                },
+                {
+                  "value": "Monthly",
+                  "text": "Monthly",
+                  checked: checked("alcohol-consumption", "Monthly")
+                },
+                {
+                  "value": "Weekly",
+                  "text": "Weekly",
+                  checked: checked("alcohol-consumption", "Weekly")
+                },
+                {
+                  "value": "Daily or almost daily",
+                  "text": "Daily or almost daily",
+                  checked: checked("alcohol-consumption", "Daily or almost daily")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say",
+                  "text": "Prefer not to say",
+                  checked: checked("alcohol-consumption", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {% else %}
+
+            {{ radios({
+              "idPrefix": "alcohol-consumption",
+              "name": "alcohol-consumption",
+              "fieldset": {
+                "legend": {
+                  "text": "How often have you had six or more units of alcohol on a single occasion in the last year?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "Select one option"
+              },
+              "items": [
+                {
+                  "value": "Never",
+                  "text": "Never",
+                  checked: checked("alcohol-consumption", "Never")
+                },
+                {
+                  "value": "Less than monthly",
+                  "text": "Less than monthly",
+                  checked: checked("alcohol-consumption", "Less than monthly")
+                },
+                {
+                  "value": "Monthly",
+                  "text": "Monthly",
+                  checked: checked("alcohol-consumption", "Monthly")
+                },
+                {
+                  "value": "Weekly",
+                  "text": "Weekly",
+                  checked: checked("alcohol-consumption", "Weekly")
+                },
+                {
+                  "value": "Daily or almost daily",
+                  "text": "Daily or almost daily",
+                  checked: checked("alcohol-consumption", "Daily or almost daily")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say",
+                  "text": "Prefer not to say",
+                  checked: checked("alcohol-consumption", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {% endif %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}

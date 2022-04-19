@@ -1,0 +1,135 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="check-answers" method="post" autocomplete="off">
+
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+           {{ hint({
+              "text": "Step 1 of 3 - Matching patient to their record",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% call fieldset({
+              legend: {
+                "text": "What postcode did their last UK GP have for them?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ hint({
+                "text": "Enter the postcode for the address they were living at when they were last registered for a UK GP"
+            }) }}
+
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "hint": {
+                    "text": "For example LS13 9PO"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "gp-postcode-prev",
+                  "name": "gp-postcode-prev",
+                  value: data['gp-postcode-prev']
+                }) }}
+
+
+            {% endcall %}
+
+            {% else %}
+
+          {{ hint({
+              "text": "Step 1 of 3 - Matching you to your record",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+            {% call fieldset({
+              legend: {
+                "text": "What postcode did your last UK GP have for you?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ hint({
+                "text": "Enter the postcode for the address you were living at when you were last registered for a UK GP"
+            }) }}
+
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "hint": {
+                    "text": "For example, flat 20A"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "gp-postcode-prev",
+                  "name": "gp-postcode-prev",
+                  value: data['gp-postcode-prev']
+                }) }}
+
+
+            {% endcall %}
+
+            {% endif %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% block pageScripts %}
+<script>
+$('#no-previous-gp-1').change(function(){
+    if ($('#no-previous-gp-1').is(':checked') == true){
+        $('input[type=text]').prop('disabled', true);
+    } else {
+      $('input[type=text]').prop('disabled', false);
+    }
+});
+</script>
+{% endblock %}
+{% endblock %}
