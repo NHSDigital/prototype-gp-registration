@@ -46,7 +46,7 @@
 
             {% else %}
 
-            <H2>What are the details of your carer?</H2>
+            <H2>What are your carer's details?</H2>
 
             {% endif %}
 
@@ -85,6 +85,9 @@
             {{ input({
                 label: {
                   "text": "Relationship to you"
+                },
+                "hint": {
+                  "text": "For example, they are a family member or friend."
                 },
                 "classes": "nhsuk-u-width-two-thirds",
                 "id": "carer-relationship",

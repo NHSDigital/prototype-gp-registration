@@ -42,14 +42,14 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>What type of carer best describes them?</H2>
+            <H2>What type of carer are they?</H2>
 
             {% else %}
 
-            <H2>What type of carer best describes you?</H2>
+            <H2>What type of carer are you?</H2>
 
             {% endif %}
-
+ 
             {% set otherHtml %}
               {{ input({
                 id: "other",
@@ -75,24 +75,29 @@
               "items": [
                 {
                   "value": "Young carer",
-                  "text": "Young carer",
+                  "text": "Young carer, under 18",
                   checked: checked("carer-type", "Young carer")
                 },
                 {
                   "value": "Informal carer",
-                  "text": "Informal carer (Unpaid carer)",
+                  "text": "Unpaid, but may get benefits",
                   checked: checked("carer-type", "occupational")
                 },
                 {
                   "value": "Occupational Carer",
-                  "text": "Occupational Carer (Paid carer)",
+                  "text": "Paid as a job",
                   checked: checked("carer-type", "Occupational Carer")
+                },
+                {
+                  "value": "Foster carer",
+                  "text": "Foster carer",
+                  checked: checked("carer-type", "Foster carer")
                 }
 
               ]
             }) }}
 
-
+<br>
 
 
             {{ button({
