@@ -61,7 +61,7 @@ GP Registration Prototypes
             "name": "relation",
             fieldset: {
               legend: {
-                text: "What is your relation to the dependant?",
+                text: "What is your relation to this person?",
                 isPageHeading: true,
                 classes: "nhsuk-fieldset__legend--l"
               }
@@ -83,24 +83,16 @@ GP Registration Prototypes
                 },
                 checked: checked("relation", "Carer")
               },
-               {
-                "value": "Family member~/sprint-8/section-1/carer-details",
-                "text": "Family member",
+              {
+                "value": "other~/sprint-8/section-1/carer-details",
+                "text": "Other",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("relation", "Family member")
-              },
-              {
-                "divider": "or"
-              },
-              {
-                value: "other",
-                text: "Other",
-                conditional: {
-                  html: otherHtml
+                checked: checked("relation", "other")
               }
-              }
+             
+              
             ]
           }) }}
 

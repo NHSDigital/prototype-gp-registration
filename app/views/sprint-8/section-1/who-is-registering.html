@@ -47,7 +47,7 @@ GP Registration Prototypes
           <!-- <span class="nhsuk-u-font-size-22 nhsuk-u-padding-bottom-0">Matching you to your record</span> -->
           {% call fieldset({
             legend: {
-              text: "Who is registering for a GP?",
+              text: "Who is registering with a GP?",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
@@ -71,9 +71,11 @@ GP Registration Prototypes
               },
               {
                 "value": "dependant~/sprint-8/section-1/relation-of-dependant",
-                "text": "A dependant in your care",
+                "text": "Someone else",
                 "hint": {
-                  "text": "This could be your child, someone you care for or someone who needs help to complete the registration process."
+                  "text": "You are registering your child or someone else who needs help completing this form.
+
+                  "
                 },
                 checked: checked("who-is-being-registered", "dependant")
               }
