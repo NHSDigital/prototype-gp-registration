@@ -40,11 +40,11 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Does {{ data ['name-first-name'] }} attend any of the following?</H2>
+            <H2>Does {{ data ['name-first-name'] }} go to any of the following for their education?</H2>
 
             {% else %}
 
-            <H2>Do you attend any of the following?</H2>
+            <H2>Do you go to any of the following for your education?</H2>
 
             {% endif %}
 
@@ -60,7 +60,7 @@
                 },
 
                 "hint": {
-                  "html": "<p>We ask this so the GP can make sure the patient is getting their correct vaccinations.</p>"
+                  "html": "<p>This will help the GP understand what other services the patient has access to.</p>"
                 },
 
                 items: [

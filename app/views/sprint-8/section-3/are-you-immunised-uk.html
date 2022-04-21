@@ -41,9 +41,11 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
+            <h2>Did {{ data ['name-first-name'] }} get all their routine vaccinations in the UK?</h2>
+
             {% call fieldset({
               legend: {
-                text: "Did they get the routine vaccinations in the UK?",
+                text: "",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }

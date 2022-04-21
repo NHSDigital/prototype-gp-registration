@@ -42,10 +42,19 @@
 
             {% if ((data['user-auth'] == "nomatch") and (data['registering-first-time'] == "No"))  %}
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Has {{ data ['name-first-name'] }} ever been a member of the armed forces or do they have a family member registered with the Defence Medical Services?</H2>
+
+            {% else %}
+
+            <H2>Have you ever been a member of the UK Armed forces or are a family member registered with the Defence Medical Services?</H2>
+
+            {% endif %}
 
             {% call fieldset({
               legend: {
-                text: "Have you ever been a member of the UK Armed forces or are a family member registered with the Defence Medical Services?",
+                text: "",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }

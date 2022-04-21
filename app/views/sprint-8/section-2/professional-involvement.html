@@ -40,11 +40,11 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Are any of the following people involved in {{ data ['name-first-name'] }}'s care?</H2>
+            <H2>Is anyone else involved in {{ data ['name-first-name'] }}'s care?</H2>
 
             {% else %}
 
-            <H2>Are any of the following people involved in your care?</H2>
+            <H2>Is anyone else involved in your care?</H2>
 
             {% endif %}
 
@@ -60,14 +60,15 @@
                 },
 
                 "hint": {
-                  "html": "<p>Infomation on why the GP is collecting this information.</p>"
+                  "html": "<p>This will help the GP understand the patient's care needs.</p>"
                 },
 
                 items: [
                   { value: "Hospital specialist", text: "A hospital specialist", checked: checked("health-contact", "hospital-specialist")},
-                  { value: "Health worker", text: "A health worker", checked: checked("health-contact", "health-worker")},
+                  { value: "Health worker", text: "A health visitor", checked: checked("health-contact", "health-worker")},
                   { value: "Social worker", text: "A social worker", checked: checked("health-contact", "social-worker")},
-                  { value: "Other", text: "Any other health profession", checked: checked("health-contact", "other")}
+                  { value: "Other", text: "Any other health profession", checked: checked("health-contact", "other")},
+                  { value: "none", text: "None of the above", checked: checked("health-contact", "none")}
 
               ]
               }) }}

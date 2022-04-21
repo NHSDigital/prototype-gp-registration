@@ -41,7 +41,7 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Do they have an emergency contact</H2>
+            <H2>Enter the details of {{ data ['name-first-name'] }}'s emergency contact</H2>
 
             {% else %}
 
@@ -82,6 +82,9 @@
                 label: {
                   "text": "Relationship to them"
                 },
+                "hint": {
+                  "text": "For example, they are a family member or friend."
+                },
                 "classes": "nhsuk-u-width-two-thirds",
                 "id": "ec-relationship",
                 "name": "ec-relationship",
@@ -101,26 +104,7 @@
                 value: data['ec-contact-tel']
               }) }}
 
-              {{ input({
-                "label": {
-                  "text": "Alternate telephone number (Optional)"
-                },
-                  "hint": {
-                  "text": "For international number include the country code"
-                },
-                "classes": "nhsuk-input--width-10",
-                "id": "ec-contact-tel-alt",
-                "name": "ec-contact-tel-alt",
-                value: data['ec-contact-tel-alt']
-              }) }}
-
-              {{ textarea({
-                "name": "contact-time",
-                "id": "contact-time",
-                "label": {
-                  "text": "Best time to contact (Optional)"
-                }
-              }) }}
+             
 
             {% endcall %}
 
