@@ -49,10 +49,11 @@ GP Registration Prototypes
             "text": "Step 1 of 3 - Matching you to your record",
             "classes": "nhsuk-u-margin-bottom-2"
           }) }}
+          <H2>Where was {{ data ['name-first-name'] }} born?</H2>
 
           {% call fieldset({
             legend: {
-              text: "Where were they born?",
+              text: "",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }

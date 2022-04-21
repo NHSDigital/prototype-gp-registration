@@ -35,16 +35,25 @@
           <form action="check-answers" method="post" autocomplete="off">
 
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
 
            {{ hint({
               "text": "Step 1 of 3 - Matching patient to their record",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Enter the postcode {{ data ['name-first-name'] }} used when they last registered with a GP</H2>
+
+            {% else %}
+
+            <H2>What postcode did your last UK GP have for you?</H2>
+
+            {% endif %}
+
             {% call fieldset({
               legend: {
-                "text": "What postcode did their last UK GP have for them?",
+                "text": "",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -71,42 +80,7 @@
 
             {% endcall %}
 
-            {% else %}
-
-          {{ hint({
-              "text": "Step 1 of 3 - Matching you to your record",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-            {% call fieldset({
-              legend: {
-                "text": "What postcode did your last UK GP have for you?",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
-              }
-            }) %}
-
-            {{ hint({
-                "text": "Enter the postcode for the address you were living at when you were last registered for a UK GP"
-            }) }}
-
-
-              {{ input({
-                  label: {
-                    "text": "Postcode"
-                  },
-                  "hint": {
-                    "text": "For example, flat 20A"
-                  },
-                  "classes": "nhsuk-input--width-10",
-                  "id": "gp-postcode-prev",
-                  "name": "gp-postcode-prev",
-                  value: data['gp-postcode-prev']
-                }) }}
-
-
-            {% endcall %}
-
-            {% endif %}
+            
 
             {{ button({
               "text": "Continue"
