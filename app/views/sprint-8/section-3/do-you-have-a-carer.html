@@ -42,18 +42,20 @@
 
             {% if (data['relation'] == "Carer") %}
 
+            <h2>Does {{ data ['name-first-name'] }} have any other carers the GP should know about?</h2>
+
             {{ radios({
               "idPrefix": "need-carer",
               "name": "need-carer",
               "fieldset": {
                 "legend": {
-                  "text": "Would you like to inform the GP of any other carers?",
+                  "text": "",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
               },
               "hint": {
-                "text": "A carer looks after you because you are not able to look after yourself. This could be because of illness, disability or addiction. Your carer can be an adult or child, family member or friend. They can be paid or unpaid, but may get benefits."
+                "text": "A carer looks after someone who is not able to look after themselves. This could be because of illness, disability or addiction. Carers can be adults or children. They can be paid or unpaid, but may get benefits."
               },
               "items": [
                 {
