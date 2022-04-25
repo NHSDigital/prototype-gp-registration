@@ -51,12 +51,12 @@ GP Registration Prototypes
 
           {% if (data['who-is-being-registered'] == "dependant") %}
 
-          <H2>Has {{ data ['name-first-name'] }} paid their Immigration Health Surcharge?</H2>
+          <H2>Does {{ data ['name-first-name'] }} know their chargeable status?</H2>
 
           <div class="nhsuk-hint" id="contact-hint">
             <p>You may have paid an Immigration Health Surcharge online as part of your application for a visa. The amount you pay depends on your visa type and length of stay.</p>
 
-            <p>You do not need to pay if you're visiting for a holiday or you have applied to stay in UK permanently.</p>
+            <p>You may also be exempt from charges for other reasons, such as being covered by a reciprocal healthcare agreement or being an asylum seeker.</p>
 
           </div>
 
@@ -88,14 +88,6 @@ GP Registration Prototypes
                   "text": ""
                 },
                 checked: checked("health-surcharge", "No")
-              },
-              {
-                "divider": "or"
-              },
-              {
-                "value": "I don't know",
-                "text": "I don't know",
-                checked: checked("health-surcharge", "I don't know")
               }
             ]
           }) }}
@@ -106,7 +98,7 @@ GP Registration Prototypes
 
           {% call fieldset({
             legend: {
-              text: "Have you paid your Immigration Health Surcharge?",
+              text: "Do you know your chargeable status?",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
@@ -116,7 +108,7 @@ GP Registration Prototypes
             <div class="nhsuk-hint" id="contact-hint">
               <p>You may have paid an Immigration Health Surcharge online as part of your application for a visa. The amount you pay depends on your visa type and length of stay.</p>
 
-              <p>You do not need to pay if you're visiting for a holiday or you have applied to stay in UK permanently.</p>
+              <p>You may also be exempt from charges for other reasons, such as being covered by a reciprocal healthcare agreement or being an asylum seeker.</p>
 
             </div>
           </div>
@@ -141,14 +133,6 @@ GP Registration Prototypes
                   "text": ""
                 },
                 checked: checked("health-surcharge", "No")
-              },
-              {
-                "divider": "or"
-              },
-              {
-                "value": "I don't know",
-                "text": "I don't know",
-                checked: checked("health-surcharge", "I don't know")
               }
             ]
           }) }}
