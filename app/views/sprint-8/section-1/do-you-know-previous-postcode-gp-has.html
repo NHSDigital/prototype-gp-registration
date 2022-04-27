@@ -45,7 +45,7 @@ GP Registration Prototypes
         <form action="" method="post" autocomplete="off">
 
 
-          
+
            {{ hint({
               "text": "Step 1 of 3 - Matching patient to their record",
               "classes": "nhsuk-u-margin-bottom-2"
@@ -54,11 +54,11 @@ GP Registration Prototypes
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Does {{ data ['name-first-name'] }} know the postcode they used when last registering with a GP in the UK?</H2>
+            <H2>Do you know the postcode {{ data ['name-first-name'] }} used when they last registered with a UK GP?</H2>
 
             {% else %}
 
-            <H2>Do you know the postcode they last registered with a UK GP?</H2>
+            <H2>Do you know the postcode used when you last registered with a UK GP?</H2>
 
             {% endif %}
 
@@ -98,7 +98,7 @@ GP Registration Prototypes
             ]
           }) }}
            {% endcall %}
-           
+
 
 
 

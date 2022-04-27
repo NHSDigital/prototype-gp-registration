@@ -33,8 +33,8 @@
           }) }}
           <form action="registered-for-the-first-time" method="post" autocomplete="off">
 
-            
-       
+
+
 
            {{ hint({
               "text": "Step 1 of 3 - Matching patient to their record",
@@ -43,7 +43,7 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Enter {{ data ['name-first-name'] }}'s NHS Number</H2>
+            <H2> What is {{ data ['name-first-name'] }}'s NHS Number</H2>
 
             {% else %}
 

@@ -40,6 +40,8 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
+              <H2>Is {{ data ['name-first-name'] }}'s' gender identity the same as the sex they were assigned at birth?</H2>
+
             {% set otherHtml %}
               {{ input({
                 id: "other",
@@ -56,7 +58,7 @@
               "name": "gender",
               "fieldset": {
                 "legend": {
-                  "text": "Is their gender identity the same as the sex they were assigned at birth?",
+                  "text": "",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }

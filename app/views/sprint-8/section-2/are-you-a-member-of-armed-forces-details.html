@@ -32,14 +32,8 @@
             href: "javascript:history.go(-1)"
           }) }}
 
+        <form action="/sprint-8/section-2/do-you-have-emergency-contact" method="post" autocomplete="off">
 
-          {% if ((data['user-auth'] == "nomatch") and (data['current-gp'] == "No"))  %}
-          <form action="/sprint-8/section-2/no-match/recently-move-to-the-uk" method="post" autocomplete="off">
-          {% elif ((data['user-auth'] == "nomatch") and (data['current-gp'] == "Yes")) %}
-          <form action="/sprint-8/section-2/no-match/are-you-returning-from-overseas" method="post" autocomplete="off">
-          {% else %}
-          <form action="/sprint-8/section-3/do-you-have-existing-conditions" method="post" autocomplete="off">
-          {% endif %}
 
             {{ hint({
               "text": "Step 2 of 3 - Personal Details",

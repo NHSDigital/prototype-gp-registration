@@ -48,9 +48,11 @@
 
             {% else %}
 
-            <H2>Do you have an emergency contact?</H2>
+            <H2>Do you have a contact in case of emergency?</H2>
 
             {% endif %}
+
+            {% if ((data['user-auth'] == "nomatch") and (data['registering-first-time'] == "No"))  %}
 
             {% call fieldset({
               legend: {
@@ -62,8 +64,66 @@
 
             <div class="nhsuk-hint" id="contact-hint">
               <p>This can be a family member, friend or support worker.</p>
-
             </div>
+
+
+           {{ radios({
+              "idPrefix": "emergency-contact",
+              "name": "emergency-contact",
+              "items": [
+                {
+                  "value": "Yes~/sprint-8/section-2/emergency-contact-details",
+                  "text": "Yes",
+                  checked: checked("emergency-contact", "Yes")
+                },
+                {
+                  "value": "No~/sprint-8/section-2/no-match/recently-move-to-the-uk",
+                  "text": "No",
+                  checked: checked("emergency-contact", "No")
+                }
+              ]
+            }) }}
+
+          {% endcall %}
+
+          {% elif ((data['user-auth'] == "nomatch") and (data['registering-first-time'] == "Yes"))  %}
+
+          {% call fieldset({
+            legend: {
+              text: "",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+             "idPrefix": "emergency-contact",
+             "name": "emergency-contact",
+             "items": [
+               {
+                 "value": "Yes~/sprint-8/section-2/emergency-contact-details",
+                 "text": "Yes",
+                 checked: checked("emergency-contact", "Yes")
+               },
+               {
+                 "value": "No~/sprint-8/section-2/no-match/are-you-returning-from-overseas",
+                 "text": "No",
+                 checked: checked("emergency-contact", "No")
+               }
+             ]
+           }) }}
+
+           {% endcall %}
+
+           {% else %}
+
+           {% call fieldset({
+             legend: {
+               text: "",
+               classes: "nhsuk-fieldset__legend--l",
+               isPageHeading: true
+             }
+           }) %}
 
            {{ radios({
               "idPrefix": "emergency-contact",
@@ -84,7 +144,7 @@
 
             {% endcall %}
 
-
+            {% endif %}
 
 
 
@@ -93,7 +153,7 @@
             }) }}
 
           </form>
-        
+
         </div>
       </div>
     </section>

@@ -40,17 +40,15 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
+            <h2> What is {{ data ['name-first-name'] }}'s current UK address?</h2>
+
             {% call fieldset({
               legend: {
-                "text": "What is their current UK address?",
+                "text": "",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
-
-            <!-- {{ hint({
-            "text": "If they have had more than one address previously, please enter the address they lived at most recently."
-            }) }} -->
 
 
             {{ input({

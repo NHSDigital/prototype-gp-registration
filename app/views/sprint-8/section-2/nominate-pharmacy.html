@@ -41,7 +41,7 @@
 
           {% if (data['who-is-being-registered'] == "dependant") %}
 
-          <H2>Would {{ data ['name-first-name'] }} like to nominate a pharmacy for their prescriptions?</H2>
+          <H2>Would you like to nominate a pharmacy for {{ data ['name-first-name'] }}'s prescriptions?</H2>
 
             {{ radios({
               "idPrefix": "nominate-pharmacy",

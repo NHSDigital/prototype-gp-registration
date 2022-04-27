@@ -43,11 +43,11 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Enter the postcode {{ data ['name-first-name'] }} used when they last registered with a GP</H2>
+            <H2>What postcode did {{ data ['name-first-name'] }} use when they last registered with a UK GP?</H2>
 
             {% else %}
 
-            <H2>What postcode did your last UK GP have for you?</H2>
+            <H2>What postcode did you use when you last registered with a UK GP?</H2>
 
             {% endif %}
 
@@ -80,7 +80,7 @@
 
             {% endcall %}
 
-            
+
 
             {{ button({
               "text": "Continue"
