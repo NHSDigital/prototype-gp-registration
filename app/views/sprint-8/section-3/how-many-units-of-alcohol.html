@@ -38,12 +38,14 @@
               "text": "Step 3 of 3 - Health questions",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
+
             {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>How many units of alcohol does {{ data ['name-first-name'] }} drink in an average week?</H2>
 
             {% call fieldset({
               legend: {
-                "text": "How many units of alcohol do they consume in an average week?",
+                "text": "",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -150,7 +152,7 @@
                   </tbody>
                 </table>
             </details>
-                      
+
             {{ button({
               "text": "Continue"
             }) }}

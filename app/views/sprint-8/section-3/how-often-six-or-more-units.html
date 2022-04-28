@@ -38,15 +38,17 @@
               "text": "Step 3 of 3 - Health questions",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
+
             {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>How often has {{ data ['name-first-name'] }} had six or more units of alcohol on a single occasion in the last year?</H2>
 
             {{ radios({
               "idPrefix": "alcohol-consumption",
               "name": "alcohol-consumption",
               "fieldset": {
                 "legend": {
-                  "text": "How often have they had six or more units of alcohol on a single occasion in the last year?",
+                  "text": "",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }

@@ -40,13 +40,15 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
+            <H2> What is {{ data ['name-first-name'] }}'s ethnic group?</H2>
+
 
             {{ radios({
               "idPrefix": "ethnicity",
               "name": "ethnicity",
               "fieldset": {
                 "legend": {
-                  "text": "What is their ethnic group?",
+                  "text": "",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
