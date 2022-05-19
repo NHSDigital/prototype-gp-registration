@@ -49,39 +49,62 @@ GP Registration Prototypes
 
             <H2>How would {{ data ['name-first-name'] }} like to be contacted?</H2>
 
+            {{ checkboxes({
+              "idPrefix": "contact",
+              "name": "contact",
+              "fieldset": {
+                "legend": {
+                  "text": "",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              },
+
+              "hint": {
+                "html": "<p>The GP may need to contact you or the patient about this application, appointments, prescriptions or other medical services.</p>"
+              },
+
+              items: [
+                { value: "home", text: "UK home telephone number", checked: checked("contact", "home")},
+                { value: "phone", text: "UK mobile telephone number", checked: checked("contact", "phone")},
+                { value: "email", text: "Email address", checked: checked("contact", "email")},
+                { value: "post", text: "Post", checked: checked("contact", "post")}
+            ]
+            }) }}
+
+
             {% else %}
 
             <H2>How would you like to be contacted?</H2>
 
+            {{ checkboxes({
+              "idPrefix": "contact",
+              "name": "contact",
+              "fieldset": {
+                "legend": {
+                  "text": "",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              },
+
+              "hint": {
+                "html": "<p>The GP may need to contact you about this application, appointments, prescriptions or other medical services.</p>"
+              },
+
+              items: [
+                { value: "home", text: "UK home telephone number", checked: checked("contact", "home")},
+                { value: "phone", text: "UK mobile telephone number", checked: checked("contact", "phone")},
+                { value: "email", text: "Email address", checked: checked("contact", "email")},
+                { value: "post", text: "Post", checked: checked("contact", "post")}
+            ]
+            }) }}
+
             {% endif %}
 
-              {{ checkboxes({
-                "idPrefix": "contact",
-                "name": "contact",
-                "fieldset": {
-                  "legend": {
-                    "text": "",
-                    "classes": "nhsuk-fieldset__legend--l",
-                    isPageHeading: true
-                  }
-                },
-
-                "hint": {
-                  "html": "<p>The GP may need to contact you or the patient about this application, appointments, prescriptions or other medical services.</p>"
-                },
-
-                items: [
-                  { value: "home", text: "UK home telephone number", checked: checked("contact", "home")},
-                  { value: "phone", text: "UK mobile telephone number", checked: checked("contact", "phone")},
-                  { value: "email", text: "Email address", checked: checked("contact", "email")},
-                  { value: "post", text: "Post", checked: checked("contact", "post")}
-              ]
-              }) }}
-
-
-          <button class="nhsuk-button" type="submit">
-            Continue
-          </button>
+            <button class="nhsuk-button" type="submit">
+              Continue
+            </button>
 
         </form>
 
