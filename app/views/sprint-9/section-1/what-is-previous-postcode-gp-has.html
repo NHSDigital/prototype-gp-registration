@@ -45,12 +45,6 @@
 
             <H2>What postcode did {{ data ['name-first-name'] }} use when they last registered with a UK GP?</H2>
 
-            {% else %}
-
-            <H2>What postcode did you use when you last registered with a UK GP?</H2>
-
-            {% endif %}
-
             {% call fieldset({
               legend: {
                 "text": "",
@@ -60,7 +54,7 @@
             }) %}
 
             {{ hint({
-                "text": "Enter the postcode for the address they were living at when they were last registered for a UK GP"
+                "text": "This will be the postcode they used the last time they registered with a UK GP surgery."
             }) }}
 
 
@@ -79,6 +73,41 @@
 
 
             {% endcall %}
+
+            {% else %}
+
+            <H2>What postcode did you use when you last registered with a UK GP?</H2>
+
+            {% call fieldset({
+              legend: {
+                "text": "",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ hint({
+                "text": "This will be the postcode you used the last time you registered with a UK GP surgery."
+            }) }}
+
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "hint": {
+                    "text": "For example LS13 9PO"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "gp-postcode-prev",
+                  "name": "gp-postcode-prev",
+                  value: data['gp-postcode-prev']
+                }) }}
+
+
+            {% endcall %}
+
+            {% endif %}
 
 
 
