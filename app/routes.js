@@ -388,14 +388,14 @@ router.post('*/check-age-3', function (req, res) {
   var overseasDecehic = req.session.data['overseas-declaration-ehic']
   var years = moment().diff(dob, 'years');
   console.log(`number of years ${years}`)
-console.log('looking up age')
+  console.log('looking up age')
   // Check whether the variable matches a condition
   if (years <= 18) {
     // Send user to immunisation page
-    res.redirect('/sprint-8/section-3/are-you-immunised')
+    res.redirect('/sprint-9/section-3/are-you-immunised')
   } else {
     // Send user to next page
-    res.redirect('/sprint-8/section-3/do-you-have-existing-conditions')
+    res.redirect('/sprint-9/section-3/do-you-have-existing-conditions')
   }
 
 });
@@ -414,10 +414,10 @@ console.log('looking up age')
   // Check whether the variable matches a condition
   if (years <= 18) {
     // Send user to immunisation page
-    res.redirect('/sprint-8/section-3/are-you-immunised')
+    res.redirect('/sprint-9/section-3/are-you-immunised')
   } else {
     // Send user to next page
-    res.redirect('/sprint-8/section-3/do-you-have-existing-conditions')
+    res.redirect('/sprint-9/section-3/do-you-have-existing-conditions')
   }
 
 });
@@ -436,10 +436,10 @@ console.log('looking up age')
   // Check whether the variable matches a condition
   if (years <= 18) {
     // Send user to immunisation page
-    res.redirect('/sprint-8/section-3/are-you-immunised')
+    res.redirect('/sprint-9/section-3/are-you-immunised')
   } else {
     // Send user to next page
-    res.redirect('/sprint-8/section-3/do-you-have-existing-conditions')
+    res.redirect('/sprint-9/section-3/do-you-have-existing-conditions')
   }
 
 });
@@ -454,14 +454,36 @@ router.post('*/check-age-3', function (req, res) {
   var overseasDecehic = req.session.data['overseas-declaration-s1']
   var years = moment().diff(dob, 'years');
   console.log(`number of years ${years}`)
-console.log('looking up age')
+  console.log('looking up age')
   // Check whether the variable matches a condition
   if (years <= 18) {
     // Send user to immunisation page
-    res.redirect('/sprint-8/section-3/are-you-immunised')
+    res.redirect('/sprint-9/section-3/are-you-immunised')
   } else {
     // Send user to next page
-    res.redirect('/sprint-8/section-3/do-you-have-existing-conditions')
+    res.redirect('/sprint-9/section-3/do-you-have-existing-conditions')
+  }
+
+});
+
+// Schooling
+
+//console.log('looking up age!')
+router.post('*/check-age-4', function (req, res) {
+
+  // Make
+  var dob = req.session.data['dob-year']+ '-'+ req.session.data['dob-month']+ '-'+ req.session.data['dob-day']
+  var contactInfo = req.session.data['how-can-we-contact-inputs']
+  var years = moment().diff(dob, 'years');
+  console.log(`number of years ${years}`)
+  console.log('looking up age')
+  // Check whether the variable matches a condition
+  if (years <= 18) {
+    // Send user to schooling
+    res.redirect('/sprint-9/section-2/what-schooling-do-you-have')
+  } else {
+    // Send user to next page
+    res.redirect('/sprint-9/section-2/what-is-your-gender')
   }
 
 });

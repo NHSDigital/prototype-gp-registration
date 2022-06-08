@@ -33,7 +33,7 @@ GP Registration Prototypes
         }) }}
 
 
-        <form action="what-schooling-do-you-have" method="post" autocomplete="off">
+        <form id="youngEnough" action="check-age-4" method="post" autocomplete="off">
 
          {{ hint({
               "text": "Step 2 of 3 - Personal Details",
@@ -324,7 +324,7 @@ GP Registration Prototypes
 
 
                   {% elif (data['contact'] == "home,phone,email,post")  %}
-                  
+
                   <fieldset class="nhsuk-fieldset">
                     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
                       <h1 class="nhsuk-fieldset__heading">
