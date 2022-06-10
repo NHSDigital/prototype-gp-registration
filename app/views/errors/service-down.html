@@ -1,0 +1,33 @@
+
+{% extends 'layout.html' %}
+
+{% from 'button/macro.njk' import button %}
+{% from 'back-link/macro.njk' import backLink %}
+
+{% block pageTitle %}
+Enter your email address
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+      <h1 class="nhsuk-heading-l">
+          Register with a GP surgery is currently unavailable
+      </h1>
+
+      <p class="nhsuk-body">Contact your chosen GP surgery to discuss your registration.</p>
+
+      <h3>Other ways to register</h3>
+
+      <p><a href="https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/">How to register with a GP surgery.</a></p>
+      <p>Print and fill in a <a href="https://www.gov.uk/government/publications/gms1">GMS1 registration form</a> and return it to the practice you want to register with. The form can’t be completed online.</p>
+      <p>You can also get a copy of this form from the practice. <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a> service</p>
+
+
+  </div>
+</div>
+
+
+{% endblock %}
