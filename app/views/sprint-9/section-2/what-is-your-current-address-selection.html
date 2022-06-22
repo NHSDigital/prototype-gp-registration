@@ -37,8 +37,11 @@
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-
+          {% if (data['user-auth'] == "p9") %}
+          <form action="/sprint-9/section-1/confirm-contact-details" method="post" autocomplete="off">
+          {% else %}
           <form action="how-can-we-contact-you" method="post" autocomplete="off">
+          {% endif %}
 
 
 

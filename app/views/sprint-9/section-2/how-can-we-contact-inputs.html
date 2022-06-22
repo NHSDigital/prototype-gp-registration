@@ -41,7 +41,27 @@ GP Registration Prototypes
             }) }}
 
 
-          {% if (data['contact'] == "home") %}
+            <!-- NHS Login p9 -->
+
+            {% if (data['use-contacts-login'] == "Yes")  %}
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-fieldset__heading">
+                  What are your contact details?
+                </h1>
+              </legend>
+
+
+              <div class="nhsuk-form-group contact-home-section">
+                <label class="nhsuk-label" for="contact-prefs-1">
+                  UK home telephone number
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
+              </div>
+
+
+          {% elif (data['contact'] == "home") %}
 
           <fieldset class="nhsuk-fieldset">
             <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
