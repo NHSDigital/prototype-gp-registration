@@ -1,0 +1,191 @@
+
+{% extends 'layout.html' %}
+
+{% block customStyles %}
+
+      <STYLE type="text/css">
+            font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+      </STYLE>
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+          <div class="pseudo-bg"></div>
+          <div class="email-metadata">
+            <p><strong>From: </strong>Register with a GP Surgery</p>
+            <p><strong>Subject: </strong>New patient registration</p>
+          </div>
+          <div class="pseudo-email-template">
+          <p>Dear [SURGERY NAME].
+          <br>
+          <br>You have a new registration request. Personal circumstances mean that not every patient is given the same set of questions. As such, the information gathered will vary between patients. However, you should be able to register the patient using the details provided in this email. </p>
+
+          <p><strong>Registration details</strong></p>
+          <p><strong>Registration reference number: 1234-0000785
+          <br>Submitted: Thursday 19 May 2022 at 2:31pm</strong></p>
+         
+          <ul class="nhsuk-list nhsuk-list--bullet">
+            <li>The patient did not use NHS Login</li>
+            <li>PDS search did not find a matching record</li>
+            <li>Registering type: First acceptance registration</li>
+          </ul>
+
+          <div class="nhsuk-do-dont-list">
+  <h2 class="nhsuk-do-dont-list__label">IMPORTANT INFORMATION</h2>
+  <ul class="nhsuk-list nhsuk-list--bullet">
+    <li>
+      Patient is a young carer.
+    </li>
+    <li>
+      Patient has a social worker.
+    </li>
+    <li>
+      Patient vaccinations are not up to date.
+    </li>
+  </ul>
+</div>
+
+<p><strong>Patient details</strong></p>
+
+<dl class="nhsuk-summary-list">
+
+<div class="nhsuk-summary-list__row">
+   <dt class="nhsuk-summary-list__key">
+     Title
+   </dt>
+   <dd class="nhsuk-summary-list__value">
+     {{ data['name-title'] }}
+   </dd>
+ </div>
+
+<div class="nhsuk-summary-list__row">
+   <dt class="nhsuk-summary-list__key">
+    First name
+   </dt>
+   <dd class="nhsuk-summary-list__value">
+     {{ data['name-first-name'] }}
+   </dd>
+ </div>
+
+ <div class="nhsuk-summary-list__row">
+   <dt class="nhsuk-summary-list__key">
+     Middle name
+   </dt>
+   <dd class="nhsuk-summary-list__value">
+     {{ data['name-middle-name'] }}
+   </dd>
+ </div>
+
+ <div class="nhsuk-summary-list__row">
+   <dt class="nhsuk-summary-list__key">
+    Last name
+   </dt>
+   <dd class="nhsuk-summary-list__value">
+     {{ data['name-last-name'] }}
+   </dd>
+ </div>
+
+ <div class="nhsuk-summary-list__row">
+   <dt class="nhsuk-summary-list__key">
+     Date of birth
+   </dt>
+   <dd class="nhsuk-summary-list__value">
+     <span id="dob-day">{{ data['dob-day'] }}</span>
+     <span id="dob-month">{{ data['dob-month'] }}</span>
+     <span id="dob-year">{{ data['dob-year'] }}</span>
+   </dd>
+ </div>
+
+ <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+           Do you know your NHS Number?
+      </dt>
+        <dd class="nhsuk-summary-list__value">
+        </dd>
+      </div>
+
+      
+       <div class="nhsuk-summary-list__row">
+           <dt class="nhsuk-summary-list__key">
+              NHS number
+           </dt>
+           <dd class="nhsuk-summary-list__value">
+             {{ data['nhs-number'] }}
+           </dd>
+         </div>
+      
+         <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  First time registering with a UK GP surgery
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                 
+                </dd>
+              </div>
+
+<br>
+
+<p><strong>Registered postcodes</strong></p>
+
+<div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Post code used when last registered with a UK GP surgery
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                 
+                </dd>
+              </div>
+
+              <br>
+
+<p><strong>Previous UK address</strong></p>
+
+
+
+              <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Building and street              
+                </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['gp-postcode-prev'] }}
+              </dd>
+            </div>
+
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Town or city                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['gp-postcode-prev'] }}
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Postcode                
+                  </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['gp-postcode-prev'] }}
+                </dd>
+              </div>
+
+              <br>
+
+<p><strong>Current GP surgery</strong></p>
+              
+          
+          <p>NHS<br />
+          <span style="color:#888888;">Register with a GP Surgery</span></p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}
