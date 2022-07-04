@@ -1,0 +1,74 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <h1>
+          Registration complete for (Practice name)
+        </h1>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <h3>Next steps</h3>
+
+        <ul>
+          <li>registration applications will come to your secure NHSmail address</li>
+          <li>you can link to the service from your own practice website using the url below.</li>
+        </ul>
+
+        <p><strong>Your practices service link:</strong> <a href="#">url goes here</a></p>
+
+        <p>If there are any issues with the service, email the NHS website service desk on <a href="#">ssd.nationalservicedesk@nhs.net</a> or phone 03003035035. The service desk is open 24 hours a day, 7 days a week.</p>
+        <p><a href="">Return to your profiles</a></p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}
