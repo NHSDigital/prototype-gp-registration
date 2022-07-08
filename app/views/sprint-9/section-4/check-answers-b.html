@@ -1,4 +1,4 @@
-<!-- Use this page as the index for your project -->
+Recently moved<!-- Use this page as the index for your project -->
 
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
@@ -74,9 +74,23 @@
         <!-- Addresses -->
         <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
 
+
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Current address
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['have-current-uk-address'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
+            </dd>
+          </div>
+
+          {% if data['have-current-uk-address'] == "Yes" %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Current address details
             </dt>
             <dd class="nhsuk-summary-list__value">
               {% if data['select-current-address'] %}
@@ -93,7 +107,7 @@
               <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
             </dd>
           </div>
-
+          {% endif %}
 
           <!-- Contact preferences -->
           <div class="nhsuk-summary-list__row">
@@ -113,7 +127,7 @@
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Do you attend any schooling?
+                Education
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['schooling'] }}
@@ -127,7 +141,7 @@
             {% if data['schooling'] == "school" %}
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Contact details
+                  Scool details
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['school-name'] }} <br>
@@ -142,7 +156,7 @@
             {% elif data['schooling'] == "nursery" %}
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Contact details
+                  Nursery details
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['nursery-name'] }} <br>
@@ -157,7 +171,7 @@
               {% elif data['schooling'] == "homeschool" %}
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Contact details
+                    Home school details
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['contact-home-school'] }} <br>
@@ -172,8 +186,7 @@
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Are any of the following people involved in your care?
-                  </dt>
+                    Additional care provider                  </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['health-contact'] }}
                   </dd>
@@ -229,7 +242,7 @@
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Do you need an language interpreter?
+              Interpreter needed
             </dt>
             <dd class="nhsuk-summary-list__value">
               {{ data['interpreter'] }}
@@ -243,7 +256,7 @@
           {% if data['interpreter'] == "Yes" %}
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Which language do you need an interpreter for?
+                Language
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['language'] }}
@@ -267,7 +280,7 @@
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Would you like to nominate a pharmacy for your prescriptions?
+                Nominate pharmacy
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['nominate-pharmacy'] }}
@@ -280,7 +293,7 @@
           {% if data['nominate-pharmacy'] == "yes" %}
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Selected pharmacy
+                Pharmacy details
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {% if data['practice'] %}
@@ -312,7 +325,7 @@
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Have you ever been a member of the UK Armed forces?
+                Connection to armed forces or registered with defence medical services
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['is-armed-forces-member'] }}
@@ -332,7 +345,7 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Do you have an emergency contact?
+                  Emergency contact
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['emergency-contact'] }}
@@ -347,7 +360,7 @@
             {% if data['emergency-contact'] == "Yes" %}
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Emergency contact full name
+                Name
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['ec-full-name'] }}
@@ -359,25 +372,25 @@
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Emergency contact relationship to you
+                Relationship
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['ec-relationship'] }}
               </dd>
               <dd class="nhsuk-summary-list__actions">
-                <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency contact relationship to you</span></a>
+                <a href="">Change<span class="nhsuk-u-visually-hidden"> Relationship</span></a>
               </dd>
             </div>
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Emergency contact telephone number
+                Emergency Relationship
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['ec-contact-tel'] }}
               </dd>
               <dd class="nhsuk-summary-list__actions">
-                <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency contact telephone number</span></a>
+                <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency Relationship</span></a>
               </dd>
             </div>
           {% endif %}
@@ -410,7 +423,7 @@
             {% if data['recently-moved'] == "No" %}
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  What is your place of birth?
+                  Place of birth
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['town'] }}
@@ -424,7 +437,7 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Do you have a previous UK address?
+                  Previous UK address
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['have-previous-uk-address'] }}
@@ -438,7 +451,7 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Previous address
+                  Previous address details
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {% if data['select-previous-address'] %}
@@ -477,7 +490,7 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  When did you enter the UK?
+                  Date entered UK
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['moved-day'] }} -
@@ -493,7 +506,7 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Have you moved to UK from EU, EEA or Switzerland?
+                  Moved from EU, EEA or Switzerland
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                 {{ data['eea'] }}
@@ -547,7 +560,7 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Are you returning from overseas?
+                  Recently returned
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['overseas'] }}
@@ -561,7 +574,7 @@
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    What was the date you left the UK?
+                    Date left UK
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['left-uk-day'] }} -
@@ -575,7 +588,7 @@
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    What was the date you returned to the UK?
+                    Date returned to UK
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['returned-uk-day'] }} -
@@ -589,7 +602,7 @@
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Previous GP address
+                    Previous GP details
                   </dt>
                   <dd class="nhsuk-summary-list__value previous-gp__value">
                     {% if data['select-gp-address'] %}
@@ -603,13 +616,13 @@
                     {% endif %}
                   </dd>
                   <dd class="nhsuk-summary-list__actions">
-                    <a href=""><span class="nhsuk-u-visually-hidden">previous GP address</span></a>
+                    <a href=""><span class="nhsuk-u-visually-hidden">Previous GP details</span></a>
                   </dd>
                 </div>
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Do you have a previous UK address?
+                    Previous UK address
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['have-previous-uk-address'] }}
@@ -623,7 +636,7 @@
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Previous address
+                    Previous address details
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {% if data['select-previous-address'] %}
@@ -649,7 +662,7 @@
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Previous GP address
+                    Previous GP details
                   </dt>
                   <dd class="nhsuk-summary-list__value previous-gp__value">
                     {% if data['select-gp-address'] %}
@@ -663,13 +676,13 @@
                     {% endif %}
                   </dd>
                   <dd class="nhsuk-summary-list__actions">
-                    <a href=""><span class="nhsuk-u-visually-hidden">previous GP address</span></a>
+                    <a href=""><span class="nhsuk-u-visually-hidden">Previous GP details</span></a>
                   </dd>
                 </div>
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Do you have a previous UK address?
+                    Previous UK address
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['have-previous-uk-address'] }}
@@ -683,7 +696,7 @@
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Previous address
+                    Previous address details
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {% if data['select-previous-address'] %}
@@ -720,7 +733,7 @@
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Have they got all their immunisations?
+                Immunisations
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['are-you-immunised'] }}
@@ -734,7 +747,7 @@
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Did they get the immunisations in the UK?
+                Immunisations in the UK
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['are-you-immunised-uk'] }}
@@ -748,7 +761,7 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Has existing medical conditions?
+                  Existing medical conditions
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['has-existing-conditions'] }}
@@ -828,7 +841,7 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Mental health conditions?
+                  Mental health conditions
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['has-mental-health-conditions'] }}
@@ -860,7 +873,7 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Disabilities?
+                  Disabilities
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['has-disabilities'] }}
@@ -892,7 +905,7 @@
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Do you have a carer?
+                    Patient has a carer
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['need-carer'] }}
@@ -966,7 +979,7 @@
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Are you a carer?
+                    Patient is a carer
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['are-carer'] }}
@@ -980,7 +993,7 @@
                 {% if data['are-carer'] == "yes" %}
                   <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
-                      What type of carer best describes you?
+                      Type of carer
                     </dt>
                     <dd class="nhsuk-summary-list__value">
                       {{ data['carer-type'] }}
@@ -1041,7 +1054,7 @@
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Alcohol frequency
+                    Drinks alcohol
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['alcohol-consumption'] }}
@@ -1055,7 +1068,7 @@
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Do you smoke?
+                    Smokes
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['smokes'] }}
@@ -1078,7 +1091,7 @@
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Has existing medical conditions?
+                Existing medical conditions
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['has-existing-conditions'] }}
@@ -1125,7 +1138,7 @@
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Allergies?
+              Allergies
             </dt>
             <dd class="nhsuk-summary-list__value">
               {{ data['has-allergies'] }}
@@ -1158,7 +1171,7 @@
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Mental health conditions?
+                Mental health conditions
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['has-mental-health-conditions'] }}
@@ -1190,7 +1203,7 @@
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Disabilities?
+                Disabilities
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['has-disabilities'] }}
@@ -1222,7 +1235,7 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Do you have a carer?
+                  Patient has a carer
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['need-carer'] }}
@@ -1296,7 +1309,7 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Are you a carer?
+                  Patient is a carer
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['are-carer'] }}
@@ -1310,7 +1323,7 @@
               {% if data['are-carer'] == "yes" %}
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    What type of carer best describes you?
+                    Type of carer
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['carer-type'] }}
@@ -1371,7 +1384,7 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Alcohol frequency
+                  Drinks alcohol
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['alcohol-consumption'] }}
@@ -1385,7 +1398,7 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Do you smoke?
+                  Smokes
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['smokes'] }}

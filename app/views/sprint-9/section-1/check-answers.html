@@ -134,7 +134,7 @@
 
                   <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Postcode previous GP has
+                    Postcode
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {% if (data['current-gp'] == "No") %}
@@ -306,7 +306,7 @@
 
                   <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Do you know their NHS Number?
+                    NHS number
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {% if (data['know-nhs-number'] == "No") %}
@@ -337,7 +337,7 @@
 
                 <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Are they registering with a UK GP for the first time?
+                  Registering with UK GP for the first time
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {% if (data['registering-first-time'] == "No") %}
@@ -355,7 +355,7 @@
               {% if (data['registering-first-time'] == "No") %}
               <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Do you know the postcode you last registered with a UK GP?
+                Postcode with last UK GP
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {% if (data['do-you-know-previous-postcode'] == "No") %}
@@ -374,7 +374,7 @@
                 {% if (data['do-you-know-previous-postcode'] == "Yes") %}
                 <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Postcode previous GP has
+                  Postcode
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['gp-postcode-prev'] }}
@@ -529,7 +529,7 @@
 
                 <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Do you know the postcode you last registered with a UK GP?
+                  Postcode with last UK GP
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {% if (data['do-you-know-previous-postcode'] == "No") %}
@@ -547,7 +547,7 @@
                   {% if (data['do-you-know-previous-postcode'] == "Yes") %}
                   <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Postcode previous GP has
+                    Postcode
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['gp-postcode-prev'] }}
