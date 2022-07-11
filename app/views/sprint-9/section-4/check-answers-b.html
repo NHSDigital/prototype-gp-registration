@@ -358,15 +358,14 @@ Recently moved<!-- Use this page as the index for your project -->
 
 
             {% if data['emergency-contact'] == "Yes" %}
+
+
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
                 Name
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['ec-full-name'] }}
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency contact name</span></a>
               </dd>
             </div>
 
@@ -377,20 +376,14 @@ Recently moved<!-- Use this page as the index for your project -->
               <dd class="nhsuk-summary-list__value">
                 {{ data['ec-relationship'] }}
               </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="">Change<span class="nhsuk-u-visually-hidden"> Relationship</span></a>
-              </dd>
             </div>
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Emergency Relationship
+                Contact telephone number
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['ec-contact-tel'] }}
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="">Change<span class="nhsuk-u-visually-hidden"> emergency Relationship</span></a>
               </dd>
             </div>
           {% endif %}
@@ -867,6 +860,8 @@ Recently moved<!-- Use this page as the index for your project -->
                     </a>
                   </dd>
                 </div>
+
+                
               {% endif %}
 
 
@@ -919,10 +914,10 @@ Recently moved<!-- Use this page as the index for your project -->
                 {% if data['need-carer'] == "yes" %}
                   <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
-                      Company or Council
+                      First Name
                     </dt>
                     <dd class="nhsuk-summary-list__value">
-                      {{ data['carer-company'] }}
+                      {{ data['carer-first-name'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
                       <a href="">
@@ -933,10 +928,10 @@ Recently moved<!-- Use this page as the index for your project -->
 
                   <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
-                      Full name
+                      Last name
                     </dt>
                     <dd class="nhsuk-summary-list__value">
-                      {{ data['carer-full-name'] }}
+                      {{ data['carer-last-name'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
                       <a href="">

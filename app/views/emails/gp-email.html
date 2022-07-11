@@ -4,6 +4,9 @@
 {% block customStyles %}
 
       <STYLE type="text/css">
+            .nhsuk-summary-list__key { 
+              width:50%;
+            }
             font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
       </STYLE>
 
@@ -61,8 +64,6 @@
    <dd class="nhsuk-summary-list__value">
      {{ data['name-title'] }}
    </dd>
-   <dd class="nhsuk-summary-list__actions">
-            </dd>
  </div>
 
 <div class="nhsuk-summary-list__row">
@@ -72,8 +73,6 @@
    <dd class="nhsuk-summary-list__value">
      {{ data['name-first-name'] }}
    </dd>
-   <dd class="nhsuk-summary-list__actions">
-            </dd>
  </div>
 
  <div class="nhsuk-summary-list__row">
@@ -83,8 +82,6 @@
    <dd class="nhsuk-summary-list__value">
      {{ data['name-middle-name'] }}
    </dd>
-   <dd class="nhsuk-summary-list__actions">
-            </dd>
  </div>
 
  <div class="nhsuk-summary-list__row">
@@ -94,8 +91,6 @@
    <dd class="nhsuk-summary-list__value">
      {{ data['name-last-name'] }}
    </dd>
-   <dd class="nhsuk-summary-list__actions">
-            </dd>
  </div>
 
  <div class="nhsuk-summary-list__row">
@@ -107,8 +102,6 @@
      <span id="dob-month">{{ data['dob-month'] }}</span>
      <span id="dob-year">{{ data['dob-year'] }}</span>
    </dd>
-   <dd class="nhsuk-summary-list__actions">
-            </dd>
  </div>
 
  <div class="nhsuk-summary-list__row">
@@ -117,8 +110,6 @@
       </dt>
         <dd class="nhsuk-summary-list__value">
         </dd>
-        <dd class="nhsuk-summary-list__actions">
-            </dd>
       </div>
 
       
@@ -129,8 +120,6 @@
            <dd class="nhsuk-summary-list__value">
              {{ data['nhs-number'] }}
            </dd>
-           <dd class="nhsuk-summary-list__actions">
-            </dd>
          </div>
       
          <div class="nhsuk-summary-list__row">
@@ -140,8 +129,6 @@
                 <dd class="nhsuk-summary-list__value">
                  
                 </dd>
-                <dd class="nhsuk-summary-list__actions">
-            </dd>
               </div>
 
 <br>
@@ -158,8 +145,6 @@
                 <dd class="nhsuk-summary-list__value">
                  
                 </dd>
-                <dd class="nhsuk-summary-list__actions">
-            </dd>
               </div>
 
              
@@ -178,8 +163,6 @@
               <dd class="nhsuk-summary-list__value">
                 {{ data['gp-postcode-prev'] }}
               </dd>
-              <dd class="nhsuk-summary-list__actions">
-            </dd>
             </div>
 
                 <div class="nhsuk-summary-list__row">
@@ -188,8 +171,6 @@
                 <dd class="nhsuk-summary-list__value">
                   {{ data['gp-postcode-prev'] }}
                 </dd>
-                <dd class="nhsuk-summary-list__actions">
-            </dd>
               </div>
 
               <div class="nhsuk-summary-list__row">
@@ -199,8 +180,6 @@
                 <dd class="nhsuk-summary-list__value">
                   {{ data['gp-postcode-prev'] }}
                 </dd>
-                <dd class="nhsuk-summary-list__actions">
-            </dd>
               </div>
 
               <br>
@@ -214,8 +193,6 @@
               <dd class="nhsuk-summary-list__value">
                 {{ data['gp-postcode-prev'] }}
               </dd>
-              <dd class="nhsuk-summary-list__actions">
-            </dd>
             </div>
 
 <div class="nhsuk-summary-list__row">
@@ -225,8 +202,6 @@
               <dd class="nhsuk-summary-list__value">
                 {{ data['gp-postcode-prev'] }}
               </dd>
-              <dd class="nhsuk-summary-list__actions">
-            </dd>
             </div>
 
                 <div class="nhsuk-summary-list__row">
@@ -235,8 +210,6 @@
                 <dd class="nhsuk-summary-list__value">
                   {{ data['gp-postcode-prev'] }}
                 </dd>
-                <dd class="nhsuk-summary-list__actions">
-            </dd>
               </div>
 
               <div class="nhsuk-summary-list__row">
@@ -246,8 +219,6 @@
                 <dd class="nhsuk-summary-list__value">
                   {{ data['gp-postcode-prev'] }}
                 </dd>
-                <dd class="nhsuk-summary-list__actions">
-            </dd>
               </div>
                   
 <br>
@@ -261,8 +232,6 @@
             <dd class="nhsuk-summary-list__value">
               {{ data['gender'] }}
             </dd>
-            <dd class="nhsuk-summary-list__actions">
-            </dd>
           </div>
 
           <div class="nhsuk-summary-list__row">
@@ -271,8 +240,6 @@
             </dt>
             <dd class="nhsuk-summary-list__value">
               {{ data['gender'] }}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
             </dd>
           </div>
 
@@ -292,8 +259,6 @@
               {{ data['ethnicity-detail-another'] }}
               {{ data['ethOther'] }}
             </dd>
-            <dd class="nhsuk-summary-list__actions">
-            </dd>
           </div>
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
@@ -301,8 +266,6 @@
             </dt>
             <dd class="nhsuk-summary-list__value">
               {{ data['interpreter'] }}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
             </dd>
           </div>
 
@@ -315,8 +278,6 @@
               <dd class="nhsuk-summary-list__value">
                 {{ data['language'] }}
               </dd>
-              <dd class="nhsuk-summary-list__actions">
-              </dd>
             </div>
 
         <div class="nhsuk-summary-list__row">
@@ -325,8 +286,6 @@
             </dt>
             <dd class="nhsuk-summary-list__value">
               {{ data['schooling'] }}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
             </dd>
           </div>
 
@@ -337,10 +296,6 @@
                 <dd class="nhsuk-summary-list__value">
                   {{ data['school-name'] }} 
                 </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                  </a>
-                </dd>
               </div>
 
               <div class="nhsuk-summary-list__row">
@@ -349,10 +304,6 @@
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['contact-school'] }} 
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                  </a>
                 </dd>
               </div>
 
@@ -363,10 +314,6 @@
                 <dd class="nhsuk-summary-list__value">
                   {{ data['contact-school'] }} 
                 </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                  </a>
-                </dd>
               </div>
 
               <div class="nhsuk-summary-list__row">
@@ -376,25 +323,396 @@
                   <dd class="nhsuk-summary-list__value">
                     {{ data['health-contact'] }}
                   </dd>
-                  <dd class="nhsuk-summary-list__actions">
-                    <a href=""></a>
-                  </dd>
                 </div>
 
-              </dl>
 
               <br>
 
               <h3><strong>Home address</strong></h3>
               
-             
-          
-          
-              
-                
+              <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Building and street              
+                </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['gp-postcode-prev'] }}
+              </dd>
+            </div>
 
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Town or city                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['gp-postcode-prev'] }}
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Postcode                
+                  </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['gp-postcode-prev'] }}
+                </dd>
+              </div>
+
+              <br>
           
-       
+              <h3><strong>Contact preferences</strong></h3>
+              
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Contact preference                
+                  </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['contact-pref'] }}
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Mobile                
+                  </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['contact-mobile'] }}
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Landline                 
+                  </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['contact-home'] }}
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Email                
+                  </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['contact-email'] }}
+                </dd>
+              </div>
+
+              <br>
+          
+          <h3><strong>Emergency contact</strong></h3>
+          
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Name
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['ec-full-name'] }}
+              </dd></a>
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Relationship
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['ec-relationship'] }}
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Emergency Relationship
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['ec-contact-tel'] }}
+              </dd>
+            </div>
+
+            <br>
+          
+          <h3><strong>Armed Forces</strong></h3>
+
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Connection to armed forces or registered with defence medical services
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['is-armed-forces-member'] }}
+              </dd>
+            </div>
+
+            <br>
+          
+          <h3><strong>Nominated pharmacy</strong></h3>
+
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Building and street              
+                </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['gp-postcode-prev'] }}
+              </dd>
+            </div>
+
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Town or city                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['gp-postcode-prev'] }}
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Postcode                
+                  </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['gp-postcode-prev'] }}
+                </dd>
+              </div>
+
+              <br>
+          
+          <h3><strong>Patient health</strong></h3>
+
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Immunisations
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['are-you-immunised'] }}
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Immunisations in the UK
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['are-you-immunised-uk'] }}
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                   Medical conditions
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['has-existing-conditions'] }}
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Medical conditions type
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {% if data['existing-conditions'] %}
+                      {{ data['existing-conditions'] }}
+                    {% endif %}
+                  </dd>
+                </div>
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Medical conditions details
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['existing-medical-condition-details'] }}
+                  </dd>
+                </div>
+
+                <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Allergies
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['has-allergies'] }}
+              </dd>
+            </div>
+
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Allergy details
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['allergies-details'] }}
+                  </dd>
+                </div>
+
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Mental health conditions
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['has-mental-health-conditions'] }}
+                </dd>
+              </div>
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Mental health details
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['mental-health-details'] }}
+                  </dd>
+                </div>
+
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Disabilities
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['has-disabilities'] }}
+                </dd>
+              </div>
+
+            
+              <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Disability details
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['disabilities-details'] }}
+                  </dd>
+                </div>
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Patient has a carer
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['need-carer'] }}
+                  </dd>
+                </div>
+
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                     First name
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['carer-first-name'] }}
+                    </dd>
+                  </div>
+
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Last name
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['carer-last-name'] }}
+                    </dd>
+                  </div>
+
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Relationship
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['carer-relationship'] }}
+                    </dd>
+                  </div>
+
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Contact telephone number
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['carer-telephone'] }}
+                    </dd>
+                  </div>
+
+                  <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Patient is a carer
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['are-carer'] }}
+                  </dd>
+                </div>
+              
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Type of carer
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['carer-type'] }}
+                    </dd>
+                  </div>
+
+                  <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Prescription medication
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['takes-prescription-meds'] }}
+                </dd>
+              </div>
+
+              
+              <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Prescription details
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['medication-details'] }}
+                  </dd>
+                </div>
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Repeat prescriptions
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['repeat-medication'] }}
+                    </dd>
+                  </div>
+
+                  <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Drinks alcohol
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['alcohol-consumption'] }}
+                  </dd>
+                </div>
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Number of units
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['alcohol-consumption'] }}
+                  </dd>
+                </div>
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Frequency
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['alcohol-consumption'] }}
+                  </dd>
+                </div>
+
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Smokes
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['smokes'] }}
+                  </dd>
+                </div>
+
+              </dl>
+
+
+
+
+            </dl>
 
           
           <p>NHS<br />
