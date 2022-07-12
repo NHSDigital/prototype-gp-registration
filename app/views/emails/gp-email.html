@@ -19,7 +19,7 @@
    <div class="pseudo-bg-gp"></div>
    <div class="gpemail-metadata">
      <p><strong>From: </strong>Register with a GP Surgery</p>
-     <p><strong>Subject: </strong>New patient registration</p>
+     <p><strong>Subject: </strong>[PATIENT SURNAME] [PATIENT FIRST NAME], NHS number: [NHS number]</p>
    </div>
    <div class="pseudo-gpemail-template">
      
@@ -280,9 +280,22 @@
               </dd>
             </div>
 
+            <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Additional care provider
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['health-contact'] }}
+                  </dd>
+                </div>
+
+                <br>
+
+<h3><strong>Education</strong></h3> 
+
         <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Education
+             Attends
             </dt>
             <dd class="nhsuk-summary-list__value">
               {{ data['schooling'] }}
@@ -316,14 +329,7 @@
                 </dd>
               </div>
 
-              <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Additional care provider
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['health-contact'] }}
-                  </dd>
-                </div>
+             
 
 
               <br>
@@ -470,6 +476,84 @@
                   {{ data['gp-postcode-prev'] }}
                 </dd>
               </div>
+
+              <br>
+          
+          <h3><strong>Recently moved to the UK</strong></h3>
+
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+               Recently moved             
+                </dt>
+              <dd class="nhsuk-summary-list__value">
+                
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+               Country of birth           
+                </dt>
+              <dd class="nhsuk-summary-list__value">
+                
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+              Place of birth             
+                </dt>
+              <dd class="nhsuk-summary-list__value">
+                
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+               Date entered the UK             
+                </dt>
+              <dd class="nhsuk-summary-list__value">
+                
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+               Moved from EU, EEA or Switzerland           
+                </dt>
+              <dd class="nhsuk-summary-list__value">
+                
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+               Health insurance documents           
+                </dt>
+              <dd class="nhsuk-summary-list__value">
+                
+              </dd>
+            </div>
+ <br>
+            <p><strong>European health insurance card details</strong></p>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Full name         
+                </dt>
+              <dd class="nhsuk-summary-list__value">
+                
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                code         
+                </dt>
+              <dd class="nhsuk-summary-list__value">
+                
+              </dd>
+            </div>
 
               <br>
           
@@ -700,7 +784,7 @@
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Smokes
+                    Smoker
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['smokes'] }}
