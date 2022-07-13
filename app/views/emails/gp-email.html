@@ -32,7 +32,7 @@
    <br>Submitted: Thursday 19 May 2022 at 2:31pm</strong></p>
   
    <ul class="nhsuk-list nhsuk-list--bullet">
-     <li>The patient did not use NHS Login</li>
+     <li>The patient did not use NHS login</li>
      <li>PDS search did not find a matching record</li>
      <li>Registering type: First acceptance registration</li>
    </ul>
@@ -56,6 +56,26 @@
 <h3><strong>Patient details</strong></h3>
 
 <dl class="nhsuk-summary-list">
+
+
+
+         <div class="nhsuk-summary-list__row">
+           <dt class="nhsuk-summary-list__key">
+              NHS number found in PDS
+           </dt>
+           <dd class="nhsuk-summary-list__value">
+             {{ data['nhs-number'] }}
+           </dd>
+         </div>
+
+         <div class="nhsuk-summary-list__row">
+           <dt class="nhsuk-summary-list__key">
+              NHS number given by patient
+           </dt>
+           <dd class="nhsuk-summary-list__value">
+             {{ data['nhs-number'] }}
+           </dd>
+         </div>
 
 <div class="nhsuk-summary-list__row">
    <dt class="nhsuk-summary-list__key">
@@ -95,6 +115,15 @@
 
  <div class="nhsuk-summary-list__row">
    <dt class="nhsuk-summary-list__key">
+    Previous last name
+   </dt>
+   <dd class="nhsuk-summary-list__value">
+     {{ data[''] }}
+   </dd>
+ </div>
+
+ <div class="nhsuk-summary-list__row">
+   <dt class="nhsuk-summary-list__key">
      Date of birth
    </dt>
    <dd class="nhsuk-summary-list__value">
@@ -104,17 +133,7 @@
    </dd>
  </div>
 
-      
-       <div class="nhsuk-summary-list__row">
-           <dt class="nhsuk-summary-list__key">
-              NHS number
-           </dt>
-           <dd class="nhsuk-summary-list__value">
-             {{ data['nhs-number'] }}
-           </dd>
-         </div>
-      
-         <div class="nhsuk-summary-list__row">
+ <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                   First time registering with a UK GP surgery
                 </dt>
@@ -123,10 +142,32 @@
                 </dd>
               </div>
 
-<br>
+ <div class="nhsuk-summary-list__row">
+   <dt class="nhsuk-summary-list__key">
+     Place of birth
+   </dt>
+   <dd class="nhsuk-summary-list__value">
+     <span id="dob-day">{{ data['dob-day'] }}</span>
+     <span id="dob-month">{{ data['dob-month'] }}</span>
+     <span id="dob-year">{{ data['dob-year'] }}</span>
+   </dd>
+ </div>
+
+ <div class="nhsuk-summary-list__row">
+   <dt class="nhsuk-summary-list__key">
+     Postcode when baby born
+   </dt>
+   <dd class="nhsuk-summary-list__value">
+     {{ data[''] }}
+   </dd>
+ </div>
+
+      
+       
+      
+  
 
 
-<h3><strong>Registered postcodes</strong></h3>
 
 
 <div class="nhsuk-summary-list__row">
@@ -296,7 +337,7 @@
 
           <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  School name
+                  Name of school
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['school-name'] }} 
@@ -314,7 +355,7 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Contact telephone number
+                  Telephone number
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['contact-school'] }} 
@@ -369,7 +410,7 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Mobile                
+                  Mobile telephone                
                   </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['contact-mobile'] }}
@@ -378,7 +419,7 @@
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Landline                 
+                  Home telephone                 
                   </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['contact-home'] }}
@@ -400,7 +441,7 @@
           
           <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Name
+                Full Name
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['ec-full-name'] }}
@@ -419,10 +460,19 @@
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Emergency Relationship
+                Next of Kin
               </dt>
               <dd class="nhsuk-summary-list__value">
-                {{ data['ec-contact-tel'] }}
+                {{ data[''] }}
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Contact telephone number
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data[''] }}
               </dd>
             </div>
 
@@ -443,6 +493,15 @@
           
           <h3><strong>Nominated pharmacy</strong></h3>
 
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Name of pharmacy           
+                </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['gp-postcode-prev'] }}
+              </dd>
+            </div>
+          
           <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
                 Building and street              
@@ -553,7 +612,7 @@
 
           <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Immunisations
+                Vaccinations
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['are-you-immunised'] }}
@@ -562,7 +621,7 @@
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Immunisations in the UK
+                Vaccinations in the UK
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['are-you-immunised-uk'] }}
@@ -571,7 +630,7 @@
 
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                   Medical conditions
+                   Existing medical conditions
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['has-existing-conditions'] }}
@@ -776,7 +835,7 @@
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Smoker
+                    Smokes
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['smokes'] }}
