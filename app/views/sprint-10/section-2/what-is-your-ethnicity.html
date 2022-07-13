@@ -1,0 +1,202 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https:/service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https:/service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https:/service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="do-you-need-a-interpreter" method="post" autocomplete="off">
+            {{ hint({
+              "text": "Step 2 of 3 - Personal Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2> What is {{ data ['name-first-name'] }}'s ethnic group?</H2>
+
+
+            {{ radios({
+              "idPrefix": "ethnicity",
+              "name": "ethnicity",
+              "fieldset": {
+                "legend": {
+                  "text": "",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+
+              "items": [
+                {
+                  "value": "Asian or Asian British~/sprint-10/section-2/what-is-your-ethnicity-background-asian",
+                  "text": "Asian or Asian British",
+                  "hint": {
+                    "text": "Includes any Asian background, for example, Bangladeshi, Chinese, Indian, Pakistani"
+                  },
+                  checked: checked("ethnicity", "Asian or Asian British")
+                },
+                {
+                  "value": "Black African, Black British or Caribbean~/sprint-10/section-2/what-is-your-ethnicity-background-black",
+                  "text": "Black African, Black British or Caribbean",
+                  "hint": {
+                    "text": "Includes any Black background"
+                  },
+                  checked: checked("ethnicity", "Black African, Black British or Caribbean")
+                },
+                {
+                  "value": "Mixed or multiple ethnic groups~/sprint-10/section-2/what-is-your-ethnicity-background-mixed",
+                  "text": "Mixed or multiple ethnic groups",
+                  "hint": {
+                    "text": "Includes any Mixed background"
+                  },
+                  checked: checked("ethnicity", "Mixed or multiple ethnic groups")
+                },
+                {
+                  "value": "White~/sprint-10/section-2/what-is-your-ethnicity-background-white",
+                  "text": "White",
+                  "hint": {
+                    "text": "Includes any White background"
+                  },
+                  checked: checked("ethnicity", "White")
+                },
+                {
+                  "value": "Another ethnic group~/sprint-10/section-2/what-is-your-ethnicity-background-another",
+                  "text": "Another ethnic group",
+                  "hint": {
+                    "text": "Includes any other ethnic background, for example, Arab"
+                  },
+                  checked: checked("ethnicity", "Another ethnic group")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say~/sprint-10/section-2/do-you-need-a-interpreter",
+                  "text": "Prefer not to say",
+                  checked: checked("ethnicity", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of ethnicity.</p>"
+            }) }}
+
+
+            {% else %}
+
+            {{ radios({
+              "idPrefix": "ethnicity",
+              "name": "ethnicity",
+              "fieldset": {
+                "legend": {
+                  "text": "What is your ethnic group?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+
+              "items": [
+                {
+                  "value": "Asian or Asian British~/sprint-10/section-2/what-is-your-ethnicity-background-asian",
+                  "text": "Asian or Asian British",
+                  "hint": {
+                    "text": "Includes any Asian background, for example, Bangladeshi, Chinese, Indian, Pakistani"
+                  },
+                  checked: checked("ethnicity", "Asian or Asian British")
+                },
+                {
+                  "value": "Black African, Black British or Caribbean~/sprint-10/section-2/what-is-your-ethnicity-background-black",
+                  "text": "Black African, Black British or Caribbean",
+                  "hint": {
+                    "text": "Includes any Black background"
+                  },
+                  checked: checked("ethnicity", "Black African, Black British or Caribbean")
+                },
+                {
+                  "value": "Mixed or multiple ethnic groups~/sprint-10/section-2/what-is-your-ethnicity-background-mixed",
+                  "text": "Mixed or multiple ethnic groups",
+                  "hint": {
+                    "text": "Includes any Mixed background"
+                  },
+                  checked: checked("ethnicity", "Mixed or multiple ethnic groups")
+                },
+                {
+                  "value": "White~/sprint-10/section-2/what-is-your-ethnicity-background-white",
+                  "text": "White",
+                  "hint": {
+                    "text": "Includes any White background"
+                  },
+                  checked: checked("ethnicity", "White")
+                },
+                {
+                  "value": "Another ethnic group~/sprint-10/section-2/what-is-your-ethnicity-background-another",
+                  "text": "Another ethnic group",
+                  "hint": {
+                    "text": "Includes any other ethnic background, for example, Arab"
+                  },
+                  checked: checked("ethnicity", "Another ethnic group")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say~/sprint-10/section-2/do-you-need-a-interpreter",
+                  "text": "Prefer not to say",
+                  checked: checked("ethnicity", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of ethnicity.</p>"
+            }) }}
+
+
+            {% endif %}
+
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}

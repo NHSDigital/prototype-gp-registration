@@ -1,0 +1,31 @@
+
+{% extends 'layout.html' %}
+
+{% from 'button/macro.njk' import button %}
+{% from 'back-link/macro.njk' import backLink %}
+
+{% block pageTitle %}
+Enter your email address
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+      <h1 class="nhsuk-heading-l">
+      This address is not in your chosen GP surgery's catchment area 
+      </h1>
+
+      <p>Some GP surgeries don't accept patients from outside their catchment area. You might wish to choose another GP. You can return to the <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP service</a>.</p>
+      <p>You can continue with the application, but the GP surgery may reject it.</p>
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+  </div>
+</div>
+
+
+{% endblock %}
