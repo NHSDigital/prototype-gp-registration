@@ -1,0 +1,112 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container-fluid">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+
+          <h1 class="nhsuk-heading-xl">You have 3 Registration services</h1>
+
+          <!-- {{ hint({
+            "text": "We found these details on your NHS login. We can give these details to your new GP.",
+            "classes": "nhsuk-u-margin-bottom-4"
+          }) }} -->
+
+          <div class="nnhsuk-table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name and address</th>
+                  <th>Mailbox</th>
+                  <th>Practice unique URL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Highstreet pharmacy</strong><br>1 Town Street, London, SW1A 1AA</td>
+                  <td>
+                    <p>practiceemail@nhsmail.co.uk</p>
+                  <td><a href="#">your-practice-url.com/practice</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Highstreet pharmacy</strong><br>1 Town Street, London, SW1A 1AA</td>
+                  <td>
+                    <p>practiceemail@nhsmail.co.uk</p>
+                  <td><a href="#">your-practice-url.com/practice</a></td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+
+              <!-- {{ radios({
+                  "idPrefix": "gp-reg-service",
+                  "name": "use-contacts-login",
+                  "classes": "nhsuk-radios--inline",
+                  "fieldset": {
+                    "legend": {
+                      "text": "Would you like sign up another practice?",
+                      "classes": "nhsuk-fieldset__legend--m",
+                      "isPageHeading": true
+                    }
+                  },
+                  "items": [
+                    {
+                      "value": "Yes~/sprint-9/section-2/how-can-we-contact-you",
+                      "text": "Yes"
+                    },
+                    {
+                      "value": "No~/sprint-9/section-2/how-can-we-contact-you",
+                      "text": "No"
+                    }
+                  ]
+              }) }} -->
+
+
+              <form action="gp-practices" method="post" autocomplete="off">
+              {{ button({
+              "text": "Add another practice"
+              }) }}
+              </form>
+
+              <p><a href="">Return to your profiles</a></p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}
