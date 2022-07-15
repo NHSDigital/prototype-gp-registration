@@ -47,17 +47,28 @@ User research - GP registration - NHS
         <div class="nhsuk-details__text version-text">
         <br>
 
-        <h2 class="nhsuk-heading-l">GP onboarding (Multiple)</h2>
+        <h2 class="nhsuk-heading-l">GP self onboarding</h2>
         <p></p>
 
         <form action="/gp/gp-profile-manager" method="post" autocomplete="off">
+        <input type="hidden" name="gp-multi" id="gp-multi" value="gp-multi" />
         {{ button({
-          "text": "Continue",
+          "text": "Multiple practices",
               "href": ""
         }) }}
         </form>
+
+        <form action="/gp/gp-profile-manager" method="post" autocomplete="off">
+        {{ button({
+          "text": "Single practice",
+              "href": ""
+        }) }}
+        </form>
+
         </div>
         </details>
+
+
 
         <details class="nhsuk-details nhsuk-expander version-list">
         <summary class="nhsuk-details__summary details-index">
