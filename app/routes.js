@@ -480,12 +480,21 @@ router.post('*/check-age-4', function (req, res) {
   // Check whether the variable matches a condition
   if (years <= 18) {
     // Send user to schooling
-    res.redirect('/sprint-9/section-2/what-schooling-do-you-have')
+    res.redirect('/sprint-10/section-2/what-schooling-do-you-have')
   } else {
     // Send user to next page
-    res.redirect('/sprint-9/section-2/what-is-your-gender')
+    res.redirect('/sprint-10/section-2/what-is-your-gender')
   }
 
+});
+
+router.post("/*/check-postcode", function (req, res) {
+  var postcode = (req.session.data["find-current-address"]).toUpperCase();
+  console.log("postcode check " + postcode)
+  if(postcode=="LS28"){ 
+    res.redirect("/sprint-10/section-2/how-do-you-normally-collect-your-prescriptions")
+  }
+  res.redirect("/sprint-10/section-2/nominate-pharmacy")
 });
 
 module.exports = router;
