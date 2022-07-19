@@ -491,7 +491,20 @@ router.post('*/check-age-4', function (req, res) {
 router.post("/*/check-postcode", function (req, res) {
   var postcode = (req.session.data["find-current-address"]).toUpperCase();
   console.log("postcode check " + postcode)
-  if(postcode=="LS28"){ 
+  if(postcode=="LS28 7FG"){ 
+    res.redirect("/sprint-10/section-2/how-do-you-normally-collect-your-prescriptions")
+  }
+  res.redirect("/sprint-10/section-2/nominate-pharmacy")
+});
+
+router.post("/*/check-postcode-2", function (req, res) {
+  var interpreterNeed = req.session.data['interpreter']
+  if (interpreterNeed == 'Yes'){
+    res.redirect('../section-2/do-you-need-a-interpreter-language')
+  }
+  var postcode = (req.session.data["find-current-address"]).toUpperCase();
+  console.log("postcode check " + postcode)
+  if(postcode=="LS28 7FG"){ 
     res.redirect("/sprint-10/section-2/how-do-you-normally-collect-your-prescriptions")
   }
   res.redirect("/sprint-10/section-2/nominate-pharmacy")
