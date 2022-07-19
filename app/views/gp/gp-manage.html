@@ -27,8 +27,11 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-full">
 
-          {% if data['gp-multi'] == "gp-multi" %}
-          <h1 class="nhsuk-heading-xl">You have 3 Registration services</h1>
+
+          {% if data['gp-prac'] == "gp-prac" %}
+          <h1 class="nhsuk-heading-xl">You have 3 Registration service</h1>
+          {% elif data['gp-multi'] == "gp-multi" %}
+          <h1 class="nhsuk-heading-xl">You have 2 Registration services</h1>
           {% else %}
           <h1 class="nhsuk-heading-xl">You have 1 Registration service</h1>
           {% endif %}
@@ -54,12 +57,27 @@
                     <p>{{ data['nhs-shared-email'] }}</p>
                   <td><a href="#">your-practice-url.com/practice</a></td>
                 </tr>
-                {% if data['gp-multi'] == "gp-multi" %}
+
+                {% if data['gp-prac'] == "gp-prac" %}
+                <tr>
+                  <td><strong>Pucklechuch surgerie</strong><br>1 Town Street, London, SW1A 1AA</td>
+                  <td>
+                <p>{{ data['nhs-shared-email'] }}</p>
+                <td><a href="#">your-practice-url.com/practice</a></td>
+                <tr>
+                  <td><strong>Three shires medical practice</strong><br>1 Town Street, London, SW1A 1AA</td>
+                  <td>
+                <p>{{ data['nhs-shared-email'] }}</p>
+                <td><a href="#">your-practice-url.com/practice</a></td>
+
+                {% elif data['gp-multi'] == "gp-multi" %}
                 <tr>
                   <td><strong>Pucklechuch surgerie</strong><br>1 Town Street, London, SW1A 1AA</td>
                   <td>
                     <p>{{ data['nhs-shared-email'] }}</p>
                   <td><a href="#">your-practice-url.com/practice</a></td>
+
+
                   {% else %}
                   {% endif %}
                 </tr>
@@ -94,6 +112,7 @@
 
               {% if data['gp-multi'] == "gp-multi" %}
               <form action="gp-practices" method="post" autocomplete="off">
+              <input type="hidden" name="gp-prac" id="gp-prac" value="gp-prac" />
               {{ button({
               "text": "Add another practice"
               }) }}
