@@ -22,8 +22,7 @@
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
-  <section class="nhsuk-section">
-    <div class="nhsuk-width-container">
+
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
@@ -35,27 +34,36 @@
           <form action="gp-answers" method="post" autocomplete="off">
 
 
-            <H2>Additional patient services</H2>
-
-            <p>The patient will be offered the use of any additional services provided by your surgery.<br><br>Select all that apply.</p>
+            <H2>Does your surgery offer a language interpretation service?</H2>
 
 
-            {{ checkboxes({
-                "idPrefix": "gp-questions",
-                "name": "gp-questions",
-                "fieldset": {
-                  "legend": {
-                    "text": "",
-                    "classes": "nhsuk-fieldset__legend--l",
-                    isPageHeading: true
-                  }
+            {{ radios({
+              "idPrefix": "interpretation",
+              "name": "interpretation",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: checked("interpretation", "Yes")
                 },
-
-
-                items: [
-                  { value: "Interpreter", text: "Interpreter", checked: checked("gp-questions", "Interpreter")}
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("interpretation", "No")
+                }
               ]
-              }) }}
+            }) }}
+
+            <details class="nhsuk-details">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Why are we asking this?
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p>If your surgery offers any additional patient services, such as a language interpreter or pharmaceutical services, we'll be able to offer them to the patient during the registration process.</p>
+              </div>
+            </details>
 
 
 
@@ -66,13 +74,13 @@
           </form>
         </div>
       </div>
-    </section>
+
 
     <!-- End of content -->
 
   </div>
 </div>
 {% block pageScripts %}
-<script></script>
+
 {% endblock %}
 {% endblock %}

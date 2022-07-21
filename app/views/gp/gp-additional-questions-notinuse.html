@@ -31,40 +31,31 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="do-you-have-a-living-will" method="post" autocomplete="off">
+          <form action="gp-answers" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Step 2 of 3 - Personal Details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
 
-            {% call fieldset({
-              legend: {
-                text: "Are you returning from overseas?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
+            <H2>Additional patient services</H2>
 
-            {{ radios({
-              "idPrefix": "overseas",
-              "name": "overseas",
-              "items": [
-                {
-                  "value": "Yes~/sprint-4/date-left-uk",
-                  "text": "Yes",
-                  checked: checked("overseas", "Yes")
+            <p>The patient will be offered the use of any additional services provided by your surgery.<br><br>Select all that apply.</p>
+
+
+            {{ checkboxes({
+                "idPrefix": "gp-questions",
+                "name": "gp-questions",
+                "fieldset": {
+                  "legend": {
+                    "text": "",
+                    "classes": "nhsuk-fieldset__legend--l",
+                    isPageHeading: true
+                  }
                 },
-                {
-                  "value": "No~/sprint-4/review-about-you-answers-nomatch",
-                  "text": "No",
-                  checked: checked("overseas", "No")
 
-                }
+
+                items: [
+                  { value: "Interpreter", text: "Interpreter", checked: checked("gp-questions", "Interpreter")}
               ]
-            }) }}
+              }) }}
 
-            {% endcall %}
 
 
             {{ button({
@@ -80,4 +71,7 @@
 
   </div>
 </div>
+{% block pageScripts %}
+<script></script>
+{% endblock %}
 {% endblock %}

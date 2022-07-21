@@ -22,8 +22,7 @@ GP Registration Prototypes
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
-<section class="nhsuk-section">
-  <div class="nhsuk-width-container">
+
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
@@ -48,7 +47,7 @@ GP Registration Prototypes
               </legend>
               <br>
 
- 
+
             {% if (data['schooling'] == "School") %}
 
 
@@ -120,7 +119,7 @@ GP Registration Prototypes
 
         {% elif (data['schooling'] == "School,Nursery,Homeschool") %}
 
-          
+
 
               <h3>School details:</h3>
                 <div class="nhsuk-form-group contact-home-section">
@@ -216,7 +215,7 @@ GP Registration Prototypes
 
         {% elif (data['schooling'] == "Homeschool") %}
 
-          
+
 
               <h3>Home School details:</h3>
               <div class="nhsuk-form-group contact-home-section">
@@ -235,7 +234,7 @@ GP Registration Prototypes
       {% elif (data['schooling'] == "Nursery") %}
 
 
-             
+
 
                 <h3>Nursery details:</h3>
                   <div class="nhsuk-form-group contact-home-section">
@@ -310,7 +309,7 @@ GP Registration Prototypes
 
       </div>
     </div>
-</section>
+
 
 <!-- End of content -->
 

@@ -22,8 +22,7 @@
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
-  <section class="nhsuk-section">
-    <div class="nhsuk-width-container">
+
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
@@ -40,7 +39,7 @@
               "text": "Step 1 of 3 - Matching patient to their record",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-            
+
             <H2>What is {{ data ['name-first-name'] }}'s date of birth?</H2>
 
             {{ dateInput({
@@ -123,7 +122,7 @@
           </form>
         </div>
       </div>
-    </section>
+
 
     <!-- End of content -->
 
