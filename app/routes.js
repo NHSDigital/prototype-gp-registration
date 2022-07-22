@@ -392,10 +392,10 @@ router.post('*/check-age-3', function (req, res) {
   // Check whether the variable matches a condition
   if (years <= 18) {
     // Send user to immunisation page
-    res.redirect('/sprint-9/section-3/are-you-immunised')
+    res.redirect('/sprint-10/section-3/are-you-immunised')
   } else {
     // Send user to next page
-    res.redirect('/sprint-9/section-3/do-you-have-existing-conditions')
+    res.redirect('/sprint-10/section-3/do-you-have-existing-conditions')
   }
 
 });
@@ -414,10 +414,10 @@ console.log('looking up age')
   // Check whether the variable matches a condition
   if (years <= 18) {
     // Send user to immunisation page
-    res.redirect('/sprint-9/section-3/are-you-immunised')
+    res.redirect('/sprint-10/section-3/are-you-immunised')
   } else {
     // Send user to next page
-    res.redirect('/sprint-9/section-3/do-you-have-existing-conditions')
+    res.redirect('/sprint-10/section-3/do-you-have-existing-conditions')
   }
 
 });
@@ -436,10 +436,10 @@ console.log('looking up age')
   // Check whether the variable matches a condition
   if (years <= 18) {
     // Send user to immunisation page
-    res.redirect('/sprint-9/section-3/are-you-immunised')
+    res.redirect('/sprint-10/section-3/are-you-immunised')
   } else {
     // Send user to next page
-    res.redirect('/sprint-9/section-3/do-you-have-existing-conditions')
+    res.redirect('/sprint-10/section-3/do-you-have-existing-conditions')
   }
 
 });
@@ -458,10 +458,10 @@ router.post('*/check-age-3', function (req, res) {
   // Check whether the variable matches a condition
   if (years <= 18) {
     // Send user to immunisation page
-    res.redirect('/sprint-9/section-3/are-you-immunised')
+    res.redirect('/sprint-10/section-3/are-you-immunised')
   } else {
     // Send user to next page
-    res.redirect('/sprint-9/section-3/do-you-have-existing-conditions')
+    res.redirect('/sprint-10/section-3/do-you-have-existing-conditions')
   }
 
 });
@@ -491,7 +491,7 @@ router.post('*/check-age-4', function (req, res) {
 router.post("/*/check-postcode", function (req, res) {
   var postcode = (req.session.data["find-current-address"]).toUpperCase();
   console.log("postcode check " + postcode)
-  if(postcode=="LS28 7FG"){ 
+  if(postcode=="LS28 7FG"){
     res.redirect("/sprint-10/section-2/how-do-you-normally-collect-your-prescriptions")
   }
   res.redirect("/sprint-10/section-2/nominate-pharmacy")
@@ -504,7 +504,7 @@ router.post("/*/check-postcode-2", function (req, res) {
   }
   var postcode = (req.session.data["find-current-address"]).toUpperCase();
   console.log("postcode check " + postcode)
-  if(postcode=="LS28 7FG"){ 
+  if(postcode=="LS28 7FG"){
     res.redirect("/sprint-10/section-2/how-do-you-normally-collect-your-prescriptions")
   }
   res.redirect("/sprint-10/section-2/nominate-pharmacy")
