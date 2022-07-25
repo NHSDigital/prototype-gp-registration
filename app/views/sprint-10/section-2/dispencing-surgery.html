@@ -31,7 +31,7 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="" method="post" autocomplete="off">
+          <form action="distance-from-nearest-pharmacy" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
@@ -40,45 +40,16 @@
                 isPageHeading: true
               }
             }) %}
+          <p>{SURGERY NAME} is a dispensing surgery. This means it is allowed to give medicines and medical appliances directly to some patients without the need to visit a pharmacy. The surgery may discuss this additional service with you.</p>
 
-            {{ hint({
-              "text": "{SURGERY NAME} is a dispensing surgery. This means it is allowed to give medicines and medical appliances directly to some patients without the need to visit a pharmacy. The surgery may discuss this additional service with you. ",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+           <p>Answer the following 2 questions as best you can.</p>
 
-            {{ hint({
-              "text": "You must give honest answers to the next 3 questions."
-            }) }}
-
-            <br>
-            <h3>How do you currently get your medication?</h3>
-
-            {{ hint({
-              "text": "Medication is not the same as a prescription."
-            }) }}
-
-
-            {{ radios({
-              "idPrefix": "how-do-you-collect-prescriptions",
-              "name": "how-do-you-collect-prescriptions",
-              "items": [
-                {
-                  "value": "Pharmacy~/sprint-10/section-2/are-you-a-member-of-armed-forces",
-                  "text": "From a pharmacy",
-                  "checked": checked("how-do-you-collect-prescriptions", "Pharmacy")
-                },
-                {
-                  "value": "GP~/sprint-10/section-2/distance-from-nearest-pharmacy",
-                  "text": "From my GP",
-                  "checked": checked("how-do-you-collect-prescriptions", "GP")
-                }
-              ]
-            }) }}
+           
 
             {% endcall %}
 
             {{ button({
-              "text": "Continue"
+              "text": "Next"
             }) }}
 
           </form>
