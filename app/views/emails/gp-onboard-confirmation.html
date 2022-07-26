@@ -1,0 +1,49 @@
+
+{% extends 'layout.html' %}
+
+{% block customStyles %}
+
+      <STYLE type="text/css">
+            font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+      </STYLE>
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+          <div class="pseudo-bg"></div>
+          <div class="email-metadata">
+            <p><strong>From: </strong>Sign up to Register with a GP surgery</p>
+            <p><strong>Subject: </strong>Practice registration confirmation</p>
+          </div>
+          <div class="pseudo-email-template">
+          <h3><strong>Sign up to Register with a GP surgery confirmation</strong></h3>
+
+          <p>{SURGERY NAME} is registered with the GP Registration Service.</p>
+
+          <p><strong>Your surgery's unique URL is:</strong> <a href="#">your-practice-url.com/practice</a></p>
+
+          <p><strong>Next steps</strong></p>
+
+          <ul class="nhsuk-list nhsuk-list--bullet">
+            <li>use your practice's unique URL to link to the GP Registration Service.</li>
+            <li>monitor your shared mailbox for registration applications.</li>
+          </ul>
+
+          <p>Find out more about <a href="">Register with a GP surgery</a></p>
+
+          <p>NHS<br />
+          <span style="color:#888888;">Register with a GP Surgery</span></p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}
