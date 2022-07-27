@@ -30,12 +30,17 @@
             text: "Go back",
             href: "javascript:history.go(-1)"
           }) }}
+          
+          {{ hint({
+            "text": "Step 2 of 3 - Personal Details",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
 
           <form action="would-you-have-difficulty-reaching-pharmacy" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                text: "If you were to travel in a straight line, do you live more than 1 mile from your nearest pharmacy?",
+                text: "Do you live more than 1 mile in a straight line from your nearest pharmacy?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }

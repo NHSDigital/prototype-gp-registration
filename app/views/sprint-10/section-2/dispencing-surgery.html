@@ -31,6 +31,11 @@
             href: "javascript:history.go(-1)"
           }) }}
 
+          {{ hint({
+            "text": "Step 2 of 3 - Personal Details",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
+
           <form action="distance-from-nearest-pharmacy" method="post" autocomplete="off">
 
             {% call fieldset({
@@ -40,7 +45,7 @@
                 isPageHeading: true
               }
             }) %}
-          <p>{SURGERY NAME} is a dispensing surgery. This means it is allowed to give medicines and medical appliances directly to some patients without the need to visit a pharmacy. The surgery may discuss this additional service with you.</p>
+          <p>{SURGERY NAME} is a dispensing surgery. This means you can get your medicines or medical appliances directly from your doctor's surgery without having to go to a pharmacy. The surgery may discuss this additional service with you.</p>
 
            <p>Answer the following 2 questions as best you can.</p>
 
