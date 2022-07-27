@@ -38,6 +38,8 @@
 
           {% if (data['user-auth'] == "p9") %}
           <form action="/sprint-10/section-1/confirm-contact-details" method="post" autocomplete="off">
+          {% elif (data['out-of-area'] == "out-of-area") %}
+          <form action="current-address-out-of-area" method="post" autocomplete="off">
           {% else %}
           <form action="how-can-we-contact-you" method="post" autocomplete="off">
           {% endif %}

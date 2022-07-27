@@ -5,13 +5,20 @@
 {% from 'back-link/macro.njk' import backLink %}
 
 {% block pageTitle %}
-Enter your email address
+Out of area
 {% endblock %}
 
 {% block content %}
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    {{ backLink({
+      text: "Go back",
+      href: "javascript:history.go(-1)"
+    }) }}
+
+    <form action="how-can-we-contact-you" method="post" autocomplete="off">
 
       <h1 class="nhsuk-heading-l">
       This address is outside the area for your chosen GP surgery
@@ -24,6 +31,7 @@ Enter your email address
         "text": "Continue"
       }) }}
 
+  </form>
   </div>
 </div>
 
