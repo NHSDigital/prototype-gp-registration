@@ -55,9 +55,17 @@ GP Registration Prototypes
 
             <H2>Do you know the postcode {{ data ['name-first-name'] }} used when they last registered with a UK GP?</H2>
 
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>This will be the postcode they used last time they registered with a GP surgery.
+            </div>
+
             {% else %}
 
             <H2>Do you know the postcode used when you last registered with a UK GP?</H2>
+
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>This will be the postcode you used last time they registered with a GP surgery.
+            </div>
 
             {% endif %}
 
@@ -69,9 +77,7 @@ GP Registration Prototypes
             }
           }) %}
 
-          <div class="nhsuk-hint" id="contact-hint">
-            <p>This will be the postcode they used last time they registered with a GP surgery.
-          </div>
+
 
 
           {{ radios({
