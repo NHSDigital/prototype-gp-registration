@@ -1,0 +1,179 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+
+<!-- Set the page title -->
+{% block pageTitle %}
+GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+          text: "Go back",
+          href: "javascript:history.go(-1)"
+        }) }}
+
+        <form action="" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Step 2 of 3 - Personal Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+          {% if (data['who-is-being-registered'] == "dependant") %}
+
+          <H2>Has {{ data ['name-first-name'] }} recently moved to the UK from another country?</H2>
+
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>Anybody in England can register with a GP surgery and receive free primary medical care. To get free secondary NHS healthcare in England, such as a referral to hospital, you need to be "ordinarily resident" in the UK. This may require you to have indefinite leave to remain in the UK or status under the EU Settlement Scheme.</p>
+
+            <p>You may be exempt from paying for most secondary NHS healthcare, for instance if you have paid the Immigration Health Surcharge or you are a refugee, asylum seeker or victim of modern slavery.</p>
+
+            <p>Some hospital care, such as treatment for infectious diseases or types of violence, is free for all.</p>
+
+          </div>
+
+
+          {% call fieldset({
+            legend: {
+              text: "",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "recently-moved",
+            "name": "recently-moved",
+            "items": [
+              {
+                "value": "Yes~/sprint-11/section-2/no-match/what-address-for-recently-moved",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("recently-moved", "Yes")
+              },
+              {
+                "value": "No~/sprint-11/section-2/no-match/what-is-place-of-birth",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("recently-moved", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {% else %}
+
+          {% call fieldset({
+            legend: {
+              text: "Have you recently moved to the UK from another country?",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          <div class="nhsuk-hint" id="contact-hint">
+
+            <p>Anybody in England can register with a GP surgery and receive free primary medical care. To get free secondary NHS healthcare in England, such as a referral to hospital, you need to be "ordinarily resident" in the UK. This may require you to have indefinite leave to remain in the UK or status under the EU Settlement Scheme.</p>
+
+            <p>You may be exempt from paying for most secondary NHS healthcare, for instance if you have paid the Immigration Health Surcharge or you are a refugee, asylum seeker or victim of modern slavery.</p>
+              <!-- <ul class="nhsuk-list nhsuk-list--bullet">
+                <li>you have paid the Immigration Health Surcharge</li>
+                <li>you have a valid EHIC or S1 form</li>
+                <li>you are a refugee, asylum seeker or victim of modern slavery</li>
+              </ul> -->
+
+              <p>Some hospital care, such as treatment for infectious diseases or types of violence, is free for all.</p>
+          </div>
+
+
+          {{ radios({
+            "idPrefix": "recently-moved",
+            "name": "recently-moved",
+            "items": [
+              {
+                "value": "Yes~/sprint-11/section-2/no-match/what-address-for-recently-moved",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("recently-moved", "Yes")
+              },
+              {
+                "value": "No~/sprint-11/section-2/no-match/what-is-place-of-birth",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("recently-moved", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {% endif %}
+
+          <!-- {{ details({
+            "text": "Why are you asking this?",
+            "HTML": "<p>Anybody in England can register with a GP surgery and receive free medical care. To get free NHS healthcare in England you need to be 'ordinarily resident' in the UK. This means you must be living in the UK on a lawful and properly settled basis for the time being. You may be asked for evidence of this.</p>"
+          }) }} -->
+
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}

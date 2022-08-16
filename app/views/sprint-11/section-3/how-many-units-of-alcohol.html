@@ -1,0 +1,168 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="how-often-six-or-more-units" method="post" autocomplete="off">
+
+           {{ hint({
+              "text": "Step 3 of 3 - Health questions",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>How many units of alcohol does {{ data ['name-first-name'] }} drink in an average week?</H2>
+
+            {% call fieldset({
+              legend: {
+                "text": "",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ input({
+                label: {
+                  "text": "For example, 2.5"
+                },
+                "classes": "nhsuk-input--width-4",
+                "id": "name-title",
+                "name": "name-title",
+                "value": data['name-title']
+              }) }}
+
+
+            {% endcall %}
+            {% else %}
+
+
+            {% call fieldset({
+              legend: {
+                "text": "How many units of alcohol do you consume in an average week?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ input({
+                label: {
+                  "text": "For example, 2.5"
+                },
+                "classes": "nhsuk-input--width-4",
+                "id": "name-title",
+                "name": "name-title",
+                "value": data['name-title']
+              }) }}
+
+
+            {% endcall %}
+            {% endif %}
+
+
+
+            <!-- HINT TEXT -->
+
+
+            <details class="nhsuk-details">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Units of alcoholic drinks
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                            <table class="nhsuk-table">
+                  <caption class="nhsuk-table__caption"></caption>
+                  <thead role="rowgroup" class="nhsuk-table__head">
+                    <tr role="row">
+                      <th role="columnheader" class="" scope="col">
+                        Types of drinks
+                      </th>
+                      <th role="columnheader" class="" scope="col">
+                        Units of alcohol
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="nhsuk-table__body">
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Single small shot of spirits * (25ml, ABV 40%)</td>
+                      <td class="nhsuk-table__cell ">cold sores</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Alcopop (275ml, ABV 5.5%)</td>
+                      <td class="nhsuk-table__cell ">1.5 units</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Small glass of red/white/rosé wine (125ml, ABV 12%)</td>
+                      <td class="nhsuk-table__cell ">1.5 units</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Bottle of lager/beer/cider (330ml, ABV 5%)</td>
+                      <td class="nhsuk-table__cell ">1.7 units</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Can of lager/beer/cider (440ml, ABV 5.5%)Bottle of lager/beer/cider (330ml, ABV 5%)</td>
+                      <td class="nhsuk-table__cell ">2 units</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Pint of lower-strength lager/beer/cider (ABV 3.6%)</td>
+                      <td class="nhsuk-table__cell ">2 units</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Standard glass of red/white/rosé wine (175ml, ABV 12%)</td>
+                      <td class="nhsuk-table__cell ">2.1 units</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Pint of higher-strength lager/beer/cider (ABV 5.2%)</td>
+                      <td class="nhsuk-table__cell ">3 units</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Large glass of red/white/rosé wine (250ml, ABV 12%)</td>
+                      <td class="nhsuk-table__cell ">3 units</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </details>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+  
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}

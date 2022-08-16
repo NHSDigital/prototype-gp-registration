@@ -1,0 +1,84 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+        <form action="/sprint-11/section-2/do-you-have-emergency-contact" method="post" autocomplete="off">
+
+
+            {{ hint({
+              "text": "Step 2 of 3 - Personal Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+          <h2 class="nhsuk-heading--l">Recent UK Armed forces leavers and their families</h2>
+
+          <p>After submitting your registration:</p>
+
+            <ul class="nhsuk-list nhsuk-list--bullet">
+
+              <li>
+              <p><strong>For recent former regular members</strong><br>
+              You should have been given a FMED133A form (sometimes called an FMED1 form) when you left the UK Armed forces. You should give this to your GP at the earliest opportunity. Your GP will then arrange for your records to be transferred.</p>
+              </li>
+
+              <li>
+              <p><strong>For former reservists</strong><br>
+              If you had previously received healthcare from the Defence Medical Services you should have been given an FMED133A form. If you haven't receive one and think you should have you can follow the <a href="https://www.nhs.uk/nhs-services/armed-forces-community/service-leavers-guide/" target="_blank" rel="noopener noreferrer">NHS Step by step guide for service leavers</a>.</p>
+              </li>
+
+              <li>
+              <p><strong>For family members of former UK Armed forces members</strong><br>
+              You should inform your GP surgery who will arrange the transfer of you medical records from the Defence Medical Service.</p>
+              </li>
+
+              <li>
+              <p><strong>For all other former regular members and reservists</strong><br>
+              If you have previously been in the UK Armed forces, but your care has recently been with an NHS GP, your records will be transferred from your previous GP to your new one.</p>
+              </li>
+
+          </ul>
+
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+  
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}

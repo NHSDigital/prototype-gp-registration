@@ -1,0 +1,322 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+          text: "Go back",
+          href: "javascript:history.go(-1)"
+        }) }}
+
+
+        <form action="professional-involvement" method="post" autocomplete="off">
+
+           {{ hint({
+              "text": "Step 2 of 3 - Personal Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-fieldset__heading">
+                  Enter details of where {{ data ['name-first-name'] }} goes for their education
+                </h1>
+              </legend>
+              <br>
+
+
+            {% if (data['schooling'] == "School") %}
+
+
+              <h3>School details:</h3>
+              <div class="nhsuk-form-group contact-home-section">
+                <label class="nhsuk-label" for="school-name">
+                  School name
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="school-name" name="school-name" type="text">
+              </div>
+              <div class="nhsuk-form-group contact-home-section">
+                <label class="nhsuk-label" for="contact-prefs-1">
+                  Postcode
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-10" id="postcode-school" name="postcode-school" type="text">
+              </div>
+
+              <div class="nhsuk-form-group contact-home-section">
+                <label class="nhsuk-label" for="contact-school">
+                  Contact telephone number
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
+              </div>
+
+          {% elif (data['schooling'] == "School,Nursery") %}
+
+
+              <h3>School details:</h3>
+                <div class="nhsuk-form-group contact-home-section">
+                  <label class="nhsuk-label" for="school-name">
+                    School name
+                  </label>
+                  <input class="nhsuk-input nhsuk-input--width-20" id="school-name" name="school-name" type="text">
+                </div>
+                <div class="nhsuk-form-group contact-home-section">
+                  <label class="nhsuk-label" for="contact-prefs-1">
+                    Postcode
+                  </label>
+                  <input class="nhsuk-input nhsuk-input--width-10" id="postcode-school" name="postcode-school" type="text">
+                </div>
+
+                <div class="nhsuk-form-group contact-home-section">
+                  <label class="nhsuk-label" for="contact-school">
+                    Contact telephone number
+                  </label>
+                  <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
+                </div>
+
+                <h3>Nursery details:</h3>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="nursery-name">
+                      Nursery name
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="nursery-name" name="nursery-name" type="text">
+                  </div>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-prefs-1">
+                      Postcode
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-10" id="postcode-nursery" name="postcode-nursery" type="text">
+                  </div>
+
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-nursery">
+                      Contact telephone number
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-nursery" name="contact-nursery" type="text">
+                  </div>
+
+        {% elif (data['schooling'] == "School,Nursery,Homeschool") %}
+
+
+
+              <h3>School details:</h3>
+                <div class="nhsuk-form-group contact-home-section">
+                  <label class="nhsuk-label" for="contact-prefs-1">
+                    School name
+                  </label>
+                  <input class="nhsuk-input nhsuk-input--width-20" id="school-name" name="school-name" type="text">
+                </div>
+                <div class="nhsuk-form-group contact-home-section">
+                  <label class="nhsuk-label" for="contact-prefs-1">
+                    Postcode
+                  </label>
+                  <input class="nhsuk-input nhsuk-input--width-10" id="postcode-school" name="postcode-school" type="text">
+                </div>
+
+                <div class="nhsuk-form-group contact-home-section">
+                  <label class="nhsuk-label" for="contact-prefs-1">
+                    Contact telephone number
+                  </label>
+                  <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
+                </div>
+
+                <h3>Nursery details:</h3>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-prefs-1">
+                      Nursery name
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="school-name" name="school-name" type="text">
+                  </div>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-prefs-1">
+                      Postcode
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-10" id="postcode-nursery" name="postcode-nursery" type="text">
+                  </div>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-prefs-1">
+                      Contact telephone number
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
+                  </div>
+
+                  <h3>Home school details:</h3>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-prefs-1">
+                      Postcode
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-10" id="postcode-hschool" name="postcode-hschool" type="text">
+                  </div>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-home-school">
+                      Contact telephone number
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-home-school" name="contact-home-school" type="text">
+                  </div>
+
+        {% elif (data['schooling'] == "Nursery,Homeschool") %}
+
+
+                <h3>Nursery details:</h3>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="nursery-name">
+                      Nursery name
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="nursery-name" name="nursery-name" type="text">
+                  </div>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-prefs-1">
+                      Postcode
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-10" id="postcode-nursery" name="postcode-nursery" type="text">
+                  </div>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-nursery">
+                      Contact telephone number
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-nursery" name="contact-nursery" type="text">
+                  </div>
+
+                  <h3>Home School details:</h3>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-prefs-1">
+                      Postcode
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-10" id="postcode-hschool" name="postcode-hschool" type="text">
+                  </div>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-home-school">
+                      Contact telephone number
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-home-school" name="contact-home-school" type="text">
+                  </div>
+
+        {% elif (data['schooling'] == "Homeschool") %}
+
+
+
+              <h3>Home School details:</h3>
+              <div class="nhsuk-form-group contact-home-section">
+                <label class="nhsuk-label" for="contact-prefs-1">
+                  Postcode
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-10" id="postcode-hschool" name="postcode-hschool" type="text">
+              </div>
+                <div class="nhsuk-form-group contact-home-section">
+                  <label class="nhsuk-label" for="contact-home-school">
+                    Contact telephone number
+                  </label>
+                  <input class="nhsuk-input nhsuk-input--width-20" id="contact-home-school" name="contact-home-school" type="text">
+                </div>
+
+      {% elif (data['schooling'] == "Nursery") %}
+
+
+
+
+                <h3>Nursery details:</h3>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-prefs-1">
+                      Nursery name
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="school-name" name="school-name" type="text">
+                  </div>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-prefs-1">
+                      Postcode
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-10" id="postcode-nursery" name="postcode-nursery" type="text">
+                  </div>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-prefs-1">
+                      Contact telephone number
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
+                  </div>
+
+
+        {% elif (data['schooling'] == "School,Homeschool") %}
+
+
+                <h3>School details:</h3>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="school-name">
+                      School name
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="school-name" name="school-name" type="text">
+                  </div>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="postcode-school">
+                      Postcode
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-10" id="postcode-school" name="postcode-school" type="text">
+                  </div>
+
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-school">
+                      Contact telephone number
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-school" name="contact-school" type="text">
+                  </div>
+
+                  <h3>Home School details:</h3>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="postcode-hschool">
+                      Postcode
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-10" id="postcode-hschool" name="postcode-hschool" type="text">
+                  </div>
+                  <div class="nhsuk-form-group contact-home-section">
+                    <label class="nhsuk-label" for="contact-home-school">
+                      Contact telephone number
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-home-school" name="contact-home-school" type="text">
+                  </div>
+
+
+
+       {% endif %}
+
+
+          <button class="nhsuk-button" type="submit">
+            Continue
+          </button>
+
+        </form>
+
+
+      </div>
+    </div>
+
+
+<!-- End of content -->
+
+</div>
+</div>
+
+{% block pageScripts %}
+
+{% endblock %}
+{% endblock %}

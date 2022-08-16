@@ -1,0 +1,106 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+
+<!-- Set the page title -->
+{% block pageTitle %}
+GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+          text: "Go back",
+          href: "javascript:history.go(-1)"
+        }) }}
+
+        <form action="" method="post" autocomplete="off">
+
+          <!-- <span class="nhsuk-u-font-size-22 nhsuk-u-padding-bottom-0">Matching you to your record</span> -->
+          {% call fieldset({
+            legend: {
+              text: "Who is registering with a GP?",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          <div class="nhsuk-hint" id="contact-hint">
+            <p></p>
+          </div>
+
+          {{ radios({
+            "idPrefix": "who-is-being-registered",
+            "name": "who-is-being-registered",
+            "items": [
+              {
+                "value": "Myself~/sprint-11/section-1/continue-with-nhs-login",
+                "text": "Myself",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("who-is-being-registered", "myself")
+              },
+              {
+                "value": "dependant~/sprint-11/section-1/relation-of-dependant",
+                "text": "Someone else",
+                "hint": {
+                  "text": "You are registering your child or someone else who needs help completing this form.
+
+                  "
+                },
+                checked: checked("who-is-being-registered", "dependant")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+
+
+      </div>
+    </div>
+
+
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}

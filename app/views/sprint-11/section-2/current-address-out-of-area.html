@@ -1,0 +1,39 @@
+
+{% extends 'layout.html' %}
+
+{% from 'button/macro.njk' import button %}
+{% from 'back-link/macro.njk' import backLink %}
+
+{% block pageTitle %}
+Out of area
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    {{ backLink({
+      text: "Go back",
+      href: "javascript:history.go(-1)"
+    }) }}
+
+    <form action="how-can-we-contact-you" method="post" autocomplete="off">
+
+      <h1 class="nhsuk-heading-l">
+      This address is outside the area for your chosen GP surgery
+      </h1>
+
+      <p>Some GP surgeries will only accept patients that live within the area they look after. You can continue with this registration, but they may not accept it.</p>
+      <p>You might want to contact your chosen surgery and check if they accept patients from outside their area.</p>
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+  </form>
+  </div>
+</div>
+
+
+{% endblock %}
