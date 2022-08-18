@@ -32,75 +32,81 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="do-you-have-a-living-will" method="post" autocomplete="off">
+          <form action="date-returned-uk" method="post" autocomplete="off">
 
             {{ hint({
               "text": "Step 2 of 3 - Personal Details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            {% call fieldset({
-              legend: {
-                text: "Are they returning from overseas?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ radios({
-              "idPrefix": "overseas",
-              "name": "overseas",
+            {{ dateInput({
+              "id": "left-uk",
+              "namePrefix": "left-uk",
+              "fieldset": {
+                "legend": {
+                  "text": "What was the date they left the UK?",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": true
+                }
+              },
+              "hint": {
+                "text": "For example, 15 3 1984"
+              },
               "items": [
                 {
-                  "value": "Yes~/sprint-11/section-2/no-match/date-left-uk",
-                  "text": "Yes",
-                  checked: checked("overseas", "Yes")
+                  "name": "day",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['left-uk-day']
                 },
                 {
-                  "value": "No~/sprint-11/section-2/no-match/what-is-your-gp-address",
-                  "text": "No",
-                  checked: checked("overseas", "No")
-
+                  "name": "month",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['left-uk-month']
+                },
+                {
+                  "name": "year",
+                  "classes": "nhsuk-input--width-4",
+                  "value": data['left-uk-year']
                 }
               ]
             }) }}
-
-            {% endcall %}
 
             {% else %}
 
-            {% call fieldset({
-              legend: {
-                text: "Are you returning from overseas?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ radios({
-              "idPrefix": "overseas",
-              "name": "overseas",
+            {{ dateInput({
+              "id": "left-uk",
+              "namePrefix": "left-uk",
+              "fieldset": {
+                "legend": {
+                  "text": "What was the date you left the UK?",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": true
+                }
+              },
+              "hint": {
+                "text": "For example, 15 3 1984"
+              },
               "items": [
                 {
-                  "value": "Yes~/sprint-11/section-2/no-match/date-left-uk",
-                  "text": "Yes",
-                  checked: checked("overseas", "Yes")
+                  "name": "day",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['left-uk-day']
                 },
                 {
-                  "value": "No~/sprint-11/section-2/no-match/what-is-your-gp-address",
-                  "text": "No",
-                  checked: checked("overseas", "No")
-
+                  "name": "month",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['left-uk-month']
+                },
+                {
+                  "name": "year",
+                  "classes": "nhsuk-input--width-4",
+                  "value": data['left-uk-year']
                 }
               ]
             }) }}
 
-            {% endcall %}
-
             {% endif %}
-
 
             {{ button({
               "text": "Continue"

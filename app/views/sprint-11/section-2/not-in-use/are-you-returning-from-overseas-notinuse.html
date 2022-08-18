@@ -101,12 +101,12 @@
 
             {% endcall %}
 
-            {% elif (data['registering-first-time'] == "Yes")  %}
+            {% if ((data['who-is-being-registered'] == "dependant") and (data['registering-first-time'] == "Yes"))  %}
 
 
             {% call fieldset({
               legend: {
-                text: "Are you returning from overseas?",
+                text: "Are they returning from overseas?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -132,7 +132,7 @@
 
             {% endcall %}
 
-            {% else %}
+            {% elif ((data['who-is-being-registered'] == "dependant") and (data['registering-first-time'] == "No"))  %}
 
 
             {% call fieldset({
@@ -160,8 +160,6 @@
                 }
               ]
             }) }}
-
-            {% endcall %}
 
             {% endif %}
 

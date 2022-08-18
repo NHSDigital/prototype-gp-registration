@@ -372,7 +372,7 @@ router.post('*/check-age-2', function (req, res) {
     res.redirect('../section-3/are-you-immunised')
   } else {
     // Send user to next page
-    res.redirect('../section-3/do-you-have-existing-conditions')
+    res.redirect('../section-2/are-you-returning-from-overseas')
   }
 
 });
