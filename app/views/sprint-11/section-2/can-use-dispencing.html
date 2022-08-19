@@ -36,36 +36,20 @@
             "classes": "nhsuk-u-margin-bottom-2"
           }) }}
 
-          <form action="distance-from-nearest-pharmacy" method="post" autocomplete="off">
+          <form action="are-you-a-member-of-armed-forces" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                text: "Do you want to get your prescription items direct from {NAME OF SURGERY}?",
+                text: "You can get your prescription items direct from {SURGERY NAME}",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
-          <p>{SURGERY NAME} is a dispensing surgery. This means a patient may be able to get their prescription items such as medicines or medical appliances directly from their GP surgery and not have to go to a pharmacy. If you select 'Yes, check if I'm able' you must answer the questions you are shown as best you can. The GP surgery may discuss this additional service with you.
+          <p> Your GP surgery will discuss this additional service with you.
 
           </p>
 
-          {{ radios({
-            "idPrefix": "have-current-uk-address",
-            "name": "have-current-uk-address",
-            "items": [
-              {
-                "value": "Yes~/sprint-11/section-2/distance-from-nearest-pharmacy",
-                "text": "Yes, check if I'm able",
-                checked: checked("have-current-uk-address", "Yes")
-              },
-              {
-                "value": "No~/sprint-11/section-2/nominate-pharmacy",
-                "text": "No",
-                checked: checked("have-current-uk-address", "No")
-              }
-            ]
-          }) }}
-  
+          
 
            
 

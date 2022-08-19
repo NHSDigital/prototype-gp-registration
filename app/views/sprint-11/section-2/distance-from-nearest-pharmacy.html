@@ -40,14 +40,16 @@
 
             {% call fieldset({
               legend: {
-                text: "Do you live more than 1 mile in a straight line from your nearest pharmacy?",
+                text: "Do you live more than 1 mile from your nearest pharmacy?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
             {{ hint({
-              "text": "One mile is the same as 1.6 kilometres. It would take about 20 minutes to walk this distance, 7 minutes in a car or bus or 10 minutes to cycle."
+              "text": "One mile is the same as 1.6 kilometres. It would take about 20 minutes to walk this distance, 7 minutes in a car or bus or 10 minutes to cycle.
+
+              "
             }) }}
 
             {{ radios({
@@ -55,15 +57,17 @@
               "name": "distance-from-pharmacy",
               "items": [
                 {
-                  "value": "Yes",
+                  
+                  "value": "Yes~/sprint-11/section-2/can-use-dispencing",
                   "text": "Yes",
                   checked: checked("distance-from-pharmacy", "Yes")
                 },
                 {
-                  "value": "No",
+                  "value": "No~/sprint-11/section-2/would-you-have-difficulty-reaching-pharmacy",
                   "text": "No",
-                  checked: checked("distance-from-pharmacy", "No")
+                  checked: checked("have-current-uk-address", "No")
                 }
+              
               ]
             }) }}
 
@@ -72,7 +76,7 @@
             {{ details({
               "text": "Why are we asking this?",
               "HTML": "
-              <p>If a patient has to travel more than 1 mile or 1.6kilometres in a straight line to their nearest pharmacy, they may be eligible to get their medicines or medical appliances direct from this GP surgery.</p>
+              <p>If a patient has to travel more than 1 mile or 1.6 kilometres in a straight line to their nearest pharmacy, they may be able to get their prescription items direct from their GP surgery.</p>
               "
             }) }}
 

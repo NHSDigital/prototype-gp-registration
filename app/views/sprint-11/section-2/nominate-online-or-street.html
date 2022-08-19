@@ -38,67 +38,42 @@
             }) }}
 
 
-          {% if (data['who-is-being-registered'] == "dependant") %}
-
-          <H2>Would you like to nominate a pharmacy for {{ data ['name-first-name'] }}'s prescription items?</H2>
+         
 
             {{ radios({
               "idPrefix": "nominate-pharmacy",
               "name": "nominate-pharmacy",
               "fieldset": {
                 "legend": {
-                  "text": "",
+                  "text": "Choose type of pharmacy",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
               },
               "hint": {
-                "html": "Their prescriptions will be sent directly to their chosen pharmacy. They can then collect their prescription items like medicines and medical appliances from there. You can change your chosen pharmacy at any time."
+                "html": ""
               },
               "items": [
                 {
-                  "value": "yes~/sprint-11/section-2/nominate-online-or-street",
-                  "text": "Yes, choose a pharmacy",
+                  "value": "yes~/sprint-11/section-2/nominate-pharmacy-search",
+                  "text": "Pharmacy near you",
+                  "hint": {
+                    "text": "You can collect your prescription items from a pharmacy that is near to where you live, work or shop. They may also deliver.  "
+                  },
                   checked: checked("nominate-pharmacy", "Yes")
                 },
                 {
-                  "value": "no~/sprint-11/section-2/are-you-a-member-of-armed-forces",
-                  "text": "No",
+                  "value": "no~/sprint-11/section-2/online-pharmacy",
+                  "text": "Online pharmacy",
+                  "hint": {
+                    "text": "An online pharmacy will send your prescription items to you by post. You need to register directly with an online pharmacy."
+                  },
                   checked: checked("nominate-pharmacy", "no")
                 }
               ]
             }) }}
 
-            {% else %}
-
-            {{ radios({
-              "idPrefix": "nominate-pharmacy",
-              "name": "nominate-pharmacy",
-              "fieldset": {
-                "legend": {
-                  "text": "Would you like to choose a pharmacy for your prescription items?",
-                  "classes": "nhsuk-fieldset__legend--l",
-                  "isPageHeading": "true"
-                }
-              },
-              "hint": {
-                "html": "Your prescriptions will be sent directly to your chosen pharmacy. You'll then collect your prescription items like medicines and medical appliances from there. You can change your chosen pharmacy at any time."
-              },
-              "items": [
-                {
-                  "value": "yes~/sprint-11/section-2/nominate-online-or-street",
-                  "text": "Yes, choose a pharmacy",
-                  checked: checked("nominate-pharmacy", "Yes")
-                },
-                {
-                  "value": "no~/sprint-11/section-2/are-you-a-member-of-armed-forces",
-                  "text": "No",
-                  checked: checked("nominate-pharmacy", "no")
-                }
-              ]
-            }) }}
-
-            {% endif %}
+           
 
 
             {{ button({

@@ -31,60 +31,32 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          {{ hint({
-            "text": "Step 2 of 3 - Personal Details",
-            "classes": "nhsuk-u-margin-bottom-2"
-          }) }}
-
-          <form action="nominate-pharmacy-search-selection" method="post" autocomplete="off">
+        <form action="/sprint-11/section-2/are-you-a-member-of-armed-forces" method="post" autocomplete="off">
 
 
-            {% call fieldset({
-              legend: {
-                "text": "Find a pharmacy",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
-              }
-            }) %}
+            {{ hint({
+              "text": "Step 2 of 3 - Personal Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
 
-            
+          <h2 class="nhsuk-heading--l">Register with an online-only pharmacy directly</h2>
 
+          <p>To choose an online-only pharmacy, you must register with the pharmacy through their website or contact them directly. To find an online-only pharmacy use the NHS 'Find an internet pharmacy' service. You should do this after you have completed this registration.</p>
 
-              {{ input({
-                  label: {
-                    "text": "Enter the postcode of where you would like to search for a pharmacy."
-                  },
-                  "hint": {
-                    "text": "For example LS13 9PO"
-                  },
-                  "classes": "nhsuk-input--width-10",
-                  "id": "pharmacy-postcode",
-                  "name": "pharmacy-postcode",
-                  value: data['pharmacy-postcode']
-                }) }}
-
-
-            {% endcall %}
-
-            <p>
-              <a href="/sprint-11/section-2/nominate-pharmacy-manual" id="enter-address-manually-link">Enter the address manually</a>
-            </p>
+           
 
 
             {{ button({
-              "text": "Search"
+              "text": "Continue"
             }) }}
 
           </form>
         </div>
       </div>
-
+  
 
     <!-- End of content -->
 
   </div>
 </div>
-{% block pageScripts %}
-
-{% endblock %}
 {% endblock %}
