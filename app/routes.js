@@ -506,7 +506,7 @@ router.post("/*/check-postcode-2", function (req, res) {
   } 
  else {
     var postcode = (req.session.data["find-current-address"]);
-    if (postcode == "undefined"){
+    if (postcode == undefined){
     res.redirect("/sprint-11/section-2/nominate-pharmacy")
    } 
 
