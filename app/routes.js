@@ -489,9 +489,9 @@ router.post('*/check-age-4', function (req, res) {
 });
 
 router.post("/*/check-postcode", function (req, res) {
-  var postcode = (req.session.data["find-current-address"]).toUpperCase();
+  var postcode = (req.session.data["find-current-address"]);
   console.log("postcode check " + postcode)
-  if(postcode=="LS28 7FG"){
+  if(postcod.toUpperCase()=="LS28 7FG"){
     res.redirect("/sprint-11/section-2/dispencing-surgery")
   }
   res.redirect("/sprint-11/section-2/nominate-pharmacy")
@@ -505,16 +505,16 @@ router.post("/*/check-postcode-2", function (req, res) {
   
   } 
  else {
-   var postcode = (req.session.data["find-current-address"]);
-   if (postcode == "undefined"){
+    var postcode = (req.session.data["find-current-address"]);
+    if (postcode == "undefined"){
     res.redirect("/sprint-11/section-2/nominate-pharmacy")
    } 
 
-   console.log("postcode check2 " + postcode)
-   if (postcode.toUpperCase() == "LS28 7FG"){
-    res.redirect("/sprint-11/section-2/dispencing-surgery")
-   }
-   res.redirect("/sprint-11/section-2/nominate-pharmacy")
+    console.log("postcode check2 " + postcode)
+     if (postcode.toUpperCase()== "LS28 7FG"){
+     res.redirect("/sprint-11/section-2/dispencing-surgery")
+     }
+     res.redirect("/sprint-11/section-2/nominate-pharmacy")
   }
 });
 
