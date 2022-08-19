@@ -500,16 +500,22 @@ router.post("/*/check-postcode", function (req, res) {
 router.post("/*/check-postcode-2", function (req, res) {
   var interpreterNeed = req.session.data['interpreter']
   console.log("interpreter " + interpreterNeed)
-  if (interpreterNeed == 'Yes'){
+  if (interpreterNeed == 'yes'){
     res.redirect('../section-2/do-you-need-a-interpreter-language')
+  
   } 
+ else {
+   var postcode = (req.session.data["find-current-address"]);
+   if (postcode == "undefined"){
+    res.redirect("/sprint-11/section-2/nominate-pharmacy")
+   } 
 
-  var postcode = (req.session.data["find-current-address"]).toUpperCase();
-  console.log("postcode check2 " + postcode)
- if (postcode == "LS28 7FG"){
+   console.log("postcode check2 " + postcode)
+   if (postcode.toUpperCase() == "LS28 7FG"){
     res.redirect("/sprint-11/section-2/dispencing-surgery")
+   }
+   res.redirect("/sprint-11/section-2/nominate-pharmacy")
   }
-  res.redirect("/sprint-11/section-2/nominate-pharmacy")
 });
 
 module.exports = router;
