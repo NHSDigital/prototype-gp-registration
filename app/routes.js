@@ -392,10 +392,10 @@ router.post('*/check-age-3', function (req, res) {
   // Check whether the variable matches a condition
   if (years <= 18) {
     // Send user to immunisation page
-    res.redirect('/sprint-10/section-3/are-you-immunised')
+    res.redirect('/sprint-11/section-3/are-you-immunised')
   } else {
     // Send user to next page
-    res.redirect('/sprint-10/section-3/do-you-have-existing-conditions')
+    res.redirect('/sprint-11/section-3/do-you-have-existing-conditions')
   }
 
 });
@@ -414,10 +414,10 @@ console.log('looking up age')
   // Check whether the variable matches a condition
   if (years <= 18) {
     // Send user to immunisation page
-    res.redirect('/sprint-10/section-3/are-you-immunised')
+    res.redirect('/sprint-11/section-3/are-you-immunised')
   } else {
     // Send user to next page
-    res.redirect('/sprint-10/section-3/do-you-have-existing-conditions')
+    res.redirect('/sprint-11/section-3/do-you-have-existing-conditions')
   }
 
 });
@@ -436,10 +436,10 @@ console.log('looking up age')
   // Check whether the variable matches a condition
   if (years <= 18) {
     // Send user to immunisation page
-    res.redirect('/sprint-10/section-3/are-you-immunised')
+    res.redirect('/sprint-11/section-3/are-you-immunised')
   } else {
     // Send user to next page
-    res.redirect('/sprint-10/section-3/do-you-have-existing-conditions')
+    res.redirect('/sprint-11/section-3/do-you-have-existing-conditions')
   }
 
 });
@@ -458,10 +458,10 @@ router.post('*/check-age-3', function (req, res) {
   // Check whether the variable matches a condition
   if (years <= 18) {
     // Send user to immunisation page
-    res.redirect('/sprint-10/section-3/are-you-immunised')
+    res.redirect('/sprint-11/section-3/are-you-immunised')
   } else {
     // Send user to next page
-    res.redirect('/sprint-10/section-3/do-you-have-existing-conditions')
+    res.redirect('/sprint-11/section-3/do-you-have-existing-conditions')
   }
 
 });
@@ -480,10 +480,10 @@ router.post('*/check-age-4', function (req, res) {
   // Check whether the variable matches a condition
   if (years <= 18) {
     // Send user to schooling
-    res.redirect('/sprint-10/section-2/what-schooling-do-you-have')
+    res.redirect('/sprint-11/section-2/what-schooling-do-you-have')
   } else {
     // Send user to next page
-    res.redirect('/sprint-10/section-2/what-is-your-gender')
+    res.redirect('/sprint-11/section-2/what-is-your-gender')
   }
 
 });
