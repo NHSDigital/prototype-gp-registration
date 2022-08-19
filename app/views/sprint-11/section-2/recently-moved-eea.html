@@ -1,0 +1,159 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+
+<!-- Set the page title -->
+{% block pageTitle %}
+GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+          text: "Go back",
+          href: "javascript:history.go(-1)"
+        }) }}
+
+        <form action="" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Step 2 of 3 - Personal Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+          {% if (data['who-is-being-registered'] == "dependant") %}
+
+          <H2>Has {{ data ['name-first-name'] }} moved to UK from living in EU, EEA or Switzerland?</H2>
+
+          {% call fieldset({
+            legend: {
+              text: "",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>They may need to pay an immigration health surcharge as part of their visa application if they are staying for 6 months or more.</p>
+          </div>
+
+
+          {{ radios({
+            "idPrefix": "eea",
+            "name": "eea",
+            "items": [
+              {
+                "value": "Yes~/sprint-11/section-2/recently-moved-documents",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("eea", "Yes")
+              },
+              {
+                "value": "No~/sprint-11/section-2/immigration-surcharge",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("eea", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {% else %}
+
+          {% call fieldset({
+            legend: {
+              text: "Have you moved to UK from living in EU, EEA or Switzerland?",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>You may need to pay an immigration health surcharge as part of your visa application if you're staying for 6 months or more.</p>
+          </div>
+
+
+          {{ radios({
+            "idPrefix": "eea",
+            "name": "eea",
+            "items": [
+              {
+                "value": "Yes~/sprint-11/section-2/recently-moved-documents",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("eea", "Yes")
+              },
+              {
+                "value": "No~/sprint-11/section-2/immigration-surcharge",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("eea", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {% endif %}
+
+
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}
