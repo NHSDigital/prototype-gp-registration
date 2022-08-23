@@ -393,7 +393,7 @@ Recently moved<!-- Use this page as the index for your project -->
 
 
 
-          {% if ((data['user-auth'] == "nomatch") and (data['registering-first-time'] == "Yes"))  %}
+          {% if (data['registering-first-time'] == "Yes")  %}
 
           <h3>Have you recently moved to the UK?</h3>
 
@@ -415,8 +415,11 @@ Recently moved<!-- Use this page as the index for your project -->
             {% if data['recently-moved'] == "No" %}
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Place of birth
+                  Where were you born?
                 </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['moved-address-country'] }}
+                </dd>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['town'] }}
                 </dd>
@@ -466,19 +469,23 @@ Recently moved<!-- Use this page as the index for your project -->
 
 
             {% if data['recently-moved'] == "Yes" %}
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Country of birth
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['moved-address-country'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> country</span>
-                  </a>
-                </dd>
-              </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Where were you born?
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['moved-address-country'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['town'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">
+                  Change<span class="nhsuk-u-visually-hidden"> country</span>
+                </a>
+              </dd>
+            </div>
+
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
@@ -544,9 +551,9 @@ Recently moved<!-- Use this page as the index for your project -->
 
             </dL>
 
-            {% if ((data['user-auth'] == "nomatch") and (data['current-gp'] == "Yes"))  %}
+            {% if (data['registering-first-time'] == "No")  %}
 
-            <h3>Have you recently moved to the UK?</h3>
+            <h3>Are you returning from overseas?</h3>
 
             <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
 
@@ -589,6 +596,23 @@ Recently moved<!-- Use this page as the index for your project -->
                   </dd>
                   <dd class="nhsuk-summary-list__actions">
                     <a href="">Change<span class="nhsuk-u-visually-hidden">moved date</span></a>
+                  </dd>
+                </div>
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Where were you born?
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['moved-address-country'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['town'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">
+                      Change<span class="nhsuk-u-visually-hidden"> country</span>
+                    </a>
                   </dd>
                 </div>
 
@@ -651,6 +675,23 @@ Recently moved<!-- Use this page as the index for your project -->
                 {% endif %}
 
                 {% if data['overseas'] == "No" %}
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Where were you born?
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['moved-address-country'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['town'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">
+                      Change<span class="nhsuk-u-visually-hidden"> country</span>
+                    </a>
+                  </dd>
+                </div>
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
@@ -1407,7 +1448,7 @@ Recently moved<!-- Use this page as the index for your project -->
               {% endif %}
             </div>
           </div>
-        
+
 
 
 

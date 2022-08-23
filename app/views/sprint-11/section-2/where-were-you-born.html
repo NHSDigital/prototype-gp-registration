@@ -60,10 +60,20 @@
 
               {{ input({
                   label: {
-                    "text": ""
+                    "text": "Country of birth"
+                  },
+                  "classes": "nhsuk-u-width-two-thirds",
+                  "id": "moved-address-country",
+                  "name": "moved-address-country",
+                  value: data['moved-address-country']
+              }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Place of birth"
                   },
                   "hint": {
-                    "html": "This can be the town, city or other location you were born in.<br> (This question is Optional)"
+                    "html": "This can be the town, city or other location you were born in."
                   },
                   "classes": "nhsuk-u-width-two-thirds",
                   "id": "town",
@@ -72,6 +82,7 @@
               }) }}
 
               {% endcall %}
+
 
               {% else %}
 
