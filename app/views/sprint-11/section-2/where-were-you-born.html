@@ -32,10 +32,12 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          {% if ((data['registering-first-time'] == "Yes") and (data['overseas'] == "No")) %}
+          {% if ((data['registering-first-time'] == "Yes") and (data['recently-moved'] == "No")) %}
           <form action="/sprint-11/section-2/do-you-previous-address" method="post" autocomplete="off">
-          {% elif ((data['registering-first-time'] == "Yes") and (data['overseas'] == "Yes")) %}
+          {% elif ((data['registering-first-time'] == "Yes") and (data['recently-moved'] == "Yes")) %}
           <form action="/sprint-11/section-2/recently-moved-date" method="post" autocomplete="off">
+          {% elif ((data['registering-first-time'] == "No") and (data['overseas'] == "Yes")) %}
+          <form action="/sprint-11/section-2/what-is-your-gp-address" method="post" autocomplete="off">
           {% else %}
           <form action="/sprint-11/section-2/what-is-your-gp-address" method="post" autocomplete="off">
           {% endif %}

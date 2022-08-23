@@ -31,7 +31,13 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form id="youngEnough" action="check-age-2" method="post" autocomplete="off">
+          {% if (data['registering-first-time'] == "Yes") %}
+          <form action="/sprint-11/section-2/recently-move-to-the-uk" method="post" autocomplete="off">
+          {% elif (data['registering-first-time'] == "No") %}
+          <form action="/sprint-11/section-2/are-you-returning-from-overseas" method="post" autocomplete="off">
+          {% else %}
+          <form action="/sprint-11/section-2/recently-move-to-the-uk" method="post" autocomplete="off">
+          {% endif %}
 
             {{ hint({
               "text": "Step 2 of 3 - Personal Details",
@@ -124,7 +130,7 @@
           </form>
         </div>
       </div>
-  
+
 
     <!-- End of content -->
 

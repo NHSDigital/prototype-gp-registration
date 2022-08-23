@@ -39,12 +39,12 @@
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-            {% if ((data['who-is-being-registered'] == "dependant") and (data['registering-first-time'] == "Yes"))  %}
+            {% if (data['registering-first-time'] == "No") %}
 
 
             {% call fieldset({
               legend: {
-                text: "Are they returning from overseas?",
+                text: "Are you returning from overseas?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -55,7 +55,7 @@
               "name": "overseas",
               "items": [
                 {
-                  "value": "Yes~/sprint-11/section-2/where-were-you-born",
+                  "value": "Yes~/sprint-11/section-2/date-left-uk",
                   "text": "Yes",
                   checked: checked("overseas", "Yes")
                 },
@@ -70,7 +70,7 @@
 
             {% endcall %}
 
-            {% elif ((data['who-is-being-registered'] == "dependant") and (data['registering-first-time'] == "No"))  %}
+            {% elif ((data['who-is-being-registered'] == "dependant") and (data['registering-first-time'] == "Yes"))  %}
 
 
             {% call fieldset({
@@ -101,36 +101,8 @@
 
             {% endcall %}
 
-            {% elif (data['registering-first-time'] == "Yes")  %}
 
 
-            {% call fieldset({
-              legend: {
-                text: "Are you returning from overseas?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ radios({
-              "idPrefix": "overseas",
-              "name": "overseas",
-              "items": [
-                {
-                  "value": "Yes~/sprint-11/section-2/where-were-you-born",
-                  "text": "Yes",
-                  checked: checked("overseas", "Yes")
-                },
-                {
-                  "value": "No~/sprint-11/section-2/where-were-you-born",
-                  "text": "No",
-                  checked: checked("overseas", "No")
-
-                }
-              ]
-            }) }}
-
-            {% endcall %}
 
             {% else %}
 

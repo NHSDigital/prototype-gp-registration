@@ -49,7 +49,7 @@ GP Registration Prototypes
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-          {% if (data['who-is-being-registered'] == "dependant") %}
+          {% if ((data['who-is-being-registered'] == "dependant") and (data['registering-first-time'] == "Yes"))  %}
 
           <H2>Has {{ data ['name-first-name'] }} recently moved to the UK from another country?</H2>
 
@@ -76,7 +76,7 @@ GP Registration Prototypes
             "name": "recently-moved",
             "items": [
               {
-                "value": "Yes~/sprint-11/section-2/what-address-for-recently-moved",
+                "value": "Yes~/sprint-11/section-2/where-were-you-born",
                 "text": "Yes",
                 "hint": {
                   "text": ""
@@ -84,7 +84,7 @@ GP Registration Prototypes
                 checked: checked("recently-moved", "Yes")
               },
               {
-                "value": "No~/sprint-11/section-2/what-is-place-of-birth",
+                "value": "No~/sprint-11/section-2/where-were-you-born",
                 "text": "No",
                 "hint": {
                   "text": ""
@@ -111,13 +111,8 @@ GP Registration Prototypes
             <p>Anybody in England can register with a GP surgery and receive free primary medical care. To get free secondary NHS healthcare in England, such as a referral to hospital, you need to be "ordinarily resident" in the UK. This may require you to have indefinite leave to remain in the UK or status under the EU Settlement Scheme.</p>
 
             <p>You may be exempt from paying for most secondary NHS healthcare, for instance if you have paid the Immigration Health Surcharge or you are a refugee, asylum seeker or victim of modern slavery.</p>
-              <!-- <ul class="nhsuk-list nhsuk-list--bullet">
-                <li>you have paid the Immigration Health Surcharge</li>
-                <li>you have a valid EHIC or S1 form</li>
-                <li>you are a refugee, asylum seeker or victim of modern slavery</li>
-              </ul> -->
 
-              <p>Some hospital care, such as treatment for infectious diseases or types of violence, is free for all.</p>
+            <p>Some hospital care, such as treatment for infectious diseases or types of violence, is free for all.</p>
           </div>
 
 
@@ -126,7 +121,7 @@ GP Registration Prototypes
             "name": "recently-moved",
             "items": [
               {
-                "value": "Yes~/sprint-11/section-2/no-match/what-address-for-recently-moved",
+                "value": "Yes~/sprint-11/section-2/where-were-you-born",
                 "text": "Yes",
                 "hint": {
                   "text": ""
@@ -134,7 +129,7 @@ GP Registration Prototypes
                 checked: checked("recently-moved", "Yes")
               },
               {
-                "value": "No~/sprint-11/section-2/no-match/what-is-place-of-birth",
+                "value": "No~/sprint-11/section-2/where-were-you-born",
                 "text": "No",
                 "hint": {
                   "text": ""

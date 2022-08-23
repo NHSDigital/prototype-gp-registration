@@ -32,9 +32,13 @@
           }) }}
 
 
-          <form id="youngEnough" action="check-age" method="post" autocomplete="off">
-
-
+          {% if (data['registering-first-time'] == "Yes") %}
+          <form action="/sprint-11/section-2/recently-move-to-the-uk" method="post" autocomplete="off">
+          {% elif (data['registering-first-time'] == "No") %}
+          <form action="/sprint-11/section-2/are-you-returning-from-overseas" method="post" autocomplete="off">
+          {% else %}
+          <form action="/sprint-11/section-2/recently-move-to-the-uk" method="post" autocomplete="off">
+          {% endif %}
 
             {{ hint({
               "text": "Step 2 of 3 - Personal Details",
@@ -71,12 +75,12 @@
               "name": "emergency-contact",
               "items": [
                 {
-                  "value": "Yes~/sprint-11/section-2/emergency-contact-details",
+                  "value": "Yes",
                   "text": "Yes",
                   checked: checked("emergency-contact", "Yes")
                 },
                 {
-                  "value": "No~/sprint-11/section-2/no-match/recently-move-to-the-uk",
+                  "value": "No",
                   "text": "No",
                   checked: checked("emergency-contact", "No")
                 }
@@ -100,12 +104,12 @@
              "name": "emergency-contact",
              "items": [
                {
-                 "value": "Yes~/sprint-11/section-2/emergency-contact-details",
+                 "value": "Yes",
                  "text": "Yes",
                  checked: checked("emergency-contact", "Yes")
                },
                {
-                 "value": "No~/sprint-11/section-2/no-match/are-you-returning-from-overseas",
+                 "value": "No",
                  "text": "No",
                  checked: checked("emergency-contact", "No")
                }
