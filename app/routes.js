@@ -197,23 +197,7 @@ router.post('*/do-you-have-existing-conditions-answer/', function (req, res) {
 
 })
 
-// Does user have an emergency contact
 
-router.post('*/emergency-contact-details/', function (req, res) {
-
-  // Make a variable and give it the value from 'juggling-balls'
-  var emergencyContact = req.session.data['emergency-contact']
-
-  // Check whether the variable matches a condition
-  if (emergencyContact == "Yes"){
-    // Send user to next page
-    res.redirect('emergency-contact-details')
-  } else {
-    // Send user to next page they can answer
-    res.redirect('review-about-you-answers')
-  }
-
-})
 
 // Does user have allergies
 
@@ -331,51 +315,51 @@ router.post("*/check-schooling", function(req,res) {
 
 
 
-//console.log('looking up age!')
-router.post('*/check-age', function (req, res) {
-
-  // Make
-  var emergencyContact = req.session.data['emergency-contact']
-  if (emergencyContact == 'Yes'){
-    res.redirect('../section-2/emergency-contact-details')
-  }
-  var dob = req.session.data['dob-year']+ '-'+ req.session.data['dob-month']+ '-'+ req.session.data['dob-day']
-  var years = moment().diff(dob, 'years');
-  console.log(`number of years ${years}`)
-  console.log('looking up age')
-  // Check whether the variable matches a condition
-  if (years <= 18) {
-    // Send user to immunisation page
-    res.redirect('../section-3/are-you-immunised')
-  } else {
-    // Send user to next page
-    res.redirect('../section-3/do-you-have-existing-conditions')
-  }
-
-});
-
-
+// //console.log('looking up age!')
+// router.post('*/check-age', function (req, res) {
+//
+//   // Make
+//   var emergencyContact = req.session.data['emergency-contact']
+//   if (emergencyContact == 'Yes'){
+//     res.redirect('../section-2/emergency-contact-details')
+//   }
+//   var dob = req.session.data['dob-year']+ '-'+ req.session.data['dob-month']+ '-'+ req.session.data['dob-day']
+//   var years = moment().diff(dob, 'years');
+//   console.log(`number of years ${years}`)
+//   console.log('looking up age')
+//   // Check whether the variable matches a condition
+//   if (years <= 18) {
+//     // Send user to immunisation page
+//     res.redirect('../section-3/are-you-immunised')
+//   } else {
+//     // Send user to next page
+//     res.redirect('../section-3/do-you-have-existing-conditions')
+//   }
+//
+// });
 
 
-//console.log('looking up age!')
-router.post('*/check-age-2', function (req, res) {
 
-  // Make
-  var dob = req.session.data['dob-year']+ '-'+ req.session.data['dob-month']+ '-'+ req.session.data['dob-day']
-  var emergencyContact = req.session.data['emergency-contact']
-  var years = moment().diff(dob, 'years');
-  console.log(`number of years ${years}`)
-  console.log('looking up age')
-  // Check whether the variable matches a condition
-  if (years <= 18) {
-    // Send user to immunisation page
-    res.redirect('../section-3/are-you-immunised')
-  } else {
-    // Send user to next page
-    res.redirect('../section-2/are-you-returning-from-overseas')
-  }
 
-});
+// //console.log('looking up age!')
+// router.post('*/check-age-2', function (req, res) {
+//
+//   // Make
+//   var dob = req.session.data['dob-year']+ '-'+ req.session.data['dob-month']+ '-'+ req.session.data['dob-day']
+//   var emergencyContact = req.session.data['emergency-contact']
+//   var years = moment().diff(dob, 'years');
+//   console.log(`number of years ${years}`)
+//   console.log('looking up age')
+//   // Check whether the variable matches a condition
+//   if (years <= 18) {
+//     // Send user to immunisation page
+//     res.redirect('../section-3/are-you-immunised')
+//   } else {
+//     // Send user to next page
+//     res.redirect('../section-2/are-you-returning-from-overseas')
+//   }
+//
+// });
 
 
 // EHIC Dec
@@ -502,13 +486,13 @@ router.post("/*/check-postcode-2", function (req, res) {
   console.log("interpreter " + interpreterNeed)
   if (interpreterNeed == 'yes'){
     res.redirect('../section-2/do-you-need-a-interpreter-language')
-  
-  } 
+
+  }
  else {
     var postcode = (req.session.data["find-current-address"]);
     if (postcode == undefined){
     res.redirect("/sprint-11/section-2/nominate-pharmacy")
-   } 
+   }
 
     console.log("postcode check2 " + postcode)
      if (postcode.toUpperCase()== "LS28 7FG"){
