@@ -32,13 +32,8 @@
           }) }}
 
 
-          {% if (data['registering-first-time'] == "Yes") %}
-          <form action="/sprint-11/section-2/recently-move-to-the-uk" method="post" autocomplete="off">
-          {% elif (data['registering-first-time'] == "No") %}
-          <form action="/sprint-11/section-2/are-you-returning-from-overseas" method="post" autocomplete="off">
-          {% else %}
-          <form action="/sprint-11/section-2/recently-move-to-the-uk" method="post" autocomplete="off">
-          {% endif %}
+
+          <form action="" method="post" autocomplete="off">
 
             {{ hint({
               "text": "Step 2 of 3 - Personal Details",
@@ -55,7 +50,9 @@
 
             {% endif %}
 
-            {% if ((data['user-auth'] == "nomatch") and (data['registering-first-time'] == "No"))  %}
+
+            {% if (data['registering-first-time'] == "Yes") %}
+
 
             {% call fieldset({
               legend: {
@@ -75,12 +72,12 @@
               "name": "emergency-contact",
               "items": [
                 {
-                  "value": "Yes",
+                  "value": "Yes~/sprint-11/section-2/emergency-contact-details",
                   "text": "Yes",
                   checked: checked("emergency-contact", "Yes")
                 },
                 {
-                  "value": "No",
+                  "value": "No~/sprint-11/section-2/recently-move-to-the-uk",
                   "text": "No",
                   checked: checked("emergency-contact", "No")
                 }
@@ -89,7 +86,7 @@
 
           {% endcall %}
 
-          {% elif ((data['user-auth'] == "nomatch") and (data['registering-first-time'] == "Yes"))  %}
+          {% elif (data['registering-first-time'] == "No") %}
 
           {% call fieldset({
             legend: {
@@ -99,55 +96,67 @@
             }
           }) %}
 
-          {{ radios({
-             "idPrefix": "emergency-contact",
-             "name": "emergency-contact",
-             "items": [
-               {
-                 "value": "Yes",
-                 "text": "Yes",
-                 checked: checked("emergency-contact", "Yes")
-               },
-               {
-                 "value": "No",
-                 "text": "No",
-                 checked: checked("emergency-contact", "No")
-               }
-             ]
-           }) }}
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>This can be a family member, friend or support worker.</p>
+          </div>
 
-           {% endcall %}
 
-           {% else %}
+         {{ radios({
+            "idPrefix": "emergency-contact",
+            "name": "emergency-contact",
+            "items": [
+              {
+                "value": "Yes~/sprint-11/section-2/emergency-contact-details",
+                "text": "Yes",
+                checked: checked("emergency-contact", "Yes")
+              },
+              {
+                "value": "No~/sprint-11/section-2/are-you-returning-from-overseas",
+                "text": "No",
+                checked: checked("emergency-contact", "No")
+              }
+            ]
+          }) }}
 
-           {% call fieldset({
-             legend: {
-               text: "",
-               classes: "nhsuk-fieldset__legend--l",
-               isPageHeading: true
-             }
-           }) %}
+        {% endcall %}
 
-           {{ radios({
-              "idPrefix": "emergency-contact",
-              "name": "emergency-contact",
-              "items": [
-                {
-                  "value": "Yes",
-                  "text": "Yes",
-                  checked: checked("emergency-contact", "Yes")
-                },
-                {
-                  "value": "No",
-                  "text": "No",
-                  checked: checked("emergency-contact", "No")
-                }
-              ]
-            }) }}
+        {% else %}
 
-            {% endcall %}
 
-            {% endif %}
+        {% call fieldset({
+          legend: {
+            text: "",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <div class="nhsuk-hint" id="contact-hint">
+          <p>This can be a family member, friend or support worker.</p>
+        </div>
+
+
+       {{ radios({
+          "idPrefix": "emergency-contact",
+          "name": "emergency-contact",
+          "items": [
+            {
+              "value": "Yes~/sprint-11/section-2/emergency-contact-details",
+              "text": "Yes",
+              checked: checked("emergency-contact", "Yes")
+            },
+            {
+              "value": "No~/sprint-11/section-2/recently-move-to-the-uk",
+              "text": "No",
+              checked: checked("emergency-contact", "No")
+            }
+          ]
+        }) }}
+
+      {% endcall %}
+
+
+          {% endif %}
 
 
 
@@ -155,7 +164,7 @@
               "text": "Continue"
             }) }}
 
-          </form>
+            </form>
 
         </div>
       </div>
