@@ -107,6 +107,44 @@ GP Registration Prototypes
 
           {% endcall %}
 
+          {% elif (data['user-auth'] == "p9") %}
+
+          {% call fieldset({
+            legend: {
+              text: "",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+
+          {{ radios({
+            "idPrefix": "registering-first-time",
+            "name": "registering-first-time",
+            "items": [
+              {
+                "value": "Yes~/sprint-11/section-1/is-this-your-current-address",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("registering-first-time", "Yes")
+              },
+              {
+                "value": "No~/sprint-11/section-1/is-this-your-current-address",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("registering-first-time", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+
+
           {% else %}
 
           {% call fieldset({
