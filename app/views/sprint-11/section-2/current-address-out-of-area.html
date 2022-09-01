@@ -21,11 +21,11 @@ Out of area
     <form action="" method="post" autocomplete="off">
 
       <h1 class="nhsuk-heading-l">
-      This address is outside the area for your chosen GP surgery
+      This address is outside the area for this GP surgery
       </h1>
 
       <p>Some GP surgeries will only accept patients that live within their catchment areas. You can continue with this registration, but it may not be accepted.</p>
-      <p>By using the Find a GP service you can find a surgery that is inside your catchment area.</p>
+      <p>By using the Find a GP service you can find a surgery for this address.</p>
 
       {{ radios({
           "idPrefix": "use-ooo",
@@ -43,7 +43,7 @@ Out of area
               "value": "Yes~/sprint-11/section-2/how-can-we-contact-you",
               "text": "Continue with this registration",
               "hint": {
-                "text": "If the surgery are not accepting out of area registrations they could reject your registration."
+                "text": "If the surgery are not accepting out of area registrations they could reject this application."
               },
               checked: checked("relation", "Carer")
             },
@@ -51,7 +51,7 @@ Out of area
               "value": "Yes~https://www.nhs.uk/service-search/find-a-gp",
               "text": "Cancel this registration and use Find a GP ",
               "hint": {
-                "text": "This will end this registration and you will be sent to find a GP. Any answers you have made so far will not be saved and you will need to complete a new registration."
+                "text": "This will end this registration and you will be sent to Find a GP. Any answers given so far will not be saved and a new registration will have to be submitted."
               },
               checked: checked("relation", "Carer")
             }
