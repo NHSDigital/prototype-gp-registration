@@ -34,14 +34,9 @@
           <form action="gp-reg-complete" method="post" autocomplete="off">
 
 
-            {{ fieldset({
-              "legend": {
-                "text": "Confirm details for {Practice name}",
-                "classes": "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-5",
-                "isPageHeading": true
-              }
-            }) }}
+            <h1 class="nhsuk-heading-l">Confirm details for {Practice name} and complete registration</h1>
 
+            <p>Please check that these details are correct.</p>
 
             <dl class="nhsuk-summary-list">
 
@@ -76,16 +71,19 @@
 
             </dl>
 
+              <p>If the details are correct then you can complete the registration process.</p>
+              <p>This will allow your surgery to start offering patients the option to use Register with a GP Service Online.</p>
+
 
 
             {{ button({
-              "text": "Confirm and continue"
+              "text": "Confirm and complete"
             }) }}
 
           </form>
         </div>
       </div>
-    </section>
+
 
     <!-- End of content -->
 
