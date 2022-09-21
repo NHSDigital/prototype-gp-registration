@@ -3,7 +3,7 @@
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'layout.html' %}
+{% extends 'layout-gp.html' %}
 <!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
 
 <!-- Set the page title -->
@@ -65,7 +65,24 @@
 
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="">Change<span class="nhsuk-u-visually-hidden">NHS shared email</span></a>
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">language interpretation service</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  nominated pharmacy service
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if (data['pharmacy'] == "Yes") %}
+                  Yes
+                  {% else %}
+                  No
+                  {% endif %}
+
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">pharmacy service</span></a>
                 </dd>
               </div>
 

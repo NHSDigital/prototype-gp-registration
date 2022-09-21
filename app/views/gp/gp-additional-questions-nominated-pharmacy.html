@@ -3,7 +3,7 @@
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'layout.html' %}
+{% extends 'layout-gp.html' %}
 <!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
 
 <!-- Set the page title -->
@@ -34,25 +34,26 @@
           <form action="gp-answers" method="post" autocomplete="off">
 
 
-            <H2>Does your surgery offer a language interpretation service for patients?</H2>
+            <H2>Do you want to offer your patients the opportunity to nominate a pharmacy during their registration?</H2>
 
-            <p>If your surgery offers language interpretation services for its patients then they will have the option to request this during their registration process.</p>
+            <p>By offering this service to patients you will receive the details of their chosen pharmacy if they select one.</p>
+            <p>If a patient chooses to use this service then you should follow your surgery's process for handling a pharmacy nomination.</p>
             <p>Patients who register online with your surgery will only be offered this service is you choose yes.</p>
 
 
             {{ radios({
-              "idPrefix": "interpretation",
-              "name": "interpretation",
+              "idPrefix": "pharmacy",
+              "name": "pharmacy",
               "items": [
                 {
                   "value": "Yes",
                   "text": "Yes",
-                  checked: checked("interpretation", "Yes")
+                  checked: checked("pharmacy", "Yes")
                 },
                 {
                   "value": "No",
                   "text": "No",
-                  checked: checked("interpretation", "No")
+                  checked: checked("pharmacy", "No")
                 }
               ]
             }) }}
