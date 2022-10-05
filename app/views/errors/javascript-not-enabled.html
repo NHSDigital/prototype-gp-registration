@@ -1,0 +1,30 @@
+
+{% extends 'layout.html' %}
+
+{% from 'button/macro.njk' import button %}
+{% from 'back-link/macro.njk' import backLink %}
+
+{% block pageTitle %}
+Enter your email address
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+      <h1 class="nhsuk-heading-l">
+          There is a technical problem
+      </h1>
+
+      <p class="nhsuk-body">You need to turn on Javascript to use this service.</p>
+
+      <p>Find out <a href="https://support.microsoft.com/en-us/office/enable-javascript-7bb9ee74-6a9e-4dd1-babf-b0a1bb136361">how to enable JavaScript for Windows</a>, or <a href="https://support.apple.com/en-gb/guide/safari/ibrw1074/14.0/mac/11.0">how to enable JavaScript for Mac</a>.</p>
+      <p>If you want to register with a GP surgery, you can <a href="">download a copy of the GMS1</a> family doctor services registration form (PDF, 199 KB, 2 pages).</p>
+
+
+  </div>
+</div>
+
+
+{% endblock %}
