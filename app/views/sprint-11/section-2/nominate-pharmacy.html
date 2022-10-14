@@ -40,7 +40,7 @@
 
           {% if (data['who-is-being-registered'] == "dependant") %}
 
-          <H2>Would you like to nominate a pharmacy for {{ data ['name-first-name'] }}'s prescription items?</H2>
+          <H2>Would  {{ data ['name-first-name'] }} like to choose or change a pharmacy for their prescriptions?</H2>
 
             {{ radios({
               "idPrefix": "nominate-pharmacy",
@@ -53,7 +53,7 @@
                 }
               },
               "hint": {
-                "html": "Their prescriptions will be sent directly to their chosen pharmacy. They can then collect their prescription items like medicines and medical appliances from there. You can change your chosen pharmacy at any time."
+                "html": "Choosing or nominating a pharmacy means the GP surgery will send prescriptions directly to the pharmacy."
               },
               "items": [
                 {
@@ -82,7 +82,7 @@
                 }
               },
               "hint": {
-                "html": "Your prescriptions will be sent directly to your chosen pharmacy. You'll then collect your prescription items like medicines and medical appliances from there. You can change your chosen pharmacy at any time."
+                "html": "Choosing or nominating a pharmacy means the GP surgery will send prescriptions directly to the pharmacy."
               },
               "items": [
                 {
@@ -108,7 +108,7 @@
           </form>
         </div>
       </div>
-  
+
 
     <!-- End of content -->
 
