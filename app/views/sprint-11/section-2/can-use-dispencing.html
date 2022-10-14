@@ -38,20 +38,29 @@
 
           <form action="are-you-a-member-of-armed-forces" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>{{ data ['name-first-name'] }} may be able to get their prescription items direct from {SURGERY NAME}</H2>
+
+            {% else %}
+
+            <H2>You may be able to get your prescription items direct from {SURGERY NAME}</H2>
+
+            {% endif %}
+
             {% call fieldset({
               legend: {
-                text: "You can get your prescription items direct from {SURGERY NAME}",
+                text: "",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
-          <p> Your GP surgery will discuss this additional service with you.
 
-          </p>
+          <p>Your GP surgery will discuss this additional service with you.</p>
 
-          
 
-           
+
+
 
             {% endcall %}
 

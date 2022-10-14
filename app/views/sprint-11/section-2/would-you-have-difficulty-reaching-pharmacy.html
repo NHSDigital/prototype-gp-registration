@@ -38,9 +38,19 @@
 
           <form action="are-you-a-member-of-armed-forces" method="post" autocomplete="off">
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Would {{ data ['name-first-name'] }} have serious difficulty travelling to their nearest pharmacy to get medicines or medical appliances?</H2>
+
+            {% else %}
+
+            <H2>Would you have serious difficulty travelling to your nearest pharmacy to get medicines or medical appliances?</H2>
+
+            {% endif %}
+
             {% call fieldset({
               legend: {
-                text: "Would you have serious difficulty getting medicines or appliances from your nearest pharmacy?",
+                text: "",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
