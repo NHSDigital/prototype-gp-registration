@@ -33,10 +33,10 @@
 
           <form action="what-is-your-date-of-birth" method="post" autocomplete="off">
 
-           <!--{{ hint({
-              "text": "Step 1 of 3 - Matching you to your record",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}-->
+            {{ hint({
+               "text": "Step 3 of 3 - Health questions",
+               "classes": "nhsuk-u-margin-bottom-2"
+             }) }}
 
 
             {% call fieldset({
@@ -47,7 +47,7 @@
               }
 
             }) %}
-<br>
+
            {{ radios({
             "idPrefix": "type-carer",
             "name": "type-carer",
@@ -92,7 +92,6 @@
 
 
 
-            <br>
             {{ button({
               "text": "Continue"
             }) }}
@@ -102,7 +101,7 @@
           </form>
         </div>
       </div>
-    
+
 
     <!-- End of content -->
 
