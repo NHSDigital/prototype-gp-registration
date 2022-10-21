@@ -48,19 +48,13 @@
 
             {% endif %}
 
+            {{ hint({
+              "text": "A carer looks after a family member or friend who is not able to look after themselves. This could be because of illness, disability or addiction. Carers can be adults or children. They can be paid or unpaid, but may get benefits."
+            }) }}
+
             {{ radios({
               "idPrefix": "are-carer",
               "name": "are-carer",
-              "fieldset": {
-                "legend": {
-                  "text": "",
-                  "classes": "nhsuk-fieldset__legend--l",
-                  "isPageHeading": "true"
-                }
-              },
-              "hint": {
-                "text": "A carer looks after a family member or friend who is not able to look after themselves. This could be because of illness, disability or addiction. Carers can be adults or children. They can be paid or unpaid, but may get benefits."
-              },
               "items": [
                 {
                   "value": "yes~/sprint-11/section-3/type-of-carer",
@@ -93,7 +87,7 @@
           </form>
         </div>
       </div>
-    
+
 
     <!-- End of content -->
 

@@ -129,7 +129,7 @@
           {% endif %}
 
           <p>
-            <a href="/sprint-11/section-2/no-match/what-is-your-gp-address-manual" id="enter-address-manually-link">Enter the address manually</a>
+            <a href="/sprint-11/section-2/what-is-your-gp-address-manual" id="enter-address-manually-link">Enter the address manually</a>
           </p>
 
             {{ button({
@@ -149,16 +149,7 @@
   </div>
 </div>
 {% block pageScripts %}
-  <script>
 
-    $('#no-gp-address-1').change(function () {
-      if ($('#no-gp-address-1').is(':checked') == true) {
-        $('input[type=text]').prop('disabled', true);
-      } else {
-        $('input[type=text]').prop('disabled', false);
-      }
-    });
-  </script>
 {% endblock %}
 
 {% endblock %}
