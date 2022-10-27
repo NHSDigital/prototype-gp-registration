@@ -183,3 +183,92 @@
 .nhsuk-med-input__input {
   margin-bottom: 0;
 }
+
+// Modal
+
+
+.pseudo-modal-bg {
+  position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: .8;
+      background: #0b0c0c;
+      pointer-events: none;
+      touch-action: none;
+      justify-content: center;
+      align-items: center;
+}
+
+.nhsuk-modal {
+    box-sizing: border-box;
+    display: block;
+    position: relative;
+    z-index: 1;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+    background: #ffffff;
+}
+@media (min-width: 40.0625em) {
+  .nhsuk-modal {
+    margin-bottom: 48px;
+  }
+}
+
+.nhsuk-modal__img {
+  border-bottom: 1px solid #f0f4f5;
+  /* [2] */
+  display: block;
+  width: 100%;
+}
+@media print {
+  .nhsuk-modal__img {
+    display: none;
+  }
+}
+
+.nhsuk-modal__header {
+
+  padding: 9px 15px 40px;
+  color: #fff;
+  background: #005eb8;
+}
+
+.nhsuk-modal__close {
+  position: absolute;
+    top: 0;
+    right: 0;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    color: #fff;
+    background: none;
+    cursor: pointer;
+}
+
+.nhsuk-modal__content {
+  padding: 24px;
+  position: relative;
+}
+.nhsuk-modal__content > *:first-child {
+  margin-top: 0;
+}
+.nhsuk-modal__content > *:last-child {
+  margin-bottom: 0;
+}
+@media (min-width: 40.0625em) {
+  .nhsuk-modal__content {
+    padding: 32px;
+  }
+}
+
+.nhsuk-modal__heading,
+.nhsuk-modal__metadata,
+.nhsuk-modal__description {
+  margin-bottom: 16px;
+}
