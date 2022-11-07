@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  GP Registration Prototypes
+  Enter date of birth - Register with a GP surgery - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -31,87 +31,84 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-
-
           <form action="/sprint-11/section-4/check-answers-b" method="post" autocomplete="off">
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
 
            {{ hint({
               "text": "Step 3 of 3 - Health questions",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
+            <H2>When did {{ data ['name-first-name'] }} stop smoking?</H2>
 
-            <H2>Has {{ data ['name-first-name'] }} ever smoked?</H2>
-
-            {{ radios({
-              "idPrefix": "smokes",
-              "name": "smokes",
+            {{ dateInput({
+              "id": "smoke-date",
+              "namePrefix": "smoke-date",
               "fieldset": {
                 "legend": {
                   "text": "",
-                  "classes": "nhsuk-fieldset__legend--l",
-                  "isPageHeading": "true"
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": false
                 }
               },
               "hint": {
-                "text": "Select one option"
+                "text": "The date does not have to be exact, but try to be as accurate as possible."
               },
               "items": [
-              {
-                "value": "Yes~/sprint-11/section-3/do-you-smoke-type",
-                "text": "Yes",
-                checked: checked("smokes", "Yes")
-              },
                 {
-                  "value": "No",
-                  "text": "No",
-                  checked: checked("smokes", "No")
+                  "name": "day",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['smoke-day']
                 },
                 {
-                  "divider": "or"
+                  "name": "month",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['smoke-month']
                 },
                 {
-                  "value": "Prefer not to say",
-                  "text": "Prefer not to say",
-                  checked: checked("smokes", "Prefer not to say")
+                  "name": "year",
+                  "classes": "nhsuk-input--width-4",
+                  "value": data['smoke-year']
                 }
               ]
             }) }}
 
             {% else %}
 
-            {{ radios({
-              "idPrefix": "smokes",
-              "name": "smokes",
+           {{ hint({
+              "text": "Step 3 of 3 - Health questions",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {{ dateInput({
+              "id": "smoke-date",
+              "namePrefix": "smoke-date",
               "fieldset": {
                 "legend": {
-                  "text": "Have you ever smoked?",
-                  "classes": "nhsuk-fieldset__legend--l",
-                  "isPageHeading": "true"
+                  "text": "When did you stop smoking?",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": true
                 }
               },
               "hint": {
-                "text": "Select one option"
+                "text": "The date does not have to be exact, but try to be as accurate as possible."
               },
               "items": [
-              {
-                "value": "Yes~/sprint-11/section-3/do-you-smoke-type",
-                "text": "Yes",
-                checked: checked("smokes", "Yes")
-              },
                 {
-                  "value": "No",
-                  "text": "No",
-                  checked: checked("smokes", "No")
+                  "name": "day",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['smoke-day']
                 },
                 {
-                  "divider": "or"
+                  "name": "month",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['smoke-month']
                 },
                 {
-                  "value": "Prefer not to say",
-                  "text": "Prefer not to say",
-                  checked: checked("smokes", "Prefer not to say")
+                  "name": "year",
+                  "classes": "nhsuk-input--width-4",
+                  "value": data['smoke-year']
                 }
               ]
             }) }}

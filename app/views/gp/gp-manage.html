@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Your registered surgeries - GP registration service - NHS 
+Your registered surgeries - GP registration service - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -27,97 +27,53 @@ Your registered surgeries - GP registration service - NHS
         <div class="nhsuk-grid-column-full">
 
 
-          {% if data['gp-prac'] == "gp-prac" %}
-          <h1 class="nhsuk-heading-xl">You have registered 3 surgeries</h1>
-          {% elif data['gp-multi'] == "gp-multi" %}
-          <h1 class="nhsuk-heading-xl">You have registered 2 surgeries</h1>
-          {% else %}
-          <h1 class="nhsuk-heading-xl">You have registered 1 surgery</h1>
-          {% endif %}
 
-          <!-- {{ hint({
-            "text": "We found these details on your NHS login. We can give these details to your new GP.",
-            "classes": "nhsuk-u-margin-bottom-4"
-          }) }} -->
+          <h1 class="nhsuk-heading-xl">You have registered 3 surgeries</h1>
+
+
+          <form action="gp-practices" method="post" autocomplete="off">
+          <input type="hidden" name="gp-prac" id="gp-prac" value="gp-prac" />
+          {{ button({
+          "text": "Add another practice"
+          }) }}
+          </form>
+
 
           <div class="nnhsuk-table-container">
             <table>
               <thead>
                 <tr>
-                  <th>Name and address</th>
-                  <th>Mailbox</th>
-                  <th>Practice unique URL</th>
+                  <th>Registered surgery</th>
+                  <th>Shared mailbox</th>
+                  <th>Additional services</th>
+                  <th>Unique URL</th>
+                  <th>Patient access</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><strong>Highstreet surgery</strong><br>1 Town Street, London, SW1A 1AA</td>
-                  <td>
-                    <p>{{ data['nhs-shared-email'] }}</p>
-                  <td><a href="#">your-practice-url.com/practice</a></td>
+                  <td><p>{{ data['nhs-shared-email'] }}</p></td>
+                  <td><p><strong>Language interpretation:</strong> {{ data['interpretation'] }} <br><strong>nominated pharmacy:</strong> {{ data['pharmacy'] }} </p></td>
+                  <td>your-practice-url.com/practice</td>
+                  <td>Unique URL only</td>
+                  <td><a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a></td>
+
                 </tr>
 
-                {% if data['gp-prac'] == "gp-prac" %}
-                <tr>
-                  <td><strong>Pucklechuch surgery</strong><br>1 Town Street, London, SW1A 1AA</td>
-                  <td>
-                <p>{{ data['nhs-shared-email'] }}</p>
-                <td><a href="#">your-practice-url.com/practice</a></td>
-                <tr>
-                  <td><strong>Three shires medical practice</strong><br>1 Town Street, London, SW1A 1AA</td>
-                  <td>
-                <p>{{ data['nhs-shared-email'] }}</p>
-                <td><a href="#">your-practice-url.com/practice</a></td>
-
-                {% elif data['gp-multi'] == "gp-multi" %}
-                <tr>
-                  <td><strong>Pucklechuch surgery</strong><br>1 Town Street, London, SW1A 1AA</td>
-                  <td>
-                    <p>{{ data['nhs-shared-email'] }}</p>
-                  <td><a href="#">your-practice-url.com/practice</a></td>
 
 
-                  {% else %}
-                  {% endif %}
-                </tr>
+
               </tbody>
             </table>
 
           </div>
 
 
-              <!-- {{ radios({
-                  "idPrefix": "gp-reg-service",
-                  "name": "use-contacts-login",
-                  "classes": "nhsuk-radios--inline",
-                  "fieldset": {
-                    "legend": {
-                      "text": "Would you like sign up another practice?",
-                      "classes": "nhsuk-fieldset__legend--m",
-                      "isPageHeading": true
-                    }
-                  },
-                  "items": [
-                    {
-                      "value": "Yes~/sprint-9/section-2/how-can-we-contact-you",
-                      "text": "Yes"
-                    },
-                    {
-                      "value": "No~/sprint-9/section-2/how-can-we-contact-you",
-                      "text": "No"
-                    }
-                  ]
-              }) }} -->
 
-              {% if data['gp-multi'] == "gp-multi" %}
-              <form action="gp-practices" method="post" autocomplete="off">
-              <input type="hidden" name="gp-prac" id="gp-prac" value="gp-prac" />
-              {{ button({
-              "text": "Add another practice"
-              }) }}
-              </form>
-              {% else %}
-              {% endif %}
+
+
 
               <p><a href="/gp/gp-profile-manager-manage">Return to your profiles</a></p>
 

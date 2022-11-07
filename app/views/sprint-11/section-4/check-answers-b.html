@@ -1099,10 +1099,44 @@ Recently moved<!-- Use this page as the index for your project -->
                   </dd>
                   <dd class="nhsuk-summary-list__actions">
                     <a href="">
-                      Change<span class="nhsuk-u-visually-hidden"> how often you smoke</span>
+                      Change<span class="nhsuk-u-visually-hidden"> smokes</span>
                     </a>
                   </dd>
                 </div>
+
+                {% if data['smokes'] == "Yes" %}
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Type of smoker
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['smokes-type'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">
+                      Change<span class="nhsuk-u-visually-hidden"> smokes</span>
+                    </a>
+                  </dd>
+                </div>
+                {% endif %}
+
+                {% if data['smokes-type'] == "I used to smoke" %}
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Date stopped
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    <span id="smoke-day">{{ data['smoke-date-day'] }}</span>
+                    <span id="smoke-month">{{ data['smoke-date-month'] }}</span>
+                    <span id="smoke-year">{{ data['smoke-date-year'] }}</span>
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">
+                      Change<span class="nhsuk-u-visually-hidden"> smokes</span>
+                    </a>
+                  </dd>
+                </div>
+                {% endif %}
 
               </dl>
 
@@ -1429,10 +1463,44 @@ Recently moved<!-- Use this page as the index for your project -->
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> how often you smoke</span>
+                    Change<span class="nhsuk-u-visually-hidden"> smokes</span>
                   </a>
                 </dd>
               </div>
+
+              {% if data['smokes'] == "Yes" %}
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Type of smoker
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['smokes-type'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">
+                    Change<span class="nhsuk-u-visually-hidden"> smokes</span>
+                  </a>
+                </dd>
+              </div>
+              {% endif %}
+
+              {% if data['smokes-type'] == "I used to smoke" %}
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Date stopped
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  <span id="smoke-day">{{ data['smoke-date-day'] }}</span>
+                  <span id="smoke-month">{{ data['smoke-date-month'] }}</span>
+                  <span id="smoke-year">{{ data['smoke-date-year'] }}</span>
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">
+                    Change<span class="nhsuk-u-visually-hidden"> smokes</span>
+                  </a>
+                </dd>
+              </div>
+              {% endif %}
 
               {% endif %}
             </div>

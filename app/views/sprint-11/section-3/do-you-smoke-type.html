@@ -45,8 +45,8 @@
             <H2>Has {{ data ['name-first-name'] }} ever smoked?</H2>
 
             {{ radios({
-              "idPrefix": "smokes",
-              "name": "smokes",
+              "idPrefix": "smokes-type",
+              "name": "smokes-type",
               "fieldset": {
                 "legend": {
                   "text": "",
@@ -59,22 +59,14 @@
               },
               "items": [
               {
-                "value": "Yes~/sprint-11/section-3/do-you-smoke-type",
-                "text": "Yes",
-                checked: checked("smokes", "Yes")
+                "value": "I smoke",
+                "text": "I smoke",
+                checked: checked("smokes-type", "Yes")
               },
                 {
-                  "value": "No",
-                  "text": "No",
-                  checked: checked("smokes", "No")
-                },
-                {
-                  "divider": "or"
-                },
-                {
-                  "value": "Prefer not to say",
-                  "text": "Prefer not to say",
-                  checked: checked("smokes", "Prefer not to say")
+                  "value": "I used to smoke~/sprint-11/section-3/do-you-smoke-date",
+                  "text": "I used to smoke",
+                  checked: checked("smokes-type", "No")
                 }
               ]
             }) }}
@@ -82,11 +74,11 @@
             {% else %}
 
             {{ radios({
-              "idPrefix": "smokes",
-              "name": "smokes",
+              "idPrefix": "smokes-type",
+              "name": "smokes-type",
               "fieldset": {
                 "legend": {
-                  "text": "Have you ever smoked?",
+                  "text": "What best describes you?",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
@@ -96,22 +88,14 @@
               },
               "items": [
               {
-                "value": "Yes~/sprint-11/section-3/do-you-smoke-type",
-                "text": "Yes",
-                checked: checked("smokes", "Yes")
+                "value": "I smoke",
+                "text": "I smoke",
+                checked: checked("smokes-type", "Yes")
               },
                 {
-                  "value": "No",
-                  "text": "No",
-                  checked: checked("smokes", "No")
-                },
-                {
-                  "divider": "or"
-                },
-                {
-                  "value": "Prefer not to say",
-                  "text": "Prefer not to say",
-                  checked: checked("smokes", "Prefer not to say")
+                  "value": "I used to smoke~/sprint-11/section-3/do-you-smoke-date",
+                  "text": "I used to smoke",
+                  checked: checked("smokes-type", "No")
                 }
               ]
             }) }}

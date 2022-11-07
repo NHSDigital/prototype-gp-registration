@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Do you want to offer patients a nominated pharmacy - GP registration service - NHS
+Does your surgery offer language interpretation - GP registration service - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -31,29 +31,28 @@ Do you want to offer patients a nominated pharmacy - GP registration service - N
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="gp-answers" method="post" autocomplete="off">
+          <form action="/gp/gp-additional-questions-nominated-pharmacy" method="post" autocomplete="off">
 
 
-            <H2>Do you want to offer your patients the opportunity to nominate a pharmacy during their registration?</H2>
+            <H2>Does your surgery offer a language interpretation service for patients?</H2>
 
-            <p>By offering this service to patients you will receive the details of their chosen pharmacy if they select one.</p>
-            <p>If a patient chooses to use this service then you should follow your surgery's process for handling a pharmacy nomination.</p>
+            <p>If your surgery offers language interpretation services for its patients then they will have the option to request this during their registration process.</p>
             <p>Patients who register online with your surgery will only be offered this service is you choose yes.</p>
 
 
             {{ radios({
-              "idPrefix": "pharmacy",
-              "name": "pharmacy",
+              "idPrefix": "interpretation",
+              "name": "interpretation",
               "items": [
                 {
                   "value": "Yes",
                   "text": "Yes",
-                  checked: checked("pharmacy", "Nominated pharmacy")
+                  checked: checked("interpretation", "Yes")
                 },
                 {
                   "value": "No",
                   "text": "No",
-                  checked: checked("pharmacy", "No")
+                  checked: checked("interpretation", "No")
                 }
               ]
             }) }}
