@@ -28,50 +28,107 @@ Your registered surgeries - GP registration service - NHS
 
 
 
-          <h1 class="nhsuk-heading-xl">You have registered 3 surgeries</h1>
+          <h1 class="nhsuk-heading-xl">You have registered 3 practice</h1>
 
 
-          <form action="gp-practices" method="post" autocomplete="off">
-          <input type="hidden" name="gp-prac" id="gp-prac" value="gp-prac" />
-          {{ button({
-          "text": "Add another practice"
-          }) }}
-          </form>
+          <table role="table" class="nhsuk-table-responsive">
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  Registered surgery
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Shared mailbox
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Additional services
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Unique URL
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Patient access
+                </th>
+                <th role="columnheader" class="" scope="col">
 
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Registered surgery</span>Highstreet surgery<br>1 Town Street, London, SW1A 1AA
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Shared mailbox</span>{{ data['nhs-shared-email'] }}
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Additional services</span>Language interpretation: {{ data['interpretation'] }}<br> Nominated pharmacy: {{ data['pharmacy'] }}
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Unique URL</span>your-practice-url.com/practice
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Patient access</span>Unique URL only
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading"></span><a href="/gp/gp-branch">Change<span class="nhsuk-u-visually-hidden"> </span></a>
+                </td>
+              </tr>
 
-          <div class="nnhsuk-table-container">
-            <table>
-              <thead>
-                <tr>
-                  <th>Registered surgery</th>
-                  <th>Shared mailbox</th>
-                  <th>Additional services</th>
-                  <th>Unique URL</th>
-                  <th>Patient access</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Highstreet surgery</strong><br>1 Town Street, London, SW1A 1AA</td>
-                  <td><p>{{ data['nhs-shared-email'] }}</p></td>
-                  <td><p><strong>Language interpretation:</strong> {{ data['interpretation'] }} <br><strong>nominated pharmacy:</strong> {{ data['pharmacy'] }} </p></td>
-                  <td>your-practice-url.com/practice</td>
-                  <td>Unique URL only</td>
-                  <td><a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a></td>
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Registered surgery</span>Pucklechuch surgery<br>Boots, 2 Town Street, London, SW1A 1AA
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Shared mailbox</span>{{ data['nhs-shared-email'] }}
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Additional services</span>Language interpretation: {{ data['interpretation'] }}<br> Nominated pharmacy: {{ data['pharmacy'] }}
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Unique URL</span>your-practice-url.com/practice
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Patient access</span>Unique URL only
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading"></span><a href="/gp/gp-branch">Change<span class="nhsuk-u-visually-hidden"> </span></a>
+                </td>
+              </tr>
 
-                </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Registered surgery</span>Highstreet surgery<br>Elliots pharmacy, 3 Town Street, London, SW1A 1AA
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Shared mailbox</span>{{ data['nhs-shared-email'] }}
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Additional services</span>Language interpretation: {{ data['interpretation'] }}<br> Nominated pharmacy: {{ data['pharmacy'] }}
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Unique URL</span>your-practice-url.com/practice
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Patient access</span>Unique URL only
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading"></span><a href="/gp/gp-branch">Change<span class="nhsuk-u-visually-hidden"> </span></a>
+                </td>
+              </tr>
 
+            </tbody>
+          </table>
 
+          <div>
 
-
-              </tbody>
-            </table>
-
-          </div>
-
-
-
+            <form action="gp-practices" method="post" autocomplete="off">
+            <input type="hidden" name="gp-prac" id="gp-prac" value="gp-prac" />
+            <button class="nhsuk-button nhsuk-u-margin-top-8" type="submit">
+            Add practice
+            </button>
+            </form>
 
 
 

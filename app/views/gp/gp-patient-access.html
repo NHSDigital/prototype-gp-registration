@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Do you want to offer patients a nominated pharmacy - GP registration service - NHS
+Manage patient access - GP registration service - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -31,32 +31,39 @@ Do you want to offer patients a nominated pharmacy - GP registration service - N
             href: "javascript:history.go(-1)"
           }) }}
 
-          {% if (data['linkaction'] == "change-questions") %}
-          <form action="/gp/gp-branch" method="post" autocomplete="off">
-          {% else %}
-          <form action="gp-answers" method="post" autocomplete="off">
-          {% endif %}
+          <form action="gp-branch" method="post" autocomplete="off">
 
-            <H2>Do you want to offer your patients the opportunity to nominate a pharmacy during their registration?</H2>
 
-            <p>By offering this service to patients you will receive the details of their chosen pharmacy if they select one.</p>
-            <p>If a patient chooses to use this service then you should follow your surgery's process for handling a pharmacy nomination.</p>
-            <p>Patients who register online with your surgery will only be offered this service is you choose yes.</p>
+            <H2>Manage patient access</H2>
 
 
             {{ radios({
-              "idPrefix": "pharmacy",
-              "name": "pharmacy",
+              "idPrefix": "access",
+              "name": "access",
               "items": [
                 {
-                  "value": "Yes",
-                  "text": "Yes",
-                  checked: checked("pharmacy", "Nominated pharmacy")
+                  "value": "Unique url only",
+                  "text": "Turn off Find a GP",
+                  "hint": {
+                    "text": "Your online registration service will not be visible on Find a GP"
+                  },
+                  checked: checked("access", "Turn off Find a GP")
                 },
                 {
-                  "value": "No",
-                  "text": "No",
-                  checked: checked("pharmacy", "No")
+                  "value": "Off",
+                  "text": "Turn off Find a GP and unique URL",
+                  "hint": {
+                    "text": "Remember to remove the url from your website"
+                  },
+                  checked: checked("access", "Off")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "On",
+                  "text": "Turn on Find a GP and unique URL",
+                  checked: checked("access", "On")
                 }
               ]
             }) }}
