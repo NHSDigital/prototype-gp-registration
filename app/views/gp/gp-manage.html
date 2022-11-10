@@ -26,9 +26,20 @@ Your registered surgeries - GP registration service - NHS
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-full">
 
+          {{ backLink({
+            text: "Return to Manage your profile",
+            href: "/gp/gp-profile-manager-manage"
+          }) }}
 
 
-          <h1 class="nhsuk-heading-xl">You have registered 3 practice</h1>
+          <h1 class="nhsuk-heading-xl">You have registered 3 surgeries</h1>
+
+          <form action="gp-practices" method="post" autocomplete="off">
+          <input type="hidden" name="gp-prac" id="gp-prac" value="gp-prac" />
+          <button class="nhsuk-button" type="submit">
+          Add practice
+          </button>
+          </form>
 
 
           <table role="table" class="nhsuk-table-responsive">
@@ -123,16 +134,7 @@ Your registered surgeries - GP registration service - NHS
 
           <div>
 
-            <form action="gp-practices" method="post" autocomplete="off">
-            <input type="hidden" name="gp-prac" id="gp-prac" value="gp-prac" />
-            <button class="nhsuk-button nhsuk-u-margin-top-5" type="submit">
-            Add practice
-            </button>
-            </form>
 
-
-
-              <p><a href="/gp/gp-profile-manager-manage">Return to Manage your profile</a></p>
 
 
               <div class="nhsuk-inset-text">
