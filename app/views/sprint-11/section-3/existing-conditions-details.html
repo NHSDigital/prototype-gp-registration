@@ -42,7 +42,7 @@
 
             {% call fieldset({
               legend: {
-                text: "Can you provide more details about their current and pre-existing medical conditions?",
+                text: "About {{ data ['name-first-name'] }}'s current and pre-existing medical conditions",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -50,7 +50,10 @@
 
             {{ textarea({
               "name": "existing-medical-condition-details",
-              "id": "existing-medical-condition-details"
+              "id": "existing-medical-condition-details",
+              "label": {
+                "text": "Give a brief description of current and pre-existing medical conditions (optional)"
+                }
             }) }}
 
             {% endcall %}
@@ -58,7 +61,7 @@
 
             {% call fieldset({
               legend: {
-                text: "Can you provide more details about your current and pre-existing medical conditions?",
+                text: "About your current and pre-existing medical conditions",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -66,7 +69,10 @@
 
             {{ textarea({
               "name": "existing-medical-condition-details",
-              "id": "existing-medical-condition-details"
+              "id": "existing-medical-condition-details",
+              "label": {
+                "text": "Give a brief description of current and pre-existing medical conditions (optional)"
+                }
             }) }}
 
             {% endcall %}
