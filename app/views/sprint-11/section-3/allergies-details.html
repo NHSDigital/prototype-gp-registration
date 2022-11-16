@@ -41,7 +41,7 @@
 
             {% call fieldset({
               legend: {
-                text: "Can you provide more details about their allergies?",
+                text: "About {{ data ['name-first-name'] }}'s allergies",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -49,7 +49,10 @@
 
             {{ textarea({
               "name": "allergies-details",
-              "id": "allergies-details"
+              "id": "allergies-details",
+              "label": {
+                "text": "Give a brief description of the condition (optional)"
+                }
             }) }}
 
             {% endcall %}
@@ -58,7 +61,7 @@
 
             {% call fieldset({
               legend: {
-                text: "Can you provide more details about your allergies?",
+                text: "About your allergies",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -66,7 +69,10 @@
 
             {{ textarea({
               "name": "allergies-details",
-              "id": "allergies-details"
+              "id": "allergies-details",
+              "label": {
+                "text": "Give a brief description of the condition (optional)"
+                }
             }) }}
 
             {% endcall %}

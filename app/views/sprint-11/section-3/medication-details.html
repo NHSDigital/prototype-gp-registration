@@ -42,7 +42,7 @@
 
             {% call fieldset({
               legend: {
-                text: "Can you provide more details about their prescription medication?",
+                text: "About {{ data ['name-first-name'] }}'s mental health conditions",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -51,9 +51,9 @@
             {{ textarea({
               "name": "medication-details",
               "id": "medication-details",
-              "hint": {
-                "text": "Give further information about what medications they are currently taking including the name and the dosage if known. This question is optional."
-              }
+              "label": {
+                "text": "Give a brief description of the condition (optional)"
+                }
             }) }}
 
             {% endcall %}
@@ -61,7 +61,7 @@
 
             {% call fieldset({
               legend: {
-                text: "Can you provide more details about your prescription medication?",
+                text: "About your mental health conditions",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -70,10 +70,9 @@
             {{ textarea({
               "name": "medication-details",
               "id": "medication-details",
-              "hint": {
-                "text": "Give further information about what medications you are currently taking including the name and the dosage if known. This question is optional."
-
-              }
+              "label": {
+                "text": "Give a brief description of the condition (optional)"
+                }
             }) }}
 
             {% endcall %}
@@ -86,7 +85,7 @@
           </form>
         </div>
       </div>
-  
+
 
     <!-- End of content -->
 
