@@ -1076,19 +1076,63 @@ Recently moved<!-- Use this page as the index for your project -->
               {% endif %}
 
 
+                {% if data['alcohol-consumption'] == "Never" %}
                 <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Drinks alcohol
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['alcohol-consumption'] }}
-                  </dd>
-                  <dd class="nhsuk-summary-list__actions">
-                    <a href="">
-                      Change<span class="nhsuk-u-visually-hidden"> how often you drink alcohol</span>
-                    </a>
-                  </dd>
-                </div>
+                    <dt class="nhsuk-summary-list__key">
+                      Drinks alcohol
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      Never
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"> details about your medications</span>
+                      </a>
+                    </dd>
+                  </div>
+                {% else %}
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Drinks alcohol
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['alcohol-consumption'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"> details about your medications</span>
+                      </a>
+                    </dd>
+                  </div>
+
+                  <div class="nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__key">
+                        Units a day
+                      </dt>
+                      <dd class="nhsuk-summary-list__value">
+                        {{ data['units'] }}
+                      </dd>
+                      <dd class="nhsuk-summary-list__actions">
+                        <a href="">
+                          Change<span class="nhsuk-u-visually-hidden"> details about your medications</span>
+                        </a>
+                      </dd>
+                    </div>
+
+                    <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                          Six or more units of alcohol on a single occasion
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                          {{ data['alcohol-consumption-day'] }}
+                        </dd>
+                        <dd class="nhsuk-summary-list__actions">
+                          <a href="">
+                            Change<span class="nhsuk-u-visually-hidden"> details about your medications</span>
+                          </a>
+                        </dd>
+                      </div>
+                  {% endif %}
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
@@ -1440,19 +1484,65 @@ Recently moved<!-- Use this page as the index for your project -->
             {% endif %}
 
 
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Drinks alcohol
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['alcohol-consumption'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> how often you drink alcohol</span>
-                  </a>
-                </dd>
-              </div>
+
+                            {% if data['alcohol-consumption'] == "Never" %}
+                            <div class="nhsuk-summary-list__row">
+                                <dt class="nhsuk-summary-list__key">
+                                  Drinks alcohol
+                                </dt>
+                                <dd class="nhsuk-summary-list__value">
+                                  Never
+                                </dd>
+                                <dd class="nhsuk-summary-list__actions">
+                                  <a href="">
+                                    Change<span class="nhsuk-u-visually-hidden"> details about your medications</span>
+                                  </a>
+                                </dd>
+                              </div>
+                            {% else %}
+                            <div class="nhsuk-summary-list__row">
+                                <dt class="nhsuk-summary-list__key">
+                                  Drinks alcohol
+                                </dt>
+                                <dd class="nhsuk-summary-list__value">
+                                  {{ data['alcohol-consumption'] }}
+                                </dd>
+                                <dd class="nhsuk-summary-list__actions">
+                                  <a href="">
+                                    Change<span class="nhsuk-u-visually-hidden"> details about your medications</span>
+                                  </a>
+                                </dd>
+                              </div>
+
+                              <div class="nhsuk-summary-list__row">
+                                  <dt class="nhsuk-summary-list__key">
+                                    Units a day
+                                  </dt>
+                                  <dd class="nhsuk-summary-list__value">
+                                    {{ data['units'] }}
+                                  </dd>
+                                  <dd class="nhsuk-summary-list__actions">
+                                    <a href="">
+                                      Change<span class="nhsuk-u-visually-hidden"> details about your medications</span>
+                                    </a>
+                                  </dd>
+                                </div>
+
+                                <div class="nhsuk-summary-list__row">
+                                    <dt class="nhsuk-summary-list__key">
+                                      Six or more units of alcohol on a single occasion
+                                    </dt>
+                                    <dd class="nhsuk-summary-list__value">
+                                      {{ data['alcohol-consumption-day'] }}
+                                    </dd>
+                                    <dd class="nhsuk-summary-list__actions">
+                                      <a href="">
+                                        Change<span class="nhsuk-u-visually-hidden"> details about your medications</span>
+                                      </a>
+                                    </dd>
+                                  </div>
+                              {% endif %}
+
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">

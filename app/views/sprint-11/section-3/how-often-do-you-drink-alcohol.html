@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  GP Registration Prototypes
+How often do you drink alcohol or have a drink containing alcohol? - Register with a GP surgery - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -40,7 +40,7 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>How often does {{ data ['name-first-name'] }} drink alcohol?</H2>
+            <H2>How often does {{ data ['name-first-name'] }} drink alcohol or have a drink containing alcohol?</H2>
 
             {{ radios({
               "idPrefix": "alcohol-consumption",
@@ -53,7 +53,7 @@
                 }
               },
               "hint": {
-                "text": "Select one option"
+                "text": "This includes wine, beer, spirits, Alcopops, cocktails or hot drinks with spirits such as a coffee with whiskey."
               },
               "items": [
                 {
@@ -62,24 +62,24 @@
                   checked: checked("alcohol-consumption", "Never")
                 },
                 {
-                  "value": "Less than monthly",
-                  "text": "Less than monthly",
-                  checked: checked("alcohol-consumption", "Less than monthly")
+                  "value": "Monthly or less",
+                  "text": "Monthly or less",
+                  checked: checked("alcohol-consumption", "Monthly or less")
                 },
                 {
-                  "value": "Monthly",
-                  "text": "Monthly",
-                  checked: checked("alcohol-consumption", "Monthly")
+                  "value": "2 to 4 times a month",
+                  "text": "2 to 4 times a month",
+                  checked: checked("alcohol-consumption", "2 to 4 times a month")
                 },
                 {
-                  "value": "Weekly",
-                  "text": "Weekly",
-                  checked: checked("alcohol-consumption", "Weekly")
+                  "value": "2 to 3 times a week",
+                  "text": "2 to 3 times a week",
+                  checked: checked("alcohol-consumption", "2 to 3 times a week")
                 },
                 {
-                  "value": "Daily or almost daily",
-                  "text": "Daily or almost daily",
-                  checked: checked("alcohol-consumption", "Daily or almost daily")
+                  "value": "4 or more times a week",
+                  "text": "4 or more times a week",
+                  checked: checked("alcohol-consumption", "4 or more times a week")
                 },
                 {
                   "divider": "or"
@@ -99,13 +99,13 @@
               "name": "alcohol-consumption",
               "fieldset": {
                 "legend": {
-                  "text": "How often do you drink alcohol?",
+                  "text": "How often do you drink alcohol or have a drink containing alcohol?",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
               },
               "hint": {
-                "text": "Select one option"
+                "text": "This includes wine, beer, spirits, Alcopops, cocktails or hot drinks with spirits such as a coffee with whiskey."
               },
               "items": [
                 {
@@ -114,24 +114,24 @@
                   checked: checked("alcohol-consumption", "Never")
                 },
                 {
-                  "value": "Less than monthly",
-                  "text": "Less than monthly",
-                  checked: checked("alcohol-consumption", "Less than monthly")
+                  "value": "Monthly or less",
+                  "text": "Monthly or less",
+                  checked: checked("alcohol-consumption", "Monthly or less")
                 },
                 {
-                  "value": "Monthly",
-                  "text": "Monthly",
-                  checked: checked("alcohol-consumption", "Monthly")
+                  "value": "2 to 4 times a month",
+                  "text": "2 to 4 times a month",
+                  checked: checked("alcohol-consumption", "2 to 4 times a month")
                 },
                 {
-                  "value": "Weekly",
-                  "text": "Weekly",
-                  checked: checked("alcohol-consumption", "Weekly")
+                  "value": "2 to 3 times a week",
+                  "text": "2 to 3 times a week",
+                  checked: checked("alcohol-consumption", "2 to 3 times a week")
                 },
                 {
-                  "value": "Daily or almost daily",
-                  "text": "Daily or almost daily",
-                  checked: checked("alcohol-consumption", "Daily or almost daily")
+                  "value": "4 or more times a week",
+                  "text": "4 or more times a week",
+                  checked: checked("alcohol-consumption", "4 or more times a week")
                 },
                 {
                   "divider": "or"

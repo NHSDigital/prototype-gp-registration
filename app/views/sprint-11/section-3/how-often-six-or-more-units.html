@@ -43,8 +43,8 @@
             <H2>How often has {{ data ['name-first-name'] }} had six or more units of alcohol on a single occasion in the last year?</H2>
 
             {{ radios({
-              "idPrefix": "alcohol-consumption",
-              "name": "alcohol-consumption",
+              "idPrefix": "alcohol-consumption-day",
+              "name": "alcohol-consumption-day",
               "fieldset": {
                 "legend": {
                   "text": "",
@@ -59,27 +59,27 @@
                 {
                   "value": "Never",
                   "text": "Never",
-                  checked: checked("alcohol-consumption", "Never")
+                  checked: checked("alcohol-consumption-day", "Never")
                 },
                 {
                   "value": "Less than monthly",
                   "text": "Less than monthly",
-                  checked: checked("alcohol-consumption", "Less than monthly")
+                  checked: checked("alcohol-consumption-day", "Less than monthly")
                 },
                 {
                   "value": "Monthly",
                   "text": "Monthly",
-                  checked: checked("alcohol-consumption", "Monthly")
+                  checked: checked("alcohol-consumption-day", "Monthly")
                 },
                 {
                   "value": "Weekly",
                   "text": "Weekly",
-                  checked: checked("alcohol-consumption", "Weekly")
+                  checked: checked("alcohol-consumption-day", "Weekly")
                 },
                 {
                   "value": "Daily or almost daily",
                   "text": "Daily or almost daily",
-                  checked: checked("alcohol-consumption", "Daily or almost daily")
+                  checked: checked("alcohol-consumption-day", "Daily or almost daily")
                 },
                 {
                   "divider": "or"
@@ -87,7 +87,7 @@
                 {
                   "value": "Prefer not to say",
                   "text": "Prefer not to say",
-                  checked: checked("alcohol-consumption", "Prefer not to say")
+                  checked: checked("alcohol-consumption-day", "Prefer not to say")
                 }
               ]
             }) }}
@@ -95,8 +95,8 @@
             {% else %}
 
             {{ radios({
-              "idPrefix": "alcohol-consumption",
-              "name": "alcohol-consumption",
+              "idPrefix": "alcohol-consumption-day",
+              "name": "alcohol-consumption-day",
               "fieldset": {
                 "legend": {
                   "text": "How often have you had six or more units of alcohol on a single occasion in the last year?",
@@ -111,27 +111,27 @@
                 {
                   "value": "Never",
                   "text": "Never",
-                  checked: checked("alcohol-consumption", "Never")
+                  checked: checked("alcohol-consumption-day", "Never")
                 },
                 {
                   "value": "Less than monthly",
                   "text": "Less than monthly",
-                  checked: checked("alcohol-consumption", "Less than monthly")
+                  checked: checked("alcohol-consumption-day", "Less than monthly")
                 },
                 {
                   "value": "Monthly",
                   "text": "Monthly",
-                  checked: checked("alcohol-consumption", "Monthly")
+                  checked: checked("alcohol-consumption-day", "Monthly")
                 },
                 {
                   "value": "Weekly",
                   "text": "Weekly",
-                  checked: checked("alcohol-consumption", "Weekly")
+                  checked: checked("alcohol-consumption-day", "Weekly")
                 },
                 {
                   "value": "Daily or almost daily",
                   "text": "Daily or almost daily",
-                  checked: checked("alcohol-consumption", "Daily or almost daily")
+                  checked: checked("alcohol-consumption-day", "Daily or almost daily")
                 },
                 {
                   "divider": "or"
@@ -139,7 +139,7 @@
                 {
                   "value": "Prefer not to say",
                   "text": "Prefer not to say",
-                  checked: checked("alcohol-consumption", "Prefer not to say")
+                  checked: checked("alcohol-consumption-day", "Prefer not to say")
                 }
               ]
             }) }}
@@ -153,7 +153,7 @@
           </form>
         </div>
       </div>
-  
+
 
     <!-- End of content -->
 
