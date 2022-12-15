@@ -1,0 +1,116 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  Enter carer details - Register with a GP surgery - NHS
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="what-is-your-name" method="post" autocomplete="off">
+
+           <!--{{ hint({
+              "text": "Step 1 of 3 - Matching patient to their record",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}-->
+
+
+            {% call fieldset({
+              legend: {
+                "text": "What are your details?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+
+            }) %}
+
+
+            {{ input({
+                label: {
+                  "text": "First name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "carer-first-name",
+                "name": "carer-first-name",
+                "value": data['carer-first-name']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Last name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "carer-last-name",
+                "name": "carer-last-name",
+                "value": data['carer-last-name']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "Relationship to patient"
+                },
+                "hint": {
+                  "text": "For example, they are a family member or friend."
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "carer-relationship",
+                "name": "carer-relationship",
+                "value": data['carer-relationship']
+              }) }}
+
+
+              {{ input({
+                  label: {
+                    "text": "Contact telephone number"
+                  },
+                  "classes": "nhsuk-u-width-two-thirds",
+                  "id": "carer-telephone",
+                  "name": "carer-telephone",
+                  "value": data['carer-telephone']
+                }) }}
+
+
+            {% endcall %}
+
+
+            <br>
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+
+
+          </form>
+        </div>
+      </div>
+
+
+    <!-- End of content -->
+
+
+
+{% endblock %}

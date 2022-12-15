@@ -1,0 +1,106 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Do you live more than 1 mile from your nearest pharmacy? - Register with a GP surgery - NHS
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          {{ hint({
+            "text": "Step 2 of 3 - Personal Details",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
+
+          <form action="would-you-have-difficulty-reaching-pharmacy" method="post" autocomplete="off">
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Does {{ data ['name-first-name'] }} live more than 1 mile from their nearest pharmacy?</H2>
+
+            {% else %}
+
+            <H2>Do you live more than 1 mile from your nearest pharmacy?</H2>
+
+            {% endif %}
+
+            {% call fieldset({
+              legend: {
+                text: "",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "One mile is the same as 1.6 kilometres. It would take about 20 minutes to walk this distance, 7 minutes in a car or bus or 10 minutes to cycle.
+
+              "
+            }) }}
+
+            {{ radios({
+              "idPrefix": "distance-from-pharmacy",
+              "name": "distance-from-pharmacy",
+              "items": [
+                {
+
+                  "value": "Yes~/sprint-11/section-2/can-use-dispencing",
+                  "text": "Yes",
+                  checked: checked("distance-from-pharmacy", "Yes")
+                },
+                {
+                  "value": "No~/sprint-11/section-2/would-you-have-difficulty-reaching-pharmacy",
+                  "text": "No",
+                  checked: checked("have-current-uk-address", "No")
+                }
+
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ details({
+              "text": "Why are we asking this?",
+              "HTML": "
+              <p>If a patient has to travel more than 1 mile or 1.6 kilometres in a straight line to their nearest pharmacy, they may be able to get their prescription items direct from their GP surgery.</p>
+              "
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,98 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Do you want to get your prescription items direct? - Register with a GP surgery - NHS
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          {{ hint({
+            "text": "Step 2 of 3 - Personal Details",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
+
+          <form action="distance-from-nearest-pharmacy" method="post" autocomplete="off">
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Does {{ data ['name-first-name'] }} want to get their prescription items direct from {NAME OF SURGERY}?</H2>
+
+            {% else %}
+
+            <H2>Do you want to get your prescription items direct from {NAME OF SURGERY}?</H2>
+
+            {% endif %}
+
+            {% call fieldset({
+              legend: {
+                text: "",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+          <p>{SURGERY NAME} is a dispensing surgery. This means you may be able to get your medicines or medical appliances direct from this GP surgery, rather than from a pharmacy of your choice. If you select 'Yes, check if I'm eligible' you must answer the questions you are shown as best you can. The GP surgery may discuss this additional service with you.
+
+          </p>
+
+          {{ radios({
+            "idPrefix": "have-current-uk-address",
+            "name": "have-current-uk-address",
+            "items": [
+              {
+                "value": "Yes~/sprint-11/section-2/distance-from-nearest-pharmacy",
+                "text": "Yes, check if I'm eligible",
+                checked: checked("have-current-uk-address", "Yes")
+              },
+              {
+                "value": "No~/sprint-11/section-2/nominate-pharmacy",
+                "text": "No, I will do this later",
+                checked: checked("have-current-uk-address", "No")
+              }
+            ]
+          }) }}
+
+
+
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}
