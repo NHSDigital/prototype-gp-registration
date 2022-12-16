@@ -37,7 +37,7 @@ Select your address - Register with a GP surgery - NHS
             }) }}
 
           {% if (data['user-auth'] == "p9") %}
-          <form action="/sprint-11/section-1/confirm-contact-details" method="post" autocomplete="off">
+          <form action="/gp-reg-integration/section-1/confirm-contact-details" method="post" autocomplete="off">
           {% elif (data['out-of-area'] == "out-of-area") %}
           <form action="current-address-out-of-area" method="post" autocomplete="off">
           {% else %}
