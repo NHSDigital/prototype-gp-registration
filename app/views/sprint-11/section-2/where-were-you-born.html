@@ -4,142 +4,214 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
-<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Where were you born? - Register with a GP surgery - NHS
+Select place of birth - Register with a GP surgery - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
-{% block beforeContent %}{% endblock %}
+{% block beforeContent %}
+{% endblock %}
 
 <!-- For adding a Go back link -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
-{% block outerContent %}{% endblock %}
+{% block outerContent %}
+
+
+{% endblock %}
 
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
-  <section class="nhsuk-section">
-    <div class="nhsuk-width-container">
-      <div class="nhsuk-grid-row">
-        <div class="nhsuk-grid-column-two-thirds">
 
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+          text: "Go back",
+          href: "javascript:history.go(-1)"
+        }) }}
+
+        <form action="where-were-you-born-place-uk" method="post" autocomplete="off">
+
+
+          {{ hint({
+            "text": "Step 1 of 3 - Matching you to your record",
+            "classes": "nhsuk-u-margin-bottom-2"
           }) }}
 
-          {% if ((data['registering-first-time'] == "Yes") and (data['recently-moved'] == "No")) %}
-          <form action="/sprint-11/section-2/do-you-previous-address" method="post" autocomplete="off">
-          {% elif ((data['registering-first-time'] == "Yes") and (data['recently-moved'] == "Yes")) %}
-          <form action="/sprint-11/section-2/recently-moved-date" method="post" autocomplete="off">
-          {% elif ((data['registering-first-time'] == "No") and (data['overseas'] == "Yes")) %}
-          <form action="/sprint-11/section-2/what-is-your-gp-address" method="post" autocomplete="off">
+          {% if (data['who-is-being-registered'] == "dependant") %}
+
+          <H2>Where was {{ data ['name-first-name'] }} born?</H2>
+
+          {% call fieldset({
+            legend: {
+              text: "",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "country-born",
+            "name": "country-born",
+            "items": [
+              {
+                "value": "England",
+                "text": "England",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("country-born", "England")
+              },
+              {
+                "value": "Wales",
+                "text": "Wales",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("country-born", "England")
+              },
+              {
+                "value": "Isle of man",
+                "text": "Isle of man",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("country-born", "Isle of man")
+              },
+              {
+                "value": "Scotland",
+                "text": "Scotland",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("country-born", "Scotland")
+              },
+              {
+                "value": "Northern ireland",
+                "text": "Northern ireland",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("country-born", "Northern ireland")
+              },
+              {
+                "divider": "or"
+              },
+              {
+                "value": "~/sprint-11/section-2/where-were-you-born-place-outside-uk",
+                "text": "None of these",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("country-born", "")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
           {% else %}
-          <form action="/sprint-11/section-2/what-is-your-gp-address" method="post" autocomplete="off">
+
+          <H2>Where were you born?</H2>
+
+          {% call fieldset({
+            legend: {
+              text: "",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "country-born",
+            "name": "country-born",
+            "items": [
+              {
+                "value": "England",
+                "text": "England",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("country-born", "England")
+              },
+              {
+                "value": "Wales",
+                "text": "Wales",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("country-born", "England")
+              },
+              {
+                "value": "Isle of man",
+                "text": "Isle of man",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("country-born", "Isle of man")
+              },
+              {
+                "value": "Scotland",
+                "text": "Scotland",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("country-born", "Scotland")
+              },
+              {
+                "value": "Northern ireland",
+                "text": "Northern ireland",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("country-born", "Northern ireland")
+              },
+              {
+                "divider": "or"
+              },
+              {
+                "value": "~/sprint-11/section-2/where-were-you-born-place-outside-uk",
+                "text": "None of these",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("country-born", "")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
           {% endif %}
 
 
-            {{ hint({
-              "text": "Step 2 of 3 - Personal Details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
 
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
+          {{ button({
+            "text": "Continue"
+          }) }}
 
-              {% call fieldset({
-                legend: {
-                  "text": "Where were they born?",
-                  "classes": "nhsuk-fieldset__legend--l"
-                }
-              }) %}
-
-              {{ input({
-                  label: {
-                    "text": "Country of birth"
-                  },
-                  "classes": "nhsuk-u-width-two-thirds",
-                  "id": "moved-address-country",
-                  "name": "moved-address-country",
-                  value: data['moved-address-country']
-              }) }}
-
-              {{ input({
-                  label: {
-                    "text": "Place of birth"
-                  },
-                  "hint": {
-                    "html": "This can be the town, city or other location you were born in."
-                  },
-                  "classes": "nhsuk-u-width-two-thirds",
-                  "id": "town",
-                  "name": "town",
-                  value: data['town']
-              }) }}
-
-              {% endcall %}
-
-
-              {% else %}
-
-              {% call fieldset({
-                legend: {
-                  "text": "Where were you born?",
-                  "classes": "nhsuk-fieldset__legend--l"
-                }
-              }) %}
-
-              {{ input({
-                  label: {
-                    "text": "Country of birth"
-                  },
-                  "classes": "nhsuk-u-width-two-thirds",
-                  "id": "moved-address-country",
-                  "name": "moved-address-country",
-                  value: data['moved-address-country']
-              }) }}
-
-              {{ input({
-                  label: {
-                    "text": "Place of birth"
-                  },
-                  "hint": {
-                    "html": "This can be the town, city or other location you were born in."
-                  },
-                  "classes": "nhsuk-u-width-two-thirds",
-                  "id": "town",
-                  "name": "town",
-                  value: data['town']
-              }) }}
-
-              {% endcall %}
-
-              {% endif %}
+        </form>
 
 
 
-
-              {{ button({
-                "text": "Continue"
-              }) }}
-
-
-
-
-          </form>
-        </div>
       </div>
-    </section>
+    </div>
 
-    <!-- End of content -->
 
-  </div>
+
+
+
+<!-- End of content -->
+
 </div>
-{% block pageScripts %}
-{% endblock %}
-
+</div>
 {% endblock %}
