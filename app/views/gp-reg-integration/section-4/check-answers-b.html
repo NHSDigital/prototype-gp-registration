@@ -38,7 +38,7 @@ Recently moved<!-- Use this page as the index for your project -->
 
             {{ fieldset({
               "legend": {
-                "text": "Check their details before submitting your application to {Surgery name}",
+                "text": "Check their details before submitting your application to City Health Centre",
                 "classes": "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-2",
                 "isPageHeading": true
               }
@@ -48,7 +48,7 @@ Recently moved<!-- Use this page as the index for your project -->
 
             {{ fieldset({
               "legend": {
-                "text": "Check your details before submitting your application to {Surgery name}",
+                "text": "Check your details before submitting your application to City Health Centre",
                 "classes": "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-2",
                 "isPageHeading": true
               }
@@ -61,10 +61,91 @@ Recently moved<!-- Use this page as the index for your project -->
 
        <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-          <div class="nhsuk-inset-text">
-          <span class="nhsuk-u-visually-hidden">Information:</span>
-          <p>If you have logged in using the NHS app you will not be able to change some of the answers. Please contact your GP surgery if your information on the NHS app is incorrect. </p>
-          </div>
+
+
+          <dl class="nhsuk-summary-list">
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                NHS Number
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                485 777 3456
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">Change<span class="nhsuk-u-visually-hidden">NHS number</span></a>
+              </dd>
+
+            </div>
+
+           <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                First name
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                Alex
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">Change<span class="nhsuk-u-visually-hidden">First name</span></a>
+              </dd>
+            </div>
+
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Middle name
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">Change<span class="nhsuk-u-visually-hidden">middle name</span></a>
+              </dd>
+            </div>
+
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Last name
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                Taylor
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">Change<span class="nhsuk-u-visually-hidden">last name</span></a>
+              </dd>
+            </div>
+
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Date of birth
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                20/9/1982
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">Change<span class="nhsuk-u-visually-hidden">date of birth</span></a>
+              </dd>
+
+            </div>
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Registered with GP perviously
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if (data['have-you-been-reg-with-gp-before'] == "No") %}
+                  No
+                  {% else %}
+                  Yes
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> answer</span></a>
+                </dd>
+              </div>
+
+          </dl>
 
 
 

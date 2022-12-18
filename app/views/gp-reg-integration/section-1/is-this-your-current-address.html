@@ -26,11 +26,6 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
-
           <form action="" method="post" autocomplete="off">
 
             {% call fieldset({
@@ -50,7 +45,7 @@
       </div>
 
       <div class="nhsuk-card__content">
-        <p>Address line 1 <br> Address line 2 <br> Address line 3 <br> Address line 4 </p>
+        <p>1 Piccadilly Gardens<br>Manchester <br>M60 1AY</p>
 
       </div>
     </div>
@@ -61,12 +56,12 @@
               "classes": "nhsuk-radios",
               "items": [
                 {
-                  "value": "Yes~/gp-reg-integration/section-1/confirm-contact-details",
+                  "value": "Yes~/gp-reg-integration/section-2/how-can-we-contact-you-inputs",
                   "text": "Yes",
                   checked: checked("current-address", "Yes")
                 },
                 {
-                  "value": "No~/sprint-11/section-2/what-is-your-current-address",
+                  "value": "No~/sprint-11/section-2/#",
                   "text": "No",
                   checked: checked("current-address", "No")
                 }
