@@ -34,18 +34,6 @@ Recently moved<!-- Use this page as the index for your project -->
 
           <form action="confirmation-page" method="post" autocomplete="off">
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            {{ fieldset({
-              "legend": {
-                "text": "Check their details before submitting your application to City Health Centre",
-                "classes": "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-2",
-                "isPageHeading": true
-              }
-            }) }}
-
-            {% else %}
-
             {{ fieldset({
               "legend": {
                 "text": "Check your details before submitting your application to City Health Centre",
@@ -53,8 +41,6 @@ Recently moved<!-- Use this page as the index for your project -->
                 "isPageHeading": true
               }
             }) }}
-
-            {% endif %}
 
           </div>
         </div>
