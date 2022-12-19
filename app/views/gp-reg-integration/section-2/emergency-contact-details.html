@@ -32,11 +32,11 @@ What are the details of your emergency contact? - Register with a GP surgery - N
           }) }}
 
           {% if (data['registering-first-time'] == "Yes") %}
-          <form action="/sprint-11/section-2/recently-move-to-the-uk" method="post" autocomplete="off">
+          <form action="/gp-reg-integration/section-2/recently-move-to-the-uk" method="post" autocomplete="off">
           {% elif (data['registering-first-time'] == "No") %}
-          <form action="/sprint-11/section-2/are-you-returning-from-overseas" method="post" autocomplete="off">
+          <form action="/gp-reg-integration/section-2/are-you-returning-from-overseas" method="post" autocomplete="off">
           {% else %}
-          <form action="/sprint-11/section-2/recently-move-to-the-uk" method="post" autocomplete="off">
+          <form action="/gp-reg-integration/section-2/recently-move-to-the-uk" method="post" autocomplete="off">
           {% endif %}
 
             {{ hint({
