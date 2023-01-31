@@ -481,6 +481,15 @@ router.post("/*/check-postcode", function (req, res) {
   res.redirect("/sprint-11/section-2/nominate-pharmacy")
 });
 
+router.post("/gp-reg-integration/section-2/check-postcode-integration", function (req, res) {
+  var postcode = (req.session.data["find-current-address"]);
+  console.log("postcode check " + postcode)
+  if(postcod.toUpperCase()=="LS28 7FG"){
+    res.redirect("/gp-reg-integration/section-2/dispencing-surgery")
+  }
+  res.redirect("/gp-reg-integration/section-2/nominate-pharmacy")
+});
+
 router.post("/*/check-postcode-2", function (req, res) {
   var interpreterNeed = req.session.data['interpreter']
   console.log("interpreter " + interpreterNeed)
