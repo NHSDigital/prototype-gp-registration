@@ -186,7 +186,6 @@
 
 // Modal
 
-
 .pseudo-modal-bg {
   position: fixed;
       top: 0;
@@ -271,4 +270,35 @@
 .nhsuk-modal__metadata,
 .nhsuk-modal__description {
   margin-bottom: 16px;
+}
+
+// Feedback Banner
+
+.banner {
+
+  color: #000;
+  @include core-font(16);
+  font-weight: 400;
+  $default-border-bottom: 2px dashed;
+
+    background-color: lighten( $blue, 60%);
+    /*border-bottom: $default-border-bottom;*/
+
+    span {
+
+      padding: 1px 5px;
+      color: $black;
+      background-color: white;
+      border: 1px solid $blue;
+
+
+
+  }
+
+  .page-section {
+
+    padding: 8px 0;
+
+  }
+
 }
