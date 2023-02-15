@@ -1,95 +1,88 @@
-<!-- Use this page as the index for your project -->
-
-<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'layout-gp.html' %}
-<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - edit the header and footer
+    - add custom CSS and JavaScript
+-->
 
 <!-- Set the page title -->
 {% block pageTitle %}
-NHS shared mailbox - GP registration service - NHS
+  Content page example - NHS.UK prototype kit
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
-{% block beforeContent %}{% endblock %}
+{% block beforeContent %}
+  {{ breadcrumb({
+    href: "/",
+    text: "Home"
+  }) }}
+{% endblock %}
 
-<!-- For adding a Go back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
-{% block outerContent %}{% endblock %}
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
 
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
-    <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-two-thirds">
+  <div class="nhsuk-grid-row">
 
-        {{ backLink({
-          text: "Go back",
-          href: "javascript:history.go(-1)"
-        }) }}
+    <div class="nhsuk-grid-column-two-thirds">
 
+      <!-- Change the page heading -->
+      <h1>
+        NHS shared mailbox
+      </h1>
 
-        <form action="gp-verification-code" method="post" autocomplete="off">
+      <!-- Add content here -->
+      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
 
+      <p>
+        A verification code will be sent to your NHS shared mailbox. This is also where patient registration details will be sent.
+      </p>
 
-          {% call fieldset({
-              legend: {
-                "text": "NHS shared mailbox",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
-              }
-            }) %}
-
-          <p>
-            A verification code will be sent to your shared mailbox.
-          </p>
-
-          <details class="nhsuk-details">
-            <summary class="nhsuk-details__summary">
-              <span class="nhsuk-details__summary-text">
-                I do not have access to a NHS shared mailbox
-              </span>
-            </summary>
-            <div class="nhsuk-details__text">
-              <p>For information about registering for the service, visit the <a href="">Resource hub</a></p>
-            </div>
-          </details>
-
-          {{ input({
-                label: {
-                  "html": 'Enter the email address of your shared mailbox'
-                },
-                  "hint": {
-                  "text": 'This will end in "nhs.net'
-                },
-                "type": "email",
-                "classes": "nhsuk-input--width-20",
-                "id": "nhs-shared-email",
-                "name": "nhs-shared-email"
-              }) }}
-
-
-
-          {% endcall %}
-
-
-          {{ button({
-              "text": "Continue"
-            }) }}
-
-        </form>
+      <div class="nhsuk-inset-text">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>For reasons of security and data protection we cannot accept a personal email account, including a personal NHS account.</p>
       </div>
+
+      <div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="example">
+    Enter the details of your NHS shared mailbox
+    <div class="nhsuk-hint" id="contact-hint">
+      This will end with 'nhs.net'.
+    </div>
+  </label>
+  <input class="nhsuk-input" id="example" name="example" type="text">
+</div>
+<details class="nhsuk-details">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      I do not have access to a NHS shared mailbox
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+
+    <p>Find out more about registering for this service at our <a href="https://digital.nhs.uk/services/register-with-a-gp-surgery-service#resource-hub">Resource Hub</a>)</p>
+
+  </div>
+</details>
+
+<button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+  Continue
+</button>
+
+
+
+
+
+      <!-- End of content -->
+
     </div>
 
-
-<!-- End of content -->
-
-</div>
-</div>
-{% block pageScripts %}
-
-{% endblock %}
+  </div>
 {% endblock %}
