@@ -1,0 +1,27 @@
+
+{% extends 'layout.html' %}
+
+{% from 'button/macro.njk' import button %}
+{% from 'back-link/macro.njk' import backLink %}
+
+{% block pageTitle %}
+Service down - Register with a GP Surgery - NHS
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+        <h1 class="nhsuk-heading-l">There was a technical problem</h1>
+
+          <p class="nhsuk-body">We couldn't connect you to the Register with a GP Surgery service.
+Go back to the NHS App Home page and try again.</p>
+
+          {{ button({
+            "text": "NHS App Home page"
+        }) }}
+    </div>
+</div>
+
+
+{% endblock %}
