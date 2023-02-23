@@ -1,0 +1,59 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Page listings - GP registration - NHS
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+
+        <h1 class="app-page-heading">
+            <span class="nhsuk-caption-l">Prototype work</span>
+            Page by page listings
+        </h1>
+
+          <p class="nhsuk-body-s">Last updated: 23 Feb 2023</p>
+
+  <h2 class="nhsuk-heading-l">App pages</h2>
+
+          <h4 class="nhsuk-heading-s">Error pages</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+              <li><a href="/errors/error-share-your-data" >Are you sure you do not want to share your information?</a></li>
+              <li><a href="/errors/something-wrong" >Something went wrong</a></li>
+          </ul>
+
+  </div>
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}

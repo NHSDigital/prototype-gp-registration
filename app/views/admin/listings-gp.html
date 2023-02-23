@@ -1,0 +1,68 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Page listings - GP registration - NHS
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+
+        <h1 class="app-page-heading">
+            <span class="nhsuk-caption-l">Prototype work</span>
+            Page by page listings
+        </h1>
+
+          <p class="nhsuk-body-s">Last updated: 23 Feb 2023</p>
+
+  <h2 class="nhsuk-heading-l">GP Self onboarding</h2>
+
+          <h4 class="nhsuk-heading-s">Main pages</h4>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+              <li><a href="/gp/gp-start" >Sign up to Register with a GP surgery</a></li>
+              <li><a href="/gp/gp-service-confirm" >Completing this registration process</a></li>
+              <li><a href="/gp/gp-shared-mailbox" >NHS shared mailbox</a></li>
+              <li><a href="/gp/gp-shared-mailbox-sure" >Are you sure this is your NHS shared mailbox?</a></li>
+              <li><a href="/gp/gp-verification-code" >We have sent a verification code</a></li>
+              <li><a href="/gp/gp-additional-questions-language-interpretation" >Does your surgery offer a language interpretation service for patients?</a></li>
+              <li><a href="/gp/gp-additional-questions-nominated-pharmacy" >Do you want to offer your patients the opportunity to nominate a pharmacy during their registration?</a></li>
+              <li><a href="/gp/gp-answers" >Confirm details for {Practice name} and complete registration</a></li>
+              <li><a href="/gp/gp-reg-complete" >Registration complete for (Practice name)</a></li>
+              <li><a href="/gp/gp-manage" >Your registered surgeries</a></li>
+              <li><a href="/gp/gp-branch" >Branch</a></li>
+          </ul>
+
+  </div>
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}
