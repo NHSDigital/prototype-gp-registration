@@ -47,6 +47,41 @@ Do you have a current UK address? - Register with a GP surgery - NHS
 
             {% endif %}
 
+        {% if (data['user-auth'] == "p5") %}
+
+        {% call fieldset({
+          legend: {
+            text: "",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <div class="nhsuk-hint" id="contact-hint">
+          <p>This includes if they are living at a temporary address.</p>
+        </div>
+
+        {{ radios({
+          "idPrefix": "have-current-uk-address",
+          "name": "have-current-uk-address",
+          "items": [
+            {
+              "value": "Yes~/sprint-12/section-2/what-is-your-current-address",
+              "text": "Yes",
+              checked: checked("have-current-uk-address", "Yes")
+            },
+            {
+              "value": "No~/sprint-12/section-1/confirm-contact-details",
+              "text": "No",
+              checked: checked("have-current-uk-address", "No")
+            }
+          ]
+        }) }}
+
+        {% endcall %}
+
+        {% else %}
+
         {% call fieldset({
           legend: {
             text: "",
@@ -77,6 +112,9 @@ Do you have a current UK address? - Register with a GP surgery - NHS
         }) }}
 
         {% endcall %}
+
+        {% endif %}
+
 
 
 
