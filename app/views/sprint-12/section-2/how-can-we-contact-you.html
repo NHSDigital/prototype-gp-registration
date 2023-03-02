@@ -43,7 +43,7 @@ How would you like to be contacted? - Register with a GP surgery - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>How would {{ data ['name-first-name'] }} like to be contacted?</H2>
+            <H2>How would {{ data ['name-first-name'] }} like {Surgery name} or the NHS to contact them?</H2>
 
             {{ checkboxes({
               "idPrefix": "contact",
@@ -56,14 +56,10 @@ How would you like to be contacted? - Register with a GP surgery - NHS
                 }
               },
 
-              "hint": {
-                "html": "<p>The GP may need to contact you or the patient about this application, appointments, prescriptions or other medical services.</p>"
-              },
-
               items: [
-                { value: "home", text: "UK home telephone number", checked: checked("contact", "home")},
-                { value: "phone", text: "UK mobile telephone number", checked: checked("contact", "phone")},
-                { value: "email", text: "Email address", checked: checked("contact", "email")},
+                { value: "home", text: "Home telephone number", checked: checked("contact", "home")},
+                { value: "phone", text: "Mobile telephone number", checked: checked("contact", "phone")},
+                { value: "email", text: "Email", checked: checked("contact", "email")},
                 { value: "post", text: "Post", checked: checked("contact", "post")}
             ]
             }) }}
@@ -71,7 +67,7 @@ How would you like to be contacted? - Register with a GP surgery - NHS
 
             {% else %}
 
-            <H2>How would you like to be contacted?</H2>
+            <H2>How would you like {Surgery name} or the NHS to contact you?</H2>
 
             {{ checkboxes({
               "idPrefix": "contact",
@@ -84,14 +80,10 @@ How would you like to be contacted? - Register with a GP surgery - NHS
                 }
               },
 
-              "hint": {
-                "html": "<p>The GP may need to contact you about this application, appointments, prescriptions or other medical services.</p>"
-              },
-
               items: [
-                { value: "home", text: "UK home telephone number", checked: checked("contact", "home")},
-                { value: "phone", text: "UK mobile telephone number", checked: checked("contact", "phone")},
-                { value: "email", text: "Email address", checked: checked("contact", "email")},
+                { value: "home", text: "Home telephone number", checked: checked("contact", "home")},
+                { value: "phone", text: "Mobile telephone number", checked: checked("contact", "phone")},
+                { value: "email", text: "Email", checked: checked("contact", "email")},
                 { value: "post", text: "Post", checked: checked("contact", "post")}
             ]
             }) }}
