@@ -64,8 +64,12 @@ How would you like to be contacted? - Register with a GP surgery - NHS
                 { value: "home", text: "Home telephone number", checked: checked("contact", "home")},
                 { value: "phone", text: "Mobile telephone number", checked: checked("contact", "phone")},
                 { value: "email", text: "Email", checked: checked("contact", "email")},
-                { value: "post", text: "Post", checked: checked("contact", "post")}
-            ]
+                { value: "post", text: "Post", checked: checked("contact", "post")},
+              {
+               divider: "or"
+              },
+              { value: "post", text: "Post", checked: checked("contact", "post")}
+              ]
             }) }}
 
 
@@ -92,9 +96,13 @@ How would you like to be contacted? - Register with a GP surgery - NHS
                 { value: "home", text: "Home telephone number", checked: checked("contact", "home")},
                 { value: "phone", text: "Mobile telephone number", checked: checked("contact", "phone")},
                 { value: "email", text: "Email", checked: checked("contact", "email")},
-                { value: "post", text: "Post", checked: checked("contact", "post")}
-            ]
-            }) }}
+                { value: "post", text: "Post", checked: checked("contact", "post")},
+                {
+                 divider: "or"
+                },
+                { value: "none", text: "Do not contact me", checked: checked("contact", "post")}
+                ]
+              }) }}
 
             {% endif %}
 
