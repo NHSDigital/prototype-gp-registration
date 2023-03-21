@@ -43,10 +43,10 @@ How would you like to be contacted? - Register with a GP surgery - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>How would {{ data ['name-first-name'] }} like {Surgery name} or the NHS to contact them?</H2>
+            <H2>How can we contact {{ data ['name-first-name'] }}?</H2>
 
             <div class="nhsuk-hint" id="contact-hint">
-            <p>By selecting one or more of the following you are giving the GP surgery consent to contact you using your preferred method.
+            <p>By choosing one or more option you are giving the GP surgery consent to contact you about clinical services. This includes SMS or text messages.
           </div>
 
             {{ checkboxes({
@@ -71,10 +71,10 @@ How would you like to be contacted? - Register with a GP surgery - NHS
 
             {% else %}
 
-            <H2>How would you like {Surgery name} or the NHS to contact you?</H2>
+            <H2>How can we contact you?</H2>
 
             <div class="nhsuk-hint" id="contact-hint">
-            <p>By selecting one or more of the following you are giving the GP surgery consent to contact you using your preferred method.
+            <p>By choosing one or more option you are giving the GP surgery consent to contact you about clinical services. This includes SMS or text messages.
           </div>
 
             {{ checkboxes({
