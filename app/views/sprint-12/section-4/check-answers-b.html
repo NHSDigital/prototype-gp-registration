@@ -213,16 +213,27 @@ Recently moved<!-- Use this page as the index for your project -->
               Ethnicity
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {{ data['ethnicity-detail-white'] }}
-              {{ data['ethWhite'] }}
-              {{ data['ethnicity-detail-asian'] }}
-              {{ data['ethAsian'] }}
+              {{ data['ethnicity'] }}<br>
+              {% if data['ethnicity'] == "Asian or Asian British" %}
+              {{ data['ethnicity-detail-asian'] }} {{ data['ethAsian'] }}
+
+              {% elif data['ethnicity'] == "Black African, Black British or Caribbean" %}
               {{ data['ethnicity-detail-black'] }}
               {{ data['ethBlack'] }}
+
+              {% elif data['ethnicity'] == "Mixed or multiple ethnic groups" %}
               {{ data['ethnicity-detail-mixed'] }}
               {{ data['ethMixed'] }}
+
+              {% elif data['ethnicity'] == "White" %}
+              {{ data['ethnicity-detail-white'] }}
+              {{ data['ethWhite'] }}
+
+              {% elif data['ethnicity'] == "Another ethnic group" %}
               {{ data['ethnicity-detail-another'] }}
               {{ data['ethOther'] }}
+
+              {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
               <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
