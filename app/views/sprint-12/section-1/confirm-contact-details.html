@@ -33,10 +33,10 @@
 
           <form action="" method="post" autocomplete="off">
 
-            <h2 class="nhsuk-heading-l">Confirm your contact details</h2>
+            <h2 class="nhsuk-heading-l">Share your contact details</h2>
 
             {{ hint({
-              "text": "You have agreed to share these details with your new GP.",
+              "text": "You have agreed to share these details with the Register with a GP Surgery service.",
               "classes": "nhsuk-u-margin-bottom-4"
             }) }}
 
@@ -66,7 +66,7 @@
 
               <div class="nhsuk-inset-text">
                 <span class="nhsuk-u-visually-hidden">Information: </span>
-                <p>You can change your NHS login details by <a href="https://settings.login.nhs.uk/" target="_blank" rel="noopener noreferrer" title="External website">managing your NHS login (opens in new tab)</a>.</p>
+                <p>You can update your contact details by visiting <a href="https://settings.login.nhs.uk/" target="_blank" rel="noopener noreferrer" title="External website">managing your NHS login (opens in new tab)</a>.</p>
               </div>
 
               {{ radios({
@@ -75,7 +75,7 @@
                   "classes": "nhsuk-radios",
                   "fieldset": {
                     "legend": {
-                      "text": "Do you want to use these contact details?",
+                      "text": "Do you want to use these details to register with a new GP surgery?",
                       "classes": "nhsuk-fieldset__legend--m",
                       "isPageHeading": true
                     }
@@ -83,11 +83,11 @@
                   "items": [
                     {
                       "value": "Yes~/sprint-12/section-2/how-can-we-contact-you",
-                      "text": "Yes"
+                      "text": "Yes, use these details"
                     },
                     {
                       "value": "No~/sprint-12/section-2/how-can-we-contact-inputs",
-                      "text": "No"
+                      "text": "No, use different details"
                     }
                   ]
               }) }}
