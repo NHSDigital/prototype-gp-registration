@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-How would you like to be contacted? - Register with a GP surgery - NHS
+Can the GP surgery contact - Register with a GP surgery - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -49,28 +49,25 @@ How would you like to be contacted? - Register with a GP surgery - NHS
             <p>By giving consent your GP surgery can contact you using SMS or text messages, or by email about application, appointments, prescriptions or other medical services.
           </div>
 
-            {{ checkboxes({
-              "idPrefix": "contact",
-              "name": "contact",
-              "fieldset": {
-                "legend": {
-                  "text": "",
-                  "classes": "nhsuk-fieldset__legend--l",
-                  isPageHeading: true
-                }
-              },
 
-              items: [
-                { value: "home", text: "Home telephone number", checked: checked("contact", "home")},
-                { value: "phone", text: "Mobile telephone number", checked: checked("contact", "phone")},
-                { value: "email", text: "Email", checked: checked("contact", "email")},
-                { value: "post", text: "Post", checked: checked("contact", "post")},
+
+
+          {{ radios({
+            "idPrefix": "contact",
+            "name": "contact",
+            "items": [
               {
-               divider: "or"
+                "value": "Yes",
+                "text": "Yes",
+                checked: checked("contact", "Yes")
               },
-              { value: "Do not contact me", text: "Do not contact me", checked: checked("contact", "post")}
-              ]
-            }) }}
+              {
+                "value": "No",
+                "text": "No",
+                checked: checked("contact", "No")
+              }
+            ]
+          }) }}
 
 
             {% else %}
@@ -81,28 +78,22 @@ How would you like to be contacted? - Register with a GP surgery - NHS
             <p>By giving consent your GP surgery can contact you using SMS or text messages, or by email about application, appointments, prescriptions or other medical services.
           </div>
 
-            {{ checkboxes({
-              "idPrefix": "contact",
-              "name": "contact",
-              "fieldset": {
-                "legend": {
-                  "text": "",
-                  "classes": "nhsuk-fieldset__legend--l",
-                  isPageHeading: true
-                }
+          {{ radios({
+            "idPrefix": "contact",
+            "name": "contact",
+            "items": [
+              {
+                "value": "Yes",
+                "text": "Yes",
+                checked: checked("contact", "Yes")
               },
-
-              items: [
-                { value: "home", text: "Home telephone number", checked: checked("contact", "home")},
-                { value: "phone", text: "Mobile telephone number", checked: checked("contact", "phone")},
-                { value: "email", text: "Email", checked: checked("contact", "email")},
-                { value: "post", text: "Post", checked: checked("contact", "post")},
-                {
-                 divider: "or"
-                },
-                { value: "Do not contact me", text: "Do not contact me", checked: checked("contact", "post")}
-                ]
-              }) }}
+              {
+                "value": "No",
+                "text": "No",
+                checked: checked("contact", "No")
+              }
+            ]
+          }) }}
 
             {% endif %}
 
