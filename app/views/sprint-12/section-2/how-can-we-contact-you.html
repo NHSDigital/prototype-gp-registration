@@ -43,7 +43,7 @@ Can the GP surgery contact - Register with a GP surgery - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Can the GP surgery contact {{ data ['name-first-name'] }}?</H2>
+            <H2>Can {Doctor's Surgery} contact {{ data ['name-first-name'] }}?</H2>
 
             <div class="nhsuk-hint" id="contact-hint">
             <p>By giving consent, your GP surgery can contact you using SMS or text messages, or by email about application, appointments, prescriptions or other medical services.
@@ -72,7 +72,7 @@ Can the GP surgery contact - Register with a GP surgery - NHS
 
             {% else %}
 
-            <H2>Can the GP surgery contact you?</H2>
+            <H2>Can {Doctor's Surgery} contact you?</H2>
 
             <div class="nhsuk-hint" id="contact-hint">
             <p>By giving consent, your GP surgery can contact you using SMS or text messages, or by email about application, appointments, prescriptions or other medical services.
