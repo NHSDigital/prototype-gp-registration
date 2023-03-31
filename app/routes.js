@@ -467,7 +467,7 @@ router.post('*/check-age-4', function (req, res) {
     res.redirect('/sprint-12/section-2/what-schooling-do-you-have')
   } else {
     // Send user to next page
-    res.redirect('/sprint-12/section-2/how-can-we-contact-you')
+    res.redirect('/sprint-12/section-2/what-is-your-gender')
   }
 
 });

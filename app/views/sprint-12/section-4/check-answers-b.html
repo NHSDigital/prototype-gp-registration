@@ -110,18 +110,20 @@ Recently moved<!-- Use this page as the index for your project -->
 
           <!-- Contact preferences -->
           <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Can the GP surgery contact you?
-              </dt>
-              <dd class="nhsuk-summary-list__value nhsuk-summary-list__contact-prefs">
-                {{ data['contact'] }}
-              </dd>
+            <dt class="nhsuk-summary-list__key">
+              Contact details
+            </dt>
+            <dd class="nhsuk-summary-list__value nhsuk-summary-list__contact-prefs">
+              {{ data['contact-home'] }}  <br />
+              {{ data['contact-mobile'] }} <br />
+              {{ data['contact-email'] }} <br />
+            </dd>
               <dd class="nhsuk-summary-list__actions">
                 <a href="">Change<span class="nhsuk-u-visually-hidden"> contact email address</span></a>
               </dd>
           </div>
 
-
+          {% if (years <= 18) %}
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
                 Education
@@ -133,6 +135,7 @@ Recently moved<!-- Use this page as the index for your project -->
                 <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
               </dd>
             </div>
+            {% endif %}
 
 
             {% if data['schooling'] == "school" %}
@@ -181,6 +184,7 @@ Recently moved<!-- Use this page as the index for your project -->
                 </div>
                 {% endif %}
 
+                {% if (years <= 18) %}
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
                     Additional care provider                  </dt>
@@ -191,7 +195,7 @@ Recently moved<!-- Use this page as the index for your project -->
                     <a href="">Change<span class="nhsuk-u-visually-hidden">health contact</span></a>
                   </dd>
                 </div>
-
+                {% endif %}
 
 
           <div class="nhsuk-summary-list__row">
