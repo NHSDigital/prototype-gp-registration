@@ -31,52 +31,60 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="medication-details-repeat" method="post" autocomplete="off">
+          <form action="how-often-do-you-drink-alcohol" method="post" autocomplete="off">
 
            {{ hint({
               "text": "Step 3 of 3 - Health questions",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
 
             {% call fieldset({
               legend: {
-                text: "About {{ data ['name-first-name'] }}'s prescription medication",
+                text: "Are any of these repeat prescriptions?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
+            {{ hint({
+              "text": "This information will help avoid any delays in the patient's medication. "
+            }) }}
+
+
+            {{ hint({
+              "text": "The GP may speak to the patient about these prescriptions."
+            }) }}
+
+
+            {{ radios({
+              "idPrefix": "repeat-medication",
+              "name": "repeat-medication",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: checked("repeat-medication", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("repeat-medication", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say",
+                  "text": "Prefer not to say",
+                  checked: checked("repeat-medication", "Prefer not to say")
                 }
+
+              ]
             }) }}
 
             {% endcall %}
-            {% else %}
 
-            {% call fieldset({
-              legend: {
-                text: "About your prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
-
-            {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"

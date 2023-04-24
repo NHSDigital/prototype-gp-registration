@@ -3,8 +3,7 @@
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'layout.html' %}
-<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+{% extends 'layout.html' %}<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
 
 <!-- Set the page title -->
 {% block pageTitle %}
@@ -31,7 +30,7 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="medication-details-repeat" method="post" autocomplete="off">
+          <form action="do-you-have-any-mental-health-conditions" method="post" autocomplete="off">
 
            {{ hint({
               "text": "Step 3 of 3 - Health questions",
@@ -42,40 +41,42 @@
 
             {% call fieldset({
               legend: {
-                text: "About {{ data ['name-first-name'] }}'s prescription medication",
+                text: "About {{ data ['name-first-name'] }}'s allergies",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
             {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
+              "name": "allergies-details",
+              "id": "allergies-details",
               "label": {
-                "text": "Give a brief description of the medication (optional)"
+                "text": "Give a brief description of the condition (optional)"
                 }
             }) }}
 
             {% endcall %}
+
             {% else %}
 
             {% call fieldset({
               legend: {
-                text: "About your prescription medication",
+                text: "About your allergies",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
             {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
+              "name": "allergies-details",
+              "id": "allergies-details",
               "label": {
-                "text": "Give a brief description of the medication (optional)"
+                "text": "Give a brief description of the condition (optional)"
                 }
             }) }}
 
             {% endcall %}
+
             {% endif %}
 
             {{ button({

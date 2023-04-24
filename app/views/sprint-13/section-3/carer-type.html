@@ -31,7 +31,7 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="medication-details-repeat" method="post" autocomplete="off">
+          <form action="carer-details" method="post" autocomplete="off">
 
            {{ hint({
               "text": "Step 3 of 3 - Health questions",
@@ -40,47 +40,71 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            {% call fieldset({
-              legend: {
-                text: "About {{ data ['name-first-name'] }}'s prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
+            <H2>What type of carer do they have?</H2>
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
-
-            {% endcall %}
             {% else %}
 
+            <H2>What type of carer do you have?</H2>
+
+            {% endif %}
             {% call fieldset({
               legend: {
-                text: "About your prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
+                "text": "",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
               }
+
             }) %}
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
+           {{ radios({
+            "idPrefix": "type-carer",
+            "name": "type-carer",
+            "items": [
+              {
+                "value": "Young carer~/sprint-13/section-3/carer-details",
+                "text": "Young carer, under 18",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("type-carer", "Yes")
+              },
+               {
+                "value": "Informal carer~/sprint-13/section-3/carer-details",
+                "text": "Unpaid, but may get benefits",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("type-carer", "Yes")
+              },
+              {
+                "value": "Occupational Carer~/sprint-13/section-3/carer-details",
+                "text": "Paid as a job",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("type-carer", "Yes")
+              },
+              {
+                "value": "Foster carer~/sprint-13/section-3/carer-details",
+                "text": "Foster carer",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("type-carer", "Yes")
+              }
+
+              ]
+          }) }}
 
             {% endcall %}
-            {% endif %}
+
+
 
             {{ button({
               "text": "Continue"
             }) }}
+
+
 
           </form>
         </div>
@@ -91,4 +115,5 @@
 
   </div>
 </div>
+
 {% endblock %}

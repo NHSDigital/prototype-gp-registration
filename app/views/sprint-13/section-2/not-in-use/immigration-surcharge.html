@@ -1,0 +1,172 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+
+<!-- Set the page title -->
+{% block pageTitle %}
+GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+          text: "Go back",
+          href: "javascript:history.go(-1)"
+        }) }}
+
+        <form action="/sprint-13/section-2/no-match/overseas-declaration-none-eu" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Step 2 of 3 - Personal Details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+          {% if (data['who-is-being-registered'] == "dependant") %}
+
+          <H2>Does {{ data ['name-first-name'] }} know their chargeable status?</H2>
+
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>You may have paid an Immigration Health Surcharge online as part of your application for a visa. The amount you pay depends on your visa type and length of stay.</p>
+
+            <p>You may also be exempt from charges for other reasons, such as being covered by a reciprocal healthcare agreement or being an asylum seeker.</p>
+
+          </div>
+
+
+          {% call fieldset({
+            legend: {
+              text: "",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "health-surcharge",
+            "name": "health-surcharge",
+            "items": [
+              {
+                "value": "Yes",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("health-surcharge", "Yes")
+              },
+              {
+                "value": "No",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("health-surcharge", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {% else %}
+
+          {% call fieldset({
+            legend: {
+              text: "Do you know your chargeable status?",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          <div class="nhsuk-hint" id="contact-hint">
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>You may have paid an Immigration Health Surcharge online as part of your application for a visa. The amount you pay depends on your visa type and length of stay.</p>
+
+              <p>You may also be exempt from charges for other reasons, such as being covered by a reciprocal healthcare agreement or being an asylum seeker.</p>
+
+            </div>
+          </div>
+
+
+          {{ radios({
+            "idPrefix": "health-surcharge",
+            "name": "health-surcharge",
+            "items": [
+              {
+                "value": "Yes",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("health-surcharge", "Yes")
+              },
+              {
+                "value": "No",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("health-surcharge", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {% endif %}
+
+          <!-- {{ details({
+            "text": "Why are you asking this?",
+            "HTML": "<p>Anybody in England can register with a GP surgery and receive free medical care. To get free NHS healthcare in England you need to be 'ordinarily resident' in the UK. This means you must be living in the UK on a lawful and properly settled basis for the time being. You may be asked for evidence of this.</p>"
+          }) }} -->
+
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}

@@ -31,7 +31,7 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="medication-details-repeat" method="post" autocomplete="off">
+          <form action="do-you-have-allergies-answer" method="post" autocomplete="off">
 
            {{ hint({
               "text": "Step 3 of 3 - Health questions",
@@ -40,20 +40,45 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
+              <H2>Does {{ data ['name-first-name'] }} have any allergies?</H2>
+
             {% call fieldset({
               legend: {
-                text: "About {{ data ['name-first-name'] }}'s prescription medication",
+                text: "",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
+            {{ hint({
+              "text": "This may include food, drug, and environmental allergies"
+
+            }) }}
+
+            {{ radios({
+              "idPrefix": "has-allergies",
+              "name": "has-allergies",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: checked("has-allergies", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("has-allergies", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say",
+                  "text": "Prefer not to say",
+                  checked: checked("has-allergies", "Prefer not to say")
                 }
+
+              ]
             }) }}
 
             {% endcall %}
@@ -61,18 +86,41 @@
 
             {% call fieldset({
               legend: {
-                text: "About your prescription medication",
+                text: "Do you have any allergies?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
+            {{ hint({
+              "text": "This may include food, drug, and environmental allergies. This question is optional."
+            }) }}
+
+
+            {{ radios({
+              "idPrefix": "has-allergies",
+              "name": "has-allergies",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: checked("has-allergies", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("has-allergies", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say",
+                  "text": "Prefer not to say",
+                  checked: checked("has-allergies", "Prefer not to say")
                 }
+
+              ]
             }) }}
 
             {% endcall %}

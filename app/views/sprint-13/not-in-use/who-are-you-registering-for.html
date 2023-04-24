@@ -22,7 +22,8 @@
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
-
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
@@ -31,52 +32,34 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="medication-details-repeat" method="post" autocomplete="off">
-
-           {{ hint({
-              "text": "Step 3 of 3 - Health questions",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
+          <form action="/sprint-4/start" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                text: "About {{ data ['name-first-name'] }}'s prescription medication",
+                text: "Who is registering for a GP?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
+            {{ radios({
+              "idPrefix": "who-is-registering",
+              "name": "who-is-registering",
+              "items": [
+                {
+                  "value": "You",
+                  "text": "You",
+                  checked: checked("who-is-registering", "You")
+                },
+                {
+                  "value": "A dependant in your care",
+                  "text": "A dependant in your care",
+                  checked: checked("who-is-registering", "A dependant in your care")
                 }
+              ]
             }) }}
 
             {% endcall %}
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                text: "About your prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
-
-            {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"
@@ -85,10 +68,13 @@
           </form>
         </div>
       </div>
-
+    </section>
 
     <!-- End of content -->
 
   </div>
 </div>
+{% block pageScripts %}
+<script></script>
+{% endblock %}
 {% endblock %}

@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  GP Registration Prototypes
+Do you go to any of the following for your education? - Register with a GP surgery - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -31,52 +31,46 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="medication-details-repeat" method="post" autocomplete="off">
-
-           {{ hint({
-              "text": "Step 3 of 3 - Health questions",
+          <form id="schooling" action="check-schooling" method="post" autocomplete="off">
+            {{ hint({
+              "text": "Step 2 of 3 - Personal Details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            {% call fieldset({
-              legend: {
-                text: "About {{ data ['name-first-name'] }}'s prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
+            <H2>Does {{ data ['name-first-name'] }} go to any of the following for their education?</H2>
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
-
-            {% endcall %}
             {% else %}
 
-            {% call fieldset({
-              legend: {
-                text: "About your prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
+            <H2>Do you go to any of the following for your education?</H2>
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
-
-            {% endcall %}
             {% endif %}
+
+            {{ checkboxes({
+                "idPrefix": "schooling",
+                "name": "schooling",
+                "fieldset": {
+                  "legend": {
+                    "text": "",
+                    "classes": "nhsuk-fieldset__legend--l",
+                    isPageHeading: true
+                  }
+                },
+
+                "hint": {
+                  "html": "<p>This will help the GP understand what other services the patient has access to.</p>"
+                },
+
+                items: [
+                  { value: "School", text: "School", checked: checked("schooling", "school")},
+                  { value: "Nursery", text: "Nursery", checked: checked("schooling", "nursery")},
+                  { value: "Homeschool", text: "Home schooled", checked: checked("schooling", "home-school")},
+                  { value: "None", text: "None of the above", checked: checked("schooling", "none")}
+              ]
+              }) }}
+
+
 
             {{ button({
               "text": "Continue"
@@ -91,4 +85,7 @@
 
   </div>
 </div>
+{% block pageScripts %}
+<script></script>
+{% endblock %}
 {% endblock %}

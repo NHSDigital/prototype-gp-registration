@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  GP Registration Prototypes
+  Enter email address - Register with a GP surgery - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -31,52 +31,26 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="medication-details-repeat" method="post" autocomplete="off">
-
-           {{ hint({
-              "text": "Step 3 of 3 - Health questions",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
+          <form action="nhs-login-password" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                text: "About {{ data ['name-first-name'] }}'s prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
+                "text": "Enter your email address",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
               }
             }) %}
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
+              {{ input({
+                label: {
+                  "html": 'Email address'
+                },
+                "classes": "nhsuk-input--width-20",
+                "id": "nhs-login-email",
+                "name": "nhs-login-email"
+              }) }}
 
             {% endcall %}
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                text: "About your prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
-
-            {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"
@@ -91,4 +65,9 @@
 
   </div>
 </div>
+{% block pageScripts %}
+<script>
+
+</script>
+{% endblock %}
 {% endblock %}

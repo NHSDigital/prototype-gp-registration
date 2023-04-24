@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  GP Registration Prototypes
+Find a pharmacy - Register with a GP surgery - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -31,55 +31,48 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="medication-details-repeat" method="post" autocomplete="off">
+          {{ hint({
+            "text": "Step 2 of 3 - Personal Details",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
 
-           {{ hint({
-              "text": "Step 3 of 3 - Health questions",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+          <form action="nominate-pharmacy-search-selection" method="post" autocomplete="off">
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            {% call fieldset({
-              legend: {
-                text: "About {{ data ['name-first-name'] }}'s prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
-
-            {% endcall %}
-            {% else %}
 
             {% call fieldset({
               legend: {
-                text: "About your prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
+                "text": "Find a pharmacy",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
               }
             }) %}
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
+
+
+
+              {{ input({
+                  label: {
+                    "text": "Enter the postcode of where you would like to search for a pharmacy."
+                  },
+                  "hint": {
+                    "text": "For example LS13 9PO"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "pharmacy-postcode",
+                  "name": "pharmacy-postcode",
+                  value: data['pharmacy-postcode']
+                }) }}
+
 
             {% endcall %}
-            {% endif %}
+
+            <p>
+              <a href="/sprint-13/section-2/nominate-pharmacy-manual" id="enter-address-manually-link">Enter the address manually</a>
+            </p>
+
 
             {{ button({
-              "text": "Continue"
+              "text": "Search"
             }) }}
 
           </form>
@@ -91,4 +84,7 @@
 
   </div>
 </div>
+{% block pageScripts %}
+
+{% endblock %}
 {% endblock %}

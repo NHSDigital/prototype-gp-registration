@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  GP Registration Prototypes
+- Register with a GP surgery - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -31,52 +31,40 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="medication-details-repeat" method="post" autocomplete="off">
+          {{ hint({
+            "text": "Step 2 of 3 - Personal Details",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
 
-           {{ hint({
-              "text": "Step 3 of 3 - Health questions",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+          <form action="nominate-pharmacy" method="post" autocomplete="off">
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            {% call fieldset({
-              legend: {
-                text: "About {{ data ['name-first-name'] }}'s prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
+            <H2>{{ data ['name-first-name'] }} is not able to get their prescription items direct from {SURGERY NAME}</H2>
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
-
-            {% endcall %}
             {% else %}
 
+            <H2>You are not able to get your prescription items direct from {SURGERY NAME}</H2>
+
+            {% endif %}
+
             {% call fieldset({
               legend: {
-                text: "About your prescription medication",
+                text: "",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
+          <p>To get prescription items such as medicines or medical appliances direct from a GP surgery a patient must either:</p>
+           <ul>
+             <li>live more than 1 mile from their nearest pharmacy, or</li>
+             <li>have serious difficulty travelling to or communicating with their nearest pharmacy</li>
+           </ul>
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
+
+
 
             {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"

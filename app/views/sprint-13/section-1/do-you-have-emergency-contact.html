@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  GP Registration Prototypes
+Do you have a contact in case of emergency? - Register with a GP surgery - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -31,58 +31,68 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="medication-details-repeat" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Step 3 of 3 - Health questions",
+
+          <form action="" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Patient details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            {% call fieldset({
-              legend: {
-                text: "About {{ data ['name-first-name'] }}'s prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
+            <H2>Does {{ data ['name-first-name'] }} have a contact in case of emergency?</H2>
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
-
-            {% endcall %}
             {% else %}
 
+            <H2>Do you have a contact in case of emergency?</H2>
+
+            {% endif %}
+
+
+
             {% call fieldset({
               legend: {
-                text: "About your prescription medication",
+                text: "",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>This can be a family member, friend or support worker.</p>
+            </div>
+
+
+           {{ radios({
+              "idPrefix": "emergency-contact",
+              "name": "emergency-contact",
+              "items": [
+                {
+                  "value": "Yes~/sprint-13/section-1/emergency-contact-details",
+                  "text": "Yes",
+                  checked: checked("emergency-contact", "Yes")
+                },
+                {
+                  "value": "No~/sprint-13/section-1/check-answers-1",
+                  "text": "No",
+                  checked: checked("emergency-contact", "No")
                 }
+              ]
             }) }}
 
-            {% endcall %}
-            {% endif %}
+
+      {% endcall %}
+
+
 
             {{ button({
               "text": "Continue"
             }) }}
 
-          </form>
+            </form>
+
         </div>
       </div>
 

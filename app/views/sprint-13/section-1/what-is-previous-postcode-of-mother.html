@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  GP Registration Prototypes
+  Enter mother's postcode - Register with a GP surgery - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -31,52 +31,41 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="medication-details-repeat" method="post" autocomplete="off">
+          <form action="check-answers" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Step 3 of 3 - Health questions",
+            {{ hint({
+              "text": "Patient details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
+            <h2>Enter the postcode where the mother of {{ data ['name-first-name'] }} was living when their baby was born</h2>
             {% call fieldset({
               legend: {
-                text: "About {{ data ['name-first-name'] }}'s prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
+                "text": "",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
               }
             }) %}
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
+
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "hint": {
+                    "text": "For example LS13 9PO"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "mother-postcode",
+                  "name": "mother-postcode",
+                  value: data['mother-postcode']
+                }) }}
+
 
             {% endcall %}
-            {% else %}
 
-            {% call fieldset({
-              legend: {
-                text: "About your prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
-
-            {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"
@@ -89,6 +78,10 @@
 
     <!-- End of content -->
 
-  </div>
-</div>
+
+{% block pageScripts %}
+<script>
+
+</script>
+{% endblock %}
 {% endblock %}

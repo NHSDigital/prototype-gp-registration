@@ -22,7 +22,8 @@
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
-
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
@@ -31,52 +32,27 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="medication-details-repeat" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Step 3 of 3 - Health questions",
+
+          <form id="youngEnough" action="check-age-3" method="post" autocomplete="off">
+
+
+            {{ hint({
+              "text": "Step 2 of 3 - Personal Details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
+          <h2 class="nhsuk-heading--l">For people with EHIC</h2>
 
-            {% call fieldset({
-              legend: {
-                text: "About {{ data ['name-first-name'] }}'s prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
+          <p>By continuing you are agreeing to the following statements.</p>
+          <p>I understand that registration with  a GP surgery is free of charge and that I can receive free medical care from them.</p>
+          <p>I may need to pay for other NHS treatment, such as referrals to hospital, if:</p>
+            <ul class="nhsuk-list nhsuk-list--bullet">
+              <li>the information recorded here is incorrect</li>
+              <li>I do not present my EHIC when requested at any time</li>
+            </ul>
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
-
-            {% endcall %}
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                text: "About your prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
-
-            {% endcall %}
-            {% endif %}
+          <p>I also understand that only medically necessary treatment is covered by EHIC. Planned procedures which could be completed on return to my own country are not included.</p>
 
             {{ button({
               "text": "Continue"
@@ -85,7 +61,7 @@
           </form>
         </div>
       </div>
-
+    </section>
 
     <!-- End of content -->
 

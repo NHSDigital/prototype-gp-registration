@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  GP Registration Prototypes
+Do you want to get your prescription items direct? - Register with a GP surgery - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -31,52 +31,56 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="medication-details-repeat" method="post" autocomplete="off">
+          {{ hint({
+            "text": "Step 2 of 3 - Personal Details",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
 
-           {{ hint({
-              "text": "Step 3 of 3 - Health questions",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+          <form action="distance-from-nearest-pharmacy" method="post" autocomplete="off">
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            {% call fieldset({
-              legend: {
-                text: "About {{ data ['name-first-name'] }}'s prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
+            <H2>Does {{ data ['name-first-name'] }} want to get their prescription items direct from {NAME OF SURGERY}?</H2>
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
-
-            {% endcall %}
             {% else %}
 
+            <H2>Do you want to get your prescription items direct from {NAME OF SURGERY}?</H2>
+
+            {% endif %}
+
             {% call fieldset({
               legend: {
-                text: "About your prescription medication",
+                text: "",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
+          <p>{SURGERY NAME} is a dispensing surgery. This means you may be able to get your medicines or medical appliances direct from this GP surgery, rather than from a pharmacy of your choice. If you select 'Yes, check if I'm eligible' you must answer the questions you are shown as best you can. The GP surgery may discuss this additional service with you.
+
+          </p>
+
+          {{ radios({
+            "idPrefix": "have-current-uk-address",
+            "name": "have-current-uk-address",
+            "items": [
+              {
+                "value": "Yes~/sprint-13/section-2/distance-from-nearest-pharmacy",
+                "text": "Yes, check if I'm eligible",
+                checked: checked("have-current-uk-address", "Yes")
+              },
+              {
+                "value": "No~/sprint-13/section-2/nominate-pharmacy",
+                "text": "No, I will do this later",
+                checked: checked("have-current-uk-address", "No")
+              }
+            ]
+          }) }}
+
+
+
 
             {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"

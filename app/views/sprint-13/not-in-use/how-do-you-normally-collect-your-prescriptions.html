@@ -22,7 +22,8 @@
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
-
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
@@ -31,52 +32,44 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="medication-details-repeat" method="post" autocomplete="off">
+          <form action="" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Step 3 of 3 - Health questions",
+            {% call fieldset({
+              legend: {
+                text: "How do you normally collect your medications?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "Some people collect their medicines directly from their GP, rather than from a pharmacy.",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
+            {{ hint({
+              "text": "Asking this lets us know which GP surgeries would be most suitable for your needs, as some doctors are not authorised to dispense medicines directly."
+            }) }}
 
-            {% call fieldset({
-              legend: {
-                text: "About {{ data ['name-first-name'] }}'s prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
+            {{ radios({
+              "idPrefix": "how-do-you-collect-prescriptions",
+              "name": "how-do-you-collect-prescriptions",
+              "items": [
+                {
+                  "value": "Pharmacy~/sprint-4/distance-from-nearest-pharmacy",
+                  "text": "From a pharmacy",
+                  "checked": checked("how-do-you-collect-prescriptions", "Pharmacy")
+                },
+                {
+                  "value": "GP~/sprint-4/do-you-have-emergency-contact",
+                  "text": "Directly from my GP",
+                  "checked": checked("how-do-you-collect-prescriptions", "GP")
                 }
+              ]
             }) }}
 
             {% endcall %}
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                text: "About your prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
-
-            {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"
@@ -85,7 +78,7 @@
           </form>
         </div>
       </div>
-
+    </section>
 
     <!-- End of content -->
 

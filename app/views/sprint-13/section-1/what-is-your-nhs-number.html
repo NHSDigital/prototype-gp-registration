@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  GP Registration Prototypes
+  Enter NHS number - Register with a GP surgery - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -30,53 +30,51 @@
             text: "Go back",
             href: "javascript:history.go(-1)"
           }) }}
+          <form action="how-can-we-contact-inputs" method="post" autocomplete="off">
 
-          <form action="medication-details-repeat" method="post" autocomplete="off">
+
+
 
            {{ hint({
-              "text": "Step 3 of 3 - Health questions",
+              "text": "Step 1 of 3 - Matching patient to their record",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            {% call fieldset({
-              legend: {
-                text: "About {{ data ['name-first-name'] }}'s prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
+            <H2> What is {{ data ['name-first-name'] }}'s NHS Number</H2>
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
-
-            {% endcall %}
             {% else %}
 
+            <H2>What is your NHS Number?</H2>
+
+            {% endif %}
+
             {% call fieldset({
               legend: {
-                text: "About your prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
+                "text": "",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
               }
             }) %}
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
+            {{ hint({
+                "text": "Please enter their NHS number to continue. It is a 10 digit number, like 485 777 3456"
             }) }}
 
+            {{ input({
+              "label": {
+              },
+                "classes": "nhsuk-input nhsuk-input--width-10",
+                "id": "nhs-number",
+                "name": "nhs-number",
+                "value": data['nhs-number']
+              }) }}
+
             {% endcall %}
-            {% endif %}
+
+
+
 
             {{ button({
               "text": "Continue"

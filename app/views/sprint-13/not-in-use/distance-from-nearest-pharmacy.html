@@ -22,7 +22,8 @@
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
-
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
@@ -31,52 +32,41 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="medication-details-repeat" method="post" autocomplete="off">
-
-           {{ hint({
-              "text": "Step 3 of 3 - Health questions",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
+          <form action="would-you-have-difficulty-reaching-pharmacy" method="post" autocomplete="off">
 
             {% call fieldset({
               legend: {
-                text: "About {{ data ['name-first-name'] }}'s prescription medication",
+                text: "Do you live more than 1.6km in a straight line from your nearest pharmacy?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
+            {{ radios({
+              "idPrefix": "distance-from-pharmacy",
+              "name": "distance-from-pharmacy",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: checked("distance-from-pharmacy", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("distance-from-pharmacy", "No")
                 }
+              ]
             }) }}
 
             {% endcall %}
-            {% else %}
 
-            {% call fieldset({
-              legend: {
-                text: "About your prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
+            {{ details({
+              "text": "Why are we asking this?",
+              "HTML": "
+              <p>People who live within 1.6km of a pharmacy (in a straight line drawn on a map) are not normally eligible to receive their medicines from their doctor’s surgery.</p>
+              "
             }) }}
-
-            {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"
@@ -85,7 +75,7 @@
           </form>
         </div>
       </div>
-
+    </section>
 
     <!-- End of content -->
 
