@@ -13,7 +13,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Previous postcode - Register with a GP surgery - NHS
+Registering for the first time - Register with a GP surgery - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -43,33 +43,35 @@ Previous postcode - Register with a GP surgery - NHS
 
         <form action="" method="post" autocomplete="off">
 
-
+          {% if (data['who-is-being-registered'] == "dependant") %}
 
            {{ hint({
-              "text": "Step 1 of 3 - Matching patient to their record",
+              "text": "Registration type",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <H2>Do you know the postcode {{ data ['name-first-name'] }} used when they last registered with a UK GP?</H2>
+            <h2> Is {{ data ['name-first-name'] }} registering with a UK GP for the first time?</h2>
 
             <div class="nhsuk-hint" id="contact-hint">
-              <p>This will be the postcode they used last time they registered with a GP surgery.
-            </div>
+            <p>A GP is your first point of contact for health problems.
+          </div>
 
             {% else %}
 
-            <H2>Do you know the postcode used when you last registered with a UK GP?</H2>
+          {{ hint({
+              "text": "Registration type",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
 
+           <h2> Are you registering with a UK GP for the first time?</h2>
             <div class="nhsuk-hint" id="contact-hint">
-              <p>This will be the postcode you used last time they registered with a GP surgery.
-            </div>
+            <p>A GP is your first point of contact for health problems.
+          </div>
 
-            {% endif %}
+        {% endif %}
 
-            {% call fieldset({
+
+          {% call fieldset({
             legend: {
               text: "",
               classes: "nhsuk-fieldset__legend--l",
@@ -78,31 +80,31 @@ Previous postcode - Register with a GP surgery - NHS
           }) %}
 
 
-
-
           {{ radios({
-            "idPrefix": "do-you-know-previous-postcode",
-            "name": "do-you-know-previous-postcode",
+            "idPrefix": "registering-first-time",
+            "name": "registering-first-time",
             "items": [
               {
-                "value": "Yes~/sprint-13/section-1/what-is-previous-postcode-gp-has",
+                "value": "Yes~/sprint-13/section-2/recently-move-to-the-uk",
                 "text": "Yes",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("do-you-know-previous-postcode", "Yes")
+                checked: checked("registering-first-time", "Yes")
               },
               {
-                "value": "No~/sprint-13/section-1/check-answers",
+                "value": "No~/sprint-13/section-2/do-you-know-previous-postcode-gp-has",
                 "text": "No",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("do-you-know-previous-postcode", "No")
+                checked: checked("registering-first-time", "No")
               }
             ]
           }) }}
-           {% endcall %}
+
+          {% endcall %}
+
 
 
 

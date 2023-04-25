@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  GP Registration Prototypes
+- Register with a GP surgery - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -31,52 +31,40 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="do-you-have-any-disabilities" method="post" autocomplete="off">
+          {{ hint({
+            "text": "Additional information",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
 
-           {{ hint({
-              "text": "Step 3 of 3 - Health questions",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+          <form action="check-answers-3" method="post" autocomplete="off">
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            {% call fieldset({
-              legend: {
-                text: "About {{ data ['name-first-name'] }}'s mental health conditions",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
+            <H2>{{ data ['name-first-name'] }} is not able to get their prescription items direct from {SURGERY NAME}</H2>
 
-            {{ textarea({
-              "name": "mental-health-details",
-              "id": "mental-health-details",
-              "label": {
-                "text": "Give a brief description of the condition (optional)"
-                }
-            }) }}
-
-            {% endcall %}
             {% else %}
 
+            <H2>You are not able to get your prescription items direct from {SURGERY NAME}</H2>
+
+            {% endif %}
+
             {% call fieldset({
               legend: {
-                text: "About your mental health conditions",
+                text: "",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
+          <p>To get prescription items such as medicines or medical appliances direct from a GP surgery a patient must either:</p>
+           <ul>
+             <li>live more than 1 mile from their nearest pharmacy, or</li>
+             <li>have serious difficulty travelling to or communicating with their nearest pharmacy</li>
+           </ul>
 
-            {{ textarea({
-              "name": "mental-health-details",
-              "id": "mental-health-details",
-              "label": {
-                "text": "Give a brief description of the condition (optional)"
-                }
-            }) }}
+
+
 
             {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"

@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Find a pharmacy - Register with a GP surgery - NHS
+  GP Registration Prototypes
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -31,48 +31,55 @@ Find a pharmacy - Register with a GP surgery - NHS
             href: "javascript:history.go(-1)"
           }) }}
 
-          {{ hint({
-            "text": "Step 2 of 3 - Personal Details",
-            "classes": "nhsuk-u-margin-bottom-2"
-          }) }}
+          <form action="do-you-have-any-mental-health-conditions" method="post" autocomplete="off">
 
-          <form action="nominate-pharmacy-search-selection" method="post" autocomplete="off">
+           {{ hint({
+              "text": "Step 3 of 3 - Health questions",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
 
+            {% if (data['who-is-being-registered'] == "dependant") %}
 
             {% call fieldset({
               legend: {
-                "text": "Find a pharmacy",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
+                text: "About {{ data ['name-first-name'] }}'s disabilities",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
               }
             }) %}
 
-
-
-
-              {{ input({
-                  label: {
-                    "text": "Enter the postcode of where you would like to search for a pharmacy."
-                  },
-                  "hint": {
-                    "text": "For example LS13 9PO"
-                  },
-                  "classes": "nhsuk-input--width-10",
-                  "id": "pharmacy-postcode",
-                  "name": "pharmacy-postcode",
-                  value: data['pharmacy-postcode']
-                }) }}
-
+            {{ textarea({
+              "name": "disabilities-details",
+              "id": "disabilities-details",
+              "label": {
+                "text": "Give a brief description of the condition (optional)"
+                }
+            }) }}
 
             {% endcall %}
+            {% else %}
 
-            <p>
-              <a href="/sprint-13/section-2/nominate-pharmacy-manual" id="enter-address-manually-link">Enter the address manually</a>
-            </p>
+            {% call fieldset({
+              legend: {
+                text: "About your disabilities",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
 
+            {{ textarea({
+              "name": "disabilities-details",
+              "id": "disabilities-details",
+              "label": {
+                "text": "Give a brief description of the condition (optional)"
+                }
+            }) }}
+
+            {% endcall %}
+            {% endif %}
 
             {{ button({
-              "text": "Search"
+              "text": "Continue"
             }) }}
 
           </form>
@@ -84,7 +91,4 @@ Find a pharmacy - Register with a GP surgery - NHS
 
   </div>
 </div>
-{% block pageScripts %}
-
-{% endblock %}
 {% endblock %}
