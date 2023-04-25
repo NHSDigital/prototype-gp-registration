@@ -48,12 +48,8 @@
 
 
 
+
               <dl class="nhsuk-summary-list">
-
-
-              <h3>UK Armed forces</h3>
-
-              <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
@@ -202,6 +198,62 @@
                 {% endif %}
 
 
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Communication with an accessible format?
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['accessible-needs'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
+                  </dd>
+                </div>
+
+                {% if data['accessible-needs'] == "Yes" %}
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Type of communication needs
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['accessible-details'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"> language</span>
+                      </a>
+                    </dd>
+                  </div>
+                {% endif %}
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Reasonable adjustments to make your visit to the GP surgery accessible?
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['reasonable-adjustments'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
+                  </dd>
+                </div>
+
+                {% if data['reasonable-adjustments'] == "Yes" %}
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Type of reasonable adjustments
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['adjustment-details'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"> language</span>
+                      </a>
+                    </dd>
+                  </div>
+                {% endif %}
+
 
 
 
@@ -209,8 +261,7 @@
 
 
 
-              </dl>
-
+            
 
 
 

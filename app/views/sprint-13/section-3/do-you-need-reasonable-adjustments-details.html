@@ -3,8 +3,7 @@
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'layout.html' %}
-<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+{% extends 'layout.html' %}<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
 
 <!-- Set the page title -->
 {% block pageTitle %}
@@ -31,7 +30,7 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="do-you-have-existing-conditions" method="post" autocomplete="off">
+          <form action="dispencing-surgery" method="post" autocomplete="off">
 
            {{ hint({
               "text": "Health information",
@@ -42,40 +41,63 @@
 
             {% call fieldset({
               legend: {
-                text: "About {{ data ['name-first-name'] }}'s mental health conditions",
+                text: "About {{ data ['name-first-name'] }}'s reasonable adjustments",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
             {{ textarea({
-              "name": "mental-health-details",
-              "id": "mental-health-details",
+              "name": "adjustment-details",
+              "id": "adjustment-details",
               "label": {
-                "text": "Give a brief description of the condition (optional)"
+                "text": "Tell us what you need."
                 }
             }) }}
 
             {% endcall %}
+
+            {% elif (data['need-carer'] == "Yes") %}
+
+
+            {% call fieldset({
+              legend: {
+                text: "About you or your carer's reasonable adjustments",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ textarea({
+              "name": "adjustment-details",
+              "id": "adjustment-details",
+              "label": {
+                "text": "Tell us what you or your carer need."
+                }
+            }) }}
+
+            {% endcall %}
+
             {% else %}
 
             {% call fieldset({
               legend: {
-                text: "About your mental health conditions",
+                text: "About your reasonable adjustments",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
             {{ textarea({
-              "name": "mental-health-details",
-              "id": "mental-health-details",
+              "name": "adjustment-details",
+              "id": "adjustment-details",
               "label": {
-                "text": "Give a brief description of the condition (optional)"
+                "text": "Tell us what you need."
                 }
             }) }}
 
             {% endcall %}
+
             {% endif %}
 
             {{ button({

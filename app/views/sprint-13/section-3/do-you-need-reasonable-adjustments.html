@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  GP Registration Prototypes
+Do you need reasonable adjustments? - Register with a GP surgery - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -32,50 +32,56 @@
           }) }}
 
           <form action="" method="post" autocomplete="off">
-
             {{ hint({
-              "text": "Additional information",
+              "text": "Patient details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Is {{ data ['name-first-name'] }} a carer?</H2>
+            <H2>Does {{ data ['name-first-name'] }} need any reasonable adjustments to make your visit to the GP surgery accessible?</H2>
+
+            {% elif (data['need-carer'] == "Yes") %}
+
+            <H2>Do you or your carer need any reasonable adjustments to make your visit to the GP surgery accessible?</H2>
 
             {% else %}
 
-            <H2>Are you a carer?</H2>
+            <H2>Do you need any reasonable adjustments to make your visit to the GP surgery accessible?</H2>
 
             {% endif %}
 
-            {{ hint({
-              "text": "A carer looks after a family member or friend who is not able to look after themselves. This could be because of illness, disability or addiction. Carers can be adults or children. They can be paid or unpaid, but may get benefits."
-            }) }}
+            {% call fieldset({
+          legend: {
+            text: "",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
 
-            {{ radios({
-              "idPrefix": "are-carer",
-              "name": "are-carer",
-              "items": [
-                {
-                  "value": "Yes~/sprint-13/section-3/type-of-carer",
-                  "text": "Yes",
-                  checked: checked("are-carer", "Yes")
-                },
-                {
-                  "value": "No~/sprint-13/section-3/do-you-need-accessible-format",
-                  "text": "No",
-                  checked: checked("are-carer", "no")
-                },
-                {
-                  "divider": "or"
-                },
-                {
-                  "value": "prefer not to say~/sprint-13/section-3/do-you-need-accessible-format",
-                  "text": "Prefer not to say",
-                  checked: checked("are-carer", "Prefer not to say")
-                }
-              ]
-            }) }}
+        <div class="nhsuk-hint" id="contact-hint">
+          <p>For example, an audible or visual alert in the waiting room, access to a hearing loop or the support of a note taker.</p>
+        </div>
+
+        {{ radios({
+          "idPrefix": "reasonable-adjustments",
+          "name": "reasonable-adjustments",
+          "items": [
+            {
+              "value": "Yes~/sprint-13/section-3/do-you-need-reasonable-adjustments-details",
+              "text": "Yes",
+              checked: checked("reasonable-adjustments", "Yes")
+            },
+            {
+              "value": "No~/sprint-13/section-3/dispencing-surgery",
+              "text": "No",
+              checked: checked("reasonable-adjustments", "No")
+            }
+          ]
+        }) }}
+
+        {% endcall %}
+
 
 
 
@@ -88,9 +94,11 @@
         </div>
       </div>
 
-
     <!-- End of content -->
 
   </div>
 </div>
+{% block pageScripts %}
+<script></script>
+{% endblock %}
 {% endblock %}

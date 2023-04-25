@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-When did you stop smoking? - Register with a GP surgery - NHS
+How many cigarettes a day do you smoke? - Register with a GP surgery - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -31,7 +31,7 @@ When did you stop smoking? - Register with a GP surgery - NHS
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="do-you-smoke-amount" method="post" autocomplete="off">
+          <form action="/sprint-13/section-4/check-answers-b" method="post" autocomplete="off">
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
@@ -40,11 +40,11 @@ When did you stop smoking? - Register with a GP surgery - NHS
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-            <H2>When did {{ data ['name-first-name'] }} stop smoking?</H2>
+            <H2>How many cigarettes does {{ data ['name-first-name'] }} smoke?</H2>
 
             {{ dateInput({
-              "id": "smoke-date",
-              "namePrefix": "smoke-date",
+              "id": "smoke-amount",
+              "namePrefix": "smoke-amount",
               "fieldset": {
                 "legend": {
                   "text": "",
@@ -53,18 +53,42 @@ When did you stop smoking? - Register with a GP surgery - NHS
                 }
               },
               "hint": {
-                "text": "The date does not have to be exact."
+                "text": "Enter the average number of cigarettes you smoke a day."
               },
               "items": [
                 {
-                  "name": "month",
-                  "classes": "nhsuk-input--width-2",
-                  "value": data['smoke-month']
-                },
+                  "name": "cigarette-amount",
+                  "classes": "nhsuk-input--width-8",
+                  "value": data['smoke-amount']
+                }
+              ]
+            }) }}
+
+            {% elif (data['smokes-type'] == "I used to smoke") %}
+
+           {{ hint({
+              "text": "Health information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {{ dateInput({
+              "id": "smoke-amount",
+              "namePrefix": "smoke-amount",
+              "fieldset": {
+                "legend": {
+                  "text": "How many cigarettes did you used to smoke?",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": true
+                }
+              },
+              "hint": {
+                "text": "Enter the average number of cigarettes you smoke a day."
+              },
+              "items": [
                 {
-                  "name": "year",
-                  "classes": "nhsuk-input--width-4",
-                  "value": data['smoke-year']
+                  "name": "cigarette-amount",
+                  "classes": "nhsuk-input--width-8",
+                  "value": data['smoke-month']
                 }
               ]
             }) }}
@@ -77,28 +101,23 @@ When did you stop smoking? - Register with a GP surgery - NHS
             }) }}
 
             {{ dateInput({
-              "id": "smoke-date",
-              "namePrefix": "smoke-date",
+              "id": "smoke-amount",
+              "namePrefix": "smoke-amount",
               "fieldset": {
                 "legend": {
-                  "text": "When did you stop smoking?",
+                  "text": "How many cigarettes do you smoke?",
                   "classes": "nhsuk-label--l",
                   "isPageHeading": true
                 }
               },
               "hint": {
-                "text": "The date does not have to be exact."
+                "text": "Enter the average number of cigarettes you smoke a day."
               },
               "items": [
                 {
-                  "name": "month",
-                  "classes": "nhsuk-input--width-2",
+                  "name": "cigarette-amount",
+                  "classes": "nhsuk-input--width-8",
                   "value": data['smoke-month']
-                },
-                {
-                  "name": "year",
-                  "classes": "nhsuk-input--width-4",
-                  "value": data['smoke-year']
                 }
               ]
             }) }}

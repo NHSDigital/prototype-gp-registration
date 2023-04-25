@@ -31,10 +31,10 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="do-you-have-allergies-answer" method="post" autocomplete="off">
+          <form action="" method="post" autocomplete="off">
 
            {{ hint({
-              "text": "Step 3 of 3 - Health questions",
+              "text": "Health information",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
@@ -60,12 +60,12 @@
               "name": "has-allergies",
               "items": [
                 {
-                  "value": "Yes",
+                  "value": "Yes~/sprint-13/section-4/allergies-details",
                   "text": "Yes",
                   checked: checked("has-allergies", "Yes")
                 },
                 {
-                  "value": "No",
+                  "value": "No~/sprint-13/section-4/do-you-take-prescription-medication",
                   "text": "No",
                   checked: checked("has-allergies", "No")
                 },
@@ -82,6 +82,7 @@
             }) }}
 
             {% endcall %}
+
             {% else %}
 
             {% call fieldset({
@@ -102,12 +103,12 @@
               "name": "has-allergies",
               "items": [
                 {
-                  "value": "Yes",
+                  "value": "Yes~/sprint-13/section-4/allergies-details",
                   "text": "Yes",
                   checked: checked("has-allergies", "Yes")
                 },
                 {
-                  "value": "No",
+                  "value": "NoNo~/sprint-13/section-4/do-you-take-prescription-medication",
                   "text": "No",
                   checked: checked("has-allergies", "No")
                 },
@@ -115,7 +116,7 @@
                   "divider": "or"
                 },
                 {
-                  "value": "Prefer not to say",
+                  "value": "Prefer not to sayNo~/sprint-13/section-4/do-you-take-prescription-medication",
                   "text": "Prefer not to say",
                   checked: checked("has-allergies", "Prefer not to say")
                 }
