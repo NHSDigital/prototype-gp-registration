@@ -59,8 +59,8 @@ Which of the following best describes you? - Register with a GP surgery - NHS
             {% endset -%}
 
             {{ radios({
-              "idPrefix": "gender",
-              "name": "gender",
+              "idPrefix": "sex",
+              "name": "sex",
               "fieldset": {
                 "legend": {
                   "text": "",
@@ -76,19 +76,19 @@ Which of the following best describes you? - Register with a GP surgery - NHS
 
               "items": [
                 {
-                  "value": "female",
+                  "value": "Female",
                   "text": "Female",
-                  checked: checked("gender", "female")
+                  checked: checked("sex", "female")
                 },
                 {
-                  "value": "male",
+                  "value": "Male",
                   "text": "Male",
-                  checked: checked("gender", "male")
+                  checked: checked("sex", "male")
                 },
                 {
-                  "value": "non-binary",
+                  "value": "Non-binary",
                   "text": "Non-binary",
-                  checked: checked("gender", "non-binary")
+                  checked: checked("sex", "non-binary")
                 },
                 {
                   "value": "prefer-to-self-describe",
@@ -96,7 +96,7 @@ Which of the following best describes you? - Register with a GP surgery - NHS
                   "conditional": {
                     "html": otherHtml
                   },
-                  checked: checked("gender", "prefer-to-self-describe")
+                  checked: checked("sex", "prefer-to-self-describe")
                 }
               ]
             }) }}
