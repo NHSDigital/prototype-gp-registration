@@ -1012,12 +1012,45 @@ Recently moved<!-- Use this page as the index for your project -->
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                What is your weight and height?
+                What is your height?
               </dt>
+              {% if data['height'] == "imperial" %}
               <dd class="nhsuk-summary-list__value">
-                {{ data['weight'] }} kilograms <br>
-                {{ data['height'] }} centimetres
+                {{ data['height-feet'] }}.{{ data['height-inches'] }} feet
               </dd>
+              {% elif data['height'] == "metric" %}
+              <dd class="nhsuk-summary-list__value">
+                {{ data['centimetres'] }} centimetres
+              </dd>
+              {% else %}
+              <dd class="nhsuk-summary-list__value">
+                Perfer not say
+              </dd>
+              {% endif %}
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">
+                  Change<span class="nhsuk-u-visually-hidden"> prescription medication</span>
+                </a>
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                What is your weight?
+              </dt>
+              {% if data['weight'] == "imperial" %}
+              <dd class="nhsuk-summary-list__value">
+                {{ data['weight-stone'] }}.{{ data['weight-pounds'] }} stone
+              </dd>
+              {% elif data['weight'] == "metric" %}
+              <dd class="nhsuk-summary-list__value">
+                {{ data['kilograms'] }} kilograms
+              </dd>
+              {% else %}
+              <dd class="nhsuk-summary-list__value">
+                Perfer not say
+              </dd>
+              {% endif %}
               <dd class="nhsuk-summary-list__actions">
                 <a href="">
                   Change<span class="nhsuk-u-visually-hidden"> prescription medication</span>
@@ -1161,7 +1194,7 @@ Recently moved<!-- Use this page as the index for your project -->
               </dl>
               {% endif %}
 
-              
+
             </div>
           </div>
 
