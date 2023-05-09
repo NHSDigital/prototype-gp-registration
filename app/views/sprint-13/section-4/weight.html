@@ -53,22 +53,34 @@ What is your height? - Register with a GP surgery - NHS
             {% endset -%}
 
             {% set imperialHtml %}
-              {{ input({
-                id: "stone",
-                name: "stone",
-                classes: "nhsuk-input--width-10",
-                label: {
-                  text: "Stone"
+
+            {{ dateInput({
+              "id": "weight",
+              "namePrefix": "weight",
+              "fieldset": {
+                "legend": {
+                  "text": "",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": false
                 }
-              }) }}
-              {{ input({
-                id: "pounds",
-                name: "pounds",
-                classes: "nhsuk-input--width-10",
-                label: {
-                  text: "Pounds"
+              },
+              "hint": {
+                "text": ""
+              },
+              "items": [
+                {
+                  "name": "stone",
+                  "classes": "nhsuk-input--width-5",
+                  "value": data['feet']
+                },
+                {
+                  "name": "pounds",
+                  "classes": "nhsuk-input--width-5",
+                  "value": data['inches']
                 }
-              }) }}
+              ]
+            }) }}
+
             {% endset -%}
 
 
