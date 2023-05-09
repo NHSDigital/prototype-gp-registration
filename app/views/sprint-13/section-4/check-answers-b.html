@@ -1016,7 +1016,7 @@ Recently moved<!-- Use this page as the index for your project -->
               </dt>
               {% if data['height'] == "imperial" %}
               <dd class="nhsuk-summary-list__value">
-                {{ data['height-feet'] }}.{{ data['height-inches'] }} feet
+                {{ data['height-feet'] }} feet {{ data['height-inches'] }} inches
               </dd>
               {% elif data['height'] == "metric" %}
               <dd class="nhsuk-summary-list__value">
@@ -1024,7 +1024,7 @@ Recently moved<!-- Use this page as the index for your project -->
               </dd>
               {% else %}
               <dd class="nhsuk-summary-list__value">
-                Perfer not say
+                Prefer not to say
               </dd>
               {% endif %}
               <dd class="nhsuk-summary-list__actions">
@@ -1040,7 +1040,7 @@ Recently moved<!-- Use this page as the index for your project -->
               </dt>
               {% if data['weight'] == "imperial" %}
               <dd class="nhsuk-summary-list__value">
-                {{ data['weight-stone'] }}.{{ data['weight-pounds'] }} stone
+                {{ data['weight-stone'] }} stone {{ data['weight-pounds'] }} pounds
               </dd>
               {% elif data['weight'] == "metric" %}
               <dd class="nhsuk-summary-list__value">
@@ -1048,7 +1048,7 @@ Recently moved<!-- Use this page as the index for your project -->
               </dd>
               {% else %}
               <dd class="nhsuk-summary-list__value">
-                Perfer not say
+                Prefer not to say
               </dd>
               {% endif %}
               <dd class="nhsuk-summary-list__actions">
