@@ -1014,19 +1014,9 @@ Recently moved<!-- Use this page as the index for your project -->
               <dt class="nhsuk-summary-list__key">
                 What is your height?
               </dt>
-              {% if data['height'] == "imperial" %}
               <dd class="nhsuk-summary-list__value">
                 {{ data['height-feet'] }} feet {{ data['height-inches'] }} inches
               </dd>
-              {% elif data['height'] == "metric" %}
-              <dd class="nhsuk-summary-list__value">
-                {{ data['centimetres'] }} centimetres
-              </dd>
-              {% else %}
-              <dd class="nhsuk-summary-list__value">
-                Prefer not to say
-              </dd>
-              {% endif %}
               <dd class="nhsuk-summary-list__actions">
                 <a href="">
                   Change<span class="nhsuk-u-visually-hidden"> prescription medication</span>
@@ -1038,19 +1028,9 @@ Recently moved<!-- Use this page as the index for your project -->
               <dt class="nhsuk-summary-list__key">
                 What is your weight?
               </dt>
-              {% if data['weight'] == "imperial" %}
               <dd class="nhsuk-summary-list__value">
                 {{ data['weight-stone'] }} stone {{ data['weight-pounds'] }} pounds
               </dd>
-              {% elif data['weight'] == "metric" %}
-              <dd class="nhsuk-summary-list__value">
-                {{ data['kilograms'] }} kilograms
-              </dd>
-              {% else %}
-              <dd class="nhsuk-summary-list__value">
-                Prefer not to say
-              </dd>
-              {% endif %}
               <dd class="nhsuk-summary-list__actions">
                 <a href="">
                   Change<span class="nhsuk-u-visually-hidden"> prescription medication</span>
