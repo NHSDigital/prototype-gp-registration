@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-What is your height? - Register with a GP surgery - NHS
+  GP Registration Prototypes
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -22,50 +22,37 @@ What is your height? - Register with a GP surgery - NHS
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
 
-    <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-two-thirds">
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
 
-        {{ backLink({
-          text: "Go back",
-          href: "javascript:history.go(-1)"
-        }) }}
-
+          {{ hint({
+               "text": "Health information",
+               "classes": "nhsuk-u-margin-bottom-2"
+             }) }}
 
         <form action="how-often-do-you-drink-alcohol" method="post" autocomplete="off">
 
-         {{ hint({
-              "text": "Health information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% set metricHtml %}
-
-
-              {{ input({
-                id: "kilograms",
-                name: "kilograms",
-                classes: "nhsuk-input--width-10",
-                label: {
-                  text: "Kilograms"
-                }
-              }) }}
-            {% endset -%}
-
-            {% set imperialHtml %}
+          <div id="current-address-lookup-container">
 
             {{ dateInput({
               "id": "weight",
               "namePrefix": "weight",
               "fieldset": {
                 "legend": {
-                  "text": "",
+                  "text": "What is your weight?",
                   "classes": "nhsuk-label--l",
                   "isPageHeading": false
                 }
               },
               "hint": {
-                "text": ""
+                "text": "This question is (optonal)"
               },
               "items": [
                 {
@@ -81,73 +68,91 @@ What is your height? - Register with a GP surgery - NHS
               ]
             }) }}
 
-            {% endset -%}
+            <p>
+              <a href="#" id="enter-address-manually-link">Switch to metric</a>
+            </p>
+
+          </div>
 
 
-            {{ radios({
-              "idPrefix": "weight",
-              "name": "weight",
-              "fieldset": {
-                "legend": {
-                  "text": "What is your weight?",
-                  "classes": "nhsuk-fieldset__legend--l",
-                  "isPageHeading": "true"
-                }
-              },
-              "hint": {
-                "text": "Select one option"
-              },
-              "items": [
-                {
-                  "value": "metric",
-                  "text": "Metric",
-                  "conditional": {
-                    "html": metricHtml
+
+          <form action="weight" method="post" autocomplete="off">
+
+            <div class="current-address-form hidden-section">
+
+              {{ dateInput({
+                "id": "weight",
+                "namePrefix": "weight",
+                "fieldset": {
+                  "legend": {
+                    "text": "What is your weight?",
+                    "classes": "nhsuk-label--l",
+                    "isPageHeading": false
                   }
                 },
-                {
-                  "value": "imperial",
-                  "text": "Imperial",
-                  "conditional": {
-                    "html": imperialHtml
+                "hint": {
+                  "text": "This question is (optonal)"
+                },
+                "items": [
+                  {
+                    "name": "kilograms",
+                    "classes": "nhsuk-input--width-10",
+                    "value": data['kilograms']
                   }
-                },
-                {
-               "divider": "or"
-                },
-                {
-                  "value": "Prefer not to say",
-                  "text": "Prefer not to say"
-                }
-              ]
-            }) }}
+                ]
+              }) }}
 
-            <details class="nhsuk-details">
-            <summary class="nhsuk-details__summary">
-              <span class="nhsuk-details__summary-text">
-                Why are we asking this?
-              </span>
-            </summary>
-            <div class="nhsuk-details__text">
-              <p>The GP surgery may use this information to give you health guidance and support.</p>
+              <p>
+                <a href="#" id="use-postcode-lookup-link">Switch to imperial</a>
+              </p>
+
+
+
             </div>
-          </details>
-
-            <button class="nhsuk-button" type="submit">
-              Continue
-            </button>
 
 
 
+          <details class="nhsuk-details">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Why are we asking this?
+            </span>
+          </summary>
+          <div class="nhsuk-details__text">
+            <p>The GP surgery may use this information to give you health guidance and support.</p>
+          </div>
+        </details>
 
+          <button class="nhsuk-button" type="submit">
+            Continue
+          </button>
+
+</form>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
 </div>
-
-<!-- End of content -->
-
-</div>
-</div>
-
 {% block pageScripts %}
+  <script>
 
+
+    $('#enter-address-manually-link').click(function () {
+      $('#current-address-lookup-container').addClass("hidden-section");
+      $('.current-address-form').removeClass("hidden-section");
+    });
+
+    $('#use-postcode-lookup-link').click(function () {
+      $('#current-address-lookup-container').removeClass("hidden-section");
+      $('#select-address-section').addClass("hidden-section");
+      $('.current-address-form').addClass("hidden-section");
+    });
+
+  </script>
 {% endblock %}
+
 {% endblock %}
