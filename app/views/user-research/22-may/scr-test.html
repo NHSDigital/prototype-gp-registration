@@ -41,14 +41,14 @@ Summary Care Record - Register with a GP surgery - NHS
           href: "javascript:history.go(-1)"
         }) }}
 
-        <form action="check-answers-b" method="post" autocomplete="off">
+        <form action="height" method="post" autocomplete="off">
 
           {{ hint({
              "text": "Health information",
              "classes": "nhsuk-u-margin-bottom-2"
            }) }}
 
-          <H2>Can your GP share a summary of your care with other healthcare professionals?</H2>
+          <H2>Do you want important information from your GP record to be available to other health and care professionals?</H2>
 
           {% call fieldset({
             legend: {
@@ -59,7 +59,7 @@ Summary Care Record - Register with a GP surgery - NHS
           }) %}
 
           <div class="nhsuk-hint" id="contact-hint">
-            <p>Your GP surgery needs permission to create and share a summary of your care. This is called a Summary Care Record (SCR). Your SCR can then be shared nationally with those involved in your care or treatment.</p>
+            <p>Your surgery needs permission to create and share important information from your GP record. This is called a Summary Care Record (SCR). Your SCR can then be shared nationally with those involved in your direct care.</p>
           </div>
 
           {{ radios({
@@ -75,7 +75,7 @@ Summary Care Record - Register with a GP surgery - NHS
                 checked: checked("scr", "Yes")
               },
               {
-                "value": "No",
+                "value": "Yes",
                 "text": "Yes, I want a Summary Care Record without additional information",
                 "hint": {
                   "text": "Share details of your medicines, allergies and adverse reactions only"
@@ -86,7 +86,7 @@ Summary Care Record - Register with a GP surgery - NHS
                 "value": "No",
                 "text": "I do not want a Summary Care Record",
                 "hint": {
-                  "text": "Details of your medicines, allergies, adverse reactions and any additional information will not be shared with anyone involved in your care or treatment"
+                  "text": "Details of your medicines, allergies, adverse reactions and any additional information will not be shared with anyone involved in your direct care"
                 },
 
                 checked: checked("scr", "No")
@@ -101,7 +101,7 @@ Summary Care Record - Register with a GP surgery - NHS
   {{ details({
     "text": "What is a Summary Care Record?",
     "HTML": "
-    <p>When you register with a GP surgery in England, a SCR is automatically created for you, unless you have already chosen not to have one. Your SCR has information about the medicines you take, any allergies or adverse reactions you might have and may contain additional information. This additional information has details of any significant illnesses and health problems, operations and vaccinations you have had, how you would like to be treated (such as where you would prefer to receive care), what support you might need and who should be contacted for more information about you. Your SCR can only be shared with healthcare staff treating you and provides them with vital information from your health record.</p>
+    <p>When you register with a surgery in England, a SCR is automatically created for you, unless you have already chosen not to have one. Your SCR can only be shared with health and care staff treating you and provides them with vital information from your GP record.</p>
     "
   }) }}
 
