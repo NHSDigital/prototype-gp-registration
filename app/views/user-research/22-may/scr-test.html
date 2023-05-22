@@ -59,7 +59,7 @@ Summary Care Record - Register with a GP surgery - NHS
           }) %}
 
           <div class="nhsuk-hint" id="contact-hint">
-            <p>Your surgery needs permission to create and share important information from your GP record. This is called a Summary Care Record (SCR). Your SCR can then be shared nationally with those involved in your direct care.</p>
+            <p>Your GP surgery needs permission to create and share important information from your GP record. This is called a Summary Care Record (SCR). Your SCR can only be shared with health and care staff across England who are providing you with direct care. It gives them access to vital information from your GP record.</p>
           </div>
 
           {{ radios({
@@ -70,7 +70,7 @@ Summary Care Record - Register with a GP surgery - NHS
                 "value": "Yes",
                 "text": "Yes, I want a Summary Care Record with additional information",
                 "hint": {
-                  "text": "Share details of your medicines, allergies, adverse reactions. It also includes additional information such as details of any significant illnesses and health problems, operations and vaccinations"
+                  "text": "Share details of your medicines, allergies, adverse reactions and additional information, which includes details of any significant illnesses and health problems, operations and vaccinations"
                 },
                 checked: checked("scr", "Yes")
               },
@@ -98,14 +98,8 @@ Summary Care Record - Register with a GP surgery - NHS
 
           {% from 'details/macro.njk' import details %}
 
-  {{ details({
-    "text": "What is a Summary Care Record?",
-    "HTML": "
-    <p>When you register with a surgery in England, a SCR is automatically created for you, unless you have already chosen not to have one. Your SCR can only be shared with health and care staff treating you and provides them with vital information from your GP record.</p>
-    "
-  }) }}
-
-  <p>It is not compulsory for you to select any of these options. If you choose not to then your SCR consent preference held at your previous GP surgery will be transferred to your new GP surgery.</p>
+          <p> Find out more about <a href="https://digital.nhs.uk/services/summary-care-records-scr/summary-care-records-scr-information-for-patients" target="_blank" rel="noopener noreferrer">Summary Care Record (opens a new tab)</a> <br>and what is included in <a href="https://digital.nhs.uk/services/summary-care-records-scr/summary-care-records-scr-information-for-patients#additional-information-is-included-on-your-scr" target="_blank" rel="noopener noreferrer">'additional information' (opens a new tab)</a>.</p>
+          <p>It is not compulsory for you to select any of these options. If you choose not to then your SCR consent preference held at your previous GP surgery will be transferred to your new GP surgery.</p>
 
 
 
