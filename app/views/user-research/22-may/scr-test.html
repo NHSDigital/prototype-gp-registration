@@ -59,7 +59,7 @@ Summary Care Record - Register with a GP surgery - NHS
           }) %}
 
           <div class="nhsuk-hint" id="contact-hint">
-            <p>Your GP surgery needs permission to create and share important information from your GP record. This is called a Summary Care Record (SCR). Your SCR can only be shared with health and care staff across England who are providing you with direct care. It gives them access to vital information from your GP record.</p>
+            <p>Your GP surgery needs permission to share important information from your GP record. This is called a Summary Care Record (SCR). Your SCR can only be shared with health and care staff across England who are providing you with direct care. It gives them access to vital information from your GP record.</p>
           </div>
 
           {{ radios({
@@ -68,23 +68,23 @@ Summary Care Record - Register with a GP surgery - NHS
             "items": [
               {
                 "value": "Yes",
-                "text": "Yes, I want a Summary Care Record with additional information",
+                "text": "Yes, share a Summary Care Record with additional information",
                 "hint": {
-                  "text": "Share details of your medicines, allergies, adverse reactions and additional information, which includes details of any significant illnesses and health problems, operations and vaccinations"
+                  "text": "Includes details of your medicines, allergies, adverse reactions and additional information, which includes details of any significant illnesses and health problems, operations and vaccinations"
                 },
                 checked: checked("scr", "Yes")
               },
               {
                 "value": "Yes",
-                "text": "Yes, I want a Summary Care Record without additional information",
+                "text": "Yes, share a Summary Care Record without additional information",
                 "hint": {
-                  "text": "Share details of your medicines, allergies and adverse reactions only"
+                  "text": "Includes details of your medicines, allergies and adverse reactions only"
                 },
                 checked: checked("scr", "Yes only")
               },
               {
                 "value": "No",
-                "text": "I do not want a Summary Care Record",
+                "text": "No, do not share a Summary Care Record",
                 "hint": {
                   "text": "Details of your medicines, allergies, adverse reactions and any additional information will not be shared with anyone involved in your direct care"
                 },
