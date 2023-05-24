@@ -39,7 +39,7 @@ Do you need reasonable adjustments? - Register with a GP surgery - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Does {{ data ['name-first-name'] }} need any reasonable adjustments to make your visit to the GP surgery accessible?</H2>
+            <H2>Does {{ data ['name-first-name'] }} or their carer need any reasonable adjustments to make their visit to the GP surgery accessible?</H2>
 
             {% elif (data['need-carer'] == "Yes") %}
 
@@ -47,7 +47,7 @@ Do you need reasonable adjustments? - Register with a GP surgery - NHS
 
             {% else %}
 
-            <H2>Do you need any reasonable adjustments to make your visit to the GP surgery accessible?</H2>
+            <H2>Do you or your carer need any reasonable adjustments to make your visit to the GP surgery accessible?</H2>
 
             {% endif %}
 

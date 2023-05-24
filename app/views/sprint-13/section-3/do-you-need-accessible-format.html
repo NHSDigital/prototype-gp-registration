@@ -39,11 +39,11 @@ Do you have a current UK address? - Register with a GP surgery - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Does {{ data ['name-first-name'] }} need to be communicated with in an accessible format?</H2>
+            <H2>Does {{ data ['name-first-name'] }} or their carer need to be communicated with in an accessible form?</H2>
 
             {% elif (data['need-carer'] == "Yes") %}
 
-            <H2>Do you or your carer need to be communicated with in an accessible format?</H2>
+            <H2>Do you or your carer need to be communicated with in an accessible form?</H2>
 
             {% else %}
 
