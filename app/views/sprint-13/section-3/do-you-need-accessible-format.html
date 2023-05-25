@@ -47,7 +47,7 @@ Do you have a current UK address? - Register with a GP surgery - NHS
 
             {% else %}
 
-            <H2>Do you or your carer need to be communicated with in an accessible form?</H2>
+            <H2>Do you need to be communicated with in an accessible form?</H2>
 
             {% endif %}
 
@@ -76,6 +76,14 @@ Do you have a current UK address? - Register with a GP surgery - NHS
               "value": "No~/sprint-13/section-3/do-you-need-reasonable-adjustments",
               "text": "No",
               checked: checked("accessible-needs", "No")
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "Prefer not to say~/sprint-13/section-3/do-you-need-reasonable-adjustments",
+              "text": "Prefer not to say",
+              checked: checked("accessible-needs", "Prefer not to say")
             }
           ]
         }) }}
