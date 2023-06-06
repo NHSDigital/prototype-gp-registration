@@ -1,0 +1,116 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="dispencing-surgery" method="post" autocomplete="off">
+
+           {{ hint({
+              "text": "Additional information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                text: "About {{ data ['name-first-name'] }}'s or their carer's access needs",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ textarea({
+              "name": "adjustment-details",
+              "id": "adjustment-details",
+              "label": {
+                "text": "Tell us what you need (optional)"
+                }
+            }) }}
+
+            {% endcall %}
+
+            {% elif (data['need-carer'] == "Yes") %}
+
+
+            {% call fieldset({
+              legend: {
+                text: "About you or your carer's access needs",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ textarea({
+              "name": "adjustment-details",
+              "id": "adjustment-details",
+              "label": {
+                "text": "Tell us what you or your carer need"
+                }
+            }) }}
+
+            {% endcall %}
+
+            {% else %}
+
+            {% call fieldset({
+              legend: {
+                text: "About you or your carer's access needs",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ textarea({
+              "name": "adjustment-details",
+              "id": "adjustment-details",
+              "label": {
+                "text": "Tell us what you need"
+                }
+            }) }}
+
+            {% endcall %}
+
+            {% endif %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% endblock %}

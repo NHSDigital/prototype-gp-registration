@@ -1,0 +1,81 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Page listings - GP registration - NHS
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+
+        <h1 class="app-page-heading">
+            <span class="nhsuk-caption-l">Archived prototype work</span>
+            GP Registration
+        </h1>
+
+          <p>Use this service to register to change to a new GP surgery</p>
+          <p class="nhsuk-body-s">Last updated 01 June 2023</p>
+
+          <h2 class="nhsuk-heading-l">Sprint 12</h2>
+          <p>New question set order / Height and weight / SCR</p>
+
+          {{ button({
+            "text": "Continue",
+            "href": "/sprint-13/section-1/start"
+          }) }}
+
+          {{ button({
+            "text": "Page by page listings and scenarios",
+            "classes": "nhsuk-button--secondary",
+                "href": "/sprint-13/listings-13"
+          }) }}
+
+          <h2 class="nhsuk-heading-l">Test sessions</h2>
+
+          <p><span class="mural-link"><a href="https://miro.com/app/board/uXjVMOqpG2I=/?share_link_id=615114276505">Test sessions (pw=gpregresearch)</a></span></p>
+
+          <p><span class="mural-link"><a href="https://app.mural.co/t/nhsdigital8118/m/nhsdigital8118/1684851504191/dff8fd5a6e89190f633960d609e3348e0b795c59">Unmoderated testing for SCR + Height and wieght</a></span></p>
+
+          <p><span class="pp-link"><a href="https://hscic365.sharepoint.com/:p:/r/sites/PlatformsDemographics/Shared%20Documents/Demographics%20Transformation/81%20-%20Products/GP%20Registration/User%20Research/Re-order%20of%20the%20questions%20research/Re-order%20the%20questions%20-%20usability%20research%20-%20April%202023%20(1).pptx?d=wc745eb61b23c47cb9b2ee65de7cdb943&csf=1&web=1&e=cdHKCW">Outputs</a></span></p> -->
+
+
+
+          <p><br/><a href="/index">Return to main service page</a>
+
+
+  </div>
+</section>
+
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% endblock %}
