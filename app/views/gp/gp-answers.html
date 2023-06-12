@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Confirm details for your practice and complete registration - GP registration service - NHS 
+Confirm details for your practice and complete registration - GP registration service - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -54,7 +54,7 @@ Confirm details for your practice and complete registration - GP registration se
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  language interpretation service
+                  Language interpretation service
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {% if (data['interpretation'] == "Yes") %}
@@ -71,7 +71,7 @@ Confirm details for your practice and complete registration - GP registration se
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  nominated pharmacy service
+                  Nominated pharmacy service
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {% if (data['pharmacy'] == "Yes") %}
@@ -79,10 +79,25 @@ Confirm details for your practice and complete registration - GP registration se
                   {% else %}
                   No
                   {% endif %}
-
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="">Change<span class="nhsuk-u-visually-hidden">pharmacy service</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Dispencing surgery
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if (data['dispencing'] == "Yes") %}
+                  Yes
+                  {% else %}
+                  No
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">dispencing surgery</span></a>
                 </dd>
               </div>
 
