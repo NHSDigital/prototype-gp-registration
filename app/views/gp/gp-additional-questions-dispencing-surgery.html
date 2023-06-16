@@ -31,11 +31,7 @@ Are you a dispensing surgery? - GP registration service - NHS
             href: "javascript:history.go(-1)"
           }) }}
 
-          {% if (data['linkaction'] == "change-questions") %}
-          <form action="/gp/gp-branch" method="post" autocomplete="off">
-          {% else %}
-          <form action="gp-answers" method="post" autocomplete="off">
-          {% endif %}
+          <form action="/gp/gp-additional-questions-nominated-pharmacy" method="post" autocomplete="off">
 
             <H2>Are you a dispensing surgery?</H2>
 
