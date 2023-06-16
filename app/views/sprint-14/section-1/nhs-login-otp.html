@@ -31,11 +31,8 @@ Check mobile phone - Register with a GP surgery - NHS
           href: "javascript:history.go(-1)"
         }) }}
 
-        {% if data['user-auth'] == "p9" %}
-        <form action="/sprint-14/section-1/registered-for-the-first-time" method="post" autocomplete="off">
-        {% else %}
-        <form action="/sprint-14/section-2/what-is-your-current-address" method="post" autocomplete="off">
-        {% endif %}
+        <form action="/sprint-14/section-1/what-is-your-title" method="post" autocomplete="off">
+
 
           {% call fieldset({
               legend: {
