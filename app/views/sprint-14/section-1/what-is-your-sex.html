@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Is your gender identity the same as the sex you were assigned at birth? - Register with a GP surgery - NHS
+What is your sex as recorded on your NHS record? - Register with a GP surgery - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -39,18 +39,8 @@ Is your gender identity the same as the sex you were assigned at birth? - Regist
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-              <H2>Is {{ data ['name-first-name'] }}'s' gender identity the same as the sex they were assigned at birth?</H2>
+              <H2>What is {{ data ['name-first-name'] }}'s' sex as recorded on their NHS record?</H2>
 
-            {% set otherHtml %}
-              {{ input({
-                id: "other",
-                name: "other",
-                classes: "nhsuk-u-width-two-thirds",
-                label: {
-                  text: "Gender"
-                }
-              }) }}
-            {% endset -%}
 
             {{ radios({
               "idPrefix": "gender",
@@ -63,70 +53,81 @@ Is your gender identity the same as the sex you were assigned at birth? - Regist
                 }
               },
               "hint": {
-                "text": "We are asking for this information to match them to their GP record."
+                "text": "This information will be used to match them to their healthcare record."
               },
               "items": [
-                {
-                  "value": "male",
-                  "text": "Yes",
-                  checked: checked("gender", "Yes")
-                },
-                {
-                  "value": "female",
-                  "text": "No",
-                  checked: checked("gender", "no")
-                }
+              {
+                "value": "female",
+                "text": "Female",
+                checked: checked("gender", "female")
+              },
+              {
+                "value": "male",
+                "text": "Male",
+                checked: checked("gender", "Male")
+              },
+              {
+                "value": "intersex",
+                "text": "Intersex",
+                checked: checked("gender", "Intersex")
+              },
+              {
+                "value": "Not specified or known",
+                "text": "Not specified or known",
+                checked: checked("gender", "Not specified or known")
+              }
               ]
             }) }}
 
             {{ details({
               "text": "Why are you asking this?",
-              "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of gender.</p>"
+              "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of sex or gender identity.</p>"
             }) }}
 
             {% else %}
 
-            {% set otherHtml %}
-              {{ input({
-                id: "other",
-                name: "other",
-                classes: "nhsuk-u-width-two-thirds",
-                label: {
-                  text: "Gender"
-                }
-              }) }}
-            {% endset -%}
+
 
             {{ radios({
               "idPrefix": "gender",
               "name": "gender",
               "fieldset": {
                 "legend": {
-                  "text": "Is your gender identity the same as the sex you were assigned at birth?",
+                  "text": "What is your sex as recorded on your NHS record?",
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
               },
               "hint": {
-                "text": "We are asking for this information to match you to your GP record."
+                "text": "This information will be used to match you to your healthcare record."
               },
               "items": [
                 {
-                  "value": "male",
-                  "text": "Yes",
-                  checked: checked("gender", "Yes")
+                  "value": "female",
+                  "text": "Female",
+                  checked: checked("gender", "female")
                 },
                 {
-                  "value": "female",
-                  "text": "No",
-                  checked: checked("gender", "no")
+                  "value": "male",
+                  "text": "Male",
+                  checked: checked("gender", "Male")
+                },
+                {
+                  "value": "intersex",
+                  "text": "Intersex",
+                  checked: checked("gender", "Intersex")
+                },
+                {
+                  "value": "Not specified or known",
+                  "text": "Not specified or known",
+                  checked: checked("gender", "Not specified or known")
                 }
               ]
             }) }}
 
             {{ details({
               "text": "Why are you asking this?",
-              "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of gender.</p>"
+              "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of sex or gender identity.</p>"
             }) }}
 
             {% endif %}
