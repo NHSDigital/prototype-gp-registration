@@ -53,6 +53,15 @@ What is the address of the GP surgery they want to leave? - Register with a GP s
 
               {{ input({
                 label: {
+                  "text": "Name of surgery"
+                },
+                "id": "previous-gp-address-line-name",
+                "name": "previous-gp-address-line-name",
+                value: data['previous-gp-address-line-name']
+              }) }}
+
+              {{ input({
+                label: {
                   "text": "Address line 1"
                 },
                 "id": "previous-gp-address-line-1",
@@ -99,6 +108,15 @@ What is the address of the GP surgery they want to leave? - Register with a GP s
                   "classes": "nhsuk-fieldset__legend--l"
                 }
               }) %}
+
+              {{ input({
+                label: {
+                  "text": "Name of surgery"
+                },
+                "id": "previous-gp-address-line-name",
+                "name": "previous-gp-address-line-name",
+                value: data['previous-gp-address-line-name']
+              }) }}
 
               {{ input({
                 label: {
