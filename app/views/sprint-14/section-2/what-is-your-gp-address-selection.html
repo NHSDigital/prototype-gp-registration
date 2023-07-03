@@ -32,8 +32,11 @@ Select your current GP surgery you want to leave - Register with a GP surgery - 
             href: "javascript:history.go(-1)"
           }) }}
 
-
+          {% if (data['user-auth'] == "p9") %}
+          <form action="is-this-where-you-were-living" method="post" autocomplete="off">
+          {% else %}
           <form action="do-you-previous-address" method="post" autocomplete="off">
+          {% endif %}
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 

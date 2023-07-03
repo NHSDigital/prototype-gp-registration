@@ -71,6 +71,8 @@ Registering for the first time - Register with a GP surgery - NHS
         {% endif %}
 
 
+        {% if (data['user-auth'] == "p9") %}
+
           {% call fieldset({
             legend: {
               text: "",
@@ -93,7 +95,7 @@ Registering for the first time - Register with a GP surgery - NHS
                 checked: checked("registering-first-time", "Yes")
               },
               {
-                "value": "No~/sprint-14/section-2/do-you-know-previous-postcode-gp-has",
+                "value": "No~/sprint-14/section-2/is-this-your-gp",
                 "text": "No",
                 "hint": {
                   "text": ""
@@ -104,6 +106,45 @@ Registering for the first time - Register with a GP surgery - NHS
           }) }}
 
           {% endcall %}
+
+
+          {% else %}
+
+          {% call fieldset({
+            legend: {
+              text: "",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+
+          {{ radios({
+            "idPrefix": "registering-first-time",
+            "name": "registering-first-time",
+            "items": [
+              {
+                "value": "Yes~/sprint-14/section-2/recently-move-to-the-uk",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("registering-first-time", "Yes")
+              },
+              {
+                "value": "No~/sprint-14/section-2/what-is-your-gp-address",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("registering-first-time", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {% endif %}
 
 
 
