@@ -54,11 +54,18 @@
         <span class="nhsuk-card--care__arrow" aria-hidden="true"></span>
       </div>
 
+
+      {% if data['user-auth'] == "p9" %}
       <div class="nhsuk-card__content">
         <p>Address line 1 <br> Address line 2 <br> Address line 3 <br> Address line 4 </p>
-
       </div>
-    </div>
+      </div>
+      {% else %}
+      <div class="nhsuk-card__content">
+          <p>Add••• line 1 <br> Addr•• line 2 <br> Add••• line 3 <br> Address l•• 4 </p>
+        </div>
+      </div>
+      {% endif %}
 
             {{ radios({
               "idPrefix": "current-address",
@@ -66,7 +73,7 @@
               "classes": "nhsuk-radios",
               "items": [
                 {
-                  "value": "Yes~/sprint-14/section-2/is-this-where-you-were-living",
+                  "value": "Yes~/sprint-14/section-2/are-you-returning-from-overseas",
                   "text": "Yes",
                   checked: checked("current-address", "Yes")
                 },

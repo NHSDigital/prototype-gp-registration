@@ -33,7 +33,9 @@ Select your current GP surgery you want to leave - Register with a GP surgery - 
           }) }}
 
           {% if (data['user-auth'] == "p9") %}
-          <form action="is-this-where-you-were-living" method="post" autocomplete="off">
+          <form action="are-you-returning-from-overseas" method="post" autocomplete="off">
+          {% elif (data['user-auth'] == "p5") %}
+          <form action="are-you-returning-from-overseas" method="post" autocomplete="off">
           {% else %}
           <form action="do-you-know-previous-postcode-gp-has" method="post" autocomplete="off">
           {% endif %}

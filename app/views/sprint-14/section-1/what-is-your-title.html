@@ -31,7 +31,11 @@
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="is-this-your-current-address" method="post" autocomplete="off">
+          {% if data['user-auth'] == "p9" %}
+          <form action="where-were-you-born" method="post" autocomplete="off">
+          {% else %}
+          <form action="what-is-your-sex" method="post" autocomplete="off">
+          {% endif %}
 
 
           {{ hint({

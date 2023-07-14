@@ -31,7 +31,13 @@ Which of the following best describes your White background? - Register with a G
             href: "javascript:history.go(-1)"
           }) }}
 
+          {% if data['user-auth'] == "p9" %}
+          <form action="is-this-your-current-address" method="post" autocomplete="off">
+          {% elif data['user-auth'] == "p5" %}
+          <form action="is-this-your-current-address" method="post" autocomplete="off">
+          {% else %}
           <form action="do-you-current-address" method="post" autocomplete="off">
+          {% endif %}
 
             {{ hint({
               "text": "Patient details",

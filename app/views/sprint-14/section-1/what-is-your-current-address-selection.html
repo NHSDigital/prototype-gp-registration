@@ -38,8 +38,8 @@ Select your address - Register with a GP surgery - NHS
 
           {% if (data['out-of-area'] == "out-of-area") %}
           <form action="/sprint-14/section-2/current-address-out-of-area" method="post" autocomplete="off">
-            {% elif (data['have-current-uk-address'] == "Yes") %}
-            <form action="/sprint-14/section-1/do-you-know-nhs-number" method="post" autocomplete="off">
+          {% elif (data['have-current-uk-address'] == "Yes") %}
+          <form action="/sprint-14/section-1/do-you-know-nhs-number" method="post" autocomplete="off">
           {% elif (data['user-auth'] == "p9") %}
           <form action="/sprint-14/section-1/confirm-contact-details" method="post" autocomplete="off">
 
