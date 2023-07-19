@@ -36,8 +36,31 @@ User research - GP registration - NHS
         <h1 class="app-page-heading">User research</h1>
 
         <ul class="nhsuk-list nhsuk-body-s">
-          <li>Last updated: 19 May 2023</li>
+          <li>Last updated: 19 July 2023</li>
         </ul>
+
+        <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary details-index">
+        <span class="nhsuk-details__summary-text">P5 / P0 new question groupings</span>
+        </summary>
+        <div class="nhsuk-details__text version-text">
+        <p></p>
+
+        <form action="/user-research/17-july/find-gp" method="post" autocomplete="off">
+        <input type="hidden" name="user-auth" id="user-auth" value="p5" />
+        {{ button({
+          "text": "P5 Start",
+              "href": ""
+        }) }}
+        </form>
+        <form action="/user-research/17-july/find-gp" method="post" autocomplete="off">
+        {{ button({
+          "text": "P0 Start",
+              "href": ""
+        }) }}
+        </form>
+      </div>
+      </details>
 
         <details class="nhsuk-details nhsuk-expander version-list">
         <summary class="nhsuk-details__summary details-index">
