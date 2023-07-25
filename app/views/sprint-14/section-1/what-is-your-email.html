@@ -31,9 +31,12 @@ What are your contact details? - Register with a GP surgery - NHS
           href: "javascript:history.go(-1)"
         }) }}
 
-
+        {% if (data['user-auth'] == "p5") %}
         <form action="continue-with-nhs-login" method="post" autocomplete="off">
-
+        {% else %}
+        <form action="what-is-your-name" method="post" autocomplete="off">
+        {% endif %}
+        
          {{ hint({
               "text": "Patient details",
               "classes": "nhsuk-u-margin-bottom-2"
