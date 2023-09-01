@@ -69,7 +69,7 @@
               NHS number found in PDS
            </dt>
            <dd class="nhsuk-summary-list__value">
-             {{ data['nhs-number'] }}
+             {{ data['nhs-number'] or 'Not found' }}
            </dd>
          </div>
 
@@ -78,7 +78,7 @@
               NHS number given by patient
            </dt>
            <dd class="nhsuk-summary-list__value">
-             {{ data['nhs-number'] }}
+             {{ data['nhs-number'] or '999 999 9999' }}
            </dd>
          </div>
 
@@ -87,7 +87,7 @@
      Title
    </dt>
    <dd class="nhsuk-summary-list__value">
-     {{ data['name-title'] }}
+     {{ data['name-title'] or 'Mr' }}
    </dd>
  </div>
 
@@ -96,7 +96,7 @@
     First name
    </dt>
    <dd class="nhsuk-summary-list__value">
-     {{ data['name-first-name'] }}
+     {{ data['name-first-name'] or 'Sam' }}
    </dd>
  </div>
 
@@ -105,7 +105,7 @@
      Middle name
    </dt>
    <dd class="nhsuk-summary-list__value">
-     {{ data['name-middle-name'] }}
+     {{ data['name-middle-name'] or 'Bob' }}
    </dd>
  </div>
 
@@ -114,7 +114,7 @@
     Last name
    </dt>
    <dd class="nhsuk-summary-list__value">
-     {{ data['name-last-name'] }}
+     {{ data['name-last-name'] or 'Smith' }}
    </dd>
  </div>
 
