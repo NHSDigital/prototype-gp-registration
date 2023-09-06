@@ -86,10 +86,19 @@
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
-        Identity proofing
+        Identity verification
       </dt>
       <dd class="nhsuk-summary-list__value">
         {{ data['nhs-number'] or 'The patient did not use NHS login' }}
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Catchment area
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['nhs-number'] or 'The patient is outside of the catchment area' }}
       </dd>
     </div>
 
