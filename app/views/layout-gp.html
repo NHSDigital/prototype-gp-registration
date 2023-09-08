@@ -20,15 +20,33 @@
 <!-- Edit the header -->
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
 {% block header %}
+
+{% if data['manage'] === 'true' %}
+
   {{ header({
     "service": {
-        "name": "Set up Register with a GP service",
+        "name": "GP registration service",
         "href": "/"
       },
       "showNav": "false",
       "showSearch": "false"
     })
   }}
+
+{% else %}
+
+  {{ header({
+    "service": {
+      "name": "Set up Register with a GP service",
+      "href": "/"
+    },
+      "showNav": "false",
+      "showSearch": "false"
+    })
+  }}
+
+{% endif %}
+
 {% endblock %}
 
 <!-- Edit the footer -->

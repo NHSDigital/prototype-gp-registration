@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block customStyles %}
+  <style typeof="text/css">
+      body { font-family:HelveticaNeue,"Helvetica Neue",Arial,Helvetica,sans-serif;}
+  </style>
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<div class="pseudo-bg-gp"></div>
+<div class="gpemail-metadata">
+  <p><strong>From: </strong>Notify a Patient service</p>
+  <p><strong>Subject: </strong>Introduction to the Notify a Patient service</p>
+</div>
+
+<div class="pseudo-gpemail-template">
+
+  <p>Dear Highstreet surgery,</p>
+
+  <p>The team behind the Register with a GP surgery service is pleased to introduce you to our new patient communication tool - the
+    <a href="https://digital.nhs.uk/services/notify-a-patient-service">Notify a Patient service</a>.</p>
+
+  <p>This new service automatically sends a message to a patient when their registration with a new practice has been successful. Depending on what is held in the Patient Demographic Service (PDS), the message is sent to the NHS App or by email, text message or post. Messages are sent when a patient uses the
+    <a href="https://digital.nhs.uk/services/register-with-a-gp-surgery-service">Register with a GP surgery service</a>, a third party application or a paper form.</p>
+
+  <p>The service aims to reduce the administrative burden on GP practices and keep patients up to date about the progress of their registration. It will also help in:</p>
+
+  <ul>
+    <li>reducing the number of calls or visits from patients to confirm their registration status</li>
+    <li>empowering patients to manage their health and care using online services</li>
+    <li>offering a trusted and secure alternative to text messages or letters</li>
+    <li>improving the user experience</li>
+  </ul>
+
+  <p>You will find examples of the messages we send attached to this email.</p>
+
+  <h2 class="nhsuk-heading-m">What happens next</h2>
+
+  <p>We would welcome your co-operation in a trial of this new service. From [DATE] any new patients registering with your practice will automatically receive a message from the Notify a Patient service confirming their successful registration. If you do not wish to support our research into this new service you will be able to switch it off at any time through
+    <a href="/gp/gp-profile-manager-manage">NHS Profile Manager</a></p>
+
+  <p>If you have any questions, please contact us using the email<a href="mailto:england.register-gp-surgery.support@nhs.net">england.register-gp-surgery.support@nhs.net</a></p>
+
+  <p>Yours sincerely,</p>
+
+  <p>Notify a Patient service</p>
+
+</div>
+
+{% endblock %}

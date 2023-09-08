@@ -34,7 +34,7 @@
     <form action="gp-reg-complete" autocomplete="off" method="post">
 
 
-      <h1 class="nhsuk-heading">{Branch name}</h1>
+      <h1 class="nhsuk-heading">{{ data['practiceName'] or '{ Branch name }' }}</h1>
 
 
       <dl class="nhsuk-summary-list">
@@ -97,12 +97,16 @@
           </dt>
           <dd class="nhsuk-summary-list__value">
 
-            {% if branch === "true" %}
-            {% if data['notify'] === "On" %}
-            On
-            {% else %}
-            Off
-            {% endif %}
+            {% if data['practice'] === "true" %}
+
+              {% if data['notify'] === "Off" %}
+              Off
+              {% else %}
+              On
+              {% endif %}
+
+
+              {% else %}
 
             <div class="nhsuk-warning-text nhsuk-u-margin-bottom-3">
               <span aria-hidden="true" class="nhsuk-warning-text__icon">!</span>
@@ -111,18 +115,18 @@
                 This setting is managed by the practice and can't be altered for individual branches
               </strong>
             </div>
-            {% else %}
-            {% if data['notify'] === "On" %}
-            On
-            {% else %}
-            Off
+
             {% endif %}
-            {% endif %}
+
           </dd>
           <dd class="nhsuk-summary-list__actions">
+            {% if data['practice'] === "true" %}
+
             <a href="/gp/gp-notify-patient">Change
               <span class="nhsuk-u-visually-hidden">Notify a patient service</span>
             </a>
+
+            {% endif %}
           </dd>
         </div>
 
