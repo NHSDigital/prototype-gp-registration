@@ -1,0 +1,94 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-gp.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Example messages from the Notify a Patient service - GP registration service - NHS
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<style type="text/css">
+    .image-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .image-list figure {
+        align-self: flex-end;
+        align-content: space-between;
+        margin: 0 10px 20px 0;
+    }
+    .image-list figure:last-child {
+        margin: 0 0 20px 0;
+    }
+    .image-list figure img {
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+        min-width: 150px;
+        max-width: 230px;
+    }
+    .image-list figcaption {
+        text-align: center;
+    }
+</style>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    {{ backLink({
+    text: "Go back",
+    href: "gp-branch"
+    }) }}
+
+    <h1 class="nhsuk-heading">Example messages from the Notify a Patient service</h1>
+
+
+    <div class="image-list">
+
+      <figure>
+        <img src="/images/nap-app.png" alt="Image of a Notification in the NHS App">
+        <figcaption>NHS App notification</figcaption>
+      </figure>
+
+      <figure>
+        <img src="/images/nap-email.png" alt="Image of an Email">
+        <figcaption>Email</figcaption>
+      </figure>
+
+      <figure>
+        <img src="/images/nap-sms.png" alt="Image of a text message">
+        <figcaption>Text message</figcaption>
+      </figure>
+
+      <figure>
+        <img src="/images/nap-letter.jpeg" alt="Image of a posted letter">
+        <figcaption>Letter</figcaption>
+      </figure>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}

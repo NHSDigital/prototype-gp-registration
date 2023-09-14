@@ -97,21 +97,19 @@
           </dt>
           <dd class="nhsuk-summary-list__value">
 
-            {% if data['practice'] === "true" %}
-
-              {% if data['notify'] === "Off" %}
+            {% if data['notify'] === "Off" %}
               Off
-              {% else %}
-              On
-              {% endif %}
-
             {% else %}
+              On
+            {% endif %}
 
-              <div class="nhsuk-warning-text nhsuk-u-margin-bottom-3">
+            {% if data['practice'] !== "true" %}
+
+              <div class="nhsuk-warning-text nhsuk-u-margin-bottom-3 nhsuk-u-margin-top-2">
                 <span aria-hidden="true" class="nhsuk-warning-text__icon">!</span>
                 <strong class="nhsuk-warning-text__text">
                   <span class="nhsuk-warning-text__assistive"></span>
-                  This setting is managed by the practice and can't be altered for individual branches
+                  This setting can only be changed at a practice level
                 </strong>
               </div>
 
@@ -130,14 +128,30 @@
         </div>
 
       </dl>
-
-      <div class="nhsuk-inset-text">
-        <span class="nhsuk-u-visually-hidden">Information: </span>
-        <p>Change the way patients access your online registration service through Find a GP or the unique url on your website.</p>
-      </div>
-
-
     </form>
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <h2 class="nhsuk-heading-m">What do these settings do?</h2>
+
+    <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Patient access</dt>
+        <dd class="nhsuk-summary-list__value">Change the way patients access your online registration service through Find a GP or the unique url on your website.</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Notify a patient service</dt>
+        <dd class="nhsuk-summary-list__value">
+          The Notify a patient service sends a message to a patient in the NHS App, or by email, text message or post to notify them that their registration with a new GP has been accepted.
+
+          <br><a href="example-messages" target="_blank">See examples of the messages</a>
+
+        </dd>
+      </div>
+    </dl>
   </div>
 </div>
 
@@ -152,14 +166,14 @@
       <div id="modal-form">
 
         <h1 class="nhsuk-heading-l">
-          Leave us some feedback
+          Leave feedback
         </h1>
 
-        <p>Your feedback can help improve the Notify a Patient service.</p>
+        <p>Your feedback can help us improve this service.</p>
 
         <div class="nhsuk-form-group">
           <label class="nhsuk-label nhsuk-u-font-weight-bold" for="feedback">
-            Why did you choose to turn off the Notify a Patient feature?
+            Why did you choose to turn off the Notify a Patient service?
           </label>
 
           <textarea aria-describedby="feedback-hint" class="nhsuk-textarea nhsuk-u-padding-3" id="feedback" name="feedback" rows="3"></textarea>
@@ -174,7 +188,7 @@
       <div id="modal-thanks" style="display:none;">
 
         <h2 class="nhsuk-heading-l">Thank you for your feedback</h2>
-        <p class="nhsuk-card__description">Your feedback was successfully submitted. This will help us to improve our service.</p>
+        <p class="nhsuk-card__description">Your feedback was successfully sent.</p>
 
       </div>
 

@@ -23,69 +23,51 @@ Manage notify a patient service - GP registration service - NHS
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
-      <div class="nhsuk-grid-row">
-        <div class="nhsuk-grid-column-two-thirds">
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
 
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
+    {{ backLink({
+      text: "Go back",
+      href: "javascript:history.go(-1)"
+    }) }}
 
-          <form action="gp-notify-patient-post" method="post" autocomplete="off">
+    <form action="gp-notify-patient-post" method="post" autocomplete="off">
 
-            {{ radios({
-              "idPrefix": "notify",
-              "name": "notify",
-              "fieldset": {
-                "legend": {
-                  "text": "Turn on the Notify a Patient service?",
-                  "classes": "nhsuk-fieldset__legend--l",
-                  "isPageHeading": true
-                }
-              },
-              "hint": {
-                "text": "Turning 'Notify a Patient service' on or off will take effect on the next working day."
-              },
-              "items": [
-                {
-                  "value": "On",
-                  "text": "Yes, turn on",
-                  checked: checked("notify", "On")
-                },
-                {
-                  "value": "Off",
-                  "text": "No, turn off",
-                  checked: checked("notify", "Off")
-                }
-              ]
-            }) }}
+      {{ radios({
+        "idPrefix": "notify",
+        "name": "notify",
+        "fieldset": {
+          "legend": {
+            "text": "Do you want to turn on the Notify a Patient service?",
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        },
+        "hint": {
+          "text": "Any changes you make will take effect immediately."
+        },
+        "items": [
+          {
+            "value": "On",
+            "text": "Yes, turn service on",
+            checked: checked("notify", "On")
+          },
+          {
+            "value": "Off",
+            "text": "No, turn service off",
+            checked: checked("notify", "Off")
+          }
+        ]
+      }) }}
 
-            <!-- <details class="nhsuk-details">
-              <summary class="nhsuk-details__summary">
-                <span class="nhsuk-details__summary-text">
-                  Why are we asking this?
-                </span>
-              </summary>
-              <div class="nhsuk-details__text">
-                <p>If your surgery offers any additional patient services, such as a language interpreter or pharmaceutical services, we'll be able to offer them to the patient during the registration process.</p>
-              </div>
-            </details> -->
+      {{ button({
+        "text": "Continue"
+      }) }}
 
-
-
-            {{ button({
-              "text": "Continue"
-            }) }}
-
-          </form>
-        </div>
-      </div>
-
-
-    <!-- End of content -->
-
+    </form>
   </div>
 </div>
+
 {% block pageScripts %}
 
 {% endblock %}
