@@ -31,12 +31,7 @@ Do you want to offer patients a nominated pharmacy - GP registration service - N
             href: "javascript:history.go(-1)"
           }) }}
 
-
-          {% if (data['linkaction'] == "change-questions") %}
-          <form action="/gp/gp-branch" method="post" autocomplete="off">
-          {% else %}
-          <form action="gp-answers" method="post" autocomplete="off">
-          {% endif %}
+          <form action="gp-additional-questions-notify-patient" method="post" autocomplete="off">
 
 
             <H2>Do you want to offer your patients the opportunity to nominate a pharmacy during their registration?</H2>
