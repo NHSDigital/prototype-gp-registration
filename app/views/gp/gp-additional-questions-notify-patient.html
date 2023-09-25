@@ -39,10 +39,10 @@ The Notify a Patient service
     {% endif %}
 
 
-      <H2>The Notify a Patient service</H2>
+      <H2>Send registration success messages</H2>
 
-      <p>Messages are sent to your patients telling them their registration with your surgery has been successful. The messages are sent by email, text message, post or in the NHS App.</p>
-      <p>If you do not want to sent notifications, you can disable this. It will be possible to turn this back on later.</p>
+      <p>Messages are automatically sent to patients telling them their registration with your surgery has been successful. The messages are sent by email, text message, post or in the NHS App.</p>
+      <p>These messages are sent as part of the Register with a GP surgery service, unless you choose to turn them off. You can turn them on again at any time through your Profile Manager account.</p>
 
 
       {{ checkboxes({
@@ -51,7 +51,7 @@ The Notify a Patient service
         "items": [
           {
             "value": "out",
-            "text": "I do not want to send notifications to patients"
+            "text": "Do not send registration messages."
           }
         ]
       }) }}
