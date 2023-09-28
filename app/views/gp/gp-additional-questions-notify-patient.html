@@ -39,26 +39,51 @@ The Notify a Patient service
     {% endif %}
 
 
-      <H2>Send registration success messages</H2>
+      <h1 class="nhsuk-heading-l">Telling patients their registration has been accepted</h1>
 
-      <p>Messages are automatically sent to patients telling them their registration with your surgery has been successful. The messages are sent by email, text message, post or in the NHS App.</p>
-      <p>These messages are sent through the Notify a patient service. You can turn the service off or on at any time through NHS Profile Manager.</p>
+      <p>Register with a GP surgery service will send a message to patients when you have accepted their registration. We will send the message by email, text message, post or through the NHS App.</p>
+      <p>You can switch these messages on or off at any time in the NHS Profile Manager.</p>
 
-
+      {{ radios({
+        "idPrefix": "use-nap",
+        "name": "use-nap",
+        "classes": "nhsuk-radios",
+        "fieldset": {
+        "legend": {
+        "text": "Do you want the service to message patients?",
+        "classes": "nhsuk-fieldset__legend--m",
+        "isPageHeading": true
+        }
+        },
+        "items": [
+        {
+        "value": "Yes",
+        "text": "Yes"
+        },
+        {
+        "value": "No",
+        "text": "No"
+        }
+        ]
+      }) }}
+{#
       {{ checkboxes({
         "idPrefix": "example",
         "name": "nap-opt-out",
         "items": [
           {
             "value": "out",
-            "text": "Do not send registration success messages"
+            "text": "I do not want to send notifications to patients"
           }
         ]
       }) }}
 
+      #}
+
       {{ button({
         "text": "Continue"
       }) }}
+
 
     </form>
   </div>

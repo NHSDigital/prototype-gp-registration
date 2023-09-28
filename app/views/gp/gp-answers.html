@@ -87,7 +87,7 @@ Confirm details for your practice and complete registration - GP registration se
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Dispencing surgery
+                  Dispensing surgery
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {% if (data['dispencing'] == "Yes") %}
@@ -101,12 +101,26 @@ Confirm details for your practice and complete registration - GP registration se
                 </dd>
               </div>
 
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Send messages to patients
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if (data['use-nap'] === "Yes") %}
+                  Yes
+                  {% else %}
+                  No
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="gp-additional-questions-notify-patient?change=true">Change<span class="nhsuk-u-visually-hidden">dispencing surgery</span></a>
+                </dd>
+              </div>
+
             </dl>
 
               <p>If the details are correct then you can complete the registration process.</p>
               <p>This will allow your surgery to start offering patients the option to use Register with a GP Service Online.</p>
-
-
 
             {{ button({
               "text": "Confirm and complete"
