@@ -44,26 +44,29 @@ The Notify a Patient service
       <p>Register with a GP surgery service will send a message to patients when you have accepted their registration. We will send the message by email, text message, post or through the NHS App.</p>
       <p>You can switch these messages on or off at any time in the NHS Profile Manager.</p>
 
-      {{ radios({
-        "idPrefix": "use-nap",
-        "name": "use-nap",
-        "classes": "nhsuk-radios",
-        "fieldset": {
-        "legend": {
-        "text": "Do you want the service to message patients?",
-        "classes": "nhsuk-fieldset__legend--m",
-        "isPageHeading": true
+      {{ radios(
+        {
+          "idPrefix": "use-nap",
+          "name": "use-nap",
+          "classes": "nhsuk-radios",
+          "fieldset": {
+          "legend": {
+          "text": "Do you want the service to message patients?",
+          "classes": "nhsuk-fieldset__legend--m",
+          "isPageHeading": true
         }
         },
         "items": [
-        {
-        "value": "Yes",
-        "text": "Yes"
-        },
-        {
-        "value": "No",
-        "text": "No"
-        }
+          {
+            "value": "Yes",
+            "text": "Yes",
+            "checked": checked("use-nap", "Yes")
+          },
+          {
+            "value": "No",
+            "text": "No",
+            "checked": checked("use-nap", "No")
+          }
         ]
       }) }}
 {#
