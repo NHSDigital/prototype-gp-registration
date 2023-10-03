@@ -40,8 +40,8 @@ Manage notify a patient service - GP registration service - NHS
       <p><a href="https://digital.nhs.uk/services/notify-a-patient-service">Find out more about how this feature works on our resource hub</a></p>
 
       {{ radios({
-        "idPrefix": "notify",
-        "name": "notify",
+        "idPrefix": "use-nap",
+        "name": "use-nap",
         "fieldset": {
           "legend": {
             "text": "Do you want the service to message patients?",
@@ -53,12 +53,12 @@ Manage notify a patient service - GP registration service - NHS
           {
             "value": "Yes",
             "text": "Yes",
-            checked: checked("notify", "Yes")
+            checked: checked("use-nap", "Yes")
           },
           {
             "value": "No",
             "text": "No",
-            checked: checked("notify", "No")
+            checked: checked("use-nap", "No")
           }
         ]
       }) }}
