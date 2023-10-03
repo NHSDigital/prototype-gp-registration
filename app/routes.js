@@ -7,6 +7,19 @@ router.use(radioButtonRedirect)
 
 // Add your routes here - above the module.exports line
 
+router.use((req, res, next) => {
+  const log = {
+    method: req.method,
+    url: req.originalUrl,
+    data: req.session.data
+  }
+  // you can enable this in your .env file
+  if (process.env.LOGGING === 'TRUE') {
+    console.log(JSON.stringify(log, null, 2))
+  }
+  next()
+})
+
 // Who is registering branch
 router.post('*/who-is-registering-answer/', function (req, res) {
 
@@ -512,10 +525,10 @@ router.post("/*/check-postcode-2", function (req, res) {
 });
 
 router.post("/gp/gp-notify-patient-post", function (req, res) {
-  let notify = req.session.data['notify']
+  let notify = req.session.data['use-nap']
 
   // if a user swiches of the notifications
-  if (notify === 'Off'){
+  if (notify === 'No'){
     // set a data item to use to conditionally show the modal
     req.session.data['notifyModal'] = "show"
   }
