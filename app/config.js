@@ -2,7 +2,7 @@
 
 module.exports = {
   // Service name
-  serviceName: 'NHS.UK prototype kit',
+  serviceName: 'GP Registration',
 
   // Port to run nodemon on locally
   port: 2000,
@@ -16,4 +16,4 @@ module.exports = {
 
   // Enable or disable built-in docs and examples.
   useDocumentation: true,
-}
+};

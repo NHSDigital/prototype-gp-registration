@@ -62,4 +62,9 @@ jspm_packages/
 # System Files
 .DS_Store
 Thumbs.db
-app/views/sprint-8/section-4/check-answers-test.html
+
+# SonarQube
+.scannerwork
+
+# Code coverage
+coverage
