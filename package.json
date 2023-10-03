@@ -33,7 +33,7 @@
     "gulp-sass": "^5.0.0",
     "keypather": "^3.0.0",
     "moment": "^2.29.4",
-    "nhsuk-frontend": "^7.0.0",
+    "nhsuk-frontend": "^8.0.1",
     "nunjucks": "^3.2.3",
     "path": "^0.12.7",
     "radio-button-redirect": "^1.2.0",
