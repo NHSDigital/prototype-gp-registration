@@ -93,14 +93,14 @@
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            Send messages to patients
+            Send registration messages
           </dt>
           <dd class="nhsuk-summary-list__value">
 
-            {% if data['notify'] === "No" %}
-              Off
+            {% if data['use-nap'] === "No" %}
+              No
             {% else %}
-              On
+              Yes
             {% endif %}
 
             {% if data['practice'] !== "true" %}
