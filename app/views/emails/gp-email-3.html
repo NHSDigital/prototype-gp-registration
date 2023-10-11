@@ -782,6 +782,25 @@
 
   <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Patient health</h3>
 
+  {% if data['under18'] === 'true' %}
+
+  <div class="nhsuk-inset-text nhsuk-u-padding-top-0 nhsuk-u-padding-bottom-0">
+
+    <p><strong>The patient has been registered by someone else and is under the age of 18. We haven't collected data for the following health questions:</strong></p>
+
+    <ul class="nhsuk-u-margin-bottom-0">
+      <li>How often do you drink alcohol?</li>
+<!--      <li>How many units of alcohol do you consume in an average week?</li>-->
+<!--      <li>How often have you had six or more units of alcohol on a single occasion in the last year?</li>-->
+      <li>Have you ever smoked?</li>
+<!--      <li>What best describes you? (Are you currently smoking?)</li>-->
+<!--      <li>Amount smoked</li>-->
+    </ul>
+  </div>
+
+  {% endif %}
+
+
   <dl class="nhsuk-summary-list">
 
     <div class="nhsuk-summary-list__row">
@@ -1071,6 +1090,8 @@
       </dd>
     </div>
 
+    {% if data['under18'] !== 'true' %}
+
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
         Drinks alcohol
@@ -1125,6 +1146,8 @@
         <span id="dob-month">{{ data['smoking-quit-month'] or '-03' }}</span>
       </dd>
     </div>
+
+    {% endif %}
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
