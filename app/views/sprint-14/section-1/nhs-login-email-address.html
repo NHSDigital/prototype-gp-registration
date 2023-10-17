@@ -23,51 +23,41 @@
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
-      <div class="nhsuk-grid-row">
-        <div class="nhsuk-grid-column-two-thirds">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
 
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
+      {{ backLink({
+        text: "Go back",
+        href: "javascript:history.go(-1)"
+      }) }}
+
+      <form action="nhs-login-password" method="post" autocomplete="off">
+
+        {% call fieldset({
+          legend: {
+            "text": "Enter your email address",
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        }) %}
+
+          {{ input({
+            label: {
+              "html": 'Email address'
+            },
+            "classes": "nhsuk-input--width-20",
+            "id": "nhs-login-email",
+            "name": "nhs-login-email"
           }) }}
 
-          <form action="nhs-login-password" method="post" autocomplete="off">
+        {% endcall %}
 
-            {% call fieldset({
-              legend: {
-                "text": "Enter your email address",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
-              }
-            }) %}
+        {{ button({
+          "text": "Continue"
+        }) }}
 
-              {{ input({
-                label: {
-                  "html": 'Email address'
-                },
-                "classes": "nhsuk-input--width-20",
-                "id": "nhs-login-email",
-                "name": "nhs-login-email"
-              }) }}
-
-            {% endcall %}
-
-            {{ button({
-              "text": "Continue"
-            }) }}
-
-          </form>
-        </div>
-      </div>
-
-
-    <!-- End of content -->
-
+      </form>
+    </div>
   </div>
-</div>
-{% block pageScripts %}
-<script>
 
-</script>
-{% endblock %}
 {% endblock %}
