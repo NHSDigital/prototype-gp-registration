@@ -203,6 +203,10 @@
       "url": "http://localhost:3000/sprint-14/section-2/recently-moved-documents"
     },
     {
+      "label": "section-2 - recently-moved-s1-details",
+      "url": "http://localhost:3000/sprint-14/section-2/recently-moved-s1-details"
+    },
+    {
       "label": "section-2 - document-details-ehic",
       "url": "http://localhost:3000/sprint-14/section-2/document-details-ehic"
     },
@@ -227,8 +231,12 @@
       "url": "http://localhost:3000/sprint-14/section-2/overseas-declaration-nodocs"
     },
     {
-      "label": "section-2 - are-you-returning-from-overseas",
+      "label": "section-2 - are-they-returning-from-overseas",
       "url": "http://localhost:3000/sprint-14/section-2/are-you-returning-from-overseas"
+    },
+    {
+      "label": "section-2 - are-you-returning-from-overseas",
+      "url": "http://localhost:3000/sprint-14/section-2/are-you-returning-from-overseas?registering-first-time=No"
     },
     {
       "label": "section-2 - do-you-previous-address",
@@ -255,6 +263,10 @@
       "url": "http://localhost:3000/sprint-14/section-2/what-is-your-previous-address-selection"
     },
     {
+      "label": "section-2 - what-is-your-previous-address-selection-dependant",
+      "url": "http://localhost:3000/sprint-14/section-2/what-is-your-previous-address-selection?who-is-being-registered=dependant"
+    },
+    {
       "label": "section-2 - is-this-your-gp",
       "url": "http://localhost:3000/sprint-14/section-2/is-this-your-gp"
     },
@@ -265,10 +277,6 @@
     {
       "label": "section-2 - do-you-know-previous-postcode-gp-has",
       "url": "http://localhost:3000/sprint-14/section-2/do-you-know-previous-postcode-gp-has"
-    },
-    {
-      "label": "section-2 - are-you-returning-from-overseas",
-      "url": "http://localhost:3000/sprint-14/section-2/are-you-returning-from-overseas"
     },
     {
       "label": "section-2 - date-left-uk",
