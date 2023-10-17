@@ -159,6 +159,10 @@
       "url": "http://localhost:3000/sprint-14/section-1/how-can-we-contact-inputs"
     },
     {
+      "label": "section-1 - how-can-we-contact-you",
+      "url": "http://localhost:3000/sprint-14/section-1/how-can-we-contact-you"
+    },
+    {
       "label": "section-1 - how-can-we-contact-inputs-prompt",
       "url": "http://localhost:3000/sprint-14/section-1/how-can-we-contact-inputs-prompt"
     },
@@ -353,6 +357,14 @@
     {
       "label": "section-3 - type-of-carer",
       "url": "http://localhost:3000/sprint-14/section-3/type-of-carer"
+    },
+    {
+      "label": "section-3 - carer-type-dependant",
+      "url": "http://localhost:3000/sprint-14/section-3/carer-type?who-is-being-registered=dependant"
+    },
+    {
+      "label": "section-3 - carer-type",
+      "url": "http://localhost:3000/sprint-14/section-3/carer-type?who-is-being-registered=myself"
     },
     {
       "label": "section-3 - do-you-need-accessible-format",
