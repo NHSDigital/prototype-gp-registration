@@ -351,6 +351,10 @@
       "url": "http://localhost:3000/sprint-14/section-3/carer-details"
     },
     {
+      "label": "section-3 - carer-details-2",
+      "url": "http://localhost:3000/sprint-14/section-3/carer-details-2"
+    },
+    {
       "label": "section-3 - are-you-a-carer",
       "url": "http://localhost:3000/sprint-14/section-3/are-you-a-carer"
     },
@@ -365,6 +369,10 @@
     {
       "label": "section-3 - carer-type",
       "url": "http://localhost:3000/sprint-14/section-3/carer-type?who-is-being-registered=myself"
+    },
+    {
+      "label": "section-3 - carer-type-2",
+      "url": "http://localhost:3000/sprint-14/section-3/carer-type-2"
     },
     {
       "label": "section-3 - do-you-need-accessible-format",
