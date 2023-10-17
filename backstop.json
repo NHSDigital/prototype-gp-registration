@@ -419,12 +419,24 @@
       "url": "http://localhost:3000/sprint-14/section-4/do-you-have-any-mental-health-conditions"
     },
     {
+      "label": "section-4 - mental-health-conditions-details",
+      "url": "http://localhost:3000/sprint-14/section-4/mental-health-conditions-details"
+    },
+    {
       "label": "section-4 - do-you-have-any-disabilities",
       "url": "http://localhost:3000/sprint-14/section-4/do-you-have-any-disabilities"
     },
     {
+      "label": "section-4 - disabilities-details",
+      "url": "http://localhost:3000/sprint-14/section-4/disabilities-details"
+    },
+    {
       "label": "section-4 - do-you-have-existing-conditions",
       "url": "http://localhost:3000/sprint-14/section-4/do-you-have-existing-conditions"
+    },
+    {
+      "label": "section-4 - existing-conditions-details",
+      "url": "http://localhost:3000/sprint-14/section-4/existing-conditions-details"
     },
     {
       "label": "section-4 - what-existing-conditions-do-you-have",
@@ -435,8 +447,16 @@
       "url": "http://localhost:3000/sprint-14/section-4/do-you-have-allergies"
     },
     {
+      "label": "section-4 - allergies-details",
+      "url": "http://localhost:3000/sprint-14/section-4/allergies-details"
+    },
+    {
       "label": "section-4 - do-you-take-prescription-medication",
       "url": "http://localhost:3000/sprint-14/section-4/do-you-take-prescription-medication"
+    },
+    {
+      "label": "section-4 - medication-details",
+      "url": "http://localhost:3000/sprint-14/section-4/medication-details"
     },
     {
       "label": "section-4 - medication-details-repeat",
@@ -473,6 +493,10 @@
     {
       "label": "section-4 - do-you-smoke-amount",
       "url": "http://localhost:3000/sprint-14/section-4/do-you-smoke-amount"
+    },
+    {
+      "label": "section-4 - do-you-smoke-date",
+      "url": "http://localhost:3000/sprint-14/section-4/do-you-smoke-date"
     },
     {
       "label": "section-4 - scr",
