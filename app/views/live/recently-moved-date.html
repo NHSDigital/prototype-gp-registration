@@ -8,13 +8,16 @@
 When did you enter the UK? - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
-<section class="nhsuk-section">
-  <div class="nhsuk-width-container">
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
@@ -102,18 +105,11 @@ When did you enter the UK? - Register with a GP surgery - NHS
 
         </form>
 
-
-
       </div>
     </div>
-  </div>
-</section>
 
+{% endblock %}
 
-
-
-<!-- End of content -->
-
-</div>
-</div>
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

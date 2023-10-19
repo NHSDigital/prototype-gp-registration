@@ -8,39 +8,34 @@
 For people arriving from EU, EEA or Swtizerland without EHIC or S1 form - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
-  <section class="nhsuk-section">
-    <div class="nhsuk-width-container">
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
-
-
-
         <form action="check-answers-2" method="post" autocomplete="off">
-
 
             {{ hint({
               "text": "Registration type",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-          <h2 class="nhsuk-heading--l">For people arriving from EU, EEA or Swtizerland without EHIC or S1 form.</h2>
+          <h1 class="nhsuk-heading-l">For people arriving from EU, EEA or Swtizerland without EHIC or S1 form.</h1>
 
           <p>By continuing you are agreeing to the following statements.</p>
           <p>I understand that registration with  a GP surgery is free of charge and that I can receive free medical care from them.</p>
           <p>I may need to pay for other NHS treatment, such as referrals to hospital, if:</p>
-            <ul class="nhsuk-list nhsuk-list--bullet">
-              <li>I do not have a valid exemption such as an EHIC or an S1 form.</li>
-            </ul>
+
+          <ul class="nhsuk-list nhsuk-list--bullet">
+            <li>I do not have a valid exemption such as an EHIC or an S1 form.</li>
+          </ul>
 
           <p>If you are from EU, EEA or Switzerland and you do not have an S1 form or an EHIC, you can find out how to get one and if you're eligible, from your national government websites. You can find out more information about<a href="https://www.gov.uk/guidance/healthcare-for-eu-and-efta-citizens-visiting-the-uk">UK healthcare for EU nationals on the Gov.uk website (Opens in new tab).</a></p>
 
@@ -51,5 +46,8 @@ For people arriving from EU, EEA or Swtizerland without EHIC or S1 form - Regist
           </form>
         </div>
       </div>
-    </section>
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

@@ -8,8 +8,12 @@
   Enter date of birth - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -17,21 +21,15 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
-
           <form action="what-is-your-sex" method="post" autocomplete="off">
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-           {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            <H2>What is {{ data ['name-first-name'] }}'s date of birth?</H2>
+            <h1 class="nhsuk-heading-l" >
+              <span class="nhsuk-caption-l">Patient details </span>
+              <span class="nhsuk-u-visually-hidden"> - </span>
+              What is {{ data ['name-first-name'] }}'s date of birth?
+            </h1>
 
             {{ dateInput({
               "id": "dob",

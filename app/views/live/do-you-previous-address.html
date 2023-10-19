@@ -5,23 +5,21 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Do you they a previous UK address? - Register with a GP surgery - NHS
+Do you have a previous UK address? - {{ serviceName }} - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
-  <section class="nhsuk-section">
-    <div class="nhsuk-width-container">
+
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
 
           <form action="" method="post" autocomplete="off">
 
@@ -34,7 +32,7 @@ Do you they a previous UK address? - Register with a GP surgery - NHS
 
             {% call fieldset({
               legend: {
-                text: "Do you they a previous UK address?",
+                text: "Do you have a previous UK address?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -97,13 +95,9 @@ Do you they a previous UK address? - Register with a GP surgery - NHS
           </form>
         </div>
       </div>
-    </section>
 
-    <!-- End of content -->
-
-  </div>
-</div>
-{% block pageScripts %}
-<script></script>
 {% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

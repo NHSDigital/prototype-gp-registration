@@ -8,19 +8,18 @@
 What is your current UK address? - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
 
     <form action="what-is-your-current-address-selection" method="post" autocomplete="off">
             {{ hint({
@@ -30,7 +29,7 @@ What is your current UK address? - Register with a GP surgery - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h2> What is {{ data ['name-first-name'] }}'s current UK address?</h2>
+            <h1 class="nhsuk-heading-l"> What is {{ data ['name-first-name'] }}'s current UK address?</h2>
 
             {% call fieldset({
               legend: {

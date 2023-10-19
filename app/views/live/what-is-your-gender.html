@@ -8,19 +8,18 @@
 Which of the following best describes you? - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
 
           <form action="what-is-your-gender-at-birth" method="post" autocomplete="off">
             {{ hint({
@@ -30,11 +29,11 @@ Which of the following best describes you? - Register with a GP surgery - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Which of the following best describes {{ data ['name-first-name'] }}?</H2>
+            <h1 class="nhsuk-heading-l">Which of the following best describes {{ data ['name-first-name'] }}?</H1>
 
             {% else %}
 
-            <H2>Which of the following best describes you?</H2>
+            <h1 class="nhsuk-heading-l">Which of the following best describes you?</H1>
 
             {% endif %}
 
@@ -97,13 +96,9 @@ Which of the following best describes you? - Register with a GP surgery - NHS
               "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of gender.</p>"
             }) }}
 
-
-
             {{ button({
               "text": "Continue"
             }) }}
-
-
 
           </form>
         </div>

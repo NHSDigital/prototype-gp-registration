@@ -8,8 +8,12 @@
 Can the GP surgery contact - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -17,15 +21,7 @@ Can the GP surgery contact - Register with a GP surgery - NHS
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
-        {{ backLink({
-          text: "Go back",
-          href: "javascript:history.go(-1)"
-        }) }}
-
-
-
         <form action="do-you-have-emergency-contact" method="post" autocomplete="off">
-
 
             {{ hint({
               "text": "Patient details",
@@ -34,7 +30,7 @@ Can the GP surgery contact - Register with a GP surgery - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Can {Doctor's Surgery} contact {{ data ['name-first-name'] }}?</H2>
+            <h1 class="nhsuk-heading-l">Can {Doctor's Surgery} contact {{ data ['name-first-name'] }}?</H1>
 
             <div class="nhsuk-hint" id="contact-hint">
             <p>By giving consent, your GP surgery and the NHS can contact you using SMS or text messages, or by email about application, appointments, prescriptions or other medical services.
@@ -63,7 +59,7 @@ Can the GP surgery contact - Register with a GP surgery - NHS
 
             {% else %}
 
-            <H2>Can {Doctor's Surgery} contact you?</H2>
+            <h1 class="nhsuk-heading-l">Can {Doctor's Surgery} contact you?</H1>
 
             <div class="nhsuk-hint" id="contact-hint">
             <p>By giving consent, your GP surgery and the NHS can contact you using SMS or text messages, or by email about application, appointments, prescriptions or other medical services.

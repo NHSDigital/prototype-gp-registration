@@ -8,19 +8,18 @@
 Registering for the first time - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
-
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
-
-        {{ backLink({
-          text: "Go back",
-          href: "javascript:history.go(-1)"
-        }) }}
 
         <form action="" method="post" autocomplete="off">
 
@@ -31,7 +30,7 @@ Registering for the first time - Register with a GP surgery - NHS
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-            <h2> Is {{ data ['name-first-name'] }} registering with a UK GP for the first time?</h2>
+            <h1 class="nhsuk-heading-l"> Is {{ data ['name-first-name'] }} registering with a UK GP for the first time?</h1>
 
             <div class="nhsuk-hint" id="contact-hint">
             <p>A GP is your first point of contact for health problems.
@@ -44,7 +43,7 @@ Registering for the first time - Register with a GP surgery - NHS
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-           <h2> Are you registering with a UK GP for the first time?</h2>
+           <h1 class="nhsuk-heading-l"> Are you registering with a UK GP for the first time?</h1>
             <div class="nhsuk-hint" id="contact-hint">
             <p>A GP is your first point of contact for health problems.
           </div>
@@ -127,17 +126,11 @@ Registering for the first time - Register with a GP surgery - NHS
 
           {% endif %}
 
-
-
-
-
           {{ button({
             "text": "Continue"
           }) }}
 
         </form>
-
-
 
       </div>
     </div>

@@ -8,37 +8,30 @@
 S1 form - Register with a GP surgery - NHS
 {% endblock %}
 
-
-
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
-  <section class="nhsuk-section">
-    <div class="nhsuk-width-container">
+
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
-
-
-
           <form action="overseas-declaration-s1" method="post" autocomplete="off">
-
 
             {{ hint({
               "text": "Registration type",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-          <h2 class="nhsuk-heading--l">S1 form</h2>
+            <h1 class="nhsuk-heading-l">S1 form</h1>
 
-          <p>If you have an S1 form you should take this into your chosen GP surgery at the earliest opportunity.</p>
-          <p>You should only need to present your S1 form once on registration, though may be asked to show it at other times.</p>
+            <p>If you have an S1 form you should take this into your chosen GP surgery at the earliest opportunity.</p>
+            <p>You should only need to present your S1 form once on registration, though may be asked to show it at other times.</p>
 
 
             {{ button({
@@ -48,5 +41,9 @@ S1 form - Register with a GP surgery - NHS
           </form>
         </div>
       </div>
-    </section>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

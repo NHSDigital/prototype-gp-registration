@@ -8,19 +8,18 @@
 Would you like to choose a pharmacy for your prescription items? - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
 
           <form action="" method="post" autocomplete="off">
             {{ hint({
@@ -31,7 +30,7 @@ Would you like to choose a pharmacy for your prescription items? - Register with
 
           {% if (data['who-is-being-registered'] == "dependant") %}
 
-          <H2>Would  {{ data ['name-first-name'] }} like to choose or change a pharmacy for their prescriptions?</H2>
+          <h1 class="nhsuk-heading-l">Would  {{ data ['name-first-name'] }} like to choose or change a pharmacy for their prescriptions?</H1>
 
             {{ radios({
               "idPrefix": "nominate-pharmacy",

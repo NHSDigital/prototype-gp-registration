@@ -8,19 +8,18 @@
 When did you stop smoking? - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
 
           <form action="do-you-smoke-amount" method="post" autocomplete="off">
 
@@ -31,7 +30,7 @@ When did you stop smoking? - Register with a GP surgery - NHS
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-            <H2>When did {{ data ['name-first-name'] }} stop smoking?</H2>
+            <h1 class="nhsuk-heading-l">When did {{ data ['name-first-name'] }} stop smoking?</H1>
 
             {{ dateInput({
               "id": "smoke-date",

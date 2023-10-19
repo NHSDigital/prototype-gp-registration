@@ -8,33 +8,28 @@
 Previous postcode - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
-
-
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
-        {{ backLink({
-          text: "Go back",
-          href: "javascript:history.go(-1)"
-        }) }}
-
         <form action="" method="post" autocomplete="off">
-
-
 
            {{ hint({
               "text": "Registration type",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Do you know the postcode {{ data ['name-first-name'] }} used when they last registered with a UK GP?</H2>
+            <h1 class="nhsuk-heading-l">Do you know the postcode {{ data ['name-first-name'] }} used when they last registered with a UK GP?</H1>
 
             <div class="nhsuk-hint" id="contact-hint">
               <p>This will be the postcode they used last time they registered with a GP surgery.
@@ -42,7 +37,7 @@ Previous postcode - Register with a GP surgery - NHS
 
             {% else %}
 
-            <H2>Do you know your postcode used when you last registered with a UK GP?</H2>
+            <h1 class="nhsuk-heading-l">Do you know your postcode used when you last registered with a UK GP?</H1>
 
             <div class="nhsuk-hint" id="contact-hint">
               <p>This will be the postcode you used last time you registered with a GP surgery.

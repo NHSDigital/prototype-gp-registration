@@ -17,22 +17,17 @@ GP Registration Prototypes
       <div class="nhsuk-grid-column-two-thirds">
 
         <div aria-live="polite" class="nhsuk-u-reading-width">
-       <div class="nhsuk-card">
-         <div class="nhsuk-card__content"><h2 class="nhsuk-card__heading">Thank you for your feedback</h2>
-           <p class="nhsuk-card__description">Your feedback was successfully submitted to the Register with a GP Surgery service. This will help us to improve our service.</p>
-         </div>
-       </div>
-
-
-
+           <div class="nhsuk-card">
+             <div class="nhsuk-card__content"><h2 class="nhsuk-card__heading">Thank you for your feedback</h2>
+               <p class="nhsuk-card__description">Your feedback was successfully submitted to the Register with a GP Surgery service. This will help us to improve our service.</p>
+             </div>
+           </div>
+        </div>
       </div>
     </div>
 
+{% endblock %}
 
-
-
-<!-- End of content -->
-
-</div>
-</div>
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

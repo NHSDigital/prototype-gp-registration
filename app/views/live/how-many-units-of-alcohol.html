@@ -8,19 +8,18 @@
 How many units of alcohol do you drink on a typical day when you are drinking? - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
 
           <form action="how-often-six-or-more-units" method="post" autocomplete="off">
 
@@ -31,7 +30,7 @@ How many units of alcohol do you drink on a typical day when you are drinking? -
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>How many units of alcohol does {{ data ['name-first-name'] }} drink on a typical day when they are drinking?</H2>
+            <h1 class="nhsuk-heading-l">How many units of alcohol does {{ data ['name-first-name'] }} drink on a typical day when they are drinking?</H1>
 
             {% call fieldset({
               legend: {

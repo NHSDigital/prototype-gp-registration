@@ -8,8 +8,12 @@
 Register with an online-only pharmacy directly - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -17,25 +21,16 @@ Register with an online-only pharmacy directly - Register with a GP surgery - NH
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
-
         <form action="are-you-a-member-of-armed-forces" method="post" autocomplete="off">
-
 
             {{ hint({
               "text": "Additional information",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-          <h2 class="nhsuk-heading--l">Register with an online-only pharmacy directly</h2>
+          <h1 class="nhsuk-heading-l">Register with an online-only pharmacy directly</h1>
 
           <p>To choose an online-only pharmacy, you must register with the pharmacy through their website or contact them directly.</p>
-
-
-
 
             {{ button({
               "text": "Continue with registration"
@@ -43,7 +38,7 @@ Register with an online-only pharmacy directly - Register with a GP surgery - NH
 
           </form>
         </div>
-       </div>
+      </div>
 
 {% endblock %}
 

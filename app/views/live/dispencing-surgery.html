@@ -8,19 +8,18 @@
 Do you want to get your prescription items direct? - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
 
           {{ hint({
             "text": "Additional information",
@@ -31,11 +30,11 @@ Do you want to get your prescription items direct? - Register with a GP surgery 
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Does {{ data ['name-first-name'] }} want to get their prescription items direct from {NAME OF SURGERY}?</H2>
+            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} want to get their prescription items direct from {NAME OF SURGERY}?</H1>
 
             {% else %}
 
-            <H2>Do you want to get your prescription items direct from {NAME OF SURGERY}?</H2>
+            <h1 class="nhsuk-heading-l">Do you want to get your prescription items direct from {NAME OF SURGERY}?</H1>
 
             {% endif %}
 

@@ -8,8 +8,12 @@
 What are the contact details? - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -17,20 +21,12 @@ What are the contact details? - Register with a GP surgery - NHS
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
-        {{ backLink({
-          text: "Go back",
-          href: "javascript:history.go(-1)"
-        }) }}
-
-
         <form action="what-schooling-do-you-have" method="post" autocomplete="off">
 
          {{ hint({
               "text": "Patient details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-
-
 
           {% if (data['contact'] == "home") %}
 
@@ -42,7 +38,7 @@ What are the contact details? - Register with a GP surgery - NHS
             </legend>
 
             <div class="nhsuk-form-group contact-home-section">
-              <label class="nhsuk-label" for="contact-prefs-1">
+              <label class="nhsuk-label" for="contact-home">
                 UK home telephone number
               </label>
               <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
@@ -59,7 +55,7 @@ What are the contact details? - Register with a GP surgery - NHS
               </legend>
 
               <div class="nhsuk-form-group contact-home-section">
-                <label class="nhsuk-label" for="contact-prefs-1">
+                <label class="nhsuk-label" for="contact-home">
                   UK home telephone number
                 </label>
                 <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
@@ -76,7 +72,7 @@ What are the contact details? - Register with a GP surgery - NHS
               </legend>
 
             <div class="nhsuk-form-group contact-home-section">
-              <label class="nhsuk-label" for="contact-prefs-2">
+              <label class="nhsuk-label" for="contact-mobile">
                 UK mobile telephone number
               </label>
               <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
@@ -93,7 +89,7 @@ What are the contact details? - Register with a GP surgery - NHS
               </legend>
 
             <div class="nhsuk-form-group contact-home-section">
-              <label class="nhsuk-label" for="contact-prefs-2">
+              <label class="nhsuk-label" for="contact-mobile">
                 UK mobile telephone number
               </label>
               <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
@@ -110,7 +106,7 @@ What are the contact details? - Register with a GP surgery - NHS
               </legend>
 
             <div class="nhsuk-form-group contact-home-section">
-              <label class="nhsuk-label" for="contact-prefs-2">
+              <label class="nhsuk-label" for="contact-email">
                 Email address
               </label>
               <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
@@ -127,7 +123,7 @@ What are the contact details? - Register with a GP surgery - NHS
               </legend>
 
             <div class="nhsuk-form-group contact-home-section">
-              <label class="nhsuk-label" for="contact-prefs-2">
+              <label class="nhsuk-label" for="contact-email">
                 Email address
               </label>
               <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
@@ -145,14 +141,14 @@ What are the contact details? - Register with a GP surgery - NHS
               </legend>
 
               <div class="nhsuk-form-group contact-home-section">
-                <label class="nhsuk-label" for="contact-prefs-1">
+                <label class="nhsuk-label" for="contact-home">
                   UK home telephone number
                 </label>
                 <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
               </div>
 
               <div class="nhsuk-form-group contact-home-section">
-                <label class="nhsuk-label" for="contact-prefs-2">
+                <label class="nhsuk-label" for="contact-mobile">
                   UK mobile telephone number
                 </label>
                 <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
@@ -169,14 +165,14 @@ What are the contact details? - Register with a GP surgery - NHS
                 </legend>
 
                 <div class="nhsuk-form-group contact-home-section">
-                  <label class="nhsuk-label" for="contact-prefs-1">
+                  <label class="nhsuk-label" for="contact-home">
                     UK home telephone number
                   </label>
                   <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
                 </div>
 
                 <div class="nhsuk-form-group contact-home-section">
-                  <label class="nhsuk-label" for="contact-prefs-2">
+                  <label class="nhsuk-label" for="contact-mobile">
                     UK mobile telephone number
                   </label>
                   <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
@@ -193,18 +189,20 @@ What are the contact details? - Register with a GP surgery - NHS
                 </legend>
 
                 <div class="nhsuk-form-group contact-home-section">
-                  <label class="nhsuk-label" for="contact-prefs-1">
+                  <label class="nhsuk-label" for="contact-home">
                     UK home telephone number
                   </label>
                   <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
                 </div>
 
                 <div class="nhsuk-form-group contact-home-section">
-                  <label class="nhsuk-label" for="contact-prefs-2">
+                  <label class="nhsuk-label" for="contact-email">
                     Email address
                   </label>
                   <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
                 </div>
+
+              </fieldset>
 
 
 
@@ -218,18 +216,20 @@ What are the contact details? - Register with a GP surgery - NHS
                   </legend>
 
                   <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-prefs-1">
+                    <label class="nhsuk-label" for="contact-home">
                       UK home telephone number
                     </label>
                     <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
                   </div>
 
                   <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-prefs-2">
+                    <label class="nhsuk-label" for="contact-email">
                       Email address
                     </label>
                     <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
                   </div>
+
+                </fieldset>
 
 
                 {% elif (data['contact'] == "phone,email")  %}
@@ -242,19 +242,20 @@ What are the contact details? - Register with a GP surgery - NHS
                   </legend>
 
                   <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-prefs-2">
+                    <label class="nhsuk-label" for="contact-mobile">
                       UK mobile telephone number
                     </label>
                     <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
                   </div>
 
                   <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-prefs-2">
+                    <label class="nhsuk-label" for="contact-email">
                       Email address
                     </label>
                     <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
                   </div>
 
+                </fieldset>
 
                   {% elif (data['contact'] == "phone,email,post")  %}
 
@@ -266,18 +267,20 @@ What are the contact details? - Register with a GP surgery - NHS
                     </legend>
 
                     <div class="nhsuk-form-group contact-home-section">
-                      <label class="nhsuk-label" for="contact-prefs-2">
+                      <label class="nhsuk-label" for="contact-mobile">
                         UK mobile telephone number
                       </label>
                       <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
                     </div>
 
                     <div class="nhsuk-form-group contact-home-section">
-                      <label class="nhsuk-label" for="contact-prefs-2">
+                      <label class="nhsuk-label" for="contact-email">
                         Email address
                       </label>
                       <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
                     </div>
+
+                  </fieldset>
 
 
               {% elif (data['contact'] == "home,phone,email")  %}
@@ -290,25 +293,27 @@ What are the contact details? - Register with a GP surgery - NHS
                 </legend>
 
                 <div class="nhsuk-form-group contact-home-section">
-                  <label class="nhsuk-label" for="contact-prefs-1">
+                  <label class="nhsuk-label" for="contact-home">
                     UK home telephone number
                   </label>
                   <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
                 </div>
 
                 <div class="nhsuk-form-group contact-home-section">
-                  <label class="nhsuk-label" for="contact-prefs-2">
+                  <label class="nhsuk-label" for="contact-mobile">
                     UK mobile telephone number
                   </label>
                   <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
                 </div>
 
                 <div class="nhsuk-form-group contact-home-section">
-                  <label class="nhsuk-label" for="contact-prefs-2">
+                  <label class="nhsuk-label" for="contact-email">
                     Email address
                   </label>
                   <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
                 </div>
+
+              </fieldset>
 
 
                   {% elif (data['contact'] == "home,phone,email,post")  %}
@@ -322,29 +327,29 @@ What are the contact details? - Register with a GP surgery - NHS
 
 
                     <div class="nhsuk-form-group contact-home-section">
-                      <label class="nhsuk-label" for="contact-prefs-1">
+                      <label class="nhsuk-label" for="contact-home">
                         UK home telephone number
                       </label>
                       <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
                     </div>
 
                     <div class="nhsuk-form-group contact-home-section">
-                      <label class="nhsuk-label" for="contact-prefs-2">
+                      <label class="nhsuk-label" for="contact-mobile">
                         UK mobile telephone number
                       </label>
                       <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
                     </div>
 
                     <div class="nhsuk-form-group contact-home-section">
-                      <label class="nhsuk-label" for="contact-prefs-2">
+                      <label class="nhsuk-label" for="contact-email">
                         Email address
                       </label>
                       <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
                     </div>
 
+                  </fieldset>
 
                     {% else %}
-
 
                       {% call fieldset({
                         legend: {
@@ -379,10 +384,7 @@ What are the contact details? - Register with a GP surgery - NHS
 
                       {% endcall %}
 
-
-
             {% endif %}
-
 
           <button class="nhsuk-button" type="submit">
             Continue
@@ -390,17 +392,11 @@ What are the contact details? - Register with a GP surgery - NHS
 
         </form>
 
-
       </div>
     </div>
 
-
-<!-- End of content -->
-
-</div>
-</div>
-
-{% block pageScripts %}
-
 {% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

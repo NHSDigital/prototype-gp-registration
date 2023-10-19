@@ -8,8 +8,12 @@
 Check chosen pharmacy details - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -17,18 +21,13 @@ Check chosen pharmacy details - Register with a GP surgery - NHS
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
-
           <form action="are-you-a-member-of-armed-forces" method="post" autocomplete="off">
             {{ hint({
               "text": "Additional information",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-            <H2>Check chosen pharmacy details</H2>
+            <h1 class="nhsuk-heading-l">Check chosen pharmacy details</H1>
 
             <p>Prescriptions will be sent to this pharmacy only after registration has been confirmed by the new GP surgery. You will then be able get your prescription items like medicines and medical appliances from this pharmacy.</p>
 

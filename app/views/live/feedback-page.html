@@ -1,56 +1,22 @@
-<!-- Use this page as the index for your project -->
-
-<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-
-<!-- Extends the layout from /views/layout.html -->
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
 
 {% extends 'layout.html' %}
-<!--
-  In /views/layout.html you can:
-    - change the header and footer
-    - add custom CSS and JavaScript
--->
 
-
-<!-- Set the page title -->
 {% block pageTitle %}
 GP Registration Prototypes
 {% endblock %}
 
-<!-- For adding a breadcrumb -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
-{% block beforeContent %}
-{% endblock %}
-
-<!-- For adding a Go back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
-{% block outerContent %}
-
-
-{% endblock %}
-
-<!-- For adding page content -->
-<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
-<section class="nhsuk-section">
-  <div class="nhsuk-width-container">
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
-
-
         <form action="feedback-confirmation" method="post" autocomplete="off">
 
-          <h1>
-            Provide feedback to improve the service
-          </h1>
+          <h1 class="nhsuk-heading-l">Provide feedback to improve the service</h1>
 
-          <!-- Add content here -->
-          <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
           <p class="nhsuk-lede-text">
             Your feedback can help us improve the digital GP registration service.
           </p>
@@ -75,19 +41,17 @@ GP Registration Prototypes
 
           {% from 'textarea/macro.njk' import textarea %}
 
-  {{ textarea({
-    "name": "example-longer",
-    "id": "example-longer",
-    "rows": "10",
-    "label": {
-        "text": "Describe what happened on the page"
-    },
-    "hint": {
-        "text": "Do not include confidential or medical information in your message. For example, your NHS number, date of birth, medical diagnosis or medical history."
-    }
-  }) }}
-
-
+            {{ textarea({
+              "name": "example-longer",
+              "id": "example-longer",
+              "rows": "10",
+              "label": {
+                  "text": "Describe what happened on the page"
+              },
+              "hint": {
+                  "text": "Do not include confidential or medical information in your message. For example, your NHS number, date of birth, medical diagnosis or medical history."
+              }
+            }) }}
 
 
           {{ button({
@@ -96,18 +60,11 @@ GP Registration Prototypes
 
         </form>
 
-
-
       </div>
     </div>
-  </div>
-</section>
 
+{% endblock %}
 
-
-
-<!-- End of content -->
-
-</div>
-</div>
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

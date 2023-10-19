@@ -8,19 +8,18 @@
 What is your sex as recorded on your NHS record? - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
 
           <form action="where-were-you-born" method="post" autocomplete="off">
             {{ hint({
@@ -30,7 +29,7 @@ What is your sex as recorded on your NHS record? - Register with a GP surgery - 
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-              <H2>What is {{ data ['name-first-name'] }}'s' sex as recorded on their NHS record?</H2>
+              <h1 class="nhsuk-heading-l">What is {{ data ['name-first-name'] }}'s' sex as recorded on their NHS record?</H1>
 
 
             {{ radios({

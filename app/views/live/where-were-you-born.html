@@ -8,18 +8,18 @@
 Select place of birth - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
-
-        {{ backLink({
-          text: "Go back",
-          href: "javascript:history.go(-1)"
-        }) }}
 
         <form action="where-were-you-born-place-uk" method="post" autocomplete="off">
 
@@ -31,7 +31,7 @@ Select place of birth - Register with a GP surgery - NHS
 
           {% if (data['who-is-being-registered'] == "dependant") %}
 
-          <H2>Where was {{ data ['name-first-name'] }} born?</H2>
+          <h1 class="nhsuk-heading-l">Where was {{ data ['name-first-name'] }} born?</H1>
 
           {% call fieldset({
             legend: {
@@ -102,7 +102,7 @@ Select place of birth - Register with a GP surgery - NHS
           {% endcall %}
           {% else %}
 
-          <H2>Where were you born?</H2>
+          <h1 class="nhsuk-heading-l">Where were you born?</H1>
 
           {% call fieldset({
             legend: {
@@ -173,16 +173,11 @@ Select place of birth - Register with a GP surgery - NHS
           {% endcall %}
           {% endif %}
 
-
-
-
           {{ button({
             "text": "Continue"
           }) }}
 
         </form>
-
-
 
       </div>
     </div>

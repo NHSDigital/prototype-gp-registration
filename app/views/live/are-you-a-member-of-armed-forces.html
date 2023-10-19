@@ -8,19 +8,18 @@
 Have you ever been a member of the UK armed forces - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
 
           <form action="" method="post" autocomplete="off">
 
@@ -32,11 +31,11 @@ Have you ever been a member of the UK armed forces - Register with a GP surgery 
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Is {{ data ['name-first-name'] }} registered with the Defence Medical Services?</H2>
+            <h1 class="nhsuk-heading-l">Is {{ data ['name-first-name'] }} registered with the Defence Medical Services?</H1>
 
             {% else %}
 
-            <H2>Are you registered with the Defence Medical Services?</H2>
+            <h1 class="nhsuk-heading-l">Are you registered with the Defence Medical Services?</H1>
 
             {% endif %}
             <div class="nhsuk-hint" id="contact-hint">
@@ -87,7 +86,7 @@ Have you ever been a member of the UK armed forces - Register with a GP surgery 
 
           </form>
         </div>
-       </div>
+      </div>
 
 {% endblock %}
 

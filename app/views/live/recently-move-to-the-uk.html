@@ -8,20 +8,18 @@
 Have you recently moved to the UK from another country? - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
+{% block outerContent %}
+  {{ backLink({
+  "href": "javascript:history.go(-1)",
+  "text": "Go back",
+  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
-<section class="nhsuk-section">
-  <div class="nhsuk-width-container">
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
-
-        {{ backLink({
-          text: "Go back",
-          href: "javascript:history.go(-1)"
-        }) }}
 
         <form action="" method="post" autocomplete="off">
 
@@ -32,7 +30,7 @@ Have you recently moved to the UK from another country? - Register with a GP sur
 
           {% if ((data['who-is-being-registered'] == "dependant") and (data['registering-first-time'] == "Yes"))  %}
 
-          <H2>Has {{ data ['name-first-name'] }} recently moved to the UK from another country?</H2>
+          <h1 class="nhsuk-heading-l">Has {{ data ['name-first-name'] }} recently moved to the UK from another country?</H1>
 
           <div class="nhsuk-hint" id="contact-hint">
             <p>Anybody in England can register with a GP surgery and receive free primary medical care. To get free secondary NHS healthcare in England, such as a referral to hospital, you need to be "ordinarily resident" in the UK. This may require you to have indefinite leave to remain in the UK or status under the EU Settlement Scheme.</p>
@@ -136,20 +134,11 @@ Have you recently moved to the UK from another country? - Register with a GP sur
 
         </form>
 
-
-
-
-
       </div>
     </div>
-  </div>
-</section>
 
+{% endblock %}
 
-
-
-<!-- End of content -->
-
-</div>
-</div>
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

@@ -8,19 +8,18 @@
 Summary Care Record - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
-
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
-
-        {{ backLink({
-          text: "Go back",
-          href: "javascript:history.go(-1)"
-        }) }}
 
         <form action="check-answers-b" method="post" autocomplete="off">
 
@@ -29,7 +28,7 @@ Summary Care Record - Register with a GP surgery - NHS
              "classes": "nhsuk-u-margin-bottom-2"
            }) }}
 
-          <H2>Summary Care Record (SCR)</H2>
+          <h1 class="nhsuk-heading-l">Summary Care Record (SCR)</h1>
 
           {% call fieldset({
             legend: {
@@ -72,19 +71,16 @@ Summary Care Record - Register with a GP surgery - NHS
           <p>It is not compulsory for you to select any of these options. If you choose not to then your SCR consent preference held at your previous GP surgery will be transferred to your new GP surgery.</p>
         </div>
 
-
-
-
-
-
           {{ button({
             "text": "Continue"
           }) }}
 
         </form>
 
-
-
       </div>
     </div>
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

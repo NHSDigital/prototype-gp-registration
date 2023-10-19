@@ -5,24 +5,21 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is your previous UK address? - Register with a GP surgery - NHS
+What was your previous UK address? - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
-  <section class="nhsuk-section">
-    <div class="nhsuk-width-container">
+
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
-
 
           <form action="check-answers-2" method="post" autocomplete="off">
 
@@ -31,11 +28,11 @@ What is your previous UK address? - Register with a GP surgery - NHS
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-
               {% call fieldset({
                 legend: {
-                  "text": "What is your previous UK address?",
-                  "classes": "nhsuk-fieldset__legend--m"
+                  "text": "What was your previous UK address?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": true
                 }
               }) %}
 
@@ -77,28 +74,18 @@ What is your previous UK address? - Register with a GP surgery - NHS
                   value: data['previous-address-postcode']
               }) }}
 
-
-
               {% endcall %}
-
 
               {{ button({
                 "text": "Continue"
               }) }}
 
-
-
-
           </form>
         </div>
       </div>
-    </section>
 
-    <!-- End of content -->
-
-  </div>
-</div>
-{% block pageScripts %}
 {% endblock %}
 
+{% block footer %}
+{% include 'live/includes/footer.html' %}
 {% endblock %}

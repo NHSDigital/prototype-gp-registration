@@ -10,16 +10,14 @@
 {% block pageTitle %}
 This address is outside the area for this GP surgery - Register with a GP surgery - NHS
 {% endblock %}
-
+  {{ backLink({
+    text: "Go back",
+    href: "javascript:history.go(-1)"
+  }) }}
 {% block content %}
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
-
-    {{ backLink({
-      text: "Go back",
-      href: "javascript:history.go(-1)"
-    }) }}
 
     <form action="" method="post" autocomplete="off">
 

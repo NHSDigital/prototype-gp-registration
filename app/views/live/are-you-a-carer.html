@@ -8,19 +8,18 @@
   GP Registration Prototypes
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
 
           <form action="" method="post" autocomplete="off">
 
@@ -31,11 +30,11 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Is {{ data ['name-first-name'] }} a carer?</H2>
+            <h1 class="nhsuk-heading-l">Is {{ data ['name-first-name'] }} a carer?</H1>
 
             {% else %}
 
-            <H2>Are you a carer?</H2>
+            <h1 class="nhsuk-heading-l">Are you a carer?</H1>
 
             {% endif %}
 

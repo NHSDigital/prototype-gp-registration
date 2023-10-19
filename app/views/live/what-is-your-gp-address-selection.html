@@ -8,21 +8,20 @@
 Select your current GP surgery you want to leave - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
-  <section class="nhsuk-section">
-    <div class="nhsuk-width-container">
+
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
-
+          <!-- TODO make this better -->
           {% if (data['user-auth'] == "p9") %}
           <form action="are-you-returning-from-overseas" method="post" autocomplete="off">
           {% elif (data['user-auth'] == "p5") %}
@@ -201,10 +200,13 @@ Select your current GP surgery you want to leave - Register with a GP surgery - 
                   "text": "Continue"
               }) }}
 
-    <!-- End of content -->
+          </form>
 
-  </div>
-</div>
+      </div>
+    </div>
 
+{% endblock %}
 
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

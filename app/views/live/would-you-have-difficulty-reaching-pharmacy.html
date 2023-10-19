@@ -8,19 +8,18 @@
 Would you have serious difficulty travelling to your nearest pharmacy to get medicines or medical appliances? - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
 
           {{ hint({
             "text": "Registration type",
@@ -31,11 +30,11 @@ Would you have serious difficulty travelling to your nearest pharmacy to get med
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Would {{ data ['name-first-name'] }} have serious difficulty travelling to their nearest pharmacy to get medicines or medical appliances?</H2>
+            <h1 class="nhsuk-heading-l">Would {{ data ['name-first-name'] }} have serious difficulty travelling to their nearest pharmacy to get medicines or medical appliances?</H1>
 
             {% else %}
 
-            <H2>Would you have serious difficulty travelling to your nearest pharmacy to get medicines or medical appliances?</H2>
+            <h1 class="nhsuk-heading-l">Would you have serious difficulty travelling to your nearest pharmacy to get medicines or medical appliances?</H1>
 
             {% endif %}
 

@@ -8,19 +8,18 @@
 How often do you drink alcohol or have a drink containing alcohol? - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
 
           <form action="how-many-units-of-alcohol" method="post" autocomplete="off">
 
@@ -31,7 +30,7 @@ How often do you drink alcohol or have a drink containing alcohol? - Register wi
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>How often does {{ data ['name-first-name'] }} drink alcohol or have a drink containing alcohol?</H2>
+            <h1 class="nhsuk-heading-l">How often does {{ data ['name-first-name'] }} drink alcohol or have a drink containing alcohol?</H1>
 
             {{ radios({
               "idPrefix": "alcohol-consumption",

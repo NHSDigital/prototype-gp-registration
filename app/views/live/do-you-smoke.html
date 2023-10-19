@@ -8,19 +8,18 @@
   GP Registration Prototypes
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
 
 
 
@@ -33,7 +32,7 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2>Has {{ data ['name-first-name'] }} ever smoked?</H2>
+            <h1 class="nhsuk-heading-l">Has {{ data ['name-first-name'] }} ever smoked?</H1>
 
             {{ radios({
               "idPrefix": "smokes",

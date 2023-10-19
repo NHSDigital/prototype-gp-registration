@@ -8,25 +8,18 @@
 What is your ethnic group? - Register with a GP surgery - NHS
 {% endblock %}
 
-<!-- For adding a breadcrumb -->
-<!-- Code examples can be found at https:/service-manual.nhs.uk/design-system/components/breadcrumbs -->
-{% block beforeContent %}{% endblock %}
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
 
-<!-- For adding a Go back link -->
-<!-- Code examples can be found at https:/service-manual.nhs.uk/design-system/components/Go back-link -->
-
-
-<!-- For adding page content -->
-<!-- Page layout code can be found at https:/service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
 
           <form action="" method="post" autocomplete="off">
             {{ hint({
@@ -36,8 +29,7 @@ What is your ethnic group? - Register with a GP surgery - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <H2> What is {{ data ['name-first-name'] }}'s ethnic group?</H2>
-
+            <h1 class="nhsuk-heading-l"> What is {{ data ['name-first-name'] }}'s ethnic group?</h1>
 
             {{ radios({
               "idPrefix": "ethnicity",
@@ -57,7 +49,7 @@ What is your ethnic group? - Register with a GP surgery - NHS
                   "hint": {
                     "text": "Includes any Asian background, for example, Bangladeshi, Chinese, Indian, Pakistani"
                   },
-                  checked: checked("ethnicity", "Asian or Asian British")
+                  "checked": checked("ethnicity", "Asian or Asian British")
                 },
                 {
                   "value": "Black African, Black British or Caribbean~/live/what-is-your-ethnicity-background-black",
@@ -65,7 +57,7 @@ What is your ethnic group? - Register with a GP surgery - NHS
                   "hint": {
                     "text": "Includes any Black background"
                   },
-                  checked: checked("ethnicity", "Black African, Black British or Caribbean")
+                  "checked": checked("ethnicity", "Black African, Black British or Caribbean")
                 },
                 {
                   "value": "Mixed or multiple ethnic groups~/live/what-is-your-ethnicity-background-mixed",
@@ -73,7 +65,7 @@ What is your ethnic group? - Register with a GP surgery - NHS
                   "hint": {
                     "text": "Includes any Mixed background"
                   },
-                  checked: checked("ethnicity", "Mixed or multiple ethnic groups")
+                  "checked": checked("ethnicity", "Mixed or multiple ethnic groups")
                 },
                 {
                   "value": "White~/live/what-is-your-ethnicity-background-white",
@@ -81,7 +73,7 @@ What is your ethnic group? - Register with a GP surgery - NHS
                   "hint": {
                     "text": "Includes any White background"
                   },
-                  checked: checked("ethnicity", "White")
+                  "checked": checked("ethnicity", "White")
                 },
                 {
                   "value": "Another ethnic group~/live/what-is-your-ethnicity-background-another",
@@ -89,7 +81,7 @@ What is your ethnic group? - Register with a GP surgery - NHS
                   "hint": {
                     "text": "Includes any other ethnic background, for example, Arab"
                   },
-                  checked: checked("ethnicity", "Another ethnic group")
+                  "checked": checked("ethnicity", "Another ethnic group")
                 },
                 {
                   "divider": "or"
@@ -97,7 +89,7 @@ What is your ethnic group? - Register with a GP surgery - NHS
                 {
                   "value": "Prefer not to say~/live/do-you-current-address",
                   "text": "Prefer not to say",
-                  checked: checked("ethnicity", "Prefer not to say")
+                  "checked": checked("ethnicity", "Prefer not to say")
                 }
               ]
             }) }}
@@ -128,7 +120,7 @@ What is your ethnic group? - Register with a GP surgery - NHS
                   "hint": {
                     "text": "Includes any Asian background, for example, Bangladeshi, Chinese, Indian, Pakistani"
                   },
-                  checked: checked("ethnicity", "Asian or Asian British")
+                  "checked": checked("ethnicity", "Asian or Asian British")
                 },
                 {
                   "value": "Black African, Black British or Caribbean~/live/what-is-your-ethnicity-background-black",
@@ -136,7 +128,7 @@ What is your ethnic group? - Register with a GP surgery - NHS
                   "hint": {
                     "text": "Includes any Black background"
                   },
-                  checked: checked("ethnicity", "Black African, Black British or Caribbean")
+                  "checked": checked("ethnicity", "Black African, Black British or Caribbean")
                 },
                 {
                   "value": "Mixed or multiple ethnic groups~/live/what-is-your-ethnicity-background-mixed",
@@ -144,7 +136,7 @@ What is your ethnic group? - Register with a GP surgery - NHS
                   "hint": {
                     "text": "Includes any Mixed background"
                   },
-                  checked: checked("ethnicity", "Mixed or multiple ethnic groups")
+                  "checked": checked("ethnicity", "Mixed or multiple ethnic groups")
                 },
                 {
                   "value": "White~/live/what-is-your-ethnicity-background-white",
@@ -152,7 +144,7 @@ What is your ethnic group? - Register with a GP surgery - NHS
                   "hint": {
                     "text": "Includes any White background"
                   },
-                  checked: checked("ethnicity", "White")
+                  "checked": checked("ethnicity", "White")
                 },
                 {
                   "value": "Another ethnic group~/live/what-is-your-ethnicity-background-another",
@@ -160,7 +152,7 @@ What is your ethnic group? - Register with a GP surgery - NHS
                   "hint": {
                     "text": "Includes any other ethnic background, for example, Arab"
                   },
-                  checked: checked("ethnicity", "Another ethnic group")
+                  "checked": checked("ethnicity", "Another ethnic group")
                 },
                 {
                   "divider": "or"
@@ -168,7 +160,7 @@ What is your ethnic group? - Register with a GP surgery - NHS
                 {
                   "value": "Prefer not to say~/live/do-you-current-address",
                   "text": "Prefer not to say",
-                  checked: checked("ethnicity", "Prefer not to say")
+                  "checked": checked("ethnicity", "Prefer not to say")
                 }
               ]
             }) }}
@@ -178,9 +170,7 @@ What is your ethnic group? - Register with a GP surgery - NHS
               "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of ethnicity.</p>"
             }) }}
 
-
             {% endif %}
-
 
             {{ button({
               "text": "Continue"

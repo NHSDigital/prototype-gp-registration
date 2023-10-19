@@ -5,10 +5,15 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Sign in with NHS login - Register with a GP surgery - NHS
+  Sign in with NHS login - Register with a GP surgery - NHS
 {% endblock %}
 
-{% block beforeContent %}
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -16,17 +21,9 @@ Sign in with NHS login - Register with a GP surgery - NHS
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
-        {{ backLink({
-          text: "Go back",
-          href: "javascript:history.go(-1)"
-        }) }}
-
-
           <h2 class="nhsuk-heading-l">Would you like to sign in with NHS login?</h2>
 
-
             <p>We found an NHS login linked to <strong>{{ data['contact-email'] }}</strong></p>
-
 
             <div class="nhsuk-hint" id="contact-hint">
           <p>This is the quickest way to complete your registration.</p>
