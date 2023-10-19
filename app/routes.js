@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const radioButtonRedirect = require('radio-button-redirect')
 const moment=require('moment')
+moment.locale("en-gb")
 router.use(radioButtonRedirect)
 
 // Add your routes here - above the module.exports line
@@ -19,6 +20,8 @@ router.use((req, res, next) => {
   }
   next()
 })
+
+require("./views/live/routes.js")(router);
 
 // Who is registering branch
 router.post('*/who-is-registering-answer/', function (req, res) {
@@ -550,5 +553,26 @@ router.get('/gp/gp-branch', function (req, res) {
     'modal': modal
   })
 })
+
+// Dev Mode - Used to show routing by scenario other than user driven
+
+function devModeRoute(req, res, next) {
+  if (!req.session.data["devMode"]) {
+    console.log("no data found");
+    var devMode = req.query.devMode;
+    if (devMode === "true") {
+      console.log("devmode detected");
+      req.session.data["devMode"] = "true";
+      console.log("local storage updated");
+    } else {
+      console.log("devmode not detected");
+    }
+  } else {
+    console.log("data found and set to " + req.session.data["devMode"]);
+  }
+  next();
+}
+
+router.get("/*", devModeRoute);
 
 module.exports = router;
