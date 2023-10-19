@@ -1,0 +1,148 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Registering for the first time - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+          text: "Go back",
+          href: "javascript:history.go(-1)"
+        }) }}
+
+        <form action="" method="post" autocomplete="off">
+
+          {% if (data['who-is-being-registered'] == "dependant") %}
+
+           {{ hint({
+              "text": "Registration type",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            <h2> Is {{ data ['name-first-name'] }} registering with a UK GP for the first time?</h2>
+
+            <div class="nhsuk-hint" id="contact-hint">
+            <p>A GP is your first point of contact for health problems.
+          </div>
+
+            {% else %}
+
+          {{ hint({
+              "text": "Registration type",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+           <h2> Are you registering with a UK GP for the first time?</h2>
+            <div class="nhsuk-hint" id="contact-hint">
+            <p>A GP is your first point of contact for health problems.
+          </div>
+
+        {% endif %}
+
+
+        {% if (data['user-auth'] == "p9") %}
+
+          {% call fieldset({
+            legend: {
+              text: "",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+
+          {{ radios({
+            "idPrefix": "registering-first-time",
+            "name": "registering-first-time",
+            "items": [
+              {
+                "value": "Yes~/live/recently-move-to-the-uk",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("registering-first-time", "Yes")
+              },
+              {
+                "value": "No~/live/is-this-your-gp",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("registering-first-time", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+
+          {% else %}
+
+          {% call fieldset({
+            legend: {
+              text: "",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+
+          {{ radios({
+            "idPrefix": "registering-first-time",
+            "name": "registering-first-time",
+            "items": [
+              {
+                "value": "Yes~/live/recently-move-to-the-uk",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("registering-first-time", "Yes")
+              },
+              {
+                "value": "No~/live/what-is-your-gp-address",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("registering-first-time", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {% endif %}
+
+
+
+
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+
+
+      </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

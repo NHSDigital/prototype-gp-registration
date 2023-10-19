@@ -1,0 +1,109 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you need a language interpreter for your GP appointments? - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="" method="post" autocomplete="off">
+
+
+            {{ hint({
+              "text": "Additional information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Does {{ data ['name-first-name'] }}'s need a language interpreter for their GP appointments?</H2>
+
+            {{ radios({
+              "idPrefix": "interpreter",
+              "name": "interpreter",
+              "fieldset": {
+                "legend": {
+                  "text": "",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "The GP surgery might arrange an interpreter for appointments in person or over the phone or video call."
+              },
+              "items": [
+                {
+                  "value": "Yes~/live/do-you-need-a-interpreter-language",
+                  "text": "Yes",
+                  checked: checked("interpreter", "Yes")
+                },
+                {
+                  "value": "No~/live/do-you-have-a-carer",
+                  "text": "No",
+                  checked: checked("interpreter", "no")
+                }
+              ]
+            }) }}
+
+            {% else %}
+
+
+            {{ radios({
+              "idPrefix": "interpreter",
+              "name": "interpreter",
+              "fieldset": {
+                "legend": {
+                  "text": "Do you need a language interpreter for your GP appointments?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "The GP surgery might arrange an interpreter for appointments in person or over the phone or video call."
+              },
+              "items": [
+                {
+                  "value": "Yes~/live/do-you-need-a-interpreter-language",
+                  "text": "Yes",
+                  checked: checked("interpreter", "Yes")
+                },
+                {
+                  "value": "No~/live/do-you-have-a-carer",
+                  "text": "No",
+                  checked: checked("interpreter", "no")
+                }
+              ]
+            }) }}
+
+            {% endif %}
+
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

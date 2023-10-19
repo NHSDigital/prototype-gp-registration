@@ -1,0 +1,104 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your previous UK address? - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+
+          <form action="check-answers-2" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Registration type",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+
+              {% call fieldset({
+                legend: {
+                  "text": "What is your previous UK address?",
+                  "classes": "nhsuk-fieldset__legend--m"
+                }
+              }) %}
+
+              {{ input({
+                label: {
+                  "text": "Address line 1"
+                },
+                "id": "previous-address-line-1",
+                "name": "previous-address-line-1",
+                value: data['previous-address-line-1']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Address line 2"
+                },
+                "id": "previous-address-line-2",
+                "name": "previous-address-line-2",
+                value: data['previous-address-line-2']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Town or city"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "previous-address-town",
+                "name": "previous-address-town",
+                value: data['previous-address-town']
+              }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "previous-address-postcode",
+                  "name": "previous-address-postcode",
+                  value: data['previous-address-postcode']
+              }) }}
+
+
+
+              {% endcall %}
+
+
+              {{ button({
+                "text": "Continue"
+              }) }}
+
+
+
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% block pageScripts %}
+{% endblock %}
+
+{% endblock %}

@@ -1,0 +1,134 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your sex as recorded on your NHS record? - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="where-were-you-born" method="post" autocomplete="off">
+            {{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+              <H2>What is {{ data ['name-first-name'] }}'s' sex as recorded on their NHS record?</H2>
+
+
+            {{ radios({
+              "idPrefix": "gender",
+              "name": "gender",
+              "fieldset": {
+                "legend": {
+                  "text": "",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+
+              "items": [
+              {
+                "value": "Female",
+                "text": "Female",
+                checked: checked("gender", "female")
+              },
+              {
+                "value": "Intersex",
+                "text": "Intersex",
+                checked: checked("gender", "Intersex")
+              },
+              {
+                "value": "Male",
+                "text": "Male",
+                checked: checked("gender", "Male")
+              },
+              {
+                "value": "Not specified or known",
+                "text": "Not specified or known",
+                checked: checked("gender", "Not specified or known")
+              }
+              ]
+            }) }}
+
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>This information will be used to match them to their healthcare record.</p>"
+            }) }}
+
+            {% else %}
+
+
+
+            {{ radios({
+              "idPrefix": "gender",
+              "name": "gender",
+              "fieldset": {
+                "legend": {
+                  "text": "What is your sex as recorded on your NHS record?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+
+              "items": [
+                {
+                  "value": "Female",
+                  "text": "Female",
+                  checked: checked("gender", "female")
+                },
+                {
+                  "value": "Intersex",
+                  "text": "Intersex",
+                  checked: checked("gender", "Intersex")
+                },
+                {
+                  "value": "Male",
+                  "text": "Male",
+                  checked: checked("gender", "Male")
+                },
+                {
+                  "value": "Not specified or known",
+                  "text": "Not specified or known",
+                  checked: checked("gender", "Not specified or known")
+                }
+              ]
+            }) }}
+
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>This information will be used to match you to your healthcare record.</p>"
+            }) }}
+
+            {% endif %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

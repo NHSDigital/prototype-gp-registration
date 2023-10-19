@@ -1,0 +1,103 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you need reasonable adjustments? - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="" method="post" autocomplete="off">
+            {{ hint({
+              "text": "Additional information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Does {{ data ['name-first-name'] }} or their carer need any reasonable adjustments to make their visit to the GP surgery accessible?</H2>
+
+            {% elif (data['need-carer'] == "Yes") %}
+
+            <H2>Do you or your carer need any reasonable adjustments to make your visit to the GP surgery accessible?</H2>
+
+            {% else %}
+
+            <H2>Do you need any reasonable adjustments to make your visit to the GP surgery accessible?</H2>
+
+            {% endif %}
+
+            {% call fieldset({
+          legend: {
+            text: "",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <div class="nhsuk-hint" id="contact-hint">
+          <p>For example, an audible or visual alert in the waiting room, access to a hearing loop or the support of a note taker.</p>
+        </div>
+
+        {{ radios({
+          "idPrefix": "reasonable-adjustments",
+          "name": "reasonable-adjustments",
+          "items": [
+            {
+              "value": "Yes~/live/do-you-need-reasonable-adjustments-details",
+              "text": "Yes",
+              checked: checked("reasonable-adjustments", "Yes")
+            },
+            {
+              "value": "No~/live/dispencing-surgery",
+              "text": "No",
+              checked: checked("reasonable-adjustments", "No")
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "Prefer not to say~/live/do-you-need-reasonable-adjustments",
+              "text": "Prefer not to say",
+              checked: checked("accessible-needs", "Prefer not to say")
+            }
+          ]
+        }) }}
+
+        {% endcall %}
+
+
+
+
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% block pageScripts %}
+<script></script>
+{% endblock %}
+{% endblock %}

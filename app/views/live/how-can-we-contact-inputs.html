@@ -1,0 +1,116 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What are your contact details? - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+          text: "Go back",
+          href: "javascript:history.go(-1)"
+        }) }}
+
+
+        <form action="do-you-have-emergency-contact" method="post" autocomplete="off">
+
+         {{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+
+            <!-- NHS Login p9 -->
+
+            {% if (data['use-contacts-login'] == "Yes")  %}
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-fieldset__heading">
+                  What are your contact details?
+                </h1>
+              </legend>
+
+              <div class="nhsuk-hint" id="contact-hint">
+              <p>The NHS and your GP surgery can use these details to call, text or email you about health care services. All phone numbers must be registered in the UK.
+            </div>
+
+
+              <div class="nhsuk-form-group contact-home-section">
+                <label class="nhsuk-label" for="contact-prefs-1">
+                  Mobile telephone number (optional)
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
+              </div>
+
+
+          {% else %}
+
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                What are your contact details?
+              </h1>
+            </legend>
+
+            <div class="nhsuk-hint" id="contact-hint">
+            <p>The NHS and your GP surgery can use these details to call, text or email you about health care services. All phone numbers must be registered in the UK.
+          </div>
+
+            <div class="nhsuk-form-group contact-home-section">
+              <label class="nhsuk-label" for="contact-prefs-1">
+                Home telephone number (optional)
+              </label>
+              <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
+            </div>
+
+
+            <div class="nhsuk-form-group contact-home-section">
+              <label class="nhsuk-label" for="contact-prefs-2">
+                Mobile telephone number (optional)
+              </label>
+              <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
+            </div>
+
+
+            <!-- <div class="nhsuk-form-group contact-home-section">
+              <label class="nhsuk-label" for="contact-prefs-2">
+                Email (optional)
+              </label>
+              <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
+            </div> -->
+
+
+            {% endif %}
+
+
+          <button class="nhsuk-button" type="submit">
+            Continue
+          </button>
+
+        </form>
+
+
+      </div>
+    </div>
+
+<!-- End of content -->
+
+</div>
+</div>
+
+{% block pageScripts %}
+
+{% endblock %}
+{% endblock %}

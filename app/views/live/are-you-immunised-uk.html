@@ -1,0 +1,130 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="do-you-have-existing-conditions" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Health information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <h2>Did {{ data ['name-first-name'] }} get all their routine vaccinations in the UK?</h2>
+
+            {% call fieldset({
+              legend: {
+                text: "",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+
+
+
+
+            {{ radios({
+              "idPrefix": "are-you-immunised-uk",
+              "name": "are-you-immunised-uk",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: checked("are-you-immunised-uk", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("are-you-immunised-uk", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "I don't know",
+                  "text": "I don't know",
+                  checked: checked("are-you-immunised-uk", "I don't know")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+            {% else %}
+
+
+            {% call fieldset({
+              legend: {
+                text: "Did you get your routine vaccinations in the UK?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+
+
+
+
+
+            {{ radios({
+              "idPrefix": "are-you-immunised-uk",
+              "name": "are-you-immunised-uk",
+              "items": [
+                {
+                   "value": "Yes",
+                  "text": "Yes",
+                  checked: checked("are-you-immunised-uk", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("are-you-immunised-uk", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "I don't know",
+                  "text": "I don't know",
+                  checked: checked("are-you-immunised-uk", "I don't know")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+            {% endif %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

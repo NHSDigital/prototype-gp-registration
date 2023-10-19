@@ -1,0 +1,52 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Register with an online-only pharmacy directly - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+        <form action="are-you-a-member-of-armed-forces" method="post" autocomplete="off">
+
+
+            {{ hint({
+              "text": "Additional information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+          <h2 class="nhsuk-heading--l">Register with an online-only pharmacy directly</h2>
+
+          <p>To choose an online-only pharmacy, you must register with the pharmacy through their website or contact them directly.</p>
+
+
+
+
+            {{ button({
+              "text": "Continue with registration"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

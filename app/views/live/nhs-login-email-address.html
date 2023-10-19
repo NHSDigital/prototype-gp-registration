@@ -1,0 +1,58 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Enter email address - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ backLink({
+        text: "Go back",
+        href: "javascript:history.go(-1)"
+      }) }}
+
+      <form action="nhs-login-password" method="post" autocomplete="off">
+
+        {% call fieldset({
+          legend: {
+            "text": "Enter your email address",
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        }) %}
+
+          {{ input({
+            label: {
+              "html": 'Email address'
+            },
+            "classes": "nhsuk-input--width-20",
+            "id": "nhs-login-email",
+            "name": "nhs-login-email"
+          }) }}
+
+        {% endcall %}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+    </div>
+   </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

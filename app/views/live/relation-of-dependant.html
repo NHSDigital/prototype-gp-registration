@@ -1,0 +1,96 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Relationship to person registering - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+          text: "Go back",
+          href: "javascript:history.go(-1)"
+        }) }}
+
+        <form action="" method="post" autocomplete="off">
+
+         {% set otherHtml %}
+           {{ input({
+             id: "other",
+             name: "other",
+             classes: "nhsuk-u-width-two-thirds",
+             label: {
+               text: ""
+             }
+           }) }}
+         {% endset %}
+
+
+          {{ radios({
+            "idPrefix": "relation",
+            "name": "relation",
+            fieldset: {
+              legend: {
+                text: "What is your relationship to the person being registered?",
+                isPageHeading: true,
+                classes: "nhsuk-fieldset__legend--l"
+              }
+              },
+            "items": [
+              {
+                "value": "Parent or guardian~/live/carer-details",
+                "text": "Parent or guardian",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("relation", "Parent or guardian")
+              },
+              {
+                "value": "Carer~/live/carer-type",
+                "text": "Carer",
+                "hint": {
+                  "text": "Includes foster parents and carers who are young, paid or unpaid. "
+                },
+                checked: checked("relation", "Carer")
+              },
+              {
+                "value": "other~/live/carer-details",
+                "text": "Other",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("relation", "other")
+              }
+
+
+            ]
+          }) }}
+
+
+
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+
+
+      </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

@@ -1,0 +1,86 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Additional information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Is {{ data ['name-first-name'] }} a carer?</H2>
+
+            {% else %}
+
+            <H2>Are you a carer?</H2>
+
+            {% endif %}
+
+            {{ hint({
+              "text": "A carer looks after a family member or friend who is not able to look after themselves. This could be because of illness, disability or addiction. Carers can be adults or children. They can be paid or unpaid, but may get benefits."
+            }) }}
+
+            {{ radios({
+              "idPrefix": "are-carer",
+              "name": "are-carer",
+              "items": [
+                {
+                  "value": "Yes~/live/type-of-carer",
+                  "text": "Yes",
+                  checked: checked("are-carer", "Yes")
+                },
+                {
+                  "value": "No~/live/do-you-need-accessible-format",
+                  "text": "No",
+                  checked: checked("are-carer", "no")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "prefer not to say~/live/do-you-need-accessible-format",
+                  "text": "Prefer not to say",
+                  checked: checked("are-carer", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+
+
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

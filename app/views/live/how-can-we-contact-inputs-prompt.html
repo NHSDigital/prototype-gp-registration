@@ -1,0 +1,74 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What are your contact details? - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+          text: "Go back",
+          href: "javascript:history.go(-1)"
+        }) }}
+
+
+        {% call fieldset({
+          legend: {
+            text: "Are you sure that you have no access to a phone or email?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <div class="nhsuk-hint" id="contact-hint">
+          <p>It's important that the NHS and your GP surgery have a convenient way of contacting you about this application, appointments, prescriptions or other health care services.</p>
+        </div>
+
+        {{ radios({
+          "idPrefix": "no-contact",
+          "name": "no-contact",
+          "items": [
+            {
+              "value": "Yes~/live/what-is-your-gender",
+              "text": "Yes, I don't have access to a phone or email",
+
+              checked: checked("no-contact", "Yes")
+            },
+            {
+              "value": "No~/live/how-can-we-contact-you",
+              "text": "No",
+
+              checked: checked("no-contact", "No")
+            }
+          ]
+        }) }}
+
+
+
+        {% endcall %}
+
+        <button class="nhsuk-button" type="submit">
+          Continue
+        </button>
+
+
+<!-- End of content -->
+
+</div>
+</div>
+
+{% block pageScripts %}
+
+{% endblock %}
+{% endblock %}

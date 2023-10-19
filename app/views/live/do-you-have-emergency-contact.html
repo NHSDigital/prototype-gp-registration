@@ -1,0 +1,94 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you have a contact in case of emergency? - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+
+
+          <form action="" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Does {{ data ['name-first-name'] }} have a contact in case of emergency?</H2>
+
+            {% else %}
+
+            <H2>Do you have a contact in case of emergency?</H2>
+
+            {% endif %}
+
+
+
+            {% call fieldset({
+              legend: {
+                text: "",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>This can be a family member, friend or support worker.</p>
+            </div>
+
+
+           {{ radios({
+              "idPrefix": "emergency-contact",
+              "name": "emergency-contact",
+              "items": [
+                {
+                  "value": "Yes~/live/emergency-contact-details",
+                  "text": "Yes",
+                  checked: checked("emergency-contact", "Yes")
+                },
+                {
+                  "value": "No~/live/check-answers-1",
+                  "text": "No",
+                  checked: checked("emergency-contact", "No")
+                }
+              ]
+            }) }}
+
+
+      {% endcall %}
+
+
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+            </form>
+
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

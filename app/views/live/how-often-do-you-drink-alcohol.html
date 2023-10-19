@@ -1,0 +1,152 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+How often do you drink alcohol or have a drink containing alcohol? - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="how-many-units-of-alcohol" method="post" autocomplete="off">
+
+           {{ hint({
+              "text": "Health information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>How often does {{ data ['name-first-name'] }} drink alcohol or have a drink containing alcohol?</H2>
+
+            {{ radios({
+              "idPrefix": "alcohol-consumption",
+              "name": "alcohol-consumption",
+              "fieldset": {
+                "legend": {
+                  "text": "",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "This includes wine, beer, spirits, Alcopops, cocktails or hot drinks with spirits such as a coffee with whiskey."
+              },
+              "items": [
+                {
+                  "value": "Never~/live/do-you-smoke",
+                  "text": "Never",
+                  checked: checked("alcohol-consumption", "Never")
+                },
+                {
+                  "value": "Monthly or less",
+                  "text": "Monthly or less",
+                  checked: checked("alcohol-consumption", "Monthly or less")
+                },
+                {
+                  "value": "2 to 4 times a month",
+                  "text": "2 to 4 times a month",
+                  checked: checked("alcohol-consumption", "2 to 4 times a month")
+                },
+                {
+                  "value": "2 to 3 times a week",
+                  "text": "2 to 3 times a week",
+                  checked: checked("alcohol-consumption", "2 to 3 times a week")
+                },
+                {
+                  "value": "4 or more times a week",
+                  "text": "4 or more times a week",
+                  checked: checked("alcohol-consumption", "4 or more times a week")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say~/live/do-you-smoke",
+                  "text": "Prefer not to say",
+                  checked: checked("alcohol-consumption", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {% else %}
+
+            {{ radios({
+              "idPrefix": "alcohol-consumption",
+              "name": "alcohol-consumption",
+              "fieldset": {
+                "legend": {
+                  "text": "How often do you drink alcohol or have a drink containing alcohol?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "This includes wine, beer, spirits, Alcopops, cocktails or hot drinks with spirits such as a coffee with whiskey."
+              },
+              "items": [
+                {
+                  "value": "Never~/live/do-you-smoke",
+                  "text": "Never",
+                  checked: checked("alcohol-consumption", "Never")
+                },
+                {
+                  "value": "Monthly or less",
+                  "text": "Monthly or less",
+                  checked: checked("alcohol-consumption", "Monthly or less")
+                },
+                {
+                  "value": "2 to 4 times a month",
+                  "text": "2 to 4 times a month",
+                  checked: checked("alcohol-consumption", "2 to 4 times a month")
+                },
+                {
+                  "value": "2 to 3 times a week",
+                  "text": "2 to 3 times a week",
+                  checked: checked("alcohol-consumption", "2 to 3 times a week")
+                },
+                {
+                  "value": "4 or more times a week",
+                  "text": "4 or more times a week",
+                  checked: checked("alcohol-consumption", "4 or more times a week")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say~/live/do-you-smoke",
+                  "text": "Prefer not to say",
+                  checked: checked("alcohol-consumption", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {% endif %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

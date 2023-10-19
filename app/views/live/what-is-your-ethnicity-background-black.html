@@ -1,0 +1,156 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Which of the following best describes your Black, African, Caribbean or Black British background? - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          {% if data['user-auth'] == "p9" %}
+          <form action="is-this-your-current-address" method="post" autocomplete="off">
+          {% elif data['user-auth'] == "p5" %}
+          <form action="is-this-your-current-address" method="post" autocomplete="off">
+          {% else %}
+          <form action="do-you-current-address" method="post" autocomplete="off">
+          {% endif %}
+
+            {{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+          {% if (data['who-is-being-registered'] == "dependant") %}
+
+          {% set ethnicityHtml %}
+            {{ input({
+              id: "ethBlack",
+              name: "ethBlack",
+              classes: "nhsuk-u-width-two-thirds",
+              label: {
+              text: "How would you describe their background? (optional)"
+
+              }
+            }) }}
+          {% endset %}
+
+          {{ radios({
+            idPrefix: "ethnicity-detail-black",
+            name: "ethnicity-detail-black",
+            fieldset: {
+              legend: {
+                text: "Which of the following best describes their Black, African, Caribbean or Black British background?",
+                isPageHeading: true,
+                classes: "nhsuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "African",
+                text: "African",
+                checked: checked("ethnicity-detail-black", "African")
+              },
+              {
+                value: "Caribbean",
+                text: "Caribbean",
+                checked: checked("ethnicity-detail-black", "Caribbean")
+              },
+              {
+                value: "other",
+                text: "Any other Black, African or Caribbean background",
+                conditional: {
+                  html: ethnicityHtml
+                }
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Prefer not to say",
+                text: "Prefer not to say"
+              }
+            ]
+          }) }}
+
+          {% else %}
+
+          {% set ethnicityHtml %}
+            {{ input({
+              id: "ethBlack",
+              name: "ethBlack",
+              classes: "nhsuk-u-width-two-thirds",
+              label: {
+              text: "How would you describe your background? (optional)"
+
+              }
+            }) }}
+          {% endset -%}
+
+          {{ radios({
+            idPrefix: "ethnicity-detail-black",
+            name: "ethnicity-detail-black",
+            fieldset: {
+              legend: {
+                text: "Which of the following best describes your Black, African, Caribbean or Black British background?",
+                isPageHeading: true,
+                classes: "nhsuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "African",
+                text: "African",
+                checked: checked("ethnicity-detail-black", "African")
+              },
+              {
+                value: "Caribbean",
+                text: "Caribbean",
+                checked: checked("ethnicity-detail-black", "Caribbean")
+              },
+              {
+                value: "other",
+                text: "Any other Black, African or Caribbean background",
+                conditional: {
+                  html: ethnicityHtml
+                }
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Prefer not to say",
+                text: "Prefer not to say"
+              }
+            ]
+          }) }}
+
+          {% endif %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

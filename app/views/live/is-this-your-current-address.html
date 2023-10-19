@@ -1,0 +1,97 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Confirm current address - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="" method="post" autocomplete="off">
+
+            {% call fieldset({
+              legend: {
+                "text": "Is this your current address?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+      <div class="nhsuk-card nhsuk-card--care nhsuk-card--care--non-urgent">
+      <div class="nhsuk-card--care__heading-container">
+        <h2 class="nhsuk-card--care__heading">
+          <span role="text"><span class="nhsuk-u-visually-hidden">
+        </h2>
+        <span class="nhsuk-card--care__arrow" aria-hidden="true"></span>
+      </div>
+
+      {% if data['user-auth'] == "p9" %}
+      <div class="nhsuk-card__content">
+        <p>Address line 1 <br> Address line 2 <br> Address line 3 <br> Address line 4 </p>
+      </div>
+      </div>
+      {% else %}
+      <div class="nhsuk-card__content">
+          <p>Add••• line 1 <br> Addr•• line 2 <br> Add••• line 3 <br> Address l•• 4 </p>
+        </div>
+      </div>
+      {% endif %}
+
+    </div>
+
+            {{ radios({
+              "idPrefix": "current-address",
+              "name": "current-address",
+              "classes": "nhsuk-radios",
+              "items": [
+                {
+                  "value": "Yes~/live/confirm-contact-details",
+                  "text": "Yes",
+                  checked: checked("current-address", "Yes")
+                },
+                {
+                  "value": "No~/live/what-is-your-current-address",
+                  "text": "No",
+                  checked: checked("current-address", "No")
+                }
+
+              ]
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+            {% endcall %}
+
+
+
+          </form>
+        </div>
+      </div>
+
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% block pageScripts %}
+
+{% endblock %}
+
+{% endblock %}

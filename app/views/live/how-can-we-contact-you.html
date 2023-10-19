@@ -1,0 +1,112 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Can the GP surgery contact - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+          text: "Go back",
+          href: "javascript:history.go(-1)"
+        }) }}
+
+
+
+        <form action="do-you-have-emergency-contact" method="post" autocomplete="off">
+
+
+            {{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Can {Doctor's Surgery} contact {{ data ['name-first-name'] }}?</H2>
+
+            <div class="nhsuk-hint" id="contact-hint">
+            <p>By giving consent, your GP surgery and the NHS can contact you using SMS or text messages, or by email about application, appointments, prescriptions or other medical services.
+          </div>
+
+
+
+
+          {{ radios({
+            "idPrefix": "contact",
+            "name": "contact",
+            "items": [
+              {
+                "value": "Yes",
+                "text": "Yes",
+                checked: checked("contact", "Yes")
+              },
+              {
+                "value": "No",
+                "text": "No",
+                checked: checked("contact", "No")
+              }
+            ]
+          }) }}
+
+
+            {% else %}
+
+            <H2>Can {Doctor's Surgery} contact you?</H2>
+
+            <div class="nhsuk-hint" id="contact-hint">
+            <p>By giving consent, your GP surgery and the NHS can contact you using SMS or text messages, or by email about application, appointments, prescriptions or other medical services.
+          </div>
+
+          {{ radios({
+            "idPrefix": "contact",
+            "name": "contact",
+            "items": [
+              {
+                "value": "Yes",
+                "text": "Yes",
+                checked: checked("contact", "Yes")
+              },
+              {
+                "value": "No",
+                "text": "No",
+                checked: checked("contact", "No")
+              }
+            ]
+          }) }}
+
+            {% endif %}
+
+            <button class="nhsuk-button" type="submit">
+              Continue
+            </button>
+
+        </form>
+
+
+
+      </div>
+    </div>
+
+
+<!-- End of content -->
+
+</div>
+</div>
+
+{% block pageScripts %}
+
+
+{% endblock %}
+{% endblock %}

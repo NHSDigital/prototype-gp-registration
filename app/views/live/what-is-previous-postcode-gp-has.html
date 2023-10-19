@@ -1,0 +1,122 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Enter previous postcode - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="are-you-returning-from-overseas" method="post" autocomplete="off">
+
+
+
+           {{ hint({
+              "text": "Registration type",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>What postcode did {{ data ['name-first-name'] }} use when they last registered with a UK GP?</H2>
+
+            {% call fieldset({
+              legend: {
+                "text": "",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ hint({
+                "text": "This will be the postcode they used the last time they registered with a UK GP surgery."
+            }) }}
+
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "hint": {
+                    "text": "For example LS13 9PO"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "gp-postcode-prev",
+                  "name": "gp-postcode-prev",
+                  value: data['gp-postcode-prev']
+                }) }}
+
+
+            {% endcall %}
+
+            {% else %}
+
+            <H2>What postcode did you use when you last registered with a UK GP?</H2>
+
+            {% call fieldset({
+              legend: {
+                "text": "",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ hint({
+                "text": "This will be the postcode you used the last time you registered with a UK GP surgery."
+            }) }}
+
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "hint": {
+                    "text": "For example LS13 9PO"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "gp-postcode-prev",
+                  "name": "gp-postcode-prev",
+                  value: data['gp-postcode-prev']
+                }) }}
+
+
+            {% endcall %}
+
+            {% endif %}
+
+
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% block pageScripts %}
+<script>
+
+</script>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,117 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Select place of birth - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+          text: "Go back",
+          href: "javascript:history.go(-1)"
+        }) }}
+
+        <form action="do-you-know-previous-postcode-when-baby-born" method="post" autocomplete="off">
+
+
+          {{ hint({
+            "text": "Patient details",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
+          <H2>Where was {{ data ['name-first-name'] }} born?</H2>
+
+          {% call fieldset({
+            legend: {
+              text: "",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+                    {{ radios({
+                      "idPrefix": "child-born",
+                      "name": "child-born",
+                      "items": [
+                        {
+                          "value": "England",
+                          "text": "England",
+                          "hint": {
+                            "text": ""
+                          },
+                          checked: checked("child-born", "England")
+                        },
+                        {
+                          "value": "Wales",
+                          "text": "Wales",
+                          "hint": {
+                            "text": ""
+                          },
+                          checked: checked("child-born", "England")
+                        },
+                        {
+                          "value": "Isle of man",
+                          "text": "Isle of man",
+                          "hint": {
+                            "text": ""
+                          },
+                          checked: checked("child-born", "Isle of man")
+                        },
+                        {
+                          "value": "Scotland",
+                          "text": "Scotland",
+                          "hint": {
+                            "text": ""
+                          },
+                          checked: checked("child-born", "Scotland")
+                        },
+                        {
+                          "value": "Northern ireland",
+                          "text": "Northern ireland",
+                          "hint": {
+                            "text": ""
+                          },
+                          checked: checked("child-born", "Northern ireland")
+                        },
+                        {
+                          "divider": "or"
+                        },
+                        {
+                          "value": "Outside of the UK",
+                          "text": "Outside of the UK",
+                          "hint": {
+                            "text": ""
+                          },
+                          checked: checked("child-born", "Outside of the UK")
+                        }
+                      ]
+                    }) }}
+
+                    {% endcall %}
+
+
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+
+
+      </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

@@ -1,0 +1,49 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Start registration - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <h1>
+          Register with a GP surgery: {Surgery name}
+        </h1>
+
+
+        <h2>Before you start</h2>
+        <p>The registration process will take around 15 minutes to complete. You will need to complete the process in one session. You do not need your NHS number, but it could make registration easier.</p>
+        <p>We may ask you for:</p>
+
+        <ul>
+          <li>details of previous GP surgery</li>
+          <li>basic health and medical information</li>
+        </ul>
+
+
+        <p>The information you provide will be used to identify the correct medical records.  It will also help the GP surgery to offer relevant and appropriate healthcare services.</p>
+
+
+        <p><a href="who-is-registering" class="nhsuk-button nhsuk-button--green">Start now</a></p>
+
+        <h3>Other ways to register</h3>
+        <p>You can register with a GP by contacting your chosen GP surgery or completing a <a href="https://www.gov.uk/government/publications/gms1">GMS1 registration form.</a></p>
+        <p>You can view <a href="https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/">guidance about how to register with a GP.</a></p>
+        <p>By using this service you are agreeing to our <a href="start">terms of use</a> and <a href="start">privacy policy.</a> </p>
+
+
+      </div>
+    </div>
+
+<!-- End of content -->
+
+{% endblock %}

@@ -1,0 +1,134 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form id="youngEnough" action="check-age-2" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Do they have an emergency contact</H2>
+
+            {% else %}
+
+            <H2>Do you have an emergency contact?</H2>
+
+            {% endif %}
+
+            {% call fieldset({
+              legend: {
+                "text": "What are the details of their second emergency contact?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+
+            {{ input({
+              label: {
+                "text": "First name"
+              },
+              "classes": "nhsuk-u-width-two-thirds",
+              "id": "ec-first-name",
+              "name": "ec-first-name",
+              value: data['ec-first-name']
+            }) }}
+
+            {{ input({
+              label: {
+                "text": "Last name"
+              },
+              "classes": "nhsuk-u-width-two-thirds",
+              "id": "ec-last-name",
+              "name": "ec-last-name",
+              value: data['ec-last-name']
+            }) }}
+
+            {{ input({
+                label: {
+                  "text": "Relationship to them"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-relationship-2",
+                "name": "ec-relationship-2",
+                value: data['ec-relationship-2']
+              }) }}
+
+              {{ input({
+                "label": {
+                  "text": "Contact telephone number"
+                },
+                  "hint": {
+                  "text": "For international number include the country code"
+                },
+                "classes": "nhsuk-input--width-10",
+                "id": "ec-contact-tel-2",
+                "name": "ec-contact-tel-2",
+                value: data['ec-contact-tel-2']
+              }) }}
+
+              {{ input({
+                "label": {
+                  "text": "Alternate telephone number (Optional)"
+                },
+                  "hint": {
+                  "text": "For international number include the country code"
+                },
+                "classes": "nhsuk-input--width-10",
+                "id": "ec-contact-tel-alt-2",
+                "name": "ec-contact-tel-alt-2",
+                value: data['ec-contact-tel-alt-2']
+              }) }}
+
+              {{ textarea({
+                "name": "contact-time-2",
+                "id": "contact-time-2",
+                "label": {
+                  "text": "Best time to contact (Optional)"
+                }
+              }) }}
+
+            {% endcall %}
+
+
+            {{ button({
+              "text": "Add another emergency contact",
+              "classes": "nhsuk-button--secondary",
+                  "href": "emergency-contact-details-2"
+            }) }}
+
+            <br>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+  
+{% endblock %}

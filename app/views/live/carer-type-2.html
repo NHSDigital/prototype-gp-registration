@@ -1,0 +1,106 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="what-is-your-date-of-birth" method="post" autocomplete="off">
+
+            {{ hint({
+               "text": "Additional information",
+               "classes": "nhsuk-u-margin-bottom-2"
+             }) }}
+
+
+            {% call fieldset({
+              legend: {
+                "text": "What type of carer are they?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+
+            }) %}
+
+           {{ radios({
+            "idPrefix": "type-carer",
+            "name": "type-carer",
+            "items": [
+              {
+                "value": "Young carer~/live/carer-details-2",
+                "text": "Young carer",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("type-carer", "Yes")
+              },
+               {
+                "value": "Informal carer~/live/carer-details-2",
+                "text": "Unpaid carer",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("type-carer", "Yes")
+              },
+              {
+                "value": "Occupational Carer~/live/carer-details-2",
+                "text": "Paid carer (Occupational)",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("type-carer", "Yes")
+              },
+              {
+                "value": "Foster carer~/live/carer-details-2",
+                "text": "Foster carer",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("type-carer", "Yes")
+              }
+
+              ]
+          }) }}
+
+            {% endcall %}
+
+
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+
+
+          </form>
+        </div>
+      </div>
+
+
+    <!-- End of content -->
+
+  </div>
+ </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

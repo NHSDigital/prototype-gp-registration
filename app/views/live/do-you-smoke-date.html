@@ -1,0 +1,111 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+When did you stop smoking? - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="do-you-smoke-amount" method="post" autocomplete="off">
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+           {{ hint({
+              "text": "Health information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            <H2>When did {{ data ['name-first-name'] }} stop smoking?</H2>
+
+            {{ dateInput({
+              "id": "smoke-date",
+              "namePrefix": "smoke-date",
+              "fieldset": {
+                "legend": {
+                  "text": "",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": false
+                }
+              },
+              "hint": {
+                "text": "The date does not have to be exact."
+              },
+              "items": [
+                {
+                  "name": "month",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['smoke-month']
+                },
+                {
+                  "name": "year",
+                  "classes": "nhsuk-input--width-4",
+                  "value": data['smoke-year']
+                }
+              ]
+            }) }}
+
+            {% else %}
+
+           {{ hint({
+              "text": "Health information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {{ dateInput({
+              "id": "smoke-date",
+              "namePrefix": "smoke-date",
+              "fieldset": {
+                "legend": {
+                  "text": "When did you stop smoking?",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": true
+                }
+              },
+              "hint": {
+                "text": "The date does not have to be exact."
+              },
+              "items": [
+                {
+                  "name": "month",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['smoke-month']
+                },
+                {
+                  "name": "year",
+                  "classes": "nhsuk-input--width-4",
+                  "value": data['smoke-year']
+                }
+              ]
+            }) }}
+
+            {% endif %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

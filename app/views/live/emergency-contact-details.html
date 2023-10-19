@@ -1,0 +1,124 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What are the details of your emergency contact? - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="check-answers-1" method="post" autocomplete="off">
+
+
+            {{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>What are the details of {{ data ['name-first-name'] }}'s emergency contact</H2>
+
+            {% else %}
+
+            <H2>What are the details of your emergency contact?</H2>
+
+            {% endif %}
+
+            {% call fieldset({
+              legend: {
+                "text": "",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+
+            {{ input({
+                label: {
+                  "text": "First name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-first-name",
+                "name": "ec-first-name",
+                value: data['ec-first-name']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Last name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-last-name",
+                "name": "ec-last-name",
+                value: data['ec-last-name']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "Relationship to them"
+                },
+                "hint": {
+                  "text": "For example, they are a family member or friend."
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-relationship",
+                "name": "ec-relationship",
+                value: data['ec-relationship']
+              }) }}
+
+              {{ input({
+                "label": {
+                  "text": "Contact telephone number"
+                },
+                  "hint": {
+                  "text": "For international number include the country code"
+                },
+                "classes": "nhsuk-input--width-10",
+                "id": "ec-contact-tel",
+                "name": "ec-contact-tel",
+                value: data['ec-contact-tel']
+              }) }}
+
+
+
+            {% endcall %}
+
+
+
+            {{ button({
+              "text": "Add another emergency contact",
+              "classes": "nhsuk-button--secondary",
+                  "href": ""
+            }) }}
+
+            <br>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

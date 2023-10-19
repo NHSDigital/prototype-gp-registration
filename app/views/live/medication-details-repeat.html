@@ -1,0 +1,92 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="height" method="post" autocomplete="off">
+
+           {{ hint({
+              "text": "Health information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+
+            {% call fieldset({
+              legend: {
+                text: "Are any of these repeat prescriptions?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "This information will help avoid any delays in the patient's medication. "
+            }) }}
+
+
+            {{ hint({
+              "text": "The GP may speak to the patient about these prescriptions."
+            }) }}
+
+
+            {{ radios({
+              "idPrefix": "repeat-medication",
+              "name": "repeat-medication",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: checked("repeat-medication", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("repeat-medication", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say",
+                  "text": "Prefer not to say",
+                  checked: checked("repeat-medication", "Prefer not to say")
+                }
+
+              ]
+            }) }}
+
+            {% endcall %}
+
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

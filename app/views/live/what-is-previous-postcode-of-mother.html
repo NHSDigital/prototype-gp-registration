@@ -1,0 +1,78 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Enter mother's postcode - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="check-answers" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            <h2>Enter the postcode where the mother of {{ data ['name-first-name'] }} was living when their baby was born</h2>
+            {% call fieldset({
+              legend: {
+                "text": "",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "hint": {
+                    "text": "For example LS13 9PO"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "mother-postcode",
+                  "name": "mother-postcode",
+                  value: data['mother-postcode']
+                }) }}
+
+
+            {% endcall %}
+
+
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+
+    <!-- End of content -->
+
+
+{% block pageScripts %}
+<script>
+
+</script>
+{% endblock %}
+{% endblock %}

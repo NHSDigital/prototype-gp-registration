@@ -1,0 +1,132 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  GP Registration Prototypes
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="" method="post" autocomplete="off">
+
+           {{ hint({
+              "text": "Health information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <H2>Does {{ data ['name-first-name'] }} currently take any prescription medication?</H2>
+
+            {% call fieldset({
+              legend: {
+                text: "",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "This should include prescriptions for contraception or any medicines from abroad. This will help the GP have these ready for the patient."
+            }) }}
+
+            {{ radios({
+              "idPrefix": "takes-prescription-meds",
+              "name": "takes-prescription-meds",
+              "items": [
+                {
+                  "value": "Yes~/live/medication-details",
+                  "text": "Yes",
+                  checked: checked("takes-prescription-meds", "Yes")
+                },
+                {
+                  "value": "No~/live/height",
+                  "text": "No",
+                  checked: checked("takes-prescription-meds", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say~/live/height",
+                  "text": "Prefer not to say",
+                  checked: checked("takes-prescription-meds", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+            {% else %}
+
+            {% call fieldset({
+              legend: {
+                text: "Do you currently take any prescription medication?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "It is important to tell us about all the prescription medication you currently take so your GP can have these ready for you."
+            }) }}
+
+            {{ hint({
+              "text": "Please include prescription medication for contraception and medication from abroad."
+            }) }}
+
+            {{ radios({
+              "idPrefix": "takes-prescription-meds",
+              "name": "takes-prescription-meds",
+              "items": [
+                {
+                  "value": "Yes~/live/medication-details",
+                  "text": "Yes",
+                  checked: checked("takes-prescription-meds", "Yes")
+                },
+                {
+                  "value": "No~/live/height",
+                  "text": "No",
+                  checked: checked("takes-prescription-meds", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say~/live/height",
+                  "text": "Prefer not to say",
+                  checked: checked("takes-prescription-meds", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+            {% endif %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

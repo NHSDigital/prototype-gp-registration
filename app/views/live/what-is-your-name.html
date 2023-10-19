@@ -1,0 +1,163 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Enter name - Register with a GP surgery - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="what-is-your-date-of-birth" method="post" autocomplete="off">
+
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+          {{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% call fieldset({
+              legend: {
+                "text": "What is the name of the person being registered?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+
+            }) %}
+
+             {{ input({
+                label: {
+                  "text": "Title"
+                },
+                "classes": "nhsuk-input--width-4",
+                "id": "name-title",
+                "name": "name-title",
+                "value": data['name-title']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "First name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "name-first-name",
+                "name": "name-first-name",
+                "value": data['name-first-name']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "Middle name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "name-middle-name",
+                "name": "name-middle-name",
+                "value": data['name-middle-name']
+              }) }}
+
+
+              {{ input({
+                  label: {
+                    "text": "Last name"
+                  },
+                  "classes": "nhsuk-u-width-two-thirds",
+                  "id": "name-last-name",
+                  "name": "name-last-name",
+                  "value": data['name-last-name']
+                }) }}
+
+            {% endcall %}
+
+
+            {% else %}
+          {{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% call fieldset({
+              legend: {
+                "text": "What is your name?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+
+            }) %}
+
+             {{ input({
+                label: {
+                  "text": "Title"
+                },
+                "classes": "nhsuk-input--width-4",
+                "id": "name-title",
+                "name": "name-title",
+                "value": data['name-title']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "First name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "name-first-name",
+                "name": "name-first-name",
+                "value": data['name-first-name']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "Middle name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "name-middle-name",
+                "name": "name-middle-name",
+                "value": data['name-middle-name']
+              }) }}
+
+
+              {{ input({
+                  label: {
+                    "text": "Last name"
+                  },
+                  "classes": "nhsuk-u-width-two-thirds",
+                  "id": "name-last-name",
+                  "name": "name-last-name",
+                  "value": data['name-last-name']
+                }) }}
+
+            {% endcall %}
+
+            {% endif %}
+
+
+
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
