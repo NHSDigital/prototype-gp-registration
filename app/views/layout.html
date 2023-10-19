@@ -29,6 +29,15 @@
       "showSearch": "false"
     })
   }}
+
+  {% if feedbackType %}
+    {% if servicePhase === 'beta' %}
+      {% include 'live/includes/feedback.html' %}
+    {% else %}
+
+    {% endif %}
+  {% endif %}
+
 {% endblock %}
 
 <!-- Edit the footer -->
@@ -53,6 +62,12 @@
 {% endblock %}
 
 {% block bodyEnd %}
+
+  {% if data['devMode'] === 'true' %}
+    {% include "includes/devmode.html" %}
+  {% endif %}
+
+
   {% block scripts %}
     <!-- Custom JavaScript files can be added to this file -->
     {% include "includes/scripts.html" %}
