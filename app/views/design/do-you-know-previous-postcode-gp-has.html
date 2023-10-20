@@ -1,0 +1,91 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you know your postcode used when you last registered with a UK GP? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="" method="post" autocomplete="off">
+
+           {{ hint({
+              "text": "Registration type",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <h1 class="nhsuk-heading-l">Do you know the postcode {{ data ['name-first-name'] }} used when they last registered with a UK GP?</h1>
+
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>This will be the postcode they used last time they registered with a GP surgery.
+            </div>
+
+            {% else %}
+
+            <h1 class="nhsuk-heading-l">Do you know your postcode used when you last registered with a UK GP?</h1>
+
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>This will be the postcode you used last time you registered with a GP surgery.
+            </div>
+
+            {% endif %}
+
+            {% call fieldset({
+            legend: {
+              text: "",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "do-you-know-previous-postcode",
+            "name": "do-you-know-previous-postcode",
+            "items": [
+              {
+                "value": "Yes~/design/what-is-previous-postcode-gp-has",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("do-you-know-previous-postcode", "Yes")
+              },
+              {
+                "value": "No~/design/are-you-returning-from-overseas",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("do-you-know-previous-postcode", "No")
+              }
+            ]
+          }) }}
+           {% endcall %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

@@ -1,0 +1,82 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Are you a carer? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Additional information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <h1 class="nhsuk-heading-l">Is {{ data ['name-first-name'] }} a carer?</h1>
+
+            {% else %}
+
+            <h1 class="nhsuk-heading-l">Are you a carer?</h1>
+
+            {% endif %}
+
+            {{ hint({
+              "text": "A carer looks after a family member or friend who is not able to look after themselves. This could be because of illness, disability or addiction. Carers can be adults or children. They can be paid or unpaid, but may get benefits."
+            }) }}
+
+            {{ radios({
+              "idPrefix": "are-carer",
+              "name": "are-carer",
+              "items": [
+                {
+                  "value": "Yes~/design/type-of-carer",
+                  "text": "Yes",
+                  checked: checked("are-carer", "Yes")
+                },
+                {
+                  "value": "No~/design/do-you-need-accessible-format",
+                  "text": "No",
+                  checked: checked("are-carer", "no")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "prefer not to say~/design/do-you-need-accessible-format",
+                  "text": "Prefer not to say",
+                  checked: checked("are-carer", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

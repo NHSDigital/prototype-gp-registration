@@ -1,0 +1,138 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you have any of these documents? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Registration type",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+          {% if (data['who-is-being-registered'] == "dependant") %}
+
+          {% call fieldset({
+            legend: {
+              text: "Do they have any of these documents?",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "health-documents",
+            "name": "health-documents",
+            "items": [
+              {
+                "value": "ehic~/design/document-details-ehic",
+                "text": "European health insurance card (EHIC)",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("health-documents", "ehic")
+              },
+              {
+               "value": "s1~/design/recently-moved-s1-details",
+               "text": "S1 form",
+               "hint": {
+                 "text": ""
+               },
+               checked: checked("health-documents", "S1")
+             },
+              {
+                "value": "No~/design/overseas-declaration-nodocs",
+                "text": "I don't have any of these documents",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("health-documents", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {% else %}
+
+          {% call fieldset({
+            legend: {
+              text: "Do you have any of these documents?",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "health-documents",
+            "name": "health-documents",
+            "items": [
+              {
+                "value": "ehic~/design/document-details-ehic",
+                "text": "European health insurance card (EHIC)",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("health-documents", "ehic")
+              },
+              {
+               "value": "s1~/design/recently-moved-s1-details",
+               "text": "S1 form",
+               "hint": {
+                 "text": ""
+               },
+               checked: checked("health-documents", "s1")
+             },
+              {
+                "value": "No~/design/overseas-declaration-nodocs",
+                "text": "I don't have any of these documents",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("health-documents", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {% endif %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+        {{ details({
+          "text": "Why are you asking this?",
+          "HTML": "<p>You will need to provide the information from your EHIC card or S1 form. This will help  NHS to reclaim the costs for your care.</p>
+          <p>We do not share this information with anyone outside NHS services.</p>"
+        }) }}
+
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

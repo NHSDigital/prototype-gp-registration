@@ -1,0 +1,82 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you want to get your prescription items direct from {NAME OF SURGERY}? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ hint({
+            "text": "Additional information",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
+
+          <form action="distance-from-nearest-pharmacy" method="post" autocomplete="off">
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} want to get their prescription items direct from {NAME OF SURGERY}?</h1>
+
+            {% else %}
+
+            <h1 class="nhsuk-heading-l">Do you want to get your prescription items direct from {NAME OF SURGERY}?</h1>
+
+            {% endif %}
+
+            {% call fieldset({
+              legend: {
+                text: "",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+          <p>{SURGERY NAME} is a dispensing surgery. This means you may be able to get your medicines or medical appliances direct from this GP surgery, rather than from a pharmacy of your choice. If you select 'Yes, check if I'm eligible' you must answer the questions you are shown as best you can. The GP surgery may discuss this additional service with you.</p>
+
+          {{ radios({
+            "idPrefix": "have-current-uk-address",
+            "name": "have-current-uk-address",
+            "items": [
+              {
+                "value": "Yes~/design/distance-from-nearest-pharmacy",
+                "text": "Yes, check if I'm eligible",
+                checked: checked("have-current-uk-address", "Yes")
+              },
+              {
+                "value": "No~/design/check-answers-3",
+                "text": "No, I will do this later",
+                checked: checked("have-current-uk-address", "No")
+              }
+            ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

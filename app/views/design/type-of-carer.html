@@ -1,0 +1,103 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What type of carer are you - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="do-you-need-accessible-format" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Additional information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <h1 class="nhsuk-heading-l">What type of carer are they?</h1>
+
+            {% else %}
+
+            <h1 class="nhsuk-heading-l">What type of carer are you?</h1>
+
+            {% endif %}
+
+            {% set otherHtml %}
+              {{ input({
+                id: "other",
+                name: "other",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "Carer type"
+                }
+              }) }}
+            {% endset -%}
+
+
+            {{ radios({
+              "idPrefix": "carer-type",
+              "name": "carer-type",
+              "fieldset": {
+                "legend": {
+                  "text": "",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "items": [
+                {
+                  "value": "Young carer",
+                  "text": "Young carer, under 18",
+                  checked: checked("carer-type", "Young carer")
+                },
+                {
+                  "value": "Informal carer",
+                  "text": "Unpaid, but may get benefits",
+                  checked: checked("carer-type", "occupational")
+                },
+                {
+                  "value": "Occupational Carer",
+                  "text": "Paid as a job",
+                  checked: checked("carer-type", "Occupational Carer")
+                },
+                {
+                  "value": "Foster carer",
+                  "text": "Foster carer",
+                  checked: checked("carer-type", "Foster carer")
+                }
+
+              ]
+            }) }}
+
+
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

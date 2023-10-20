@@ -1,0 +1,50 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+For people arriving from outside EU, EEA or Switzerland - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="check-answers-2" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Registration type",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            <h1 class="nhsuk-heading-l">For people arriving from outside EU, EEA or Switzerland</h1>
+
+            <p>By continuing you are agreeing to the following statements.</p>
+            <p>I understand that visits to the GP surgery are free of charge, but I may need to pay for further NHS treatment, such as referrals to hospital, if:</p>
+              <ul class="nhsuk-list nhsuk-list--bullet">
+                <li>I have not paid the Immigration Health Surcharge.</li>
+                <li>I am not exempt from charges.</li>
+              </ul>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

@@ -1,0 +1,95 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you need to be communicated with in an accessible form? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+            {{ hint({
+              "text": "Additional information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} or their carer need to be communicated with in an accessible form?</h1>
+
+            {% elif (data['need-carer'] == "Yes") %}
+
+            <h1 class="nhsuk-heading-l">Do you or your carer need to be communicated with in an accessible form?</h1>
+
+            {% else %}
+
+            <h1 class="nhsuk-heading-l">Do you need to be communicated with in an accessible form?</h1>
+
+            {% endif %}
+
+            {% call fieldset({
+              legend: {
+                text: "",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>For example, braille, audio, large format or EasyRead.</p>
+            </div>
+
+            {{ radios({
+              "idPrefix": "accessible-needs",
+              "name": "accessible-needs",
+              "items": [
+                {
+                  "value": "Yes~/design/do-you-need-accessible-format-details",
+                  "text": "Yes",
+                  checked: checked("accessible-needs", "Yes")
+                },
+                {
+                  "value": "No~/design/do-you-need-reasonable-adjustments",
+                  "text": "No",
+                  checked: checked("accessible-needs", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say~/design/do-you-need-reasonable-adjustments",
+                  "text": "Prefer not to say",
+                  checked: checked("accessible-needs", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+          {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

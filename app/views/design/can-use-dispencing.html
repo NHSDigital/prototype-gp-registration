@@ -1,0 +1,65 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+You may be able to get your prescription items direct from {SURGERY NAME} - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ hint({
+            "text": "Additional information",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
+
+          <form action="check-answers-3" method="post" autocomplete="off">
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <h1 class="nhsuk-heading-l">{{ data ['name-first-name'] }} may be able to get their prescription items direct from {SURGERY NAME}</h1>
+
+            {% else %}
+
+            <h1 class="nhsuk-heading-l">You may be able to get your prescription items direct from {SURGERY NAME}</h1>
+
+            {% endif %}
+
+            {% call fieldset({
+              legend: {
+                text: "",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+          <p>Your GP surgery may discuss this additional service with you.</p>
+
+            {% endcall %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

@@ -1,0 +1,118 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What are the details of your emergency contact? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="check-answers-1" method="post" autocomplete="off">
+
+
+            {{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <h1 class="nhsuk-heading-l">What are the details of {{ data ['name-first-name'] }}'s emergency contact</h1>
+
+            {% else %}
+
+            <h1 class="nhsuk-heading-l">What are the details of your emergency contact?</h1>
+
+            {% endif %}
+
+            {% call fieldset({
+              legend: {
+                "text": "",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ input({
+                label: {
+                  "text": "First name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-first-name",
+                "name": "ec-first-name",
+                value: data['ec-first-name']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Last name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-last-name",
+                "name": "ec-last-name",
+                value: data['ec-last-name']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "Relationship to them"
+                },
+                "hint": {
+                  "text": "For example, they are a family member or friend."
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-relationship",
+                "name": "ec-relationship",
+                value: data['ec-relationship']
+              }) }}
+
+              {{ input({
+                "label": {
+                  "text": "Contact telephone number"
+                },
+                  "hint": {
+                  "text": "For international number include the country code"
+                },
+                "classes": "nhsuk-input--width-10",
+                "id": "ec-contact-tel",
+                "name": "ec-contact-tel",
+                value: data['ec-contact-tel']
+              }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Add another emergency contact",
+              "classes": "nhsuk-button--secondary",
+                  "href": ""
+            }) }}
+
+            <br>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

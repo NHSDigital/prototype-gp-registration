@@ -1,0 +1,102 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Check chosen pharmacy details - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="are-you-a-member-of-armed-forces" method="post" autocomplete="off">
+            {{ hint({
+              "text": "Additional information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            <h1 class="nhsuk-heading-l">Check chosen pharmacy details</h1>
+
+            <p>Prescriptions will be sent to this pharmacy only after registration has been confirmed by the new GP surgery. You will then be able get your prescription items like medicines and medical appliances from this pharmacy.</p>
+
+            <p>Olives pharmacy<br>9 Town street<br>London<br>SW1A 1AA</p>
+
+            <p>Less than 4.4km away</p>
+
+            <details class="nhsuk-details nhsuk-expander">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Opening times
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <table class="nhsuk-table">
+                  <thead role="rowgroup" class="nhsuk-table__head">
+                    <tr role="row">
+                      <th role="columnheader" class="" scope="col">
+                        Day of the week
+                      </th>
+                      <th role="columnheader" class="" scope="col">
+                        Opening hours
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="nhsuk-table__body">
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Monday</td>
+                      <td class="nhsuk-table__cell ">9am to 6pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Tuesday</td>
+                      <td class="nhsuk-table__cell ">9am to 6pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Wednesday</td>
+                      <td class="nhsuk-table__cell ">9am to 6pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Thursday</td>
+                      <td class="nhsuk-table__cell ">9am to 6pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Friday</td>
+                      <td class="nhsuk-table__cell ">9am to 6pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Saturday</td>
+                      <td class="nhsuk-table__cell ">9am to 1pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Sunday</td>
+                      <td class="nhsuk-table__cell ">Closed</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

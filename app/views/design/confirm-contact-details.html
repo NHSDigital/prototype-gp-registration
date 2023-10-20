@@ -1,0 +1,95 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Share your contact details - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            <h1 class="nhsuk-heading-l">Share your contact details</h1>
+
+            {{ hint({
+              "text": "You have agreed to share these details with the Register with a GP Surgery service.",
+              "classes": "nhsuk-u-margin-bottom-4"
+            }) }}
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  UK mobile telephone number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  07799123456
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Email address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  example@email.com
+                </dd>
+              </div>
+
+              </dl>
+
+              <div class="nhsuk-inset-text">
+                <span class="nhsuk-u-visually-hidden">Information: </span>
+                <p>You can update your contact details by visiting <a href="https://settings.login.nhs.uk/" target="_blank" rel="noopener noreferrer" title="External website">managing your NHS login (opens in new tab)</a>.</p>
+              </div>
+
+              {{ radios({
+                  "idPrefix": "use-contacts-login",
+                  "name": "use-contacts-login",
+                  "classes": "nhsuk-radios",
+                  "fieldset": {
+                    "legend": {
+                      "text": "Do you want to use these details to register with a new GP surgery?",
+                      "classes": "nhsuk-fieldset__legend--m",
+                      "isPageHeading": true
+                    }
+                  },
+                  "items": [
+                    {
+                      "value": "Yes~/design/how-can-we-contact-you",
+                      "text": "Yes, use these details"
+                    },
+                    {
+                      "value": "No~/design/how-can-we-contact-inputs",
+                      "text": "No, use different details"
+                    }
+                  ]
+              }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+            </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

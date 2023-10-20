@@ -1,0 +1,149 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your current UK address? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="do-you-know-nhs-number" method="post" autocomplete="off">
+            {{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+              {% call fieldset({
+                legend: {
+                  "text": "What is their current UK address?",
+                  "classes": "nhsuk-fieldset__legend--l"
+                }
+              }) %}
+
+              <!-- {{ hint({
+              "text": "If they have had more than one address previously, please enter the address they lived at most recently."
+              }) }} -->
+
+              {{ input({
+                label: {
+                  "text": "Address line 1"
+                },
+                "id": "current-address-line-1",
+                "name": "current-address-line-1",
+                value: data['current-address-line-1']
+              }) }}
+
+              {{ input({
+                label: {
+                    "text": "Address line 2"
+                },
+                "id": "current-address-line-2",
+                "name": "current-address-line-2",
+                value: data['current-address-line-2']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Town or city"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "current-address-town",
+                "name": "current-address-town",
+                value: data['current-address-town']
+              }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "current-address-postcode",
+                  "name": "current-address-postcode",
+                  value: data['current-address-postcode']
+              }) }}
+
+              {% endcall %}
+              {% else %}
+
+              {% call fieldset({
+                legend: {
+                  "text": "What is your current UK address?",
+                  "classes": "nhsuk-fieldset__legend--l"
+                }
+              }) %}
+
+              <!-- {{ hint({
+              "text": "If you have had more than one address previously, please enter the address you lived at most recently."
+              }) }} -->
+
+              {{ input({
+                label: {
+                  "text": "Address line 1"
+                },
+                "id": "current-address-line-1",
+                "name": "current-address-line-1",
+                value: data['current-address-line-1']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Address line 2"
+                },
+                "id": "current-address-line-2",
+                "name": "current-address-line-2",
+                value: data['current-address-line-2']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Town or city"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "current-address-town",
+                "name": "current-address-town",
+                value: data['current-address-town']
+              }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "current-address-postcode",
+                  "name": "current-address-postcode",
+                  value: data['current-address-postcode']
+              }) }}
+
+
+              {{ button({
+                "text": "Continue"
+              }) }}
+
+              {% endcall %}
+              {% endif %}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

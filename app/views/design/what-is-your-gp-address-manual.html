@@ -1,0 +1,163 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is the address of the GP surgery they want to leave? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="do-you-previous-address" method="post" autocomplete="off">
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {{ hint({
+              "text": "Registration type",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% call fieldset({
+                legend: {
+                  "text": "What is the address of the GP surgery they want to leave?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": true
+                }
+              }) %}
+
+              {{ input({
+                label: {
+                  "text": "Name of surgery"
+                },
+                "id": "previous-gp-address-line-name",
+                "name": "previous-gp-address-line-name",
+                value: data['previous-gp-address-line-name']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Address line 1"
+                },
+                "id": "previous-gp-address-line-1",
+                "name": "previous-gp-address-line-1",
+                value: data['previous-gp-address-line-1']
+              }) }}
+
+              {{ input({
+                label: {
+                    "text": "Address line 2"
+                },
+                "id": "previous-gp-address-line-2",
+                "name": "previous-gp-address-line-2",
+                value: data['previous-gp-address-line-2']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Town or city"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "previous-gp-town",
+                "name": "previous-gp-town",
+                value: data['previous-gp-town']
+              }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "previous-gp-postcode",
+                  "name": "previous-gp-postcode",
+                  value: data['previous-gp-postcode']
+              }) }}
+
+              {% endcall %}
+
+              {% else %}
+
+              {% call fieldset({
+                legend: {
+                  "text": "What is the address of the GP surgery you want to leave?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": true
+                }
+              }) %}
+
+              {{ input({
+                label: {
+                  "text": "Name of surgery"
+                },
+                "id": "previous-gp-address-line-name",
+                "name": "previous-gp-address-line-name",
+                value: data['previous-gp-address-line-name']
+              }) }}
+
+              {{ input({
+                label: {
+                "text": "Address line 1"
+                },
+                "id": "previous-gp-address-line-1",
+                "name": "previous-gp-address-line-1",
+                value: data['previous-gp-address-line-1']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Address line 2"
+                },
+                "id": "previous-gp-address-line-2",
+                "name": "previous-gp-address-line-2",
+                value: data['previous-gp-address-line-2']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Town or city"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "previous-gp-town",
+                "name": "previous-gp-town",
+                value: data['previous-gp-town']
+              }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "previous-gp-postcode",
+                  "name": "previous-gp-postcode",
+                  value: data['previous-gp-postcode']
+              }) }}
+
+              {% endcall %}
+
+              {% endif %}
+
+              {{ button({
+                "text": "Continue"
+              }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

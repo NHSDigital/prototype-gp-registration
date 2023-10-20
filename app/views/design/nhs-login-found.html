@@ -1,0 +1,90 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Would you like to sign in with your NHS login account? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="nhs-login-found-answer" method="post" autocomplete="off">
+
+            {% call fieldset({
+              legend: {
+                "text": "Would you like to sign in with your NHS login account?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>We found an NHS Login linked to <strong>{{ data['contact-email'] }}</strong></p>
+            </div>
+
+            {{ radios({
+              "idPrefix": "nhs-acc",
+              "name": "nhs-acc",
+              "items": [
+                {
+                  "value": "Yes~/design/nhs-login-password",
+                  "text": "Yes",
+                  "hint": {
+                    "text": ""
+                  },
+                  checked: checked("nhs-acc", "yes")
+                },
+                {
+                  "value": "no~/design/do-you-know-nhs-number",
+                  "text": "No",
+                  "hint": {
+                    "text": ""
+                  },
+                  checked: checked("nhs-acc", "no")
+                }
+              ]
+            }) }}
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">Don't remember setting up an account?</span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  <p>You may have set up an NHS login when using other health websites or apps, like a COVID-19 service.</p>
+                </div>
+            </details>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+            {% endcall %}
+
+            <div class="nhsuk-inset-text">
+              <span class="nhsuk-u-visually-hidden">Information: </span>
+              <h3> What is NHS login?</h3>
+              <p>NHS login allows you to securely access health websites and apps with just one username and password.</p>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

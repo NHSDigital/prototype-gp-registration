@@ -1,0 +1,91 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Would you have serious difficulty travelling to your nearest pharmacy to get medicines or medical appliances? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ hint({
+            "text": "Registration type",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
+
+          <form action="are-you-a-member-of-armed-forces" method="post" autocomplete="off">
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <h1 class="nhsuk-heading-l">Would {{ data ['name-first-name'] }} have serious difficulty travelling to their nearest pharmacy to get medicines or medical appliances?</h1>
+
+            {% else %}
+
+            <h1 class="nhsuk-heading-l">Would you have serious difficulty travelling to your nearest pharmacy to get medicines or medical appliances?</h1>
+
+            {% endif %}
+
+            {% call fieldset({
+              legend: {
+                text: "",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "Serious difficulty could be because of the distance needed to travel to the nearest pharmacy or in communicating with them."
+            }) }}
+
+            {{ radios({
+              "idPrefix": "difficulty-in-reaching-pharmacy",
+              "name": "difficulty-in-reaching-pharmacy",
+              "items": [
+                {
+                  "value": "Yes~/design/can-use-dispencing",
+                  "text": "Yes",
+                  checked: checked("difficulty-in-reaching-pharmacy", "Yes")
+                },
+                {
+                  "value": "No~/design/cant-use-dispencing",
+                  "text": "No",
+                  checked: checked("difficulty-in-reaching-pharmacy", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ details({
+              "text": "Why are we asking this?",
+              "HTML": "
+              <p>If a patient has serious difficulty travelling to or communicating with their nearest pharmacy, they may be eligible to get their medicines or medical appliances direct from this GP surgery.</p>
+              "
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

@@ -1,0 +1,119 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Application complete - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <div class="nhsuk-card nhsuk-card--confirmation nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
+
+            <div class="nhsuk-card__content">
+
+              <h1 class="nhsuk-card__title nhsuk-u-margin-bottom-4">
+                Application complete
+              </h1>
+
+              <p class="nhsuk-u-font-size-24">
+                Your reference number
+                <br>
+                <strong class="nhsuk-u-font-size-32">HDJ2123F</strong>
+              </p>
+
+            </div>
+
+          </div>
+
+          <p>Thank you for using this service. We have sent you a confirmation email using the address you provided.</p>
+
+          <h2 class="nhsuk-heading-l">What happens next</h2>
+          <ul>
+          <li>The details you gave us will be sent to your chosen GP. They will then register you at their practice.</li>
+          <li>This usually takes no longer than 2 weeks.</li>
+          <li>If you need an appointment urgently you can contact the practice to make one or use the 111 service.</li>
+          </ul>
+
+          <form action="confirmation-page-thank-you" autocomplete="off" method="post">
+
+          {% call fieldset({
+          legend: {
+          "text": "Overall, how did you feel about the service you received today?",
+          "classes": "nhsuk-fieldset__legend--m",
+          "isPageHeading": false
+          }
+          }) %}
+
+          {{ radios({
+          "idPrefix": "satisfied",
+          "name": "satisfied",
+          "items": [
+            {
+              "value": "Very satisfied",
+              "text": "Very satisfied"
+            },
+            {
+              "value": "Satisfied",
+              "text": "Satisfied"
+            },
+            {
+              "value": "Neither satisfied or dissatisfied",
+              "text": "Neither satisfied or dissatisfied"
+            },
+            {
+              "value": "Dissatisfied",
+              "text": "Dissatisfied"
+            },
+            {
+              "value": "Very dissatisfied",
+              "text": "Very dissatisfied"
+            }
+          ]
+        }) }}
+        {% endcall %}
+
+          <fieldset class="nhsuk-fieldset">
+            <div class="nhsuk-form-group"><label class="nhsuk-label" for="feedback" id="feedback--label">How can we improve this service?</label>
+              <div class="nhsuk-hint" id="feedback--hint">Do not include confidential or medical information in your
+                message. For example, your NHS number, date of birth, medical diagnosis or medical history.
+              </div>
+              <textarea aria-describedby="feedback--hint"  aria-labelledby="feedback--label" autocomplete="off"
+                        class="nhsuk-textarea" id="feedback" list="autocompleteOff" maxlength="2000" name="feedback"
+                        rows="8"></textarea></div>
+          </fieldset>
+
+          <input type="hidden" name="feedback-type" value="final" />
+
+          <button aria-disabled="false" class="nhsuk-button" id="submit-provide-feedback" type="submit">
+            Send feedback
+          </button>
+
+        </form>
+
+          <div class="nhsuk-inset-text">
+            <h3 class="nhsuk-heading-s">Save up to nine lives as an organ donor</h3>
+            <span class="nhsuk-u-visually-hidden">Information: </span>
+            <p><p>You can register a decision to donate your organs and tissue when you die, regardless of your age or medical conditions.</p>
+            <p><a href="https://www.organdonation.nhs.uk/?utm_source=england_gp_new_patient_registration&utm_medium=referral&utm_campaign=partner&utm_content=organs_web&utm_term=allaudiences" target="_blank" rel="noopener noreferrer" title="External website">Find out more about organ donation (opens in a new tab)</a>.</p>
+          </div>
+
+
+          <p class="nhsuk-u-font-size-14">Skip to: <a href="/emails/patient-submission-email">Patient email</p>
+
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

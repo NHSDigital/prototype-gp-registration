@@ -1,0 +1,129 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+How many cigarettes do you smoke? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="scr" method="post" autocomplete="off">
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+           {{ hint({
+              "text": "Health information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            <h1 class="nhsuk-heading-l">How many cigarettes does {{ data ['name-first-name'] }} smoke?</h1>
+
+            {{ dateInput({
+              "id": "smoke-amount",
+              "namePrefix": "smoke-amount",
+              "fieldset": {
+                "legend": {
+                  "text": "Number of cigarettes",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": false
+                }
+              },
+              "hint": {
+                "text": "Enter the average number of cigarettes you smoke a day."
+              },
+              "items": [
+                {
+                  "name": "smoke-ammount",
+                  "classes": "nhsuk-input--width-8",
+                  "value": data['smoke-amount']
+                }
+              ]
+            }) }}
+
+            {% elif (data['smokes-type'] == "I used to smoke") %}
+
+           {{ hint({
+              "text": "Health information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {{ dateInput({
+              "id": "smoke-amount",
+              "namePrefix": "smoke-amount",
+              "fieldset": {
+                "legend": {
+                  "text": "How many cigarettes did you used to smoke?",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": true
+                }
+              },
+              "hint": {
+                "text": "Enter the average number of cigarettes you smoked a day."
+              },
+              "items": [
+                {
+                  "name": "Number of cigarettes",
+                  "classes": "nhsuk-input--width-8",
+                  "value": data['smoke-ammount']
+                }
+              ]
+            }) }}
+
+            {% else %}
+
+           {{ hint({
+              "text": "Health information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {{ dateInput({
+              "id": "smoke-amount",
+              "namePrefix": "smoke-amount",
+              "fieldset": {
+                "legend": {
+                  "text": "How many cigarettes do you smoke?",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": true
+                }
+              },
+              "hint": {
+                "text": "Enter the average number of cigarettes you smoke a day."
+              },
+              "items": [
+                {
+                  "name": "Number of cigarettes",
+                  "classes": "nhsuk-input--width-8",
+                  "value": data['smoke-ammount']
+                }
+              ]
+            }) }}
+
+            {% endif %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

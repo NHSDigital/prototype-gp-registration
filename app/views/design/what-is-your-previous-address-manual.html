@@ -1,0 +1,91 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What was your previous UK address? - {{ serviceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="check-answers-2" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Registration type",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+              {% call fieldset({
+                legend: {
+                  "text": "What was your previous UK address?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": true
+                }
+              }) %}
+
+              {{ input({
+                label: {
+                  "text": "Address line 1"
+                },
+                "id": "previous-address-line-1",
+                "name": "previous-address-line-1",
+                value: data['previous-address-line-1']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Address line 2"
+                },
+                "id": "previous-address-line-2",
+                "name": "previous-address-line-2",
+                value: data['previous-address-line-2']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Town or city"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "previous-address-town",
+                "name": "previous-address-town",
+                value: data['previous-address-town']
+              }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "previous-address-postcode",
+                  "name": "previous-address-postcode",
+                  value: data['previous-address-postcode']
+              }) }}
+
+              {% endcall %}
+
+              {{ button({
+                "text": "Continue"
+              }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

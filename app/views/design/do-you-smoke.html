@@ -1,0 +1,115 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Have you ever smoked - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+           {{ hint({
+              "text": "Health information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <h1 class="nhsuk-heading-l">Has {{ data ['name-first-name'] }} ever smoked?</h1>
+
+            {{ radios({
+              "idPrefix": "smokes",
+              "name": "smokes",
+              "fieldset": {
+                "legend": {
+                  "text": "",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "items": [
+              {
+                "value": "Yes~/design/do-you-smoke-type",
+                "text": "Yes",
+                checked: checked("smokes", "Yes")
+              },
+                {
+                  "value": "No~/design/scr",
+                  "text": "No",
+                  checked: checked("smokes", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say~/design/scr",
+                  "text": "Prefer not to say",
+                  checked: checked("smokes", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {% else %}
+
+            {{ radios({
+              "idPrefix": "smokes",
+              "name": "smokes",
+              "fieldset": {
+                "legend": {
+                  "text": "Have you ever smoked?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "items": [
+              {
+                "value": "Yes~/design/do-you-smoke-type",
+                "text": "Yes",
+                checked: checked("smokes", "Yes")
+              },
+                {
+                  "value": "No~/design/scr",
+                  "text": "No",
+                  checked: checked("smokes", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say~/design/scr",
+                  "text": "Prefer not to say",
+                  checked: checked("smokes", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {% endif %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

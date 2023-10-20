@@ -1,0 +1,75 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your NHS Number? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <form action="how-can-we-contact-inputs" method="post" autocomplete="off">
+
+           {{ hint({
+              "text": "Step 1 of 3 - Matching patient to their record",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <h1 class="nhsuk-heading-l"> What is {{ data ['name-first-name'] }}'s NHS Number</h1>
+
+            {% else %}
+
+            <h1 class="nhsuk-heading-l">What is your NHS Number?</h1>
+
+            {% endif %}
+
+            {% call fieldset({
+              legend: {
+                "text": "",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ hint({
+                "text": "Please enter your NHS number to continue. It is a 10 digit number, like 485 777 3456"
+            }) }}
+
+            {{ input({
+              "label": {
+              },
+                "classes": "nhsuk-input nhsuk-input--width-10",
+                "id": "nhs-number",
+                "name": "nhs-number",
+                "value": data['nhs-number']
+              }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

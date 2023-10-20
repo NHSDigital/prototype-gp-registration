@@ -1,0 +1,113 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Where was {{ data ['name-first-name'] }} born? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="do-you-know-previous-postcode-when-baby-born" method="post" autocomplete="off">
+
+          {{ hint({
+            "text": "Patient details",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
+
+          <h1 class="nhsuk-heading-l">Where was {{ data ['name-first-name'] }} born?</h1>
+
+          {% call fieldset({
+            legend: {
+              text: "",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "child-born",
+            "name": "child-born",
+            "items": [
+              {
+                "value": "England",
+                "text": "England",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("child-born", "England")
+              },
+              {
+                "value": "Wales",
+                "text": "Wales",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("child-born", "England")
+              },
+              {
+                "value": "Isle of man",
+                "text": "Isle of man",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("child-born", "Isle of man")
+              },
+              {
+                "value": "Scotland",
+                "text": "Scotland",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("child-born", "Scotland")
+              },
+              {
+                "value": "Northern ireland",
+                "text": "Northern ireland",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("child-born", "Northern ireland")
+              },
+              {
+                "divider": "or"
+              },
+              {
+                "value": "Outside of the UK",
+                "text": "Outside of the UK",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("child-born", "Outside of the UK")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+      </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

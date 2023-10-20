@@ -1,0 +1,137 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What was your previous UK address? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="what-is-your-previous-address-selection" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Registration type",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                "text": "What was their previous UK address?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ input({
+              label: {
+                "text": "House number or name"
+              },
+              "hint": {
+                "text": "For example, flat 20A"
+              },
+              "classes": "nhsuk-input--width-10",
+              "id": "prev-house-number-address",
+              "name": "prev-house-number-address",
+              value: data['prev-house-number-address']
+          }) }}
+
+            {{ input({
+              label: {
+                "text": "Postcode"
+              },
+              "hint": {
+                "text": "For example, AB12 P12"
+              },
+              "classes": "nhsuk-input--width-10",
+              "id": "find-previous-address",
+              "name": "find-previous-address",
+              value: data['find-previous-address']
+          }) }}
+
+          {% endcall %}
+
+          {% else %}
+
+          {% call fieldset({
+            legend: {
+              "text": "What was your previous UK address?",
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          }) %}
+
+          {{ input({
+            label: {
+              "text": "House number or name"
+            },
+            "hint": {
+              "text": "For example, flat 20A"
+            },
+            "classes": "nhsuk-input--width-10",
+            "id": "prev-house-number-address",
+            "name": "prev-house-number-address",
+            value: data['prev-house-number-address']
+        }) }}
+
+          {{ input({
+            label: {
+              "text": "Postcode"
+            },
+            "hint": {
+              "text": "For example, AB12 P12"
+            },
+            "classes": "nhsuk-input--width-10",
+            "id": "find-previous-address",
+            "name": "find-previous-address",
+            value: data['find-previous-address']
+        }) }}
+
+        {% endcall %}
+
+        {% endif %}
+
+          <p><a href="what-is-your-previous-address-manual" id="enter-address-manually-link">Enter the address manually</a></p>
+
+            {{ button({
+              "text": "Continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+  <script>
+    $('#no-previous-address-1').change(function () {
+      if ($('#no-previous-address-1').is(':checked') == true) {
+        $('input[type=text]').prop('disabled', true);
+      } else {
+        $('input[type=text]').prop('disabled', false);
+      }
+    });
+  </script>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

@@ -1,0 +1,90 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Are you registered with the Defence Medical Services - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Additional information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <h1 class="nhsuk-heading-l">Is {{ data ['name-first-name'] }} registered with the Defence Medical Services?</h1>
+
+            {% else %}
+
+            <h1 class="nhsuk-heading-l">Are you registered with the Defence Medical Services?</h1>
+
+            {% endif %}
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>You may be registered with the Defence Medical Services (DMS) if you or a family member were in the UK armed forces and this is the first time you are registering with an NHS GP since you or they left service.</p>
+            </div>
+
+            {% call fieldset({
+                legend: {
+                  text: "",
+                  classes: "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              }) %}
+
+              {{ radios({
+                "idPrefix": "is-armed-forces-member",
+                "name": "is-armed-forces-member",
+                "items": [
+                  {
+                    "value": "Yes~/design/are-you-a-member-of-armed-forces-details",
+                    "text": "Yes",
+                    checked: checked("is-armed-forces-member", "Yes")
+                  },
+                  {
+                    "value": "No~/design/do-you-need-a-interpreter",
+                    "text": "No",
+                    checked: checked("is-armed-forces-member", "No")
+
+                  }
+                ]
+              }) }}
+
+            {% endcall %}
+
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>This helps us understand where to request your medical record from.</p>
+                      <p>If you have previously been a member of the UK armed forces you may also be able to access additional services for former service members.</p>"
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

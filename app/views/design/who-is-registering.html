@@ -1,0 +1,65 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Who is registering with a GP? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="who-is-registering-answer" method="post" autocomplete="off">
+
+          {{ radios({
+            "idPrefix": "who-is-being-registered",
+            "name": "who-is-being-registered",
+            "fieldset": {
+                "legend": {
+                  "text": "Who is registering with a GP?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": true
+                }
+              },
+            "items": [
+              {
+                "value": "myself",
+                "text": "myself",
+                "checked": checked("who-is-being-registered", "myself")
+              },
+              {
+                "value": "dependant",
+                "text": "Someone else",
+                "hint": {
+                  "text": "You are registering your child or someone else who needs help completing this form"
+                },
+                "checked": checked("who-is-being-registered", "dependant")
+              }
+            ]
+          }) }}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+      </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

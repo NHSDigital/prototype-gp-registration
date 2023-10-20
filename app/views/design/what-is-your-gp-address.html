@@ -1,0 +1,137 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is the address of the GP surgery you want to leave? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="what-is-your-gp-address-selection" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Registration type",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                "text": "What is the address of the GP surgery they want to leave?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "If they have been registered at more than one GP surgery previousy, please enter the name and address of the most recent GP surgery they were registered at.",
+              "classes": ""
+            }) }}
+
+            {{ input({
+              label: {
+                "text": "Surgery name"
+              },
+              "hint": {
+                "text": "For example, Leeds general practice"
+              },
+              "classes": "nhsuk-input--width-20",
+              "id": "find-gp-address",
+              "name": "find-gp-address",
+              value: data['find-gp-address']
+          }) }}
+
+          {{ input({
+            label: {
+              "text": "Postcode"
+            },
+            "hint": {
+              "text": "For example, LS11 8LH"
+            },
+            "classes": "nhsuk-input--width-10",
+            "id": "current-gp-address",
+            "name": "current-gp-address",
+            value: data['current-gp-address']
+        }) }}
+
+
+          {% endcall %}
+
+          {% else %}
+
+          {% call fieldset({
+            legend: {
+              "text": "What is the address of the GP surgery you want to leave?",
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          }) %}
+
+          {{ hint({
+            "text": "If you have been registered at more than one GP surgery previousy, please enter the name and address of the most recent GP surgery you were registered at.",
+            "classes": ""
+          }) }}
+
+          {{ input({
+            label: {
+              "text": "Surgery name"
+            },
+            "hint": {
+              "text": "For example, Leeds general practice"
+            },
+            "classes": "nhsuk-input--width-20",
+            "id": "find-gp-address",
+            "name": "find-gp-address",
+            value: data['find-gp-address']
+        }) }}
+
+        {{ input({
+          label: {
+            "text": "Postcode"
+          },
+          "hint": {
+            "text": "For example, LS11 8LH"
+          },
+          "classes": "nhsuk-input--width-10",
+          "id": "current-gp-address",
+          "name": "current-gp-address",
+          value: data['current-gp-address']
+      }) }}
+
+        {% endcall %}
+
+          {% endif %}
+
+          <p>
+            <a href="what-is-your-gp-address-manual" id="enter-address-manually-link">Enter the address manually</a>
+          </p>
+
+            {{ button({
+              "text": "Continue",
+              "classes": "postcode-lookup-btn"
+          }) }}
+
+        </form>
+      </div>
+   </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

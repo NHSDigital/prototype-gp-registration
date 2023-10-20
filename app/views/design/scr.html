@@ -1,0 +1,94 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you want important information from your GP record to be available to other health and care professionals? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="check-answers-b" method="post" autocomplete="off">
+
+          {{ hint({
+             "text": "Health information",
+             "classes": "nhsuk-u-margin-bottom-2"
+           }) }}
+
+          <h1 class="nhsuk-heading-l">Do you want important information from your GP record to be available to other health and care professionals?</h1>
+
+          {% call fieldset({
+            legend: {
+              text: "",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>Your GP surgery needs permission to share important information from your GP record. This is called a Summary Care Record (SCR). Your SCR can only be shared with health and care staff across England who are providing you with direct care. It gives them access to vital information from your GP record.</p>
+          </div>
+
+          {{ radios({
+            "idPrefix": "scr",
+            "name": "scr",
+            "items": [
+              {
+                "value": "Yes",
+                "text": "Yes, share a Summary Care Record with additional information",
+                "hint": {
+                  "text": "Includes details of your medicines, allergies, adverse reactions and additional information, which includes details of any significant illnesses and health problems, operations and vaccinations"
+                },
+                checked: checked("scr", "Yes")
+              },
+              {
+                "value": "Yes",
+                "text": "Yes, share a Summary Care Record without additional information",
+                "hint": {
+                  "text": "Includes details of your medicines, allergies and adverse reactions only"
+                },
+                checked: checked("scr", "Yes only")
+              },
+              {
+                "value": "No",
+                "text": "No, do not share a Summary Care Record",
+                "hint": {
+                  "text": "Details of your medicines, allergies, adverse reactions and any additional information will not be shared with anyone involved in your direct care"
+                },
+
+                checked: checked("scr", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          <p> Find out more about <a href="https://digital.nhs.uk/services/summary-care-records-scr/summary-care-records-scr-information-for-patients" target="_blank" rel="noopener noreferrer">Summary Care Records (opens a new tab)</a> <br>and what is included in <a href="https://digital.nhs.uk/services/summary-care-records-scr/summary-care-records-scr-information-for-patients#additional-information-is-included-on-your-scr" target="_blank" rel="noopener noreferrer">'additional information' (opens a new tab)</a>.</p>
+          <p>It is not compulsory for you to select any of these options. If you choose not to then your SCR consent preference held at your previous GP surgery will be transferred to your new GP surgery.</p>
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+      </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

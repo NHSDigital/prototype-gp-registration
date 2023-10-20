@@ -1,0 +1,97 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Enter details of where you were born? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="what-is-your-ethnicity" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+              <h1 class="nhsuk-heading-l">Enter details of where {{ data ['name-first-name'] }} was born?</h1>
+
+              {% call fieldset({
+                legend: {
+                  "text": "",
+                  "classes": "nhsuk-fieldset__legend--l"
+                }
+              }) %}
+
+              {{ input({
+                  "label": {
+                    "text": "Place of birth"
+                  },
+                  "hint": {
+                    "html": "This can be the city, town or other place you were born."
+                  },
+                  "classes": "nhsuk-u-width-two-thirds",
+                  "id": "town",
+                  "name": "town",
+                  "value": data['town']
+              }) }}
+
+              {% endcall %}
+
+              {% else %}
+
+              <h1 class="nhsuk-heading-l">Enter details of where you were born</h1>
+
+              {% call fieldset({
+                legend: {
+                  "text": "",
+                  "classes": "nhsuk-fieldset__legend--l"
+                }
+              }) %}
+
+              {{ input({
+                  "label": {
+                    "text": "Place of birth"
+                  },
+                  "hint": {
+                    "html": "This can be the city, town or other place you were born."
+                  },
+                  "classes": "nhsuk-u-width-two-thirds",
+                  "id": "town",
+                  "name": "town",
+                  "value": data['town']
+              }) }}
+
+              {% endcall %}
+
+              {% endif %}
+
+              {{ button({
+                "text": "Continue"
+              }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

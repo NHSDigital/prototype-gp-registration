@@ -1,0 +1,75 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Choose type of pharmacy - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+            {{ hint({
+              "text": "Additional information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {{ radios({
+              "idPrefix": "nominate-pharmacy",
+              "name": "nominate-pharmacy",
+              "fieldset": {
+                "legend": {
+                  "text": "Choose type of pharmacy",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "html": ""
+              },
+              "items": [
+                {
+                  "value": "yes~/design/nominate-pharmacy-search",
+                  "text": "High Street pharmacy",
+                  "hint": {
+                    "text": "You can collect your prescription items in person from a pharmacy near to you. They may also deliver."
+                  },
+                  checked: checked("nominate-pharmacy", "Yes")
+                },
+                {
+                  "value": "no~/design/online-pharmacy",
+                  "text": "Online-only pharmacy",
+                  "hint": {
+                    "text": "These send your prescription items to you in the post. It's not possible for you to choose an online-only pharmacy during this registration process. You need to register directly with them instead."
+                  },
+                  checked: checked("nominate-pharmacy", "no")
+                }
+              ]
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

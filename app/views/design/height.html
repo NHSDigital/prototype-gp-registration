@@ -1,0 +1,137 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your height? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ hint({
+               "text": "Health information",
+               "classes": "nhsuk-u-margin-bottom-2"
+             }) }}
+
+        <form action="weight" method="post" autocomplete="off">
+
+          <div id="current-address-lookup-container">
+
+            {{ dateInput({
+              "id": "height",
+              "namePrefix": "height",
+              "fieldset": {
+                "legend": {
+                  "text": "What is your height?",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": false
+                }
+              },
+              "hint": {
+                "text": "This question is (optional)"
+              },
+              "items": [
+                {
+                  "name": "feet",
+                  "classes": "nhsuk-input--width-5",
+                  "value": data['feet']
+                },
+                {
+                  "name": "inches",
+                  "classes": "nhsuk-input--width-5",
+                  "value": data['inches']
+                }
+              ]
+            }) }}
+
+            <p>
+              <a href="#" id="enter-address-manually-link">Switch to centimetres</a>
+            </p>
+
+          </div>
+
+          <form action="weight" method="post" autocomplete="off">
+
+            <div class="current-address-form hidden-section">
+
+              {{ dateInput({
+                "id": "height",
+                "namePrefix": "height",
+                "fieldset": {
+                  "legend": {
+                    "text": "What is your height?",
+                    "classes": "nhsuk-label--l",
+                    "isPageHeading": false
+                  }
+                },
+                "hint": {
+                  "text": "This question is (optional)"
+                },
+                "items": [
+                  {
+                    "name": "Centimetres",
+                    "classes": "nhsuk-input--width-10",
+                    "value": data['centimetres']
+                  }
+                ]
+              }) }}
+
+              <p>
+                <a href="#" id="use-postcode-lookup-link">Switch to feet and inches</a>
+              </p>
+
+            </div>
+
+          <details class="nhsuk-details">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Why are we asking this?
+            </span>
+          </summary>
+          <div class="nhsuk-details__text">
+            <p>The GP surgery may use this information to give you health guidance and support.</p>
+          </div>
+        </details>
+
+          <button class="nhsuk-button" type="submit">
+            Continue
+          </button>
+
+        </form>
+
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  $('#enter-address-manually-link').click(function () {
+    $('#current-address-lookup-container').addClass("hidden-section");
+    $('.current-address-form').removeClass("hidden-section");
+  });
+
+  $('#use-postcode-lookup-link').click(function () {
+    $('#current-address-lookup-container').removeClass("hidden-section");
+    $('#select-address-section').addClass("hidden-section");
+    $('.current-address-form').addClass("hidden-section");
+  });
+
+</script>
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

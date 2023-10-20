@@ -1,11 +1,11 @@
-{% set serviceHome = '/live/start' %}
+{% set serviceHome = '/design/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
 
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Have you got all your immunisations - {{ ServiceName }} - NHS
+Do you have any mental health conditions - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -21,16 +21,16 @@ Have you got all your immunisations - {{ ServiceName }} - NHS
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="do-you-have-existing-conditions" method="post" autocomplete="off">
+          <form action="" method="post" autocomplete="off">
 
-            {{ hint({
+           {{ hint({
               "text": "Health information",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Has {{ data ['name-first-name'] }} had all their routine vaccinations?</h1>
+            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have any mental health conditions?</h1>
 
             {% call fieldset({
               legend: {
@@ -41,30 +41,30 @@ Have you got all your immunisations - {{ ServiceName }} - NHS
             }) %}
 
             {{ hint({
-              "text": "These are vaccinations or immunisations received at school or from a GP, either in the UK or abroad. "
+              "text": "It is important to tell us about all existing or pre-existing mental health conditions they may have, so their GP can ensure they are given the necessary treatment."
             }) }}
 
             {{ radios({
-              "idPrefix": "are-you-immunised",
-              "name": "are-you-immunised",
+              "idPrefix": "has-mental-health-conditions",
+              "name": "has-mental-health-conditions",
               "items": [
                 {
-                  "value": "Yes~/live/are-you-immunised-uk",
+                  "value": "Yes~/design/mental-health-conditions-details",
                   "text": "Yes",
-                  checked: checked("are-you-immunised", "Yes")
+                  checked: checked("has-mental-health-conditions", "Yes")
                 },
                 {
-                  "value": "No",
+                  "value": "No~/design/do-you-have-existing-conditions",
                   "text": "No",
-                  checked: checked("are-you-immunised", "No")
+                  checked: checked("has-mental-health-conditions", "No")
                 },
                 {
                   "divider": "or"
                 },
                 {
-                  "value": "I don't know",
-                  "text": "I don't know",
-                  checked: checked("are-you-immunised", "I don't know")
+                  "value": "Prefer not to say~/design/do-you-have-existing-conditions",
+                  "text": "Prefer not to say",
+                  checked: checked("has-mental-health-conditions", "Prefer not to say")
                 }
               ]
             }) }}
@@ -74,37 +74,37 @@ Have you got all your immunisations - {{ ServiceName }} - NHS
 
             {% call fieldset({
               legend: {
-                text: "Have you got all your immunisations?",
+                text: "Do you have any mental health conditions?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
             {{ hint({
-              "text": "These are vaccinations or immunisations received at school or from a GP, either in the UK or abroad."
+              "text": "It is important to tell us about all existing or pre-existing mental health conditions you may have, so your GP can ensure you are given the necessary treatment."
             }) }}
 
             {{ radios({
-              "idPrefix": "are-you-immunised",
-              "name": "are-you-immunised",
+              "idPrefix": "has-mental-health-conditions",
+              "name": "has-mental-health-conditions",
               "items": [
                 {
-                   "value": "Yes~/live/are-you-immunised-uk",
+                  "value": "Yes~/design/mental-health-conditions-details",
                   "text": "Yes",
-                  checked: checked("are-you-immunised", "Yes")
+                  checked: checked("has-mental-health-conditions", "Yes")
                 },
                 {
-                  "value": "No",
+                  "value": "No~/design/do-you-have-existing-conditions",
                   "text": "No",
-                  checked: checked("are-you-immunised", "No")
+                  checked: checked("has-mental-health-conditions", "No")
                 },
                 {
                   "divider": "or"
                 },
                 {
-                  "value": "I don't know",
-                  "text": "I don't know",
-                  checked: checked("are-you-immunised", "I don't know")
+                  "value": "Prefer not to say~/design/do-you-have-existing-conditions",
+                  "text": "Prefer not to say",
+                  checked: checked("has-mental-health-conditions", "Prefer not to say")
                 }
               ]
             }) }}
@@ -118,8 +118,8 @@ Have you got all your immunisations - {{ ServiceName }} - NHS
 
           </form>
         </div>
-      </div>
-  
+       </div>
+
 {% endblock %}
 
 {% block footer %}

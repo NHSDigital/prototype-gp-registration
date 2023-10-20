@@ -8,6 +8,10 @@ router.use(radioButtonRedirect)
 
 // Add your routes here - above the module.exports line
 
+require("./views/live/routes.js")(router);
+require("./views/design/routes.js")(router);
+
+
 router.use((req, res, next) => {
   const log = {
     method: req.method,
@@ -21,7 +25,7 @@ router.use((req, res, next) => {
   next()
 })
 
-require("./views/live/routes.js")(router);
+
 
 // Who is registering branch
 router.post('*/who-is-registering-answer/', function (req, res) {

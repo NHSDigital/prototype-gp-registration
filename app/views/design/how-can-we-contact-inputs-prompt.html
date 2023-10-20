@@ -1,0 +1,71 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Are you sure that you have no access to a phone or email? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="" method="post" autocomplete="off">
+
+        {% call fieldset({
+          legend: {
+            text: "Are you sure that you have no access to a phone or email?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <div class="nhsuk-hint" id="contact-hint">
+          <p>It's important that the NHS and your GP surgery have a convenient way of contacting you about this application, appointments, prescriptions or other health care services.</p>
+        </div>
+
+        {{ radios({
+          "idPrefix": "no-contact",
+          "name": "no-contact",
+          "items": [
+            {
+              "value": "Yes~/design/what-is-your-gender",
+              "text": "Yes, I don't have access to a phone or email",
+
+              checked: checked("no-contact", "Yes")
+            },
+            {
+              "value": "No~/design/how-can-we-contact-you",
+              "text": "No",
+
+              checked: checked("no-contact", "No")
+            }
+          ]
+        }) }}
+
+        {% endcall %}
+
+        <button class="nhsuk-button" type="submit">
+          Continue
+        </button>
+
+        </form>
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

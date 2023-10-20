@@ -1,0 +1,95 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What type of carer are you? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="what-is-your-date-of-birth" method="post" autocomplete="off">
+
+           <!--{{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}-->
+
+            {% call fieldset({
+              legend: {
+                "text": "What type of carer are you?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+
+            }) %}
+
+           {{ radios({
+            "idPrefix": "type-carer",
+            "name": "type-carer",
+            "items": [
+              {
+                "value": "Young carer~/design/carer-details",
+                "text": "Young carer, under 18",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("type-carer", "Yes")
+              },
+              {
+                "value": "Occupational Carer~/design/carer-details",
+                "text": "Paid as a job",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("type-carer", "Yes")
+              },
+               {
+                "value": "Informal carer~/design/carer-details",
+                "text": "Unpaid, but may get benefits",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("type-carer", "Yes")
+              },
+              {
+                "value": "Foster carer~/design/carer-details",
+                "text": "Foster carer",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("type-carer", "Yes")
+              }
+
+              ]
+            }) }}
+
+            {% endcall %}
+
+            <br>
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}s

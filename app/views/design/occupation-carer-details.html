@@ -1,0 +1,108 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What are your details - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="what-is-your-name" method="post">
+
+           <!--{{ hint({
+              "text": "Step 1 of 3 - Matching patient to their record",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}-->
+
+            {% call fieldset({
+              legend: {
+                "text": "What are your details?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ input({
+                label: {
+                  "text": "First name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "carer-first-name",
+                "name": "carer-first-name",
+                "value": data['carer-first-name']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Last name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "carer-last-name",
+                "name": "carer-last-name",
+                "value": data['carer-last-name']
+              }) }}
+
+
+              {{ input({
+                  label: {
+                    "text": "Contact telephone number"
+                  },
+                  "classes": "nhsuk-u-width-two-thirds",
+                  "id": "carer-telephone",
+                  "name": "carer-telephone",
+                  "value": data['carer-telephone']
+                }) }}
+
+              {{ input({
+                label: {
+                  "text": "Agency or Council name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "carer-company",
+                "name": "carer-company",
+                "value": data['carer-company']
+              }) }}
+
+
+            {{ textarea({
+              "name": "carer-company",
+              "id": "carer-company",
+              "label": {
+                "text": "Carer agency or Council details"
+              },
+              "hint": {
+                "text": "Please include details about the company providing carer for this patient."
+              }
+            }) }}
+
+            {% endcall %}
+
+            <br>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

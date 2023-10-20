@@ -1,0 +1,115 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Check your mobile phone - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+  {{ backLink({
+    text: "Go back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="what-is-your-title" method="post" autocomplete="off">
+
+          {% call fieldset({
+              legend: {
+                "text": "Check your mobile phone",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+          <p>
+            Enter the 6 digit security code we've sent to •••••••0123
+          </p>
+
+          <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                Not received your security code?
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <p><a href="#">Request a new security code</a></p>
+
+            </div>
+          </details>
+
+          {{ input({
+                label: {
+                  "html": 'Security code'
+                },
+                  "hint": {
+                  "text": "The code is 6 numbers"
+                },
+                "type": "password",
+                "classes": "nhsuk-input--width-20",
+                "id": "nhs-login-email",
+                "name": "nhs-login-email"
+              }) }}
+
+              {{ checkboxes({
+                "idPrefix": "remember-device",
+                "name": "remember-device",
+                "items": [
+                  {
+                    "value": "remember-device-checkbox",
+                    "text": "Remember this device and stop sending security codes"
+                  }
+                ]
+              }) }}
+
+              {{ details({
+                "text": "What does remember this device mean",
+                "HTML": "
+                <p>We can remember the device you are using now, so you will not need to enter a security code when you log in with this device in the future. </p>
+                <p> To keep your NHS login secure, you should only do this on your own personal or trusted devices. </p>
+                <p>We may ask if you still want us to remember this device in the future.</p>
+                "
+              }) }}
+
+              {{ details({
+                "text": "I do not have access to my mobile phone",
+                "HTML": "
+                <p> If you do not have access to your phone, you can <a href='#'>change your phone number securely</a>.  </p>
+                "
+              }) }}
+
+          {% endcall %}
+
+          {{ button({
+              "text": "Continue"
+            }) }}
+
+        </form>
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  $('#no-previous-address-1').change(function() {
+    if ($('#no-previous-address-1').is(':checked') == true) {
+      $('input[type=text]').prop('disabled', true);
+    } else {
+      $('input[type=text]').prop('disabled', false);
+    }
+  });
+</script>
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

@@ -1,0 +1,86 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you know the postcode of where the mother of {{ data ['name-first-name'] }} was living when their baby was born? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="" method="post" autocomplete="off">
+
+          {{ hint({
+            "text": "Patient details",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
+
+        <h1 class="nhsuk-heading-l">Do you know the postcode of where the mother of {{ data ['name-first-name'] }} was living when their baby was born?</h1>
+
+          {% call fieldset({
+            legend: {
+              text: "",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          <!-- <div class="nhsuk-hint" id="contact-hint">
+            <p>This will be the postcode you used last time you registered with a GP surgery.
+          </div> -->
+
+          {{ radios({
+            "idPrefix": "do-you-know-previous-postcode",
+            "name": "do-you-know-previous-postcode",
+            "items": [
+              {
+                "value": "Yes~/design/what-is-previous-postcode-of-mother",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("registering-first-time", "Yes")
+              },
+              {
+                "value": "No~/design/check-answers",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("registering-first-time", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {{ details({
+            "text": "Why are you asking this?",
+            "HTML": "<p>We use this information to try and match the birth records.</p>"
+          }) }}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

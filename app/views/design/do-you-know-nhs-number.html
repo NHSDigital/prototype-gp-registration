@@ -1,0 +1,112 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Do you know your NHS number - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <h1 class="nhsuk-heading-l">Do you know {{ data ['name-first-name'] }}'s NHS Number?</h1>
+
+            {% else %}
+
+            <h1 class="nhsuk-heading-l">Do you know your NHS Number?</h1>
+
+            {% endif %}
+
+
+            {% call fieldset({
+              legend: {
+                text: "",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "Telling us your NHS number will give us the best chance of matching you to their NHS record.",
+              "classes": "nhsuk-u-margin-bottom-4"
+            }) }}
+
+            {{ hint({
+              "text": "You do not need to know your NHS number to continue. If you do not know it, you can tell us their full name instead.",
+              "classes": "nhsuk-u-margin-bottom-4"
+            }) }}
+
+
+            {{ radios({
+              "idPrefix": "know-nhs-number",
+              "name": "know-nhs-number",
+              "items": [
+                {
+                  "value": "Yes~/design/what-is-your-nhs-number",
+                  "text": "Yes, I know my NHS number",
+                  "checked": checked("know-nhs-number", "Yes")
+                },
+                {
+                  "value": "No~/design/how-can-we-contact-inputs",
+                  "text": "No, continue without",
+                  "checked": checked("know-nhs-number", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            <details class="nhsuk-details">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  How to find your NHS number
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
+                <p>You can find your NHS number by logging in to a GP online service or on any document the NHS has sent you, such as your:</p>
+                <ul>
+                  <li>prescriptions</li>
+                  <li>test results</li>
+                  <li>hospital referral letters</li>
+                  <li>appointment letters</li>
+                </ul>
+                <p>Ask your GP surgery for help if you can't find your NHS number.</p>
+
+              </div>
+            </details>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

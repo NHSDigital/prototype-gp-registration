@@ -1,0 +1,89 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your country of birth? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="recently-moved-date" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Registration type",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+              {% call fieldset({
+                legend: {
+                  "text": "What is their country of birth?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              }) %}
+
+              {{ input({
+                  label: {
+                    "text": "Country name (Optional)"
+                  },
+                  "classes": "nhsuk-u-width-two-thirds",
+                  "id": "moved-address-country",
+                  "name": "moved-address-country",
+                  value: data['moved-address-country']
+              }) }}
+
+              {% endcall %}
+
+              {% else %}
+
+              {% call fieldset({
+                legend: {
+                  "text": "What is your country of birth?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              }) %}
+
+              {{ input({
+                  label: {
+                    "text": "Country name (Optional)"
+                  },
+                  "classes": "nhsuk-u-width-two-thirds",
+                  "id": "moved-address-country",
+                  "name": "moved-address-country",
+                  value: data['moved-address-country']
+              }) }}
+
+              {% endcall %}
+
+              {% endif %}
+
+              {{ button({
+                "text": "Continue"
+              }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

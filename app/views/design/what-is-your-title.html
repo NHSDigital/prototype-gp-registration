@@ -1,0 +1,74 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your title? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {% if data['user-auth'] == "p9" %}
+          <form action="where-were-you-born" method="post" >
+          {% else %}
+          <form action="what-is-your-sex" method="post">
+          {% endif %}
+
+          {{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% call fieldset({
+              legend: {
+                "text": "What is your title?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+              }) %}
+
+            {{ hint({
+                "text": "We need your title so that your GP surgery can match you to your medical record."
+            }) }}
+
+           {{ input({
+              label: {
+                "text": "Title"
+              },
+              "hint": {
+                "html": "For example, Mr, Mrs, Miss or Ms"
+              },
+              "classes": "nhsuk-input--width-4",
+              "id": "name-title",
+              "name": "name-title",
+              "value": data['name-title']
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

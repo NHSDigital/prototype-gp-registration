@@ -1,0 +1,136 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Are you returning from overseas? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {{ hint({
+              "text": "Registration type",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['registering-first-time'] === "No") %}
+
+            {% call fieldset({
+              legend: {
+                text: "Are you returning from overseas?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ radios({
+              "idPrefix": "overseas",
+              "name": "overseas",
+              "items": [
+                {
+                  "value": "Yes~/design/date-left-uk",
+                  "text": "Yes",
+                  checked: checked("overseas", "Yes")
+                },
+                {
+                  "value": "No~/design/check-answers-2",
+                  "text": "No",
+                  checked: checked("overseas", "No")
+
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {% elif ((data['who-is-being-registered'] == "dependant") and (data['registering-first-time'] == "Yes"))  %}
+
+
+            {% call fieldset({
+              legend: {
+                text: "Are they returning from overseas?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ radios({
+              "idPrefix": "overseas",
+              "name": "overseas",
+              "items": [
+                {
+                  "value": "Yes~/design/date-left-uk",
+                  "text": "Yes",
+                  checked: checked("overseas", "Yes")
+                },
+                {
+                  "value": "No~/design/check-answers-2",
+                  "text": "No",
+                  checked: checked("overseas", "No")
+
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {% else %}
+
+            {% call fieldset({
+              legend: {
+                text: "Are they returning from overseas?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ radios({
+              "idPrefix": "overseas",
+              "name": "overseas",
+              "items": [
+                {
+                  "value": "Yes~/design/date-left-uk",
+                  "text": "Yes",
+                  checked: checked("overseas", "Yes")
+                },
+                {
+                  "value": "No~/design/check-answers-2",
+                  "text": "No",
+                  checked: checked("overseas", "No")
+
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {% endif %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

@@ -1,0 +1,68 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Find a pharmacy - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ hint({
+            "text": "Additional information",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
+
+          <form action="nominate-pharmacy-search-selection" method="post" autocomplete="off">
+
+            {% call fieldset({
+              legend: {
+                "text": "Find a pharmacy",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ input({
+              label: {
+                "text": "Enter the postcode of where you would like to search for a pharmacy."
+              },
+              "hint": {
+                "text": "For example LS13 9PO"
+              },
+              "classes": "nhsuk-input--width-10",
+              "id": "pharmacy-postcode",
+              "name": "pharmacy-postcode",
+              value: data['pharmacy-postcode']
+            }) }}
+
+            {% endcall %}
+
+            <p><a href="nominate-pharmacy-manual" id="enter-address-manually-link">Enter the address manually</a></p>
+
+            {{ button({
+              "text": "Search"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

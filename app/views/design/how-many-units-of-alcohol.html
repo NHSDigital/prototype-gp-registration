@@ -1,0 +1,171 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+How many units of alcohol do you drink on a typical day when you are drinking? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="how-often-six-or-more-units" method="post" autocomplete="off">
+
+           {{ hint({
+              "text": "Health information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <h1 class="nhsuk-heading-l">How many units of alcohol does {{ data ['name-first-name'] }} drink on a typical day when they are drinking?</h1>
+
+            {% call fieldset({
+              legend: {
+                "text": "",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ input({
+                label: {
+                  "text": "Enter number of units. For example, 2.5"
+                },
+                "classes": "nhsuk-input--width-4",
+                "id": "units",
+                "name": "units",
+                "value": data['units']
+              }) }}
+
+
+            {% endcall %}
+            {% else %}
+
+
+            {% call fieldset({
+              legend: {
+                "text": "How many units of alcohol do you drink on a typical day when you are drinking?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ input({
+                label: {
+                  "text": "Enter number of units. For example, 2.5"
+                },
+                "classes": "nhsuk-input--width-4",
+                "id": "units",
+                "name": "units",
+                "value": data['units']
+              }) }}
+
+
+            {% endcall %}
+            {% endif %}
+
+
+
+            <!-- HINT TEXT -->
+
+
+            <details class="nhsuk-details">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Calculate units for drinks containing alcohol
+                </span>
+              </summary>
+
+              <div class="nhsuk-details__text">
+                            <table class="nhsuk-table">
+                  <p>To calculate number of units, multiply quantity by alcohol content then divide by 1000.</p>
+                  <thead role="rowgroup" class="nhsuk-table__head">
+                    <tr role="row">
+                      <th role="columnheader" class="" scope="col">
+                        Drink type
+                      </th>
+                      <th role="columnheader" class="" scope="col">
+                        Quantity (millilitres)
+                      </th>
+                      <th role="columnheader" class="" scope="col">
+                        Alcohol content (ABV%)
+                      </th>
+                      <th role="columnheader" class="" scope="col">
+                        Units
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="nhsuk-table__body">
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Spirits</td>
+                      <td class="nhsuk-table__cell ">25ml (shot)</td>
+                      <td class="nhsuk-table__cell ">40%</td>
+                      <td class="nhsuk-table__cell ">1</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Alcopop</td>
+                      <td class="nhsuk-table__cell ">275ml (bottle)</td>
+                      <td class="nhsuk-table__cell ">5.5%</td>
+                      <td class="nhsuk-table__cell ">1.5</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Wine</td>
+                      <td class="nhsuk-table__cell ">125ml (small glass)</td>
+                      <td class="nhsuk-table__cell ">12%</td>
+                      <td class="nhsuk-table__cell ">1.5</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Strong lager, beer or cider</td>
+                      <td class="nhsuk-table__cell ">440ml (can)</td>
+                      <td class="nhsuk-table__cell ">5.5%</td>
+                      <td class="nhsuk-table__cell ">2</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Regular lager, beer or cider</td>
+                      <td class="nhsuk-table__cell ">568ml (pint)</td>
+                      <td class="nhsuk-table__cell ">4%</td>
+                      <td class="nhsuk-table__cell ">2.5</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Cocktail</td>
+                      <td class="nhsuk-table__cell ">75ml (3 shots)</td>
+                      <td class="nhsuk-table__cell ">40%</td>
+                      <td class="nhsuk-table__cell ">3</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Wine</td>
+                      <td class="nhsuk-table__cell ">750ml (bottle)</td>
+                      <td class="nhsuk-table__cell ">12%</td>
+                      <td class="nhsuk-table__cell ">9</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+            </details>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

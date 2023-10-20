@@ -1,0 +1,83 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+About your current and pre-existing medical conditions - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="do-you-take-prescription-medication" method="post" autocomplete="off">
+
+           {{ hint({
+              "text": "Health information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                text: "About " + data['name-first-name'] + "'s current and pre-existing medical conditions",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ textarea({
+              "name": "existing-medical-condition-details",
+              "id": "existing-medical-condition-details",
+              "label": {
+                "text": "Give a brief description of current and pre-existing medical conditions (optional)"
+                }
+            }) }}
+
+            {% endcall %}
+            {% else %}
+
+            {% call fieldset({
+              legend: {
+                text: "About your current and pre-existing medical conditions",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ textarea({
+              "name": "existing-medical-condition-details",
+              "id": "existing-medical-condition-details",
+              "label": {
+                "text": "Give a brief description of current and pre-existing medical conditions (optional)"
+                }
+            }) }}
+
+            {% endcall %}
+            {% endif %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

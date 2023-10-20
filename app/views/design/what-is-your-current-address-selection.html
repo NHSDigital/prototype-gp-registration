@@ -1,0 +1,210 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Select your address - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+            {{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+          <!-- TODO fix this -->
+          {% if (data['out-of-area'] == "out-of-area") %}
+          <form action="current-address-out-of-area" method="post" autocomplete="off">
+          {% elif (data['have-current-uk-address'] == "Yes") %}
+          <form action="do-you-know-nhs-number" method="post" autocomplete="off">
+          {% elif (data['user-auth'] == "p9") %}
+          <form action="confirm-contact-details" method="post" autocomplete="off">
+
+          {% endif %}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            {% call fieldset({
+              legend: {
+                text: "Select their address",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>6 addresses found for <strong>{{ data['house-number-address'] }}</strong> <strong>{{ data['find-current-address'] }}</strong></p>
+            </div>
+
+                {{ radios({
+                    "idPrefix": "select-current-address",
+                    "name": "select-current-address",
+
+
+                  "items": [
+                    {
+                      "value": "1 Town Street, London, SW1A 1AA",
+                      "text": "1 Town Street, London, SW1A 1AA",
+                      "hint": {
+                    },
+                      checked: checked("select-current-address", "1 Town Street, London, SW1A 1AA")
+                    },
+                    {
+                      "value": "2 Town Street, London, SW1A 1AA",
+                      "text": "2 Town Street, London, SW1A 1AA",
+                      "hint": {
+                    },
+                      checked: checked("select-current-address", "2 Town Street, London, SW1A 1AA")
+                    },    {
+                          "value": "3 Town Street, London, SW1A 1AA",
+                          "text": "3 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-current-addresss", "3 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "value": "4 Town Street, London, SW1A 1AA",
+                          "text": "4 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-current-addresss", "4 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "value": "5 Town Street, London, SW1A 1AA",
+                          "text": "5 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-current-address", "5 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "value": "6 Town Street, London, SW1A 1AA",
+                          "text": "6 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-current-address", "6 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "divider": "or"
+                        },
+                        {
+                          "value": "wrong address~/design/what-is-your-current-address",
+                          "text": "The address is not listed here.",
+                          "hint": {
+                        },
+                          checked: checked("select-current-address", "")
+                        }
+                  ]
+                }) }}
+
+                {% endcall %}
+
+                {% else %}
+
+                {% call fieldset({
+                  legend: {
+                    text: "Select your address",
+                    classes: "nhsuk-fieldset__legend--l",
+                    isPageHeading: true
+                  }
+                }) %}
+
+                <div class="nhsuk-hint" id="contact-hint">
+                  <p>6 addresses found for <strong>{{ data['house-number-address'] }}</strong> <strong>{{ data['find-current-address'] }}</strong></p>
+                </div>
+
+                    {{ radios({
+                        "idPrefix": "select-current-address",
+                        "name": "select-current-address",
+
+
+                      "items": [
+                        {
+                          "value": "1 Town Street, London, SW1A 1AA",
+                          "text": "1 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-current-address", "1 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "value": "2 Town Street, London, SW1A 1AA",
+                          "text": "2 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-current-address", "2 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "value": "3 Town Street, London, SW1A 1AA",
+                          "text": "3 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-current-addresss", "3 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "value": "4 Town Street, London, SW1A 1AA",
+                          "text": "4 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-current-addresss", "4 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "value": "5 Town Street, London, SW1A 1AA",
+                          "text": "5 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-current-address", "5 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "value": "6 Town Street, London, SW1A 1AA",
+                          "text": "6 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-current-address", "6 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "divider": "or"
+                        },
+                        {
+                          "value": "wrong address~/design/what-is-your-current-address",
+                          "text": "The address is not listed here.",
+                          "hint": {
+                        },
+                          checked: checked("select-current-address", "")
+                        }
+                      ]
+                    }) }}
+
+                    {% endcall %}
+
+                    {% endif %}
+
+                <p>
+                  <a href="what-is-your-current-address-manual" id="enter-address-manually-link">Enter the address manually</a>
+                </p>
+
+              {{ button({
+                  "text": "Continue"
+              }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

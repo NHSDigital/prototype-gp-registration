@@ -1,11 +1,11 @@
-{% set serviceHome = '/live/start' %}
+{% set serviceHome = '/design/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
 
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Have you got all your immunisations - {{ ServiceName }} - NHS
+  Did you get your routine vaccinations in the UK - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -30,7 +30,7 @@ Have you got all your immunisations - {{ ServiceName }} - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Has {{ data ['name-first-name'] }} had all their routine vaccinations?</h1>
+            <h1 class="nhsuk-heading-l">Did {{ data ['name-first-name'] }} get all their routine vaccinations in the UK?</h1>
 
             {% call fieldset({
               legend: {
@@ -40,23 +40,19 @@ Have you got all your immunisations - {{ ServiceName }} - NHS
               }
             }) %}
 
-            {{ hint({
-              "text": "These are vaccinations or immunisations received at school or from a GP, either in the UK or abroad. "
-            }) }}
-
             {{ radios({
-              "idPrefix": "are-you-immunised",
-              "name": "are-you-immunised",
+              "idPrefix": "are-you-immunised-uk",
+              "name": "are-you-immunised-uk",
               "items": [
                 {
-                  "value": "Yes~/live/are-you-immunised-uk",
+                  "value": "Yes",
                   "text": "Yes",
-                  checked: checked("are-you-immunised", "Yes")
+                  checked: checked("are-you-immunised-uk", "Yes")
                 },
                 {
                   "value": "No",
                   "text": "No",
-                  checked: checked("are-you-immunised", "No")
+                  checked: checked("are-you-immunised-uk", "No")
                 },
                 {
                   "divider": "or"
@@ -64,7 +60,7 @@ Have you got all your immunisations - {{ ServiceName }} - NHS
                 {
                   "value": "I don't know",
                   "text": "I don't know",
-                  checked: checked("are-you-immunised", "I don't know")
+                  checked: checked("are-you-immunised-uk", "I don't know")
                 }
               ]
             }) }}
@@ -74,29 +70,25 @@ Have you got all your immunisations - {{ ServiceName }} - NHS
 
             {% call fieldset({
               legend: {
-                text: "Have you got all your immunisations?",
+                text: "Did you get your routine vaccinations in the UK?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
-            {{ hint({
-              "text": "These are vaccinations or immunisations received at school or from a GP, either in the UK or abroad."
-            }) }}
-
             {{ radios({
-              "idPrefix": "are-you-immunised",
-              "name": "are-you-immunised",
+              "idPrefix": "are-you-immunised-uk",
+              "name": "are-you-immunised-uk",
               "items": [
                 {
-                   "value": "Yes~/live/are-you-immunised-uk",
+                   "value": "Yes",
                   "text": "Yes",
-                  checked: checked("are-you-immunised", "Yes")
+                  checked: checked("are-you-immunised-uk", "Yes")
                 },
                 {
                   "value": "No",
                   "text": "No",
-                  checked: checked("are-you-immunised", "No")
+                  checked: checked("are-you-immunised-uk", "No")
                 },
                 {
                   "divider": "or"
@@ -104,7 +96,7 @@ Have you got all your immunisations - {{ ServiceName }} - NHS
                 {
                   "value": "I don't know",
                   "text": "I don't know",
-                  checked: checked("are-you-immunised", "I don't know")
+                  checked: checked("are-you-immunised-uk", "I don't know")
                 }
               ]
             }) }}
@@ -118,8 +110,8 @@ Have you got all your immunisations - {{ ServiceName }} - NHS
 
           </form>
         </div>
-      </div>
-  
+       </div>
+
 {% endblock %}
 
 {% block footer %}
