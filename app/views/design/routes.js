@@ -15,12 +15,27 @@ module.exports = (router) => {
     // Check whether the variable matches a condition
     if (registee === "myself"){
       // Send user to next page
-      res.redirect('/design/what-is-your-email')
+      res.redirect('/design/continue-with-nhs-login')
     } else {
       // Send user to ineligible page
-      res.redirect('/design/relation-of-dependant')
+      res.redirect('/design/dependant-interuption')
     }
+  })
 
+  // Who is registering branch
+  router.post('/design/error-too-young-post/', function (req, res) {
+
+    // Make a variable and give it the value from 'juggling-balls'
+    var choice = req.session.data['error-age-next']
+
+    // Check whether the variable matches a condition
+    if (choice === "dependant"){
+      // Send user to next page
+      res.redirect('/design/dependant-interuption')
+    } else {
+      // Send user to ineligible page
+      res.redirect('/design/what-is-your-date-of-birth')
+    }
   })
 
 // Does user have NHS login acc
@@ -37,7 +52,6 @@ module.exports = (router) => {
       // Send user to ineligible page
       res.redirect('/design/do-you-know-nhs-number')
     }
-
   })
 
 

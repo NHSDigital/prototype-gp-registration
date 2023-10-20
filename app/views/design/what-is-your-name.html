@@ -4,8 +4,14 @@
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What is the name of the person being registered' %}
+{% else %}
+  {% set heading = 'What is your name?' %}
+{% endif %}
+
 {% block pageTitle %}
-  What is the name of the person being registered? - {{ ServiceName }} - NHS
+{{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,8 +29,6 @@
 
           <form action="what-is-your-date-of-birth" method="post" autocomplete="off">
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
             {{ hint({
               "text": "Patient details",
               "classes": "nhsuk-u-margin-bottom-2"
@@ -32,7 +36,7 @@
 
             {% call fieldset({
               legend: {
-                "text": "What is the name of the person being registered?",
+                "text": heading,
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -60,7 +64,7 @@
 
             {{ input({
                 label: {
-                  "text": "Middle name"
+                  "text": "Middle names (optional)"
                 },
                 "classes": "nhsuk-u-width-two-thirds",
                 "id": "name-middle-name",
@@ -80,65 +84,6 @@
                 }) }}
 
             {% endcall %}
-
-            {% else %}
-          {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% call fieldset({
-              legend: {
-                "text": "What is your name?",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
-              }
-            }) %}
-
-             {{ input({
-                label: {
-                  "text": "Title"
-                },
-                "classes": "nhsuk-input--width-4",
-                "id": "name-title",
-                "name": "name-title",
-                "value": data['name-title']
-              }) }}
-
-            {{ input({
-                label: {
-                  "text": "First name"
-                },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "name-first-name",
-                "name": "name-first-name",
-                "value": data['name-first-name']
-              }) }}
-
-            {{ input({
-                label: {
-                  "text": "Middle name"
-                },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "name-middle-name",
-                "name": "name-middle-name",
-                "value": data['name-middle-name']
-              }) }}
-
-
-              {{ input({
-                  label: {
-                    "text": "Last name"
-                  },
-                  "classes": "nhsuk-u-width-two-thirds",
-                  "id": "name-last-name",
-                  "name": "name-last-name",
-                  "value": data['name-last-name']
-                }) }}
-
-            {% endcall %}
-
-            {% endif %}
 
             {{ button({
               "text": "Continue"
@@ -147,6 +92,28 @@
           </form>
         </div>
        </div>
+
+{# DEVMODE SCENARIOS #}
+{% if data['devMode'] === 'true' %}
+<details class="nhsuk-details dev-mode" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+    <span class="nhsuk-details__summary-text">
+      Switch scenario
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h4>Registration type</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="?who-is-being-registered=myself">Self</a>
+      </li>
+      <li>
+        <a href="?who-is-being-registered=dependant">Dependant</a>
+      </li>
+    </ul>
+  </div>
+</details>
+{% endif %}
 
 {% endblock %}
 

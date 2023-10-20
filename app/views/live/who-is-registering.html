@@ -21,7 +21,7 @@ Who is registering with a GP? - {{ ServiceName }} - NHS
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
-        <form action="" method="post" autocomplete="off">
+        <form action="who-is-registering-answer" method="post" autocomplete="off">
 
           <!-- <span class="nhsuk-u-font-size-22 nhsuk-u-padding-bottom-0">Matching you to your record</span> -->
           {% call fieldset({
@@ -41,20 +41,15 @@ Who is registering with a GP? - {{ ServiceName }} - NHS
             "name": "who-is-being-registered",
             "items": [
               {
-                "value": "Myself~/live/what-is-your-email",
-                "text": "Myself",
-                "hint": {
-                  "text": ""
-                },
+                "value": "myself",
+                "text": "myself",
                 checked: checked("who-is-being-registered", "myself")
               },
               {
-                "value": "dependant~/live/relation-of-dependant",
+                "value": "dependant",
                 "text": "Someone else",
                 "hint": {
-                  "text": "You are registering your child or someone else who needs help completing this form
-
-                  "
+                  "text": "You are registering your child or someone else who needs help completing this form"
                 },
                 checked: checked("who-is-being-registered", "dependant")
               }

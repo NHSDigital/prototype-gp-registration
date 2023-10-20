@@ -1,0 +1,65 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What is the name of the person being registered' %}
+{% else %}
+  {% set heading = 'What is your name?' %}
+{% endif %}
+
+{% if data['error-age-next'] === 'dependant' %}
+  {% set link = 'error-too-young' %}
+{% else %}
+  {% set link = 'who-is-registering' %}
+{% endif %}
+
+{% block pageTitle %}
+{{ heading }} - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <section class="instructions">
+            <div class="reading-width">
+              <h1 class="nhsuk-heading-l">
+                Registering on behalf of someone else
+              </h1>
+
+              <p>Make sure:</p>
+
+              <ul class="instructions-list-unordered">
+                <li class="instructions-list-unordered__item">You are already registered with this GP</li>
+                <li class="instructions-list-unordered__item">You have their details ready</li>
+              </ul>
+
+              <div class="form-control" style="margin: 32px 0 16px;">
+                <a class="nhsuk-button nhsuk-button--reverse" href="relation-of-dependant">Continue</a>
+              </div>
+
+<!--              <p class="instructions&#45;&#45;link">If you do not have an I.D. from this list, you can <a href="service-access-no-documents{{ params }}">go to your GP surgery to prove who you are.</a></p>-->
+
+            </div>
+
+          </section>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

@@ -5,9 +5,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-{% set heading = 'What is ' + data['name-first-name'] + '\'s date of birth' %}
+{% set heading = 'Your age is under 12 months' %}
 {% else %}
-{% set heading = 'What is your date of birth?' %}
+{% set heading = 'Your age is under 12 months' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -16,7 +16,7 @@
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "what-is-your-date-of-birth",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -27,53 +27,45 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="what-is-your-sex" method="post" autocomplete="off">
+          <form action="error-too-young-post" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+            <h1 class="nhsuk-heading-l">
+              {{ heading }}
+            </h1>
 
-            {{ dateInput({
-              "id": "dob",
-              "namePrefix": "dob",
-              "fieldset": {
-                "legend": {
-                  "text": heading,
-                  "classes": "nhsuk-label--l",
-                  "isPageHeading": true
-                }
+            <p>If you are trying to register a child you can do that on their behalf.</p>
+
+            {{ radios({
+            "idPrefix": "error-age-next",
+            "name": "error-age-next",
+            "fieldset": {
+              "legend": {
+                "text": "What do you want to do?",
+                "classes": "nhsuk-fieldset__legend--m",
+                "isPageHeading": "false"
+              }
+            },
+            "items": [
+              {
+                "value": "dependant",
+                "text": "Register on behalf of the child",
+                "checked": checked("error-age-next", "dependant")
               },
-              "hint": {
-                "text": "For example, 15 3 1984"
-              },
-              "items": [
-                {
-                  "name": "day",
-                  "classes": "nhsuk-input--width-2",
-                  "value": data['dob-day']
-                },
-                {
-                  "name": "month",
-                  "classes": "nhsuk-input--width-2",
-                  "value": data['dob-month']
-                },
-                {
-                  "name": "year",
-                  "classes": "nhsuk-input--width-4",
-                  "value": data['dob-year']
-                }
-              ]
-            }) }}
-
+              {
+                "value": "goback",
+                "text": "Go back and change your date of birth",
+                "checked": checked("error-age-next", "goback")
+              }
+            ]
+          }) }}
 
             {{ button({
-              "text": "Continue"
-            }) }}
+            "text": "Continue"
+          }) }}
 
-          </form>
-        </div>
+        </form>
       </div>
+    </div>
 
 {# DEVMODE SCENARIOS #}
 {% if data['devMode'] === 'true' %}

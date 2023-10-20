@@ -10,15 +10,15 @@ module.exports = (router) => {
   router.post('/live/who-is-registering-answer/', function (req, res) {
 
     // Make a variable and give it the value from 'juggling-balls'
-    var registee = req.session.data['who-is-registering']
+    var registee = req.session.data['who-is-being-registered']
 
     // Check whether the variable matches a condition
-    if (registee == "You"){
+    if (registee == "myself"){
       // Send user to next page
       res.redirect('/live/continue-with-nhs-login')
     } else {
       // Send user to ineligible page
-      res.redirect('/live/continue-with-nhs-login')
+      res.redirect('/live/relation-of-dependant')
     }
 
   })
