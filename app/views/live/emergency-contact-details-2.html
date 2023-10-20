@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+    Do you have an emergency contact - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -30,11 +30,11 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Do they have an emergency contact</H1>
+            <h1 class="nhsuk-heading-l">Do they have an emergency contact</h1>
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">Do you have an emergency contact?</H1>
+            <h1 class="nhsuk-heading-l">Do you have an emergency contact?</h1>
 
             {% endif %}
 
@@ -45,7 +45,6 @@
                 "isPageHeading": true
               }
             }) %}
-
 
             {{ input({
               label: {
@@ -130,4 +129,8 @@
         </div>
       </div>
   
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

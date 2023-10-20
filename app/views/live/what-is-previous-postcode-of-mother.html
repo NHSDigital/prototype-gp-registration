@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Enter mother's postcode - Register with a GP surgery - NHS
+Enter the postcode where the mother of {{ data ['name-first-name'] }} was living when their baby was born - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -28,7 +28,7 @@
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-            <h1 class="nhsuk-heading-l">Enter the postcode where the mother of {{ data ['name-first-name'] }} was living when their baby was born</h2>
+            <h1 class="nhsuk-heading-l">Enter the postcode where the mother of {{ data ['name-first-name'] }} was living when their baby was born</h1>
             {% call fieldset({
               legend: {
                 "text": "",
@@ -36,8 +36,6 @@
                 "isPageHeading": true
               }
             }) %}
-
-
 
               {{ input({
                   label: {
@@ -52,10 +50,7 @@
                   value: data['mother-postcode']
                 }) }}
 
-
             {% endcall %}
-
-
 
             {{ button({
               "text": "Continue"
@@ -65,13 +60,8 @@
         </div>
       </div>
 
-
-    <!-- End of content -->
-
-
-{% block pageScripts %}
-<script>
-
-</script>
 {% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

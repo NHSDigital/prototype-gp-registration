@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+What type of carer do you have - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -30,11 +30,11 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">What type of carer do they have?</H1>
+            <h1 class="nhsuk-heading-l">What type of carer do they have?</h1>
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">What type of carer do you have?</H1>
+            <h1 class="nhsuk-heading-l">What type of carer do you have?</h1>
 
             {% endif %}
             {% call fieldset({
@@ -88,23 +88,13 @@
 
             {% endcall %}
 
-
-
             {{ button({
               "text": "Continue"
             }) }}
 
-
-
           </form>
         </div>
       </div>
-
-
-    <!-- End of content -->
-
-  </div>
- </div>
 
 {% endblock %}
 

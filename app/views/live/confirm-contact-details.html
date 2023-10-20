@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Confirm contact details - Register with a GP surgery - NHS
+Share your contact details - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,14 +23,12 @@
 
           <form action="" method="post" autocomplete="off">
 
-            <h2 class="nhsuk-heading-l">Share your contact details</h2>
+            <h1 class="nhsuk-heading-l">Share your contact details</h1>
 
             {{ hint({
               "text": "You have agreed to share these details with the Register with a GP Surgery service.",
               "classes": "nhsuk-u-margin-bottom-4"
             }) }}
-
-
 
             <dl class="nhsuk-summary-list">
 
@@ -82,24 +80,16 @@
                   ]
               }) }}
 
-
             {{ button({
               "text": "Continue"
             }) }}
 
             </form>
-
-
         </div>
       </div>
 
-
-    <!-- End of content -->
-
-  </div>
-</div>
-{% block pageScripts %}
-
 {% endblock %}
 
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

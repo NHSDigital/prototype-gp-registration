@@ -5,10 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Start registration - Register with a GP surgery - NHS
-{% endblock %}
-
-{% block beforeContent %}
+Register with a GP surgery: {Surgery name} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block content %}
@@ -19,7 +16,7 @@ Start registration - Register with a GP surgery - NHS
           Register with a GP surgery: {Surgery name}
         </h1>
 
-        <h1 class="nhsuk-heading-l">Before you start</h2>
+        <h2 class="nhsuk-heading-l">Before you start</h2>
         <p>The registration process will take around 15 minutes to complete. You will need to complete the process in one session. You do not need your NHS number, but it could make registration easier.</p>
         <p>We may ask you for:</p>
 
@@ -32,7 +29,7 @@ Start registration - Register with a GP surgery - NHS
 
         <p><a href="who-is-registering" class="nhsuk-button">Start now</a></p>
 
-        <h3>Other ways to register</h3>
+        <h2 class="nhsuk-heading-m">Other ways to register</h2>
         <p>You can register with a GP by contacting your chosen GP surgery or completing a <a href="https://www.gov.uk/government/publications/gms1">GMS1 registration form.</a></p>
         <p>You can view <a href="https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/">guidance about how to register with a GP.</a></p>
         <p>By using this service you are agreeing to our <a href="start">terms of use</a> and <a href="start">privacy policy.</a> </p>

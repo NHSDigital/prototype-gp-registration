@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+Do you have any existing or pre-existing medical conditions? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -184,4 +184,8 @@
         </div>
       </div>
   
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

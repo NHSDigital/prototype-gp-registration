@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What are the details of your emergency contact? - Register with a GP surgery - NHS
+What are the details of your emergency contact? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -31,11 +31,11 @@ What are the details of your emergency contact? - Register with a GP surgery - N
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">What are the details of {{ data ['name-first-name'] }}'s emergency contact</H1>
+            <h1 class="nhsuk-heading-l">What are the details of {{ data ['name-first-name'] }}'s emergency contact</h1>
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">What are the details of your emergency contact?</H1>
+            <h1 class="nhsuk-heading-l">What are the details of your emergency contact?</h1>
 
             {% endif %}
 
@@ -46,7 +46,6 @@ What are the details of your emergency contact? - Register with a GP surgery - N
                 "isPageHeading": true
               }
             }) %}
-
 
             {{ input({
                 label: {
@@ -94,11 +93,7 @@ What are the details of your emergency contact? - Register with a GP surgery - N
                 value: data['ec-contact-tel']
               }) }}
 
-
-
             {% endcall %}
-
-
 
             {{ button({
               "text": "Add another emergency contact",

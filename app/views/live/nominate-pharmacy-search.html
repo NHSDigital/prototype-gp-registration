@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Find a pharmacy - Register with a GP surgery - NHS
+Find a pharmacy - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -28,7 +28,6 @@ Find a pharmacy - Register with a GP surgery - NHS
 
           <form action="nominate-pharmacy-search-selection" method="post" autocomplete="off">
 
-
             {% call fieldset({
               legend: {
                 "text": "Find a pharmacy",
@@ -37,29 +36,22 @@ Find a pharmacy - Register with a GP surgery - NHS
               }
             }) %}
 
-
-
-
-              {{ input({
-                  label: {
-                    "text": "Enter the postcode of where you would like to search for a pharmacy."
-                  },
-                  "hint": {
-                    "text": "For example LS13 9PO"
-                  },
-                  "classes": "nhsuk-input--width-10",
-                  "id": "pharmacy-postcode",
-                  "name": "pharmacy-postcode",
-                  value: data['pharmacy-postcode']
-                }) }}
-
+            {{ input({
+              label: {
+                "text": "Enter the postcode of where you would like to search for a pharmacy."
+              },
+              "hint": {
+                "text": "For example LS13 9PO"
+              },
+              "classes": "nhsuk-input--width-10",
+              "id": "pharmacy-postcode",
+              "name": "pharmacy-postcode",
+              value: data['pharmacy-postcode']
+            }) }}
 
             {% endcall %}
 
-            <p>
-              <a href="nominate-pharmacy-manual" id="enter-address-manually-link">Enter the address manually</a>
-            </p>
-
+            <p><a href="nominate-pharmacy-manual" id="enter-address-manually-link">Enter the address manually</a></p>
 
             {{ button({
               "text": "Search"
@@ -69,12 +61,8 @@ Find a pharmacy - Register with a GP surgery - NHS
         </div>
       </div>
 
-
-    <!-- End of content -->
-
-  </div>
-</div>
-{% block pageScripts %}
-
 {% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

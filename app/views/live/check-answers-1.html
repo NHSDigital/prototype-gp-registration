@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Confirm details - Register with a GP surgery - NHS
+Please confirm these are the correct details for the person registering with {GP surgery} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -182,10 +182,7 @@
                 </dd>
               </div>
 
-
-
             {% if data['emergency-contact'] == "Yes" %}
-
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
@@ -202,8 +199,6 @@
             </div>
 
           {% endif %}
-
-
 
           {% else %}
 
@@ -333,7 +328,6 @@
               </dd>
             </div>
 
-
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
                 Current address
@@ -385,7 +379,6 @@
             </dd>
           </div>
 
-
             {% if (data['know-nhs-number'] == "Yes") %}
             <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
@@ -414,8 +407,6 @@
           </dd>
         </div>
 
-
-
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Emergency contact
@@ -428,10 +419,7 @@
             </dd>
           </div>
 
-
-
         {% if data['emergency-contact'] == "Yes" %}
-
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
@@ -447,17 +435,11 @@
           </dd>
         </div>
 
-
-
       {% endif %}
 
         {% endif %}
 
-
-
-</dl>
-
-
+        </dl>
             {% if (data['who-is-being-registered'] == "dependant") %}
             <p>We use this information to match their details to our database. We cannot access their medical record and no medical information will be shared at this stage.</p>
             <p>By submitting these details you they confirming that, to the best of their knowledge, they are correct.</p>
@@ -474,10 +456,6 @@
           </form>
         </div>
       </div>
-
-
-    <!-- End of content -->
-
 
 {% endblock %}
 
@@ -500,4 +478,9 @@
   });
 </script>
 
+{% endblock %}
+
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

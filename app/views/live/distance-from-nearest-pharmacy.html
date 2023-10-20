@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Do you live more than 1 mile from your nearest pharmacy? - Register with a GP surgery - NHS
+Do you live more than 1 mile from your nearest pharmacy? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -30,11 +30,11 @@ Do you live more than 1 mile from your nearest pharmacy? - Register with a GP su
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} live more than 1 mile from their nearest pharmacy?</H1>
+            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} live more than 1 mile from their nearest pharmacy?</h1>
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">Do you live more than 1 mile from your nearest pharmacy?</H1>
+            <h1 class="nhsuk-heading-l">Do you live more than 1 mile from your nearest pharmacy?</h1>
 
             {% endif %}
 

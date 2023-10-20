@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Confirm current address - Register with a GP surgery - NHS
+  Is this your current GP surgery? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -35,27 +35,29 @@
                 "isPageHeading": true
               }
             }) %}
+            <!-- TODO change this -->
+          <div class="nhsuk-card nhsuk-card--care nhsuk-card--care--non-urgent">
 
-      <div class="nhsuk-card nhsuk-card--care nhsuk-card--care--non-urgent">
-      <div class="nhsuk-card--care__heading-container">
-        <h2 class="nhsuk-card--care__heading">
-          <span role="text"><span class="nhsuk-u-visually-hidden">
-        </h2>
-        <span class="nhsuk-card--care__arrow" aria-hidden="true"></span>
-      </div>
+            <div class="nhsuk-card--care__heading-container">
+              <h2 class="nhsuk-card--care__heading">
+                <span role="text"><span class="nhsuk-u-visually-hidden">
+              </h2>
+              <span class="nhsuk-card--care__arrow" aria-hidden="true"></span>
+            </div>
 
+          {% if data['user-auth'] == "p9" %}
+            <div class="nhsuk-card__content">
+              <p>Address line 1 <br> Address line 2 <br> Address line 3 <br> Address line 4 </p>
+            </div>
 
-      {% if data['user-auth'] == "p9" %}
-      <div class="nhsuk-card__content">
-        <p>Address line 1 <br> Address line 2 <br> Address line 3 <br> Address line 4 </p>
-      </div>
-      </div>
-      {% else %}
-      <div class="nhsuk-card__content">
-          <p>Add••• line 1 <br> Addr•• line 2 <br> Add••• line 3 <br> Address l•• 4 </p>
-        </div>
-      </div>
-      {% endif %}
+          </div>
+          {% else %}
+            <div class="nhsuk-card__content">
+              <p>Add••• line 1 <br> Addr•• line 2 <br> Add••• line 3 <br> Address l•• 4 </p>
+            </div>
+
+          </div>
+          {% endif %}
 
             {{ radios({
               "idPrefix": "current-address",
@@ -82,19 +84,13 @@
 
             {% endcall %}
 
+        </form>
 
-
-          </form>
-        </div>
       </div>
-
-
-    <!-- End of content -->
-
-  </div>
-</div>
-{% block pageScripts %}
+    </div>
 
 {% endblock %}
 
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

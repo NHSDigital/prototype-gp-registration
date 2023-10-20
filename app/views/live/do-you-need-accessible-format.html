@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Do you have a current UK address? - Register with a GP surgery - NHS
+Do you need to be communicated with in an accessible form? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -29,61 +29,56 @@ Do you have a current UK address? - Register with a GP surgery - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} or their carer need to be communicated with in an accessible form?</H1>
+            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} or their carer need to be communicated with in an accessible form?</h1>
 
             {% elif (data['need-carer'] == "Yes") %}
 
-            <h1 class="nhsuk-heading-l">Do you or your carer need to be communicated with in an accessible form?</H1>
+            <h1 class="nhsuk-heading-l">Do you or your carer need to be communicated with in an accessible form?</h1>
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">Do you need to be communicated with in an accessible form?</H1>
+            <h1 class="nhsuk-heading-l">Do you need to be communicated with in an accessible form?</h1>
 
             {% endif %}
 
             {% call fieldset({
-          legend: {
-            text: "",
-            classes: "nhsuk-fieldset__legend--l",
-            isPageHeading: true
-          }
-        }) %}
+              legend: {
+                text: "",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
 
-        <div class="nhsuk-hint" id="contact-hint">
-          <p>For example, braille, audio, large format or EasyRead.</p>
-        </div>
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>For example, braille, audio, large format or EasyRead.</p>
+            </div>
 
-        {{ radios({
-          "idPrefix": "accessible-needs",
-          "name": "accessible-needs",
-          "items": [
-            {
-              "value": "Yes~/live/do-you-need-accessible-format-details",
-              "text": "Yes",
-              checked: checked("accessible-needs", "Yes")
-            },
-            {
-              "value": "No~/live/do-you-need-reasonable-adjustments",
-              "text": "No",
-              checked: checked("accessible-needs", "No")
-            },
-            {
-              "divider": "or"
-            },
-            {
-              "value": "Prefer not to say~/live/do-you-need-reasonable-adjustments",
-              "text": "Prefer not to say",
-              checked: checked("accessible-needs", "Prefer not to say")
-            }
-          ]
-        }) }}
+            {{ radios({
+              "idPrefix": "accessible-needs",
+              "name": "accessible-needs",
+              "items": [
+                {
+                  "value": "Yes~/live/do-you-need-accessible-format-details",
+                  "text": "Yes",
+                  checked: checked("accessible-needs", "Yes")
+                },
+                {
+                  "value": "No~/live/do-you-need-reasonable-adjustments",
+                  "text": "No",
+                  checked: checked("accessible-needs", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say~/live/do-you-need-reasonable-adjustments",
+                  "text": "Prefer not to say",
+                  checked: checked("accessible-needs", "Prefer not to say")
+                }
+              ]
+            }) }}
 
-        {% endcall %}
-
-
-
-
-
+          {% endcall %}
 
             {{ button({
               "text": "Continue"
@@ -93,11 +88,8 @@ Do you have a current UK address? - Register with a GP surgery - NHS
         </div>
       </div>
 
-    <!-- End of content -->
-
-  </div>
-</div>
-{% block pageScripts %}
-<script></script>
 {% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

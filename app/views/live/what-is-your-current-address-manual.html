@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is your current UK address? - Register with a GP surgery - NHS
+What is your current UK address? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -20,8 +20,6 @@ What is your current UK address? - Register with a GP surgery - NHS
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-
 
           <form action="do-you-know-nhs-number" method="post" autocomplete="off">
             {{ hint({
@@ -140,18 +138,12 @@ What is your current UK address? - Register with a GP surgery - NHS
               {% endcall %}
               {% endif %}
 
-
-            </div>
-
-
+          </form>
         </div>
+      </div>
 
-
-    <!-- End of content -->
-
-  </div>
-</div>
-{% block pageScripts %}
 {% endblock %}
 
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

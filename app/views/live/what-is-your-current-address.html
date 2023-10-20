@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is your current UK address? - Register with a GP surgery - NHS
+What is your current UK address? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -21,7 +21,7 @@ What is your current UK address? - Register with a GP surgery - NHS
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-    <form action="what-is-your-current-address-selection" method="post" autocomplete="off">
+          <form action="what-is-your-current-address-selection" method="post" autocomplete="off">
             {{ hint({
               "text": "Patient details",
               "classes": "nhsuk-u-margin-bottom-2"
@@ -29,7 +29,7 @@ What is your current UK address? - Register with a GP surgery - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l"> What is {{ data ['name-first-name'] }}'s current UK address?</h2>
+            <h1 class="nhsuk-heading-l"> What is {{ data ['name-first-name'] }}'s current UK address?</h1>
 
             {% call fieldset({
               legend: {
@@ -38,7 +38,6 @@ What is your current UK address? - Register with a GP surgery - NHS
                 "isPageHeading": true
               }
             }) %}
-
 
             {{ input({
               label: {
@@ -82,63 +81,48 @@ What is your current UK address? - Register with a GP surgery - NHS
         "text": "If you have had more than one address previously, please enter the address you lived at most recently."
         }) }} -->
 
+          {{ input({
+            label: {
+              "text": "House number or name"
+            },
+            "hint": {
+              "text": "For example, flat 20A"
+            },
+            "classes": "nhsuk-input--width-10",
+            "id": "house-number-address",
+            "name": "house-number-address",
+            value: data['house-number-address']
+        }) }}
 
         {{ input({
           label: {
-            "text": "House number or name"
+            "text": "Postcode"
           },
           "hint": {
-            "text": "For example, flat 20A"
+            "text": "For example, AB12 P12"
           },
           "classes": "nhsuk-input--width-10",
-          "id": "house-number-address",
-          "name": "house-number-address",
-          value: data['house-number-address']
+          "id": "find-current-address",
+          "name": "find-current-address",
+          value: data['find-current-address']
       }) }}
 
-      {{ input({
-        label: {
-          "text": "Postcode"
-        },
-        "hint": {
-          "text": "For example, AB12 P12"
-        },
-        "classes": "nhsuk-input--width-10",
-        "id": "find-current-address",
-        "name": "find-current-address",
-        value: data['find-current-address']
-    }) }}
+      {% endcall %}
 
-    {% endcall %}
+      {% endif %}
 
-    {% endif %}
+      <p><a href="what-is-your-current-address-manual" id="enter-address-manually-link">Enter the address manually</a></p>
 
-
-
-
-        <p>
-          <a href="what-is-your-current-address-manual" id="enter-address-manually-link">Enter the address manually</a>
-        </p>
-
-
-
-            {{ button({
-              "text": "Continue"
-          }) }}
-
-
+      {{ button({
+        "text": "Continue"
+      }) }}
 
         </form>
       </div>
     </div>
 
-    <!-- End of content -->
-
-  </div>
-</div>
-{% block pageScripts %}
-
-
-
 {% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+What type of carer are they - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -28,14 +28,12 @@
                "classes": "nhsuk-u-margin-bottom-2"
              }) }}
 
-
             {% call fieldset({
               legend: {
                 "text": "What type of carer are they?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
-
             }) %}
 
            {{ radios({
@@ -76,27 +74,17 @@
               }
 
               ]
-          }) }}
+            }) }}
 
             {% endcall %}
-
-
 
             {{ button({
               "text": "Continue"
             }) }}
 
-
-
           </form>
         </div>
       </div>
-
-
-    <!-- End of content -->
-
-  </div>
- </div>
 
 {% endblock %}
 

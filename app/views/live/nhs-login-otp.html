@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Check mobile phone - Register with a GP surgery - NHS
+Check your mobile phone - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,7 +21,6 @@ Check mobile phone - Register with a GP surgery - NHS
       <div class="nhsuk-grid-column-two-thirds">
 
         <form action="what-is-your-title" method="post" autocomplete="off">
-
 
           {% call fieldset({
               legend: {
@@ -89,7 +88,6 @@ Check mobile phone - Register with a GP surgery - NHS
 
           {% endcall %}
 
-
           {{ button({
               "text": "Continue"
             }) }}
@@ -98,11 +96,8 @@ Check mobile phone - Register with a GP surgery - NHS
       </div>
     </div>
 
+{% endblock %}
 
-<!-- End of content -->
-
-</div>
-</div>
 {% block pageScripts %}
 <script>
   $('#no-previous-address-1').change(function() {
@@ -114,4 +109,7 @@ Check mobile phone - Register with a GP surgery - NHS
   });
 </script>
 {% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

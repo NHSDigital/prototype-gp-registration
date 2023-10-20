@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What are your contact details? - Register with a GP surgery - NHS
+Are you sure that you have no access to a phone or email? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -20,6 +20,8 @@ What are your contact details? - Register with a GP surgery - NHS
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="" method="post" autocomplete="off">
 
         {% call fieldset({
           legend: {
@@ -52,21 +54,18 @@ What are your contact details? - Register with a GP surgery - NHS
           ]
         }) }}
 
-
-
         {% endcall %}
 
         <button class="nhsuk-button" type="submit">
           Continue
         </button>
 
-
-<!-- End of content -->
-
-</div>
-</div>
-
-{% block pageScripts %}
+        </form>
+      </div>
+    </div>
 
 {% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

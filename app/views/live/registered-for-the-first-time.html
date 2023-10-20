@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Registering for the first time - Register with a GP surgery - NHS
+Are you registering with a UK GP for the first time? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -50,7 +50,6 @@ Registering for the first time - Register with a GP surgery - NHS
 
         {% endif %}
 
-
         {% if (data['user-auth'] == "p9") %}
 
           {% call fieldset({
@@ -60,7 +59,6 @@ Registering for the first time - Register with a GP surgery - NHS
               isPageHeading: true
             }
           }) %}
-
 
           {{ radios({
             "idPrefix": "registering-first-time",
@@ -87,7 +85,6 @@ Registering for the first time - Register with a GP surgery - NHS
 
           {% endcall %}
 
-
           {% else %}
 
           {% call fieldset({
@@ -97,7 +94,6 @@ Registering for the first time - Register with a GP surgery - NHS
               isPageHeading: true
             }
           }) %}
-
 
           {{ radios({
             "idPrefix": "registering-first-time",

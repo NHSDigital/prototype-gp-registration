@@ -5,7 +5,7 @@ Recently moved{% set serviceHome = '/live/start' %}
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+Check their details before submitting your application to {Surgery name} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -20,7 +20,6 @@ Recently moved{% set serviceHome = '/live/start' %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
 
           <form action="confirmation-page" method="post" autocomplete="off">
 
@@ -46,8 +45,6 @@ Recently moved{% set serviceHome = '/live/start' %}
 
             {% endif %}
 
-
-
         <h3>Personal Details</h3>
 
         <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
@@ -64,7 +61,6 @@ Recently moved{% set serviceHome = '/live/start' %}
             </dd>
           </div>
 
-
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Middle name
@@ -77,7 +73,6 @@ Recently moved{% set serviceHome = '/live/start' %}
             </dd>
           </div>
 
-
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Last name
@@ -89,7 +84,6 @@ Recently moved{% set serviceHome = '/live/start' %}
               <a href="">Change<span class="nhsuk-u-visually-hidden">last name</span></a>
             </dd>
           </div>
-
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
@@ -242,10 +236,7 @@ Recently moved{% set serviceHome = '/live/start' %}
           </dd>
         </div>
 
-
-
       {% if data['emergency-contact'] == "Yes" %}
-
 
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
@@ -264,7 +255,6 @@ Recently moved{% set serviceHome = '/live/start' %}
     {% endif %}
 
     </dl>
-
 
     <h3>Registration type</h3>
 
@@ -1164,41 +1154,26 @@ Recently moved{% set serviceHome = '/live/start' %}
               </dl>
               {% endif %}
 
+          </form>
+      </div>
+    </div>
 
-            </div>
-          </div>
+    <h2 class="nhsuk-heading-l">Submit your application</h2>
 
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <span class="nhsuk-u-visually-hidden">Information:</span>
+        <p>By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+      </div>
+    </div>
 
-
-
-
-          <h2 class="nhsuk-heading-l">Submit your application</h2>
-
-          <div class="nhsuk-grid-row">
-            <div class="nhsuk-grid-column-two-thirds">
-          <span class="nhsuk-u-visually-hidden">Information:</span>
-          <p>By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
-          </div>
-          </div>
-
-          {{ button({
-            "text": "Accept and submit"
-          }) }}
-
-
-
-
-
-
-    <!-- End of content -->
+    {{ button({
+      "text": "Accept and submit"
+    }) }}
 
   </div>
  </div>
 
-{% endblock %}
-
-{% block footer %}
-  {% include 'live/includes/footer.html' %}
 {% endblock %}
 
 {% block pageScripts %}
@@ -1220,4 +1195,8 @@ Recently moved{% set serviceHome = '/live/start' %}
   });
 </script>
 
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

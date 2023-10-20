@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Would you have serious difficulty travelling to your nearest pharmacy to get medicines or medical appliances? - Register with a GP surgery - NHS
+Would you have serious difficulty travelling to your nearest pharmacy to get medicines or medical appliances? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -30,11 +30,11 @@ Would you have serious difficulty travelling to your nearest pharmacy to get med
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Would {{ data ['name-first-name'] }} have serious difficulty travelling to their nearest pharmacy to get medicines or medical appliances?</H1>
+            <h1 class="nhsuk-heading-l">Would {{ data ['name-first-name'] }} have serious difficulty travelling to their nearest pharmacy to get medicines or medical appliances?</h1>
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">Would you have serious difficulty travelling to your nearest pharmacy to get medicines or medical appliances?</H1>
+            <h1 class="nhsuk-heading-l">Would you have serious difficulty travelling to your nearest pharmacy to get medicines or medical appliances?</h1>
 
             {% endif %}
 

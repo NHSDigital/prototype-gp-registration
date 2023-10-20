@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Do you need a language interpreter for your GP appointments? - Register with a GP surgery - NHS
+Do you need a language interpreter for your GP appointments? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -31,7 +31,7 @@ Do you need a language interpreter for your GP appointments? - Register with a G
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }}'s need a language interpreter for their GP appointments?</H1>
+            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }}'s need a language interpreter for their GP appointments?</h1>
 
             {{ radios({
               "idPrefix": "interpreter",
@@ -62,7 +62,6 @@ Do you need a language interpreter for your GP appointments? - Register with a G
 
             {% else %}
 
-
             {{ radios({
               "idPrefix": "interpreter",
               "name": "interpreter",
@@ -91,7 +90,6 @@ Do you need a language interpreter for your GP appointments? - Register with a G
             }) }}
 
             {% endif %}
-
 
             {{ button({
               "text": "Continue"

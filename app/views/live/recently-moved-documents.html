@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Do you have any of these documents? - Register with a GP surgery - NHS
+Do you have any of these documents? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -37,7 +37,6 @@ Do you have any of these documents? - Register with a GP surgery - NHS
               isPageHeading: true
             }
           }) %}
-
 
           {{ radios({
             "idPrefix": "health-documents",
@@ -74,8 +73,6 @@ Do you have any of these documents? - Register with a GP surgery - NHS
 
           {% else %}
 
-
-
           {% call fieldset({
             legend: {
               text: "Do you have any of these documents?",
@@ -83,7 +80,6 @@ Do you have any of these documents? - Register with a GP surgery - NHS
               isPageHeading: true
             }
           }) %}
-
 
           {{ radios({
             "idPrefix": "health-documents",

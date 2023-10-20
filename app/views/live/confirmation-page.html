@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-GP Registration Prototypes
+Application complete - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block beforeContent %}
@@ -36,7 +36,7 @@ GP Registration Prototypes
 
           <p>Thank you for using this service. We have sent you a confirmation email using the address you provided.</p>
 
-          <h1 class="nhsuk-heading-l">What happens next</h2>
+          <h2 class="nhsuk-heading-l">What happens next</h2>
           <ul>
           <li>The details you gave us will be sent to your chosen GP. They will then register you at their practice.</li>
           <li>This usually takes no longer than 2 weeks.</li>
@@ -52,6 +52,7 @@ GP Registration Prototypes
           "isPageHeading": false
           }
           }) %}
+
           {{ radios({
           "idPrefix": "satisfied",
           "name": "satisfied",
@@ -98,7 +99,6 @@ GP Registration Prototypes
 
         </form>
 
-
           <div class="nhsuk-inset-text">
             <h3 class="nhsuk-heading-s">Save up to nine lives as an organ donor</h3>
             <span class="nhsuk-u-visually-hidden">Information: </span>
@@ -109,16 +109,11 @@ GP Registration Prototypes
 
           <p class="nhsuk-u-font-size-14">Skip to: <a href="/emails/patient-submission-email">Patient email</p>
 
-
-
       </div>
     </div>
 
+{% endblock %}
 
-
-
-<!-- End of content -->
-
-</div>
-</div>
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

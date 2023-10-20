@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Register with an online-only pharmacy directly - Register with a GP surgery - NHS
+Register with an online-only pharmacy directly - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -21,16 +21,16 @@ Register with an online-only pharmacy directly - Register with a GP surgery - NH
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-        <form action="are-you-a-member-of-armed-forces" method="post" autocomplete="off">
+          <form action="are-you-a-member-of-armed-forces" method="post" autocomplete="off">
 
             {{ hint({
               "text": "Additional information",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-          <h1 class="nhsuk-heading-l">Register with an online-only pharmacy directly</h1>
+            <h1 class="nhsuk-heading-l">Register with an online-only pharmacy directly</h1>
 
-          <p>To choose an online-only pharmacy, you must register with the pharmacy through their website or contact them directly.</p>
+            <p>To choose an online-only pharmacy, you must register with the pharmacy through their website or contact them directly.</p>
 
             {{ button({
               "text": "Continue with registration"

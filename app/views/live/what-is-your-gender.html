@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Which of the following best describes you? - Register with a GP surgery - NHS
+Which of the following best describes you? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -29,11 +29,11 @@ Which of the following best describes you? - Register with a GP surgery - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Which of the following best describes {{ data ['name-first-name'] }}?</H1>
+            <h1 class="nhsuk-heading-l">Which of the following best describes {{ data ['name-first-name'] }}?</h1>
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">Which of the following best describes you?</H1>
+            <h1 class="nhsuk-heading-l">Which of the following best describes you?</h1>
 
             {% endif %}
 

@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+About your communication needs - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -49,7 +49,6 @@
             {% endcall %}
 
             {% elif (data['need-carer'] == "Yes") %}
-
 
             {% call fieldset({
               legend: {

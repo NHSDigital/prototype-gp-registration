@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+  Are any of these repeat prescriptions - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -28,7 +28,6 @@
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-
             {% call fieldset({
               legend: {
                 text: "Are any of these repeat prescriptions?",
@@ -41,11 +40,9 @@
               "text": "This information will help avoid any delays in the patient's medication. "
             }) }}
 
-
             {{ hint({
               "text": "The GP may speak to the patient about these prescriptions."
             }) }}
-
 
             {{ radios({
               "idPrefix": "repeat-medication",
@@ -82,7 +79,7 @@
 
           </form>
         </div>
-       </div>
+      </div>
 
 {% endblock %}
 

@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Can the GP surgery contact - Register with a GP surgery - NHS
+Can {Doctor's Surgery} contact you? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -30,14 +30,11 @@ Can the GP surgery contact - Register with a GP surgery - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Can {Doctor's Surgery} contact {{ data ['name-first-name'] }}?</H1>
+            <h1 class="nhsuk-heading-l">Can {Doctor's Surgery} contact {{ data ['name-first-name'] }}?</h1>
 
             <div class="nhsuk-hint" id="contact-hint">
             <p>By giving consent, your GP surgery and the NHS can contact you using SMS or text messages, or by email about application, appointments, prescriptions or other medical services.
           </div>
-
-
-
 
           {{ radios({
             "idPrefix": "contact",
@@ -55,32 +52,31 @@ Can the GP surgery contact - Register with a GP surgery - NHS
               }
             ]
           }) }}
-
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">Can {Doctor's Surgery} contact you?</H1>
+            <h1 class="nhsuk-heading-l">Can {Doctor's Surgery} contact you?</h1>
 
             <div class="nhsuk-hint" id="contact-hint">
-            <p>By giving consent, your GP surgery and the NHS can contact you using SMS or text messages, or by email about application, appointments, prescriptions or other medical services.
-          </div>
+              <p>By giving consent, your GP surgery and the NHS can contact you using SMS or text messages, or by email about application, appointments, prescriptions or other medical services.
+            </div>
 
-          {{ radios({
-            "idPrefix": "contact",
-            "name": "contact",
-            "items": [
-              {
-                "value": "Yes",
-                "text": "Yes",
-                checked: checked("contact", "Yes")
-              },
-              {
-                "value": "No",
-                "text": "No",
-                checked: checked("contact", "No")
-              }
-            ]
-          }) }}
+            {{ radios({
+              "idPrefix": "contact",
+              "name": "contact",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: checked("contact", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("contact", "No")
+                }
+              ]
+            }) }}
 
             {% endif %}
 
@@ -89,20 +85,7 @@ Can the GP surgery contact - Register with a GP surgery - NHS
             </button>
 
         </form>
-
-
-
       </div>
     </div>
 
-
-<!-- End of content -->
-
-</div>
-</div>
-
-{% block pageScripts %}
-
-
-{% endblock %}
 {% endblock %}

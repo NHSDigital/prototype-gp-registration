@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Select carer type - Register with a GP surgery - NHS
+What type of carer are you? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -27,7 +27,6 @@
               "text": "Patient details",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}-->
-
 
             {% call fieldset({
               legend: {
@@ -76,25 +75,21 @@
               }
 
               ]
-          }) }}
+            }) }}
 
             {% endcall %}
-
-
 
             <br>
             {{ button({
               "text": "Continue"
             }) }}
 
-
-
           </form>
         </div>
       </div>
 
-
-    <!-- End of content -->
-
-
 {% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}s

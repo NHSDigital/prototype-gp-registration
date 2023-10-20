@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Sign in with NHS login - Register with a GP surgery - NHS
+We could not find a NHS login account linked to that email - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -21,24 +21,21 @@ Sign in with NHS login - Register with a GP surgery - NHS
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="what-is-your-name" method="post" autocomplete="off">
+        <form action="what-is-your-name" method="post" autocomplete="off">
 
-          <h2 class="nhsuk-heading-l">We could not find a NHS login account linked to that email</h2>
+          <h1 class="nhsuk-heading-l">We could not find a NHS login account linked to that email</h1>
 
+          <p>Email: <strong>{{ data['contact-email'] }}</strong></p>
 
-            <p>Email: <strong>{{ data['contact-email'] }}</strong></p>
-
-
-            <div class="nhsuk-hint" id="contact-hint">
-          <p>Select 'Continue with registration' or <a href="what-is-your-email" >try again</a></p>
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>Select 'Continue with registration' or <a href="what-is-your-email" >try again</a></p>
           </div>
 
           <button class="nhsuk-button" type="submit">
             Continue with registration
           </button>
 
-            </form>
-
+        </form>
 
       </div>
     </div>

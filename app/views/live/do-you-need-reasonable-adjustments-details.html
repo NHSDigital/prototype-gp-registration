@@ -1,6 +1,8 @@
-<!-- Use this page as the index for your project -->
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
 
-<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+{% extends 'layout.html' %}
 
 {% if session.data['name-first-name'] %}
   {% set name = session.data['name-first-name'] %}
@@ -8,14 +10,8 @@
   {% set name = 'Jimmy' %}
 {% endif %}
 
-<!-- Extends the layout from /views/layout.html -->{% set serviceHome = '/live/start' %}
-{% set servicePhase = 'beta' %}
-{% set feedbackType = 'step' %}
-
-{% extends 'layout.html' %}
-
 {% block pageTitle %}
-  GP Registration Prototypes
+  About the reasonable adjustments for you or your carer - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}

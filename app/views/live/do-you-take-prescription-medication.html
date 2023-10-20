@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+Do you currently take any prescription medication - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -30,7 +30,7 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} currently take any prescription medication?</H1>
+            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} currently take any prescription medication?</h1>
 
             {% call fieldset({
               legend: {

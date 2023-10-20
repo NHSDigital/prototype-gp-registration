@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Relationship to person registering - Register with a GP surgery - NHS
+What is your relationship to the person being registered? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -22,18 +22,6 @@ Relationship to person registering - Register with a GP surgery - NHS
       <div class="nhsuk-grid-column-two-thirds">
 
         <form action="" method="post" autocomplete="off">
-
-         {% set otherHtml %}
-           {{ input({
-             id: "other",
-             name: "other",
-             classes: "nhsuk-u-width-two-thirds",
-             label: {
-               text: ""
-             }
-           }) }}
-         {% endset %}
-
 
           {{ radios({
             "idPrefix": "relation",

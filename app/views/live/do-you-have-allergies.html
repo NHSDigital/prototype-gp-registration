@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+Do you have any allergies - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -30,7 +30,7 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-              <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have any allergies?</H1>
+              <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have any allergies?</h1>
 
             {% call fieldset({
               legend: {

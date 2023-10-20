@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Enter carer details - Register with a GP surgery - NHS
+What are your details - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -21,13 +21,12 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="what-is-your-name" method="post" autocomplete="off">
+          <form action="what-is-your-name" method="post">
 
            <!--{{ hint({
               "text": "Step 1 of 3 - Matching patient to their record",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}-->
-
 
             {% call fieldset({
               legend: {
@@ -35,7 +34,6 @@
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
-
             }) %}
 
             {{ input({
@@ -91,26 +89,17 @@
               }
             }) }}
 
-
             {% endcall %}
 
-
             <br>
+
             {{ button({
               "text": "Continue"
             }) }}
 
-
-
           </form>
         </div>
       </div>
-
-
-    <!-- End of content -->
-
-  </div>
- </div>
 
 {% endblock %}
 

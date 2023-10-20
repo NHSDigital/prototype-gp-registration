@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-For people arriving from outside EU, EEA or Switzerland - Register with a GP surgery - NHS
+For people arriving from outside EU, EEA or Switzerland - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -35,7 +35,6 @@ For people arriving from outside EU, EEA or Switzerland - Register with a GP sur
                 <li>I have not paid the Immigration Health Surcharge.</li>
                 <li>I am not exempt from charges.</li>
               </ul>
-
 
             {{ button({
               "text": "Continue"

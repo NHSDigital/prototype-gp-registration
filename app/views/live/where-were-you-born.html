@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Select place of birth - Register with a GP surgery - NHS
+Where were you born? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,7 +23,6 @@ Select place of birth - Register with a GP surgery - NHS
 
         <form action="where-were-you-born-place-uk" method="post" autocomplete="off">
 
-
           {{ hint({
             "text": "Patient details",
             "classes": "nhsuk-u-margin-bottom-2"
@@ -31,7 +30,7 @@ Select place of birth - Register with a GP surgery - NHS
 
           {% if (data['who-is-being-registered'] == "dependant") %}
 
-          <h1 class="nhsuk-heading-l">Where was {{ data ['name-first-name'] }} born?</H1>
+          <h1 class="nhsuk-heading-l">Where was {{ data ['name-first-name'] }} born?</h1>
 
           {% call fieldset({
             legend: {
@@ -102,7 +101,7 @@ Select place of birth - Register with a GP surgery - NHS
           {% endcall %}
           {% else %}
 
-          <h1 class="nhsuk-heading-l">Where were you born?</H1>
+          <h1 class="nhsuk-heading-l">Where were you born?</h1>
 
           {% call fieldset({
             legend: {

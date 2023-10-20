@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+How often have you had six or more units of alcohol on a single occasion in the last year - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -30,7 +30,7 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">How often has {{ data ['name-first-name'] }} had six or more units of alcohol on a single occasion in the last year?</H1>
+            <h1 class="nhsuk-heading-l">How often has {{ data ['name-first-name'] }} had six or more units of alcohol on a single occasion in the last year?</h1>
 
             {{ radios({
               "idPrefix": "alcohol-consumption-day",

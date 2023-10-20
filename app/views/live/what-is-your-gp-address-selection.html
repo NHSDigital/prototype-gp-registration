@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Select your current GP surgery you want to leave - Register with a GP surgery - NHS
+Select your current GP surgery you want to leave - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -48,7 +48,6 @@ Select your current GP surgery you want to leave - Register with a GP surgery - 
             <div class="nhsuk-hint" id="contact-hint">
               <p>6 addresses found for <strong>{{ data['find-gp-address'] }}</strong> <strong>{{ data['current-gp-address'] }}</strong></p>
             </div>
-
 
                 {{ radios({
                     "idPrefix": "select-gp-address",

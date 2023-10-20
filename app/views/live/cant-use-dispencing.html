@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-- Register with a GP surgery - NHS
+You are not able to get your prescription items direct from {SURGERY NAME} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -30,11 +30,11 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">{{ data ['name-first-name'] }} is not able to get their prescription items direct from {SURGERY NAME}</H1>
+            <h1 class="nhsuk-heading-l">{{ data ['name-first-name'] }} is not able to get their prescription items direct from {SURGERY NAME}</h1>
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">You are not able to get your prescription items direct from {SURGERY NAME}</H1>
+            <h1 class="nhsuk-heading-l">You are not able to get your prescription items direct from {SURGERY NAME}</h1>
 
             {% endif %}
 
@@ -50,9 +50,6 @@
              <li>live more than 1 mile from their nearest pharmacy, or</li>
              <li>have serious difficulty travelling to or communicating with their nearest pharmacy</li>
            </ul>
-
-
-
 
             {% endcall %}
 

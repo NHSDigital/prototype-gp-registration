@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Select a pharmacy - Register with a GP surgery - NHS
+Select a pharmacy - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -26,12 +26,9 @@ Select a pharmacy - Register with a GP surgery - NHS
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-
           <form action="confirm-pharmacy" method="post" autocomplete="off">
 
             <div class="nhsuk-form-group">
-
-
 
                 <fieldset class="nhsuk-fieldset" aria-describedby="nominated-pharmacy">
                   <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
@@ -40,19 +37,14 @@ Select a pharmacy - Register with a GP surgery - NHS
                     </h1>
                   </legend>
 
-
                   <div class="nhsuk-hint" id="pharmacy-hint">
                     <p>10 address found for<strong>{{ data['pharmacy-postcode'] }}</strong> <strong>{{ data['find-current-address'] }}</strong></p>
                   </div>
-
-
-
 
                 <div class="nhsuk-radios__item  nhsuk-u-margin-top-4 ">
                   <input class="nhsuk-radios__input" id="practice-1" name="practice" type="radio" value="Highstreet pharmacy, 1 Town Street, London, SW1A 1AA">
                   <label class="nhsuk-label nhsuk-radios__label" for="practice-1">Highstreet pharmacy</label>
                   <span class="nhsuk-hint nhsuk-radios__hint">
-
 
                     <span>
                       1 Town Street, London, SW1A 1AA
@@ -64,7 +56,6 @@ Select a pharmacy - Register with a GP surgery - NHS
 
                   </span>
                 </div>
-
 
                 <div class="nhsuk-radios__item  nhsuk-u-margin-top-4">
                   <input class="nhsuk-radios__input" id="practice-2" name="practice" type="radio" value="Boots, 2 Town Street, London, SW1A 1AA">
@@ -210,9 +201,7 @@ Select a pharmacy - Register with a GP surgery - NHS
                   </span>
                 </div>
 
-
                 <div class="nhsuk-radios__divider">or</div>
-
 
                 <div class="nhsuk-radios__item  nhsuk-u-margin-top-4">
                   <input class="nhsuk-radios__input" id="practice-6" name="practice" type="radio" value="other~/live/nominate-pharmacy-search">
@@ -226,29 +215,16 @@ Select a pharmacy - Register with a GP surgery - NHS
                   <a href="nominate-pharmacy-manual" id="enter-address-manually-link">Enter the address manually</a>
                 </p>
 
-
-
-
               {{ button({
                   "text": "Continue"
               }) }}
 
-
-
-
-
-
           </form>
         </div>
-        </div>
-
-
-    <!-- End of content -->
-
-  </div>
-</div>
-{% block pageScripts %}
+      </div>
 
 {% endblock %}
 
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

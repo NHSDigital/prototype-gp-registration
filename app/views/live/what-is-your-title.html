@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Enter name - Register with a GP surgery - NHS
+What is your title? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -22,11 +22,10 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {% if data['user-auth'] == "p9" %}
-          <form action="where-were-you-born" method="post" autocomplete="off">
+          <form action="where-were-you-born" method="post" >
           {% else %}
-          <form action="what-is-your-sex" method="post" autocomplete="off">
+          <form action="what-is-your-sex" method="post">
           {% endif %}
-
 
           {{ hint({
               "text": "Patient details",
@@ -45,24 +44,20 @@
                 "text": "We need your title so that your GP surgery can match you to your medical record."
             }) }}
 
-             {{ input({
-                label: {
-                  "text": "Title"
-                },
-                "hint": {
-                  "html": "For example, Mr, Mrs, Miss or Ms"
-                },
-                "classes": "nhsuk-input--width-4",
-                "id": "name-title",
-                "name": "name-title",
-                "value": data['name-title']
-              }) }}
-
+           {{ input({
+              label: {
+                "text": "Title"
+              },
+              "hint": {
+                "html": "For example, Mr, Mrs, Miss or Ms"
+              },
+              "classes": "nhsuk-input--width-4",
+              "id": "name-title",
+              "name": "name-title",
+              "value": data['name-title']
+            }) }}
 
             {% endcall %}
-
-
-
 
             {{ button({
               "text": "Continue"
@@ -70,7 +65,7 @@
 
           </form>
         </div>
-       </div>
+      </div>
 
 {% endblock %}
 

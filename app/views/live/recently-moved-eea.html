@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Have you moved to UK from living in EU, EEA or Switzerland? - Register with a GP surgery - NHS
+Have you moved to UK from living in EU, EEA or Switzerland? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,14 +23,14 @@ Have you moved to UK from living in EU, EEA or Switzerland? - Register with a GP
 
         <form action="" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Registration type",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+          {{ hint({
+            "text": "Registration type",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
 
           {% if (data['who-is-being-registered'] == "dependant") %}
 
-          <h1 class="nhsuk-heading-l">Has {{ data ['name-first-name'] }} moved to UK from living in EU, EEA or Switzerland?</H1>
+          <h1 class="nhsuk-heading-l">Has {{ data ['name-first-name'] }} moved to UK from living in EU, EEA or Switzerland?</h1>
 
           {% call fieldset({
             legend: {

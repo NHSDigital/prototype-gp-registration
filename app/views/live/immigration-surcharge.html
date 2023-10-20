@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Do you know your chargeable status? - Register with a GP surgery - NHS
+Do you know your chargeable status? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -18,29 +18,24 @@ Do you know your chargeable status? - Register with a GP surgery - NHS
 
 {% block content %}
 
-<section class="nhsuk-section">
-  <div class="nhsuk-width-container">
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
         <form action="overseas-declaration-none-eu" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Registration type",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+          {{ hint({
+            "text": "Registration type",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
 
           {% if (data['who-is-being-registered'] == "dependant") %}
 
-          <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} know their chargeable status?</H1>
+          <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} know their chargeable status?</h1>
 
-          <div class="nhsuk-hint" id="contact-hint">
+          <div class="nhsuk-hint">
             <p>You may have paid an Immigration Health Surcharge online as part of your application for a visa. The amount you pay depends on your visa type and length of stay.</p>
-
             <p>You may also be exempt from charges for other reasons, such as being covered by a reciprocal healthcare agreement or being an asylum seeker.</p>
-
           </div>
-
 
           {% call fieldset({
             legend: {
@@ -85,13 +80,9 @@ Do you know your chargeable status? - Register with a GP surgery - NHS
             }
           }) %}
 
-          <div class="nhsuk-hint" id="contact-hint">
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>You may have paid an Immigration Health Surcharge online as part of your application for a visa. The amount you pay depends on your visa type and length of stay.</p>
-
-              <p>You may also be exempt from charges for other reasons, such as being covered by a reciprocal healthcare agreement or being an asylum seeker.</p>
-
-            </div>
+          <div class="nhsuk-hint">
+            <p>You may have paid an Immigration Health Surcharge online as part of your application for a visa. The amount you pay depends on your visa type and length of stay.</p>
+            <p>You may also be exempt from charges for other reasons, such as being covered by a reciprocal healthcare agreement or being an asylum seeker.</p>
           </div>
 
 
@@ -127,27 +118,17 @@ Do you know your chargeable status? - Register with a GP surgery - NHS
             "HTML": "<p>Anybody in England can register with a GP surgery and receive free medical care. To get free NHS healthcare in England you need to be 'ordinarily resident' in the UK. This means you must be living in the UK on a lawful and properly settled basis for the time being. You may be asked for evidence of this.</p>"
           }) }} -->
 
-
           {{ button({
             "text": "Continue"
           }) }}
 
         </form>
 
-
-
-
-
       </div>
     </div>
-  </div>
-</section>
 
+{% endblock %}
 
-
-
-<!-- End of content -->
-
-</div>
-</div>
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+What type of carer are you - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -31,11 +31,11 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">What type of carer are they?</H1>
+            <h1 class="nhsuk-heading-l">What type of carer are they?</h1>
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">What type of carer are you?</H1>
+            <h1 class="nhsuk-heading-l">What type of carer are you?</h1>
 
             {% endif %}
 

@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Select your address - Register with a GP surgery - NHS
+Select your address - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -26,6 +26,7 @@ Select your address - Register with a GP surgery - NHS
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
+          <!-- TODO fix this -->
           {% if (data['out-of-area'] == "out-of-area") %}
           <form action="current-address-out-of-area" method="post" autocomplete="off">
           {% elif (data['have-current-uk-address'] == "Yes") %}
@@ -34,8 +35,6 @@ Select your address - Register with a GP surgery - NHS
           <form action="confirm-contact-details" method="post" autocomplete="off">
 
           {% endif %}
-
-
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
@@ -50,7 +49,6 @@ Select your address - Register with a GP surgery - NHS
             <div class="nhsuk-hint" id="contact-hint">
               <p>6 addresses found for <strong>{{ data['house-number-address'] }}</strong> <strong>{{ data['find-current-address'] }}</strong></p>
             </div>
-
 
                 {{ radios({
                     "idPrefix": "select-current-address",
@@ -128,7 +126,6 @@ Select your address - Register with a GP surgery - NHS
                   <p>6 addresses found for <strong>{{ data['house-number-address'] }}</strong> <strong>{{ data['find-current-address'] }}</strong></p>
                 </div>
 
-
                     {{ radios({
                         "idPrefix": "select-current-address",
                         "name": "select-current-address",
@@ -148,44 +145,45 @@ Select your address - Register with a GP surgery - NHS
                           "hint": {
                         },
                           checked: checked("select-current-address", "2 Town Street, London, SW1A 1AA")
-                        },    {
-                              "value": "3 Town Street, London, SW1A 1AA",
-                              "text": "3 Town Street, London, SW1A 1AA",
-                              "hint": {
-                            },
-                              checked: checked("select-current-addresss", "3 Town Street, London, SW1A 1AA")
-                            },
-                            {
-                              "value": "4 Town Street, London, SW1A 1AA",
-                              "text": "4 Town Street, London, SW1A 1AA",
-                              "hint": {
-                            },
-                              checked: checked("select-current-addresss", "4 Town Street, London, SW1A 1AA")
-                            },
-                            {
-                              "value": "5 Town Street, London, SW1A 1AA",
-                              "text": "5 Town Street, London, SW1A 1AA",
-                              "hint": {
-                            },
-                              checked: checked("select-current-address", "5 Town Street, London, SW1A 1AA")
-                            },
-                            {
-                              "value": "6 Town Street, London, SW1A 1AA",
-                              "text": "6 Town Street, London, SW1A 1AA",
-                              "hint": {
-                            },
-                              checked: checked("select-current-address", "6 Town Street, London, SW1A 1AA")
-                            },
-                            {
-                              "divider": "or"
-                            },
-                            {
-                              "value": "wrong address~/live/what-is-your-current-address",
-                              "text": "The address is not listed here.",
-                              "hint": {
-                            },
-                              checked: checked("select-current-address", "")
-                            }
+                        },
+                        {
+                          "value": "3 Town Street, London, SW1A 1AA",
+                          "text": "3 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-current-addresss", "3 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "value": "4 Town Street, London, SW1A 1AA",
+                          "text": "4 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-current-addresss", "4 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "value": "5 Town Street, London, SW1A 1AA",
+                          "text": "5 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-current-address", "5 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "value": "6 Town Street, London, SW1A 1AA",
+                          "text": "6 Town Street, London, SW1A 1AA",
+                          "hint": {
+                        },
+                          checked: checked("select-current-address", "6 Town Street, London, SW1A 1AA")
+                        },
+                        {
+                          "divider": "or"
+                        },
+                        {
+                          "value": "wrong address~/live/what-is-your-current-address",
+                          "text": "The address is not listed here.",
+                          "hint": {
+                        },
+                          checked: checked("select-current-address", "")
+                        }
                       ]
                     }) }}
 
@@ -197,25 +195,16 @@ Select your address - Register with a GP surgery - NHS
                   <a href="what-is-your-current-address-manual" id="enter-address-manually-link">Enter the address manually</a>
                 </p>
 
-
               {{ button({
                   "text": "Continue"
               }) }}
 
-
-
-
           </form>
         </div>
-        </div>
-
-
-    <!-- End of content -->
-
-  </div>
-</div>
-{% block pageScripts %}
+      </div>
 
 {% endblock %}
 
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

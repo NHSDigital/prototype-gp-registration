@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+Are you a carer? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -30,11 +30,11 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Is {{ data ['name-first-name'] }} a carer?</H1>
+            <h1 class="nhsuk-heading-l">Is {{ data ['name-first-name'] }} a carer?</h1>
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">Are you a carer?</H1>
+            <h1 class="nhsuk-heading-l">Are you a carer?</h1>
 
             {% endif %}
 
@@ -66,9 +66,6 @@
                 }
               ]
             }) }}
-
-
-
 
             {{ button({
               "text": "Continue"

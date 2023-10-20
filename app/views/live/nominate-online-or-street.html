@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Choose type of pharmacy - Register with a GP surgery - NHS
+Choose type of pharmacy - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -26,9 +26,6 @@ Choose type of pharmacy - Register with a GP surgery - NHS
               "text": "Additional information",
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
-
-
-
 
             {{ radios({
               "idPrefix": "nominate-pharmacy",
@@ -62,9 +59,6 @@ Choose type of pharmacy - Register with a GP surgery - NHS
                 }
               ]
             }) }}
-
-
-
 
             {{ button({
               "text": "Continue"

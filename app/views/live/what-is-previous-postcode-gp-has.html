@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Enter previous postcode - Register with a GP surgery - NHS
+What postcode did you use when you last registered with a UK GP? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,8 +23,6 @@
 
           <form action="are-you-returning-from-overseas" method="post" autocomplete="off">
 
-
-
            {{ hint({
               "text": "Registration type",
               "classes": "nhsuk-u-margin-bottom-2"
@@ -32,7 +30,7 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">What postcode did {{ data ['name-first-name'] }} use when they last registered with a UK GP?</H1>
+            <h1 class="nhsuk-heading-l">What postcode did {{ data ['name-first-name'] }} use when they last registered with a UK GP?</h1>
 
             {% call fieldset({
               legend: {
@@ -46,7 +44,6 @@
                 "text": "This will be the postcode they used the last time they registered with a UK GP surgery."
             }) }}
 
-
               {{ input({
                   label: {
                     "text": "Postcode"
@@ -60,12 +57,11 @@
                   value: data['gp-postcode-prev']
                 }) }}
 
-
             {% endcall %}
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">What postcode did you use when you last registered with a UK GP?</H1>
+            <h1 class="nhsuk-heading-l">What postcode did you use when you last registered with a UK GP?</h1>
 
             {% call fieldset({
               legend: {
@@ -79,26 +75,22 @@
                 "text": "This will be the postcode you used the last time you registered with a UK GP surgery."
             }) }}
 
-
-              {{ input({
-                  label: {
-                    "text": "Postcode"
-                  },
-                  "hint": {
-                    "text": "For example LS13 9PO"
-                  },
-                  "classes": "nhsuk-input--width-10",
-                  "id": "gp-postcode-prev",
-                  "name": "gp-postcode-prev",
-                  value: data['gp-postcode-prev']
-                }) }}
-
+            {{ input({
+                label: {
+                  "text": "Postcode"
+                },
+                "hint": {
+                  "text": "For example LS13 9PO"
+                },
+                "classes": "nhsuk-input--width-10",
+                "id": "gp-postcode-prev",
+                "name": "gp-postcode-prev",
+                value: data['gp-postcode-prev']
+              }) }}
 
             {% endcall %}
 
             {% endif %}
-
-
 
             {{ button({
               "text": "Continue"
@@ -108,14 +100,8 @@
         </div>
       </div>
 
-
-    <!-- End of content -->
-
-  </div>
-</div>
-{% block pageScripts %}
-<script>
-
-</script>
 {% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+About your mental health conditions - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -32,7 +32,7 @@
 
             {% call fieldset({
               legend: {
-                text: "About {{ data ['name-first-name'] }}'s mental health conditions",
+                text: "About " + data['name-first-name'] + "'s mental health conditions",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }

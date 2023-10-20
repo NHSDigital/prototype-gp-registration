@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Enter NHS number - Register with a GP surgery - NHS
+What is your NHS Number? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -22,7 +22,6 @@
         <div class="nhsuk-grid-column-two-thirds">
           <form action="how-can-we-contact-inputs" method="post" autocomplete="off">
 
-
            {{ hint({
               "text": "Step 1 of 3 - Matching patient to their record",
               "classes": "nhsuk-u-margin-bottom-2"
@@ -30,11 +29,11 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l"> What is {{ data ['name-first-name'] }}'s NHS Number</H1>
+            <h1 class="nhsuk-heading-l"> What is {{ data ['name-first-name'] }}'s NHS Number</h1>
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">What is your NHS Number?</H1>
+            <h1 class="nhsuk-heading-l">What is your NHS Number?</h1>
 
             {% endif %}
 
@@ -67,7 +66,7 @@
 
           </form>
         </div>
-       </div>
+      </div>
 
 {% endblock %}
 

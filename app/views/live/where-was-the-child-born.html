@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Select place of birth - Register with a GP surgery - NHS
+Where was {{ data ['name-first-name'] }} born? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -27,6 +27,7 @@ Select place of birth - Register with a GP surgery - NHS
             "text": "Patient details",
             "classes": "nhsuk-u-margin-bottom-2"
           }) }}
+
           <h1 class="nhsuk-heading-l">Where was {{ data ['name-first-name'] }} born?</h1>
 
           {% call fieldset({

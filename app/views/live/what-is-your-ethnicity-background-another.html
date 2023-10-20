@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-How would you describe your background? - Register with a GP surgery - NHS
+How would you describe your background? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -21,6 +21,7 @@ How would you describe your background? - Register with a GP surgery - NHS
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
+          <!-- TODO fix this -->
           {% if data['user-auth'] == "p9" %}
           <form action="is-this-your-current-address" method="post" autocomplete="off">
           {% elif data['user-auth'] == "p5" %}

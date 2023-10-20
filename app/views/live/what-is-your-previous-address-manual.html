@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What was your previous UK address? - Register with a GP surgery - NHS
+What was your previous UK address? - {{ serviceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -87,5 +87,5 @@ What was your previous UK address? - Register with a GP surgery - NHS
 {% endblock %}
 
 {% block footer %}
-{% include 'live/includes/footer.html' %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

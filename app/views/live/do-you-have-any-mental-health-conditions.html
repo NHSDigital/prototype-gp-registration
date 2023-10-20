@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+Do you have any mental health conditions - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -30,7 +30,7 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have any mental health conditions?</H1>
+            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have any mental health conditions?</h1>
 
             {% call fieldset({
               legend: {
@@ -43,7 +43,6 @@
             {{ hint({
               "text": "It is important to tell us about all existing or pre-existing mental health conditions they may have, so their GP can ensure they are given the necessary treatment."
             }) }}
-
 
             {{ radios({
               "idPrefix": "has-mental-health-conditions",
@@ -73,7 +72,6 @@
             {% endcall %}
             {% else %}
 
-
             {% call fieldset({
               legend: {
                 text: "Do you have any mental health conditions?",
@@ -85,7 +83,6 @@
             {{ hint({
               "text": "It is important to tell us about all existing or pre-existing mental health conditions you may have, so your GP can ensure you are given the necessary treatment."
             }) }}
-
 
             {{ radios({
               "idPrefix": "has-mental-health-conditions",
@@ -114,8 +111,6 @@
 
             {% endcall %}
             {% endif %}
-
-
 
             {{ button({
               "text": "Continue"

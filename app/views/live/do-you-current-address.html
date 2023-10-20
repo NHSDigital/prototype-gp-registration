@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Do you have a current UK address? - Register with a GP surgery - NHS
+Do you have a current UK address? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -29,11 +29,11 @@ Do you have a current UK address? - Register with a GP surgery - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have a current UK address?</H1>
+            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have a current UK address?</h1>
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">Do you have a current UK address?</H1>
+            <h1 class="nhsuk-heading-l">Do you have a current UK address?</h1>
 
             {% endif %}
 
@@ -105,22 +105,16 @@ Do you have a current UK address? - Register with a GP surgery - NHS
 
         {% endif %}
 
+        {{ button({
+          "text": "Continue"
+        }) }}
 
-
-
-            {{ button({
-              "text": "Continue"
-            }) }}
-
-          </form>
-        </div>
-      </div>
-
-    <!-- End of content -->
-
+      </form>
+    </div>
   </div>
-</div>
-{% block pageScripts %}
-<script></script>
+
 {% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

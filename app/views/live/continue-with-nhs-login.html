@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Sign in with NHS login - Register with a GP surgery - NHS
+Would you like to sign in with NHS login - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -21,7 +21,7 @@
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
-          <h2 class="nhsuk-heading-l">Would you like to sign in with NHS login?</h2>
+          <h1 class="nhsuk-heading-l">Would you like to sign in with NHS login?</h1>
 
             <p>We found an NHS login linked to <strong>{{ data['contact-email'] }}</strong></p>
 
@@ -37,19 +37,16 @@
           <p>
 
           <form action="nhs-login-email-address" method="post" autocomplete="off">
-          <button class="nhsuk-button nhsuk-button--blue nhsuk-u-margin-bottom-4" type="submit">
-          Continue with NHS login
-          </button>
+            <button class="nhsuk-button nhsuk-button--blue nhsuk-u-margin-bottom-4" type="submit">
+            Continue with NHS login
+            </button>
           </form>
 
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>Alternatively you can continue without using NHS login:</p>
-            </div>
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>Alternatively you can continue without using NHS login:</p>
+          </div>
 
-            <p><a href="what-is-your-name" class="nhsuk-button nhsuk-button--secondary">Continue without</a></p>
-
-
-
+          <p><a href="what-is-your-name" class="nhsuk-button nhsuk-button--secondary">Continue without</a></p>
 
       </div>
     </div>

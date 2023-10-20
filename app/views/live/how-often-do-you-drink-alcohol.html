@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-How often do you drink alcohol or have a drink containing alcohol? - Register with a GP surgery - NHS
+How often do you drink alcohol or have a drink containing alcohol? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -30,7 +30,7 @@ How often do you drink alcohol or have a drink containing alcohol? - Register wi
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">How often does {{ data ['name-first-name'] }} drink alcohol or have a drink containing alcohol?</H1>
+            <h1 class="nhsuk-heading-l">How often does {{ data ['name-first-name'] }} drink alcohol or have a drink containing alcohol?</h1>
 
             {{ radios({
               "idPrefix": "alcohol-consumption",

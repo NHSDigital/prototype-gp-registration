@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+Have you got all your immunisations - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -30,7 +30,7 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Has {{ data ['name-first-name'] }} had all their routine vaccinations?</H1>
+            <h1 class="nhsuk-heading-l">Has {{ data ['name-first-name'] }} had all their routine vaccinations?</h1>
 
             {% call fieldset({
               legend: {
@@ -43,9 +43,6 @@
             {{ hint({
               "text": "These are vaccinations or immunisations received at school or from a GP, either in the UK or abroad. "
             }) }}
-
-
-
 
             {{ radios({
               "idPrefix": "are-you-immunised",
@@ -86,9 +83,6 @@
             {{ hint({
               "text": "These are vaccinations or immunisations received at school or from a GP, either in the UK or abroad."
             }) }}
-
-
-
 
             {{ radios({
               "idPrefix": "are-you-immunised",

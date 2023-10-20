@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Do you have a contact in case of emergency? - Register with a GP surgery - NHS
+Do you have a contact in case of emergency? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -21,8 +21,6 @@ Do you have a contact in case of emergency? - Register with a GP surgery - NHS
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-
-
           <form action="" method="post" autocomplete="off">
 
             {{ hint({
@@ -32,15 +30,13 @@ Do you have a contact in case of emergency? - Register with a GP surgery - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have a contact in case of emergency?</H1>
+            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have a contact in case of emergency?</h1>
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">Do you have a contact in case of emergency?</H1>
+            <h1 class="nhsuk-heading-l">Do you have a contact in case of emergency?</h1>
 
             {% endif %}
-
-
 
             {% call fieldset({
               legend: {
@@ -72,19 +68,16 @@ Do you have a contact in case of emergency? - Register with a GP surgery - NHS
               ]
             }) }}
 
-
-      {% endcall %}
-
-
+          {% endcall %}
 
             {{ button({
               "text": "Continue"
             }) }}
 
-            </form>
+          </form>
 
-        </div>
-       </div>
+      </div>
+     </div>
 
 {% endblock %}
 

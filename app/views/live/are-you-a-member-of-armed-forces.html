@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Have you ever been a member of the UK armed forces - Register with a GP surgery - NHS
+Are you registered with the Defence Medical Services - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -28,20 +28,18 @@ Have you ever been a member of the UK armed forces - Register with a GP surgery 
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Is {{ data ['name-first-name'] }} registered with the Defence Medical Services?</H1>
+            <h1 class="nhsuk-heading-l">Is {{ data ['name-first-name'] }} registered with the Defence Medical Services?</h1>
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">Are you registered with the Defence Medical Services?</H1>
+            <h1 class="nhsuk-heading-l">Are you registered with the Defence Medical Services?</h1>
 
             {% endif %}
             <div class="nhsuk-hint" id="contact-hint">
               <p>You may be registered with the Defence Medical Services (DMS) if you or a family member were in the UK armed forces and this is the first time you are registering with an NHS GP since you or they left service.</p>
             </div>
-
 
             {% call fieldset({
                 legend: {
@@ -50,7 +48,6 @@ Have you ever been a member of the UK armed forces - Register with a GP surgery 
                   isPageHeading: true
                 }
               }) %}
-
 
               {{ radios({
                 "idPrefix": "is-armed-forces-member",
@@ -70,9 +67,7 @@ Have you ever been a member of the UK armed forces - Register with a GP surgery 
                 ]
               }) }}
 
-
             {% endcall %}
-
 
             {{ details({
               "text": "Why are you asking this?",

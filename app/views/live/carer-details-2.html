@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+  What are the details of your second carer? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -28,14 +28,12 @@
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-
             {% call fieldset({
               legend: {
                 "text": "What are the details of your second carer?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
-
             }) %}
 
             {{ input({
@@ -79,9 +77,7 @@
                   "value": data['carer-telephone-2']
                 }) }}
 
-
             {% endcall %}
-
 
             {{ button({
               "text": "Add another carer",
@@ -94,17 +90,9 @@
               "text": "Continue"
             }) }}
 
-
-
           </form>
         </div>
       </div>
-    
-
-    <!-- End of content -->
-
-  </div>
- </div>
 
 {% endblock %}
 

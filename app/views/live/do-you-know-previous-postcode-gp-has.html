@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Previous postcode - Register with a GP surgery - NHS
+Do you know your postcode used when you last registered with a UK GP? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -29,7 +29,7 @@ Previous postcode - Register with a GP surgery - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Do you know the postcode {{ data ['name-first-name'] }} used when they last registered with a UK GP?</H1>
+            <h1 class="nhsuk-heading-l">Do you know the postcode {{ data ['name-first-name'] }} used when they last registered with a UK GP?</h1>
 
             <div class="nhsuk-hint" id="contact-hint">
               <p>This will be the postcode they used last time they registered with a GP surgery.
@@ -37,7 +37,7 @@ Previous postcode - Register with a GP surgery - NHS
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">Do you know your postcode used when you last registered with a UK GP?</H1>
+            <h1 class="nhsuk-heading-l">Do you know your postcode used when you last registered with a UK GP?</h1>
 
             <div class="nhsuk-hint" id="contact-hint">
               <p>This will be the postcode you used last time you registered with a GP surgery.
@@ -52,9 +52,6 @@ Previous postcode - Register with a GP surgery - NHS
               isPageHeading: true
             }
           }) %}
-
-
-
 
           {{ radios({
             "idPrefix": "do-you-know-previous-postcode",
@@ -80,17 +77,11 @@ Previous postcode - Register with a GP surgery - NHS
           }) }}
            {% endcall %}
 
-
-
-
           {{ button({
             "text": "Continue"
           }) }}
 
         </form>
-
-
-
       </div>
     </div>
 {% endblock %}

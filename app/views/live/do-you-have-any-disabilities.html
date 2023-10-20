@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+Do you have any disabilities - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block content %}
-
+<!-- TODO fix this mess -->
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
@@ -30,7 +30,7 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have any disabilities?</H1>
+            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have any disabilities?</h1>
 
             {% call fieldset({
               legend: {

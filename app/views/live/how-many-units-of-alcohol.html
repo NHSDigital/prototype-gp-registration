@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-How many units of alcohol do you drink on a typical day when you are drinking? - Register with a GP surgery - NHS
+How many units of alcohol do you drink on a typical day when you are drinking? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -30,7 +30,7 @@ How many units of alcohol do you drink on a typical day when you are drinking? -
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">How many units of alcohol does {{ data ['name-first-name'] }} drink on a typical day when they are drinking?</H1>
+            <h1 class="nhsuk-heading-l">How many units of alcohol does {{ data ['name-first-name'] }} drink on a typical day when they are drinking?</h1>
 
             {% call fieldset({
               legend: {

@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  GP Registration Prototypes
+What are your carer's details - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -31,14 +31,13 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">What are the details of their carer?</H1>
+            <h1 class="nhsuk-heading-l">What are the details of their carer?</h1>
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">What are your carer's details?</H1>
+            <h1 class="nhsuk-heading-l">What are your carer's details?</h1>
 
             {% endif %}
-
 
             {% call fieldset({
               legend: {
@@ -46,10 +45,7 @@
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
-
             }) %}
-
-
 
             {{ input({
                 label: {
@@ -95,11 +91,7 @@
                   "value": data['carer-telephone']
                 }) }}
 
-
-
-
             {% endcall %}
-
 
             {{ button({
               "text": "Add another carer",
@@ -112,17 +104,9 @@
               "text": "Continue"
             }) }}
 
-
-
           </form>
         </div>
       </div>
-
-
-    <!-- End of content -->
-
-  </div>
- </div>
 
 {% endblock %}
 

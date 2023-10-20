@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Summary Care Record - Register with a GP surgery - NHS
+Summary Care Record (SCR) - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -67,9 +67,9 @@ Summary Care Record - Register with a GP surgery - NHS
           {% endcall %}
 
           <div class="nhsuk-inset-text">
-          <span class="nhsuk-u-visually-hidden">Information: </span>
-          <p>It is not compulsory for you to select any of these options. If you choose not to then your SCR consent preference held at your previous GP surgery will be transferred to your new GP surgery.</p>
-        </div>
+            <span class="nhsuk-u-visually-hidden">Information: </span>
+            <p>It is not compulsory for you to select any of these options. If you choose not to then your SCR consent preference held at your previous GP surgery will be transferred to your new GP surgery.</p>
+          </div>
 
           {{ button({
             "text": "Continue"

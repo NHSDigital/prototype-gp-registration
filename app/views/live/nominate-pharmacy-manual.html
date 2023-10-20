@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is the address of the pharmacy? - Register with a GP surgery - NHS
+What is the address of the pharmacy? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -22,9 +22,6 @@ What is the address of the pharmacy? - Register with a GP surgery - NHS
         <div class="nhsuk-grid-column-two-thirds">
 
           <form action="do-you-previous-address" method="post" autocomplete="off">
-
-
-
 
             {{ hint({
               "text": "Additional information",
@@ -87,25 +84,16 @@ What is the address of the pharmacy? - Register with a GP surgery - NHS
 
               {% endcall %}
 
-
-
               {{ button({
                 "text": "Continue"
               }) }}
-
-
-
 
           </form>
         </div>
       </div>
 
-
-    <!-- End of content -->
-
-  </div>
-</div>
-{% block pageScripts %}
 {% endblock %}
 
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

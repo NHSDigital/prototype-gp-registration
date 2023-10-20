@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-When did you enter the UK? - Register with a GP surgery - NHS
+When did you enter the UK? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -64,7 +64,6 @@ When did you enter the UK? - Register with a GP surgery - NHS
             ]
           }) }}
 
-
           {% else %}
 
           {{ dateInput({
@@ -101,7 +100,6 @@ When did you enter the UK? - Register with a GP surgery - NHS
           {{ button({
             "text": "Continue"
           }) }}
-
 
         </form>
 

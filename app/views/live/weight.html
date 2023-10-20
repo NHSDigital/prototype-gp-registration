@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is your weight? - Register with a GP surgery - NHS
+What is your weight? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -37,7 +37,7 @@ What is your weight? - Register with a GP surgery - NHS
                 "legend": {
                   "text": "What is your weight?",
                   "classes": "nhsuk-label--l",
-                  "isPageHeading": false
+                  "isPageHeading": true
                 }
               },
               "hint": {
@@ -57,9 +57,7 @@ What is your weight? - Register with a GP surgery - NHS
               ]
             }) }}
 
-            <p>
-              <a href="#" id="enter-address-manually-link">Switch to kilograms</a>
-            </p>
+            <p><a href="#" id="enter-address-manually-link">Switch to kilograms</a></p>
 
           </div>
 
@@ -89,9 +87,7 @@ What is your weight? - Register with a GP surgery - NHS
                 ]
               }) }}
 
-              <p>
-                <a href="#" id="use-postcode-lookup-link">Switch to stone and pounds</a>
-              </p>
+              <p><a href="#" id="use-postcode-lookup-link">Switch to stone and pounds</a></p>
 
             </div>
 
@@ -106,31 +102,31 @@ What is your weight? - Register with a GP surgery - NHS
           </div>
         </details>
 
-          <button class="nhsuk-button" type="submit">
-            Continue
-          </button>
+        {{ button({
+         "text": "Continue"
+         }) }}
 
           </form>
 
         </div>
       </div>
 
-  {% block pageScripts %}
-    <script>
-      $('#enter-address-manually-link').click(function () {
-        $('#current-address-lookup-container').addClass("hidden-section");
-        $('.current-address-form').removeClass("hidden-section");
-      });
+{% endblock %}
 
-      $('#use-postcode-lookup-link').click(function () {
-        $('#current-address-lookup-container').removeClass("hidden-section");
-        $('#select-address-section').addClass("hidden-section");
-        $('.current-address-form').addClass("hidden-section");
-      });
+{% block pageScripts %}
+  <script>
+    $('#enter-address-manually-link').click(function () {
+      $('#current-address-lookup-container').addClass("hidden-section");
+      $('.current-address-form').removeClass("hidden-section");
+    });
 
-    </script>
-  {% endblock %}
+    $('#use-postcode-lookup-link').click(function () {
+      $('#current-address-lookup-container').removeClass("hidden-section");
+      $('#select-address-section').addClass("hidden-section");
+      $('.current-address-form').addClass("hidden-section");
+    });
 
+  </script>
 {% endblock %}
 
 {% block footer %}

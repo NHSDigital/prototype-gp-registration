@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Do you know your NHS number - Register with a GP surgery - NHS
+  Do you know your NHS number - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -21,7 +21,6 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-
           <form action="" method="post" autocomplete="off">
 
             {{ hint({
@@ -31,11 +30,11 @@
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Do you know {{ data ['name-first-name'] }}'s NHS Number?</H1>
+            <h1 class="nhsuk-heading-l">Do you know {{ data ['name-first-name'] }}'s NHS Number?</h1>
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">Do you know your NHS Number?</H1>
+            <h1 class="nhsuk-heading-l">Do you know your NHS Number?</h1>
 
             {% endif %}
 
@@ -78,9 +77,6 @@
 
             {% endcall %}
 
-
-
-
             <details class="nhsuk-details">
               <summary class="nhsuk-details__summary">
                 <span class="nhsuk-details__summary-text">
@@ -106,11 +102,6 @@
             }) }}
 
           </form>
-
-
-
-
-
         </div>
        </div>
 

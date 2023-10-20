@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-European health insurance card details - Register with a GP surgery - NHS
+European health insurance card details - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -18,8 +18,6 @@ European health insurance card details - Register with a GP surgery - NHS
 
 {% block content %}
 
-<section class="nhsuk-section">
-  <div class="nhsuk-width-container">
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
@@ -38,30 +36,30 @@ European health insurance card details - Register with a GP surgery - NHS
             }
           }) %}
 
-          <div class="nhsuk-hint" id="contact-hint">
-            <p>You should keep your EHIC card with you at any medical appointment as you may be asked to show it. </p>
-          </div>
-
-          <div class="nhsuk-form-group">
-              <label class="nhsuk-label" for="example">
-               Country code
-              </label>
-
-                 <input class="nhsuk-input nhsuk-input--width-10" id="ehic-cc" name="ehic-cc" type="text" aria-describedby="ehic-id" inputmode="numeric">
-               </div>
-
-          <div class="nhsuk-form-group">
-              <label class="nhsuk-label" for="example">
-               First name
-              </label>
-
-                 <input class="nhsuk-input nhsuk-input--width-20" id="ehic-name" name="ehic-name" type="text" aria-describedby="ehic-name">
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>You should keep your EHIC card with you at any medical appointment as you may be asked to show it. </p>
             </div>
 
             <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="example">
-                 Last name
+                <label class="nhsuk-label" for="ehic-cc">
+                 Country code
                 </label>
+
+                   <input class="nhsuk-input nhsuk-input--width-10" id="ehic-cc" name="ehic-cc" type="text" aria-describedby="ehic-id" inputmode="numeric">
+                 </div>
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="ehic-name">
+                 First name
+                </label>
+
+                   <input class="nhsuk-input nhsuk-input--width-20" id="ehic-name" name="ehic-name" type="text" aria-describedby="ehic-name">
+              </div>
+
+              <div class="nhsuk-form-group">
+                  <label class="nhsuk-label" for="ehic-name-last">
+                   Last name
+                  </label>
 
                    <input class="nhsuk-input nhsuk-input--width-20" id="ehic-name-last" name="ehic-name-last" type="text" aria-describedby="ehic-name-last">
               </div>
@@ -100,90 +98,73 @@ European health insurance card details - Register with a GP surgery - NHS
                          }) }}
 
 
-
-          <div class="nhsuk-form-group">
-              <label class="nhsuk-label" for="example">
-               Personal Identification number
-              </label>
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="ehic-id">
+                 Personal Identification number
+                </label>
 
                  <input class="nhsuk-input nhsuk-input--width-20" id="ehic-id" name="ehic-id" type="text" aria-describedby="ehic-id" inputmode="numeric">
                </div>
 
-         <div class="nhsuk-form-group">
-            <label class="nhsuk-label" for="example">
-             Identification number of the institution
-            </label>
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="ehic-id-3">
+                 Identification number of the institution
+                </label>
 
-               <input class="nhsuk-input nhsuk-input--width-20" id="ehic-id-3" name="ehic-id-3" type="text" aria-describedby="ehic-id-3" inputmode="numeric">
-             </div>
+                 <input class="nhsuk-input nhsuk-input--width-20" id="ehic-id-3" name="ehic-id-3" type="text" aria-describedby="ehic-id-3" inputmode="numeric">
+               </div>
 
-           <div class="nhsuk-form-group">
-              <label class="nhsuk-label" for="example">
-               Identification number of the card
-              </label>
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="ehic-id-2">
+                 Identification number of the card
+                </label>
 
                  <input class="nhsuk-input nhsuk-input--width-20" id="ehic-id-2" name="ehic-id-2" type="text" aria-describedby="ehic-id-2" inputmode="numeric">
                </div>
 
-
-
-
-          {{ dateInput({
-            "id": "ehic-from",
-            "namePrefix": "ehic-from",
-            "fieldset": {
-              "legend": {
-                "text": "Expiry date",
-                "classes": "nhsuk-label",
-                "isPageHeading": false
-              }
-            },
-            "hint": {
-              "text": "For example, 15 3 2011"
-            },
-            "items": [
-              {
-                "name": "day",
-                "classes": "nhsuk-input--width-2",
-                "value": data['ehic-from-day']
-              },
-              {
-                "name": "month",
-                "classes": "nhsuk-input--width-2",
-                "value": data['ehic-from-month']
-              },
-              {
-                "name": "year",
-                "classes": "nhsuk-input--width-4",
-                "value": data['ehic-from-year']
-              }
-            ]
-          }) }}
-        </div>
-
-
-
-        </div>
-      </div>
-
+              {{ dateInput({
+                "id": "ehic-from",
+                "namePrefix": "ehic-from",
+                "fieldset": {
+                  "legend": {
+                    "text": "Expiry date",
+                    "classes": "nhsuk-label",
+                    "isPageHeading": false
+                  }
+                },
+                "hint": {
+                  "text": "For example, 15 3 2011"
+                },
+                "items": [
+                  {
+                    "name": "day",
+                    "classes": "nhsuk-input--width-2",
+                    "value": data['ehic-from-day']
+                  },
+                  {
+                    "name": "month",
+                    "classes": "nhsuk-input--width-2",
+                    "value": data['ehic-from-month']
+                  },
+                  {
+                    "name": "year",
+                    "classes": "nhsuk-input--width-4",
+                    "value": data['ehic-from-year']
+                  }
+                ]
+              }) }}
 
           {% endcall %}
 
+          {{ button({
+            "text": "Continue"
+          }) }}
 
+      </form>
+    </div>
+  </div>
+{% endblock %}
 
-            {{ button({
-              "text": "Continue"
-            }) }}
-
-
-
-</section>
-
-
-
-
-<!-- End of content -->
-
-</div>
-</div>
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

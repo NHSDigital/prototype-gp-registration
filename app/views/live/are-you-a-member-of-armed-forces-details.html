@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Recent UK armed forces leavers and their families - Register with a GP surgery - NHS
+Recent UK armed forces leavers and their families - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,10 +23,10 @@ Recent UK armed forces leavers and their families - Register with a GP surgery -
 
         <form action="do-you-need-a-interpreter" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Additional information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+          {{ hint({
+            "text": "Additional information",
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}
 
           <h1 class="nhsuk-heading-l">Recent UK armed forces leavers and their families</h1>
 
@@ -54,8 +54,7 @@ Recent UK armed forces leavers and their families - Register with a GP surgery -
               If you have previously been in the UK armed forces, but your care has recently been with an NHS GP, your records will be transferred from your previous GP to your new one.</p>
               </li>
 
-          </ul>
-
+            </ul>
 
             {{ button({
               "text": "Continue"

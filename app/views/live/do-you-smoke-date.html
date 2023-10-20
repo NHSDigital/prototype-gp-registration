@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-When did you stop smoking? - Register with a GP surgery - NHS
+When did you stop smoking? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -30,7 +30,7 @@ When did you stop smoking? - Register with a GP surgery - NHS
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-            <h1 class="nhsuk-heading-l">When did {{ data ['name-first-name'] }} stop smoking?</H1>
+            <h1 class="nhsuk-heading-l">When did {{ data ['name-first-name'] }} stop smoking?</h1>
 
             {{ dateInput({
               "id": "smoke-date",

@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What was your previous UK address? - Register with a GP surgery - NHS
+What was your previous UK address? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -106,9 +106,7 @@ What was your previous UK address? - Register with a GP surgery - NHS
 
         {% endif %}
 
-          <p>
-            <a href="what-is-your-previous-address-manual" id="enter-address-manually-link">Enter the address manually</a>
-          </p>
+          <p><a href="what-is-your-previous-address-manual" id="enter-address-manually-link">Enter the address manually</a></p>
 
             {{ button({
               "text": "Continue"

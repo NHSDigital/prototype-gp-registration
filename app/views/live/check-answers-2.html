@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Confirm details - Register with a GP surgery - NHS
+Please confirm these are the correct details for the person registering with {GP surgery} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -36,11 +36,7 @@
               }
             }) }}
 
-
-
               <dl class="nhsuk-summary-list">
-
-
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
@@ -53,7 +49,6 @@
                     <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
                   </dd>
                 </div>
-
 
                 {% if (data['registering-first-time'] == "No") %}
                 <div class="nhsuk-summary-list__row">
@@ -73,7 +68,6 @@
               </div>
               {% endif %}
 
-
               {% if (data['do-you-know-previous-postcode'] == "Yes") %}
               <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
@@ -89,7 +83,6 @@
             {% endif %}
 
             {% if (data['registering-first-time'] == "Yes")  %}
-
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
@@ -307,9 +300,7 @@
               {% endif %}
               {% endif %}
 
-
               {% if data['overseas'] == "No" %}
-
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
@@ -365,16 +356,10 @@
                 </dd>
               </div>
 
-
               {% endif %}
               {% endif %}
-
-
 
               </dl>
-
-
-
 
             {% if (data['who-is-being-registered'] == "dependant") %}
             <p>We use this information to match their details to our database. We cannot access their medical record and no medical information will be shared at this stage.</p>
@@ -393,16 +378,6 @@
         </div>
       </div>
 
-
-    <!-- End of content -->
-
-  </div>
- </div>
-
-{% endblock %}
-
-{% block footer %}
-  {% include 'live/includes/footer.html' %}
 {% endblock %}
 
 {% block pageScripts %}
@@ -424,4 +399,8 @@
   });
 </script>
 
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

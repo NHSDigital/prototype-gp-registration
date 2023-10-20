@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-S1 form - Register with a GP surgery - NHS
+S1 form - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -32,7 +32,6 @@ S1 form - Register with a GP surgery - NHS
 
             <p>If you have an S1 form you should take this into your chosen GP surgery at the earliest opportunity.</p>
             <p>You should only need to present your S1 form once on registration, though may be asked to show it at other times.</p>
-
 
             {{ button({
               "text": "Continue"

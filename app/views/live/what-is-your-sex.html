@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is your sex as recorded on your NHS record? - Register with a GP surgery - NHS
+What is your sex as recorded on your NHS record? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -29,7 +29,7 @@ What is your sex as recorded on your NHS record? - Register with a GP surgery - 
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-              <h1 class="nhsuk-heading-l">What is {{ data ['name-first-name'] }}'s' sex as recorded on their NHS record?</H1>
+              <h1 class="nhsuk-heading-l">What is {{ data ['name-first-name'] }}'s' sex as recorded on their NHS record?</h1>
 
 
             {{ radios({
