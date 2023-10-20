@@ -4,13 +4,19 @@
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What is ' + data['name-first-name'] + '\'s sex as recorded on their NHS record?' %}
+{% else %}
+  {% set heading = 'What is your sex as recorded on your NHS record?' %}
+{% endif %}
+
 {% block pageTitle %}
 What is your sex as recorded on your NHS record? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "what-is-your-date-of-birth",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -27,61 +33,12 @@ What is your sex as recorded on your NHS record? - {{ ServiceName }} - NHS
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-              <h1 class="nhsuk-heading-l">What is {{ data ['name-first-name'] }}'s' sex as recorded on their NHS record?</h1>
-
-
             {{ radios({
               "idPrefix": "gender",
               "name": "gender",
               "fieldset": {
                 "legend": {
-                  "text": "",
-                  "classes": "nhsuk-fieldset__legend--l",
-                  "isPageHeading": "true"
-                }
-              },
-
-              "items": [
-              {
-                "value": "Female",
-                "text": "Female",
-                checked: checked("gender", "female")
-              },
-              {
-                "value": "Intersex",
-                "text": "Intersex",
-                checked: checked("gender", "Intersex")
-              },
-              {
-                "value": "Male",
-                "text": "Male",
-                checked: checked("gender", "Male")
-              },
-              {
-                "value": "Not specified or known",
-                "text": "Not specified or known",
-                checked: checked("gender", "Not specified or known")
-              }
-              ]
-            }) }}
-
-            {{ details({
-              "text": "Why are you asking this?",
-              "HTML": "<p>This information will be used to match them to their healthcare record.</p>"
-            }) }}
-
-            {% else %}
-
-
-
-            {{ radios({
-              "idPrefix": "gender",
-              "name": "gender",
-              "fieldset": {
-                "legend": {
-                  "text": "What is your sex as recorded on your NHS record?",
+                  "text": heading,
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
@@ -91,22 +48,22 @@ What is your sex as recorded on your NHS record? - {{ ServiceName }} - NHS
                 {
                   "value": "Female",
                   "text": "Female",
-                  checked: checked("gender", "female")
+                  "checked": checked("gender", "Female")
                 },
                 {
                   "value": "Intersex",
                   "text": "Intersex",
-                  checked: checked("gender", "Intersex")
+                  "checked": checked("gender", "Intersex")
                 },
                 {
                   "value": "Male",
                   "text": "Male",
-                  checked: checked("gender", "Male")
+                  "checked": checked("gender", "Male")
                 },
                 {
                   "value": "Not specified or known",
                   "text": "Not specified or known",
-                  checked: checked("gender", "Not specified or known")
+                  "checked": checked("gender", "Not specified or known")
                 }
               ]
             }) }}
@@ -116,8 +73,6 @@ What is your sex as recorded on your NHS record? - {{ ServiceName }} - NHS
               "HTML": "<p>This information will be used to match you to your healthcare record.</p>"
             }) }}
 
-            {% endif %}
-
             {{ button({
               "text": "Continue"
             }) }}
@@ -125,6 +80,8 @@ What is your sex as recorded on your NHS record? - {{ ServiceName }} - NHS
           </form>
         </div>
        </div>
+
+{% include 'design/includes/devmode.html' %}
 
 {% endblock %}
 

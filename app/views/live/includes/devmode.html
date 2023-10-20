@@ -1,0 +1,21 @@
+{# DEVMODE SCENARIOS #}
+{% if data['devMode'] === 'true' %}
+<details class="nhsuk-details dev-mode" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+    <span class="nhsuk-details__summary-text">
+      Switch scenario
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h4>Registration type</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="?who-is-being-registered=myself">Self</a>
+      </li>
+      <li>
+        <a href="?who-is-being-registered=dependant">Dependant</a>
+      </li>
+    </ul>
+  </div>
+</details>
+{% endif %}

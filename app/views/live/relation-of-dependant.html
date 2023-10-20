@@ -4,8 +4,10 @@
 
 {% extends 'layout.html' %}
 
+{% set heading = 'What is your relationship to the person being registered?' %}
+
 {% block pageTitle %}
-What is your relationship to the person being registered? - {{ ServiceName }} - NHS
+{{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -28,7 +30,7 @@ What is your relationship to the person being registered? - {{ ServiceName }} - 
             "name": "relation",
             fieldset: {
               legend: {
-                text: "What is your relationship to the person being registered?",
+                text: heading,
                 isPageHeading: true,
                 classes: "nhsuk-fieldset__legend--l"
               }
@@ -51,12 +53,12 @@ What is your relationship to the person being registered? - {{ ServiceName }} - 
                 checked: checked("relation", "Carer")
               },
               {
-                "value": "other~/live/carer-details",
+                "value": "Other~/live/carer-details",
                 "text": "Other",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("relation", "other")
+                checked: checked("relation", "Other")
               }
             ]
           }) }}

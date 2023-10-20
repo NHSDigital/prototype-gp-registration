@@ -4,13 +4,21 @@
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What is the name of the person being registered' %}
+  {% set link = 'carer-details' %}
+{% else %}
+  {% set heading = 'What is your name?' %}
+  {% set link = 'who-is-registering' %}
+{% endif %}
+
 {% block pageTitle %}
-  What is the name of the person being registered? - {{ ServiceName }} - NHS
+{{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -21,67 +29,8 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="what-is-your-date-of-birth" method="post" autocomplete="off">
+          <form action="what-is-your-date-of-birth" method="post">
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% call fieldset({
-              legend: {
-                "text": "What is the name of the person being registered?",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
-              }
-            }) %}
-
-             {{ input({
-                label: {
-                  "text": "Title"
-                },
-                "classes": "nhsuk-input--width-4",
-                "id": "name-title",
-                "name": "name-title",
-                "value": data['name-title']
-              }) }}
-
-            {{ input({
-                label: {
-                  "text": "First name"
-                },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "name-first-name",
-                "name": "name-first-name",
-                "value": data['name-first-name']
-              }) }}
-
-            {{ input({
-                label: {
-                  "text": "Middle name"
-                },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "name-middle-name",
-                "name": "name-middle-name",
-                "value": data['name-middle-name']
-              }) }}
-
-
-              {{ input({
-                  label: {
-                    "text": "Last name"
-                  },
-                  "classes": "nhsuk-u-width-two-thirds",
-                  "id": "name-last-name",
-                  "name": "name-last-name",
-                  "value": data['name-last-name']
-                }) }}
-
-            {% endcall %}
-
-            {% else %}
           {{ hint({
               "text": "Patient details",
               "classes": "nhsuk-u-margin-bottom-2"
@@ -89,7 +38,7 @@
 
             {% call fieldset({
               legend: {
-                "text": "What is your name?",
+                "text": heading,
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -102,6 +51,8 @@
                 "classes": "nhsuk-input--width-4",
                 "id": "name-title",
                 "name": "name-title",
+                "autocomplete": "honorific-prefix",
+                "spellcheck": false,
                 "value": data['name-title']
               }) }}
 
@@ -112,6 +63,8 @@
                 "classes": "nhsuk-u-width-two-thirds",
                 "id": "name-first-name",
                 "name": "name-first-name",
+                "autocomplete": "given-name",
+                "spellcheck": false,
                 "value": data['name-first-name']
               }) }}
 
@@ -125,7 +78,6 @@
                 "value": data['name-middle-name']
               }) }}
 
-
               {{ input({
                   label: {
                     "text": "Last name"
@@ -133,12 +85,12 @@
                   "classes": "nhsuk-u-width-two-thirds",
                   "id": "name-last-name",
                   "name": "name-last-name",
+                  "autocomplete": "family-name",
+                  "spellcheck": false,
                   "value": data['name-last-name']
                 }) }}
 
             {% endcall %}
-
-            {% endif %}
 
             {{ button({
               "text": "Continue"

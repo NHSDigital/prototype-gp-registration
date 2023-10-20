@@ -4,13 +4,15 @@
 
 {% extends 'layout.html' %}
 
+{% set heading = 'What type of carer are you?' %}
+
 {% block pageTitle %}
-What type of carer are you? - {{ ServiceName }} - NHS
+{{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "relation-of-dependant",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -30,11 +32,10 @@ What type of carer are you? - {{ ServiceName }} - NHS
 
             {% call fieldset({
               legend: {
-                "text": "What type of carer are you?",
+                "text": heading",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
-
             }) %}
 
            {{ radios({
@@ -47,15 +48,15 @@ What type of carer are you? - {{ ServiceName }} - NHS
                 "hint": {
                   "text": ""
                 },
-                checked: checked("type-carer", "Yes")
+                checked: checked("type-carer", "Young carer")
               },
               {
-                "value": "Occupational Carer~/live/carer-details",
+                "value": "Occupational carer~/live/carer-details",
                 "text": "Paid as a job",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("type-carer", "Yes")
+                checked: checked("type-carer", "Occupational carer")
               },
                {
                 "value": "Informal carer~/live/carer-details",
@@ -63,7 +64,7 @@ What type of carer are you? - {{ ServiceName }} - NHS
                 "hint": {
                   "text": ""
                 },
-                checked: checked("type-carer", "Yes")
+                checked: checked("type-carer", "Informal carer")
               },
               {
                 "value": "Foster carer~/live/carer-details",
@@ -71,7 +72,7 @@ What type of carer are you? - {{ ServiceName }} - NHS
                 "hint": {
                   "text": ""
                 },
-                checked: checked("type-carer", "Yes")
+                checked: checked("type-carer", "Foster carer")
               }
 
               ]

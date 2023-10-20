@@ -4,13 +4,21 @@
 
 {% extends 'layout.html' %}
 
+{% set heading = 'What are your details?' %}
+
+{% if data['type-carer'] %}
+  {% set link = 'carer-type' %}
+{% else %}
+  {% set link = 'relation-to-dependant' %}
+{% endif %}
+
 {% block pageTitle %}
-What are your details? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -43,6 +51,8 @@ What are your details? - {{ ServiceName }} - NHS
                 "classes": "nhsuk-u-width-two-thirds",
                 "id": "carer-first-name",
                 "name": "carer-first-name",
+                "autocomplete": "given-name",
+                "spellcheck": false,
                 "value": data['carer-first-name']
               }) }}
 
@@ -53,6 +63,8 @@ What are your details? - {{ ServiceName }} - NHS
                 "classes": "nhsuk-u-width-two-thirds",
                 "id": "carer-last-name",
                 "name": "carer-last-name",
+                "autocomplete": "family-name",
+                "spellcheck": false,
                 "value": data['carer-last-name']
               }) }}
 
@@ -76,12 +88,13 @@ What are your details? - {{ ServiceName }} - NHS
                   "classes": "nhsuk-u-width-two-thirds",
                   "id": "carer-telephone",
                   "name": "carer-telephone",
+                  "autocomplete": "tel",
+                  "spellcheck": false,
                   "value": data['carer-telephone']
                 }) }}
 
             {% endcall %}
 
-            <br>
             {{ button({
               "text": "Continue"
             }) }}
