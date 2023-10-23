@@ -33,7 +33,7 @@
               {{ heading }}
             </h1>
 
-            <p>If you are trying to register a child you can do that on their behalf.</p>
+            <p>You may have entered an incorrect date or you are trying to register a child.</p>
 
             {{ radios({
             "idPrefix": "error-age-next",
@@ -48,12 +48,12 @@
             "items": [
               {
                 "value": "dependant",
-                "text": "Register on behalf of the child",
+                "text": "Register a child",
                 "checked": checked("error-age-next", "dependant")
               },
               {
                 "value": "goback",
-                "text": "Go back and change your date of birth",
+                "text": "Enter a different date",
                 "checked": checked("error-age-next", "goback")
               }
             ]
