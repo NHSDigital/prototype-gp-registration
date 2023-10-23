@@ -1,0 +1,78 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Create an account' %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block header %}
+  {{ header({
+    "service": {
+      "name": "NHS login",
+      "href": "#"
+    },
+      "showNav": "false",
+      "showSearch": "false"
+    })
+  }}
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "nhs-login-email",
+    "text": "Back to: Enter your email address",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <form action="pa" method="post" class="form">
+
+      <fieldset class="nhsuk-fieldset">
+
+        <div class="service-access-wrapper">
+          <ol class="service-access">
+            <li class="service-access__item active">
+
+              <h1 class="service-access__item__title nhsuk-heading-l">{{ heading }}</h1>
+
+              <div class="service-access__item__desc">
+                <p>We will use <strong>{{ data['emailAddress'] or 'mail@mail.com' }}</strong> to set up your NHS login and register with <strong>Register with a GP </strong>.</p>
+                <p>You will need a working mobile phone with signal that we can text a security code to.</p>
+              </div>
+
+              <button class="nhsuk-button full-width nhsuk-u-margin-bottom-0">Continue</button>
+            </li>
+
+            <li class="service-access__item active">
+              <p class="service-access__item__title__text__leftandright"><strong>Next step</strong></p>
+              <h3 class="service-access__item__title">Help us find your NHS record</h3>
+              <div class="service-access__item__desc">
+                <p class="nhsuk-u-font-size-16">You will need to tell us some details so that we can connect to your existing health record.</p>
+              </div>
+
+            </li>
+          </ol>
+
+        </div>
+
+      </fieldset>
+
+    </form>
+
+  </div>
+</div>
+
+
+{% block footer %}
+  {% include 'live/includes/footer-login.html' %}
+{% endblock %}
