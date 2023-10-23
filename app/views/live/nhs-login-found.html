@@ -4,14 +4,28 @@
 
 {% extends 'layout.html' %}
 
+{% set heading = 'We found your NHS login' %}
+
 {% block pageTitle %}
-Would you like to sign in with your NHS login account? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block header %}
+  {{ header({
+      "service": {
+        "name": "NHS login",
+        "href": "#"
+      },
+      "showNav": "false",
+      "showSearch": "false"
+    })
+  }}
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
-    "text": "Go back",
+    "href": nhs-login-email,
+    "text": "Back to: Enter your email address",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
 {% endblock %}
@@ -23,40 +37,11 @@ Would you like to sign in with your NHS login account? - {{ ServiceName }} - NHS
 
           <form action="nhs-login-found-answer" method="post" autocomplete="off">
 
-            {% call fieldset({
-              legend: {
-                "text": "Would you like to sign in with your NHS login account?",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
-              }
-            }) %}
+            <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>We found an NHS Login linked to <strong>{{ data['contact-email'] }}</strong></p>
-            </div>
-
-            {{ radios({
-              "idPrefix": "nhs-acc",
-              "name": "nhs-acc",
-              "items": [
-                {
-                  "value": "Yes~/live/nhs-login-password",
-                  "text": "Yes",
-                  "hint": {
-                    "text": ""
-                  },
-                  checked: checked("nhs-acc", "yes")
-                },
-                {
-                  "value": "no~/live/do-you-know-nhs-number",
-                  "text": "No",
-                  "hint": {
-                    "text": ""
-                  },
-                  checked: checked("nhs-acc", "no")
-                }
-              ]
-            }) }}
+            <p>We found an NHS Login linked to <strong>{{ data['emailAddress'] or 'mail@mail.com' }}</strong></p>
+            <p>We are showing you this because you are accessing <strong>Manage your NHS account</strong> for the first time on this device, or you have not logged in to this service for a while.</p>
+            <p>Continue to visit <strong>Register with a GP</strong></p>
 
             <details class="nhsuk-details">
                 <summary class="nhsuk-details__summary">
@@ -71,8 +56,6 @@ Would you like to sign in with your NHS login account? - {{ ServiceName }} - NHS
               "text": "Continue"
             }) }}
 
-            {% endcall %}
-
             <div class="nhsuk-inset-text">
               <span class="nhsuk-u-visually-hidden">Information: </span>
               <h3> What is NHS login?</h3>
@@ -86,5 +69,5 @@ Would you like to sign in with your NHS login account? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block footer %}
-  {% include 'live/includes/footer.html' %}
+  {% include 'live/includes/footer-login.html' %}
 {% endblock %}
