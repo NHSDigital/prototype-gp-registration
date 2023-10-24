@@ -1,0 +1,28 @@
+{# grab section details and render out correct content #}
+
+{% if section === '1' %}
+  {% if who-is-being-registered === 'dependant' %}
+    {% set text = 'Step 1 of 3 - Matching patient to their record' %}
+  {% else %}
+    {% set text = 'Step 1 of 3 - Matching you to your record' %}
+  {% endif %}
+{% elif section === '2' %}
+  {% if who-is-being-registered === 'dependant' %}
+    {% set text = 'Step 2 of 3 - Personal Details' %}
+  {% else %}
+    {% set text = 'Step 2 of 3 - Personal Details' %}
+  {% endif %}
+{% elif section === '3' %}
+  {% if who-is-being-registered === 'dependant' %}
+    {% set text = 'Step 3 of 3 - Matching patient to their record' %}
+  {% else %}
+    {% set text = 'Step 3 of 3 - Matching you to your record' %}
+  {% endif %}
+{% endif %}
+
+{% if text %}
+    {{ hint({
+    "text": text,
+    "classes": "nhsuk-u-margin-bottom-2"
+    }) }}
+{% endif %}

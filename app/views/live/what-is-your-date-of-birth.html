@@ -1,16 +1,23 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '1' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What is ' + data['name-first-name'] + '\'s date of birth' %}
+{% else %}
+  {% set heading = 'What is your date of birth?' %}
+{% endif %}
+
 {% block pageTitle %}
-What is your date of birth? - {{ ServiceName }} - NHS
+{{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "what-is-your-name",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -21,88 +28,44 @@ What is your date of birth? - {{ ServiceName }} - NHS
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="what-is-your-sex" method="post" autocomplete="off">
+          <form action="do-you-know-nhs-number" method="post" autocomplete="off">
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
+            {% include 'live/includes/step.html' %}
 
-            <h1 class="nhsuk-heading-l" >
-              <span class="nhsuk-caption-l">Patient details </span>
-              <span class="nhsuk-u-visually-hidden"> - </span>
-              What is {{ data ['name-first-name'] }}'s date of birth?
-            </h1>
+            <fieldset class="nhsuk-fieldset">
 
-            {{ dateInput({
-              "id": "dob",
-              "namePrefix": "dob",
-              "fieldset": {
-                "legend": {
-                  "text": "",
-                  "classes": "nhsuk-label--l",
-                  "isPageHeading": false
-                }
-              },
-              "hint": {
-                "text": "For example, 15 3 1984"
-              },
-              "items": [
-                {
-                  "name": "day",
-                  "classes": "nhsuk-input--width-2",
-                  "value": data['dob-day']
-                },
-                {
-                  "name": "month",
-                  "classes": "nhsuk-input--width-2",
-                  "value": data['dob-month']
-                },
-                {
-                  "name": "year",
-                  "classes": "nhsuk-input--width-4",
-                  "value": data['dob-year']
-                }
-              ]
-            }) }}
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l" role="group">
+                <h1 class="nhsuk-heading-l">
+                  {{ heading }}
+                </h1>
+              </legend>
 
-            {% else %}
+              <div class="nhsuk-hint">
+                <p>For example, 15 3 1984</p>
+              </div>
 
-           {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="date-of-birth-day" id="date-of-birth-day--label">Day</label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="date-of-birth-day" name="[date-of-birth]" type="text" pattern="[0-9]*" inputmode="numeric" spellcheck="false" value="{{ data['date-of-birth'][0] }}" autocomplete="bday-day">
+                </div>
+              </div>
 
-            {{ dateInput({
-              "id": "dob",
-              "namePrefix": "dob",
-              "fieldset": {
-                "legend": {
-                  "text": "What is your date of birth?",
-                  "classes": "nhsuk-label--l",
-                  "isPageHeading": true
-                }
-              },
-              "hint": {
-                "text": "For example, 15 3 1984"
-              },
-              "items": [
-                {
-                  "name": "day",
-                  "classes": "nhsuk-input--width-2",
-                  "value": data['dob-day']
-                },
-                {
-                  "name": "month",
-                  "classes": "nhsuk-input--width-2",
-                  "value": data['dob-month']
-                },
-                {
-                  "name": "year",
-                  "classes": "nhsuk-input--width-4",
-                  "value": data['dob-year']
-                }
-              ]
-            }) }}
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="date-of-birth-month" id="date-of-birth-month--label">Month</label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="date-of-birth-month" name="[date-of-birth]" type="text" pattern="[0-9]*" inputmode="numeric" spellcheck="false" value="{{ data['date-of-birth'][1] }}" autocomplete="bday-month">
+                </div>
+              </div>
 
-            {% endif %}
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="date-of-birth-year" id="date-of-birth-year--label">Year</label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="date-of-birth-year" name="[date-of-birth]" type="text" pattern="[0-9]*" inputmode="numeric" spellcheck="false" value="{{ data['date-of-birth'][2] }}" autocomplete="bday-year">
+                </div>
+              </div>
+
+            </fieldset>
 
             {{ button({
               "text": "Continue"

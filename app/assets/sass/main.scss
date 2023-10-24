@@ -351,7 +351,8 @@
 }
 
 // keep footer links grey for now
-.nhsuk-footer__list-item-link {
+.nhsuk-footer__list-item-link,
+.nhsuk-footer__list-item-link:visited {
   color: #4c6272;
 }
 .nhsuk-link--no-visited-state:link, .nhsuk-link--no-visited-state:visited {
@@ -360,3 +361,65 @@
 .nhsuk-footer__list-item-link:hover {
   color:#212b32
 }
+
+.feedback-link {
+  color: #4c6272;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-left: 0!important;
+  margin-right: 0!important;
+  margin-top: 40px!important;
+  @include mq($from: tablet) {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.47368;
+    margin-top: 48px !important;
+  }
+}
+
+.nhsuk-select--new {
+  position: relative;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.nhsuk-select__wrapper {
+  width: 100% !important;
+  background-color: white;
+  position: relative;
+  @include mq($from: tablet) {
+    width: 50% !important;
+  }
+  &:before,
+  &:after {
+    --size: 0.3rem;
+    position: absolute;
+    content: "";
+    right: 1rem;
+    pointer-events: none;
+  }
+  &:before {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-bottom: var(--size) solid black;
+    top: 40%;
+  }
+  &:after {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-top: var(--size) solid black;
+    top: 55%;
+  }
+}
+
+
+
+
+

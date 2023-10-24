@@ -4,13 +4,17 @@
 
 {% extends 'layout.html' %}
 
+{% set heading = 'Who is registering with a GP?' %}
+
 {% block pageTitle %}
-Who is registering with a GP? - {{ ServiceName }} - NHS
+{{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
+
+{% set link = 'start' %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,7 +27,6 @@ Who is registering with a GP? - {{ ServiceName }} - NHS
 
         <form action="who-is-registering-answer" method="post" autocomplete="off">
 
-          <!-- <span class="nhsuk-u-font-size-22 nhsuk-u-padding-bottom-0">Matching you to your record</span> -->
           {% call fieldset({
             legend: {
               text: "Who is registering with a GP?",
@@ -31,10 +34,6 @@ Who is registering with a GP? - {{ ServiceName }} - NHS
               isPageHeading: true
             }
           }) %}
-
-          <div class="nhsuk-hint" id="contact-hint">
-            <p></p>
-          </div>
 
           {{ radios({
             "idPrefix": "who-is-being-registered",

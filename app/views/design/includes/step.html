@@ -1,0 +1,34 @@
+{# grab section details and render out correct content #}
+
+{% if section === '1' %}
+  {% if who-is-being-registered === 'dependant' %}
+    {% set text = 'Patient details' %}
+  {% else %}
+    {% set text = 'Patient details' %}
+  {% endif %}
+{% elif section === '2' %}
+  {% if who-is-being-registered === 'dependant' %}
+    {% set text = 'Registration Type' %}
+  {% else %}
+    {% set text = 'Registration Type' %}
+  {% endif %}
+{% elif section === '3' %}
+  {% if who-is-being-registered === 'dependant' %}
+    {% set text = 'Additional information' %}
+  {% else %}
+    {% set text = 'Additional information' %}
+  {% endif %}
+{% elif section === '4' %}
+  {% if who-is-being-registered === 'dependant' %}
+    {% set text = 'Health information' %}
+  {% else %}
+    {% set text = 'Health information' %}
+  {% endif %}
+{% endif %}
+
+{% if text %}
+    {{ hint({
+    "text": text,
+    "classes": "nhsuk-u-margin-bottom-2"
+    }) }}
+{% endif %}

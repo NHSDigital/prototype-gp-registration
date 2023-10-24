@@ -1,13 +1,14 @@
 {% set serviceHome = '/design/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '1' %}
 
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-{% set heading = 'What is ' + data['name-first-name'] + '\'s date of birth' %}
+  {% set heading = 'What is ' + data['name-first-name'] + '\'s date of birth' %}
 {% else %}
-{% set heading = 'What is your date of birth?' %}
+  {% set heading = 'What is your date of birth?' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -29,10 +30,7 @@
 
           <form action="what-is-your-sex" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+            {% include 'design/includes/step.html' %}
 
             {{ dateInput({
               "id": "dob",
@@ -65,7 +63,6 @@
                 }
               ]
             }) }}
-
 
             {{ button({
               "text": "Continue"

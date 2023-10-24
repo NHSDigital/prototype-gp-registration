@@ -1,6 +1,7 @@
 {% set serviceHome = '/design/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '1' %}
 
 {% extends 'layout.html' %}
 
@@ -31,10 +32,7 @@
 
           <form action="what-is-your-date-of-birth" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+            {% include 'design/includes/step.html' %}
 
             {% call fieldset({
               legend: {
@@ -91,6 +89,16 @@
                   "spellcheck": false,
                   "value": data['name-last-name']
                 }) }}
+
+            {{ input({
+              label: {
+                "text": "Previous Last name (optional)"
+              },
+              "classes": "nhsuk-u-width-two-thirds",
+              "id": "name-previous-last-name",
+              "name": "name-previous-last-name",
+              "value": data['name-previous-last-name']
+            }) }}
 
             {% endcall %}
 

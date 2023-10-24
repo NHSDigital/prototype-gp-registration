@@ -63,9 +63,14 @@ p.instructions--link {
   padding-bottom: nhsuk-spacing(2);
 }
 
-.instructions-list-unordered__item {
-  padding: nhsuk-spacing(2) nhsuk-spacing(1) nhsuk-spacing(2)/2 nhsuk-spacing(1);
+.instructions-list-unordered__item,
+.instructions-list-unordered > dd{
+  padding: nhsuk-spacing(2) nhsuk-spacing(1) nhsuk-spacing(8)/2 nhsuk-spacing(1);
   margin: 0!important;
+}
+
+.instructions-list-unordered > dt{
+  font-weight: bold;
 }
 
 

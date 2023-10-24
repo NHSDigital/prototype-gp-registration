@@ -20,5 +20,9 @@ Example usage:
 module.exports = {
 
   // Insert values here
-
+  presets: [
+    {
+      gpsurgery: 'Trinity court surgery'
+    }
+  ]
 }

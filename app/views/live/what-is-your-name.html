@@ -1,6 +1,7 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '1' %}
 
 {% extends 'layout.html' %}
 
@@ -16,6 +17,12 @@
 {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
+{% if (data['return'] === "true") %}
+  {% set link = 'check-answers-1' %}
+{% else %}
+  {% set link = 'relation-of-dependant' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
     "href": link,
@@ -29,12 +36,9 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="what-is-your-date-of-birth" method="post">
+          <form action="what-is-your-name-post" method="post">
 
-          {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
@@ -44,17 +48,23 @@
               }
             }) %}
 
-             {{ input({
-                label: {
-                  "text": "Title"
-                },
-                "classes": "nhsuk-input--width-4",
-                "id": "name-title",
-                "name": "name-title",
-                "autocomplete": "honorific-prefix",
-                "spellcheck": false,
-                "value": data['name-title']
-              }) }}
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="select-1">
+                Title
+              </label>
+              <div class="nhsuk-select__wrapper">
+                <select class="nhsuk-select nhsuk-select--new" id="select-1" name="select-1">
+                  <option value="">-- Choose a title --</option>
+                  <option value="Mr">Mr</option>
+                  <option value="Mrs">Mrs</option>
+                  <option value="Miss">Miss</option>
+                  <option value="Ms">Ms</option>
+                  <option value="Dr">Dr</option>
+                  <option value="Mx">Mx</option>
+                  <option value="Master">Master</option>
+                </select>
+              </div>
+            </div>
 
             {{ input({
                 label: {
@@ -70,7 +80,10 @@
 
             {{ input({
                 label: {
-                  "text": "Middle name"
+                  "text": "Middle name(s)"
+                },
+                "hint": {
+                  "text": "This is an optional field."
                 },
                 "classes": "nhsuk-u-width-two-thirds",
                 "id": "name-middle-name",
@@ -90,6 +103,19 @@
                   "spellcheck": false,
                   "value": data['name-last-name']
                 }) }}
+
+              {{ input({
+                label: {
+                  "text": "Previous Last name"
+                },
+                "hint": {
+                  "text": "This is an optional field."
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "name-previous-last-name",
+                "name": "name-previous-last-name",
+                "value": data['name-previous-last-name']
+              }) }}
 
             {% endcall %}
 

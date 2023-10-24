@@ -1,16 +1,23 @@
 {% set serviceHome = '/design/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Does ' + data['name-first-name'] + ' have a current UK address?' %}
+{% else %}
+  {% set heading = 'Do you have a current UK address?' %}
+{% endif %}
+
 {% block pageTitle %}
-Do you have a current UK address? - {{ ServiceName }} - NHS
+{{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "check-answers-1",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -22,88 +29,39 @@ Do you have a current UK address? - {{ ServiceName }} - NHS
         <div class="nhsuk-grid-column-two-thirds">
 
           <form action="" method="post" autocomplete="off">
-            {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>This includes if they are living at a temporary address.</p>
+            </div>
+
+            {{ radios({
+              "idPrefix": "have-current-uk-address",
+              "name": "have-current-uk-address",
+              "items": [
+                {
+                  "value": "Yes~/design/what-is-your-current-address",
+                  "text": "Yes",
+                  checked: checked("have-current-uk-address", "Yes")
+                },
+                {
+                  "value": "No~/design/do-you-know-nhs-number",
+                  "text": "No",
+                  checked: checked("have-current-uk-address", "No")
+                }
+              ]
             }) }}
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have a current UK address?</h1>
-
-            {% else %}
-
-            <h1 class="nhsuk-heading-l">Do you have a current UK address?</h1>
-
-            {% endif %}
-
-        {% if (data['user-auth'] == "p5") %}
-
-        {% call fieldset({
-          legend: {
-            text: "",
-            classes: "nhsuk-fieldset__legend--l",
-            isPageHeading: true
-          }
-        }) %}
-
-        <div class="nhsuk-hint" id="contact-hint">
-          <p>This includes if they are living at a temporary address.</p>
-        </div>
-
-        {{ radios({
-          "idPrefix": "have-current-uk-address",
-          "name": "have-current-uk-address",
-          "items": [
-            {
-              "value": "Yes~/design/what-is-your-current-address",
-              "text": "Yes",
-              checked: checked("have-current-uk-address", "Yes")
-            },
-            {
-              "value": "No~/design/confirm-contact-details",
-              "text": "No",
-              checked: checked("have-current-uk-address", "No")
-            }
-          ]
-        }) }}
-
         {% endcall %}
-
-        {% else %}
-
-        {% call fieldset({
-          legend: {
-            text: "",
-            classes: "nhsuk-fieldset__legend--l",
-            isPageHeading: true
-          }
-        }) %}
-
-        <div class="nhsuk-hint" id="contact-hint">
-          <p>This includes if they are living at a temporary address.</p>
-        </div>
-
-        {{ radios({
-          "idPrefix": "have-current-uk-address",
-          "name": "have-current-uk-address",
-          "items": [
-            {
-              "value": "Yes~/design/what-is-your-current-address",
-              "text": "Yes",
-              checked: checked("have-current-uk-address", "Yes")
-            },
-            {
-              "value": "No~/design/do-you-know-nhs-number",
-              "text": "No",
-              checked: checked("have-current-uk-address", "No")
-            }
-          ]
-        }) }}
-
-        {% endcall %}
-
-        {% endif %}
 
         {{ button({
           "text": "Continue"

@@ -10,11 +10,7 @@
   {% set heading = 'What is your name?' %}
 {% endif %}
 
-{% if data['error-age-next'] === 'dependant' %}
-  {% set link = 'error-too-young' %}
-{% else %}
-  {% set link = 'who-is-registering' %}
-{% endif %}
+{% set link = 'who-is-registering' %}
 
 {% block pageTitle %}
 {{ heading }} - {{ ServiceName }} - NHS
@@ -23,7 +19,7 @@
 {% block outerContent %}
   {{ backLink({
     "href": link,
-    "text": "Go back",
+    "text": "Go back to: Who is registering with a GP",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
 {% endblock %}
@@ -36,12 +32,18 @@
           <section class="instructions">
             <div class="reading-width">
               <h1 class="nhsuk-heading-l">
-                You are registering someone else
+                Registering on behalf of another person
               </h1>
 
-              <p>If you are registering someone under 18 years of age and you are their parent or guardian you must first register yourself with this surgery.</p>
+              <p>If you are registering for someone else make sure you are aware of the following rules.</p>
             
+              <dl class="instructions-list-unordered">
+                <dt>Age limit</dt>
+                <dd>If you are registering someone else as a parent or guardian, they must be under the age of 18 </dd>
 
+                <dt>GP Surgery</dt>
+                <dd>If you are registering someone else as a their parent or guardian, you must already be registered at {{ data.presets[0].gpsurgery or '{ GP surgery}' }}</dd>
+              </dl>
 
               <div class="form-control" style="margin: 32px 0 16px;">
                 <a class="nhsuk-button nhsuk-button--reverse" href="relation-of-dependant">Continue</a>

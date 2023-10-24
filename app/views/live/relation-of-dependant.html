@@ -10,9 +10,15 @@
 {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
+{% if (data['return'] === "true") %}
+  {% set link = 'check-answers-1' %}
+{% else %}
+  {% set link = 'who-is-registering' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
-    "href": "who-is-registering",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,7 +29,7 @@
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
-        <form action="" method="post" autocomplete="off">
+        <form action="relation-of-dependant-answer" method="post" autocomplete="off">
 
           {{ radios({
             "idPrefix": "relation",
@@ -37,28 +43,28 @@
               },
             "items": [
               {
-                "value": "Parent or guardian~/live/carer-details",
+                "value": "Parent or guardian",
                 "text": "Parent or guardian",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("relation", "Parent or guardian")
+                "checked": checked("relation", "Parent or guardian")
               },
               {
-                "value": "Carer~/live/carer-type",
+                "value": "Carer",
                 "text": "Carer",
                 "hint": {
                   "text": "Includes foster parents and carers who are young, paid or unpaid. "
                 },
-                checked: checked("relation", "Carer")
+                "checked": checked("relation", "Carer")
               },
               {
-                "value": "Other~/live/carer-details",
+                "value": "Other",
                 "text": "Other",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("relation", "Other")
+                "checked": checked("relation", "Other")
               }
             ]
           }) }}
