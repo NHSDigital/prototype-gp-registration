@@ -1,16 +1,23 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Does ' + data['name-first-name'] + ' have a current UK address?' %}
+{% else %}
+  {% set heading = 'Do you have a current UK address?' %}
+{% endif %}
+
 {% block pageTitle %}
-Do you have a current UK address? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "check-answers-1",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -21,99 +28,80 @@ Do you have a current UK address? - {{ ServiceName }} - NHS
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="" method="post" autocomplete="off">
-            {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
+          <form action="do-you-current-address-post" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>This includes if they are living at a temporary address.</p>
+            </div>
+
+            {{ radios({
+              "idPrefix": "have-current-uk-address",
+              "name": "have-current-uk-address",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: checked("have-current-uk-address", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("have-current-uk-address", "No")
+                }
+              ]
             }) }}
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
+            {% endcall %}
 
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have a current UK address?</h1>
+            {{ button({
+              "text": "Continue"
+            }) }}
 
-            {% else %}
-
-            <h1 class="nhsuk-heading-l">Do you have a current UK address?</h1>
-
-            {% endif %}
-
-        {% if (data['user-auth'] == "p5") %}
-
-        {% call fieldset({
-          legend: {
-            text: "",
-            classes: "nhsuk-fieldset__legend--l",
-            isPageHeading: true
-          }
-        }) %}
-
-        <div class="nhsuk-hint" id="contact-hint">
-          <p>This includes if they are living at a temporary address.</p>
+          </form>
         </div>
+      </div>
 
-        {{ radios({
-          "idPrefix": "have-current-uk-address",
-          "name": "have-current-uk-address",
-          "items": [
-            {
-              "value": "Yes~/live/what-is-your-current-address",
-              "text": "Yes",
-              checked: checked("have-current-uk-address", "Yes")
-            },
-            {
-              "value": "No~/live/confirm-contact-details",
-              "text": "No",
-              checked: checked("have-current-uk-address", "No")
-            }
-          ]
-        }) }}
+{# DEVMODE SCENARIOS #}
+{% if data['devMode'] === 'true' %}
+<details class="nhsuk-details dev-mode" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+    <span class="nhsuk-details__summary-text">
+      Switch scenario
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h4>Registration type</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="?who-is-being-registered=myself">Self</a>
+      </li>
+      <li>
+        <a href="?who-is-being-registered=dependant">Dependant</a>
+      </li>
+    </ul>
 
-        {% endcall %}
-
-        {% else %}
-
-        {% call fieldset({
-          legend: {
-            text: "",
-            classes: "nhsuk-fieldset__legend--l",
-            isPageHeading: true
-          }
-        }) %}
-
-        <div class="nhsuk-hint" id="contact-hint">
-          <p>This includes if they are living at a temporary address.</p>
-        </div>
-
-        {{ radios({
-          "idPrefix": "have-current-uk-address",
-          "name": "have-current-uk-address",
-          "items": [
-            {
-              "value": "Yes~/live/what-is-your-current-address",
-              "text": "Yes",
-              checked: checked("have-current-uk-address", "Yes")
-            },
-            {
-              "value": "No~/live/do-you-know-nhs-number",
-              "text": "No",
-              checked: checked("have-current-uk-address", "No")
-            }
-          ]
-        }) }}
-
-        {% endcall %}
-
-        {% endif %}
-
-        {{ button({
-          "text": "Continue"
-        }) }}
-
-      </form>
-    </div>
+    <!--    <h4>Error scenarios</h4>-->
+    <!--    <ul class="govuk-list govuk-list&#45;&#45;bullet">-->
+    <!--      <li>-->
+    <!--        <a href="error-too-young">Age is under 12 months</a>-->
+    <!--      </li>-->
+    <!--    </ul>-->
   </div>
+</details>
+{% endif %}
 
 {% endblock %}
+
 
 {% block footer %}
   {% include 'live/includes/footer.html' %}

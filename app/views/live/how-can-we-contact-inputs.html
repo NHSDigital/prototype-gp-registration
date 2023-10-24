@@ -1,8 +1,15 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What are ' + data['name-first-name'] + '\'s contact details?' %}
+{% else %}
+  {% set heading = 'What are your contact details?' %}
+{% endif %}
 
 {% block pageTitle %}
 What are your contact details? - {{ ServiceName }} - NHS
@@ -23,81 +30,95 @@ What are your contact details? - {{ ServiceName }} - NHS
 
         <form action="do-you-have-emergency-contact" method="post">
 
-         {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+          {% include 'live/includes/step.html' %}
 
-            <!-- NHS Login p9 -->
-
-            {% if (data['use-contacts-login'] == "Yes")  %}
-
-            <fieldset class="nhsuk-fieldset">
-              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                <h1 class="nhsuk-fieldset__heading">
-                  What are your contact details?
-                </h1>
-              </legend>
-
-              <div class="nhsuk-hint" id="contact-hint">
-              <p>The NHS and your GP surgery can use these details to call, text or email you about health care services. All phone numbers must be registered in the UK.
-            </div>
-
-            <div class="nhsuk-form-group contact-home-section">
-              <label class="nhsuk-label" for="contact-home">
-                Mobile telephone number (optional)
-              </label>
-              <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
-            </div>
-
-          </fieldset>
-
-          {% else %}
-
-          <fieldset class="nhsuk-fieldset">
-            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-              <h1 class="nhsuk-fieldset__heading">
-                What are your contact details?
-              </h1>
-            </legend>
+            {% call fieldset({
+              legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+              }
+            }) %}
 
             <div class="nhsuk-hint" id="contact-hint">
-              <p>The NHS and your GP surgery can use these details to call, text or email you about health care services. All phone numbers must be registered in the UK.
+              {% if (data['who-is-being-registered'] === "dependant") %}
+              <p>The NHS and your GP surgery can use these details to call, text or email them about health care services. All phone numbers must be registered in the UK.</p>
+              {% else %}
+              <p>The NHS and your GP surgery can use these details to call, text or email you about health care services. All phone numbers must be registered in the UK.</p>
+              {% endif %}
             </div>
 
-            <div class="nhsuk-form-group contact-home-section">
-              <label class="nhsuk-label" for="contact-home">
-                Home telephone number (optional)
-              </label>
-              <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
-            </div>
+            {{ input({
+              label: {
+                "text": "Home telephone number (optional)"
+              },
+              "classes": "nhsuk-input nhsuk-input--width-20",
+              "id": "contact-home",
+              "name": "contact-home",
+              "spellcheck": false,
+              "value": data['contact-home']
+            }) }}
 
-            <div class="nhsuk-form-group contact-home-section">
-              <label class="nhsuk-label" for="contact-mobile">
-                Mobile telephone number (optional)
-              </label>
-              <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
-            </div>
+            {{ input({
+              label: {
+                "text": "Mobile telephone number (optional)"
+              },
+              "classes": "nhsuk-input nhsuk-input--width-20",
+              "id": "contact-mobile",
+              "name": "contact-mobile",
+              "spellcheck": false,
+              "value": data['contact-home']
+            }) }}
 
-            <!-- <div class="nhsuk-form-group contact-home-section">
-              <label class="nhsuk-label" for="contact-prefs-2">
-                Email (optional)
-              </label>
-              <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
-            </div> -->
+            {{ input({
+              label: {
+                "text": "Email address (optional)"
+              },
+              "id": "contact-email",
+              "name": "contact-email",
+              "spellcheck": false,
+              "value": data['contact-email']
+            }) }}
 
-          </fieldset>
+            {% endcall %}
 
-            {% endif %}
+            {{ button({
+                "text": "Continue"
+              }) }}
 
-          <button class="nhsuk-button" type="submit">
-            Continue
-          </button>
+          </form>
 
-        </form>
-
+        </div>
       </div>
-    </div>
+
+{# DEVMODE SCENARIOS #}
+{% if data['devMode'] === 'true' %}
+<details class="nhsuk-details dev-mode" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+    <span class="nhsuk-details__summary-text">
+      Switch scenario
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h4>Registration type</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="?who-is-being-registered=myself">Self</a>
+      </li>
+      <li>
+        <a href="?who-is-being-registered=dependant">Dependant</a>
+      </li>
+    </ul>
+
+      <h4>Error scenarios</h4>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="how-can-we-contact-inputs-prompt">Email and mobile are left blank</a>
+        </li>
+      </ul>
+  </div>
+</details>
+{% endif %}
 
 {% endblock %}
 

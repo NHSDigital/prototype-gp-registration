@@ -1,16 +1,23 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '1' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Do you know ' + data['name-first-name'] + '\'s NHS Number?' %}
+{% else %}
+  {% set heading = 'Do you know your NHS Number?' %}
+{% endif %}
+
 {% block pageTitle %}
-  Do you know your NHS number - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "what-is-your-date-of-birth",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,25 +30,11 @@
 
           <form action="" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">Do you know {{ data ['name-first-name'] }}'s NHS Number?</h1>
-
-            {% else %}
-
-            <h1 class="nhsuk-heading-l">Do you know your NHS Number?</h1>
-
-            {% endif %}
-
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -68,7 +61,7 @@
                   "checked": checked("know-nhs-number", "Yes")
                 },
                 {
-                  "value": "No~/live/how-can-we-contact-inputs",
+                  "value": "No~/live/registered-for-the-first-time",
                   "text": "No, continue without",
                   "checked": checked("know-nhs-number", "No")
                 }
@@ -104,6 +97,8 @@
           </form>
         </div>
        </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

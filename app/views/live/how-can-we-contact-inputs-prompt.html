@@ -1,16 +1,25 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Are you sure ' + data['name-first-name'] + ' has no access to a phone or email?' %}
+  {% set hinttext = 'Yes, the patient does not have access to a phone or email' %}
+{% else %}
+  {% set heading = 'Are you sure that you have no access to a phone or email?' %}
+  {% set hinttext = 'Yes, I don\'t have access to a phone or email' %}
+{% endif %}
+
 {% block pageTitle %}
-Are you sure that you have no access to a phone or email? - {{ ServiceName }} - NHS
+{{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "how-can-we-contact-inputs",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,36 +32,40 @@ Are you sure that you have no access to a phone or email? - {{ ServiceName }} - 
 
         <form action="" method="post" autocomplete="off">
 
-        {% call fieldset({
-          legend: {
-            text: "Are you sure that you have no access to a phone or email?",
-            classes: "nhsuk-fieldset__legend--l",
-            isPageHeading: true
-          }
-        }) %}
+          {% include 'live/includes/step.html' %}
 
-        <div class="nhsuk-hint" id="contact-hint">
-          <p>It's important that the NHS and your GP surgery have a convenient way of contacting you about this application, appointments, prescriptions or other health care services.</p>
-        </div>
-
-        {{ radios({
-          "idPrefix": "no-contact",
-          "name": "no-contact",
-          "items": [
-            {
-              "value": "Yes~/live/what-is-your-gender",
-              "text": "Yes, I don't have access to a phone or email",
-
-              checked: checked("no-contact", "Yes")
-            },
-            {
-              "value": "No~/live/how-can-we-contact-you",
-              "text": "No",
-
-              checked: checked("no-contact", "No")
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
             }
-          ]
-        }) }}
+          }) %}
+
+          <div class="nhsuk-hint" id="contact-hint">
+            {% if (data['who-is-being-registered'] === "dependant") %}
+            <p>It's important that the NHS and your GP surgery have a convenient way of contacting them about this application, appointments, prescriptions or other health care services.</p>
+            {% else %}
+            <p>It's important that the NHS and your GP surgery have a convenient way of contacting you about this application, appointments, prescriptions or other health care services.</p>
+            {% endif %}
+          </div>
+
+          {{ radios({
+            "idPrefix": "no-contact",
+            "name": "no-contact",
+            "items": [
+              {
+                "value": "Yes~/live/what-is-your-gender",
+                "text": hinttext,
+                "checked": checked("no-contact", "Yes")
+              },
+              {
+                "value": "No~/live/how-can-we-contact-inputs",
+                "text": "No",
+                "checked": checked("no-contact", "No")
+              }
+            ]
+          }) }}
 
         {% endcall %}
 

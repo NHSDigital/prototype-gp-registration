@@ -10,9 +10,15 @@
 {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
+{% if (data['return'] === "true") %}
+  {% set link = 'check-answers-1' %}
+{% else %}
+  {% set link = 'relation-of-dependant' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
-    "href": "relation-of-dependant",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,12 +29,7 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="what-is-your-name" method="post">
-
-           <!--{{ hint({
-              "text": "Step 1 of 3 - Matching patient to their record",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}-->
+          <form action="carer-details-answer" method="post">
 
             {% call fieldset({
               legend: {
@@ -37,6 +38,10 @@
                 "isPageHeading": true
               }
             }) %}
+
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>As you have said you are the carer we need your details.</p>
+            </div>
 
             {{ input({
                 label: {
@@ -67,7 +72,7 @@
                   "text": "Relationship to the person being registered"
                 },
                 "hint": {
-                  "text": "For example, you are a family member, friend or professional carer."
+                  "text": "For example, you are a family member or friend."
                 },
                 "classes": "nhsuk-u-width-two-thirds",
                 "id": "carer-relationship",

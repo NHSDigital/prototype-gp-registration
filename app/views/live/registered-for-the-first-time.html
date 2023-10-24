@@ -1,16 +1,29 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '1' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Is ' + data['name-first-name'] + ' registering with a UK GP for the first time?' %}
+{% else %}
+  {% set heading = 'Are you registering with a UK GP for the first time?' %}
+{% endif %}
+
+{% if (data['know-nhs-number'] === "Yes") %}
+  {% set link = 'what-is-your-nhs-number' %}
+{% else %}
+  {% set link = 'do-you-know-nhs-number' %}
+{% endif %}
+
 {% block pageTitle %}
-Are you registering with a UK GP for the first time? - {{ ServiceName }} - NHS
+ {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,38 +36,11 @@ Are you registering with a UK GP for the first time? - {{ ServiceName }} - NHS
 
         <form action="" method="post" autocomplete="off">
 
-          {% if (data['who-is-being-registered'] == "dependant") %}
-
-           {{ hint({
-              "text": "Registration type",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            <h1 class="nhsuk-heading-l"> Is {{ data ['name-first-name'] }} registering with a UK GP for the first time?</h1>
-
-            <div class="nhsuk-hint" id="contact-hint">
-            <p>A GP is your first point of contact for health problems.
-          </div>
-
-            {% else %}
-
-          {{ hint({
-              "text": "Registration type",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-           <h1 class="nhsuk-heading-l"> Are you registering with a UK GP for the first time?</h1>
-            <div class="nhsuk-hint" id="contact-hint">
-            <p>A GP is your first point of contact for health problems.
-          </div>
-
-        {% endif %}
-
-        {% if (data['user-auth'] == "p9") %}
+          {% include 'live/includes/step.html' %}
 
           {% call fieldset({
             legend: {
-              text: "",
+              text: heading,
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
@@ -65,42 +51,7 @@ Are you registering with a UK GP for the first time? - {{ ServiceName }} - NHS
             "name": "registering-first-time",
             "items": [
               {
-                "value": "Yes~/live/recently-move-to-the-uk",
-                "text": "Yes",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("registering-first-time", "Yes")
-              },
-              {
-                "value": "No~/live/is-this-your-gp",
-                "text": "No",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("registering-first-time", "No")
-              }
-            ]
-          }) }}
-
-          {% endcall %}
-
-          {% else %}
-
-          {% call fieldset({
-            legend: {
-              text: "",
-              classes: "nhsuk-fieldset__legend--l",
-              isPageHeading: true
-            }
-          }) %}
-
-          {{ radios({
-            "idPrefix": "registering-first-time",
-            "name": "registering-first-time",
-            "items": [
-              {
-                "value": "Yes~/live/recently-move-to-the-uk",
+                "value": "Yes~/live/check-answers-1",
                 "text": "Yes",
                 "hint": {
                   "text": ""
@@ -120,8 +71,6 @@ Are you registering with a UK GP for the first time? - {{ ServiceName }} - NHS
 
           {% endcall %}
 
-          {% endif %}
-
           {{ button({
             "text": "Continue"
           }) }}
@@ -130,6 +79,9 @@ Are you registering with a UK GP for the first time? - {{ ServiceName }} - NHS
 
       </div>
     </div>
+
+{% include 'live/includes/devmode.html' %}
+
 {% endblock %}
 
 {% block footer %}
