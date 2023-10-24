@@ -42,17 +42,23 @@
               }
             }) %}
 
-             {{ input({
-                label: {
-                  "text": "Title"
-                },
-                "classes": "nhsuk-input--width-4",
-                "id": "name-title",
-                "name": "name-title",
-                "autocomplete": "honorific-prefix",
-                "spellcheck": false,
-                "value": data['name-title']
-              }) }}
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="name-title">
+                Title
+              </label>
+              <div class="nhsuk-select__wrapper">
+                <select class="nhsuk-select nhsuk-select--new" id="name-title" name="name-title" autocomplete="honorific-prefix">
+                  <option value="">-- Choose a title --</option>
+                  <option value="Mr">Mr</option>
+                  <option value="Mrs">Mrs</option>
+                  <option value="Miss">Miss</option>
+                  <option value="Ms">Ms</option>
+                  <option value="Dr">Dr</option>
+                  <option value="Mx">Mx</option>
+                  <option value="Master">Master</option>
+                </select>
+              </div>
+            </div>
 
             {{ input({
                 label: {

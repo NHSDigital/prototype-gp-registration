@@ -44,18 +44,23 @@ What is your title? - {{ ServiceName }} - NHS
                 "text": "We need your title so that your GP surgery can match you to your medical record."
             }) }}
 
-           {{ input({
-              label: {
-                "text": "Title"
-              },
-              "hint": {
-                "html": "For example, Mr, Mrs, Miss or Ms"
-              },
-              "classes": "nhsuk-input--width-4",
-              "id": "name-title",
-              "name": "name-title",
-              "value": data['name-title']
-            }) }}
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="name-title">
+                Title
+              </label>
+              <div class="nhsuk-select__wrapper">
+                <select class="nhsuk-select nhsuk-select--new" id="name-title" name="name-title" autocomplete="honorific-prefix">
+                  <option value="">-- Choose a title --</option>
+                  <option value="Mr">Mr</option>
+                  <option value="Mrs">Mrs</option>
+                  <option value="Miss">Miss</option>
+                  <option value="Ms">Ms</option>
+                  <option value="Dr">Dr</option>
+                  <option value="Mx">Mx</option>
+                  <option value="Master">Master</option>
+                </select>
+              </div>
+            </div>
 
             {% endcall %}
 

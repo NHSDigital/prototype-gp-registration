@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Register with a GP surgery: {Surgery name} - {{ ServiceName }} - NHS
+Register with a GP surgery: {{ data.presets[0].gpsurgery or '{ GP surgery}' }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@ Register with a GP surgery: {Surgery name} - {{ ServiceName }} - NHS
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
         <h1 class="nhsuk-heading-Xl">
-          Register with a GP surgery: {Surgery name}
+          Register with a GP surgery: {{ data.presets[0].gpsurgery or '{ GP surgery}' }}
         </h1>
 
         <h2 class="nhsuk-heading-l">Before you start</h2>
