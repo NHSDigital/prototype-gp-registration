@@ -37,7 +37,7 @@
 
   {{ header({
     "service": {
-      "name": "Set up Register with a GP service",
+      "name": data.presets[0].servicenameenroll,
       "href": "/"
     },
       "showNav": "false",
@@ -55,7 +55,7 @@
   {{ footer({
     "links": [
       {
-        "URL": "/gp/gp-terms",
+        "URL": "gp-terms",
         "label": "Terms of use"
       },
       {
@@ -71,6 +71,12 @@
 {% endblock %}
 
 {% block bodyEnd %}
+
+{% if data['devMode'] === 'true' %}
+  {% include "includes/devmode.html" %}
+{% endif %}
+
+
   {% block scripts %}
     <!-- Custom JavaScript files can be added to this file -->
     {% include "includes/scripts.html" %}

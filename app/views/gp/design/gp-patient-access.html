@@ -1,0 +1,91 @@
+{% extends 'layout-gp.html' %}
+
+{% block pageTitle %}
+Manage patient access - GP registration service - NHS
+{% endblock %}
+
+{% block beforeContent %}{% endblock %}
+
+{% block outerContent %}{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="gp-branch" method="post" autocomplete="off">
+
+
+            <H2>Manage patient access</H2>
+
+            <p>
+              Turning 'Find a GP' on or off will take effect immediately.
+            </p>
+
+
+            {{ radios({
+              "idPrefix": "access",
+              "name": "access",
+              "items": [
+                {
+                  "value": "Unique url only",
+                  "text": "Turn off Find a GP",
+                  "hint": {
+                    "text": "Your online registration service will not be visible on Find a GP"
+                  },
+                  checked: checked("access", "Turn off Find a GP")
+                },
+                {
+                  "value": "Off",
+                  "text": "Turn off Find a GP and unique URL",
+                  "hint": {
+                    "text": "Remember to remove the url from your website"
+                  },
+                  checked: checked("access", "Off")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "On",
+                  "text": "Turn on Find a GP and unique URL",
+                  checked: checked("access", "On")
+                }
+              ]
+            }) }}
+
+            <!-- <details class="nhsuk-details">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Why are we asking this?
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p>If your surgery offers any additional patient services, such as a language interpreter or pharmaceutical services, we'll be able to offer them to the patient during the registration process.</p>
+              </div>
+            </details> -->
+
+
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% block pageScripts %}
+
+{% endblock %}
+{% endblock %}

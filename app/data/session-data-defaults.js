@@ -18,12 +18,11 @@ Example usage:
 */
 
 module.exports = {
-
-  // Insert values here
   presets: [
     {
-      gpsurgery: 'Trinity court surgery',
-      servicename: 'Register with a GP surgery'
+      "gpsurgery": "Trinity court surgery",
+      "servicename": "Register with a GP surgery",
+      "servicenameenroll": "Set up Register with a GP service"
     }
   ]
 }

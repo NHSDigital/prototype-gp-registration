@@ -1,0 +1,152 @@
+{% extends 'layout-gp.html' %}
+
+{% set heading = 'Confirm details for {Practice name} and complete registration' %}
+
+{% block pageTitle %}
+{{ heading }} - {{ data.presets[0].servicenameenroll }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    text: "Go back",
+    href: "gp-branch",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="gp-reg-complete" method="post" autocomplete="off">
+
+            <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+            <p>Please check that these details are correct.</p>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  NHS shared mailbox
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['nhs-shared-email'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="?linkaction=change-questions">Change<span class="nhsuk-u-visually-hidden">NHS shared email</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Language interpretation service
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if (data['interpretation'] == "Yes") %}
+                    Yes
+                  {% else %}
+                    No
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="?linkaction=change-questions">Change<span class="nhsuk-u-visually-hidden">language interpretation service</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Nominated pharmacy service
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if (data['pharmacy'] == "Yes") %}
+                  Yes
+                  {% else %}
+                  No
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="?linkaction=change-questions">Change<span class="nhsuk-u-visually-hidden">pharmacy service</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Dispensing surgery
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if (data['dispencing'] == "Yes") %}
+                  Yes
+                  {% else %}
+                  No
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="?linkaction=change-questions">Change<span class="nhsuk-u-visually-hidden">dispencing surgery</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Send registration message
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if (data['use-nap'] === "Yes") %}
+                  Yes
+                  {% else %}
+                  No
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="gp-additional-questions-notify-patient?linkaction=change-questions">Change<span class="nhsuk-u-visually-hidden">dispencing surgery</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Surgery web address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['custom-url'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="gp-custom-url?linkaction=change-questions">Change<span class="nhsuk-u-visually-hidden">Surgery web address</span></a>
+                </dd>
+              </div>
+
+            </dl>
+
+            <p>If the details are correct then you can complete the registration process.</p>
+            <p>This will allow your surgery to start offering patients the option to use Register with a GP Service Online.</p>
+
+            {{ button({
+              "text": "Confirm and complete"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+
+  $(document).ready(function () {
+
+    // Populate any unanswered fields with "Not answered" text
+    $('.nhsuk-summary-list__value').filter(function () {
+      return $.trim($(this).text()) === "";
+    }).each(function (ind, obj) {
+      $(obj).closest('dd').html("<span class='summary-page-unanswered'>Not answered</span>");
+    });
+
+    // Add colon to contact method type if it isn't blank
+    $(".contact-prefs-type:not(:empty)").append(':');
+
+  });
+</script>
+
+{% endblock %}

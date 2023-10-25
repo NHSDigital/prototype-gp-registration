@@ -1,0 +1,65 @@
+{% extends 'layout-gp.html' %}
+
+{% set heading = 'Does your surgery offer a language interpretation service for patients?' %}
+
+{% block pageTitle %}
+{{ heading }} - {{ data.presets[0].servicenameenroll }} - NHS
+{% endblock %}
+
+{% if (data['linkaction'] === "change-questions") %}
+  {% set action = 'gp-answers' %}
+{% else %}
+  {% set action = 'gp-additional-questions-dispensing-surgery' %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    text: "Go back",
+    href: "gp-verification-code",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="{{ action }}" method="post" autocomplete="off">
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+              </legend>
+
+              <p>If your surgery offers language interpretation services for its patients then they will have the option to request this during their registration process.</p>
+              <p>Patients who register online with your surgery will only be offered this service is you choose yes.</p>
+
+              {{ radios({
+                "idPrefix": "interpretation",
+                "name": "interpretation",
+                "items": [
+                  {
+                    "value": "Yes",
+                    "text": "Yes",
+                    checked: checked("interpretation", "Yes")
+                  },
+                  {
+                    "value": "No",
+                    "text": "No",
+                    checked: checked("interpretation", "No")
+                  }
+                ]
+              }) }}
+
+            </fieldset>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}

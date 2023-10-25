@@ -1,0 +1,60 @@
+{% extends 'layout-gp.html' %}
+
+{% set heading = 'What is your surgery web address?' %}
+
+{% block pageTitle %}
+{{ heading }} - {{ data.presets[0].servicenameenroll }} - NHS
+{% endblock %}
+
+{% if (data['linkaction'] === "change-questions") %}
+{% set action = 'gp-branch' %}
+{% else %}
+{% set action = 'gp-answers' %}
+{% endif %}
+
+{% block outerContent %}
+{{ backLink({
+text: "Go back",
+href: "gp-additional-questions-notify-patient",
+"classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <form action="{{ action }}" method="post" autocomplete="off">
+
+      <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+      <p>This link can be included in messages to patients when you accept their registrations.</p>
+
+      {{ input({
+        label: {
+          "text": 'Full website address'
+        },
+        "hint": {
+          "text": "For example: https://www.trinitycourtsurgery.nhs.uk"
+        },
+        "classes": "nhsuk-input--width-40",
+        "id": "custom-url",
+        "name": "custom-url",
+        "spellcheck": false
+      }) }}
+
+      {{ button({
+      "text": "Continue"
+    }) }}
+
+      <p><a href="gp-answers" class="">Skip and answer later</a></p>
+
+    </form>
+  </div>
+</div>
+
+{% block pageScripts %}
+
+{% endblock %}
+{% endblock %}

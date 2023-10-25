@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+{% set heading = 'Are you sure this is an NHS shared mailbox?' %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicenameenroll }} - NHS
+{% endblock %}
+
+{% set mailbox = data['nhs-shared-email'] or 'mailbox@nhs.net' %}
+
+{% block outerContent %}
+  {{ backLink({
+    text: "Go back",
+    href: "gp-shared-mailbox",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+           {{ radios({
+              "idPrefix": "email-confirm",
+              "name": "email-confirm",
+              "fieldset": {
+                "legend": {
+                  "text": heading,
+                  "isPageHeading": true,
+                  "classes": "nhsuk-fieldset__legend--l"
+                }
+              },
+              "hint": {
+                "html": '<p>Your NHS shared mailbox is <strong>' + mailbox + '</strong></p>'
+              },
+              "items": [
+                {
+                  "value": "Yes~gp-verification-code",
+                  "text": "Yes"
+                },
+                {
+                  "value": "No~gp-shared-mailbox",
+                  "text": "No"
+                }
+              ]
+            }) }}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+          </form>
+
+      </div>
+    </div>
+
+{% endblock %}
