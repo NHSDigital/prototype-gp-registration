@@ -1,0 +1,90 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Agree to share your NHS login information' %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block header %}
+  {{ header({
+    "service": {
+      "name": "NHS login",
+      "href": "#"
+    },
+      "showNav": "false",
+      "showSearch": "false"
+    })
+  }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <h1 class="nhsuk-heading-l">
+      {{ heading }}
+    </h1>
+
+    {% if data.clientRequests === 'newScope' %}
+    <p class="nhsuk-body">
+      The terms of use for <strong>{{ ServiceName }}</strong> have been updated.
+    </p>
+    {% endif %}
+
+    <p class="nhsuk-body">
+      To continue, you need to agree to share your NHS login information with <strong>{{ data.presets[0].servicename or 'Client name' }}</strong>.
+    </p>
+    <p class="nhsuk-body">
+      <strong>{{ data.presets[0].servicename or 'Client name' }}</strong> will use your:
+    <ul>
+      {% if data.clientRequests === 'p0' %}
+      <li>
+        email address
+      </li>
+      {% else %}
+      <li>
+        NHS number
+      </li>
+      <li>
+        date of birth
+      </li>
+      <li>
+        full name
+      </li>
+      {% endif %}
+    </ul>
+    </p>
+    <p class="nhsuk-body">
+      Read the terms of use and privacy policy for <strong>{{ data.presets[0].servicename or 'Client name' }}</strong> to check how your information will be used.
+    </p>
+    <p class="nhsuk-body">If you do not agree to share this information you will not be able to use NHS login with <strong>{{ data.presets[0].servicename or 'Client name' }}</strong>.</p>
+    <form action="auth" method="post" class="form">
+      <fieldset class="nhsuk-fieldset">
+
+        <button class="nhsuk-button full-width" type="submit" id="button--save">
+          I agree
+        </button>
+
+      </fieldset>
+    </form>
+    <p>
+      <a href="/app/user-NOT-agree">
+        I do not agree to share this information
+      </a>
+    </p>
+
+
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block footer %}
+  {% include 'live/includes/footer-login.html' %}
+{% endblock %}
