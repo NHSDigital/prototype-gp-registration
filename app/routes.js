@@ -543,6 +543,33 @@ router.post("/gp/gp-notify-patient-post", function (req, res) {
   res.redirect('/gp/gp-branch')
 });
 
+router.post("/gp/design/gp-notify-patient-post", function (req, res) {
+  let notify = req.session.data['use-nap']
+
+  // if a user swiches of the notifications
+  if (notify === 'No'){
+    // set a data item to use to conditionally show the modal
+    req.session.data['notifyModal'] = "show"
+  }
+  // then return the user to the branch page
+  res.redirect('/gp/design/gp-branch')
+});
+
+// decide to show the modal only when Off has been selected
+router.get('/gp/design/gp-branch', function (req, res) {
+  let modal = "show"
+  if (req.session.data['notifyModal'] === "show") {
+    modal = 'true'
+  } else {
+    // do nothing
+    modal = 'false'
+  }
+  req.session.data['notifyModal'] = "hide"
+  return res.render('gp/design/gp-branch', {
+    'modal': modal
+  })
+})
+
 // decide to show the modal only when Off has been selected
 router.get('/gp/gp-branch', function (req, res) {
   let modal = "show"
@@ -557,6 +584,7 @@ router.get('/gp/gp-branch', function (req, res) {
     'modal': modal
   })
 })
+
 
 // Dev Mode - Used to show routing by scenario other than user driven
 

@@ -1,0 +1,119 @@
+{% extends 'layout-gp.html' %}
+
+{% set heading = 'Would you like to continue with the registration?' %}
+
+{% if gp-multi === 'gp-multi' %}
+  {% set action = 'Yes~/gp/gp-practices' %}
+{% else %}
+  {% set action = 'Yes~gp-shared-mailbox' %}
+{% endif %}
+
+{% block pageTitle %}
+{{ heading }} - {{ data.presets[0].servicenameenroll }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+{{ backLink({
+text: "Go back",
+href: "gp-start",
+"classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <form action="" method="post" autocomplete="off">
+
+      <h1 class="nhsuk-heading-l">
+        {{ heading }}
+      </h1>
+
+      <p>You need to complete this registration process if you want to offer the Register with a GP Surgery Online service to your patients.</p>
+
+      <h2 class="nhsuk-heading-m">What you need to do</h2>
+
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>answer all the questions in this registration process</li>
+        <li>register multiple practices individually</li>
+      </ul>
+
+      <h2 class="nhsuk-heading-m">What we will do</h2>
+      <p>Once you have completed this registration process we will:</p>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>create a unique registration url for your surgery webstie</li>
+        <li>update <a href="https://www.nhs.uk/service-search/find-a-gp" target="_blank" rel="noopener noreferrer">Find a gp (opens in new tab)</a> with your unique registration link</li>
+        <li>apply your catchment area to the service</li>
+      </ul>
+
+      <div class="nhsuk-inset-text">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>Registrations completed from 16 December 2022 will not be updated on Find a GP until after 3 January 2023 because of the holiday break.</p>
+      </div>
+
+      <h2 class="nhsuk-heading-m">More information about using the service</h2>
+      <p>A <a href="https://digital.nhs.uk/services/register-with-a-gp-surgery-service/find-out-more-about-the-service-and-its-benefits" target="_blank" rel="noopener noreferrer">resource hub (opens in new tab)</a> has been made available which explains how you can:</p>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>promote the service in your surgery</li>
+        <li>get support while using the service</li>
+      </ul>
+
+      {{ radios({
+          "idPrefix": "use-gp-reg",
+          "name": "use-gp-reg",
+          "classes": "nhsuk-radios",
+          "fieldset": {
+            "legend": {
+              "text": "Would you like to continue with the registration?",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": false
+            }
+          },
+          "hint": {
+           "text": "Once you have completed this registration your surgery will be able to start offering patients the option to use Register with a GP Service Online."
+          },
+          "items": [
+            {
+              "value": action,
+              "text": "Yes"
+            },
+            {
+              "value": "No~gp-profile-manager",
+              "text": "No"
+            }
+          ]
+      }) }}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+  </form>
+  </div>
+</div>
+
+{# DEVMODE SCENARIOS #}
+{% if data['devMode'] === 'true' %}
+<details class="nhsuk-details dev-mode" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+    <span class="nhsuk-details__summary-text">
+      Switch scenario
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h4>Registration type</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="?gp-multi=gp-multi">gp-multi</a>
+      </li>
+      <li>
+        <a href="?gp-multi=none">Normal</a>
+      </li>
+    </ul>
+  </div>
+</details>
+{% endif %}
+
+{% endblock %}

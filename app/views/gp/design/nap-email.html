@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block customStyles %}
+  <style typeof="text/css">
+      body { font-family:HelveticaNeue,"Helvetica Neue",Arial,Helvetica,sans-serif;}
+  </style>
+{% endblock %}
+
+{% block pageTitle %}
+New feature patient messaging - Register with a GP surgery service
+{% endblock %}
+
+{% block content %}
+
+<div class="pseudo-bg-gp"></div>
+<div class="gpemail-metadata">
+  <p><strong>From: </strong>Register with a GP surgery service</p>
+  <p><strong>Subject: </strong>New feature patient messaging</p>
+</div>
+
+<div class="pseudo-gpemail-template">
+
+  <p>Dear Highstreet Surgery,</p>
+
+  <p>A new patient messaging feature will soon be available on Register with a GP surgery service.</p>
+
+  <p>Register with a GP surgery will automatically send a message to patients who are transferring from another practice to confirm when your practice accepts their registration.</p>
+
+  <p>We will first message patients through the NHS App, email or text message, depending on what contact details we have for the patient. If we cannot reach the patient digitally then we will send this confirmation by post.</p>
+
+  <p>You can read more about how the feature works, and see examples of the messages we send on our <a href="/gp/gp-profile-manager-manage">resource hub</a></p>
+
+  <h2 class="nhsuk-heading-m">Examples of the messages</h2>
+
+  <p>We have attached examples of the messages to this email. To prevent the risk of fraud please do not share these outside of your practice.</p>
+
+  <h2 class="nhsuk-heading-m">What you need to do</h2>
+
+  <p>We have selected your surgery to be part of a trial of this new feature. From X October, any new patients registering either by using the online service or the paper form will be sent a message to confirm when your practice accepts their registration.</p>
+
+  <p>If you do not want to be part of this trial you can turn these messages off in NHS Profile Manager.</p>
+
+  <p>If you have any questions please contact us at <a href="mailto:england.register-gp-surgery-support@nhs.net">england.register-gp-surgery-support@nhs.net</a></p>
+
+  <p>Yours sincerely, <br>Register with a GP surgery service</p>
+
+</div>
+
+{% endblock %}
