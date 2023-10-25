@@ -1,76 +1,67 @@
 {% extends 'layout-gp.html' %}
 
+{% set heading = 'Manage patient access' %}
+
 {% block pageTitle %}
-Manage patient access - GP registration service - NHS
+  {{ heading }} - {{ data.presets[0].servicenameenroll }} - NHS
 {% endblock %}
 
 {% block beforeContent %}{% endblock %}
 
-{% block outerContent %}{% endblock %}
+{% block outerContent %}
+  {{ backLink({
+    text: "Go back",
+    href: "gp-branch",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
 
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
-
           <form action="gp-branch" method="post" autocomplete="off">
 
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+              </legend>
 
-            <H2>Manage patient access</H2>
+              <p>Turning 'Find a GP' on or off will take effect immediately.</p>
 
-            <p>
-              Turning 'Find a GP' on or off will take effect immediately.
-            </p>
-
-
-            {{ radios({
-              "idPrefix": "access",
-              "name": "access",
-              "items": [
-                {
-                  "value": "Unique url only",
-                  "text": "Turn off Find a GP",
-                  "hint": {
-                    "text": "Your online registration service will not be visible on Find a GP"
+              {{ radios({
+                "idPrefix": "access",
+                "name": "access",
+                "items": [
+                  {
+                    "value": "Unique url only",
+                    "text": "Turn off Find a GP",
+                    "hint": {
+                      "text": "Your online registration service will not be visible on Find a GP"
+                    },
+                    checked: checked("access", "Turn off Find a GP")
                   },
-                  checked: checked("access", "Turn off Find a GP")
-                },
-                {
-                  "value": "Off",
-                  "text": "Turn off Find a GP and unique URL",
-                  "hint": {
-                    "text": "Remember to remove the url from your website"
+                  {
+                    "value": "Off",
+                    "text": "Turn off Find a GP and unique URL",
+                    "hint": {
+                      "text": "Remember to remove the url from your website"
+                    },
+                    checked: checked("access", "Off")
                   },
-                  checked: checked("access", "Off")
-                },
-                {
-                  "divider": "or"
-                },
-                {
-                  "value": "On",
-                  "text": "Turn on Find a GP and unique URL",
-                  checked: checked("access", "On")
-                }
-              ]
-            }) }}
+                  {
+                    "divider": "or"
+                  },
+                  {
+                    "value": "On",
+                    "text": "Turn on Find a GP and unique URL",
+                    checked: checked("access", "On")
+                  }
+                ]
+              }) }}
 
-            <!-- <details class="nhsuk-details">
-              <summary class="nhsuk-details__summary">
-                <span class="nhsuk-details__summary-text">
-                  Why are we asking this?
-                </span>
-              </summary>
-              <div class="nhsuk-details__text">
-                <p>If your surgery offers any additional patient services, such as a language interpreter or pharmaceutical services, we'll be able to offer them to the patient during the registration process.</p>
-              </div>
-            </details> -->
-
-
+              </fieldset>
 
             {{ button({
               "text": "Continue"
@@ -80,12 +71,4 @@ Manage patient access - GP registration service - NHS
         </div>
       </div>
 
-
-    <!-- End of content -->
-
-  </div>
-</div>
-{% block pageScripts %}
-
-{% endblock %}
 {% endblock %}

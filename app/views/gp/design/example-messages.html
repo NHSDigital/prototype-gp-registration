@@ -3,10 +3,8 @@
 {% set heading = 'Examples of registration success messages' %}
 
 {% block pageTitle %}
-  {{ heading }} - GP registration service - NHS
+{{ heading }} - {{ data.presets[0].servicenameenroll }} - NHS
 {% endblock %}
-
-{% block beforeContent %}{% endblock %}
 
 {% block outerContent %}
   {{ backLink({

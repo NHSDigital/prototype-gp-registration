@@ -1,10 +1,10 @@
 {% extends 'layout-gp.html' %}
 
-{% block pageTitle %}
-Manage notify a patient service - GP registration service - NHS
-{% endblock %}
+{% set heading = 'Telling patients their registration has been accepted' %}
 
-{% block beforeContent %}{% endblock %}
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicenameenroll }} - NHS
+{% endblock %}
 
 {% block outerContent %}
   {{ backLink({
@@ -21,35 +21,40 @@ Manage notify a patient service - GP registration service - NHS
 
     <form action="gp-notify-patient-post" method="post" autocomplete="off">
 
-      <h1 class="nhsuk-heading-l">Telling patients their registration has been accepted</h1>
+      <fieldset class="nhsuk-fieldset">
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+          <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+        </legend>
 
-      <p>Register with a GP surgery service will message the patient when you have accepted their registration. We will send the message by email, text message, post or through the NHS App. There is no cost to you for this.</p>
+        <p>Register with a GP surgery service will message the patient when you have accepted their registration. We will send the message by email, text message, post or through the NHS App. There is no cost to you for this.</p>
 
-      <p><a href="https://digital.nhs.uk/services/register-with-a-gp-surgery-service/get-help-using-the-service/telling-patients-when-you-accept-their-registration">Find out more about how this feature works on our resource hub</a></p>
+        <p><a href="https://digital.nhs.uk/services/register-with-a-gp-surgery-service/get-help-using-the-service/telling-patients-when-you-accept-their-registration">Find out more about how this feature works on our resource hub</a></p>
 
-      {{ radios({
-        "idPrefix": "use-nap",
-        "name": "use-nap",
-        "fieldset": {
-          "legend": {
-            "text": "Do you want us to message patients?",
-            "classes": "nhsuk-fieldset__legend--m",
-            "isPageHeading": true
-          }
-        },
-        "items": [
-          {
-            "value": "Yes",
-            "text": "Yes",
-            checked: checked("use-nap", "Yes")
+        {{ radios({
+          "idPrefix": "use-nap",
+          "name": "use-nap",
+          "fieldset": {
+            "legend": {
+              "text": "Do you want us to message patients?",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": true
+            }
           },
-          {
-            "value": "No",
-            "text": "No",
-            checked: checked("use-nap", "No")
-          }
-        ]
-      }) }}
+          "items": [
+            {
+              "value": "Yes",
+              "text": "Yes",
+              checked: checked("use-nap", "Yes")
+            },
+            {
+              "value": "No",
+              "text": "No",
+              checked: checked("use-nap", "No")
+            }
+          ]
+        }) }}
+
+        </fieldset>
 
       {{ button({
         "text": "Continue"
