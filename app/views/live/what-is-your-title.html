@@ -44,22 +44,42 @@ What is your title? - {{ ServiceName }} - NHS
                 "text": "We need your title so that your GP surgery can match you to your medical record."
             }) }}
 
-            <div class="nhsuk-form-group">
-              <label class="nhsuk-label" for="name-title">
-                Title
-              </label>
+            <div class="nhsuk-select__wrapper-outer">
               <div class="nhsuk-select__wrapper">
-                <select class="nhsuk-select nhsuk-select--new" id="name-title" name="name-title" autocomplete="honorific-prefix">
-                  <option value="">-- Choose a title --</option>
-                  <option value="Mr">Mr</option>
-                  <option value="Mrs">Mrs</option>
-                  <option value="Miss">Miss</option>
-                  <option value="Ms">Ms</option>
-                  <option value="Dr">Dr</option>
-                  <option value="Mx">Mx</option>
-                  <option value="Master">Master</option>
-                </select>
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label" for="name-title">
+                    Title
+                  </label>
+
+                  <select class="nhsuk-select nhsuk-select--new" id="name-title" name="name-title" autocomplete="honorific-prefix" onchange="showOther(this)">
+                    <option value="" disabled selected>-- Choose a title --</option>
+                    <option value="Mr">Mr</option>
+                    <option value="Mrs">Mrs</option>
+                    <option value="Miss">Miss</option>
+                    <option value="Ms">Ms</option>
+                    <option value="Dr">Dr</option>
+                    <option value="Mx">Mx</option>
+                    <option value="Master">Master</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
               </div>
+            </div>
+
+            <div id="other-title" style="display:none;" class="nhsuk-inset-text nhsuk-u-margin-bottom-4 nhsuk-u-margin-top-0 nhsuk-u-padding-top-0 nhsuk-u-padding-bottom-0">
+
+              {{ input({
+              label: {
+                "text": "Other title"
+              },
+              "classes": "nhsuk-u-width-one-third",
+              "id": "name-title-other",
+              "name": "name-title-other",
+              "autocomplete": "honorific-prefix",
+              "spellcheck": false,
+              "value": data['name-title-other']
+            }) }}
+
             </div>
 
             {% endcall %}
@@ -72,6 +92,18 @@ What is your title? - {{ ServiceName }} - NHS
         </div>
       </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  function showOther(select){
+    if(select.value=='Other'){
+      document.getElementById('other-title').style.display = "block";
+    } else{
+      document.getElementById('other-title').style.display = "none";
+    }
+  }
+</script>
 {% endblock %}
 
 {% block footer %}

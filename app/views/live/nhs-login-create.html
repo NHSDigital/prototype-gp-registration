@@ -50,7 +50,26 @@
                 <p>You will need a working mobile phone with signal that we can text a security code to.</p>
               </div>
 
-              <button class="nhsuk-button full-width nhsuk-u-margin-bottom-0">Continue</button>
+              <a href="" class="nhsuk-button full-width nhsuk-u-margin-bottom-0">Continue</a>
+
+              {# DEVMODE SCENARIOS #}
+              {% if data['devMode'] === 'true' %}
+              <details class="nhsuk-details dev-mode" role="group">
+                <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+                <span class="nhsuk-details__summary-text">
+                  Continue with scenario
+                </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  <h4>Registration type</h4>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                      <a href="?who-is-being-registered=myself">User creates an Account and uplifts to P5</a>
+                    </li>
+                  </ul>
+                </div>
+              </details>
+              {% endif %}
             </li>
 
             <li class="service-access__item active">
@@ -71,6 +90,8 @@
 
   </div>
 </div>
+
+{% endblock %}
 
 
 {% block footer %}

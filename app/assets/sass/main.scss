@@ -381,7 +381,7 @@
 .nhsuk-select--new {
   position: relative;
   color: black;
-  background-color: transparent;
+  background-color: white;
   border-radius: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -390,12 +390,16 @@
   cursor: pointer;
 }
 
+.nhsuk-select__wrapper-outer {
+  position: relative;
+}
+
 .nhsuk-select__wrapper {
-  width: 100% !important;
-  background-color: white;
+  width: 13rem !important;
+  //background-color: white;
   position: relative;
   @include mq($from: tablet) {
-    width: 50% !important;
+    //width: 50% !important;
   }
   &:before,
   &:after {
@@ -404,18 +408,19 @@
     content: "";
     right: 1rem;
     pointer-events: none;
+    z-index: 100;
   }
   &:before {
     border-left: var(--size) solid transparent;
     border-right: var(--size) solid transparent;
     border-bottom: var(--size) solid black;
-    top: 40%;
+    bottom: 23px;
   }
   &:after {
     border-left: var(--size) solid transparent;
     border-right: var(--size) solid transparent;
     border-top: var(--size) solid black;
-    top: 55%;
+    bottom: 13px;
   }
 }
 
