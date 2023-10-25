@@ -22,7 +22,8 @@ module.exports = {
   // Insert values here
   presets: [
     {
-      gpsurgery: 'Trinity court surgery'
+      gpsurgery: 'Trinity court surgery',
+      servicename: 'Register with a GP surgery'
     }
   ]
 }
