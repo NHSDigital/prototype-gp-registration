@@ -10,7 +10,7 @@
   {% set heading = 'What is your name?' %}
 {% endif %}
 
-{% set link = 'who-is-registering' %}
+{% set link = 'relation-of-dependant' %}
 
 {% block pageTitle %}
 {{ heading }} - {{ ServiceName }} - NHS
@@ -19,7 +19,7 @@
 {% block outerContent %}
   {{ backLink({
     "href": link,
-    "text": "Go back to: Who is registering with a GP",
+    "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
 {% endblock %}
@@ -39,9 +39,12 @@
               <p>If you are not already registered with NAME OF SURGERY, you must register yourself first before you can register a child.</p>
 
 
-              <div class="form-control" style="margin: 32px 0 16px;">
-                <a class="nhsuk-button nhsuk-button--reverse" href="relation-of-dependant">Continue</a>
+              <div class="form-control" style="margin: 32px 0 0px;">
+                <a class="nhsuk-button nhsuk-button--reverse" href="carer-details">Continue</a>
               </div>
+
+              <p class="instructions--link">
+                <a class="instructions--link" href="who-is-registering">Register myself first</a></p>
 
 <!--              <p class="instructions&#45;&#45;link">If you do not have an I.D. from this list, you can <a href="service-access-no-documents{{ params }}">go to your GP surgery to prove who you are.</a></p>-->
 

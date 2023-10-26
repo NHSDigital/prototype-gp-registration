@@ -18,7 +18,7 @@ module.exports = (router) => {
       res.redirect('/design/continue-with-nhs-login')
     } else {
       // Send user to ineligible page
-      res.redirect('/design/dependant-interuption')
+      res.redirect('/design/relation-of-dependant')
     }
   })
 
