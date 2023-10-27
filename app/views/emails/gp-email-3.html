@@ -1257,28 +1257,33 @@
     <span style="color:#888888;">Register with a GP Surgery</span>
   </p>
 
-</div>
-
-{# DEVMODE SCENARIOS #}
-{% if data['devMode'] === 'true' %}
-<details class="nhsuk-details dev-mode" role="group">
-  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+  {# DEVMODE SCENARIOS #}
+  {% if data['devMode'] === 'true' %}
+  <details class="nhsuk-details dev-mode" role="group">
+    <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
     <span class="nhsuk-details__summary-text">
       Switch scenario
     </span>
-  </summary>
-  <div class="nhsuk-details__text">
-    <h4>Scenarios</h4>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>
-        <a href="?under18=true">Self</a>
-      </li>
-      <li>
-        <a href="?allflags=true">all flags</a>
-      </li>
-    </ul>
-  </div>
-</details>
-{% endif %}
+    </summary>
+    <div class="nhsuk-details__text">
+      <h4>Scenarios</h4>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="?under18=true">Patient is under 18 years old</a>
+        </li>
+        <li>
+          <a href="?allflags=true">Show all flags</a>
+        </li>
+        <li>
+          <a href="?allflags=false&under18=false">Default view</a>
+        </li>
+      </ul>
+    </div>
+  </details>
+  {% endif %}
+
+</div>
+
+
 
 {% endblock %}
