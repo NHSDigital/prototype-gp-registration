@@ -1,9 +1,19 @@
 {% if emailLink %}
 <div class="proto-action">
-  <a href="/emails/{{ emailLink }}{{ params }}">
-    <div class="proto-action-icon"></div>
-    <div class="proto-action-text">Email sent</div>
-  </a>
+
+  {% if emailLink %}
+    <a href="/emails/{{ emailLink[0] }}{{ params }}">
+      <div class="proto-action-icon"></div>
+      <div class="proto-action-text">{{ emailLink[1] }}</div>
+    </a>
+  {% endif %}
+
+  {% if emailLink2 %}
+    <a href="/emails/{{ emailLink2[0] }}{{ params }}">
+      <div class="proto-action-icon"></div>
+      <div class="proto-action-text">{{ emailLink2[1] }}</div>
+    </a>
+  {% endif %}
 </div>
 {% endif %}
 
