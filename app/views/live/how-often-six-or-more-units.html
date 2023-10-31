@@ -1,16 +1,23 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "How often has " + data['name-first-name'] + " had six or more units of alcohol on a single occasion in the last year?" %}
+{% else %}
+  {% set heading = 'How often have you had six or more units of alcohol on a single occasion in the last year?' %}
+{% endif %}
+
 {% block pageTitle %}
-How often have you had six or more units of alcohol on a single occasion in the last year - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "how-many-units-of-alcohol",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,21 +30,14 @@ How often have you had six or more units of alcohol on a single occasion in the 
 
           <form action="do-you-smoke" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Health information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">How often has {{ data ['name-first-name'] }} had six or more units of alcohol on a single occasion in the last year?</h1>
+           {% include 'live/includes/step.html' %}
 
             {{ radios({
               "idPrefix": "alcohol-consumption-day",
               "name": "alcohol-consumption-day",
               "fieldset": {
                 "legend": {
-                  "text": "",
+                  "text": heading,
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
@@ -78,57 +78,6 @@ How often have you had six or more units of alcohol on a single occasion in the 
                 }
               ]
             }) }}
-
-            {% else %}
-
-            {{ radios({
-              "idPrefix": "alcohol-consumption-day",
-              "name": "alcohol-consumption-day",
-              "fieldset": {
-                "legend": {
-                  "text": "How often have you had six or more units of alcohol on a single occasion in the last year?",
-                  "classes": "nhsuk-fieldset__legend--l",
-                  "isPageHeading": "true"
-                }
-              },
-              "items": [
-                {
-                  "value": "Never",
-                  "text": "Never",
-                  checked: checked("alcohol-consumption-day", "Never")
-                },
-                {
-                  "value": "Less than monthly",
-                  "text": "Less than monthly",
-                  checked: checked("alcohol-consumption-day", "Less than monthly")
-                },
-                {
-                  "value": "Monthly",
-                  "text": "Monthly",
-                  checked: checked("alcohol-consumption-day", "Monthly")
-                },
-                {
-                  "value": "Weekly",
-                  "text": "Weekly",
-                  checked: checked("alcohol-consumption-day", "Weekly")
-                },
-                {
-                  "value": "Daily or almost daily",
-                  "text": "Daily or almost daily",
-                  checked: checked("alcohol-consumption-day", "Daily or almost daily")
-                },
-                {
-                  "divider": "or"
-                },
-                {
-                  "value": "Prefer not to say",
-                  "text": "Prefer not to say",
-                  checked: checked("alcohol-consumption-day", "Prefer not to say")
-                }
-              ]
-            }) }}
-
-            {% endif %}
 
             {{ button({
               "text": "Continue"

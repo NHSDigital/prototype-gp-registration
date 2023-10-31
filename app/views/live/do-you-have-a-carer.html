@@ -1,11 +1,22 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% if (data['relation'] == "Carer") %}
+    {% set heading = "Does " + data['name-first-name'] + " have any other carers the GP should know about?" %}
+  {% else %}
+    {% set heading = "Does " + data['name-first-name'] + " have a carer??" %}
+  {% endif %}
+{% else %}
+  {% set heading = 'Do you have a carer?' %}
+{% endif %}
+
 {% block pageTitle %}
-  Does {{ data ['name-first-name'] }} have any other carers the GP should know about?  - {{ ServiceName }} - NHS
+{{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,60 +34,14 @@
 
           <form action="" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Additional information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['relation'] == "Carer") %}
-
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have any other carers the GP should know about?</h1>
+            {% include 'live/includes/step.html' %}
 
             {{ radios({
               "idPrefix": "need-carer",
               "name": "need-carer",
               "fieldset": {
                 "legend": {
-                  "text": "",
-                  "classes": "nhsuk-fieldset__legend--l",
-                  "isPageHeading": "true"
-                }
-              },
-              "hint": {
-                "text": "A carer looks after someone who is not able to look after themselves. This could be because of illness, disability or addiction. Carers can be adults or children. They can be paid or unpaid, but may get benefits."
-              },
-              "items": [
-                {
-                  "value": "Yes~/live/carer-type",
-                  "text": "Yes",
-                  checked: checked("need-carer", "Yes")
-                },
-                {
-                  "value": "No~/live/are-you-a-carer",
-                  "text": "No",
-                  checked: checked("need-carer", "no")
-                },
-                {
-                  "divider": "or"
-                },
-                {
-                  "value": "Prefer not to say",
-                  "text": "Prefer not to say",
-                  checked: checked("need-carer", "Prefer not to say")
-                }
-              ]
-            }) }}
-
-            {% elif (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have a carer?</h1>
-
-            {{ radios({
-              "idPrefix": "need-carer",
-              "name": "need-carer",
-              "fieldset": {
-                "legend": {
-                  "text": "",
+                  "text": heading,
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
@@ -86,7 +51,7 @@
               },
               "items": [
                 {
-                  "value": "Yes~/live/carer-type",
+                  "value": "Yes~/live/carer-type-1",
                   "text": "Yes",
                   checked: checked("need-carer", "Yes")
                 },
@@ -106,45 +71,6 @@
               ]
             }) }}
 
-
-            {% else %}
-
-            {{ radios({
-              "idPrefix": "need-carer",
-              "name": "need-carer",
-              "fieldset": {
-                "legend": {
-                  "text": "Do you have a carer?",
-                  "classes": "nhsuk-fieldset__legend--l",
-                  "isPageHeading": "true"
-                }
-              },
-              "hint": {
-                "text": "A carer looks after you because you are not able to look after yourself. This could be because of illness, disability or addiction. Your carer can be an adult or child, family member or friend. They can be paid or unpaid, but may get benefits."
-              },
-              "items": [
-                {
-                  "value": "Yes~/live/carer-type",
-                  "text": "Yes",
-                  checked: checked("need-carer", "Yes")
-                },
-                {
-                  "value": "No~/live/are-you-a-carer",
-                  "text": "No",
-                  checked: checked("need-carer", "no")
-                },
-                {
-                  "divider": "or"
-                },
-                {
-                  "value": "Prefer not to say~/live/are-you-a-carer",
-                  "text": "Prefer not to say",
-                  checked: checked("need-carer", "Prefer not to say")
-                }
-              ]
-            }) }}
-
-            {% endif %}
 
             {{ button({
               "text": "Continue"

@@ -1,16 +1,31 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Does " + data['name-first-name'] + " have any mental health conditions?" %}
+  {% set hintText = 'It is important to tell us about all existing or pre-existing mental health conditions they may have, so their GP can ensure they are given the necessary treatment.' %}
+{% else %}
+  {% set heading = 'Do you have any mental health conditions?' %}
+  {% set hintText = 'It is important to tell us about all existing or pre-existing mental health conditions you may have, so your GP can ensure you are given the necessary treatment.' %}
+{% endif %}
+
+{% if (data['has-allergies'] === "Yes") %}
+  {% set link = 'allergies-details' %}
+{% else %}
+  {% set link = 'do-you-have-allergies' %}
+{% endif %}
+
 {% block pageTitle %}
-Do you have any mental health conditions - {{ ServiceName }} - NHS
+{{ heading }}- {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,25 +38,18 @@ Do you have any mental health conditions - {{ ServiceName }} - NHS
 
           <form action="" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Health information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have any mental health conditions?</h1>
+           {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
             {{ hint({
-              "text": "It is important to tell us about all existing or pre-existing mental health conditions they may have, so their GP can ensure they are given the necessary treatment."
+              "text": hintText
             }) }}
 
             {{ radios({
@@ -70,47 +78,6 @@ Do you have any mental health conditions - {{ ServiceName }} - NHS
             }) }}
 
             {% endcall %}
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                text: "Do you have any mental health conditions?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ hint({
-              "text": "It is important to tell us about all existing or pre-existing mental health conditions you may have, so your GP can ensure you are given the necessary treatment."
-            }) }}
-
-            {{ radios({
-              "idPrefix": "has-mental-health-conditions",
-              "name": "has-mental-health-conditions",
-              "items": [
-                {
-                  "value": "Yes~/live/mental-health-conditions-details",
-                  "text": "Yes",
-                  checked: checked("has-mental-health-conditions", "Yes")
-                },
-                {
-                  "value": "No~/live/do-you-have-existing-conditions",
-                  "text": "No",
-                  checked: checked("has-mental-health-conditions", "No")
-                },
-                {
-                  "divider": "or"
-                },
-                {
-                  "value": "Prefer not to say~/live/do-you-have-existing-conditions",
-                  "text": "Prefer not to say",
-                  checked: checked("has-mental-health-conditions", "Prefer not to say")
-                }
-              ]
-            }) }}
-
-            {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"

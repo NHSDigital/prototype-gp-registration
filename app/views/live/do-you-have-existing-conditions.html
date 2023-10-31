@@ -1,16 +1,25 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Does ' + data ['name-first-name'] + ' have any existing or pre-existing medical conditions?' %}
+  {% set link = 'carer-details' %}
+{% else %}
+  {% set heading = 'Do you have any existing or pre-existing medical conditions?' %}
+  {% set link = 'continue-with-nhs-login' %}
+{% endif %}
+
 {% block pageTitle %}
- Do you have any existing or pre-existing medical conditions - {{ ServiceName }} - NHS
+{{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "check-answers-3",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,18 +32,11 @@
 
           <form action="" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Health information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have any existing or pre-existing medical conditions?</h1>
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -70,47 +72,6 @@
             }) }}
 
             {% endcall %}
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                text: "Do you have any existing or pre-existing medical conditions?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ hint({
-              "text": "Conditions include asthma, dementia, diabetes, cancer or heart disease. This will help the GP give the right treatment."
-            }) }}
-
-            {{ radios({
-              "idPrefix": "has-existing-conditions",
-              "name": "has-existing-conditions",
-              "items": [
-                {
-                  "value": "Yes~/live/what-existing-conditions-do-you-have",
-                  "text": "Yes",
-                  checked: checked("has-existing-conditions", "Yes")
-                },
-                {
-                  "value": "No~/live/do-you-have-allergies",
-                  "text": "No",
-                  checked: checked("has-existing-conditions", "No")
-                },
-                {
-                  "divider": "or"
-                },
-                {
-                  "value": "Prefer not to say~/live/do-you-have-allergies",
-                  "text": "Prefer not to say",
-                  checked: checked("has-existing-conditions", "Prefer not to say")
-                }
-              ]
-            }) }}
-
-            {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"

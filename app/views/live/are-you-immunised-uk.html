@@ -1,11 +1,18 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Did " + data['name-first-name'] + " get all their routine vaccinations in the UK?" %}
+{% else %}
+  {% set heading = 'Did you get your routine vaccinations in the UK?' %}
+{% endif %}
+
 {% block pageTitle %}
-  Did you get your routine vaccinations in the UK - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,18 +30,11 @@
 
           <form action="do-you-have-existing-conditions" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Health information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">Did {{ data ['name-first-name'] }} get all their routine vaccinations in the UK?</h1>
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -66,43 +66,6 @@
             }) }}
 
             {% endcall %}
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                text: "Did you get your routine vaccinations in the UK?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ radios({
-              "idPrefix": "are-you-immunised-uk",
-              "name": "are-you-immunised-uk",
-              "items": [
-                {
-                   "value": "Yes",
-                  "text": "Yes",
-                  checked: checked("are-you-immunised-uk", "Yes")
-                },
-                {
-                  "value": "No",
-                  "text": "No",
-                  checked: checked("are-you-immunised-uk", "No")
-                },
-                {
-                  "divider": "or"
-                },
-                {
-                  "value": "I don't know",
-                  "text": "I don't know",
-                  checked: checked("are-you-immunised-uk", "I don't know")
-                }
-              ]
-            }) }}
-
-            {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"

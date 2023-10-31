@@ -1,31 +1,41 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What is " + data['name-first-name'] + "'s height?" %}
+{% else %}
+  {% set heading = 'What is your height?' %}
+{% endif %}
+
+{% if (data['accessible-needs'] === "Yes") %}
+  {% set link = 'medication-details-repeat' %}
+{% else %}
+  {% set link = 'do-you-take-prescription-medication' %}
+{% endif %}
+
 {% block pageTitle %}
-What is your height? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
 {% endblock %}
 
 {% block content %}
-      <div class="nhsuk-grid-row">
-        <div class="nhsuk-grid-column-two-thirds">
-
-          {{ hint({
-               "text": "Health information",
-               "classes": "nhsuk-u-margin-bottom-2"
-             }) }}
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
 
         <form action="weight" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
 
           <div id="current-address-lookup-container">
 
@@ -34,9 +44,9 @@ What is your height? - {{ ServiceName }} - NHS
               "namePrefix": "height",
               "fieldset": {
                 "legend": {
-                  "text": "What is your height?",
+                  "text": heading,
                   "classes": "nhsuk-label--l",
-                  "isPageHeading": false
+                  "isPageHeading": true
                 }
               },
               "hint": {
@@ -71,9 +81,9 @@ What is your height? - {{ ServiceName }} - NHS
                 "namePrefix": "height",
                 "fieldset": {
                   "legend": {
-                    "text": "What is your height?",
+                    "text": heading,
                     "classes": "nhsuk-label--l",
-                    "isPageHeading": false
+                    "isPageHeading": true
                   }
                 },
                 "hint": {
@@ -94,20 +104,14 @@ What is your height? - {{ ServiceName }} - NHS
 
             </div>
 
-          <details class="nhsuk-details">
-          <summary class="nhsuk-details__summary">
-            <span class="nhsuk-details__summary-text">
-              Why are we asking this?
-            </span>
-          </summary>
-          <div class="nhsuk-details__text">
-            <p>The GP surgery may use this information to give you health guidance and support.</p>
-          </div>
-        </details>
+            {{ details({
+            "text": "Why are you asking this?",
+            "HTML": "<p>The GP surgery may use this information to give you health guidance and support.</p>"
+            }) }}
 
-          <button class="nhsuk-button" type="submit">
-            Continue
-          </button>
+            {{ button({
+              "text": "Continue"
+            }) }}
 
         </form>
 

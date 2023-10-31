@@ -1,16 +1,23 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "How many units of alcohol does " + data['name-first-name'] + " drink on a typical day when they are drinking?" %}
+{% else %}
+  {% set heading = 'How many units of alcohol do you drink on a typical day when you are drinking?' %}
+{% endif %}
+
 {% block pageTitle %}
-How many units of alcohol do you drink on a typical day when you are drinking? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "how-often-do-you-drink-alcohol",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,18 +30,11 @@ How many units of alcohol do you drink on a typical day when you are drinking? -
 
           <form action="how-often-six-or-more-units" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Health information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">How many units of alcohol does {{ data ['name-first-name'] }} drink on a typical day when they are drinking?</h1>
+           {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                "text": "",
+                "text": heading,
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -50,37 +50,7 @@ How many units of alcohol do you drink on a typical day when you are drinking? -
                 "value": data['units']
               }) }}
 
-
             {% endcall %}
-            {% else %}
-
-
-            {% call fieldset({
-              legend: {
-                "text": "How many units of alcohol do you drink on a typical day when you are drinking?",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
-              }
-            }) %}
-
-            {{ input({
-                label: {
-                  "text": "Enter number of units. For example, 2.5"
-                },
-                "classes": "nhsuk-input--width-4",
-                "id": "units",
-                "name": "units",
-                "value": data['units']
-              }) }}
-
-
-            {% endcall %}
-            {% endif %}
-
-
-
-            <!-- HINT TEXT -->
-
 
             <details class="nhsuk-details">
               <summary class="nhsuk-details__summary">

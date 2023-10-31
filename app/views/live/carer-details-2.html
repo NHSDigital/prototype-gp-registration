@@ -1,16 +1,19 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = "What are the details of your second carer?" %}
+
 {% block pageTitle %}
-  What are the details of your second carer? - {{ ServiceName }} - NHS
+  {{ heading }}  - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "carer-type-2",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,14 +26,11 @@
 
           <form action="are-you-a-carer" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Additional information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                "text": "What are the details of your second carer?",
+                "text": heading,
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -79,13 +79,6 @@
 
             {% endcall %}
 
-            {{ button({
-              "text": "Add another carer",
-              "classes": "nhsuk-button--secondary",
-                  "href": "carer-details-2"
-            }) }}
-
-            <br>
             {{ button({
               "text": "Continue"
             }) }}

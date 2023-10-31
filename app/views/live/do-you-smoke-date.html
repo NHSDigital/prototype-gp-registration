@@ -1,16 +1,23 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "When did " + data['name-first-name'] + " stop smoking?" %}
+{% else %}
+  {% set heading = 'When did you stop smoking?' %}
+{% endif %}
+
 {% block pageTitle %}
-When did you stop smoking? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "do-you-smoke-type",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,55 +30,14 @@ When did you stop smoking? - {{ ServiceName }} - NHS
 
           <form action="do-you-smoke-amount" method="post" autocomplete="off">
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-           {{ hint({
-              "text": "Health information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            <h1 class="nhsuk-heading-l">When did {{ data ['name-first-name'] }} stop smoking?</h1>
+           {% include 'live/includes/step.html' %}
 
             {{ dateInput({
               "id": "smoke-date",
               "namePrefix": "smoke-date",
               "fieldset": {
                 "legend": {
-                  "text": "",
-                  "classes": "nhsuk-label--l",
-                  "isPageHeading": false
-                }
-              },
-              "hint": {
-                "text": "The date does not have to be exact."
-              },
-              "items": [
-                {
-                  "name": "month",
-                  "classes": "nhsuk-input--width-2",
-                  "value": data['smoke-month']
-                },
-                {
-                  "name": "year",
-                  "classes": "nhsuk-input--width-4",
-                  "value": data['smoke-year']
-                }
-              ]
-            }) }}
-
-            {% else %}
-
-           {{ hint({
-              "text": "Health information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {{ dateInput({
-              "id": "smoke-date",
-              "namePrefix": "smoke-date",
-              "fieldset": {
-                "legend": {
-                  "text": "When did you stop smoking?",
+                  "text": heading,
                   "classes": "nhsuk-label--l",
                   "isPageHeading": true
                 }
@@ -81,19 +47,17 @@ When did you stop smoking? - {{ ServiceName }} - NHS
               },
               "items": [
                 {
-                  "name": "month",
+                  "name": "smoke-month",
                   "classes": "nhsuk-input--width-2",
                   "value": data['smoke-month']
                 },
                 {
-                  "name": "year",
+                  "name": "smoke-year",
                   "classes": "nhsuk-input--width-4",
                   "value": data['smoke-year']
                 }
               ]
             }) }}
-
-            {% endif %}
 
             {{ button({
               "text": "Continue"

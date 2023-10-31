@@ -1,16 +1,29 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Does " + data['name-first-name'] + " have any allergies?" %}
+{% else %}
+  {% set heading = 'Do you have any allergies?' %}
+{% endif %}
+
+{% if (data['has-existing-conditions'] === "Yes") %}
+  {% set link = 'existing-conditions-details' %}
+{% else %}
+  {% set link = 'do-you-have-existing-conditions' %}
+{% endif %}
+
 {% block pageTitle %}
-Do you have any allergies - {{ ServiceName }} - NHS
+{{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,61 +36,11 @@ Do you have any allergies - {{ ServiceName }} - NHS
 
           <form action="" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Health information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-              <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have any allergies?</h1>
+           {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ hint({
-              "text": "This may include food, drug, and environmental allergies"
-
-            }) }}
-
-            {{ radios({
-              "idPrefix": "has-allergies",
-              "name": "has-allergies",
-              "items": [
-                {
-                  "value": "Yes~/live/allergies-details",
-                  "text": "Yes",
-                  checked: checked("has-allergies", "Yes")
-                },
-                {
-                  "value": "No~/live/do-you-take-prescription-medication",
-                  "text": "No",
-                  checked: checked("has-allergies", "No")
-                },
-                {
-                  "divider": "or"
-                },
-                {
-                  "value": "Prefer not to say",
-                  "text": "Prefer not to say",
-                  checked: checked("has-allergies", "Prefer not to say")
-                }
-
-              ]
-            }) }}
-
-            {% endcall %}
-
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                text: "Do you have any allergies?",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -85,8 +48,8 @@ Do you have any allergies - {{ ServiceName }} - NHS
 
             {{ hint({
               "text": "This may include food, drug, and environmental allergies. This question is optional."
-            }) }}
 
+            }) }}
 
             {{ radios({
               "idPrefix": "has-allergies",
@@ -98,7 +61,7 @@ Do you have any allergies - {{ ServiceName }} - NHS
                   checked: checked("has-allergies", "Yes")
                 },
                 {
-                  "value": "No~/live/do-you-take-prescription-medication",
+                  "value": "No~/live/do-you-have-any-mental-health-conditions",
                   "text": "No",
                   checked: checked("has-allergies", "No")
                 },
@@ -106,7 +69,7 @@ Do you have any allergies - {{ ServiceName }} - NHS
                   "divider": "or"
                 },
                 {
-                  "value": "Prefer not to sayNo~/live/do-you-take-prescription-medication",
+                  "value": "Prefer not to say~/live/do-you-have-any-mental-health-conditions",
                   "text": "Prefer not to say",
                   checked: checked("has-allergies", "Prefer not to say")
                 }
@@ -115,7 +78,6 @@ Do you have any allergies - {{ ServiceName }} - NHS
             }) }}
 
             {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"

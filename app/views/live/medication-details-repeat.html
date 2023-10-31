@@ -1,16 +1,19 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = 'Are any of these repeat prescriptions?' %}
+
 {% block pageTitle %}
-  Are any of these repeat prescriptions - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "medication-details",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,14 +26,11 @@
 
           <form action="height" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Health information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+           {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "Are any of these repeat prescriptions?",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -71,7 +71,6 @@
             }) }}
 
             {% endcall %}
-
 
             {{ button({
               "text": "Continue"

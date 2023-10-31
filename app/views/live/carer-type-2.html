@@ -1,16 +1,19 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = "What type of carer are they?" %}
+
 {% block pageTitle %}
-What type of carer are they - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "carer-details-1",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -21,24 +24,21 @@ What type of carer are they - {{ ServiceName }} - NHS
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="what-is-your-date-of-birth" method="post" autocomplete="off">
+          <form action="" method="post" autocomplete="off">
 
-            {{ hint({
-               "text": "Additional information",
-               "classes": "nhsuk-u-margin-bottom-2"
-             }) }}
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                "text": "What type of carer are they?",
+                "text": heading,
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
 
            {{ radios({
-            "idPrefix": "type-carer",
-            "name": "type-carer",
+            "idPrefix": "type-additional-carer",
+            "name": "type-additional-carer",
             "items": [
               {
                 "value": "Young carer~/live/carer-details-2",
@@ -46,7 +46,7 @@ What type of carer are they - {{ ServiceName }} - NHS
                 "hint": {
                   "text": ""
                 },
-                checked: checked("type-carer", "Yes")
+                checked: checked("type-additional-carer", "Young carer")
               },
                {
                 "value": "Informal carer~/live/carer-details-2",
@@ -54,15 +54,15 @@ What type of carer are they - {{ ServiceName }} - NHS
                 "hint": {
                   "text": ""
                 },
-                checked: checked("type-carer", "Yes")
+                checked: checked("type-additional-carer", "Informal carer")
               },
               {
-                "value": "Occupational Carer~/live/carer-details-2",
+                "value": "Occupational carer~/live/carer-details-2",
                 "text": "Paid carer (Occupational)",
                 "hint": {
                   "text": ""
                 },
-                checked: checked("type-carer", "Yes")
+                checked: checked("type-additional-carer", "Occupational carer")
               },
               {
                 "value": "Foster carer~/live/carer-details-2",
@@ -70,7 +70,7 @@ What type of carer are they - {{ ServiceName }} - NHS
                 "hint": {
                   "text": ""
                 },
-                checked: checked("type-carer", "Yes")
+                checked: checked("type-additional-carer", "Foster carer")
               }
 
               ]

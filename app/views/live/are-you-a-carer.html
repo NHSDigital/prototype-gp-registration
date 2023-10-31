@@ -1,16 +1,33 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Is " + data['name-first-name'] + " a carer?" %}
+{% else %}
+  {% set heading = 'Are you a carer?' %}
+{% endif %}
+
+{% if (data['need-carer'] === "Yes") %}
+  {% if (data['type-additional-carer']) %}
+    {% set link = 'carer-details-2' %}
+  {% else %}
+    {% set link = 'carer-details-1' %}
+  {% endif %}
+{% else %}
+  {% set link = 'do-you-have-a-carer' %}
+{% endif %}
+
 {% block pageTitle %}
-Are you a carer? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,20 +40,15 @@ Are you a carer? - {{ ServiceName }} - NHS
 
           <form action="" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Additional information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+            {% include 'live/includes/step.html' %}
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">Is {{ data ['name-first-name'] }} a carer?</h1>
-
-            {% else %}
-
-            <h1 class="nhsuk-heading-l">Are you a carer?</h1>
-
-            {% endif %}
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
 
             {{ hint({
               "text": "A carer looks after a family member or friend who is not able to look after themselves. This could be because of illness, disability or addiction. Carers can be adults or children. They can be paid or unpaid, but may get benefits."
@@ -66,6 +78,8 @@ Are you a carer? - {{ ServiceName }} - NHS
                 }
               ]
             }) }}
+
+            {% endcall %}
 
             {{ button({
               "text": "Continue"

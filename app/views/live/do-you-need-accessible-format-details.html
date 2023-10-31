@@ -1,16 +1,30 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% if (data['need-carer'] == "Yes") %}
+    {% set heading = "About " + data['name-first-name'] + "'s communication needs" %}
+    {% set labelText = 'Tell us what you or your carer need (optional)' %}
+  {% else %}
+    {% set heading = "About the communication needs of you or your carer" %}
+    {% set labelText = 'Tell us what they need (optional)' %}
+  {% endif %}
+{% else %}
+  {% set heading = 'About your communication needs' %}
+  {% set labelText = 'Tell us what you need' %}
+{% endif %}
+
 {% block pageTitle %}
-About your communication needs - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "do-you-need-accessible-format",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -21,18 +35,13 @@ About your communication needs - {{ ServiceName }} - NHS
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="do-you-need-reasonable-adjustments" method="post" autocomplete="off">
+          <form action="do-you-take-prescription-medication" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Additional information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "About {{ data ['name-first-name'] }}'s communication needs",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -42,53 +51,11 @@ About your communication needs - {{ ServiceName }} - NHS
               "name": "accessible-details",
               "id": "accessible-details",
               "label": {
-                "text": "Tell us what they need (optional)"
+                "text": labelText
                 }
             }) }}
 
             {% endcall %}
-
-            {% elif (data['need-carer'] == "Yes") %}
-
-            {% call fieldset({
-              legend: {
-                text: "About the communication needs of you or your carer",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ textarea({
-              "name": "accessible-details",
-              "id": "accessible-details",
-              "label": {
-                "text": "Tell us what you or your carer need (optional)"
-                }
-            }) }}
-
-            {% endcall %}
-
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                text: "About your communication needs",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ textarea({
-              "name": "accessible-details",
-              "id": "accessible-details",
-              "label": {
-                "text": "Tell us what you need"
-                }
-            }) }}
-
-            {% endcall %}
-
-            {% endif %}
 
             {{ button({
               "text": "Continue"

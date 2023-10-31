@@ -1,6 +1,7 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '1' %}
 
 {% extends 'layout.html' %}
 
@@ -24,11 +25,6 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           <form action="what-is-your-date-of-birth" method="post" autocomplete="off">
-
-           <!--{{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}-->
 
             {% call fieldset({
               legend: {

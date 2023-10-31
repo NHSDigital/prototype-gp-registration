@@ -1,16 +1,23 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What is " + data['name-first-name'] + "'s weight?" %}
+{% else %}
+  {% set heading = 'What is your weight?' %}
+{% endif %}
+
 {% block pageTitle %}
-What is your weight? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": weight,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -21,12 +28,9 @@ What is your weight? - {{ ServiceName }} - NHS
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          {{ hint({
-               "text": "Health information",
-               "classes": "nhsuk-u-margin-bottom-2"
-             }) }}
-
         <form action="how-often-do-you-drink-alcohol" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
 
           <div id="current-address-lookup-container">
 
@@ -35,7 +39,7 @@ What is your weight? - {{ ServiceName }} - NHS
               "namePrefix": "weight",
               "fieldset": {
                 "legend": {
-                  "text": "What is your weight?",
+                  "text": heading,
                   "classes": "nhsuk-label--l",
                   "isPageHeading": true
                 }
@@ -91,20 +95,14 @@ What is your weight? - {{ ServiceName }} - NHS
 
             </div>
 
-          <details class="nhsuk-details">
-          <summary class="nhsuk-details__summary">
-            <span class="nhsuk-details__summary-text">
-              Why are we asking this?
-            </span>
-          </summary>
-          <div class="nhsuk-details__text">
-            <p>The GP surgery may use this information to give you health guidance and support.</p>
-          </div>
-        </details>
+            {{ details({
+            "text": "Why are you asking this?",
+            "HTML": "<p>The GP surgery may use this information to give you health guidance and support.</p>"
+            }) }}
 
-        {{ button({
-         "text": "Continue"
-         }) }}
+            {{ button({
+              "text": "Continue"
+            }) }}
 
           </form>
 

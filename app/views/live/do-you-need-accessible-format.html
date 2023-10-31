@@ -1,16 +1,33 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% if (data['need-carer'] == "Yes") %}
+    {% set heading = "Do you or your carer need to be communicated with in an accessible form?" %}
+  {% else %}
+    {% set heading = "Does " + data['name-first-name'] + " or their carer need to be communicated with in an accessible form?" %}
+  {% endif %}
+{% else %}
+  {% set heading = 'Do you need to be communicated with in an accessible form?' %}
+{% endif %}
+
+{% if (data['are-carer'] === "Yes") %}
+  {% set link = 'type-of-carer' %}
+{% else %}
+  {% set link = 'are-you-a-carer' %}
+{% endif %}
+
 {% block pageTitle %}
-Do you need to be communicated with in an accessible form? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -22,36 +39,20 @@ Do you need to be communicated with in an accessible form? - {{ ServiceName }} -
         <div class="nhsuk-grid-column-two-thirds">
 
           <form action="" method="post" autocomplete="off">
-            {{ hint({
-              "text": "Additional information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} or their carer need to be communicated with in an accessible form?</h1>
-
-            {% elif (data['need-carer'] == "Yes") %}
-
-            <h1 class="nhsuk-heading-l">Do you or your carer need to be communicated with in an accessible form?</h1>
-
-            {% else %}
-
-            <h1 class="nhsuk-heading-l">Do you need to be communicated with in an accessible form?</h1>
-
-            {% endif %}
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>For example, braille, audio, large format or EasyRead.</p>
-            </div>
+            {{ hint({
+              "html": "<p>For example, braille, audio, large format or EasyRead.</p>"
+            }) }}
 
             {{ radios({
               "idPrefix": "accessible-needs",

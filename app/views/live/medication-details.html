@@ -1,16 +1,23 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "About " + data['name-first-name'] + "'s prescription medication" %}
+{% else %}
+  {% set heading = 'About your prescription medication' %}
+{% endif %}
+
 {% block pageTitle %}
-  About your prescription medication - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "do-you-take-prescription-medication",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,16 +30,11 @@
 
           <form action="medication-details-repeat" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Health information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
+           {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "About " + data['name-first-name'] + "'s prescription medication",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -47,26 +49,6 @@
             }) }}
 
             {% endcall %}
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                text: "About your prescription medication",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ textarea({
-              "name": "medication-details",
-              "id": "medication-details",
-              "label": {
-                "text": "Give a brief description of the medication (optional)"
-                }
-            }) }}
-
-            {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"

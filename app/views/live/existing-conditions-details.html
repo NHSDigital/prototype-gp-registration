@@ -1,16 +1,23 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'About ' + data ['name-first-name'] + '\'s current or pre-existing medical conditions?' %}
+{% else %}
+  {% set heading = 'About your current or pre-existing medical conditions?' %}
+{% endif %}
+
 {% block pageTitle %}
-About your current and pre-existing medical conditions - {{ ServiceName }} - NHS
+{{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "what-existing-conditions-do-you-have",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -21,18 +28,13 @@ About your current and pre-existing medical conditions - {{ ServiceName }} - NHS
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="do-you-take-prescription-medication" method="post" autocomplete="off">
+          <form action="do-you-have-allergies" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Health information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
+           {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "About " + data['name-first-name'] + "'s current and pre-existing medical conditions",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -47,26 +49,6 @@ About your current and pre-existing medical conditions - {{ ServiceName }} - NHS
             }) }}
 
             {% endcall %}
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                text: "About your current and pre-existing medical conditions",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ textarea({
-              "name": "existing-medical-condition-details",
-              "id": "existing-medical-condition-details",
-              "label": {
-                "text": "Give a brief description of current and pre-existing medical conditions (optional)"
-                }
-            }) }}
-
-            {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"

@@ -1,22 +1,35 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
-{% if session.data['name-first-name'] %}
-  {% set name = session.data['name-first-name'] %}
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% if (data['need-carer'] == "Yes") %}
+    {% set heading = "About the reasonable adjustments for " + data['name-first-name'] + " or their carer?" %}
+    {% set label = "Tell us what they need (optional)" %}
+  {% else %}
+    {% set heading = "About the reasonable adjustments for " + data['name-first-name'] %}
+    {% set label = "Tell us what they need (optional)" %}
+  {% endif %}
 {% else %}
-  {% set name = 'Jimmy' %}
+  {% if (data['need-carer'] == "Yes") %}
+    {% set heading = "Tell us what you or your carer need (optional)?" %}
+    {% set label = "Tell us what you or your carer need (optional)" %}
+  {% else %}
+    {% set heading = 'About your reasonable adjustments' %}
+    {% set label = "Tell us what you need (optional)" %}
+  {% endif %}
 {% endif %}
 
 {% block pageTitle %}
-  About the reasonable adjustments for you or your carer - {{ ServiceName }} - NHS
+{{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "do-you-need-reasonable-adjustments",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -29,16 +42,11 @@
 
           <form action="dispencing-surgery" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Additional information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "About the reasonable adjustments for " + name + " or their carer",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -48,54 +56,11 @@
               "name": "adjustment-details",
               "id": "adjustment-details",
               "label": {
-                "text": "Tell us what they need (optional)"
+                "text": label
                 }
             }) }}
 
             {% endcall %}
-
-            {% elif (data['need-carer'] == "Yes") %}
-
-
-            {% call fieldset({
-              legend: {
-                text: "About the reasonable adjustments for you or your carer",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ textarea({
-              "name": "adjustment-details",
-              "id": "adjustment-details",
-              "label": {
-                "text": "Tell us what you or your carer need"
-                }
-            }) }}
-
-            {% endcall %}
-
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                text: "About the reasonable adjustments for you or your carer",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ textarea({
-              "name": "adjustment-details",
-              "id": "adjustment-details",
-              "label": {
-                "text": "Tell us what you need"
-                }
-            }) }}
-
-            {% endcall %}
-
-            {% endif %}
 
             {{ button({
               "text": "Continue"

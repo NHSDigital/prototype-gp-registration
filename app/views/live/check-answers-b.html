@@ -4,8 +4,14 @@ Recently moved{% set serviceHome = '/live/start' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Check their details before submitting your application to {Surgery name}" %}
+{% else %}
+  {% set heading = 'Check your details before submitting your application to {Surgery name}' %}
+{% endif %}
+
 {% block pageTitle %}
-Check their details before submitting your application to {Surgery name} - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,29 +29,15 @@ Check their details before submitting your application to {Surgery name} - {{ Se
 
           <form action="confirmation-page" method="post" autocomplete="off">
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
+          {{ fieldset({
+            "legend": {
+              "text": heading,
+              "classes": "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-2",
+              "isPageHeading": true
+            }
+          }) }}
 
-            {{ fieldset({
-              "legend": {
-                "text": "Check their details before submitting your application to {Surgery name}",
-                "classes": "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-2",
-                "isPageHeading": true
-              }
-            }) }}
-
-            {% else %}
-
-            {{ fieldset({
-              "legend": {
-                "text": "Check your details before submitting your application to {Surgery name}",
-                "classes": "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-7",
-                "isPageHeading": true
-              }
-            }) }}
-
-            {% endif %}
-
-        <h3>Personal Details</h3>
+        <h2 class="nhsuk-heading-m">Personal Details</h2>
 
         <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
 
@@ -256,7 +248,7 @@ Check their details before submitting your application to {Surgery name} - {{ Se
 
     </dl>
 
-    <h3>Registration type</h3>
+    <h2 class="nhsuk-heading-m">Registration type</h2>
 
     <dl class="nhsuk-summary-list">
 
@@ -590,7 +582,7 @@ Check their details before submitting your application to {Surgery name} - {{ Se
     </dl>
 
 
-    <h3>Additional information</h3>
+    <h2 class="nhsuk-heading-m">Additional information</h2>
 
     <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
 
@@ -801,7 +793,7 @@ Check their details before submitting your application to {Surgery name} - {{ Se
 
 
 
-          <h3>Health questions</h3>
+          <h2 class="nhsuk-heading-m">Health questions</h2>
 
           <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
 
@@ -1155,24 +1147,23 @@ Check their details before submitting your application to {Surgery name} - {{ Se
               {% endif %}
 
           </form>
+
+          <h2 class="nhsuk-heading-l">Submit your application</h2>
+
+          <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-two-thirds">
+              <span class="nhsuk-u-visually-hidden">Information:</span>
+              <p>By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+            </div>
+          </div>
+
+          {{ button({
+          "text": "Accept and submit",
+          "href": "confirmation-page"
+        }) }}
+
       </div>
     </div>
-
-    <h2 class="nhsuk-heading-l">Submit your application</h2>
-
-    <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-two-thirds">
-        <span class="nhsuk-u-visually-hidden">Information:</span>
-        <p>By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
-      </div>
-    </div>
-
-    {{ button({
-      "text": "Accept and submit"
-    }) }}
-
-  </div>
- </div>
 
 {% endblock %}
 

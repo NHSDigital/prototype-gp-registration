@@ -1,16 +1,31 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Does " + data['name-first-name'] + " currently take any prescription medication?" %}
+  {% set hintText = '<p>This should include prescriptions for contraception or any medicines from abroad. This will help the GP have these ready for the patient.</p>' %}
+{% else %}
+  {% set heading = 'Do you currently take any prescription medication?' %}
+  {% set hintText = '<p>This should include prescriptions for contraception or any medicines from abroad. This will help the GP have these ready for the patient.</p>' %}
+{% endif %}
+
+{% if (data['accessible-needs'] === "Yes") %}
+  {% set link = 'do-you-need-accessible-format-details' %}
+{% else %}
+  {% set link = 'do-you-need-accessible-format' %}
+{% endif %}
+
 {% block pageTitle %}
-Do you currently take any prescription medication - {{ ServiceName }} - NHS
+    {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,25 +38,18 @@ Do you currently take any prescription medication - {{ ServiceName }} - NHS
 
           <form action="" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Health information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} currently take any prescription medication?</h1>
+           {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
             {{ hint({
-              "text": "This should include prescriptions for contraception or any medicines from abroad. This will help the GP have these ready for the patient."
+              "html": hintText
             }) }}
 
             {{ radios({
@@ -70,51 +78,6 @@ Do you currently take any prescription medication - {{ ServiceName }} - NHS
             }) }}
 
             {% endcall %}
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                text: "Do you currently take any prescription medication?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ hint({
-              "text": "It is important to tell us about all the prescription medication you currently take so your GP can have these ready for you."
-            }) }}
-
-            {{ hint({
-              "text": "Please include prescription medication for contraception and medication from abroad."
-            }) }}
-
-            {{ radios({
-              "idPrefix": "takes-prescription-meds",
-              "name": "takes-prescription-meds",
-              "items": [
-                {
-                  "value": "Yes~/live/medication-details",
-                  "text": "Yes",
-                  checked: checked("takes-prescription-meds", "Yes")
-                },
-                {
-                  "value": "No~/live/height",
-                  "text": "No",
-                  checked: checked("takes-prescription-meds", "No")
-                },
-                {
-                  "divider": "or"
-                },
-                {
-                  "value": "Prefer not to say~/live/height",
-                  "text": "Prefer not to say",
-                  checked: checked("takes-prescription-meds", "Prefer not to say")
-                }
-              ]
-            }) }}
-
-            {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"

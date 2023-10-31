@@ -1,11 +1,18 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "About " + data['name-first-name'] + "\'s disabilities" %}
+{% else %}
+  {% set heading = 'About your disabilities' %}
+{% endif %}
+
 {% block pageTitle %}
-About your disabilities - {{ ServiceName }} - NHS
+{{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -21,18 +28,13 @@ About your disabilities - {{ ServiceName }} - NHS
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="do-you-have-any-mental-health-conditions" method="post" autocomplete="off">
+          <form action="do-you-have-a-carer" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Health information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
+           {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "About {{ data ['name-first-name'] }}'s disabilities",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -47,26 +49,6 @@ About your disabilities - {{ ServiceName }} - NHS
             }) }}
 
             {% endcall %}
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                text: "About your disabilities",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ textarea({
-              "name": "disabilities-details",
-              "id": "disabilities-details",
-              "label": {
-                "text": "Give a brief description of the condition (optional)"
-                }
-            }) }}
-
-            {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"

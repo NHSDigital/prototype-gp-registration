@@ -1,16 +1,25 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = "Do you want important information from your GP record to be available to other health and care professionals?" %}
+
+{% if (data['smoke-amount']) %}
+  {% set link = 'do-you-smoke-amount' %}
+{% else %}
+  {% set link = 'do-you-smoke' %}
+{% endif %}
+
 {% block pageTitle %}
-Do you want important information from your GP record to be available to other health and care professionals? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,24 +32,19 @@ Do you want important information from your GP record to be available to other h
 
         <form action="check-answers-b" method="post" autocomplete="off">
 
-          {{ hint({
-             "text": "Health information",
-             "classes": "nhsuk-u-margin-bottom-2"
-           }) }}
-
-          <h1 class="nhsuk-heading-l">Do you want important information from your GP record to be available to other health and care professionals?</h1>
+          {% include 'live/includes/step.html' %}
 
           {% call fieldset({
             legend: {
-              text: "",
+              text: heading,
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
           }) %}
 
-          <div class="nhsuk-hint" id="contact-hint">
-            <p>Your GP surgery needs permission to share important information from your GP record. This is called a Summary Care Record (SCR). Your SCR can only be shared with health and care staff across England who are providing you with direct care. It gives them access to vital information from your GP record.</p>
-          </div>
+          {{ hint({
+            "html": "<p>Your GP surgery needs permission to share important information from your GP record. This is called a Summary Care Record (SCR). Your SCR can only be shared with health and care staff across England who are providing you with direct care. It gives them access to vital information from your GP record.</p>"
+          }) }}
 
           {{ radios({
             "idPrefix": "scr",
@@ -55,7 +59,7 @@ Do you want important information from your GP record to be available to other h
                 checked: checked("scr", "Yes")
               },
               {
-                "value": "Yes",
+                "value": "Yes only",
                 "text": "Yes, share a Summary Care Record without additional information",
                 "hint": {
                   "text": "Includes details of your medicines, allergies and adverse reactions only"
@@ -68,7 +72,6 @@ Do you want important information from your GP record to be available to other h
                 "hint": {
                   "text": "Details of your medicines, allergies, adverse reactions and any additional information will not be shared with anyone involved in your direct care"
                 },
-
                 checked: checked("scr", "No")
               }
             ]

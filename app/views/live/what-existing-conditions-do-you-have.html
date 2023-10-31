@@ -1,16 +1,25 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Does ' + data ['name-first-name'] + ' have any existing or pre-existing medical conditions?' %}
+  {% set hintText = 'Please provide as many details as possible about their existing conditions' %}
+{% else %}
+  {% set heading = 'Do you have any existing or pre-existing medical conditions?' %}
+  {% set hintText = 'Please provide as many details as possible about your existing conditions' %}
+{% endif %}
+
 {% block pageTitle %}
-Do you have any existing or pre-existing medical conditions? - {{ ServiceName }} - NHS
+{{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "do-you-have-existing-conditions",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,23 +32,18 @@ Do you have any existing or pre-existing medical conditions? - {{ ServiceName }}
 
           <form action="existing-conditions-details" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Health information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "Do they have any existing or pre-existing medical conditions?",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
             {{ hint({
-              "text": "Please provide as many details as possible about their existing conditions."
+              "text": hintText
             }) }}
 
             {{ checkboxes({
@@ -101,80 +105,6 @@ Do you have any existing or pre-existing medical conditions? - {{ ServiceName }}
             }) }}
 
             {% endcall %}
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                text: "Do you have any existing or pre-existing medical conditions?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ hint({
-              "text": "Please provide as many details as possible about your existing conditions."
-            }) }}
-
-            {{ checkboxes({
-              "idPrefix": "existing-conditions",
-              "name": "existing-conditions",
-              "items": [
-                {
-                  "value": "Alzheimer's disease or dementia",
-                  "text": "Alzheimer's disease or dementia",
-                  checked: checked("existing-conditions", "Alzheimer's disease or dementia")
-                },
-                {
-                  "value": "Asthma",
-                  "text": "Asthma",
-                  checked: checked("existing-conditions", "Asthma")
-                }
-                ,
-                {
-                  "value": "Cancer",
-                  "text": "Cancer",
-                  checked: checked("existing-conditions", "Cancer")
-                },
-                {
-                  "value": "Diabetes",
-                  "text": "Diabetes",
-                  checked: checked("existing-conditions", "Diabetes")
-                },
-                {
-                  "value": "Epilepsy",
-                  "text": "Epilepsy",
-                  checked: checked("existing-conditions", "Epilepsy")
-                },
-                {
-                  "value": "Heart disease",
-                  "text": "Heart disease",
-                  checked: checked("existing-conditions", "Heart disease")
-                },
-                {
-                  "value": "High blood pressure (hypertension)",
-                  "text": "High blood pressure (hypertension)",
-                  checked: checked("existing-conditions", "High blood pressure (hypertension)")
-                },
-                {
-                  "value": "Stroke",
-                  "text": "Stroke",
-                  checked: checked("existing-conditions", "Stroke")
-                },
-                {
-                  "value": "Thyroid disease",
-                  "text": "Thyroid disease",
-                  checked: checked("existing-conditions", "Thyroid disease")
-                },
-                {
-                  "value": "Other",
-                  "text": "Other",
-                  checked: checked("existing-conditions", "Other")
-                }
-              ]
-            }) }}
-
-            {% endcall %}
-            {% endif %}
 
             {{ button({
               "text": "Continue"
