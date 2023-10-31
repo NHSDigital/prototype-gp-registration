@@ -52,15 +52,15 @@ What is your title? - {{ ServiceName }} - NHS
                   </label>
 
                   <select class="nhsuk-select nhsuk-select--new" id="name-title" name="name-title" autocomplete="honorific-prefix" onchange="showOther(this)">
-                    <option value="" disabled selected>-- Choose a title --</option>
-                    <option value="Mr">Mr</option>
-                    <option value="Mrs">Mrs</option>
-                    <option value="Miss">Miss</option>
-                    <option value="Ms">Ms</option>
-                    <option value="Dr">Dr</option>
-                    <option value="Mx">Mx</option>
-                    <option value="Master">Master</option>
-                    <option value="Other">Other</option>
+                    <option value="" disabled >-- Choose a title --</option>
+                    <option value="Mr" {% if data['name-title'] === "Mr" %} selected{% endif %}>Mr</option>
+                    <option value="Mrs" {% if data['name-title'] === "Mrs" %} selected{% endif %}> Mrs</option>
+                    <option value="Miss" {% if data['name-title'] === "Miss" %} selected{% endif %}>Miss</option>
+                    <option value="Ms" {% if data['name-title'] === "Ms" %} selected{% endif %}>Ms</option>
+                    <option value="Dr" {% if data['name-title'] === "Dr" %} selected{% endif %}>Dr</option>
+                    <option value="Mx" {% if data['name-title'] === "Mx" %} selected{% endif %}>Mx</option>
+                    <option value="Master" {% if data['name-title'] === "Master" %} selected{% endif %}>Master</option>
+                    <option value="Other" {% if data['name-title'] === "Other" %} selected{% endif %}>Other</option>
                   </select>
                 </div>
               </div>
@@ -96,6 +96,15 @@ What is your title? - {{ ServiceName }} - NHS
 
 {% block pageScripts %}
 <script type="text/javascript">
+
+  function checkOther() {
+    var selects = document.getElementById('name-title')
+    var value = selects.value
+    if (value === 'Other') {
+      showOther(selects)
+    }
+  }
+
   function showOther(select){
     if(select.value=='Other'){
       document.getElementById('other-title').style.display = "block";
@@ -103,6 +112,9 @@ What is your title? - {{ ServiceName }} - NHS
       document.getElementById('other-title').style.display = "none";
     }
   }
+
+  checkOther()
+
 </script>
 {% endblock %}
 
