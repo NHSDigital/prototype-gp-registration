@@ -123,22 +123,22 @@ Recently moved{% set serviceHome = '/live/start' %}
             </dt>
             <dd class="nhsuk-summary-list__value">
               {{ data['ethnicity'] }}<br>
-              {% if data['ethnicity'] == "Asian or Asian British" %}
+              {% if data['ethnicity'] === "Asian or Asian British" %}
               {{ data['ethnicity-detail-asian'] }} {{ data['ethAsian'] }}
 
-              {% elif data['ethnicity'] == "Black African, Black British or Caribbean" %}
+              {% elif data['ethnicity'] === "Black African, Black British or Caribbean" %}
               {{ data['ethnicity-detail-black'] }}
               {{ data['ethBlack'] }}
 
-              {% elif data['ethnicity'] == "Mixed or multiple ethnic groups" %}
+              {% elif data['ethnicity'] === "Mixed or multiple ethnic groups" %}
               {{ data['ethnicity-detail-mixed'] }}
               {{ data['ethMixed'] }}
 
-              {% elif data['ethnicity'] == "White" %}
+              {% elif data['ethnicity'] === "White" %}
               {{ data['ethnicity-detail-white'] }}
               {{ data['ethWhite'] }}
 
-              {% elif data['ethnicity'] == "Another ethnic group" %}
+              {% elif data['ethnicity'] === "Another ethnic group" %}
               {{ data['ethnicity-detail-another'] }}
               {{ data['ethOther'] }}
 
@@ -162,7 +162,7 @@ Recently moved{% set serviceHome = '/live/start' %}
             </dd>
           </div>
 
-          {% if data['have-current-uk-address'] == "Yes" %}
+          {% if data['have-current-uk-address'] === "Yes" %}
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Current address details
@@ -190,7 +190,7 @@ Recently moved{% set serviceHome = '/live/start' %}
             NHS number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {% if (data['know-nhs-number'] == "No") %}
+            {% if (data['know-nhs-number'] === "No") %}
             No
             {% else %}
             Yes
@@ -202,7 +202,7 @@ Recently moved{% set serviceHome = '/live/start' %}
         </div>
 
 
-          {% if (data['know-nhs-number'] == "Yes") %}
+          {% if (data['know-nhs-number'] === "Yes") %}
           <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             What is their NHS number?
@@ -228,7 +228,7 @@ Recently moved{% set serviceHome = '/live/start' %}
           </dd>
         </div>
 
-      {% if data['emergency-contact'] == "Yes" %}
+      {% if data['emergency-contact'] === "Yes" %}
 
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
@@ -265,13 +265,13 @@ Recently moved{% set serviceHome = '/live/start' %}
       </div>
 
 
-      {% if (data['registering-first-time'] == "No") %}
+      {% if (data['registering-first-time'] === "No") %}
       <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
         Postcode with last UK GP
       </dt>
       <dd class="nhsuk-summary-list__value">
-        {% if (data['do-you-know-previous-postcode'] == "No") %}
+        {% if (data['do-you-know-previous-postcode'] === "No") %}
         No
         {% else %}
         Yes
@@ -284,7 +284,7 @@ Recently moved{% set serviceHome = '/live/start' %}
     {% endif %}
 
 
-    {% if (data['do-you-know-previous-postcode'] == "Yes") %}
+    {% if (data['do-you-know-previous-postcode'] === "Yes") %}
     <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">
       Postcode
@@ -298,7 +298,7 @@ Recently moved{% set serviceHome = '/live/start' %}
   </div>
   {% endif %}
 
-  {% if (data['registering-first-time'] == "Yes")  %}
+  {% if (data['registering-first-time'] === "Yes")  %}
 
 
     <div class="nhsuk-summary-list__row">
@@ -313,7 +313,7 @@ Recently moved{% set serviceHome = '/live/start' %}
       </dd>
     </div>
 
-    {% if data['recently-moved'] == "Yes" %}
+    {% if data['recently-moved'] === "Yes" %}
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
@@ -345,7 +345,7 @@ Recently moved{% set serviceHome = '/live/start' %}
       </dd>
     </div>
 
-    {% if data['health-documents'] == "ehic" %}
+    {% if data['health-documents'] === "ehic" %}
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
@@ -377,7 +377,7 @@ Recently moved{% set serviceHome = '/live/start' %}
   {% endif %}
   {% endif %}
 
-  {% if data['recently-moved'] == "No" %}
+  {% if data['recently-moved'] === "No" %}
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
         Where were you born?
@@ -404,7 +404,7 @@ Recently moved{% set serviceHome = '/live/start' %}
       </dd>
     </div>
 
-    {% if data['have-previous-uk-address'] == "Yes" %}
+    {% if data['have-previous-uk-address'] === "Yes" %}
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
@@ -429,7 +429,7 @@ Recently moved{% set serviceHome = '/live/start' %}
     {% endif %}
     {% endif %}
 
-    {% if data['overseas'] == "Yes" %}
+    {% if data['overseas'] === "Yes" %}
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
@@ -492,7 +492,7 @@ Recently moved{% set serviceHome = '/live/start' %}
       </dd>
     </div>
 
-    {% if data['have-previous-uk-address'] == "Yes" %}
+    {% if data['have-previous-uk-address'] === "Yes" %}
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
@@ -518,7 +518,7 @@ Recently moved{% set serviceHome = '/live/start' %}
     {% endif %}
 
 
-    {% if data['overseas'] == "No" %}
+    {% if data['overseas'] === "No" %}
 
 
     <div class="nhsuk-summary-list__row">
@@ -553,7 +553,7 @@ Recently moved{% set serviceHome = '/live/start' %}
       </dd>
     </div>
 
-    {% if data['have-previous-uk-address'] == "Yes" %}
+    {% if data['have-previous-uk-address'] === "Yes" %}
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
@@ -612,7 +612,7 @@ Recently moved{% set serviceHome = '/live/start' %}
     </div>
 
 
-    {% if data['interpreter'] == "Yes" %}
+    {% if data['interpreter'] === "Yes" %}
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
           Language
@@ -628,536 +628,606 @@ Recently moved{% set serviceHome = '/live/start' %}
       </div>
     {% endif %}
 
-
-
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Patient has a carer
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['need-carer'] }}
-      </dd>
-      <dd class="nhsuk-summary-list__actions">
-        <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
-      </dd>
-    </div>
-
-
-    {% if data['need-carer'] == "yes" %}
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-          First Name
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {{ data['carer-first-name'] }}
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="">
-            Change<span class="nhsuk-u-visually-hidden"> language</span>
-          </a>
-        </dd>
-      </div>
-
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-          Last name
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {{ data['carer-last-name'] }}
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="">
-            Change<span class="nhsuk-u-visually-hidden"> language</span>
-          </a>
-        </dd>
-      </div>
-
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-          Relationship
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {{ data['carer-relationship'] }}
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="">
-            Change<span class="nhsuk-u-visually-hidden"> language</span>
-          </a>
-        </dd>
-      </div>
-
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-          Contact telephone number
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {{ data['carer-telephone'] }}
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="">
-            Change<span class="nhsuk-u-visually-hidden"> language</span>
-          </a>
-        </dd>
-      </div>
-
-      {% endif %}
-
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-          Patient is a carer
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {{ data['are-carer'] }}
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
-        </dd>
-      </div>
-
-
-      {% if data['are-carer'] == "yes" %}
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Type of carer
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['carer-type'] }}
-          </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="">
-              Change<span class="nhsuk-u-visually-hidden"> language</span>
-            </a>
-          </dd>
-        </div>
-      {% endif %}
-
-
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-          Communication with an accessible format?
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {{ data['accessible-needs'] }}
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
-        </dd>
-      </div>
-
-      {% if data['accessible-needs'] == "Yes" %}
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Type of communication needs
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['accessible-details'] }}
-          </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="">
-              Change<span class="nhsuk-u-visually-hidden"> language</span>
-            </a>
-          </dd>
-        </div>
-      {% endif %}
-
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-          Reasonable adjustments to make your visit to the GP surgery accessible?
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {{ data['reasonable-adjustments'] }}
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
-        </dd>
-      </div>
-
-      {% if data['reasonable-adjustments'] == "Yes" %}
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Type of reasonable adjustments
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['adjustment-details'] }}
-          </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="">
-              Change<span class="nhsuk-u-visually-hidden"> language</span>
-            </a>
-          </dd>
-        </div>
-      {% endif %}
-
     </dl>
 
 
 
-          <h2 class="nhsuk-heading-m">Health questions</h2>
+<h2 class="nhsuk-heading-m">Health questions</h2>
 
-          <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
-
-            <!-- Registering for myself -->
-
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Do you have any disabilities?
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ data['has-disabilities'] }}
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="">
-                  Change<span class="nhsuk-u-visually-hidden"> whether you have allergies</span>
-                </a>
-              </dd>
-            </div>
-
-            {% if data['has-disabilities'] == "Yes" %}
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Disabilities details
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['disabilities-details'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> existing medical conditions</span>
-                  </a>
-                </dd>
-              </div>
-              {% endif %}
-
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Mental health conditions
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['has-mental-health-conditions'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> whether you have any mental health conditions</span>
-                  </a>
-                </dd>
-              </div>
-
-              {% if data['has-mental-health-conditions'] == "Yes" %}
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Mental health condition details
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['mental-health-details'] }}
-                  </dd>
-                  <dd class="nhsuk-summary-list__actions">
-                    <a href="">
-                      Change<span class="nhsuk-u-visually-hidden"> details about your mental health conditions</span>
-                    </a>
-                  </dd>
-                </div>
-              {% endif %}
-
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Existing medical conditions
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ data['has-existing-conditions'] }}
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="">
-                  Change<span class="nhsuk-u-visually-hidden"> whether you have existing medical conditions</span>
-                </a>
-              </dd>
-            </div>
-
-            {% if data['has-existing-conditions'] == "Yes" %}
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Conditions
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {% if data['existing-conditions'] %}
-                    {{ data['existing-conditions'] }}
-                  {% endif %}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> existing medical conditions</span>
-                  </a>
-                </dd>
-              </div>
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Condition details
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['existing-medical-condition-details'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> details about your existing conditions</span>
-                  </a>
-                </dd>
-              </div>
-            {% endif %}
-
+   <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Allergies
+              What is your height?
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {{ data['has-allergies'] }}
+              {% if data['height-centimetres'] %}
+                {{ data['height-centimetres'] }} meters
+              {% else %}
+                {{ data['height-feet'] }} feet {{ data['height-inches'] }} inches
+              {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="">
-                Change<span class="nhsuk-u-visually-hidden"> whether you have allergies</span>
+              <a href="height?return=true">
+                Change<span class="nhsuk-u-visually-hidden"> height</span>
               </a>
             </dd>
           </div>
 
-
-            {% if data['has-allergies'] == "Yes" %}
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Allergy details
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['allergies-details'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> whether you have allergies</span>
-                  </a>
-                </dd>
-              </div>
-            {% endif %}
-
-
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Prescription medication
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ data['takes-prescription-meds'] }}
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="">
-                  Change<span class="nhsuk-u-visually-hidden"> prescription medication</span>
-                </a>
-              </dd>
-            </div>
-
-            {% if data['takes-prescription-meds'] == "Yes" %}
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Prescription details
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['medication-details'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> details about your medications</span>
-                  </a>
-                </dd>
-              </div>
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Repeat prescriptions
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['repeat-medication'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> details about your medications</span>
-                  </a>
-                </dd>
-              </div>
-            {% endif %}
-
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                What is your height?
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ data['height-feet'] }} feet {{ data['height-inches'] }} inches
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="">
-                  Change<span class="nhsuk-u-visually-hidden"> prescription medication</span>
-                </a>
-              </dd>
-            </div>
-
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                What is your weight?
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ data['weight-stone'] }} stone {{ data['weight-pounds'] }} pounds
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="">
-                  Change<span class="nhsuk-u-visually-hidden"> prescription medication</span>
-                </a>
-              </dd>
-            </div>
-
-
-            {% if data['alcohol-consumption'] == "Never" %}
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Drinks alcohol
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  Never
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> details about your medications</span>
-                  </a>
-                </dd>
-              </div>
-            {% else %}
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Drinks alcohol
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['alcohol-consumption'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> details about your medications</span>
-                  </a>
-                </dd>
-              </div>
-
           <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Units a day
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ data['units'] }}
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="">
-                  Change<span class="nhsuk-u-visually-hidden"> details about your medications</span>
-                </a>
-              </dd>
-            </div>
-
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Six or more units of alcohol on a single occasion
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['alcohol-consumption-day'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> details about your medications</span>
-                  </a>
-                </dd>
-              </div>
-              {% endif %}
-
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Ever smoked
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['smokes'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> smokes</span>
-                  </a>
-                </dd>
-              </div>
-
-              {% if data['smokes'] == "Yes" %}
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Type of smoker
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['smokes-type'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> smokes</span>
-                  </a>
-                </dd>
-              </div>
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Average number of cigarettes you smoke a day
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['smoke-amount-Number of cigarettes'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> smokes</span>
-                  </a>
-                </dd>
-              </div>
-              {% endif %}
-
-              {% if data['smokes-type'] == "I used to smoke" %}
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Date stopped
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  <!-- <span id="smoke-day">{{ data['smoke-date-day'] }}</span> -->
-                  <span id="smoke-month">{{ data['smoke-date-month'] }}</span>
-                  <span id="smoke-year">{{ data['smoke-date-year'] }}</span>
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> smokes</span>
-                  </a>
-                </dd>
-              </div>
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Average number of cigarettes you smoke a day
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['smoke-amount-cigarette-amount'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="">
-                    Change<span class="nhsuk-u-visually-hidden"> smokes</span>
-                  </a>
-                </dd>
-              </div>
-
-              </dl>
-              {% endif %}
-
-          </form>
-
-          <h2 class="nhsuk-heading-l">Submit your application</h2>
-
-          <div class="nhsuk-grid-row">
-            <div class="nhsuk-grid-column-two-thirds">
-              <span class="nhsuk-u-visually-hidden">Information:</span>
-              <p>By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
-            </div>
+           <dt class="nhsuk-summary-list__key">
+             What is your weight?
+           </dt>
+           <dd class="nhsuk-summary-list__value">
+             {% if data['weight-kilograms'] %}
+             {{ data['weight-kilograms'] }} kilograms
+             {% else %}
+             {{ data['weight-stone'] }} stone {{ data['weight-pounds'] }} pounds
+             {% endif %}
+           </dd>
+           <dd class="nhsuk-summary-list__actions">
+             <a href="weight?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> weight</span>
+             </a>
+           </dd>
           </div>
 
-          {{ button({
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Drinks alcohol
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['alcohol-consumption'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="how-often-do-you-drink-alcohol?return=true">
+                Change<span class="nhsuk-u-visually-hidden"> drinks alcohol</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Units a day
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['units'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="how-many-units-of-alcohol?return=true">
+                Change<span class="nhsuk-u-visually-hidden"> units a day</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Frequency of 6 or more alcohol units
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['alcohol-consumption-day'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="how-often-six-or-more-units?return=true">
+                Change<span class="nhsuk-u-visually-hidden"> details about your alcohol consumption</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Ever smoked
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['smokes'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="do-you-smoke?return=true">
+                Change<span class="nhsuk-u-visually-hidden"> smokes</span>
+              </a>
+            </dd>
+          </div>
+
+           {% if data['smokes-type'] === "I used to smoke" %}
+           <div class="nhsuk-summary-list__row">
+             <dt class="nhsuk-summary-list__key">
+               Date stopped
+             </dt>
+             <dd class="nhsuk-summary-list__value">
+               <!-- <span id="smoke-day">{{ data['smoke-date-day'] }}</span> -->
+               <span id="smoke-month">{{ data['smoke-date-month'] }}</span>
+               <span id="smoke-year">{{ data['smoke-date-year'] }}</span>
+             </dd>
+             <dd class="nhsuk-summary-list__actions">
+               <a href="do-you-smoke-date?return=true">
+                 Change<span class="nhsuk-u-visually-hidden"> smokes</span>
+               </a>
+             </dd>
+           </div>
+          {% endif %}
+
+          {% if data['smokes'] === "Yes" %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Type of smoker
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['smokes-type'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="do-you-smoke-type?return=true">
+                Change<span class="nhsuk-u-visually-hidden"> smokes</span>
+              </a>
+            </dd>
+          </div>
+
+          <!--            <div class="nhsuk-summary-list__row">-->
+          <!--              <dt class="nhsuk-summary-list__key">-->
+          <!--                Average number of cigarettes you smoke a day-->
+          <!--              </dt>-->
+          <!--              <dd class="nhsuk-summary-list__value">-->
+          <!--                {{ data['smoke-amount-Number of cigarettes'] }}-->
+          <!--              </dd>-->
+          <!--              <dd class="nhsuk-summary-list__actions">-->
+          <!--                <a href="do-you-smoke-amount?return=true">-->
+          <!--                  Change<span class="nhsuk-u-visually-hidden"> smoking amount</span>-->
+          <!--                </a>-->
+          <!--              </dd>-->
+          <!--            </div>-->
+          {% endif %}
+
+          <div class="nhsuk-summary-list__row">
+           <dt class="nhsuk-summary-list__key">
+             Pre existing medical conditions
+           </dt>
+           <dd class="nhsuk-summary-list__value">
+             {{ data['has-existing-conditions'] }}
+           </dd>
+           <dd class="nhsuk-summary-list__actions">
+            <a href="do-you-have-existing-conditions?return=true">
+             Change<span class="nhsuk-u-visually-hidden"> whether you have existing medical conditions</span>
+            </a>
+           </dd>
+          </div>
+
+          {% if data['has-existing-conditions'] === "Yes" %}
+          <div class="nhsuk-summary-list__row">
+           <dt class="nhsuk-summary-list__key">
+             Conditions
+           </dt>
+           <dd class="nhsuk-summary-list__value">
+             {% if data['existing-conditions'] %}
+              {{ data['existing-conditions'] }}
+             {% endif %}
+           </dd>
+           <dd class="nhsuk-summary-list__actions">
+             <a href="what-existing-conditions-do-you-have?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> which existing medical conditions</span>
+             </a>
+           </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+           <dt class="nhsuk-summary-list__key">
+             Condition details
+           </dt>
+           <dd class="nhsuk-summary-list__value">
+             {{ data['existing-medical-condition-details'] }}
+           </dd>
+           <dd class="nhsuk-summary-list__actions">
+             <a href="existing-conditions-details?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> details about your existing conditions</span>
+             </a>
+           </dd>
+          </div>
+          {% endif %}
+
+          <div class="nhsuk-summary-list__row">
+           <dt class="nhsuk-summary-list__key">
+             Allergies
+           </dt>
+           <dd class="nhsuk-summary-list__value">
+             {{ data['has-allergies'] }}
+           </dd>
+           <dd class="nhsuk-summary-list__actions">
+             <a href="do-you-have-allergies?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> whether you have allergies</span>
+             </a>
+           </dd>
+          </div>
+
+          {% if data['has-allergies'] === "Yes" %}
+          <div class="nhsuk-summary-list__row">
+           <dt class="nhsuk-summary-list__key">
+             Allergy details
+           </dt>
+           <dd class="nhsuk-summary-list__value">
+             {{ data['allergies-details'] }}
+           </dd>
+           <dd class="nhsuk-summary-list__actions">
+             <a href="allergies-details?return=true">
+               Change<span class="nhsuk-u-visually-hidden">  allergy details</span>
+             </a>
+           </dd>
+          </div>
+          {% endif %}
+
+          <div class="nhsuk-summary-list__row">
+           <dt class="nhsuk-summary-list__key">
+             Mental health conditions
+           </dt>
+           <dd class="nhsuk-summary-list__value">
+             {{ data['has-mental-health-conditions'] }}
+           </dd>
+           <dd class="nhsuk-summary-list__actions">
+             <a href="do-you-have-any-mental-health-conditions?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> whether you have any mental health conditions</span>
+             </a>
+           </dd>
+          </div>
+
+          {% if data['has-mental-health-conditions'] === "Yes" %}
+          <div class="nhsuk-summary-list__row">
+           <dt class="nhsuk-summary-list__key">
+             Mental health condition details
+           </dt>
+           <dd class="nhsuk-summary-list__value">
+             {{ data['mental-health-details'] }}
+           </dd>
+           <dd class="nhsuk-summary-list__actions">
+             <a href="mental-health-conditions-details?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> details about your mental health conditions</span>
+             </a>
+           </dd>
+          </div>
+          {% endif %}
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Disabilities
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['has-disabilities'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="do-you-have-any-disabilities?return=true">
+                Change<span class="nhsuk-u-visually-hidden"> whether you have disabilities</span>
+              </a>
+            </dd>
+          </div>
+
+          {% if data['has-disabilities'] === "Yes" %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Disabilities details
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['disabilities-details'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="disabilities-details?return=true">
+                Change<span class="nhsuk-u-visually-hidden"> disabilities details</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+             Do they have a carer?
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+             {{ data['are-carer'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="do-you-have-a-carer?return=true">Change<span class="nhsuk-u-visually-hidden"> whether you have a carer</span></a>
+            </dd>
+          </div>
+
+          {% if data['need-carer'] === "Yes" %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+             What type of carer do they have?
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+             {{ data['carer-type'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="carer-type-1?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> carer type</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data['need-carer'] === "Yes" %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+             Carer's first name
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+             {{ data['carer-first-name'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="carer-details-1?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> carer's first name</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+             Carer's last name
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+             {{ data['carer-last-name'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="carer-details-1?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> carer's last name</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+             Carer's relationship to them
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+             {{ data['carer-relationship'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="carer-details-1?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> carer's relationship</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+             Carer's contact telephone number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+             {{ data['carer-telephone'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="carer-details-1?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> carer's telephone number</span>
+              </a>
+            </dd>
+            </div>
+          {% endif %}
+
+         {% if data['type-additional-carer'] %}
+
+         <div class="nhsuk-summary-list__row">
+           <dt class="nhsuk-summary-list__key">
+             Additional carer type
+           </dt>
+           <dd class="nhsuk-summary-list__value">
+             {{ data['type-additional-carer'] }}
+           </dd>
+           <dd class="nhsuk-summary-list__actions">
+             <a href="carer-type-2?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> additional carer's type</span>
+             </a>
+           </dd>
+         </div>
+
+         <div class="nhsuk-summary-list__row">
+           <dt class="nhsuk-summary-list__key">
+             Additional carer's Company or Council name
+           </dt>
+           <dd class="nhsuk-summary-list__value">
+             {{ data['carer-company-2'] }}
+           </dd>
+           <dd class="nhsuk-summary-list__actions">
+             <a href="carer-details-2?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> additional carer's last name</span>
+             </a>
+           </dd>
+         </div>
+
+         <div class="nhsuk-summary-list__row">
+           <dt class="nhsuk-summary-list__key">
+             Additional carer's full name
+           </dt>
+           <dd class="nhsuk-summary-list__value">
+             {{ data['carer-full-name-2'] }}
+           </dd>
+           <dd class="nhsuk-summary-list__actions">
+             <a href="carer-details-2?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> additional carer's last name</span>
+             </a>
+           </dd>
+         </div>
+
+         <div class="nhsuk-summary-list__row">
+           <dt class="nhsuk-summary-list__key">
+             Additional carer's relationship
+           </dt>
+           <dd class="nhsuk-summary-list__value">
+             {{ data['carer-relationship-2'] }}
+           </dd>
+           <dd class="nhsuk-summary-list__actions">
+             <a href="carer-details-2?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> carer's relationship</span>
+             </a>
+           </dd>
+         </div>
+
+         <div class="nhsuk-summary-list__row">
+           <dt class="nhsuk-summary-list__key">
+             Additional carer's contact telephone number
+           </dt>
+           <dd class="nhsuk-summary-list__value">
+             {{ data['carer-telephone-2'] }}
+           </dd>
+           <dd class="nhsuk-summary-list__actions">
+             <a href="carer-details-2?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> carer's telephone number</span>
+             </a>
+           </dd>
+         </div>
+         {% endif %}
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+             Are they a carer?
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+             {{ data['are-carer'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="are-you-a-carer?return=true">
+                Change<span class="nhsuk-u-visually-hidden"> whether you are a carer</span>
+              </a>
+            </dd>
+          </div>
+
+          {% if data['are-carer'] === "Yes" %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+             Type of carer
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+             {{ data['carer-type'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="type-of-carer?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> type of carer</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+             Do you or your carer need to be communicated with in an accessible form?
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+             {{ data['accessible-needs'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="do-you-need-accessible-format?return=true">
+                Change<span class="nhsuk-u-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+
+          {% if data['accessible-needs'] === "Yes" %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+             Type of communication needs
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+             {{ data['accessible-details'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+             <a href="do-you-need-accessible-format-details?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> type of communication needs</span>
+             </a>
+            </dd>
+          </div>
+          {% endif %}
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+             Do you or your carer need reasonable adjustments to make their visit to the GP surgery accessible?
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+             {{ data['reasonable-adjustments'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="do-you-need-reasonable-adjustments?return=true">
+                Change<span class="nhsuk-u-visually-hidden">  reasonable adjustments</span>
+              </a>
+            </dd>
+          </div>
+
+          {% if data['reasonable-adjustments'] === "Yes" %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+             Reasonable adjustments details
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+             {{ data['adjustment-details'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+             <a href="do-you-need-reasonable-adjustments-details?return=true">
+               Change<span class="nhsuk-u-visually-hidden"> type of reasonable adjustments</span>
+             </a>
+            </dd>
+          </div>
+          {% endif %}
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+            Prescription medication
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+            {{ data['takes-prescription-meds'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="do-you-take-prescription-medication?return=true">
+                Change<span class="nhsuk-u-visually-hidden"> prescription medication</span>
+              </a>
+            </dd>
+          </div>
+
+          {% if data['takes-prescription-meds'] === "Yes" %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+            Prescription details
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+            {{ data['medication-details'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="medication-details?return=true">
+                Change<span class="nhsuk-u-visually-hidden"> details about your medications</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+            Repeat prescriptions
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+            {{ data['repeat-medication'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+            <a href="medication-details-repeat?return=true">
+              Change<span class="nhsuk-u-visually-hidden"> details about your repeat prescriptions</span>
+            </a>
+            </dd>
+          </div>
+          {% endif %}
+
+           <div class="nhsuk-summary-list__row">
+             <dt class="nhsuk-summary-list__key">
+               Do you want important information from your GP record to be available to other health and care professionals
+             </dt>
+             <dd class="nhsuk-summary-list__value">
+               {{ data['scr'] }}
+             </dd>
+             <dd class="nhsuk-summary-list__actions">
+               <a href="scr?return=true">
+                 Change<span class="nhsuk-u-visually-hidden"> whether you share your health information</span>
+               </a>
+             </dd>
+           </div>
+
+          </dl>
+        </form>
+
+        <h2 class="nhsuk-heading-m">Submit your application</h2>
+
+        <span class="nhsuk-u-visually-hidden">Information:</span>
+        <p>By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+        {{ button({
           "text": "Accept and submit",
           "href": "confirmation-page"
         }) }}
