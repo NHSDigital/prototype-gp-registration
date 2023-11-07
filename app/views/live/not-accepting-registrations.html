@@ -1,0 +1,40 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = data.presets[0].gpsurgery + " is not accepting registrations from this address"  %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": '#',
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+    <p>Some GP surgeries will only accept patients that live within the area they cover.</p>
+
+    <p>Use the Find a GP service to look for a GP surgery that covers your postcode or is accepting out of area registrations. </p>
+
+    {{ actionLink({
+      "text": "Find a GP",
+      "href": "https://www.nhs.uk/service-search/find-a-gp"
+    }) }}
+
+  </div>
+</div>
+
+
+{% endblock %}
