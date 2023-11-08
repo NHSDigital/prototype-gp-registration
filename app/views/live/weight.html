@@ -11,6 +11,13 @@
   {% set heading = 'What is your weight?' %}
 {% endif %}
 
+{% if (data['under-16-years'] === "true") %}
+  {% set link = 'scr' %}
+{% else %}
+  {% set link = 'how-often-do-you-drink-alcohol' %}
+{% endif %}
+
+
 {% block pageTitle %}
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
@@ -28,7 +35,7 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-        <form action="how-often-do-you-drink-alcohol" method="post" autocomplete="off">
+        <form action="{{ link }}" method="post" autocomplete="off">
 
           {% include 'live/includes/step.html' %}
 
@@ -65,7 +72,7 @@
 
           </div>
 
-          <form action="weight" method="post" autocomplete="off">
+          <form action="{{ link }}" method="post" autocomplete="off">
 
             <div class="current-address-form hidden-section">
 
@@ -109,6 +116,8 @@
         </div>
       </div>
 
+{% include 'live/includes/devmode.html' %}
+
 {% endblock %}
 
 {% block pageScripts %}
@@ -125,7 +134,6 @@
     });
 
   </script>
-{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

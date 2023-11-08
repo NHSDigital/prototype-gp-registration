@@ -13,9 +13,36 @@
         <a href="?who-is-being-registered=myself">Self</a>
       </li>
       <li>
-        <a href="?who-is-being-registered=dependant">Dependant</a>
+        <a href="?who-is-being-registered=dependant&relation=Parent%20or%20guardian">Dependant - parent or guardian</a>
+      </li>
+      <li>
+        <a href="?who-is-being-registered=dependant&relation=Carer">Dependant - carer</a>
+      </li>
+      <li>
+        <a href="?who-is-being-registered=dependant&relation=Other">Dependant - other</a>
       </li>
     </ul>
+
+    <h4>Age</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="?under-18-years=false&under-16-years=false&under-13-years=false&under-12-months=false">Over 18</a>
+      </li>
+      <li>
+        <a href="?under-18-years=true&under-16-years=true&under-13-years=true&under-12-months=true">Under 1</a>
+      </li>
+      <li>
+        <a href="?under-18-years=true&under-16-years=true&under-13-years=true&under-12-months=false">Under 13</a>
+      </li>
+      <li>
+        <a href="?under-18-years=true&under-16-years=true&under-13-years=false&under-12-months=false">Under 16</a>
+      </li>
+      <li>
+        <a href="?under-18-years=true&under-16-years=false&under-13-years=false&under-12-months=false">Under 18</a>
+      </li>
+
+    </ul>
+
   </div>
 </details>
 {% endif %}

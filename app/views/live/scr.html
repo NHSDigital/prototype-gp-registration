@@ -7,11 +7,17 @@
 
 {% set heading = "Do you want important information from your GP record to be available to other health and care professionals?" %}
 
-{% if (data['smoke-amount']) %}
-  {% set link = 'do-you-smoke-amount' %}
+{% if (data['under-16-years'] === "true") %}
+  {% set link = 'weight' %}
 {% else %}
-  {% set link = 'do-you-smoke' %}
+  {% if (data['smoke-amount']) %}
+    {% set link = 'do-you-smoke-amount' %}
+  {% else %}
+    {% set link = 'do-you-smoke' %}
+  {% endif %}
 {% endif %}
+
+
 
 {% block pageTitle %}
   {{ heading }} - {{ ServiceName }} - NHS
