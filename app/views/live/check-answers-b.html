@@ -672,6 +672,8 @@ Recently moved{% set serviceHome = '/live/start' %}
            </dd>
           </div>
 
+     {% if data['under-16-years'] !== 'true' %}
+
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Drinks alcohol
@@ -775,6 +777,8 @@ Recently moved{% set serviceHome = '/live/start' %}
           <!--              </dd>-->
           <!--            </div>-->
           {% endif %}
+
+     {% endif %}
 
           <div class="nhsuk-summary-list__row">
            <dt class="nhsuk-summary-list__key">
@@ -1235,6 +1239,8 @@ Recently moved{% set serviceHome = '/live/start' %}
       </div>
     </div>
 
+{% include 'live/includes/devmode.html' %}
+
 {% endblock %}
 
 {% block pageScripts %}
@@ -1255,8 +1261,6 @@ Recently moved{% set serviceHome = '/live/start' %}
 
   });
 </script>
-
-{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 
