@@ -81,6 +81,16 @@ module.exports = (router) => {
     }
   })
 
+// routing for dependents
+  router.post('/live/how-can-we-contact-inputs-prompt-answer/', function (req, res) {
+    var communicationNeeds = req.session.data['has-communication-needs']
+    if (communicationNeeds === "Yes"){
+      res.redirect('/live/what-are-your-communication-needs')
+    } else {
+      res.redirect('/live/what-is-your-sex')
+    }
+  })
+
 // Does user have communication needs
   router.post('/live/do-you-have-communication-needs-answer/', function (req, res) {
     var communicationNeeds = req.session.data['has-communication-needs']
@@ -163,21 +173,11 @@ module.exports = (router) => {
   })
 
   router.post("/live/check-schooling", function(req,res) {
-    var schooling = req.session.data["schooling"];
-    console.log('check-schooling')
-    if (schooling == "None"){
-      res.redirect("/live/professional-involvement");
-    }
-    if (
-      schooling == "School" ||
-      schooling == "Nursery" ||
-      schooling == "Homeschool" ||
-      schooling == "School","Nursery" ||
-      schooling == "School","Nursery","Homeschool" ||
-      schooling == "School","Homeschool" ||
-      schooling == "Nursery","Homeschool"
-    ) {
-      res.redirect("/live/schooling-details");
+    let schooling = req.session.data["schooling"]
+    if (schooling[0] === "None" || schooling[0] === undefined){
+      res.redirect("/live/professional-involvement")
+    } else {
+      res.redirect("/live/schooling-details")
     }
   })
 
