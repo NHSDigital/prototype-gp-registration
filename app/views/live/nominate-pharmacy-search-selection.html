@@ -1,11 +1,14 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = 'Select a pharmacy' %}
+
 {% block pageTitle %}
-Select a pharmacy - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -20,200 +23,67 @@ Select a pharmacy - {{ ServiceName }} - NHS
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
+          <form action="confirm-pharmacy" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
 
             {{ hint({
-              "text": "Additional information",
+              "html": '<p>3 address found for<strong> ' + data['pharmacy-postcode'] + '</strong>',
               "classes": "nhsuk-u-margin-bottom-2"
             }) }}
 
-          <form action="confirm-pharmacy" method="post" autocomplete="off">
+            {{ radios({
+              "idPrefix": "have-previous-uk-address",
+              "name": "nominated-pharmacy",
+              "items": [
+                {
+                  value: "Highstreet pharmacy, 1 Town Street, London, SW1A 1AA",
+                  text: "Highstreet pharmacy",
+                  hint: {
+                    "html": '1 Town Street, London, SW1A 1AA<span class="nhsuk-body-s nhsuk-u-margin-bottom-4">Less than 50 metres away</span>'
+                  },
+                  checked: checked("nominated-pharmacy", "Highstreet pharmacy, 1 Town Street, London, SW1A 1AA")
+                },
+                {
+                  value: "Boots, 2 Town Street, London, SW1A 1AA",
+                  text: "Boots",
+                  hint: {
+                    "html": '2 Town Street, London, SW1A 1AA<span class="nhsuk-body-s nhsuk-u-margin-bottom-4">Less than 1.1km away</span>'
+                  },
+                  checked: checked("nominated-pharmacy", "Boots, 2 Town Street, London, SW1A 1AA")
+                },
+                {
+                  value: "Elliots pharmacy, 3 Town Street, London, SW1A 1AA",
+                  text: "Elliots pharmacy",
+                  hint: {
+                    "html": '3 Town Street, London, SW1A 1AA<span class="nhsuk-body-s nhsuk-u-margin-bottom-4">Less than 1.8km away</span>'
+                  },
+                  checked: checked("nominated-pharmacy", "Elliots pharmacy, 3 Town Street, London, SW1A 1AA")
+                },
+                {
+                "divider": "or"
+                },
+                {
+                  value: "Other~/live/nominate-pharmacy-search",
+                  text: "The pharmacy I want to nominate is not listed here",
+                  checked: checked("nominated-pharmacy", "Other")
+                }
+              ]
+            }) }}
 
-            <div class="nhsuk-form-group">
+            {% endcall %}
 
-                <fieldset class="nhsuk-fieldset" aria-describedby="nominated-pharmacy">
-                  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                    <h1 class="nhsuk-fieldset__heading">
-                      Select a pharmacy
-                    </h1>
-                  </legend>
-
-                  <div class="nhsuk-hint" id="pharmacy-hint">
-                    <p>10 address found for<strong>{{ data['pharmacy-postcode'] }}</strong> <strong>{{ data['find-current-address'] }}</strong></p>
-                  </div>
-
-                <div class="nhsuk-radios__item  nhsuk-u-margin-top-4 ">
-                  <input class="nhsuk-radios__input" id="practice-1" name="practice" type="radio" value="Highstreet pharmacy, 1 Town Street, London, SW1A 1AA">
-                  <label class="nhsuk-label nhsuk-radios__label" for="practice-1">Highstreet pharmacy</label>
-                  <span class="nhsuk-hint nhsuk-radios__hint">
-
-                    <span>
-                      1 Town Street, London, SW1A 1AA
-                    </span>
-
-                    <span class="nhsuk-body-s nhsuk-u-margin-bottom-4">
-                       Less than 50 metres away
-                    </span>
-
-                  </span>
-                </div>
-
-                <div class="nhsuk-radios__item  nhsuk-u-margin-top-4">
-                  <input class="nhsuk-radios__input" id="practice-2" name="practice" type="radio" value="Boots, 2 Town Street, London, SW1A 1AA">
-                  <label class="nhsuk-label nhsuk-radios__label" for="practice-2">Boots</label>
-                  <span class="nhsuk-hint nhsuk-radios__hint">
-
-                    <span>
-                      2 Town Street, London, SW1A 1AA
-                    </span>
-
-                    <span class="nhsuk-body-s nhsuk-u-margin-bottom-4">
-                       Less than 1.1km away
-                    </span>
-
-                  </span>
-                </div>
-
-                <div class="nhsuk-radios__item  nhsuk-u-margin-top-4">
-                  <input class="nhsuk-radios__input" id="practice-3" name="practice" type="radio" value="Elliots pharmacy, 3 Town Street, London, SW1A 1AA">
-                  <label class="nhsuk-label nhsuk-radios__label" for="practice-3">Elliots pharmacy</label>
-                  <span class="nhsuk-hint nhsuk-radios__hint">
-
-                    <span>
-                      3 Town Street, London, SW1A 1AA
-                    </span>
-
-                    <span class="nhsuk-body-s nhsuk-u-margin-bottom-4">
-                       Less than 1.8km away
-                    </span>
-
-                  </span>
-                </div>
-
-                <div class="nhsuk-radios__item  nhsuk-u-margin-top-4">
-                  <input class="nhsuk-radios__input" id="practice-4" name="practice" type="radio" value="Boots pharmacy, 4 Town Street, London, SW1A 1AA">
-                  <label class="nhsuk-label nhsuk-radios__label" for="practice-4">Boots pharmacy</label>
-                  <span class="nhsuk-hint nhsuk-radios__hint">
-
-                    <span>
-                      4 Town Street, London, SW1A 1AA
-                    </span>
-
-                    <span class="nhsuk-body-s nhsuk-u-margin-bottom-4">
-                       Less than 2.4km away
-                    </span>
-
-                  </span>
-                </div>
-
-                <div class="nhsuk-radios__item  nhsuk-u-margin-top-4">
-                  <input class="nhsuk-radios__input" id="practice-5" name="practice" type="radio" value="Andrews pharmacy, 5 Town Street, London, SW1A 1AA">
-                  <label class="nhsuk-label nhsuk-radios__label" for="practice-5">Andrews pharmacy</label>
-                  <span class="nhsuk-hint nhsuk-radios__hint">
-
-                    <span>
-                      5 Town Street, London, SW1A 1AA
-                    </span>
-
-                    <span class="nhsuk-body-s nhsuk-u-margin-bottom-4">
-                       Less than 3.4km away
-                    </span>
-
-                  </span>
-                </div>
-
-                <div class="nhsuk-radios__item  nhsuk-u-margin-top-4">
-                  <input class="nhsuk-radios__input" id="practice-6" name="practice" type="radio" value="Pharmacy, 6 Town Street, London, SW1A 1AA">
-                  <label class="nhsuk-label nhsuk-radios__label" for="practice-6">Johns pharmacy</label>
-                  <span class="nhsuk-hint nhsuk-radios__hint">
-
-                    <span>
-                      6 Town Street, London, SW1A 1AA
-                    </span>
-
-                    <span class="nhsuk-body-s nhsuk-u-margin-bottom-4">
-                       Less than 4.4km away
-                    </span>
-
-                  </span>
-                </div>
-
-                <div class="nhsuk-radios__item  nhsuk-u-margin-top-4">
-                  <input class="nhsuk-radios__input" id="practice-7" name="practice" type="radio" value="Pharmacy, 7 Town Street, London, SW1A 1AA">
-                  <label class="nhsuk-label nhsuk-radios__label" for="practice-7">Daves pharmacy</label>
-                  <span class="nhsuk-hint nhsuk-radios__hint">
-
-                    <span>
-                      7 Town Street, London, SW1A 1AA
-                    </span>
-
-                    <span class="nhsuk-body-s nhsuk-u-margin-bottom-4">
-                       Less than 4.4km away
-                    </span>
-
-                  </span>
-                </div>
-
-                <div class="nhsuk-radios__item  nhsuk-u-margin-top-4">
-                  <input class="nhsuk-radios__input" id="practice-8" name="practice" type="radio" value="Pharmacy, 8 Town Street, London, SW1A 1AA">
-                  <label class="nhsuk-label nhsuk-radios__label" for="practice-8">Petes pharmacy</label>
-                  <span class="nhsuk-hint nhsuk-radios__hint">
-
-                    <span>
-                      8 Town Street, London, SW1A 1AA
-                    </span>
-
-                    <span class="nhsuk-body-s nhsuk-u-margin-bottom-4">
-                       Less than 4.4km away
-                    </span>
-
-                  </span>
-                </div>
-
-                <div class="nhsuk-radios__item  nhsuk-u-margin-top-4">
-                  <input class="nhsuk-radios__input" id="practice-9" name="practice" type="radio" value="Pharmacy, 9 Town Street, London, SW1A 1AA">
-                  <label class="nhsuk-label nhsuk-radios__label" for="practice-9">Olives pharmacy</label>
-                  <span class="nhsuk-hint nhsuk-radios__hint">
-
-                    <span>
-                      9 Town Street, London, SW1A 1AA
-                    </span>
-
-                    <span class="nhsuk-body-s nhsuk-u-margin-bottom-4">
-                       Less than 4.4km away
-                    </span>
-
-                  </span>
-                </div>
-
-                <div class="nhsuk-radios__item  nhsuk-u-margin-top-4">
-                  <input class="nhsuk-radios__input" id="practice-10" name="practice" type="radio" value="Pharmacy, 10 Town Street, London, SW1A 1AA">
-                  <label class="nhsuk-label nhsuk-radios__label" for="practice-10">Boots pharmacy</label>
-                  <span class="nhsuk-hint nhsuk-radios__hint">
-
-                    <span>
-                      10 Town Street, London, SW1A 1AA
-                    </span>
-
-                    <span class="nhsuk-body-s nhsuk-u-margin-bottom-4">
-                       Less than 4.4km away
-                    </span>
-
-                  </span>
-                </div>
-
-                <div class="nhsuk-radios__divider">or</div>
-
-                <div class="nhsuk-radios__item  nhsuk-u-margin-top-4">
-                  <input class="nhsuk-radios__input" id="practice-6" name="practice" type="radio" value="other~/live/nominate-pharmacy-search">
-                  <label class="nhsuk-label nhsuk-radios__label" for="practice-6">The pharmacy I want to nominate is not listed here</label>
-
-                </div>
-
-                </div>
-
-                <p>
-                  <a href="nominate-pharmacy-manual" id="enter-address-manually-link">Enter the address manually</a>
-                </p>
+              <p>
+                <a href="nominate-pharmacy-manual" id="enter-address-manually-link">Enter the address manually</a>
+              </p>
 
               {{ button({
                   "text": "Continue"
@@ -222,6 +92,8 @@ Select a pharmacy - {{ ServiceName }} - NHS
           </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

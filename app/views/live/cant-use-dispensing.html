@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Are they returning from overseas?' %}
+  {% set heading = data['name-first-name'] + ' is not able to get their prescription items direct from ' + data.presets[0].gpsurgery %}
 {% else %}
-  {% set heading = 'Are you returning from overseas?' %}
+  {% set heading = 'You are not able to get your prescription items direct from ' + data.presets[0].gpsurgery  %}
 {% endif %}
 
 {% block pageTitle %}
@@ -27,10 +27,9 @@
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
+          <form action="check-answers-3" method="post" autocomplete="off">
 
-          <form action="" method="post" autocomplete="off">
-
-            {% include 'live/includes/step.html' %}
+          {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
@@ -40,23 +39,12 @@
               }
             }) %}
 
-            {{ radios({
-              "idPrefix": "overseas",
-              "name": "overseas",
-              "items": [
-                {
-                  "value": "Yes~/live/date-left-uk",
-                  "text": "Yes",
-                  checked: checked("overseas", "Yes")
-                },
-                {
-                  "value": "No~/live/check-answers-2",
-                  "text": "No",
-                  checked: checked("overseas", "No")
+            <p>To get prescription items such as medicines or medical appliances direct from a GP surgery a patient must either:</p>
 
-                }
-              ]
-            }) }}
+            <ul class="nhsuk-list nhsuk-list--bullet">
+              <li>live more than 1 mile from their nearest pharmacy, or</li>
+              <li>have serious difficulty travelling to or communicating with their nearest pharmacy</li>
+            </ul>
 
             {% endcall %}
 
@@ -66,7 +54,7 @@
 
           </form>
         </div>
-      </div>
+       </div>
 
 {% include 'live/includes/devmode.html' %}
 

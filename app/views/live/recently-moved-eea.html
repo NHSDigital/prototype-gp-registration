@@ -1,16 +1,25 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Has ' + data['name-first-name'] + ' moved to UK from living in EU, EEA or Switzerland?' %}
+  {% set hintText = 'They may need to pay an immigration health surcharge as part of their visa application if they are staying for 6 months or more.' %}
+{% else %}
+  {% set heading = 'Have you moved to UK from living in EU, EEA or Switzerland?' %}
+  {% set hintText = 'You may need to pay an immigration health surcharge as part of your visa application if you're staying for 6 months or more.' %}
+{% endif %}
+
 {% block pageTitle %}
-Have you moved to UK from living in EU, EEA or Switzerland? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "recently-moved-date",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,27 +32,21 @@ Have you moved to UK from living in EU, EEA or Switzerland? - {{ ServiceName }} 
 
         <form action="" method="post" autocomplete="off">
 
+          {% include 'live/includes/step.html' %}
+
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
           {{ hint({
-            "text": "Registration type",
+            "text": hintText,
             "classes": "nhsuk-u-margin-bottom-2"
           }) }}
 
-          {% if (data['who-is-being-registered'] == "dependant") %}
-
-          <h1 class="nhsuk-heading-l">Has {{ data ['name-first-name'] }} moved to UK from living in EU, EEA or Switzerland?</h1>
-
-          {% call fieldset({
-            legend: {
-              text: "",
-              classes: "nhsuk-fieldset__legend--l",
-              isPageHeading: true
-            }
-          }) %}
-
-          <div class="nhsuk-hint" id="contact-hint">
-            <p>They may need to pay an immigration health surcharge as part of their visa application if they are staying for 6 months or more.</p>
-          </div>
-
           {{ radios({
             "idPrefix": "eea",
             "name": "eea",
@@ -68,47 +71,6 @@ Have you moved to UK from living in EU, EEA or Switzerland? - {{ ServiceName }} 
           }) }}
 
           {% endcall %}
-
-          {% else %}
-
-          {% call fieldset({
-            legend: {
-              text: "Have you moved to UK from living in EU, EEA or Switzerland?",
-              classes: "nhsuk-fieldset__legend--l",
-              isPageHeading: true
-            }
-          }) %}
-
-          <div class="nhsuk-hint" id="contact-hint">
-            <p>You may need to pay an immigration health surcharge as part of your visa application if you're staying for 6 months or more.</p>
-          </div>
-
-          {{ radios({
-            "idPrefix": "eea",
-            "name": "eea",
-            "items": [
-              {
-                "value": "Yes~/live/recently-moved-documents",
-                "text": "Yes",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("eea", "Yes")
-              },
-              {
-                "value": "No~/live/immigration-surcharge",
-                "text": "No",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("eea", "No")
-              }
-            ]
-          }) }}
-
-          {% endcall %}
-
-          {% endif %}
 
           {{ button({
             "text": "Continue"
@@ -118,6 +80,8 @@ Have you moved to UK from living in EU, EEA or Switzerland? - {{ ServiceName }} 
 
       </div>
     </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

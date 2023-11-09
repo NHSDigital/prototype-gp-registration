@@ -1,11 +1,14 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = "Where was " + data['name-first-name'] + " born?" %}
+
 {% block pageTitle %}
-Where was {{ data ['name-first-name'] }} born? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,16 +26,11 @@ Where was {{ data ['name-first-name'] }} born? - {{ ServiceName }} - NHS
 
         <form action="do-you-know-previous-postcode-when-baby-born" method="post" autocomplete="off">
 
-          {{ hint({
-            "text": "Patient details",
-            "classes": "nhsuk-u-margin-bottom-2"
-          }) }}
-
-          <h1 class="nhsuk-heading-l">Where was {{ data ['name-first-name'] }} born?</h1>
+        {% include 'live/includes/step.html' %}
 
           {% call fieldset({
             legend: {
-              text: "",
+              text: heading,
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
@@ -45,42 +43,27 @@ Where was {{ data ['name-first-name'] }} born? - {{ ServiceName }} - NHS
               {
                 "value": "England",
                 "text": "England",
-                "hint": {
-                  "text": ""
-                },
                 checked: checked("child-born", "England")
               },
               {
                 "value": "Wales",
                 "text": "Wales",
-                "hint": {
-                  "text": ""
-                },
                 checked: checked("child-born", "England")
               },
               {
-                "value": "Isle of man",
-                "text": "Isle of man",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("child-born", "Isle of man")
+                "value": "Isle of Man",
+                "text": "Isle of Man",
+                checked: checked("child-born", "Isle of Man")
               },
               {
                 "value": "Scotland",
                 "text": "Scotland",
-                "hint": {
-                  "text": ""
-                },
                 checked: checked("child-born", "Scotland")
               },
               {
-                "value": "Northern ireland",
-                "text": "Northern ireland",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("child-born", "Northern ireland")
+                "value": "Northern Ireland",
+                "text": "Northern Ireland",
+                checked: checked("child-born", "Northern Ireland")
               },
               {
                 "divider": "or"
@@ -88,9 +71,6 @@ Where was {{ data ['name-first-name'] }} born? - {{ ServiceName }} - NHS
               {
                 "value": "Outside of the UK",
                 "text": "Outside of the UK",
-                "hint": {
-                  "text": ""
-                },
                 checked: checked("child-born", "Outside of the UK")
               }
             ]
@@ -107,6 +87,8 @@ Where was {{ data ['name-first-name'] }} born? - {{ ServiceName }} - NHS
       </div>
     </div>
 {% endblock %}
+
+{% include 'live/includes/devmode.html' %}
 
 {% block footer %}
   {% include 'live/includes/footer.html' %}

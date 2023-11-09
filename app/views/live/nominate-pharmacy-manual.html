@@ -1,11 +1,14 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = 'What is the address of the pharmacy?'  %}
+
 {% block pageTitle %}
-What is the address of the pharmacy? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -20,18 +23,15 @@ What is the address of the pharmacy? - {{ ServiceName }} - NHS
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
           <form action="do-you-previous-address" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Additional information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+            {% include 'live/includes/step.html' %}
 
               {% call fieldset({
                 legend: {
-                  "text": "What is the address of the pharmacy?",
-                  "classes": "nhsuk-fieldset__legend--l"
+                  text: heading,
+                  classes: "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
                 }
               }) %}
 
@@ -91,6 +91,8 @@ What is the address of the pharmacy? - {{ ServiceName }} - NHS
           </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

@@ -1,11 +1,14 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = 'Choose type of pharmacy'  %}
+
 {% block pageTitle %}
-Choose type of pharmacy - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -22,17 +25,15 @@ Choose type of pharmacy - {{ ServiceName }} - NHS
         <div class="nhsuk-grid-column-two-thirds">
 
           <form action="" method="post" autocomplete="off">
-            {{ hint({
-              "text": "Additional information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+
+            {% include 'live/includes/step.html' %}
 
             {{ radios({
               "idPrefix": "nominate-pharmacy",
               "name": "nominate-pharmacy",
               "fieldset": {
                 "legend": {
-                  "text": "Choose type of pharmacy",
+                  "text": heading,
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
@@ -42,7 +43,7 @@ Choose type of pharmacy - {{ ServiceName }} - NHS
               },
               "items": [
                 {
-                  "value": "yes~/live/nominate-pharmacy-search",
+                  "value": "Yes~/live/nominate-pharmacy-search",
                   "text": "High Street pharmacy",
                   "hint": {
                     "text": "You can collect your prescription items in person from a pharmacy near to you. They may also deliver."
@@ -50,12 +51,12 @@ Choose type of pharmacy - {{ ServiceName }} - NHS
                   checked: checked("nominate-pharmacy", "Yes")
                 },
                 {
-                  "value": "no~/live/online-pharmacy",
+                  "value": "No~/live/online-pharmacy",
                   "text": "Online-only pharmacy",
                   "hint": {
                     "text": "These send your prescription items to you in the post. It's not possible for you to choose an online-only pharmacy during this registration process. You need to register directly with them instead."
                   },
-                  checked: checked("nominate-pharmacy", "no")
+                  checked: checked("nominate-pharmacy", "No")
                 }
               ]
             }) }}
@@ -67,6 +68,8 @@ Choose type of pharmacy - {{ ServiceName }} - NHS
           </form>
         </div>
        </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

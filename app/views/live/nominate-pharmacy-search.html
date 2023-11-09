@@ -1,11 +1,14 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = 'Find a pharmacy'  %}
+
 {% block pageTitle %}
-Find a pharmacy - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -20,17 +23,13 @@ Find a pharmacy - {{ ServiceName }} - NHS
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ hint({
-            "text": "Additional information",
-            "classes": "nhsuk-u-margin-bottom-2"
-          }) }}
-
           <form action="nominate-pharmacy-search-selection" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                "text": "Find a pharmacy",
+                "text": heading,
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
@@ -60,6 +59,8 @@ Find a pharmacy - {{ ServiceName }} - NHS
           </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

@@ -1,11 +1,18 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Is " + data['name-first-name'] + " registered with the Defence Medical Services?' %}
+{% else %}
+  {% set heading = 'Are you registered with the Defence Medical Services?' %}
+{% endif %}
+
 {% block pageTitle %}
-Are you registered with the Defence Medical Services - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,31 +30,20 @@ Are you registered with the Defence Medical Services - {{ ServiceName }} - NHS
 
           <form action="" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Additional information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">Is {{ data ['name-first-name'] }} registered with the Defence Medical Services?</h1>
-
-            {% else %}
-
-            <h1 class="nhsuk-heading-l">Are you registered with the Defence Medical Services?</h1>
-
-            {% endif %}
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>You may be registered with the Defence Medical Services (DMS) if you or a family member were in the UK armed forces and this is the first time you are registering with an NHS GP since you or they left service.</p>
-            </div>
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
                 legend: {
-                  text: "",
+                  text: heading,
                   classes: "nhsuk-fieldset__legend--l",
                   isPageHeading: true
                 }
               }) %}
+
+              {{ hint({
+                "text": "You may be registered with the Defence Medical Services (DMS) if you or a family member were in the UK armed forces and this is the first time you are registering with an NHS GP since you or they left service.",
+                "classes": "nhsuk-u-margin-bottom-4"
+              }) }}
 
               {{ radios({
                 "idPrefix": "is-armed-forces-member",
@@ -67,21 +63,23 @@ Are you registered with the Defence Medical Services - {{ ServiceName }} - NHS
                 ]
               }) }}
 
-            {% endcall %}
+              {% endcall %}
 
-            {{ details({
-              "text": "Why are you asking this?",
-              "HTML": "<p>This helps us understand where to request your medical record from.</p>
-                      <p>If you have previously been a member of the UK armed forces you may also be able to access additional services for former service members.</p>"
-            }) }}
+              {{ details({
+                "text": "Why are you asking this?",
+                "html": "<p>This helps us understand where to request your medical record from.</p>
+                        <p>If you have previously been a member of the UK armed forces you may also be able to access additional services for former service members.</p>"
+              }) }}
 
-            {{ button({
-              "text": "Continue"
-            }) }}
+              {{ button({
+                "text": "Continue"
+              }) }}
 
           </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

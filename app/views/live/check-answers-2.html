@@ -1,11 +1,14 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = 'Please confirm these are the correct details for the person registering with ' + data.presets[0].gpsurgery %}
+
 {% block pageTitle %}
-Please confirm these are the correct details for the person registering with {GP surgery} - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,14 +26,11 @@ Please confirm these are the correct details for the person registering with {GP
 
           <form action="are-you-a-member-of-armed-forces" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Registration type",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+            {% include 'live/includes/step.html' %}
 
             {{ fieldset({
               "legend": {
-                "text": "Please confirm these are the correct details for the person registering with {GP surgery}",
+                "text": heading,
                 "classes": "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-5",
                 "isPageHeading": true
               }
@@ -377,6 +377,8 @@ Please confirm these are the correct details for the person registering with {GP
           </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

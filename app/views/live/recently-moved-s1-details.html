@@ -1,11 +1,14 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = 'S1 form?' %}
+
 {% block pageTitle %}
-S1 form - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,12 +26,9 @@ S1 form - {{ ServiceName }} - NHS
 
           <form action="overseas-declaration-s1" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Registration type",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+            {% include 'live/includes/step.html' %}
 
-            <h1 class="nhsuk-heading-l">S1 form</h1>
+            <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
             <p>If you have an S1 form you should take this into your chosen GP surgery at the earliest opportunity.</p>
             <p>You should only need to present your S1 form once on registration, though may be asked to show it at other times.</p>
@@ -40,6 +40,8 @@ S1 form - {{ ServiceName }} - NHS
           </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

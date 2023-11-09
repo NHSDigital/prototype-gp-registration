@@ -1,7 +1,7 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
-{% set section = '3' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
@@ -78,6 +78,8 @@
           </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
   
 {% endblock %}
 

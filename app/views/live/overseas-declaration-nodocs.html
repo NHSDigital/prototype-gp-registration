@@ -1,11 +1,14 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = 'For people arriving from EU, EEA or Swtizerland without EHIC or S1 form' %}
+
 {% block pageTitle %}
-For people arriving from EU, EEA or Swtizerland without EHIC or S1 form - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -19,15 +22,11 @@ For people arriving from EU, EEA or Swtizerland without EHIC or S1 form - {{ Ser
 {% block content %}
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
+          <form action="check-answers-2" method="post" autocomplete="off">
 
-        <form action="check-answers-2" method="post" autocomplete="off">
+          {% include 'live/includes/step.html' %}
 
-            {{ hint({
-              "text": "Registration type",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-          <h1 class="nhsuk-heading-l">For people arriving from EU, EEA or Swtizerland without EHIC or S1 form.</h1>
+          <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
           <p>By continuing you are agreeing to the following statements.</p>
           <p>I understand that registration with  a GP surgery is free of charge and that I can receive free medical care from them.</p>
@@ -46,6 +45,9 @@ For people arriving from EU, EEA or Swtizerland without EHIC or S1 form - {{ Ser
           </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
+
 {% endblock %}
 
 {% block footer %}

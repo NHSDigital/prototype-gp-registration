@@ -1,11 +1,14 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = 'Recent UK armed forces leavers and their families' %}
+
 {% block pageTitle %}
-Recent UK armed forces leavers and their families - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,12 +26,9 @@ Recent UK armed forces leavers and their families - {{ ServiceName }} - NHS
 
         <form action="do-you-need-a-interpreter" method="post" autocomplete="off">
 
-          {{ hint({
-            "text": "Additional information",
-            "classes": "nhsuk-u-margin-bottom-2"
-          }) }}
+          {% include 'live/includes/step.html' %}
 
-          <h1 class="nhsuk-heading-l">Recent UK armed forces leavers and their families</h1>
+          <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
           <p>After submitting your registration:</p>
 
@@ -63,6 +63,8 @@ Recent UK armed forces leavers and their families - {{ ServiceName }} - NHS
           </form>
         </div>
        </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

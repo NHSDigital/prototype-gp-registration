@@ -1,11 +1,18 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Would ' + data['name-first-name'] + ' have serious difficulty travelling to their nearest pharmacy to get medicines or medical appliances?' %}
+{% else %}
+  {% set heading = 'Would you have serious difficulty travelling to your nearest pharmacy to get medicines or medical appliances?' %}
+{% endif %}
+
 {% block pageTitle %}
-Would you have serious difficulty travelling to your nearest pharmacy to get medicines or medical appliances? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -20,27 +27,13 @@ Would you have serious difficulty travelling to your nearest pharmacy to get med
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ hint({
-            "text": "Registration type",
-            "classes": "nhsuk-u-margin-bottom-2"
-          }) }}
-
           <form action="are-you-a-member-of-armed-forces" method="post" autocomplete="off">
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">Would {{ data ['name-first-name'] }} have serious difficulty travelling to their nearest pharmacy to get medicines or medical appliances?</h1>
-
-            {% else %}
-
-            <h1 class="nhsuk-heading-l">Would you have serious difficulty travelling to your nearest pharmacy to get medicines or medical appliances?</h1>
-
-            {% endif %}
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -55,14 +48,14 @@ Would you have serious difficulty travelling to your nearest pharmacy to get med
               "name": "difficulty-in-reaching-pharmacy",
               "items": [
                 {
-                  "value": "Yes~/live/can-use-dispencing",
+                  "value": "Yes~/live/can-use-dispensing",
                   "text": "Yes",
-                  checked: checked("difficulty-in-reaching-pharmacy", "Yes")
+                  "checked": checked("difficulty-in-reaching-pharmacy", "Yes")
                 },
                 {
-                  "value": "No~/live/cant-use-dispencing",
+                  "value": "No~/live/cant-use-dispensing",
                   "text": "No",
-                  checked: checked("difficulty-in-reaching-pharmacy", "No")
+                  "checked": checked("difficulty-in-reaching-pharmacy", "No")
                 }
               ]
             }) }}
@@ -71,9 +64,7 @@ Would you have serious difficulty travelling to your nearest pharmacy to get med
 
             {{ details({
               "text": "Why are we asking this?",
-              "HTML": "
-              <p>If a patient has serious difficulty travelling to or communicating with their nearest pharmacy, they may be eligible to get their medicines or medical appliances direct from this GP surgery.</p>
-              "
+              "html": "<p>If a patient has serious difficulty travelling to or communicating with their nearest pharmacy, they may be eligible to get their medicines or medical appliances direct from this GP surgery.</p>"
             }) }}
 
             {{ button({
@@ -83,6 +74,8 @@ Would you have serious difficulty travelling to your nearest pharmacy to get med
           </form>
         </div>
        </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

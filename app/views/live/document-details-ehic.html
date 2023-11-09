@@ -1,11 +1,14 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = 'European health insurance card details?' %}
+
 {% block pageTitle %}
-European health insurance card details - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -20,17 +23,13 @@ European health insurance card details - {{ ServiceName }} - NHS
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
-
         <form action="overseas-declaration-ehic" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Registration type",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+          {% include 'live/includes/step.html' %}
 
           {% call fieldset({
             legend: {
-              text: "European health insurance card details",
+              text: heading,
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
@@ -94,8 +93,7 @@ European health insurance card details - {{ ServiceName }} - NHS
                      "classes": "nhsuk-input--width-4",
                      "value": data['ehic-dob-year']
                    }
-                 ]
-                         }) }}
+                 ]}) }}
 
 
               <div class="nhsuk-form-group">
@@ -163,6 +161,9 @@ European health insurance card details - {{ ServiceName }} - NHS
       </form>
     </div>
   </div>
+
+{% include 'live/includes/devmode.html' %}
+
 {% endblock %}
 
 {% block footer %}

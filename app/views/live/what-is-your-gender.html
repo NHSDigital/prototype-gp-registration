@@ -6,15 +6,26 @@
 
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = 'Which of the following best describes ' + data['name-first-name'] %}
-  {% set hintText = 'The NHS and your GP surgery can use these details to call, text or email them about health care services. All phone numbers must be registered in the UK.' %}
+  {% set hintText = '<p>You can choose any of these options and we should be able to match their records accurately.</p><p>Your answer does not have to match the sex they were given at birth.</p>' %}
 {% else %}
-  {% set heading = 'What is your sex as recorded on your NHS record?' %}
-  {% set hintText = 'The NHS and your GP surgery can use these details to call, text or email you about health care services. All phone numbers must be registered in the UK.' %}
+  {% set heading = 'Which of the following best describes you?' %}
+  {% set hintText = '<p>You can choose any of these options and we should be able to match to your records accurately.</p><p>Your answer does not have to match the sex you were given at birth.</p>' %}
 {% endif %}
 
 {% block pageTitle %}
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
+
+{% set otherHtml %}
+  {{ input({
+    id: "other-gender",
+    name: "other-gender",
+    classes: "nhsuk-u-width-two-thirds",
+    label: {
+      text: "Gender"
+    }
+  }) }}
+{% endset -%}
 
 {% block outerContent %}
   {{ backLink({
@@ -33,43 +44,19 @@
 
             {% include 'live/includes/step.html' %}
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">Which of the following best describes {{ data ['name-first-name'] }}?</h1>
-
-            {% else %}
-
-            <h1 class="nhsuk-heading-l">Which of the following best describes you?</h1>
-
-            {% endif %}
-
-            {% set otherHtml %}
-              {{ input({
-                id: "other",
-                name: "other",
-                classes: "nhsuk-u-width-two-thirds",
-                label: {
-                  text: "Gender"
-                }
-              }) }}
-            {% endset -%}
-
             {{ radios({
               "idPrefix": "sex",
               "name": "sex",
               "fieldset": {
                 "legend": {
-                  "text": "",
+                  "text": heading,
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
               },
               "hint": {
-                "html": "<p>
-                  You can choose any of these options and we should be able to match their records accurately.</p>
-                  <p>Your answer does not have to match the sex they were given at birth.</p>"
+                "html": hintText
               },
-
               "items": [
                 {
                   "value": "Female",

@@ -1,11 +1,18 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Would ' + data.presets[0].gpsurgery + ' like to choose or change a pharmacy for their prescriptions?' %}
+{% else %}
+  {% set heading = 'Would you like to choose a pharmacy for your prescription items?'  %}
+{% endif %}
+
 {% block pageTitle %}
-Would you like to choose a pharmacy for your prescription items? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -22,72 +29,35 @@ Would you like to choose a pharmacy for your prescription items? - {{ ServiceNam
         <div class="nhsuk-grid-column-two-thirds">
 
           <form action="" method="post" autocomplete="off">
-            {{ hint({
-              "text": "Additional information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
 
-          {% if (data['who-is-being-registered'] == "dependant") %}
-
-          <h1 class="nhsuk-heading-l">Would  {{ data ['name-first-name'] }} like to choose or change a pharmacy for their prescriptions?</h1>
+            {% include 'live/includes/step.html' %}
 
             {{ radios({
               "idPrefix": "nominate-pharmacy",
               "name": "nominate-pharmacy",
               "fieldset": {
                 "legend": {
-                  "text": "",
+                  "text": heading,
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
               },
               "hint": {
-                "html": "Choosing or nominating a pharmacy means the GP surgery will send prescriptions directly to the pharmacy."
+                "text": "Choosing or nominating a pharmacy means the GP surgery will send prescriptions directly to the pharmacy."
               },
               "items": [
                 {
-                  "value": "yes~/live/nominate-online-or-street",
+                  "value": "Yes~/live/nominate-online-or-street",
                   "text": "Yes, choose a pharmacy",
                   checked: checked("nominate-pharmacy", "Yes")
                 },
                 {
-                  "value": "no~/live/check-answers-3",
+                  "value": "No~/live/check-answers-3",
                   "text": "No",
-                  checked: checked("nominate-pharmacy", "no")
+                  checked: checked("nominate-pharmacy", "No")
                 }
               ]
             }) }}
-
-            {% else %}
-
-            {{ radios({
-              "idPrefix": "nominate-pharmacy",
-              "name": "nominate-pharmacy",
-              "fieldset": {
-                "legend": {
-                  "text": "Would you like to choose a pharmacy for your prescription items?",
-                  "classes": "nhsuk-fieldset__legend--l",
-                  "isPageHeading": "true"
-                }
-              },
-              "hint": {
-                "html": "Choosing or nominating a pharmacy means the GP surgery will send prescriptions directly to the pharmacy."
-              },
-              "items": [
-                {
-                  "value": "yes~/live/nominate-online-or-street",
-                  "text": "Yes, choose a pharmacy",
-                  checked: checked("nominate-pharmacy", "Yes")
-                },
-                {
-                  "value": "no~/live/are-you-a-member-of-armed-forces",
-                  "text": "No",
-                  checked: checked("nominate-pharmacy", "no")
-                }
-              ]
-            }) }}
-
-            {% endif %}
 
             {{ button({
               "text": "Continue"
@@ -96,6 +66,8 @@ Would you like to choose a pharmacy for your prescription items? - {{ ServiceNam
         </form>
       </div>
      </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

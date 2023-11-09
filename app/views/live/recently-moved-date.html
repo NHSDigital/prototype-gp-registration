@@ -1,16 +1,23 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'When did they enter the UK?' %}
+{% else %}
+  {% set heading = 'When did you enter the UK?' %}
+{% endif %}
+
 {% block pageTitle %}
-When did you enter the UK? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "recently-moved-to the uk",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -20,27 +27,16 @@ When did you enter the UK? - {{ ServiceName }} - NHS
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
-
-        {{ backLink({
-          text: "Go back",
-          href: "javascript:history.go(-1)"
-        }) }}
-
         <form action="recently-moved-eea" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Registration type",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-          {% if (data['who-is-being-registered'] == "dependant") %}
+          {% include 'live/includes/step.html' %}
 
           {{ dateInput({
             "id": "moved",
             "namePrefix": "moved",
             "fieldset": {
               "legend": {
-                "text": "When did they enter the UK?",
+                "text": heading,
                 "classes": "nhsuk-label--l",
                 "isPageHeading": true
               }
@@ -63,39 +59,6 @@ When did you enter the UK? - {{ ServiceName }} - NHS
               }
             ]
           }) }}
-
-          {% else %}
-
-          {{ dateInput({
-            "id": "moved",
-            "namePrefix": "moved",
-            "fieldset": {
-              "legend": {
-                "text": "When did you enter the UK?",
-                "classes": "nhsuk-label--l",
-                "isPageHeading": true
-              }
-            },
-            "items": [
-              {
-                "name": "day",
-                "classes": "nhsuk-input--width-2",
-                "value": data['moved-day']
-              },
-              {
-                "name": "month",
-                "classes": "nhsuk-input--width-2",
-                "value": data['moved-month']
-              },
-              {
-                "name": "year",
-                "classes": "nhsuk-input--width-4",
-                "value": data['moved-year']
-              }
-            ]
-          }) }}
-
-          {% endif %}
 
           {{ button({
             "text": "Continue"
@@ -105,6 +68,8 @@ When did you enter the UK? - {{ ServiceName }} - NHS
 
       </div>
     </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

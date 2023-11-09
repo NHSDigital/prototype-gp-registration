@@ -1,0 +1,190 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Which language do they need an interpreter for?' %}
+{% else %}
+  {% set heading = 'Which language do you need an interpreter for?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% set languageHtml %}
+  {{ input({
+    id: "interpreter-language-other",
+    name: "interpreter-language-other",
+    classes: "nhsuk-u-width-two-thirds",
+    label: {
+      text: "Language"
+    }
+  }) }}
+{% endset %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "do-you-need-an-interpreter",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="do-you-have-a-carer" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {{ radios({
+              "idPrefix": "interpreter-language",
+              "name": "interpreter-language",
+              "fieldset": {
+                "legend": {
+                  "text": heading,
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "items": [
+                {
+                  "value": "British Sign Language",
+                  "text": "British Sign Language",
+                  checked: checked("interpreter-language", "British Sign Language")
+                },
+                {
+                  "value": "Arabic",
+                  "text": "Arabic",
+                  checked: checked("interpreter-language", "Arabic")
+                },
+                {
+                  "value": "Bengali - Chatgaya",
+                  "text": "Bengali - Chatgaya",
+                  checked: checked("interpreter-language", "Bengali - Chatgaya")
+                },
+                {
+                  "value": "Bengali - Sylheti",
+                  "text": "Bengali - Sylheti",
+                  checked: checked("interpreter-language", "Bengali - Sylheti")
+                },
+                {
+                  "value": "Chinese - Mandarin",
+                  "text": "Chinese - Mandarin",
+                  checked: checked("interpreter-language", "Chinese - Mandarin")
+                },
+                {
+                  "value": "Chinese - Simplified",
+                  "text": "Chinese - Simplified",
+                  checked: checked("interpreter-language", "Chinese - Simplified")
+                },
+                {
+                  "value": "Farsi",
+                  "text": "Farsi",
+                  checked: checked("interpreter-language", "Farsi")
+                },
+                {
+                  "value": "French",
+                  "text": "French",
+                  checked: checked("interpreter-language", "French")
+                },
+                {
+                  "value": "Gaelic",
+                  "text": "Gaelic",
+                  checked: checked("interpreter-language", "Gaelic")
+                },
+                {
+                  "value": "German",
+                  "text": "German",
+                  checked: checked("interpreter-language", "German")
+                },
+                {
+                  "value": "Gujarati",
+                  "text": "Gujarati",
+                  checked: checked("interpreter-language", "Gujarati")
+                },
+                {
+                  "value": "Italian",
+                  "text": "Italian",
+                  checked: checked("interpreter-language", "Italian")
+                },
+                {
+                  "value": "Lithuanian",
+                  "text": "Lithuanian",
+                  checked: checked("interpreter-language", "Lithuanian")
+                },
+                {
+                  "value": "Polish",
+                  "text": "Polish",
+                  checked: checked("interpreter-language", "Polish")
+                },
+                {
+                  "value": "Portuguese",
+                  "text": "Portuguese",
+                  checked: checked("interpreter-language", "Portuguese")
+                },
+                {
+                  "value": "Punjabi",
+                  "text": "Punjabi",
+                  checked: checked("interpreter-language", "Punjabi")
+                },
+                {
+                  "value": "Somali",
+                  "text": "Somali",
+                  checked: checked("interpreter-language", "Somali")
+                },
+                {
+                  "value": "Spanish",
+                  "text": "Spanish",
+                  checked: checked("interpreter-language", "Spanish")
+                },
+                {
+                  "value": "Tamil",
+                  "text": "Tamil",
+                  checked: checked("interpreter-language", "Tamil")
+                },
+                {
+                  "value": "Turkish",
+                  "text": "Turkish",
+                  checked: checked("interpreter-language", "Turkish")
+                },
+                {
+                  "value": "Urdu",
+                  "text": "Urdu",
+                  checked: checked("interpreter-language", "Urdu")
+                },
+                {
+                  divider: "or"
+                },
+                {
+                  value: "Other language",
+                  text: "Other",
+                  conditional: {
+                    html: languageHtml
+                  },
+                  checked: checked("interpreter-language", "Other language")
+                }
+              ]
+            }) }}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+      </div>
+     </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

@@ -1,11 +1,18 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = data['name-first-name'] + ' may be able to get their prescription items direct from ' + data.presets[0].gpsurgery %}
+{% else %}
+  {% set heading = 'You may be able to get your prescription items direct from ' + data.presets[0].gpsurgery  %}
+{% endif %}
+
 {% block pageTitle %}
-You may be able to get your prescription items direct from {SURGERY NAME} - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -20,33 +27,19 @@ You may be able to get your prescription items direct from {SURGERY NAME} - {{ S
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          {{ hint({
-            "text": "Additional information",
-            "classes": "nhsuk-u-margin-bottom-2"
-          }) }}
-
           <form action="check-answers-3" method="post" autocomplete="off">
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">{{ data ['name-first-name'] }} may be able to get their prescription items direct from {SURGERY NAME}</h1>
-
-            {% else %}
-
-            <h1 class="nhsuk-heading-l">You may be able to get your prescription items direct from {SURGERY NAME}</h1>
-
-            {% endif %}
+          {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
-          <p>Your GP surgery may discuss this additional service with you.</p>
+            <p>Your GP surgery may discuss this additional service with you.</p>
 
             {% endcall %}
 
@@ -57,6 +50,8 @@ You may be able to get your prescription items direct from {SURGERY NAME} - {{ S
         </form>
       </div>
     </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

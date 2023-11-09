@@ -1,11 +1,18 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Can ' + data.presets[0].gpsurgery + ' contact ' + data['name-first-name'] + '?' %}
+{% else %}
+  {% set heading = 'Can ' + data.presets[0].gpsurgery + ' contact you?'  %}
+{% endif %}
+
 {% block pageTitle %}
-Can {Doctor's Surgery} contact you? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -20,72 +27,54 @@ Can {Doctor's Surgery} contact you? - {{ ServiceName }} - NHS
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
-
         <form action="do-you-have-emergency-contact" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+          {% include 'live/includes/step.html' %}
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
 
-            <h1 class="nhsuk-heading-l">Can {Doctor's Surgery} contact {{ data ['name-first-name'] }}?</h1>
-
-            <div class="nhsuk-hint" id="contact-hint">
-            <p>By giving consent, your GP surgery and the NHS can contact you using SMS or text messages, or by email about application, appointments, prescriptions or other medical services.
-          </div>
+          {{ hint({
+            "text": "By giving consent, your GP surgery and the NHS can contact you using SMS or text messages, or by email about application, appointments, prescriptions or other medical services.",
+            "classes": "nhsuk-u-margin-bottom-4"
+          }) }}
 
           {{ radios({
-            "idPrefix": "contact",
-            "name": "contact",
+            "idPrefix": "can-gp-contact-you",
+            "name": "can-gp-contact-you",
             "items": [
               {
                 "value": "Yes",
                 "text": "Yes",
-                checked: checked("contact", "Yes")
+                checked: checked("can-gp-contact-you", "Yes")
               },
               {
                 "value": "No",
                 "text": "No",
-                checked: checked("contact", "No")
+                checked: checked("can-gp-contact-you", "No")
               }
             ]
           }) }}
 
-            {% else %}
+          {% endcall %}
 
-            <h1 class="nhsuk-heading-l">Can {Doctor's Surgery} contact you?</h1>
-
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>By giving consent, your GP surgery and the NHS can contact you using SMS or text messages, or by email about application, appointments, prescriptions or other medical services.
-            </div>
-
-            {{ radios({
-              "idPrefix": "contact",
-              "name": "contact",
-              "items": [
-                {
-                  "value": "Yes",
-                  "text": "Yes",
-                  checked: checked("contact", "Yes")
-                },
-                {
-                  "value": "No",
-                  "text": "No",
-                  checked: checked("contact", "No")
-                }
-              ]
-            }) }}
-
-            {% endif %}
-
-            <button class="nhsuk-button" type="submit">
-              Continue
-            </button>
+          {{ button({
+            "text": "Continue"
+          }) }}
 
         </form>
       </div>
     </div>
 
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

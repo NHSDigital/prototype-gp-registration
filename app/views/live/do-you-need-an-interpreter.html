@@ -1,11 +1,18 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Does ' + data['name-first-name'] + ' need a language interpreter for their GP appointments?' %}
+{% else %}
+  {% set heading = 'Do you need a language interpreter for your GP appointments?' %}
+{% endif %}
+
 {% block pageTitle %}
-Do you need a language interpreter for your GP appointments? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -20,25 +27,16 @@ Do you need a language interpreter for your GP appointments? - {{ ServiceName }}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
           <form action="" method="post" autocomplete="off">
 
-
-            {{ hint({
-              "text": "Additional information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }}'s need a language interpreter for their GP appointments?</h1>
+            {% include 'live/includes/step.html' %}
 
             {{ radios({
               "idPrefix": "interpreter",
               "name": "interpreter",
               "fieldset": {
                 "legend": {
-                  "text": "",
+                  "text": heading,
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": "true"
                 }
@@ -59,37 +57,6 @@ Do you need a language interpreter for your GP appointments? - {{ ServiceName }}
                 }
               ]
             }) }}
-
-            {% else %}
-
-            {{ radios({
-              "idPrefix": "interpreter",
-              "name": "interpreter",
-              "fieldset": {
-                "legend": {
-                  "text": "Do you need a language interpreter for your GP appointments?",
-                  "classes": "nhsuk-fieldset__legend--l",
-                  "isPageHeading": "true"
-                }
-              },
-              "hint": {
-                "text": "The GP surgery might arrange an interpreter for appointments in person or over the phone or video call."
-              },
-              "items": [
-                {
-                  "value": "Yes~/live/do-you-need-a-interpreter-language",
-                  "text": "Yes",
-                  checked: checked("interpreter", "Yes")
-                },
-                {
-                  "value": "No~/live/do-you-have-a-carer",
-                  "text": "No",
-                  checked: checked("interpreter", "no")
-                }
-              ]
-            }) }}
-
-            {% endif %}
 
             {{ button({
               "text": "Continue"
@@ -98,6 +65,8 @@ Do you need a language interpreter for your GP appointments? - {{ ServiceName }}
           </form>
         </div>
        </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 
