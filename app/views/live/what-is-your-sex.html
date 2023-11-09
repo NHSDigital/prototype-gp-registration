@@ -6,7 +6,7 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'What is ' + data['name-first-name'] + '\'s sex as recorded on their NHS record?' %}
+  {% set heading = 'Which of the following best describes ' + data['name-first-name'] %}
 {% else %}
   {% set heading = 'What is your sex as recorded on your NHS record?' %}
 {% endif %}

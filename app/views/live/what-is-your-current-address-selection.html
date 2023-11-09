@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Select their address' %}
+  {% set heading = 'Select an address' %}
 {% else %}
-  {% set heading = 'Select your address' %}
+  {% set heading = 'Select an address' %}
 {% endif %}
 
 {% if (data['out-of-area'] === "out-of-area") %}
@@ -25,7 +25,7 @@
 
 {% block outerContent %}
   {{ backLink({
-    "href": "what-is-your-current-address-selection",
+    "href": "what-is-your-current-address",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -90,8 +90,8 @@
                     "divider": "or"
                   },
                   {
-                    "value": "wrong address~/live/what-is-your-current-address",
-                    "text": "The address is not listed here.",
+                    "value": "wrong address~/live/what-is-your-current-address-manual",
+                    "text": "I cannot find the address on the list.",
                     "checked": checked("select-current-address", "")
                   }
                 ]

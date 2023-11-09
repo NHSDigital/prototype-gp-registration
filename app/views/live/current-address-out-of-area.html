@@ -16,6 +16,8 @@
     text: "Go back",
     href: "javascript:history.go(-1)"
   }) }}
+{% endblock %}
+
 {% block content %}
 
 <div class="nhsuk-grid-row">
@@ -25,20 +27,19 @@
 
       {% include 'live/includes/step.html' %}
 
-      <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+      {% call fieldset({
+        legend: {
+          text: heading,
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
 
-      <p>Some GP surgeries will only accept patients that live within the area they cover. You can continue with this registration, but it may not be accepted.</p>
-
-      <p>Choosing a surgery outside your area means:</p>
-
-      <ul>
-       <li>you may not be offered home visits</li>
-       <li>it could affect referrals for hospital tests and treatment, or community health services</li>
-      </ul>
-
-      <p>You should speak to the GP surgery about your options, or find a surgery for this address using the <a href="https://www.nhs.uk/service-search/find-a-gp" target="_blank" rel="noopener noreferrer">Find a GP service.</a></p>
-
-      <p>Find out more about <a href="https://www.nhs.uk/nhs-services/gps/registering-with-a-gp-outside-your-area/" target="_blank" rel="noopener noreferrer">registering with a GP surgery outside the area you live.</a></p>
+      {{ hint({
+        "html": '<p>Some GP surgeries will only accept patients that live within their catchment areas. You can continue with this registration, but it may not be accepted.</p>
+          <p>By using the Find a GP service you can find a surgery for this address.</p>',
+        "classes": "nhsuk-u-margin-bottom-4"
+      }) }}
 
       {{ radios({
           "idPrefix": "use-ooo",
@@ -53,7 +54,7 @@
           },
           "items": [
             {
-              "value": "Yes~/live/how-can-we-contact-you",
+              "value": "Yes~/live/how-can-we-contact-inputs",
               "text": "Continue with this registration",
               "hint": {
                 "text": "If the surgery is not accepting out of area registrations they could reject this application."
@@ -62,14 +63,16 @@
             },
             {
               "value": "No~https://www.nhs.uk/service-search/find-a-gp",
-              "text": "Cancel this registration ",
+              "text": "Cancel this registration and use Find a GP ",
               "hint": {
-                "text": "Use the 'Find a GP' service to search for a GP that accepts patients from your postcode area. Any answers given so far will not be saved and you will have to start again."
+                "text": "This will end this registration and you will be sent to Find a GP. Any answers given so far will not be saved and a new registration will have to be submitted."
               },
               checked: checked("use-ooo", "No")
             }
           ]
        }) }}
+
+      {% endcall %}
 
       {{ button({
         "text": "Continue"

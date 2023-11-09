@@ -7,10 +7,10 @@
 
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = "Do you know the postcode " + data ['name-first-name'] + " used when they last registered with a UK GP?" %}
-  {% set hint = 'This will be the postcode they used last time they registered with a GP surgery.' %}
+  {% set hintText = 'This will be the postcode they used the last time they registered with a GP surgery.' %}
 {% else %}
   {% set heading = 'Do you know your postcode used when you last registered with a UK GP?' %}
-  {% set hint = 'This will be the postcode you used last time you registered with a GP surgery.' %}
+  {% set hintText = 'This will be the postcode you used the last time you registered with a GP surgery.' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -37,12 +37,14 @@
             legend: {
               text: heading,
               classes: "nhsuk-fieldset__legend--l",
-              isPageHeading: true,
-              "hint": {
-                "text": hint
-              }
+              isPageHeading: true
             }
           }) %}
+
+          {{ hint({
+            "text": hintText,
+            "classes": "nhsuk-u-margin-bottom-4"
+          }) }}
 
           {{ radios({
             "idPrefix": "do-you-know-previous-postcode",

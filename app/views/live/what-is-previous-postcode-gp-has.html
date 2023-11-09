@@ -7,10 +7,10 @@
 
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = "What postcode did " + data['name-first-name'] + " use when they last registered with a UK GP?" %}
-  {% set hint = 'This will be the postcode they used the last time they registered with a UK GP surgery.' %}
+  {% set hintText = 'This will be the postcode they used the last time they registered with a GP surgery.' %}
 {% else %}
   {% set heading = 'What postcode did you use when you last registered with a UK GP?' %}
-  {% set hint = 'This will be the postcode you used the last time you registered with a UK GP surgery.' %}
+  {% set hintText = 'This will be the postcode you used the last time you registered with a GP surgery.' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -19,7 +19,7 @@
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "registered-for-the-first-time",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -43,7 +43,7 @@
             }) %}
 
             {{ hint({
-                "text": hint
+                "text": hintText
             }) }}
 
             {{ input({

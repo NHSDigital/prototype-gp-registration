@@ -14,7 +14,7 @@
 {% if (data['registering-first-time'] === "No") %}
   {% set link = 'registered-for-the-first-time' %}
 {% else %}
-  {% set link = 'do-you-know-nhs-number' %}
+  {% set link = 'registered-for-the-first-time' %}
 {% endif %}
 
 {% if data['date-of-birth'][1] %}
@@ -22,15 +22,15 @@
 {% endif %}
 
 {% block pageTitle %}
-{{ heading }} - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
-{{ backLink({
-"href": link,
-"text": "Go back",
-"classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
-}) }}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -297,7 +297,24 @@
                 actions: {
                   items: [
                     {
-                      href: "what-is-your-dob?return=true",
+                      href: "do-you-know-previous-postcode-gp-has?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "date of birth"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Do they know the postcode they last registered with a UK GP?"
+                },
+                value: {
+                  text: data['gp-postcode-prev']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "what-is-previous-postcode-gp-has?return=true",
                       text: "Change",
                       visuallyHiddenText: "date of birth"
                     }
@@ -320,6 +337,8 @@
       </form>
     </div>
   </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

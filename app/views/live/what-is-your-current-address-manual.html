@@ -17,7 +17,7 @@
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "what-is-your-current-address",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -34,7 +34,7 @@
 
               {% call fieldset({
                 legend: {
-                  "text": "What is your current UK address?",
+                  "text": heading,
                   "classes": "nhsuk-fieldset__legend--l"
                 }
               }) %}

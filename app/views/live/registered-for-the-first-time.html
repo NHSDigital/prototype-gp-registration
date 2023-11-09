@@ -46,6 +46,11 @@
             }
           }) %}
 
+          {{ hint({
+          "text": 'A GP is the first point of contact for health problems.',
+            "classes": "nhsuk-u-margin-bottom-4"
+          }) }}
+
           {{ radios({
             "idPrefix": "registering-first-time",
             "name": "registering-first-time",
@@ -56,7 +61,7 @@
                 "checked": checked("registering-first-time", "Yes")
               },
               {
-                "value": "No~/live/what-is-previous-postcode-gp-has",
+                "value": "No~/live/do-you-know-previous-postcode-gp-has",
                 "text": "No",
                 "checked": checked("registering-first-time", "No")
               }

@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Are you sure ' + data['name-first-name'] + ' has no access to a phone or email?' %}
+  {% set heading = 'Are you sure that ' + data['name-first-name'] + ' has no access to a phone or email?' %}
   {% set labelText = 'Yes, the patient does not have access to a phone or email' %}
-  {% set hintText = 'It\'s important that the NHS and your GP surgery have a convenient way of contacting them about this application, appointments, prescriptions or other health care services.' %}
+  {% set hintText = 'It\'s important that the NHS and the patient\'s GP surgery have a convenient way of contacting them about this application, appointments, prescriptions or other health care services.' %}
 {% else %}
   {% set heading = 'Are you sure that you have no access to a phone or email?' %}
   {% set labelText = 'Yes, I don\'t have access to a phone or email' %}
@@ -54,7 +54,7 @@
             "name": "no-contact",
             "items": [
               {
-                "value": "Yes~/live/what-is-your-sex",
+                "value": "Yes~/live/how-can-we-contact-inputs-prompt-answer",
                 "text": labelText,
                 "checked": checked("no-contact", "Yes")
               },
