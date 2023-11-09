@@ -23,20 +23,9 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
-{% set ethnicityHtml %}
-  {{ input({
-    id: "ethMix",
-    name: "ethMix",
-    classes: "nhsuk-u-width-two-thirds",
-    label: {
-      text: label
-    }
-  }) }}
-{% endset -%}
-
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "what-is-your-ethnicity",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -49,6 +38,17 @@
           <form action="{{ action }}" method="post" autocomplete="off">
 
           {% include 'live/includes/step.html' %}
+
+            {% set ethnicityHtml %}
+              {{ input({
+                id: "ethMix",
+                name: "ethMix",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: label
+                }
+              }) }}
+            {% endset -%}
 
           {{ radios({
             idPrefix: "ethnicity-detail-mixed",
