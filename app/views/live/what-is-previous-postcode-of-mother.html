@@ -1,11 +1,14 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = "Enter the postcode where the mother of " + data ['name-first-name'] + " was living when their baby was born" %}
+
 {% block pageTitle %}
-Enter the postcode where the mother of {{ data ['name-first-name'] }} was living when their baby was born - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,32 +26,28 @@ Enter the postcode where the mother of {{ data ['name-first-name'] }} was living
 
           <form action="check-answers" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
+          {% include 'live/includes/step.html' %}
+
+          {% call fieldset({
+            legend: {
+              "text": heading,
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          }) %}
+
+          {{ input({
+              label: {
+                "text": "Postcode"
+              },
+              "hint": {
+                "text": "For example LS13 9PO"
+              },
+              "classes": "nhsuk-input--width-10",
+              "id": "mother-postcode",
+              "name": "mother-postcode",
+              value: data['mother-postcode']
             }) }}
-
-            <h1 class="nhsuk-heading-l">Enter the postcode where the mother of {{ data ['name-first-name'] }} was living when their baby was born</h1>
-            {% call fieldset({
-              legend: {
-                "text": "",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
-              }
-            }) %}
-
-              {{ input({
-                  label: {
-                    "text": "Postcode"
-                  },
-                  "hint": {
-                    "text": "For example LS13 9PO"
-                  },
-                  "classes": "nhsuk-input--width-10",
-                  "id": "mother-postcode",
-                  "name": "mother-postcode",
-                  value: data['mother-postcode']
-                }) }}
 
             {% endcall %}
 
@@ -59,6 +58,8 @@ Enter the postcode where the mother of {{ data ['name-first-name'] }} was living
           </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

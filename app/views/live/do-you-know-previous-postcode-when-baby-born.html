@@ -1,11 +1,14 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = 'Do you know the postcode of where the mother of ' + data ['name-first-name'] + ' was living when their baby was born?' %}
+
 {% block pageTitle %}
-Do you know the postcode of where the mother of {{ data ['name-first-name'] }} was living when their baby was born? - {{ ServiceName }} - NHS
+  {{ heading }}- {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,24 +26,15 @@ Do you know the postcode of where the mother of {{ data ['name-first-name'] }} w
 
         <form action="" method="post" autocomplete="off">
 
-          {{ hint({
-            "text": "Patient details",
-            "classes": "nhsuk-u-margin-bottom-2"
-          }) }}
-
-        <h1 class="nhsuk-heading-l">Do you know the postcode of where the mother of {{ data ['name-first-name'] }} was living when their baby was born?</h1>
+          {% include 'live/includes/step.html' %}
 
           {% call fieldset({
             legend: {
-              text: "",
+              text: heading,
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
           }) %}
-
-          <!-- <div class="nhsuk-hint" id="contact-hint">
-            <p>This will be the postcode you used last time you registered with a GP surgery.
-          </div> -->
 
           {{ radios({
             "idPrefix": "do-you-know-previous-postcode",
@@ -49,18 +43,12 @@ Do you know the postcode of where the mother of {{ data ['name-first-name'] }} w
               {
                 "value": "Yes~/live/what-is-previous-postcode-of-mother",
                 "text": "Yes",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("registering-first-time", "Yes")
+                "checked": checked("registering-first-time", "Yes")
               },
               {
                 "value": "No~/live/check-answers",
                 "text": "No",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("registering-first-time", "No")
+                "checked": checked("registering-first-time", "No")
               }
             ]
           }) }}
@@ -69,7 +57,7 @@ Do you know the postcode of where the mother of {{ data ['name-first-name'] }} w
 
           {{ details({
             "text": "Why are you asking this?",
-            "HTML": "<p>We use this information to try and match the birth records.</p>"
+            "html": "<p>We use this information to try and match the birth records.</p>"
           }) }}
 
           {{ button({
@@ -79,6 +67,9 @@ Do you know the postcode of where the mother of {{ data ['name-first-name'] }} w
         </form>
       </div>
     </div>
+
+{% include 'live/includes/devmode.html' %}
+
 {% endblock %}
 
 {% block footer %}

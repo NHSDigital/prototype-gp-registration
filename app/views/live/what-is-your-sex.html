@@ -1,6 +1,7 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
@@ -11,7 +12,7 @@
 {% endif %}
 
 {% block pageTitle %}
-  What is your sex as recorded on your NHS record? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -27,11 +28,9 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="where-were-you-born" method="post" autocomplete="off">
-            {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+          <form action="what-is-your-ethnicity" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
 
             {{ radios({
               "idPrefix": "gender",

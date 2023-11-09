@@ -1,11 +1,18 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What is " + data['name-first-name'] + "'s current UK address?' %}
+{% else %}
+  {% set heading = 'What is your current UK address?' %}
+{% endif %}
+
 {% block pageTitle %}
-What is your current UK address? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -22,64 +29,8 @@ What is your current UK address? - {{ ServiceName }} - NHS
         <div class="nhsuk-grid-column-two-thirds">
 
           <form action="do-you-know-nhs-number" method="post" autocomplete="off">
-            {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-              {% call fieldset({
-                legend: {
-                  "text": "What is their current UK address?",
-                  "classes": "nhsuk-fieldset__legend--l"
-                }
-              }) %}
-
-              <!-- {{ hint({
-              "text": "If they have had more than one address previously, please enter the address they lived at most recently."
-              }) }} -->
-
-              {{ input({
-                label: {
-                  "text": "Address line 1"
-                },
-                "id": "current-address-line-1",
-                "name": "current-address-line-1",
-                value: data['current-address-line-1']
-              }) }}
-
-              {{ input({
-                label: {
-                    "text": "Address line 2"
-                },
-                "id": "current-address-line-2",
-                "name": "current-address-line-2",
-                value: data['current-address-line-2']
-              }) }}
-
-              {{ input({
-                label: {
-                  "text": "Town or city"
-                },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "current-address-town",
-                "name": "current-address-town",
-                value: data['current-address-town']
-              }) }}
-
-              {{ input({
-                  label: {
-                    "text": "Postcode"
-                  },
-                  "classes": "nhsuk-input--width-10",
-                  "id": "current-address-postcode",
-                  "name": "current-address-postcode",
-                  value: data['current-address-postcode']
-              }) }}
-
-              {% endcall %}
-              {% else %}
+            {% include 'live/includes/step.html' %}
 
               {% call fieldset({
                 legend: {
@@ -87,10 +38,6 @@ What is your current UK address? - {{ ServiceName }} - NHS
                   "classes": "nhsuk-fieldset__legend--l"
                 }
               }) %}
-
-              <!-- {{ hint({
-              "text": "If you have had more than one address previously, please enter the address you lived at most recently."
-              }) }} -->
 
               {{ input({
                 label: {
@@ -136,11 +83,12 @@ What is your current UK address? - {{ ServiceName }} - NHS
               }) }}
 
               {% endcall %}
-              {% endif %}
 
           </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

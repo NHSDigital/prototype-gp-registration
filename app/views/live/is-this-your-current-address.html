@@ -1,6 +1,7 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
@@ -22,6 +23,8 @@ Is this your current address - {{ ServiceName }} - NHS
         <div class="nhsuk-grid-column-two-thirds">
 
           <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
@@ -79,6 +82,8 @@ Is this your current address - {{ ServiceName }} - NHS
         </form>
       </div>
     </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

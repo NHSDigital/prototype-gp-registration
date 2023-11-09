@@ -1,11 +1,18 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What is their country of birth?" %}
+{% else %}
+  {% set heading = 'What is your country of birth?' %}
+{% endif %}
+
 {% block pageTitle %}
-What is your country of birth? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,16 +30,11 @@ What is your country of birth? - {{ ServiceName }} - NHS
 
           <form action="recently-moved-date" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Registration type",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
+            {% include 'live/includes/step.html' %}
 
               {% call fieldset({
                 legend: {
-                  "text": "What is their country of birth?",
+                  "text": heading,
                   "classes": "nhsuk-fieldset__legend--l",
                   isPageHeading: true
                 }
@@ -49,30 +51,6 @@ What is your country of birth? - {{ ServiceName }} - NHS
               }) }}
 
               {% endcall %}
-
-              {% else %}
-
-              {% call fieldset({
-                legend: {
-                  "text": "What is your country of birth?",
-                  "classes": "nhsuk-fieldset__legend--l",
-                  isPageHeading: true
-                }
-              }) %}
-
-              {{ input({
-                  label: {
-                    "text": "Country name (Optional)"
-                  },
-                  "classes": "nhsuk-u-width-two-thirds",
-                  "id": "moved-address-country",
-                  "name": "moved-address-country",
-                  value: data['moved-address-country']
-              }) }}
-
-              {% endcall %}
-
-              {% endif %}
 
               {{ button({
                 "text": "Continue"
@@ -81,6 +59,8 @@ What is your country of birth? - {{ ServiceName }} - NHS
           </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

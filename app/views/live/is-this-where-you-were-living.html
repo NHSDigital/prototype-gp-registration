@@ -1,11 +1,14 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = 'Is this where you were living when you registered with your current GP surgery?' %}
+
 {% block pageTitle %}
-Is this where you were living when you registered with your current GP surgery? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,18 +26,17 @@ Is this where you were living when you registered with your current GP surgery? 
 
           <form action="" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Registration type",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                "text": "Is this where you were living when you registered with your current GP surgery?",
+                "text": heading,
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
+
+            <!-- TODO change pattern to match live -->
 
             <div class="nhsuk-card nhsuk-card--care nhsuk-card--care--non-urgent">
               <div class="nhsuk-card--care__heading-container">
@@ -68,15 +70,17 @@ Is this where you were living when you registered with your current GP surgery? 
               ]
             }) }}
 
+            {% endcall %}
+
             {{ button({
               "text": "Continue"
             }) }}
 
-            {% endcall %}
-
           </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

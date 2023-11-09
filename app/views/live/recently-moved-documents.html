@@ -1,11 +1,18 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Do they have any of these documents?" %}
+{% else %}
+  {% set heading = 'Do you have any of these documents?' %}
+{% endif %}
+
 {% block pageTitle %}
-Do you have any of these documents? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,16 +30,11 @@ Do you have any of these documents? - {{ ServiceName }} - NHS
 
         <form action="" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Registration type",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-          {% if (data['who-is-being-registered'] == "dependant") %}
+          {% include 'live/includes/step.html' %}
 
           {% call fieldset({
             legend: {
-              text: "Do they have any of these documents?",
+              text: heading,
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
@@ -45,76 +47,22 @@ Do you have any of these documents? - {{ ServiceName }} - NHS
               {
                 "value": "ehic~/live/document-details-ehic",
                 "text": "European health insurance card (EHIC)",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("health-documents", "ehic")
+                "checked": checked("health-documents", "ehic")
               },
               {
                "value": "s1~/live/recently-moved-s1-details",
                "text": "S1 form",
-               "hint": {
-                 "text": ""
-               },
-               checked: checked("health-documents", "S1")
+               "checked": checked("health-documents", "S1")
              },
               {
                 "value": "No~/live/overseas-declaration-nodocs",
                 "text": "I don't have any of these documents",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("health-documents", "No")
+                "checked": checked("health-documents", "No")
               }
             ]
           }) }}
 
           {% endcall %}
-
-          {% else %}
-
-          {% call fieldset({
-            legend: {
-              text: "Do you have any of these documents?",
-              classes: "nhsuk-fieldset__legend--l",
-              isPageHeading: true
-            }
-          }) %}
-
-          {{ radios({
-            "idPrefix": "health-documents",
-            "name": "health-documents",
-            "items": [
-              {
-                "value": "ehic~/live/document-details-ehic",
-                "text": "European health insurance card (EHIC)",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("health-documents", "ehic")
-              },
-              {
-               "value": "s1~/live/recently-moved-s1-details",
-               "text": "S1 form",
-               "hint": {
-                 "text": ""
-               },
-               checked: checked("health-documents", "s1")
-             },
-              {
-                "value": "No~/live/overseas-declaration-nodocs",
-                "text": "I don't have any of these documents",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("health-documents", "No")
-              }
-            ]
-          }) }}
-
-          {% endcall %}
-
-          {% endif %}
 
           {{ button({
             "text": "Continue"
@@ -124,12 +72,14 @@ Do you have any of these documents? - {{ ServiceName }} - NHS
 
         {{ details({
           "text": "Why are you asking this?",
-          "HTML": "<p>You will need to provide the information from your EHIC card or S1 form. This will help  NHS to reclaim the costs for your care.</p>
+          "html": "<p>You will need to provide the information from your EHIC card or S1 form. This will help  NHS to reclaim the costs for your care.</p>
           <p>We do not share this information with anyone outside NHS services.</p>"
         }) }}
 
       </div>
     </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

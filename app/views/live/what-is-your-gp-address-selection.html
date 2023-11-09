@@ -1,11 +1,26 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Select their current GP surgery they want to leave" %}
+{% else %}
+  {% set heading = 'Select your current GP surgery you want to leave' %}
+{% endif %}
+
+{% if (data['user-auth'] === "p9") %}
+  {% set action = 'are-you-returning-from-overseas' %}
+{% elif (data['user-auth'] === "p5") %}
+  {% set action = 'are-you-returning-from-overseas' %}
+{% else %}
+  {% set action = 'do-you-know-previous-postcode-gp-has' %}
+{% endif %}
+
 {% block pageTitle %}
-Select your current GP surgery you want to leave - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -21,25 +36,13 @@ Select your current GP surgery you want to leave - {{ ServiceName }} - NHS
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <!-- TODO make this better -->
-          {% if (data['user-auth'] == "p9") %}
-          <form action="are-you-returning-from-overseas" method="post" autocomplete="off">
-          {% elif (data['user-auth'] == "p5") %}
-          <form action="are-you-returning-from-overseas" method="post" autocomplete="off">
-          {% else %}
-          <form action="do-you-know-previous-postcode-gp-has" method="post" autocomplete="off">
-          {% endif %}
+          <form action="{{ action }}" method="post" autocomplete="off">
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            {{ hint({
-              "text": "Registration type",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "Select their current GP surgery they want to leave",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -50,150 +53,55 @@ Select your current GP surgery you want to leave - {{ ServiceName }} - NHS
             </div>
 
                 {{ radios({
-                    "idPrefix": "select-gp-address",
-                    "name": "select-gp-address",
-
-
+                  "idPrefix": "select-gp-address",
+                  "name": "select-gp-address",
                   "items": [
                     {
                       "value": "1 Town Street, London, SW1A 1AA",
                       "text": "1 Town Street, London, SW1A 1AA",
-                      "hint": {
-                    },
-                      checked: checked("select-gp-address", "1 Town Street, London, SW1A 1AA")
+                      "checked": checked("select-gp-address", "1 Town Street, London, SW1A 1AA")
                     },
                     {
                       "value": "2 Town Street, London, SW1A 1AA",
                       "text": "2 Town Street, London, SW1A 1AA",
-                      "hint": {
+                      "checked": checked("select-gp-address", "2 Town Street, London, SW1A 1AA")
                     },
-                      checked: checked("select-gp-address", "2 Town Street, London, SW1A 1AA")
-                    },    {
-                          "value": "3 Town Street, London, SW1A 1AA",
-                          "text": "3 Town Street, London, SW1A 1AA",
-                          "hint": {
-                        },
-                          checked: checked("select-gp-address", "3 Town Street, London, SW1A 1AA")
-                        },
-                        {
-                          "value": "4 Town Street, London, SW1A 1AA",
-                          "text": "4 Town Street, London, SW1A 1AA",
-                          "hint": {
-                        },
-                          checked: checked("select-gp-address", "4 Town Street, London, SW1A 1AA")
-                        },
-                        {
-                          "value": "5 Town Street, London, SW1A 1AA",
-                          "text": "5 Town Street, London, SW1A 1AA",
-                          "hint": {
-                        },
-                          checked: checked("select-gp-address", "5 Town Street, London, SW1A 1AA")
-                        },
-                        {
-                          "value": "6 Town Street, London, SW1A 1AA",
-                          "text": "6 Town Street, London, SW1A 1AA",
-                          "hint": {
-                        },
-                          checked: checked("select-gp-address", "6 Town Street, London, SW1A 1AA")
-                        },
-                      {
-                        "divider": "or"
-                      },
-                      {
-                        "value": "wrong address~/live/what-is-your-gp-address",
-                        "text": "The address is not listed here.",
-                        "hint": {
-                      },
-                        checked: checked("select-current-address", "")
-                      }
+                    {
+                      "value": "3 Town Street, London, SW1A 1AA",
+                      "text": "3 Town Street, London, SW1A 1AA",
+                      "checked": checked("select-gp-address", "3 Town Street, London, SW1A 1AA")
+                    },
+                    {
+                      "value": "4 Town Street, London, SW1A 1AA",
+                      "text": "4 Town Street, London, SW1A 1AA",
+                      "checked": checked("select-gp-address", "4 Town Street, London, SW1A 1AA")
+                    },
+                    {
+                      "value": "5 Town Street, London, SW1A 1AA",
+                      "text": "5 Town Street, London, SW1A 1AA",
+                      "checked": checked("select-gp-address", "5 Town Street, London, SW1A 1AA")
+                    },
+                    {
+                      "value": "6 Town Street, London, SW1A 1AA",
+                      "text": "6 Town Street, London, SW1A 1AA",
+                      "checked": checked("select-gp-address", "6 Town Street, London, SW1A 1AA")
+                    },
+                    {
+                      "divider": "or"
+                    },
+                    {
+                      "value": "wrong address~/live/what-is-your-gp-address",
+                      "text": "The address is not listed here.",
+                      "checked": checked("select-current-address", "")
+                    }
                   ]
                 }) }}
 
                 {% endcall %}
 
-                {% else %}
-
-                {% call fieldset({
-                  legend: {
-                    text: "Select your current GP surgery you want to leave",
-                    classes: "nhsuk-fieldset__legend--l",
-                    isPageHeading: true
-                  }
-                }) %}
-
-                <div class="nhsuk-hint" id="contact-hint">
-                  <p>6 addresses found for <strong>{{ data['find-gp-address'] }}</strong> <strong>{{ data['current-gp-address'] }}</strong></p>
-                </div>
-
-
-                    {{ radios({
-                        "idPrefix": "select-gp-address",
-                        "name": "select-gp-address",
-
-
-                      "items": [
-                        {
-                          "value": "1 Town Street, London, SW1A 1AA",
-                          "text": "1 Town Street, London, SW1A 1AA",
-                          "hint": {
-                        },
-                          checked: checked("select-gp-address", "1 Town Street, London, SW1A 1AA")
-                        },
-                        {
-                          "value": "2 Town Street, London, SW1A 1AA",
-                          "text": "2 Town Street, London, SW1A 1AA",
-                          "hint": {
-                        },
-                          checked: checked("select-gp-address", "2 Town Street, London, SW1A 1AA")
-                        },    {
-                              "value": "3 Town Street, London, SW1A 1AA",
-                              "text": "3 Town Street, London, SW1A 1AA",
-                              "hint": {
-                            },
-                              checked: checked("select-gp-address", "3 Town Street, London, SW1A 1AA")
-                            },
-                            {
-                              "value": "4 Town Street, London, SW1A 1AA",
-                              "text": "4 Town Street, London, SW1A 1AA",
-                              "hint": {
-                            },
-                              checked: checked("select-gp-address", "4 Town Street, London, SW1A 1AA")
-                            },
-                            {
-                              "value": "5 Town Street, London, SW1A 1AA",
-                              "text": "5 Town Street, London, SW1A 1AA",
-                              "hint": {
-                            },
-                              checked: checked("select-gp-address", "5 Town Street, London, SW1A 1AA")
-                            },
-                            {
-                              "value": "6 Town Street, London, SW1A 1AA",
-                              "text": "6 Town Street, London, SW1A 1AA",
-                              "hint": {
-                            },
-                              checked: checked("select-gp-address", "6 Town Street, London, SW1A 1AA")
-                            },
-                          {
-                            "divider": "or"
-                          },
-                          {
-                            "value": "wrong address~/live/what-is-your-gp-address",
-                            "text": "The address is not listed here.",
-                            "hint": {
-                          },
-                            checked: checked("select-current-address", "")
-                          }
-                      ]
-                    }) }}
-
-                    {% endcall %}
-
-                    {% endif %}
-
                 <p>
                   <a href="what-is-your-gp-address-manual" id="enter-address-manually-link">Enter the address manually</a>
                 </p>
-
 
               {{ button({
                   "text": "Continue"
@@ -203,6 +111,8 @@ Select your current GP surgery you want to leave - {{ ServiceName }} - NHS
 
       </div>
     </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

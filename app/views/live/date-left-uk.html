@@ -1,11 +1,18 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What was the date they left the UK?' %}
+{% else %}
+  {% set heading = 'What was the date you left the UK?' %}
+{% endif %}
+
 {% block pageTitle %}
-What was the date you left the UK? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,18 +30,14 @@ What was the date you left the UK? - {{ ServiceName }} - NHS
 
           <form action="date-returned-uk" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Registration type",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-            {% if (data['who-is-being-registered'] == "dependant") %}
+            {% include 'live/includes/step.html' %}
 
             {{ dateInput({
               "id": "left-uk",
               "namePrefix": "left-uk",
               "fieldset": {
                 "legend": {
-                  "text": "What was the date they left the UK?",
+                  "text": heading,
                   "classes": "nhsuk-label--l",
                   "isPageHeading": true
                 }
@@ -60,42 +63,6 @@ What was the date you left the UK? - {{ ServiceName }} - NHS
                 }
               ]
             }) }}
-
-            {% else %}
-
-            {{ dateInput({
-              "id": "left-uk",
-              "namePrefix": "left-uk",
-              "fieldset": {
-                "legend": {
-                  "text": "What was the date you left the UK?",
-                  "classes": "nhsuk-label--l",
-                  "isPageHeading": true
-                }
-              },
-              "hint": {
-                "text": "For example, 15 3 1984"
-              },
-              "items": [
-                {
-                  "name": "day",
-                  "classes": "nhsuk-input--width-2",
-                  "value": data['left-uk-day']
-                },
-                {
-                  "name": "month",
-                  "classes": "nhsuk-input--width-2",
-                  "value": data['left-uk-month']
-                },
-                {
-                  "name": "year",
-                  "classes": "nhsuk-input--width-4",
-                  "value": data['left-uk-year']
-                }
-              ]
-            }) }}
-
-            {% endif %}
 
             {{ button({
               "text": "Continue"
@@ -104,6 +71,8 @@ What was the date you left the UK? - {{ ServiceName }} - NHS
           </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

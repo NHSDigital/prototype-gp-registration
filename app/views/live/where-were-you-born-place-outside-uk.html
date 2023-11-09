@@ -1,11 +1,20 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Enter details of where " + data ['name-first-name'] + " was born?" %}
+  {% set hint = 'This can be the city, town or other place they were born' %}
+{% else %}
+  {% set heading = 'Enter details of where you were born' %}
+  {% set hint = 'This can be the city, town or other place you were born' %}
+{% endif %}
+
 {% block pageTitle %}
-Enter details of where you were born - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,20 +32,13 @@ Enter details of where you were born - {{ ServiceName }} - NHS
 
           <form action="what-is-your-ethnicity" method="post" autocomplete="off">
 
-
-            {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">Enter details of where {{ data ['name-first-name'] }} was born?</h1>
+            {% include 'live/includes/step.html' %}
 
               {% call fieldset({
                 legend: {
-                  "text": "",
-                  "classes": "nhsuk-fieldset__legend--l"
+                  text: heading,
+                  classes: "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
                 }
               }) %}
 
@@ -55,53 +57,15 @@ Enter details of where you were born - {{ ServiceName }} - NHS
                     "text": "Place of birth"
                   },
                   "hint": {
-                    "html": "This can be the city, town or other place you were born."
+                    "text": hint
                   },
                   "classes": "nhsuk-u-width-two-thirds",
-                  "id": "town",
-                  "name": "town",
-                  value: data['town']
+                  "id": "town-born",
+                  "name": "town-born",
+                  value: data['town-born']
               }) }}
 
               {% endcall %}
-
-              {% else %}
-
-              <h1 class="nhsuk-heading-l">Enter details of where you were born</h1>
-
-              {% call fieldset({
-                legend: {
-                  "text": "",
-                  "classes": "nhsuk-fieldset__legend--l"
-                }
-              }) %}
-
-              {{ input({
-                  label: {
-                    "text": "Country of birth"
-                  },
-                  "classes": "nhsuk-u-width-two-thirds",
-                  "id": "country-born",
-                  "name": "country-born",
-                  value: data['country-born']
-              }) }}
-
-              {{ input({
-                  label: {
-                    "text": "Place of birth"
-                  },
-                  "hint": {
-                    "html": "This can be the city, town or other place you were born."
-                  },
-                  "classes": "nhsuk-u-width-two-thirds",
-                  "id": "town",
-                  "name": "town",
-                  value: data['town']
-              }) }}
-
-              {% endcall %}
-
-              {% endif %}
 
               {{ button({
                 "text": "Continue"
@@ -110,6 +74,8 @@ Enter details of where you were born - {{ ServiceName }} - NHS
           </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

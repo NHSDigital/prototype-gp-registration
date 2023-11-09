@@ -1,11 +1,18 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Do they have a previous UK address?" %}
+{% else %}
+  {% set heading = 'Do you have a previous UK address?' %}
+{% endif %}
+
 {% block pageTitle %}
-Do you have a previous UK address? - {{ serviceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,12 +30,7 @@ Do you have a previous UK address? - {{ serviceName }} - NHS
 
           <form action="" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Registration type",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
@@ -45,48 +47,17 @@ Do you have a previous UK address? - {{ serviceName }} - NHS
                 {
                   "value": "Yes~/live/what-is-your-previous-address",
                   "text": "Yes",
-                  checked: checked("have-previous-uk-address", "Yes")
+                  "checked": checked("have-previous-uk-address", "Yes")
                 },
                 {
                   "value": "No~/live/do-you-know-previous-postcode-gp-has",
                   "text": "No",
-                  checked: checked("have-previous-uk-address", "No")
+                  "checked": checked("have-previous-uk-address", "No")
                 }
               ]
             }) }}
 
             {% endcall %}
-
-            {% else %}
-
-            {% call fieldset({
-              legend: {
-                text: "Do you have a previous UK address?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            {{ radios({
-              "idPrefix": "have-previous-uk-address",
-              "name": "have-previous-uk-address",
-              "items": [
-                {
-                  "value": "Yes~/live/what-is-your-previous-address",
-                  "text": "Yes",
-                  checked: checked("have-previous-uk-address", "Yes")
-                },
-                {
-                  "value": "No~/live/do-you-know-previous-postcode-gp-has",
-                  "text": "No",
-                  checked: checked("have-previous-uk-address", "No")
-                }
-              ]
-            }) }}
-
-            {% endcall %}
-
-            {% endif %}
 
             {{ button({
               "text": "Continue"
@@ -95,6 +66,8 @@ Do you have a previous UK address? - {{ serviceName }} - NHS
           </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

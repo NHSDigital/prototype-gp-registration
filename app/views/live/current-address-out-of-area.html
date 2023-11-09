@@ -1,16 +1,17 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
-{% from 'button/macro.njk' import button %}
-{% from 'back-link/macro.njk' import backLink %}
+{% set heading = 'This address is outside the area for this GP surgery' %}
 
 {% block pageTitle %}
-This address is outside the area for this GP surgery - {{ ServiceName }} - NHS
-
+ {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
+
+{% block outerContent %}
   {{ backLink({
     text: "Go back",
     href: "javascript:history.go(-1)"
@@ -22,51 +23,53 @@ This address is outside the area for this GP surgery - {{ ServiceName }} - NHS
 
     <form action="" method="post" autocomplete="off">
 
-     <h1 class="nhsuk-heading-l">This address is outside the area for this GP surgery</h1>
+      {% include 'live/includes/step.html' %}
+
+      <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
       <p>Some GP surgeries will only accept patients that live within the area they cover. You can continue with this registration, but it may not be accepted.</p>
 
-        <p>Choosing a surgery outside your area means:</p>
-         <ul>
-           <li>you may not be offered home visits</li>
-           <li>it could affect referrals for hospital tests and treatment, or community health services</li>
-         </ul>
+      <p>Choosing a surgery outside your area means:</p>
 
-         <p>You should speak to the GP surgery about your options, or find a surgery for this address using the <a href="https://www.nhs.uk/service-search/find-a-gp" target="_blank" rel="noopener noreferrer">Find a GP service.</a></p>
+      <ul>
+       <li>you may not be offered home visits</li>
+       <li>it could affect referrals for hospital tests and treatment, or community health services</li>
+      </ul>
 
-         <p>Find out more about <a href="https://www.nhs.uk/nhs-services/gps/registering-with-a-gp-outside-your-area/" target="_blank" rel="noopener noreferrer">registering with a GP surgery outside the area you live.</a></p>
+      <p>You should speak to the GP surgery about your options, or find a surgery for this address using the <a href="https://www.nhs.uk/service-search/find-a-gp" target="_blank" rel="noopener noreferrer">Find a GP service.</a></p>
 
-        {{ radios({
-            "idPrefix": "use-ooo",
-            "name": "use-ooo",
-            "classes": "nhsuk-radios",
-            "fieldset": {
-              "legend": {
-                "text": "What would you like to do?",
-                "classes": "nhsuk-fieldset__legend--m",
-                "isPageHeading": true
-              }
-            },
-            "items": [
-              {
-                "value": "Yes~/live/how-can-we-contact-you",
-                "text": "Continue with this registration",
-                "hint": {
-                  "text": "If the surgery is not accepting out of area registrations they could reject this application."
-                },
-                checked: checked("relation", "Carer")
+      <p>Find out more about <a href="https://www.nhs.uk/nhs-services/gps/registering-with-a-gp-outside-your-area/" target="_blank" rel="noopener noreferrer">registering with a GP surgery outside the area you live.</a></p>
+
+      {{ radios({
+          "idPrefix": "use-ooo",
+          "name": "use-ooo",
+          "classes": "nhsuk-radios",
+          "fieldset": {
+            "legend": {
+              "text": "What would you like to do?",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": false
+            }
+          },
+          "items": [
+            {
+              "value": "Yes~/live/how-can-we-contact-you",
+              "text": "Continue with this registration",
+              "hint": {
+                "text": "If the surgery is not accepting out of area registrations they could reject this application."
               },
-              {
-                "value": "Yes~https://www.nhs.uk/service-search/find-a-gp",
-                "text": "Cancel this registration ",
-                "hint": {
-                  "text": "Use the 'Find a GP' service to search for a GP that accepts patients from your postcode area. Any answers given so far will not be saved and you will have to start again."
-                },
-                checked: checked("relation", "Carer")
-              }
-            ]
-        }) }}
-
+              checked: checked("use-ooo", "Yes")
+            },
+            {
+              "value": "No~https://www.nhs.uk/service-search/find-a-gp",
+              "text": "Cancel this registration ",
+              "hint": {
+                "text": "Use the 'Find a GP' service to search for a GP that accepts patients from your postcode area. Any answers given so far will not be saved and you will have to start again."
+              },
+              checked: checked("use-ooo", "No")
+            }
+          ]
+       }) }}
 
       {{ button({
         "text": "Continue"

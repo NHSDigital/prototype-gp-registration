@@ -1,16 +1,23 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What is " + data['name-first-name'] + "'s current UK address?" %}
+{% else %}
+  {% set heading = 'What is your current UK address?' %}
+{% endif %}
+
 {% block pageTitle %}
-What is your current UK address? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "do-you-current-address",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -22,100 +29,50 @@ What is your current UK address? - {{ ServiceName }} - NHS
         <div class="nhsuk-grid-column-two-thirds">
 
           <form action="what-is-your-current-address-selection" method="post" autocomplete="off">
-            {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
 
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l"> What is {{ data ['name-first-name'] }}'s current UK address?</h1>
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                "text": "",
+                "text": "What is your current UK address?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
 
+              {{ input({
+                label: {
+                  "text": "House number or name"
+                },
+                "hint": {
+                  "text": "For example, flat 20A"
+                },
+                "classes": "nhsuk-input--width-10",
+                "id": "house-number-address",
+                "name": "house-number-address",
+                value: data['house-number-address']
+            }) }}
+
             {{ input({
               label: {
-                "text": "House number or name"
+                "text": "Postcode"
               },
               "hint": {
-                "text": "For example, flat 20A"
+                "text": "For example, LS13 9PO"
               },
               "classes": "nhsuk-input--width-10",
-              "id": "house-number-address",
-              "name": "house-number-address",
-              value: data['house-number-address']
+              "id": "find-current-address",
+              "name": "find-current-address",
+              value: data['find-current-address']
           }) }}
 
-          {{ input({
-            label: {
-              "text": "Postcode"
-            },
-            "hint": {
-              "text": "For example, AB12 P12"
-            },
-            "classes": "nhsuk-input--width-10",
-            "id": "find-current-address",
-            "name": "find-current-address",
-            value: data['find-current-address']
-        }) }}
+          {% endcall %}
 
-        {% endcall %}
+          <p><a href="what-is-your-current-address-manual" id="enter-address-manually-link">Enter the address manually</a></p>
 
-        {% else %}
-
-        {% call fieldset({
-          legend: {
-            "text": "What is your current UK address?",
-            "classes": "nhsuk-fieldset__legend--l",
-            "isPageHeading": true
-          }
-        }) %}
-
-        <!-- {{ hint({
-        "text": "If you have had more than one address previously, please enter the address you lived at most recently."
-        }) }} -->
-
-          {{ input({
-            label: {
-              "text": "House number or name"
-            },
-            "hint": {
-              "text": "For example, flat 20A"
-            },
-            "classes": "nhsuk-input--width-10",
-            "id": "house-number-address",
-            "name": "house-number-address",
-            value: data['house-number-address']
-        }) }}
-
-        {{ input({
-          label: {
-            "text": "Postcode"
-          },
-          "hint": {
-            "text": "For example, AB12 P12"
-          },
-          "classes": "nhsuk-input--width-10",
-          "id": "find-current-address",
-          "name": "find-current-address",
-          value: data['find-current-address']
-      }) }}
-
-      {% endcall %}
-
-      {% endif %}
-
-      <p><a href="what-is-your-current-address-manual" id="enter-address-manually-link">Enter the address manually</a></p>
-
-      {{ button({
-        "text": "Continue"
-      }) }}
+          {{ button({
+            "text": "Continue"
+          }) }}
 
         </form>
       </div>

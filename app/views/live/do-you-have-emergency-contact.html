@@ -1,11 +1,18 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Does ' + data['name-first-name'] + ' have a contact in case of emergency?' %}
+{% else %}
+  {% set heading = 'Do you have a contact in case of emergency?' %}
+{% endif %}
+
 {% block pageTitle %}
-Do you have a contact in case of emergency? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,33 +30,20 @@ Do you have a contact in case of emergency? - {{ ServiceName }} - NHS
 
           <form action="" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Patient details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">Does {{ data ['name-first-name'] }} have a contact in case of emergency?</h1>
-
-            {% else %}
-
-            <h1 class="nhsuk-heading-l">Do you have a contact in case of emergency?</h1>
-
-            {% endif %}
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                text: "",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
             }) %}
 
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>This can be a family member, friend or support worker.</p>
-            </div>
-
+            {{ hint({
+              "text": "This can be a family member, friend or support worker.",
+              "classes": "nhsuk-u-margin-bottom-4"
+            }) }}
 
            {{ radios({
               "idPrefix": "emergency-contact",
@@ -58,17 +52,17 @@ Do you have a contact in case of emergency? - {{ ServiceName }} - NHS
                 {
                   "value": "Yes~/live/emergency-contact-details",
                   "text": "Yes",
-                  checked: checked("emergency-contact", "Yes")
+                  "checked": checked("emergency-contact", "Yes")
                 },
                 {
                   "value": "No~/live/check-answers-1",
                   "text": "No",
-                  checked: checked("emergency-contact", "No")
+                  "checked": checked("emergency-contact", "No")
                 }
               ]
             }) }}
 
-          {% endcall %}
+            {% endcall %}
 
             {{ button({
               "text": "Continue"
@@ -78,6 +72,8 @@ Do you have a contact in case of emergency? - {{ ServiceName }} - NHS
 
       </div>
      </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

@@ -1,11 +1,14 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% set heading = 'Share your contact details?' %}
+
 {% block pageTitle %}
-Share your contact details - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,7 +26,9 @@ Share your contact details - {{ ServiceName }} - NHS
 
           <form action="" method="post" autocomplete="off">
 
-            <h1 class="nhsuk-heading-l">Share your contact details</h1>
+            {% include 'live/includes/step.html' %}
+
+            <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
             {{ hint({
               "text": "You have agreed to share these details with the Register with a GP Surgery service.",
@@ -65,7 +70,7 @@ Share your contact details - {{ ServiceName }} - NHS
                     "legend": {
                       "text": "Do you want to use these details to register with a new GP surgery?",
                       "classes": "nhsuk-fieldset__legend--m",
-                      "isPageHeading": true
+                      "isPageHeading": false
                     }
                   },
                   "items": [
@@ -87,6 +92,8 @@ Share your contact details - {{ ServiceName }} - NHS
             </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 

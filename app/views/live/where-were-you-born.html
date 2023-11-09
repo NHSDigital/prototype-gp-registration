@@ -1,11 +1,18 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Where was " + data ['name-first-name'] + " born?" %}
+{% else %}
+  {% set heading = 'Where were you born?' %}
+{% endif %}
+
 {% block pageTitle %}
-Where were you born? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,18 +30,11 @@ Where were you born? - {{ ServiceName }} - NHS
 
         <form action="where-were-you-born-place-uk" method="post" autocomplete="off">
 
-          {{ hint({
-            "text": "Patient details",
-            "classes": "nhsuk-u-margin-bottom-2"
-          }) }}
-
-          {% if (data['who-is-being-registered'] == "dependant") %}
-
-          <h1 class="nhsuk-heading-l">Where was {{ data ['name-first-name'] }} born?</h1>
+          {% include 'live/includes/step.html' %}
 
           {% call fieldset({
             legend: {
-              text: "",
+              text: heading,
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
@@ -47,130 +47,40 @@ Where were you born? - {{ ServiceName }} - NHS
               {
                 "value": "England",
                 "text": "England",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("country-born", "England")
+                "checked": checked("country-born", "England")
               },
               {
                 "value": "Wales",
                 "text": "Wales",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("country-born", "England")
+                "checked": checked("country-born", "England")
               },
               {
                 "value": "Isle of man",
                 "text": "Isle of man",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("country-born", "Isle of man")
+                "checked": checked("country-born", "Isle of man")
               },
               {
                 "value": "Scotland",
                 "text": "Scotland",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("country-born", "Scotland")
+                "checked": checked("country-born", "Scotland")
               },
               {
-                "value": "Northern ireland",
-                "text": "Northern ireland",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("country-born", "Northern ireland")
+                "value": "Northern Ireland",
+                "text": "Northern Ireland",
+                "checked": checked("country-born", "Northern Ireland")
               },
               {
                 "divider": "or"
               },
               {
-                "value": "~/live/where-were-you-born-place-outside-uk",
+                "value": "None~/live/where-were-you-born-place-outside-uk",
                 "text": "None of these",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("country-born", "")
+                "checked": checked("country-born", "None")
               }
             ]
           }) }}
 
           {% endcall %}
-          {% else %}
-
-          <h1 class="nhsuk-heading-l">Where were you born?</h1>
-
-          {% call fieldset({
-            legend: {
-              text: "",
-              classes: "nhsuk-fieldset__legend--l",
-              isPageHeading: true
-            }
-          }) %}
-
-          {{ radios({
-            "idPrefix": "country-born",
-            "name": "country-born",
-            "items": [
-              {
-                "value": "England",
-                "text": "England",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("country-born", "England")
-              },
-              {
-                "value": "Wales",
-                "text": "Wales",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("country-born", "England")
-              },
-              {
-                "value": "Isle of man",
-                "text": "Isle of man",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("country-born", "Isle of man")
-              },
-              {
-                "value": "Scotland",
-                "text": "Scotland",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("country-born", "Scotland")
-              },
-              {
-                "value": "Northern ireland",
-                "text": "Northern ireland",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("country-born", "Northern ireland")
-              },
-              {
-                "divider": "or"
-              },
-              {
-                "value": "~/live/where-were-you-born-place-outside-uk",
-                "text": "None of these",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("country-born", "")
-              }
-            ]
-          }) }}
-
-          {% endcall %}
-          {% endif %}
 
           {{ button({
             "text": "Continue"
@@ -180,6 +90,9 @@ Where were you born? - {{ ServiceName }} - NHS
 
       </div>
     </div>
+
+{% include 'live/includes/devmode.html' %}
+
 {% endblock %}
 
 {% block footer %}

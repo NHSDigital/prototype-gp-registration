@@ -1,11 +1,18 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What was their previous UK address?" %}
+{% else %}
+  {% set heading = 'What was your previous UK address?' %}
+{% endif %}
+
 {% block pageTitle %}
-What was your previous UK address? - {{ serviceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -23,14 +30,11 @@ What was your previous UK address? - {{ serviceName }} - NHS
 
           <form action="check-answers-2" method="post" autocomplete="off">
 
-            {{ hint({
-              "text": "Registration type",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+            {% include 'live/includes/step.html' %}
 
               {% call fieldset({
                 legend: {
-                  "text": "What was your previous UK address?",
+                  "text": heading,
                   "classes": "nhsuk-fieldset__legend--l",
                   "isPageHeading": true
                 }
@@ -83,6 +87,8 @@ What was your previous UK address? - {{ serviceName }} - NHS
           </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 
