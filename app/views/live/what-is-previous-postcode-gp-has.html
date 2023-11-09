@@ -1,11 +1,20 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '1' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What postcode did " + data['name-first-name'] + " use when they last registered with a UK GP?" %}
+  {% set hint = 'This will be the postcode they used the last time they registered with a UK GP surgery.' %}
+{% else %}
+  {% set heading = 'What postcode did you use when you last registered with a UK GP?' %}
+  {% set hint = 'This will be the postcode you used the last time you registered with a UK GP surgery.' %}
+{% endif %}
+
 {% block pageTitle %}
-What postcode did you use when you last registered with a UK GP? - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -21,58 +30,20 @@ What postcode did you use when you last registered with a UK GP? - {{ ServiceNam
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="are-you-returning-from-overseas" method="post" autocomplete="off">
+          <form action="check-answers-1" method="post" autocomplete="off">
 
-           {{ hint({
-              "text": "Registration type",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
-
-            {% if (data['who-is-being-registered'] == "dependant") %}
-
-            <h1 class="nhsuk-heading-l">What postcode did {{ data ['name-first-name'] }} use when they last registered with a UK GP?</h1>
+            {% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
-                "text": "",
+                "text": heading,
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
 
             {{ hint({
-                "text": "This will be the postcode they used the last time they registered with a UK GP surgery."
-            }) }}
-
-              {{ input({
-                  label: {
-                    "text": "Postcode"
-                  },
-                  "hint": {
-                    "text": "For example LS13 9PO"
-                  },
-                  "classes": "nhsuk-input--width-10",
-                  "id": "gp-postcode-prev",
-                  "name": "gp-postcode-prev",
-                  value: data['gp-postcode-prev']
-                }) }}
-
-            {% endcall %}
-
-            {% else %}
-
-            <h1 class="nhsuk-heading-l">What postcode did you use when you last registered with a UK GP?</h1>
-
-            {% call fieldset({
-              legend: {
-                "text": "",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
-              }
-            }) %}
-
-            {{ hint({
-                "text": "This will be the postcode you used the last time you registered with a UK GP surgery."
+                "text": hint
             }) }}
 
             {{ input({
@@ -90,8 +61,6 @@ What postcode did you use when you last registered with a UK GP? - {{ ServiceNam
 
             {% endcall %}
 
-            {% endif %}
-
             {{ button({
               "text": "Continue"
             }) }}
@@ -99,6 +68,8 @@ What postcode did you use when you last registered with a UK GP? - {{ ServiceNam
           </form>
         </div>
       </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 
