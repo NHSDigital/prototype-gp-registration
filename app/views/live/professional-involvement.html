@@ -1,0 +1,91 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Is anyone else involved in ' + data['name-first-name'] + '\'s care?' %}
+{% else %}
+  {% set heading = 'Is anyone else involved in your care?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ ServiceName }} - NHS
+{% endblock %}
+
+<!-- TODO need dynamic back -->
+{% block outerContent %}
+  {{ backLink({
+    "href": "what-schooling-do-you-have",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <form action="what-is-your-sex" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {{ checkboxes({
+                "idPrefix": "health-contact",
+                "name": "health-contact",
+                "fieldset": {
+                  "legend": {
+                    "text": heading,
+                    "classes": "nhsuk-fieldset__legend--l",
+                    isPageHeading: true
+                  }
+                },
+                "hint": {
+                  "html": "<p>This will help the GP understand the patient's care needs.</p>"
+                },
+                items: [
+                  {
+                    value: "Hospital specialist or consultant",
+                    text: "Hospital specialist or consultant",
+                    checked: checked("health-contact", "hospital-specialist"),
+                    exclusiveGroup: "care-list"
+                  },
+                  {
+                    value: "Health worker",
+                    text: "Health visitor",
+                    checked: checked("health-contact", "health-worker"),
+                    exclusiveGroup: "care-list"
+                  },
+                  {
+                    value: "Social worker",
+                    text: "Social worker",
+                    checked: checked("health-contact", "social-worker"),
+                    exclusiveGroup: "care-list"
+                  },
+                  {
+                    value: "Other health professional",
+                    text: "Other health professional",
+                    checked: checked("health-contact", "other"),
+                    exclusiveGroup: "care-list"
+                  },
+                  {
+                    value: "none",
+                    text: "None of the above",
+                    checked: checked("health-contact", "none"),
+                    exclusive: true,
+                    exclusiveGroup: "care-list"
+                  }
+                ]
+              }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
