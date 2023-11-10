@@ -25,7 +25,7 @@
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "what-is-your-gp-address",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -48,64 +48,66 @@
               }
             }) %}
 
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>6 addresses found for <strong>{{ data['find-gp-address'] }}</strong> <strong>{{ data['current-gp-address'] }}</strong></p>
-            </div>
+            {{ hint({
+              "text": "6 addresses found for " + data['find-gp-address'],
+              "classes": "nhsuk-u-margin-bottom-4"
+            }) }}
 
-                {{ radios({
-                  "idPrefix": "select-gp-address",
-                  "name": "select-gp-address",
-                  "items": [
-                    {
-                      "value": "1 Town Street, London, SW1A 1AA",
-                      "text": "1 Town Street, London, SW1A 1AA",
-                      "checked": checked("select-gp-address", "1 Town Street, London, SW1A 1AA")
-                    },
-                    {
-                      "value": "2 Town Street, London, SW1A 1AA",
-                      "text": "2 Town Street, London, SW1A 1AA",
-                      "checked": checked("select-gp-address", "2 Town Street, London, SW1A 1AA")
-                    },
-                    {
-                      "value": "3 Town Street, London, SW1A 1AA",
-                      "text": "3 Town Street, London, SW1A 1AA",
-                      "checked": checked("select-gp-address", "3 Town Street, London, SW1A 1AA")
-                    },
-                    {
-                      "value": "4 Town Street, London, SW1A 1AA",
-                      "text": "4 Town Street, London, SW1A 1AA",
-                      "checked": checked("select-gp-address", "4 Town Street, London, SW1A 1AA")
-                    },
-                    {
-                      "value": "5 Town Street, London, SW1A 1AA",
-                      "text": "5 Town Street, London, SW1A 1AA",
-                      "checked": checked("select-gp-address", "5 Town Street, London, SW1A 1AA")
-                    },
-                    {
-                      "value": "6 Town Street, London, SW1A 1AA",
-                      "text": "6 Town Street, London, SW1A 1AA",
-                      "checked": checked("select-gp-address", "6 Town Street, London, SW1A 1AA")
-                    },
-                    {
-                      "divider": "or"
-                    },
-                    {
-                      "value": "wrong address~/live/what-is-your-gp-address",
-                      "text": "The address is not listed here.",
-                      "checked": checked("select-current-address", "")
-                    }
-                  ]
-                }) }}
 
-                {% endcall %}
+            {{ radios({
+              "idPrefix": "select-gp-address",
+              "name": "select-gp-address",
+              "items": [
+                {
+                  "value": "1 Town Street, London, SW1A 1AA",
+                  "text": "1 Town Street, London, SW1A 1AA",
+                  "checked": checked("select-gp-address", "1 Town Street, London, SW1A 1AA")
+                },
+                {
+                  "value": "2 Town Street, London, SW1A 1AA",
+                  "text": "2 Town Street, London, SW1A 1AA",
+                  "checked": checked("select-gp-address", "2 Town Street, London, SW1A 1AA")
+                },
+                {
+                  "value": "3 Town Street, London, SW1A 1AA",
+                  "text": "3 Town Street, London, SW1A 1AA",
+                  "checked": checked("select-gp-address", "3 Town Street, London, SW1A 1AA")
+                },
+                {
+                  "value": "4 Town Street, London, SW1A 1AA",
+                  "text": "4 Town Street, London, SW1A 1AA",
+                  "checked": checked("select-gp-address", "4 Town Street, London, SW1A 1AA")
+                },
+                {
+                  "value": "5 Town Street, London, SW1A 1AA",
+                  "text": "5 Town Street, London, SW1A 1AA",
+                  "checked": checked("select-gp-address", "5 Town Street, London, SW1A 1AA")
+                },
+                {
+                  "value": "6 Town Street, London, SW1A 1AA",
+                  "text": "6 Town Street, London, SW1A 1AA",
+                  "checked": checked("select-gp-address", "6 Town Street, London, SW1A 1AA")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "wrong address~/live/what-is-your-gp-address",
+                  "text": "The address is not listed here.",
+                  "checked": checked("select-current-address", "")
+                }
+              ]
+            }) }}
 
-                <p>
-                  <a href="what-is-your-gp-address-manual" id="enter-address-manually-link">Enter the address manually</a>
-                </p>
+            {% endcall %}
 
-              {{ button({
-                  "text": "Continue"
-              }) }}
+            <p>
+              <a href="what-is-your-gp-address-manual" id="enter-address-manually-link">Enter the address manually</a>
+            </p>
+
+            {{ button({
+                "text": "Continue"
+            }) }}
 
           </form>
 
