@@ -37,22 +37,20 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
-{% if (data['need-carer'] === "Yes") %}
-  {% if (data['type-additional-carer']) %}
-    {% set link = 'carer-details-2' %}
-  {% else %}
-    {% set link = 'carer-details-1' %}
-  {% endif %}
+{% if (data['select-gp-address']) %}
+  {% set link = 'what-is-your-gp-address-selection' %}
 {% else %}
-  {% set link = 'do-you-have-a-carer' %}
+  {% set link = 'what-is-your-gp-address-manual' %}
 {% endif %}
 
 {% block outerContent %}
-  {{ backLink({
-    "href": link,
-    "text": "Go back",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
-  }) }}
+  {% if (data['user-auth'] === "none") %}
+    {{ backLink({
+      "href": link,
+      "text": "Go back",
+      "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+    }) }}
+  {% endif %}
 {% endblock %}
 
 {% block content %}
