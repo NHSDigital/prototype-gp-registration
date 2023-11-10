@@ -5,144 +5,132 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "data['name-first-name'] + " is already registered at " + data.presets[0].gpsurgery %}
+{% if (data['user-auth'] === "p9") %}
+  {% if (data['ods-match'] === "branch") %}
+    {% set heading = "You are already registered with this group of surgeries" %}
+  {% else %}
+    {% set heading = "You are already registered with " + data.presets[0].gpsurgery %}
+  {% endif %}
+{% elif (data['user-auth'] === "p5") %}
+  {% if (data['ods-match'] === "branch") %}
+    {% set heading = "You may already be registered with this group of GP surgeries" %}
+  {% else %}
+    {% set heading = "You may already be registered with " + data.presets[0].gpsurgery %}
+  {% endif %}
 {% else %}
-  {% set heading = "You are already registered at " + data.presets[0].gpsurgery %}
+  {% if (data['who-is-being-registered'] === "dependant") %}
+    {% if (data['ods-match'] === "branch") %}
+      {% set heading = data['name-first-name'] + " may already be registered with this group of GP surgeries" %}
+    {% else %}
+      {% set heading = data['name-first-name'] + " may already be registered with " + data.presets[0].gpsurgery %}
+    {% endif %}
+  {% else %}
+    {% if (data['ods-match'] === "branch") %}
+      {% set heading = "You may already be registered with this group of GP surgeries" %}
+    {% else %}
+      {% set heading = "You may already be registered with " + data.presets[0].gpsurgery %}
+    {% endif %}
+  {% endif %}
 {% endif %}
 
 {% block pageTitle %}
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
+{% if (data['need-carer'] === "Yes") %}
+  {% if (data['type-additional-carer']) %}
+    {% set link = 'carer-details-2' %}
+  {% else %}
+    {% set link = 'carer-details-1' %}
+  {% endif %}
+{% else %}
+  {% set link = 'do-you-have-a-carer' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
-    "href": '#',
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
 {% endblock %}
 
+{% block content %}
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
 
-   <!--"P9"-->
-     <h1>
-        You are already registered with {NAME OF SURGERY}
-      </h1>
-      <p>You can use the NHS App or <a href="https://www.nhs.uk/nhs-app/account/">log into your NHS account</a> to:
-  <ul>
-    <li>book, check or cancel appointments with a GP or nurse</li>
-    <li>order repeat prescriptions</li>
-    <li>see parts of your health record, including information about medicines, vaccinations and test results</li>
-    <li>see communications between your GP surgery and other services, such as hospitals</li>
-  </ul>
-</p>
-
-
-<h3>Register with a different GP surgery</h3>
-      <p>
-        If you want to register with a different GP surgery use 
-          <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a> 
-      </p>
-
-     <!--"P9-branch"-->
-    <h1>
-        You are already registered with this group of surgeries
-      </h1>
-
-<p>{NAME OF SURGERY} is part of a group of surgeries.</p>
-<p>You can use the NHS App or <a href="https://www.nhs.uk/nhs-app/account/">log into your NHS account</a> to:
-  <ul>
-    <li>book, check or cancel appointments with a GP or nurse</li>
-    <li>order repeat prescriptions</li>
-    <li>see parts of your health record, including information about medicines, vaccinations and test results</li>
-    <li>see communications between your GP surgery and other services, such as hospitals</li>
-  </ul>
-</p>
-
-<h3>Register with a different GP surgery</h3>
-      <p>
-        If you want to register with a different GP surgery use 
-          <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a> 
-      </p>
-    
-    
-    
-    <!--"P5"-->
- <h1>
-        You may already be registered with {NAME OF SURGERY}
-      </h1>
-
-    <!--"P5_DEPENDANT"-->
-     <h1>
-        {DEPENDANT} may already be registered with {NAME OF SURGERY}
-      </h1>
-      <p>
-        Use NHS services online to:
-        <ul>
-          <li>book, check or cancel appointments with a GP or nurse</li>
-          <li>order repeat prescriptions</li>
-          <li>see parts of your health record, including information about medicines, vaccinations and test results</li>
-          <li>see communications between your GP surgery and other services, such as hospitals</li>
-        </ul>
-      </p>
-<p>Create an account to <a href="https://www.nhs.uk/nhs-services/gps/using-online-services/">access NHS services online</a></p>
-
-
-<h3>Register with a different GP surgery</h3>
-      <p>
-        If you want to register with a different GP surgery use 
-          <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a> 
-      </p>
-
-    
-    <!--"P5-branch"-->
-     <h1>
-        You may already be registered with this group of GP surgeries
-      </h1>
-    
-    <!--"P5-branch_DEPENDANT"-->
-     <h1>
-        {DEPENDANT} may already be registered with this group of GP surgeries
-      </h1>
-    
-      <p>{NAME OF SURGERY} is part of a group of surgeries.</p>
-      <p>
-        Use NHS services online to:
-        <ul>
-          <li>book, check or cancel appointments with a GP or nurse</li>
-          <li>order repeat prescriptions</li>
-          <li>see parts of your health record, including information about medicines, vaccinations and test results</li>
-          <li>see communications between your GP surgery and other services, such as hospitals</li>
-        </ul>
-      </p>
-<p>Create an account to <a href="https://www.nhs.uk/nhs-services/gps/using-online-services/">access NHS services online</a></p>
-
-
-<h3>Register with a different GP surgery</h3>
-      <p>
-        If you want to register with a different GP surgery use 
-          <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a> 
-      </p>
-    
-    
-    
-    
-    
     <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
-    <p>Something about branches ... </p>
+    {% if (data['user-auth'] === "p9") %}
 
-    <p>If you are a student .....</p>
+      {% if (data['ods-match'] === "branch") %}
 
-    {% if (data['user-auth'] === 'p9') %}
-      <p>You can use the NHS website to book appointments or </p>
+        {# if the user logs in with p9 and their ODS code is related to (a branch) the one they are trying to register with #}
+
+        <p>{{ data.presets[0].gpsurgery }} is part of a group of surgeries.</p>
+        <p>You can use the NHS App or <a href="https://www.nhs.uk/nhs-app/account/">log into your NHS account</a> to:</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>book, check or cancel appointments with a GP or nurse</li>
+          <li>order repeat prescriptions</li>
+          <li>see parts of your health record, including information about medicines, vaccinations and test results</li>
+          <li>see communications between your GP surgery and other services, such as hospitals</li>
+        </ul>
+        <h2 class="nhsuk-heading-m">>Register with a different GP surgery</h2>
+        <p>If you want to register with a different GP surgery use <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a></p>
+
+      {% else %}
+
+        {# if the user logs in with p9 and their ODS code is an exact match to the one they are trying to register with #}
+
+        <p>You can use the NHS App or <a href="https://www.nhs.uk/nhs-app/account/">log into your NHS account</a> to:</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>book, check or cancel appointments with a GP or nurse</li>
+          <li>order repeat prescriptions</li>
+          <li>see parts of your health record, including information about medicines, vaccinations and test results</li>
+          <li>see communications between your GP surgery and other services, such as hospitals</li>
+        </ul>
+        <h2 class="nhsuk-heading-m">Register with a different GP surgery</h2>
+        <p>If you want to register with a different GP surgery use <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a></p>
+
+      {% endif %}
+
     {% else %}
-      <p>Sign up to the NHS App </p>
-    {% endif %}
 
-     <p>Alternatively find a different surgery using the <a href="https://www.nhs.uk/service-search/find-a-gp" target="_blank" rel="noopener noreferrer">Find a GP service.</a></p>
+      {% if (data['ods-match'] === "branch") %}
+
+        {# if the user either logs in with p5 or doesn't use login and their ODS code is related to (a branch) of the one they are trying to register with #}
+
+        <p>{{ data.presets[0].gpsurgery }} is part of a group of surgeries.</p>
+        <p>Use NHS services online to:</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>book, check or cancel appointments with a GP or nurse</li>
+          <li>order repeat prescriptions</li>
+          <li>see parts of your health record, including information about medicines, vaccinations and test results</li>
+          <li>see communications between your GP surgery and other services, such as hospitals</li>
+        </ul>
+        <p>Create an account to <a href="https://www.nhs.uk/nhs-services/gps/using-online-services/">access NHS services online</a></p>
+        <h2 class="nhsuk-heading-m">Register with a different GP surgery</h2>
+        <p>If you want to register with a different GP surgery use <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a></p>
+
+      {% else %}
+
+        {# if the user either logs in with p5 or doesn't use login and their ODS code is an exact match to the one they are trying to register with #}
+
+        <p>Use NHS services online to:</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>book, check or cancel appointments with a GP or nurse</li>
+          <li>order repeat prescriptions</li>
+          <li>see parts of your health record, including information about medicines, vaccinations and test results</li>
+          <li>see communications between your GP surgery and other services, such as hospitals</li>
+        </ul>
+        <p>Create an account to <a href="https://www.nhs.uk/nhs-services/gps/using-online-services/">access NHS services online</a></p>
+        <h2 class="nhsuk-heading-m">Register with a different GP surgery</h2>
+        <p>If you want to register with a different GP surgery use <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a></p>
+
+      {% endif %}
+
+    {% endif %}
 
   </div>
 </div>
