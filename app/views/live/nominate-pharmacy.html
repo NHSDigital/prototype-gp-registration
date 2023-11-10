@@ -6,7 +6,7 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Would ' + data.presets[0].gpsurgery + ' like to choose or change a pharmacy for their prescriptions?' %}
+  {% set heading = 'Would ' + data['name-first-name'] + ' like to choose or change a pharmacy for their prescriptions?' %}
 {% else %}
   {% set heading = 'Would you like to choose or change a pharmacy for your prescriptions?'  %}
 {% endif %}
@@ -15,6 +15,7 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
+<!-- TODO need dynamic back link -->
 {% block outerContent %}
   {{ backLink({
     "href": "javascript:history.go(-1)",
@@ -48,11 +49,11 @@
               "items": [
                 {
                   "value": "Yes~/live/nominate-online-or-street",
-                  "text": "Yes, choose a pharmacy",
+                  "text": "Yes",
                   checked: checked("nominate-pharmacy", "Yes")
                 },
                 {
-                  "value": "No~/live/check-answers-3",
+                  "value": "No~/live/are-you-member-of-armed-forces",
                   "text": "No",
                   checked: checked("nominate-pharmacy", "No")
                 }

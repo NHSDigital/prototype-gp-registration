@@ -36,212 +36,40 @@
             }
           }) %}
 
-          {% if (data['contact'] == "home") %}
-
+          {% if 'home' in data['contact'] %}
             <div class="nhsuk-form-group contact-home-section">
               <label class="nhsuk-label" for="contact-home">
                 UK home telephone number
               </label>
               <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
             </div>
+          {% endif %}
 
-            {% elif (data['contact'] == "home,post") %}
-
-            <div class="nhsuk-form-group contact-home-section">
-              <label class="nhsuk-label" for="contact-home">
-                UK home telephone number
-              </label>
-              <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
-            </div>
-
-            {% elif (data['contact'] == "phone") %}
-
+          {% if 'phone' in data['contact'] %}
             <div class="nhsuk-form-group contact-home-section">
               <label class="nhsuk-label" for="contact-mobile">
                 UK mobile telephone number
               </label>
               <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
             </div>
+          {% endif %}
 
-            {% elif (data['contact'] == "phone,post") %}
-
-            <div class="nhsuk-form-group contact-home-section">
-              <label class="nhsuk-label" for="contact-mobile">
-                UK mobile telephone number
-              </label>
-              <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
-            </div>
-
-            {% elif (data['contact'] == "email") %}
-
+          {% if 'email' in data['contact'] %}
             <div class="nhsuk-form-group contact-home-section">
               <label class="nhsuk-label" for="contact-email">
                 Email address
               </label>
               <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
             </div>
+          {% endif %}
 
-            {% elif (data['contact'] == "email,post") %}
+          {% endcall %}
 
-            <div class="nhsuk-form-group contact-home-section">
-              <label class="nhsuk-label" for="contact-email">
-                Email address
-              </label>
-              <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
-            </div>
-
-            {% elif (data['contact'] == "home,phone")  %}
-
-              <div class="nhsuk-form-group contact-home-section">
-                <label class="nhsuk-label" for="contact-home">
-                  UK home telephone number
-                </label>
-                <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
-              </div>
-
-              <div class="nhsuk-form-group contact-home-section">
-                <label class="nhsuk-label" for="contact-mobile">
-                  UK mobile telephone number
-                </label>
-                <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
-              </div>
-
-              {% elif (data['contact'] == "home,phone,post")  %}
-
-                <div class="nhsuk-form-group contact-home-section">
-                  <label class="nhsuk-label" for="contact-home">
-                    UK home telephone number
-                  </label>
-                  <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
-                </div>
-
-                <div class="nhsuk-form-group contact-home-section">
-                  <label class="nhsuk-label" for="contact-mobile">
-                    UK mobile telephone number
-                  </label>
-                  <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
-                </div>
-
-              {% elif (data['contact'] == "home,email")  %}
-
-                <div class="nhsuk-form-group contact-home-section">
-                  <label class="nhsuk-label" for="contact-home">
-                    UK home telephone number
-                  </label>
-                  <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
-                </div>
-
-                <div class="nhsuk-form-group contact-home-section">
-                  <label class="nhsuk-label" for="contact-email">
-                    Email address
-                  </label>
-                  <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
-                </div>
-
-                {% elif (data['contact'] == "home,email,post")  %}
-
-                  <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-home">
-                      UK home telephone number
-                    </label>
-                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
-                  </div>
-
-                  <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-email">
-                      Email address
-                    </label>
-                    <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
-                  </div>
-
-                {% elif (data['contact'] == "phone,email")  %}
-
-                  <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-mobile">
-                      UK mobile telephone number
-                    </label>
-                    <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
-                  </div>
-
-                  <div class="nhsuk-form-group contact-home-section">
-                    <label class="nhsuk-label" for="contact-email">
-                      Email address
-                    </label>
-                    <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
-                  </div>
-
-                  {% elif (data['contact'] == "phone,email,post")  %}
-
-                    <div class="nhsuk-form-group contact-home-section">
-                      <label class="nhsuk-label" for="contact-mobile">
-                        UK mobile telephone number
-                      </label>
-                      <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
-                    </div>
-
-                    <div class="nhsuk-form-group contact-home-section">
-                      <label class="nhsuk-label" for="contact-email">
-                        Email address
-                      </label>
-                      <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
-                    </div>
-
-                  {% elif (data['contact'] == "home,phone,email")  %}
-
-                    <div class="nhsuk-form-group contact-home-section">
-                      <label class="nhsuk-label" for="contact-home">
-                        UK home telephone number
-                      </label>
-                      <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
-                    </div>
-
-                    <div class="nhsuk-form-group contact-home-section">
-                      <label class="nhsuk-label" for="contact-mobile">
-                        UK mobile telephone number
-                      </label>
-                      <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
-                    </div>
-
-                    <div class="nhsuk-form-group contact-home-section">
-                      <label class="nhsuk-label" for="contact-email">
-                        Email address
-                      </label>
-                      <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
-                    </div>
-
-                  {% elif (data['contact'] == "home,phone,email,post")  %}
-
-                    <div class="nhsuk-form-group contact-home-section">
-                      <label class="nhsuk-label" for="contact-home">
-                        UK home telephone number
-                      </label>
-                      <input class="nhsuk-input nhsuk-input--width-20" id="contact-home" name="contact-home" type="text">
-                    </div>
-
-                    <div class="nhsuk-form-group contact-home-section">
-                      <label class="nhsuk-label" for="contact-mobile">
-                        UK mobile telephone number
-                      </label>
-                      <input class="nhsuk-input nhsuk-input--width-20" id="contact-mobile" name="contact-mobile" type="text">
-                    </div>
-
-                    <div class="nhsuk-form-group contact-home-section">
-                      <label class="nhsuk-label" for="contact-email">
-                        Email address
-                      </label>
-                      <input class="nhsuk-input" id="contact-email" name="contact-email" type="text">
-                    </div>
-
-                  {% endif %}
-
-                  {% endcall %}
-
-            {{ button({
+          {{ button({
             "text": "Continue"
           }) }}
 
         </form>
-
       </div>
     </div>
 

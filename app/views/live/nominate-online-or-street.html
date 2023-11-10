@@ -29,8 +29,8 @@
             {% include 'live/includes/step.html' %}
 
             {{ radios({
-              "idPrefix": "nominate-pharmacy",
-              "name": "nominate-pharmacy",
+              "idPrefix": "nominate-pharmacy-type",
+              "name": "nominate-pharmacy-type",
               "fieldset": {
                 "legend": {
                   "text": heading,
@@ -48,7 +48,7 @@
                   "hint": {
                     "text": "You can collect your prescription items in person from a pharmacy near to you. They may also deliver."
                   },
-                  checked: checked("nominate-pharmacy", "Yes")
+                  checked: checked("nominate-pharmacy-type", "Yes")
                 },
                 {
                   "value": "No~/live/online-pharmacy",
@@ -56,7 +56,7 @@
                   "hint": {
                     "text": "These send your prescription items to you in the post. It's not possible for you to choose an online-only pharmacy during this registration process. You need to register directly with them instead."
                   },
-                  checked: checked("nominate-pharmacy", "No")
+                  checked: checked("nominate-pharmacy-type", "No")
                 }
               ]
             }) }}

@@ -13,10 +13,10 @@
   {% set label = 'How would you describe your background? (optional)' %}
 {% endif %}
 
-{% if (data['user-auth'] === "p9" or data['user-auth'] === "p5") %}
-  {% set action = 'is-this-your-current-address' %}
+{% if (data['skip-nominate-pharmacy'] === "true") %}
+  {% set action = 'are-you-a-member-of-armed-forces' %}
 {% else %}
-  {% set action = 'do-you-current-address' %}
+  {% set action = 'nominate-pharmacy' %}
 {% endif %}
 
 {% block pageTitle %}

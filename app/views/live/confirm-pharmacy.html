@@ -1,16 +1,23 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Check your chosen pharmacy details" %}
+{% else %}
+  {% set heading = 'Check chosen pharmacy details' %}
+{% endif %}
+
 {% block pageTitle %}
-Check chosen pharmacy details - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "nominate-pharmacy-search-selection",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -22,12 +29,10 @@ Check chosen pharmacy details - {{ ServiceName }} - NHS
         <div class="nhsuk-grid-column-two-thirds">
 
           <form action="are-you-a-member-of-armed-forces" method="post" autocomplete="off">
-            {{ hint({
-              "text": "Additional information",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
 
-            <h1 class="nhsuk-heading-l">Check chosen pharmacy details</h1>
+            {% include 'live/includes/step.html' %}
+
+            <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
             <p>Prescriptions will be sent to this pharmacy only after registration has been confirmed by the new GP surgery. You will then be able get your prescription items like medicines and medical appliances from this pharmacy.</p>
 
@@ -94,6 +99,8 @@ Check chosen pharmacy details - {{ ServiceName }} - NHS
           </form>
         </div>
        </div>
+
+{% include 'live/includes/devmode.html' %}
 
 {% endblock %}
 
