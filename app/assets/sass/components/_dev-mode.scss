@@ -11,6 +11,15 @@
   border: #39629f dashed 1px;
 }
 
+details.dev-mode--routing {
+  background-color: $color_nhsuk-warm-yellow;
+  border: #666 dashed 1px;
+  border-radius: 3px;
+  padding: 15px;
+  display: inline-block;
+  clear: both;
+}
+
 details.dev-mode summary, details.dev-mode ol {
   font-size: 15px;
 }
