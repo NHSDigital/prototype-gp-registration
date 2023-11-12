@@ -15,10 +15,15 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
-<!-- TODO need dynamic back -->
+{% if (data['schooling'][0] === 'None') %}
+  {% set link = 'what-schooling-do-you-have' %}
+{% else %}
+  {% set link = 'schooling-details' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
-    "href": "what-schooling-do-you-have",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -88,4 +93,11 @@
         </div>
       </div>
 
+{% include 'live/includes/devmode.html' %}
+
 {% endblock %}
+
+{% block footer %}
+{% include 'live/includes/footer.html' %}
+{% endblock %}
+

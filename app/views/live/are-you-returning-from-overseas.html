@@ -6,7 +6,7 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Are they returning from overseas?' %}
+  {% set heading = 'Is ' + data ['name-first-name'] + ' returning from overseas?' %}
 {% else %}
   {% set heading = 'Are you returning from overseas?' %}
 {% endif %}
@@ -15,9 +15,15 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
+{% if (data['emergency-contact'] === "Yes") %}
+  {% set link = "emergency-contact-details" %}
+{% else %}
+  {% set link = 'emergency-contact?' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -50,10 +56,9 @@
                   checked: checked("overseas", "Yes")
                 },
                 {
-                  "value": "No~/live/check-answers-2",
+                  "value": "No~/live/where-were-you-born",
                   "text": "No",
                   checked: checked("overseas", "No")
-
                 }
               ]
             }) }}

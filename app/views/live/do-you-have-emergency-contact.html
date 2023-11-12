@@ -8,16 +8,28 @@
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = 'Does ' + data['name-first-name'] + ' have a contact in case of emergency?' %}
 {% else %}
-  {% set heading = 'Do you have a contact in case of emergency?' %}
+  {% set heading = 'Do you have an emergency contact?' %}
 {% endif %}
 
 {% block pageTitle %}
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
+{% if (data['is-armed-forces-member'] === "Yes") %}
+  {% set link = "are-you-member-of-armed-forces-details" %}
+{% elif (data['is-armed-forces-member'] === "No") %}
+  {% set link = "are-you-member-of-armed-forces" %}
+{% else %}
+  {% if (data['nominated-pharmacy']) %}
+    {% set link = "confirm-pharmacy" %}
+  {% else %}
+    {% set link = 'nominate-pharmacy?' %}
+  {% endif %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -41,7 +53,7 @@
             }) %}
 
             {{ hint({
-              "text": "This can be a family member, friend or support worker.",
+              "text": "This can be someone like a family member, friend or support worker..",
               "classes": "nhsuk-u-margin-bottom-4"
             }) }}
 

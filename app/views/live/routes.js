@@ -51,7 +51,7 @@ module.exports = (router) => {
     }
   })
 
-  // name
+// name
   router.post('/live/what-is-your-name-post/', function (req, res) {
     if (req.session.data['return'] === 'true') {
       res.redirect('/live/check-answers-1')
@@ -61,13 +61,72 @@ module.exports = (router) => {
     }
   })
 
-  // current uk address
+// Who is registering branch
+  router.post('/live/error-too-young-post/', function (req, res) {
+
+    // Make a variable and give it the value from 'juggling-balls'
+    var choice = req.session.data['error-age-next']
+
+    // Check whether the variable matches a condition
+    if (choice === "dependant"){
+      // Send user to next page
+      res.redirect('/live/dependant-interuption')
+    } else {
+      // Send user to ineligible page
+      res.redirect('/live/what-is-your-date-of-birth')
+    }
+  })
+
+// current uk address
   router.post('/live/do-you-current-address-post/', function (req, res) {
     if (req.session.data['have-current-uk-address'] === 'Yes') {
       res.redirect('/live/what-is-your-current-address')
       // req.session.data['return'] = ''
     } else {
       res.redirect('/live/how-can-we-contact-inputs')
+    }
+  })
+
+  router.post('/live/what-is-your-current-address-selection-post', function (req, res) {
+    const address = req.session.data['select-current-address']
+    if (address === 'address1') {
+      req.session.data['address-flat-number-current'] = ''
+      req.session.data['address-house-number-current'] = '1'
+      req.session.data['address-house-name-current'] = ''
+      req.session.data['address-street-current'] = 'Town Street'
+      req.session.data['address-city-current'] = 'London'
+    } else if (address === 'address2') {
+      req.session.data['address-flat-number-current'] = ''
+      req.session.data['address-house-number-current'] = '2'
+      req.session.data['address-house-name-current'] = ''
+      req.session.data['address-street-current'] = 'Town Street'
+      req.session.data['address-city-current'] = 'London'
+    } else if (address === 'address3') {
+      req.session.data['address-flat-number-current'] = ''
+      req.session.data['address-house-number-current'] = '3'
+      req.session.data['address-house-name-current'] = ''
+      req.session.data['address-street-current'] = 'Town Street'
+      req.session.data['address-city-current'] = 'London'
+    } else if (address === 'address4') {
+      req.session.data['address-flat-number-current'] = ''
+      req.session.data['address-house-number-current'] = '4'
+      req.session.data['address-house-name-current'] = ''
+      req.session.data['address-street-current'] = 'Town Street'
+      req.session.data['address-city-current'] = 'Leeds'
+    } else if (address === 'address5') {
+      req.session.data['address-flat-number-current'] = ''
+      req.session.data['address-house-number-current'] = '5'
+      req.session.data['address-house-name-current'] = ''
+      req.session.data['address-street-current'] = 'Town Street'
+      req.session.data['address-city-current'] = 'London'
+    }
+    // where to route to next
+    if (req.session.data['out-of-area'] === "out-of-area") {
+      res.redirect('current-address-out-of-area')
+    } else if (req.session.data['user-auth'] === "p9") {
+      res.redirect('confirm-contact-details')
+    } else {
+      res.redirect('how-can-we-contact-inputs')
     }
   })
 
@@ -83,11 +142,26 @@ module.exports = (router) => {
 
 // routing for dependents
   router.post('/live/how-can-we-contact-inputs-prompt-answer/', function (req, res) {
-    var communicationNeeds = req.session.data['has-communication-needs']
-    if (communicationNeeds === "Yes"){
-      res.redirect('/live/what-are-your-communication-needs')
+    var nocontact = req.session.data['no-contact']
+    var under18 = req.session.data['under-18-years']
+    if (nocontact === "Yes"){
+      if (under18 === "true"){
+        res.redirect('/live/what-schooling-do-you-have')
+      } else {
+        res.redirect('/live/what-is-your-sex')
+      }
     } else {
-      res.redirect('/live/what-is-your-sex')
+      res.redirect('/live/how-can-we-contact-inputs')
+    }
+  })
+
+// school routing
+  router.post("/live/check-schooling", function(req,res) {
+    let schooling = req.session.data["schooling"]
+    if (schooling[0] === "None" || schooling[0] === undefined){
+      res.redirect("/live/professional-involvement")
+    } else {
+      res.redirect("/live/schooling-details")
     }
   })
 
@@ -172,14 +246,7 @@ module.exports = (router) => {
     }
   })
 
-  router.post("/live/check-schooling", function(req,res) {
-    let schooling = req.session.data["schooling"]
-    if (schooling[0] === "None" || schooling[0] === undefined){
-      res.redirect("/live/professional-involvement")
-    } else {
-      res.redirect("/live/schooling-details")
-    }
-  })
+
 
 // EHIC Dec
   router.post('/live/check-age-3', function (req, res) {

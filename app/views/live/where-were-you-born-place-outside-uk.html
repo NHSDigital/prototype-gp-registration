@@ -17,6 +17,12 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set action = '' %}
+{% else %}
+  {% set action = 'what-is-your-gp-address' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
     "href": "where-were-you-born",
@@ -30,7 +36,7 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="what-is-your-ethnicity" method="post" autocomplete="off">
+          <form action="{{ action }}" method="post" autocomplete="off">
 
             {% include 'live/includes/step.html' %}
 

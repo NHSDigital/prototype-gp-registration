@@ -15,10 +15,15 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
-<!-- TODO need dynamic back -->
+{% if (data['no-contact']) %}
+  {% set link = 'how-can-we-contact-inputs-prompt' %}
+{% else %}
+  {% set link = '"contact-details"' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
-    "href": "what-schooling-do-you-have",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -82,4 +87,10 @@
         </div>
       </div>
 
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}

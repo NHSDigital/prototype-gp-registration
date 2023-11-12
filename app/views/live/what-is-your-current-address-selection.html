@@ -11,14 +11,6 @@
   {% set heading = 'Select an address' %}
 {% endif %}
 
-{% if (data['out-of-area'] === "out-of-area") %}
-  {% set action = 'current-address-out-of-area' %}
-{% elif (data['have-current-uk-address'] === "Yes") %}
-  {% set action = 'how-can-we-contact-inputs' %}
-{% elif (data['user-auth'] === "p9") %}
-  {% set action = 'confirm-contact-details' %}
-{% endif %}
-
 {% block pageTitle %}
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
@@ -38,7 +30,7 @@
 
           {% include 'live/includes/step.html' %}
 
-          <form action="{{ action }}" method="post" autocomplete="off">
+          <form action="what-is-your-current-address-selection-post" method="post" autocomplete="off">
 
               {% call fieldset({
                 legend: {
@@ -57,34 +49,29 @@
                 "name": "select-current-address",
                 "items": [
                   {
-                    "value": "1 Town Street, London, SW1A 1AA",
+                    "value": "address1",
                     "text": "1 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-address", "1 Town Street, London, SW1A 1AA")
+                    "checked": checked("select-current-address", "address1")
                   },
                   {
-                    "value": "2 Town Street, London, SW1A 1AA",
+                    "value": "address2",
                     "text": "2 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-address", "2 Town Street, London, SW1A 1AA")
+                    "checked": checked("select-current-address", "address2")
                   },
                   {
-                    "value": "3 Town Street, London, SW1A 1AA",
+                    "value": "address3",
                     "text": "3 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-addresss", "3 Town Street, London, SW1A 1AA")
+                    "checked": checked("select-current-addresss", "address3")
                   },
                   {
-                    "value": "4 Town Street, London, SW1A 1AA",
+                    "value": "address4",
                     "text": "4 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-addresss", "4 Town Street, London, SW1A 1AA")
+                    "checked": checked("select-current-addresss", "address4")
                   },
                   {
-                    "value": "5 Town Street, London, SW1A 1AA",
+                    "value": "address5",
                     "text": "5 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-address", "5 Town Street, London, SW1A 1AA")
-                  },
-                  {
-                    "value": "6 Town Street, London, SW1A 1AA",
-                    "text": "6 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-address", "6 Town Street, London, SW1A 1AA")
+                    "checked": checked("select-current-address", "address5")
                   },
                   {
                     "divider": "or"

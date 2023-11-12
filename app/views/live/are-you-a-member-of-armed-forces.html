@@ -11,7 +11,11 @@
   {% set heading = 'Are you registered with the Defence Medical Services?' %}
 {% endif %}
 
-{% set link = 'nominate-pharmacy?' %}
+{% if (data['nominated-pharmacy']) %}
+  {% set link = "confirm-pharmacy" %}
+{% else %}
+  {% set link = 'nominate-pharmacy?' %}
+{% endif %}
 
 {% block pageTitle %}
   {{ heading }} - {{ ServiceName }} - NHS
@@ -57,7 +61,7 @@
                     checked: checked("is-armed-forces-member", "Yes")
                   },
                   {
-                    "value": "No~/live/do-you-need-a-interpreter",
+                    "value": "No~/live/do-you-have-emergency-contact",
                     "text": "No",
                     checked: checked("is-armed-forces-member", "No")
 

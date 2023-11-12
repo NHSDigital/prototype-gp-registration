@@ -15,10 +15,23 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
-<!-- TODO need dynamic back link -->
+{% if (data['ethnicity'] === "Asian or Asian British") %}
+  {% set link = 'what-is-your-ethnicity-background-asian' %}
+{% elif (data['ethnicity'] === "Black African, Black British or Caribbean") %}
+  {% set link = 'what-is-your-ethnicity-background' %}
+{% elif (data['ethnicity'] === "Mixed or multiple ethnic groups") %}
+  {% set link = 'what-is-your-ethnicity-background-mixed' %}
+{% elif (data['ethnicity'] === "White") %}
+  {% set link = 'what-is-your-ethnicity-background-white' %}
+{% elif (data['ethnicity'] === "Another ethnic group") %}
+  {% set link = 'what-is-your-ethnicity-background-another' %}
+{% else %}
+  {% set link = 'what-is-your-ethnicity' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}

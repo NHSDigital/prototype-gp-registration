@@ -8,11 +8,11 @@
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = 'Are you sure that ' + data['name-first-name'] + ' has no access to a phone or email?' %}
   {% set labelText = 'Yes, the patient does not have access to a phone or email' %}
-  {% set hintText = 'It\'s important that the NHS and the patient\'s GP surgery have a convenient way of contacting them about this application, appointments, prescriptions or other health care services.' %}
+  {% set hintText = 'It\'s important that the NHS and the patient\'s GP surgery have a convenient way of contacting them about this application, appointments, prescriptions or other health services.' %}
 {% else %}
   {% set heading = 'Are you sure that you have no access to a phone or email?' %}
   {% set labelText = 'Yes, I don\'t have access to a phone or email' %}
-  {% set hintText = 'It\'s important that the NHS and your GP surgery have a convenient way of contacting you about this application, appointments, prescriptions or other health care services.' %}
+  {% set hintText = 'It\'s important that the NHS and your GP surgery have a convenient way of contacting you about this application, appointments, prescriptions or other health services.' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -32,7 +32,7 @@
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
-        <form action="" method="post" autocomplete="off">
+        <form action="how-can-we-contact-inputs-prompt-answer" method="post" autocomplete="off">
 
           {% include 'live/includes/step.html' %}
 
@@ -54,12 +54,12 @@
             "name": "no-contact",
             "items": [
               {
-                "value": "Yes~/live/how-can-we-contact-inputs-prompt-answer",
+                "value": "Yes",
                 "text": labelText,
                 "checked": checked("no-contact", "Yes")
               },
               {
-                "value": "No~/live/how-can-we-contact-inputs",
+                "value": "No",
                 "text": "No",
                 "checked": checked("no-contact", "No")
               }

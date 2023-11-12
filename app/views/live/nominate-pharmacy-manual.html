@@ -11,9 +11,15 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
+{% if (data['pharmacy-postcode']) %}
+  {% set link = 'nominate-pharmacy-search-selection' %}
+{% else %}
+  {% set link = 'nominate-pharmacy-search' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -23,7 +29,7 @@
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-          <form action="do-you-previous-address" method="post" autocomplete="off">
+          <form action="do-you-have-emergency-contact" method="post" autocomplete="off">
 
             {% include 'live/includes/step.html' %}
 

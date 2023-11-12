@@ -15,6 +15,14 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
+{% if (data['out-of-area'] === "out-of-area") %}
+  {% set action = 'current-address-out-of-area' %}
+{% elif (data['user-auth'] === "p9") %}
+  {% set action = 'confirm-contact-details' %}
+{% else %}
+  {% set action = 'how-can-we-contact-inputs' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
     "href": "what-is-your-current-address",
@@ -28,7 +36,7 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="do-you-know-nhs-number" method="post" autocomplete="off">
+          <form action="{{ action }}" method="post" autocomplete="off">
 
             {% include 'live/includes/step.html' %}
 

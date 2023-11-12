@@ -7,10 +7,10 @@
 
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = "Enter details of where " + data ['name-first-name'] + " was born?" %}
-  {% set hint = 'This can be the city, town or other place they were born' %}
+  {% set hintText = 'This can be the town, city or other location you were born in.' %}
 {% else %}
   {% set heading = 'Enter details of where you were born' %}
-  {% set hint = 'This can be the city, town or other place you were born' %}
+  {% set hintText = 'This can be the town, city or other location you were born in.' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -19,7 +19,7 @@
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "where-were-you-born",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -30,7 +30,7 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="what-is-your-ethnicity" method="post" autocomplete="off">
+          <form action="what-is-your-gp-address" method="post" autocomplete="off">
 
             {% include 'live/includes/step.html' %}
 
@@ -47,7 +47,7 @@
                   "text": "Place of birth"
                 },
                 "hint": {
-                  "text": hint
+                  "text": hintText
                 },
                 "classes": "nhsuk-u-width-two-thirds",
                 "id": "town-born",

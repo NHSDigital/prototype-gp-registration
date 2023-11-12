@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% set heading = 'Recent UK armed forces leavers and their families' %}
+{% set heading = 'Recent Armed Forces leavers and their families' %}
 
 {% block pageTitle %}
   {{ heading }} - {{ ServiceName }} - NHS
@@ -13,7 +13,7 @@
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "are-you-a-member-of-armed-forces",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -24,7 +24,7 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-        <form action="do-you-need-a-interpreter" method="post" autocomplete="off">
+        <form action="do-you-have-emergency-contact" method="post" autocomplete="off">
 
           {% include 'live/includes/step.html' %}
 
@@ -41,7 +41,7 @@
 
               <li>
               <p><strong>For former reservists</strong><br>
-              If you had previously received healthcare from the Defence Medical Services you should have been given an FMED133A form. If you haven't received one and think you should have you can follow the <a href="https://www.nhs.uk/nhs-services/armed-forces-community/service-leavers-guide/" target="_blank" rel="noopener noreferrer">NHS Step by step guide for service leavers (opens in new tab)</a>.</p>
+                If you had previously received healthcare from the Defence Medical Services you should have been given an FMED133A form. If you haven't receive one and think you should have you can follow the <a href="https://www.nhs.uk/nhs-services/armed-forces-community/service-leavers-guide/" target="_blank" rel="noopener noreferrer">NHS Step by step guide for service leavers.</a></p>
               </li>
 
               <li>

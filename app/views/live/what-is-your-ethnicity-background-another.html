@@ -6,7 +6,7 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Which of the following best describes their background?' %}
+  {% set heading = 'Which of the following best describes ' + data['name-first-name'] + '\'s ethnic background?' %}
   {% set label = 'How would you describe their background? (optional)' %}
 {% else %}
   {% set heading = 'Which of the following best describes your background?' %}
