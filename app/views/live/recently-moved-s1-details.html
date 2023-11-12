@@ -5,15 +5,17 @@
 
 {% extends 'layout.html' %}
 
-{% set heading = 'S1 form?' %}
+{% set heading = 'S1 form' %}
 
 {% block pageTitle %}
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
+{% set action = 'do-you-have-existing-conditions' %}
+
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "recently-moved-documents",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -24,14 +26,19 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="overseas-declaration-s1" method="post" autocomplete="off">
+          <form action="{{ action }}" method="post" autocomplete="off">
 
             {% include 'live/includes/step.html' %}
 
             <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
-            <p>If you have an S1 form you should take this into your chosen GP surgery at the earliest opportunity.</p>
-            <p>You should only need to present your S1 form once on registration, though may be asked to show it at other times.</p>
+            {% if (data['who-is-being-registered'] === "dependant") %}
+              <p>If the patient has an S1 form they should take this into their chosen GP surgery at the earliest opportunity.</p>
+              <p>They should only need to present their S1 form once on registration, though may be asked to show it at other times.</p>
+            {% else %}
+              <p>If you have an S1 form you should take this into your chosen GP surgery at the earliest opportunity.</p>
+              <p>You should only need to present your S1 form once on registration, though may be asked to show it at other times.</p>
+            {% endif %}
 
             {{ button({
               "text": "Continue"

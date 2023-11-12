@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "Select their previous address" %}
+  {% set heading = 'Select ' + data['name-first-name'] + '\'s previous address' %}
 {% else %}
-  {% set heading = 'Select your previous address' %}
+  {% set heading = 'Select your address' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -17,7 +17,7 @@
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "what-is-your-previous-address",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -28,7 +28,7 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="check-answers-2" method="post" autocomplete="off">
+          <form action="do-you-have-existing-conditions" method="post" autocomplete="off">
 
             {% include 'live/includes/step.html' %}
 
@@ -40,9 +40,10 @@
                 }
               }) %}
 
-              <div class="nhsuk-hint" id="contact-hint">
-                <p>6 addresses found for <strong>{{ data['prev-house-number-address'] }}</strong> <strong>{{ data['find-previous-address'] }}</strong></p>
-              </div>
+              {{ hint({
+                "text": '6 addresses found for ' + data['find-previous-address'],
+                "classes": "nhsuk-u-margin-bottom-2"
+              }) }}
 
               {{ radios({
                 "idPrefix": "select-previous-address",
@@ -83,7 +84,7 @@
                   },
                   {
                     "value": "wrong address~/live/what-is-your-previous-address",
-                    "text": "The address is not listed here.",
+                    "text": "I cannot find the address on the list.",
                     "checked": checked("select-current-address", "")
                   }
                 ]

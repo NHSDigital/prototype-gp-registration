@@ -6,7 +6,7 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "What was their previous UK address?" %}
+  {% set heading = 'What is ' + data['name-first-name'] + '\'s previous UK address?' %}
 {% else %}
   {% set heading = 'What was your previous UK address?' %}
 {% endif %}
@@ -39,6 +39,11 @@
                   "isPageHeading": true
                 }
               }) %}
+
+              {{ hint({
+                "text": 'If you have had more than one address previously, please enter the address you lived at most recently.',
+                "classes": "nhsuk-u-margin-bottom-2"
+              }) }}
 
               {{ input({
                 label: {

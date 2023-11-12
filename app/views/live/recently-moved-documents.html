@@ -6,9 +6,11 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "Do they have any of these documents?" %}
+  {% set heading = 'Does ' + data['name-first-name'] + ' have any of these documents?' %}
+  {% set labelText = 'They don\'t have any of these documents.' %}
 {% else %}
   {% set heading = 'Do you have any of these documents?' %}
+  {% set labelText = 'I don\'t have any of these documents' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -17,7 +19,7 @@
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "recently-moved-eea",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -56,7 +58,7 @@
              },
               {
                 "value": "No~/live/overseas-declaration-nodocs",
-                "text": "I don't have any of these documents",
+                "text": labelText,
                 "checked": checked("health-documents", "No")
               }
             ]
@@ -64,17 +66,16 @@
 
           {% endcall %}
 
+          {{ details({
+            "text": "Why are you asking this?",
+            "HTML": "<p>You will need to provide the information from your EHIC or S1 form. This will help NHS to reclaim the costs for your care. We do not share this information with anyone outside NHS services.</p>"
+            }) }}
+
           {{ button({
             "text": "Continue"
           }) }}
 
         </form>
-
-        {{ details({
-          "text": "Why are you asking this?",
-          "HTML": "<p>You will need to provide the information from your EHIC card or S1 form. This will help  NHS to reclaim the costs for your care.</p>
-          <p>We do not share this information with anyone outside NHS services.</p>"
-        }) }}
 
       </div>
     </div>

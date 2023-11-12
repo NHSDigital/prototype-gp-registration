@@ -17,9 +17,25 @@
 {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
+{% if (data['have-current-uk-address'] === "No") %}
+  {% set link = 'do-you-current-address' %}
+{% else %}
+  {% if (data['recently-moved-s1-details']) %}
+    {% set link = 'recently-moved-s1-details' %}
+    {% set link = 'document-details-ehic' %}
+    {% set link = 'recently-moved-documents' %}
+    {% set link = 'recently-moved-eea' %}
+
+    {% set link = 'do-you-previous-address' %}
+  {% else %}
+    {% set link = 'what-is-your-current-address-manual' %}
+  {% endif %}
+{% endif %}
+
 {% block outerContent %}
+<!-- TODO add all routes back -->
   {{ backLink({
-    "href": "check-answers-3",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}

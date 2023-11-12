@@ -15,9 +15,15 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
+{% if (data['emergency-contact'] === 'Yes') %}
+  {% set link = 'emergency-contact-details' %}
+{% else %}
+  {% set link = 'do-you-have-emergency-contact' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
-  "href": "javascript:history.go(-1)",
+  "href": link,
   "text": "Go back",
   "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -51,12 +57,12 @@
             "name": "recently-moved",
             "items": [
               {
-                "value": "Yes~/live/recently-moved-date",
+                "value": "Yes~/live/where-were-you-born-place-outside-uk",
                 "text": "Yes",
                 "checked": checked("recently-moved", "Yes")
               },
               {
-                "value": "No~/live/do-you-previous-address",
+                "value": "No~/live/where-were-you-born",
                 "text": "No",
                 "checked": checked("recently-moved", "No")
               }

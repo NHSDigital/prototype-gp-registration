@@ -6,18 +6,24 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "Do they have a previous UK address?" %}
+  {% set heading = 'Does ' + data['name-first-name'] + ' have a previous UK address?' %}
 {% else %}
-  {% set heading = 'Do you have a previous UK address?' %}
+  {% set heading = 'Have you ever lived at a previous UK address?' %}
 {% endif %}
 
 {% block pageTitle %}
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
+{% if (data['country-born'] === "None") %}
+  {% set link = 'where-were-you-born-place-outside-uk' %}
+{% else %}
+  {% set link = 'where-were-you-born-place-uk' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -34,7 +40,7 @@
 
             {% call fieldset({
               legend: {
-                text: "Do you have a previous UK address?",
+                text: heading,
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }

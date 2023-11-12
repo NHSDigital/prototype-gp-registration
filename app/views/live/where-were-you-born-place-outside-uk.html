@@ -18,14 +18,14 @@
 {% endblock %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set action = '' %}
+  {% set action = 'recently-moved-date' %}
 {% else %}
-  {% set action = 'what-is-your-gp-address' %}
+  {% set action = 'recently-moved-date' %}
 {% endif %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "where-were-you-born",
+    "href": "recently-move-to-the-uk",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}

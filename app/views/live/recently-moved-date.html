@@ -6,7 +6,7 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'When did they enter the UK?' %}
+  {% set heading = 'When did ' + data['name-first-name'] + ' enter the UK?' %}
 {% else %}
   {% set heading = 'When did you enter the UK?' %}
 {% endif %}
@@ -15,9 +15,15 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
+{% if (data['recently-moved'] === "Yes") %}
+  {% set action = 'recently-moved-eea' %}
+{% else %}
+  {% set action = 'do-you-previous-address' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
-    "href": "recently-moved-to the uk",
+    "href": "where-were-you-born-place-outside-uk",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -27,7 +33,7 @@
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
-        <form action="recently-moved-eea" method="post" autocomplete="off">
+        <form action="{{ action }}" method="post" autocomplete="off">
 
           {% include 'live/includes/step.html' %}
 
@@ -40,6 +46,10 @@
                 "classes": "nhsuk-label--l",
                 "isPageHeading": true
               }
+
+            },
+            "hint": {
+              "text": "For example 09 10 2021."
             },
             "items": [
               {

@@ -6,7 +6,7 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "What was their previous UK address?" %}
+  {% set heading = 'What is ' + data['name-first-name'] + '\'s previous UK address?' %}
 {% else %}
   {% set heading = 'What was your previous UK address?' %}
 {% endif %}
@@ -17,7 +17,7 @@
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "do-you-previous-address",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -47,7 +47,7 @@
               "hint": {
                 "text": "For example, flat 20A"
               },
-              "classes": "nhsuk-input--width-10",
+              "classes": "nhsuk-input--width-20",
               "id": "prev-house-number-address",
               "name": "prev-house-number-address",
               value: data['prev-house-number-address']
@@ -58,9 +58,9 @@
                 "text": "Postcode"
               },
               "hint": {
-                "text": "For example, AB12 P12"
+                "text": "For example, LS13 9PO"
               },
-              "classes": "nhsuk-input--width-10",
+              "classes": "nhsuk-input--width-20",
               "id": "find-previous-address",
               "name": "find-previous-address",
               value: data['find-previous-address']
