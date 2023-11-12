@@ -20,7 +20,11 @@
 {% if (data['return'] === "true") %}
   {% set link = 'check-answers-1' %}
 {% else %}
-  {% set link = 'relation-of-dependant' %}
+  {% if (data['use-login'] === "false") %}
+    {% set link = 'continue-with-nhs-login' %}
+  {% else %}
+    {% set link = 'relation-of-dependant' %}
+  {% endif %}
 {% endif %}
 
 {% block outerContent %}

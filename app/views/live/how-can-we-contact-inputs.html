@@ -27,6 +27,13 @@
   {% endif %}
 {% endif %}
 
+{% if (data['under-18-years'] === "true") %}
+  {% set action = 'what-schooling-do-you-have' %}
+{% else %}
+  {% set action = 'what-is-your-sex' %}
+{% endif %}
+
+
 {% block outerContent %}
   {{ backLink({
     "href": link,
@@ -40,7 +47,7 @@
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
-        <form action="what-is-your-sex" method="post">
+        <form action="{{ action }}" method="post">
 
           {% include 'live/includes/step.html' %}
 

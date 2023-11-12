@@ -77,16 +77,7 @@ module.exports = (router) => {
     }
   })
 
-// current uk address
-  router.post('/live/do-you-current-address-post/', function (req, res) {
-    if (req.session.data['have-current-uk-address'] === 'Yes') {
-      res.redirect('/live/what-is-your-current-address')
-      // req.session.data['return'] = ''
-    } else {
-      res.redirect('/live/how-can-we-contact-inputs')
-    }
-  })
-
+// populate data for display later
   router.post('/live/what-is-your-current-address-selection-post', function (req, res) {
     const address = req.session.data['select-current-address']
     if (address === 'address1') {
