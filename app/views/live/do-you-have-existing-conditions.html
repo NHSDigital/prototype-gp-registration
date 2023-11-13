@@ -7,33 +7,44 @@
 
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = 'Does ' + data ['name-first-name'] + ' have any existing or pre-existing medical conditions?' %}
-  {% set link = 'carer-details' %}
 {% else %}
   {% set heading = 'Do you have any existing or pre-existing medical conditions?' %}
-  {% set link = 'continue-with-nhs-login' %}
 {% endif %}
 
 {% block pageTitle %}
-{{ heading }} - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
-{% if (data['have-current-uk-address'] === "No") %}
-  {% set link = 'do-you-current-address' %}
+{% if (data['are-you-immunised']) %}
+  {% if (data['are-you-immunised'] === "No") %}
+    {% set link = 'are-you-immunised' %}
+  {% else %}
+    {% set link = 'are-you-immunised-uk' %}
+  {% endif %}
+
 {% else %}
+
+  {% if (data['recently-moved'] === 'No') %}
+    {% set link = 'recently-move-to-the-uk' %}
+  {% endif %}
+
   {% if (data['recently-moved-s1-details']) %}
     {% set link = 'recently-moved-s1-details' %}
-    {% set link = 'document-details-ehic' %}
-    {% set link = 'recently-moved-documents' %}
-    {% set link = 'recently-moved-eea' %}
-
-    {% set link = 'do-you-previous-address' %}
-  {% else %}
-    {% set link = 'what-is-your-current-address-manual' %}
   {% endif %}
+
+  {% set link = 'document-details-ehic' %}
+  {% set link = 'recently-moved-documents' %}
+  {% set link = 'recently-moved-eea' %}
+
+  {% set link = 'do-you-previous-address' %}
+  {% set link = 'what-is-your-current-address-selection' %}
+  {% set link = 'what-is-your-current-address-manual' %}
+
+
+
 {% endif %}
 
 {% block outerContent %}
-<!-- TODO add all routes back -->
   {{ backLink({
     "href": link,
     "text": "Go back",

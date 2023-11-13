@@ -1,7 +1,7 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
-{% set section = '2' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
@@ -15,9 +15,15 @@
 {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
+{% if (data['have-current-uk-address'] === "No") %}
+  {% set link = 'do-you-current-address' %}
+{% else %}
+  {% set link = 'do-you-current-address' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -28,7 +34,7 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="do-you-have-existing-conditions" method="post" autocomplete="off">
+          <form action="" method="post" autocomplete="off">
 
             {% include 'live/includes/step.html' %}
 
@@ -54,7 +60,7 @@
                   checked: checked("are-you-immunised", "Yes")
                 },
                 {
-                  "value": "No",
+                  "value": "No~/live/do-you-have-existing-conditions",
                   "text": "No",
                   checked: checked("are-you-immunised", "No")
                 },
@@ -62,7 +68,7 @@
                   "divider": "or"
                 },
                 {
-                  "value": "I don't know",
+                  "value": "I don't know~/live/do-you-have-existing-conditions",
                   "text": "I don't know",
                   checked: checked("are-you-immunised", "I don't know")
                 }
