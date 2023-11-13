@@ -237,80 +237,28 @@ module.exports = (router) => {
     }
   })
 
-
-
-// EHIC Dec
-  router.post('/live/check-age-3', function (req, res) {
-    var dob = req.session.data['dob-year']+ '-'+ req.session.data['dob-month']+ '-'+ req.session.data['dob-day']
-    var overseasDecehic = req.session.data['overseas-declaration-ehic']
+// set DOB variables based on inputted
+  router.post('/live/what-is-your-date-of-birth-answer', function (req, res) {
+    var dob = req.session.data['date-of-birth'][2]+ '-'+ req.session.data['date-of-birth'][1]+ '-'+ req.session.data['date-of-birth'][0]
     var years = moment().diff(dob, 'years');
-    console.log(`number of years ${years}`)
-    console.log('looking up age')
-    if (years <= 18) {
-      res.redirect('/live/are-you-immunised')
-    } else {
-      res.redirect('/live/do-you-have-existing-conditions')
+    // reset everything
+    req.session.data["under-12-months"] = 'false'
+    req.session.data["under-13-years"] = 'false'
+    req.session.data["under-16-years"] = 'false'
+    req.session.data["under-18-years"] = 'false'
+    if(years < 1){
+      req.session.data["under-12-months"] = 'true'
     }
-  });
-
-// Nodocs Dec
-
-  router.post('/live/check-age-3', function (req, res) {
-    var dob = req.session.data['dob-year']+ '-'+ req.session.data['dob-month']+ '-'+ req.session.data['dob-day']
-    var overseasDecehic = req.session.data['overseas-declaration-nodocs']
-    var years = moment().diff(dob, 'years');
-    // console.log(`number of years ${years}`)
-    // console.log('looking up age')
-    if (years <= 18) {
-      res.redirect('/live/are-you-immunised')
-    } else {
-      res.redirect('/live/do-you-have-existing-conditions')
+    if (years < 13){
+      req.session.data["under-13-years"] = 'true'
     }
-  });
-
-// None eu Dec
-
-  router.post('/live/check-age-3', function (req, res) {
-    var dob = req.session.data['dob-year']+ '-'+ req.session.data['dob-month']+ '-'+ req.session.data['dob-day']
-    var overseasDecehic = req.session.data['overseas-declaration-none-eu']
-    var years = moment().diff(dob, 'years');
-    console.log(`number of years ${years}`)
-    console.log('looking up age')
-    if (years <= 18) {
-      res.redirect('/live/are-you-immunised')
-    } else {
-      res.redirect('/live/do-you-have-existing-conditions')
+    if (years < 16){
+      req.session.data["under-16-years"] = 'true'
     }
-
-  });
-
-// S1 Dec
-  router.post('/live/check-age-3', function (req, res) {
-    var dob = req.session.data['dob-year']+ '-'+ req.session.data['dob-month']+ '-'+ req.session.data['dob-day']
-    var overseasDecehic = req.session.data['overseas-declaration-s1']
-    var years = moment().diff(dob, 'years');
-    // console.log(`number of years ${years}`)
-    // console.log('looking up age')
-    if (years <= 18) {
-      res.redirect('/live/are-you-immunised')
-    } else {
-      res.redirect('/live/do-you-have-existing-conditions')
+    if (years < 18){
+      req.session.data["under-18-years"] = 'true'
     }
-  });
-
-// Schooling
-  router.post('/live/check-age-4', function (req, res) {
-    var dob = req.session.data['dob-year']+ '-'+ req.session.data['dob-month']+ '-'+ req.session.data['dob-day']
-    var contactInfo = req.session.data['how-can-we-contact-inputs']
-    var years = moment().diff(dob, 'years');
-    console.log(`number of years ${years}`)
-    console.log('looking up age')
-    // Check whether the variable matches a condition
-    if (years <= 18) {
-      res.redirect('/live/what-schooling-do-you-have')
-    } else {
-      res.redirect('/live/what-is-your-gender')
-    }
+    res.redirect('/live/do-you-know-nhs-number')
   });
 
   router.post("/*/check-postcode", function (req, res) {
