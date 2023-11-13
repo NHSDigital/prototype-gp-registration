@@ -15,7 +15,7 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
-{% if (data['under-18-years'] === 'true' ) %}
+{% if (data['under-16-years'] === 'true' ) %}
   {% set action = 'do-you-have-emergency-contact' %}
 {% else %}
   {% set action = 'are-you-a-member-of-armed-forces' %}
