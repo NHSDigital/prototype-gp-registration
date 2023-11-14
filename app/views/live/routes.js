@@ -154,10 +154,16 @@ module.exports = (router) => {
 // school routing
   router.post("/live/check-schooling", function(req,res) {
     let schooling = req.session.data["schooling"]
-    if (schooling[0] === "None" || schooling[0] === undefined){
-      res.redirect("/live/professional-involvement")
+    if (schooling){
+      if (schooling[0] === "None" || schooling[0] === undefined){
+        req.session.data["schooling"] = ["None"]
+        res.redirect("/live/professional-involvement")
+      } else {
+        res.redirect("/live/schooling-details")
+      }
     } else {
-      res.redirect("/live/schooling-details")
+      req.session.data["schooling"] = ["None"]
+      res.redirect("/live/professional-involvement")
     }
   })
 

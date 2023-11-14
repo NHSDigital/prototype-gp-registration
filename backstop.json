@@ -176,7 +176,7 @@
     },
     {
       "label": "step-2 - schooling-details",
-      "url": "http://localhost:3000/live/schooling-details"
+      "url": "http://localhost:3000/live/schooling-details?screenshot=true&schooling[]=None"
     },
     {
       "label": "step-2 - professional-involvement",

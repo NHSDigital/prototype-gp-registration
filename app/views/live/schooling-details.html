@@ -15,7 +15,6 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
-<!-- TODO need dynamic back -->
 {% block outerContent %}
   {{ backLink({
     "href": "what-schooling-do-you-have",
@@ -40,7 +39,7 @@
             }
           }) %}
 
-          {% if 'School' in data['schooling'] %}
+          {% if 'School' in data['schooling'] or data['screenshot'] %}
 
             <h3>School details:</h3>
 
@@ -71,7 +70,7 @@
 
           {% endif %}
 
-          {% if 'Nursery' in data['schooling'] %}
+          {% if 'Nursery' in data['schooling']  or data['screenshot'] %}
 
           <h3>Nursery details:</h3>
 
@@ -102,7 +101,7 @@
 
           {% endif %}
 
-          {% if 'Homeschool' in data['schooling'] %}
+          {% if 'Homeschool' in data['schooling']  or data['screenshot'] %}
 
           <h3>Home school details:</h3>
 
