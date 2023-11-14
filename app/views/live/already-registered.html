@@ -44,7 +44,7 @@
 {% endif %}
 
 {% block outerContent %}
-  {% if (data['user-auth'] === "none") %}
+  {% if (data['user-auth'] !== "p9") %}
     {{ backLink({
       "href": link,
       "text": "Go back",
@@ -145,6 +145,7 @@
     <h2 class="nhsuk-heading-m">Repeat registration</h2>
 
     <h3 class="nhsuk-heading-s">NHS login p9</h3>
+
     <ul class="govuk-list govuk-list--bullet">
       <li>
         <a href="already-registered?ods-match=main&user-auth=p9&who-is-being-registered=myself">ODS code matches current practice</a>
