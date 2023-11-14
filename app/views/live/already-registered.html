@@ -138,17 +138,39 @@
 <details class="nhsuk-details dev-mode dev-mode--routing" role="group">
   <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
       <span class="nhsuk-details__summary-text">
-        page variations
+        Page variations
       </span>
   </summary>
   <div class="nhsuk-details__text">
-    <h4>Repeat registration</h4>
+    <h2 class="nhsuk-heading-m">Repeat registration</h2>
+
+    <h3 class="nhsuk-heading-s">NHS login p9</h3>
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        <a href="already-registered?ods-match=main">ODS code matches current practice</a>
+        <a href="already-registered?ods-match=main&user-auth=p9&who-is-being-registered=myself">ODS code matches current practice</a>
       </li>
       <li>
-        <a href="already-registered?ods-match=branch">ODS code matches a branch of the main practice</a>
+        <a href="already-registered?ods-match=branch&user-auth=p9&who-is-being-registered=myself">ODS code matches a branch of the main practice</a>
+      </li>
+    </ul>
+
+    <h3 class="nhsuk-heading-s">NHS login p5/p0 & Non login users</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="already-registered?ods-match=main&user-auth=p5&who-is-being-registered=myself">ODS code matches current practice</a>
+      </li>
+      <li>
+        <a href="already-registered?ods-match=branch&user-auth=p5&who-is-being-registered=myself">ODS code matches a branch of the main practice</a>
+      </li>
+    </ul>
+
+    <h3 class="nhsuk-heading-s">Dependant</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="already-registered?ods-match=main&user-auth=none&who-is-being-registered=dependant&relation=Parent%20or%20guardian">ODS code matches current practice</a>
+      </li>
+      <li>
+        <a href="already-registered?ods-match=branch&user-auth=none&who-is-being-registered=dependant&relation=Parent%20or%20guardian">ODS code matches a branch of the main practice</a>
       </li>
     </ul>
   </div>
