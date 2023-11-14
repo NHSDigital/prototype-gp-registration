@@ -71,6 +71,10 @@
       "url": "http://localhost:3000/live/what-is-your-date-of-birth"
     },
     {
+      "label": "step-1 - error-too-young",
+      "url": "http://localhost:3000/live/error-too-young"
+    },
+    {
       "label": "step-1 - do-you-know-nhs-number",
       "url": "http://localhost:3000/live/do-you-know-nhs-number"
     },
@@ -163,6 +167,10 @@
       "url": "http://localhost:3000/live/current-address-out-of-area"
     },
     {
+      "label": "step-2 - not-accepting-registrations",
+      "url": "http://localhost:3000/live/not-accepting-registrations"
+    },
+    {
       "label": "step-2 - what-schooling-do-you-have",
       "url": "http://localhost:3000/live/what-schooling-do-you-have"
     },
@@ -235,14 +243,6 @@
       "url": "http://localhost:3000/live/do-you-previous-address"
     },
     {
-      "label": "step-2 - what-is-your-gp-address-manual",
-      "url": "http://localhost:3000/live/what-is-your-gp-address-manual"
-    },
-    {
-      "label": "step-2 - what-is-your-gp-address-selection",
-      "url": "http://localhost:3000/live/what-is-your-gp-address-selection"
-    },
-    {
       "label": "step-2 - what-is-your-previous-address",
       "url": "http://localhost:3000/live/what-is-your-previous-address"
     },
@@ -269,10 +269,6 @@
     {
       "label": "step-2 - do-you-know-previous-postcode-gp-has",
       "url": "http://localhost:3000/live/do-you-know-previous-postcode-gp-has"
-    },
-    {
-      "label": "step-2 - what-is-your-gp-address",
-      "url": "http://localhost:3000/live/what-is-your-gp-address"
     },
     {
       "label": "step-2 - do-you-previous-address",
@@ -317,6 +313,22 @@
     {
       "label": "step-2 - do-you-need-a-interpreter-language",
       "url": "http://localhost:3000/live/do-you-need-a-interpreter-language"
+    },
+    {
+      "label": "step-2 - what-is-your-gp-address",
+      "url": "http://localhost:3000/live/what-is-your-gp-address"
+    },
+    {
+      "label": "step-2 - what-is-your-gp-address-manual",
+      "url": "http://localhost:3000/live/what-is-your-gp-address-manual"
+    },
+    {
+      "label": "step-2 - what-is-your-gp-address-selection",
+      "url": "http://localhost:3000/live/what-is-your-gp-address-selection"
+    },
+    {
+      "label": "step-2 - already-registered",
+      "url": "http://localhost:3000/live/already-registered"
     },
     {
       "label": "step-3 - are-you-immunised",
