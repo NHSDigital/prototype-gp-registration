@@ -242,6 +242,7 @@ module.exports = (router) => {
     var dob = req.session.data['date-of-birth'][2]+ '-'+ req.session.data['date-of-birth'][1]+ '-'+ req.session.data['date-of-birth'][0]
     var years = moment().diff(dob, 'years');
     // reset everything
+    req.session.data["years-old"] = years
     req.session.data["under-12-months"] = 'false'
     req.session.data["under-13-years"] = 'false'
     req.session.data["under-16-years"] = 'false'

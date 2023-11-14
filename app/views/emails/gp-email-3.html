@@ -70,14 +70,18 @@
       </dd>
     </div>
 
+    {% if data['under-18-years'] === 'true' and data['under-12-months'] === 'false' %}
+
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
         Under 18
       </dt>
       <dd class="nhsuk-summary-list__value">
-        {{ data['nhs-number'] or 'This patient is X years old' }}
+        This patient is {{ data['years-old'] or '17' }} years old
       </dd>
     </div>
+
+    {% endif %}
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
@@ -1268,7 +1272,7 @@
 
   {# DEVMODE SCENARIOS #}
   {% if data['devMode'] === 'true' %}
-  <details class="nhsuk-details dev-mode" role="group">
+  <details class="nhsuk-details dev-mode dev-mode--routing" role="group">
     <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
     <span class="nhsuk-details__summary-text">
       Switch scenario
@@ -1290,6 +1294,8 @@
     </div>
   </details>
   {% endif %}
+
+  {% include 'live/includes/devmode.html' %}
 
 </div>
 
