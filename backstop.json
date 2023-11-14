@@ -11,516 +11,468 @@
   "onReadyScript": "puppet/onReady.js",
   "scenarios": [
     {
-      "label": "section-1 - start",
-      "url": "http://localhost:3000/sprint-14/section-1/start"
+      "label": "step-1 - start",
+      "url": "http://localhost:3000/live/start"
     },
     {
-      "label": "section-1 - who-is-registering",
-      "url": "http://localhost:3000/sprint-14/section-1/who-is-registering"
+      "label": "step-1 - who-is-registering",
+      "url": "http://localhost:3000/live/who-is-registering"
     },
     {
-      "label": "section-1 - relation-of-dependant",
-      "url": "http://localhost:3000/sprint-14/section-1/relation-of-dependant"
+      "label": "step-1 - relation-of-dependant",
+      "url": "http://localhost:3000/live/relation-of-dependant"
     },
     {
-      "label": "section-1 - carer-type",
-      "url": "http://localhost:3000/sprint-14/section-1/carer-type"
+      "label": "step-1 - carer-type",
+      "url": "http://localhost:3000/live/carer-type"
     },
     {
-      "label": "section-1 - carer-details",
-      "url": "http://localhost:3000/sprint-14/section-1/carer-details"
+      "label": "step-1 - carer-details",
+      "url": "http://localhost:3000/live/carer-details"
     },
     {
-      "label": "section-1 - what-is-your-email",
-      "url": "http://localhost:3000/sprint-14/section-1/what-is-your-email"
+      "label": "step-1 - carer-details-other",
+      "url": "http://localhost:3000/live/carer-details?relation=Other"
     },
     {
-      "label": "section-1 - continue-with-nhs-login",
-      "url": "http://localhost:3000/sprint-14/section-1/continue-with-nhs-login"
+      "label": "step-1 - continue-with-nhs-login",
+      "url": "http://localhost:3000/live/continue-with-nhs-login"
     },
     {
-      "label": "section-1 - continue-with-nhs-login-no-account",
-      "url": "http://localhost:3000/sprint-14/section-1/continue-with-nhs-login-no-account"
+      "label": "step-1 - nhs-login-email",
+      "url": "http://localhost:3000/live/nhs-login-email"
     },
     {
-      "label": "section-1 - nhs-login-email-address",
-      "url": "http://localhost:3000/sprint-14/section-1/nhs-login-email-address"
+      "label": "step-1 - nhs-login-found",
+      "url": "http://localhost:3000/live/nhs-login-found"
     },
     {
-      "label": "section-1 - nhs-login-password",
-      "url": "http://localhost:3000/sprint-14/section-1/nhs-login-password"
+      "label": "step-1 - nhs-login-password",
+      "url": "http://localhost:3000/live/nhs-login-password"
     },
     {
-      "label": "section-1 - nhs-login-otp",
-      "url": "http://localhost:3000/sprint-14/section-1/nhs-login-otp"
+      "label": "step-1 - nhs-login-otp",
+      "url": "http://localhost:3000/live/nhs-login-otp"
     },
     {
-      "label": "section-1 - what-is-your-title",
-      "url": "http://localhost:3000/sprint-14/section-1/what-is-your-title"
+      "label": "step-1 - nhs-login-share",
+      "url": "http://localhost:3000/live/nhs-login-share"
     },
     {
-      "label": "section-1 - is-this-your-current-address",
-      "url": "http://localhost:3000/sprint-14/section-1/is-this-your-current-address"
+      "label": "step-1 - what-is-your-title",
+      "url": "http://localhost:3000/live/what-is-your-title"
     },
     {
-      "label": "section-1 - confirm-contact-details",
-      "url": "http://localhost:3000/sprint-14/section-1/confirm-contact-details"
+      "label": "step-1 - what-is-your-name",
+      "url": "http://localhost:3000/live/what-is-your-name"
     },
     {
-      "label": "section-1 - what-is-your-name",
-      "url": "http://localhost:3000/sprint-14/section-1/what-is-your-name"
+      "label": "step-1 - what-is-your-date-of-birth",
+      "url": "http://localhost:3000/live/what-is-your-date-of-birth"
     },
     {
-      "label": "section-1 - what-is-your-date-of-birth",
-      "url": "http://localhost:3000/sprint-14/section-1/what-is-your-date-of-birth"
+      "label": "step-1 - do-you-know-nhs-number",
+      "url": "http://localhost:3000/live/do-you-know-nhs-number"
     },
     {
-      "label": "section-1 - what-is-your-sex",
-      "url": "http://localhost:3000/sprint-14/section-1/what-is-your-sex"
+      "label": "step-1 - what-is-your-nhs-number",
+      "url": "http://localhost:3000/live/what-is-your-nhs-number"
     },
     {
-      "label": "section-1 - where-were-you-born",
-      "url": "http://localhost:3000/sprint-14/section-1/where-were-you-born"
+      "label": "step-1 - registered-for-the-first-time",
+      "url": "http://localhost:3000/live/registered-for-the-first-time"
     },
     {
-      "label": "section-1 - where-were-you-born-place-uk",
-      "url": "http://localhost:3000/sprint-14/section-1/where-were-you-born-place-uk"
+      "label": "step-1 - do-you-know-previous-postcode-gp-has",
+      "url": "http://localhost:3000/live/do-you-know-previous-postcode-gp-has"
     },
     {
-      "label": "section-1 - where-were-you-born-place-outside-uk",
-      "url": "http://localhost:3000/sprint-14/section-1/where-were-you-born-place-outside-uk"
+      "label": "step-1 - what-is-previous-postcode-gp-has",
+      "url": "http://localhost:3000/live/what-is-previous-postcode-gp-has"
     },
     {
-      "label": "section-1 - what-is-your-ethnicity",
-      "url": "http://localhost:3000/sprint-14/section-1/what-is-your-ethnicity"
+      "label": "step-1 - check-answers-1",
+      "url": "http://localhost:3000/live/check-answers-1"
     },
     {
-      "label": "section-1 - what-is-your-ethnicity-background-white",
-      "url": "http://localhost:3000/sprint-14/section-1/what-is-your-ethnicity-background-white"
+      "label": "step-2 - is-this-your-current-address",
+      "url": "http://localhost:3000/live/is-this-your-current-address"
     },
     {
-      "label": "section-1 - what-is-your-ethnicity-background-mixed",
-      "url": "http://localhost:3000/sprint-14/section-1/what-is-your-ethnicity-background-mixed"
+      "label": "step-2 - confirm-contact-details",
+      "url": "http://localhost:3000/live/confirm-contact-details"
     },
     {
-      "label": "section-1 - what-is-your-ethnicity-background-asian",
-      "url": "http://localhost:3000/sprint-14/section-1/what-is-your-ethnicity-background-asian"
+      "label": "step-2 - what-is-your-sex",
+      "url": "http://localhost:3000/live/what-is-your-sex"
     },
     {
-      "label": "section-1 - what-is-your-ethnicity-background-black",
-      "url": "http://localhost:3000/sprint-14/section-1/what-is-your-ethnicity-background-black"
+      "label": "step-2 - where-were-you-born",
+      "url": "http://localhost:3000/live/where-were-you-born"
     },
     {
-      "label": "section-1 - what-is-your-ethnicity-background-another",
-      "url": "http://localhost:3000/sprint-14/section-1/what-is-your-ethnicity-background-another"
+      "label": "step-2 - where-were-you-born-place-uk",
+      "url": "http://localhost:3000/live/where-were-you-born-place-uk"
     },
     {
-      "label": "section-1 - do-you-current-address",
-      "url": "http://localhost:3000/sprint-14/section-1/do-you-current-address"
+      "label": "step-2 - where-were-you-born-place-outside-uk",
+      "url": "http://localhost:3000/live/where-were-you-born-place-outside-uk"
     },
     {
-      "label": "section-1 - what-is-your-current-address",
-      "url": "http://localhost:3000/sprint-14/section-1/what-is-your-current-address"
+      "label": "step-2 - what-is-your-ethnicity",
+      "url": "http://localhost:3000/live/what-is-your-ethnicity"
     },
     {
-      "label": "section-1 - what-is-your-current-address-selection",
-      "url": "http://localhost:3000/sprint-14/section-1/what-is-your-current-address-selection"
+      "label": "step-2 - what-is-your-ethnicity-background-white",
+      "url": "http://localhost:3000/live/what-is-your-ethnicity-background-white"
     },
     {
-      "label": "section-1 - what-is-your-current-address-manual",
-      "url": "http://localhost:3000/sprint-14/section-1/what-is-your-current-address-manual"
+      "label": "step-2 - what-is-your-ethnicity-background-mixed",
+      "url": "http://localhost:3000/live/what-is-your-ethnicity-background-mixed"
     },
     {
-      "label": "section-2 - current-address-out-of-area",
-      "url": "http://localhost:3000/sprint-14/section-2/current-address-out-of-area"
+      "label": "step-2 - what-is-your-ethnicity-background-asian",
+      "url": "http://localhost:3000/live/what-is-your-ethnicity-background-asian"
     },
     {
-      "label": "section-1 - where-was-the-child-born",
-      "url": "http://localhost:3000/sprint-14/section-1/where-was-the-child-born"
+      "label": "step-2 - what-is-your-ethnicity-background-black",
+      "url": "http://localhost:3000/live/what-is-your-ethnicity-background-black"
     },
     {
-      "label": "section-1 - do-you-know-previous-postcode-when-baby-born",
-      "url": "http://localhost:3000/sprint-14/section-1/do-you-know-previous-postcode-when-baby-born"
+      "label": "step-2 - what-is-your-ethnicity-background-another",
+      "url": "http://localhost:3000/live/what-is-your-ethnicity-background-another"
     },
     {
-      "label": "section-1 - what-is-previous-postcode-of-mother",
-      "url": "http://localhost:3000/sprint-14/section-1/what-is-previous-postcode-of-mother"
+      "label": "step-2 - do-you-current-address",
+      "url": "http://localhost:3000/live/do-you-current-address"
     },
     {
-      "label": "section-1 - do-you-know-nhs-number",
-      "url": "http://localhost:3000/sprint-14/section-1/do-you-know-nhs-number"
+      "label": "step-2 - what-is-your-current-address",
+      "url": "http://localhost:3000/live/what-is-your-current-address"
     },
     {
-      "label": "section-1 - what-is-your-nhs-number",
-      "url": "http://localhost:3000/sprint-14/section-1/what-is-your-nhs-number"
+      "label": "step-2 - what-is-your-current-address-selection",
+      "url": "http://localhost:3000/live/what-is-your-current-address-selection"
     },
     {
-      "label": "section-1 - how-can-we-contact-inputs",
-      "url": "http://localhost:3000/sprint-14/section-1/how-can-we-contact-inputs"
+      "label": "step-2 - what-is-your-current-address-manual",
+      "url": "http://localhost:3000/live/what-is-your-current-address-manual"
     },
     {
-      "label": "section-1 - how-can-we-contact-you",
-      "url": "http://localhost:3000/sprint-14/section-1/how-can-we-contact-you"
+      "label": "step-2 - current-address-out-of-area",
+      "url": "http://localhost:3000/live/current-address-out-of-area"
     },
     {
-      "label": "section-1 - how-can-we-contact-inputs-prompt",
-      "url": "http://localhost:3000/sprint-14/section-1/how-can-we-contact-inputs-prompt"
+      "label": "step-2 - what-schooling-do-you-have",
+      "url": "http://localhost:3000/live/what-schooling-do-you-have"
     },
     {
-      "label": "section-1 - do-you-have-emergency-contact",
-      "url": "http://localhost:3000/sprint-14/section-1/do-you-have-emergency-contact"
+      "label": "step-2 - schooling-details",
+      "url": "http://localhost:3000/live/schooling-details"
     },
     {
-      "label": "section-1 - emergency-contact-details",
-      "url": "http://localhost:3000/sprint-14/section-1/emergency-contact-details"
+      "label": "step-2 - professional-involvement",
+      "url": "http://localhost:3000/live/professional-involvement"
     },
     {
-      "label": "section-1 - check-answers-1",
-      "url": "http://localhost:3000/sprint-14/section-1/check-answers-1"
+      "label": "step-2 - where-was-the-child-born",
+      "url": "http://localhost:3000/live/where-was-the-child-born"
     },
     {
-      "label": "section-2 - registered-for-the-first-time",
-      "url": "http://localhost:3000/sprint-14/section-2/registered-for-the-first-time"
+      "label": "step-2 - do-you-know-previous-postcode-when-baby-born",
+      "url": "http://localhost:3000/live/do-you-know-previous-postcode-when-baby-born"
     },
     {
-      "label": "section-2 - do-you-know-previous-postcode-gp-has",
-      "url": "http://localhost:3000/sprint-14/section-2/do-you-know-previous-postcode-gp-has"
+      "label": "step-2 - what-is-previous-postcode-of-mother",
+      "url": "http://localhost:3000/live/what-is-previous-postcode-of-mother"
     },
     {
-      "label": "section-2 - what-is-previous-postcode-gp-has",
-      "url": "http://localhost:3000/sprint-14/section-2/what-is-previous-postcode-gp-has"
+      "label": "step-2 - how-can-we-contact-inputs",
+      "url": "http://localhost:3000/live/how-can-we-contact-inputs"
     },
     {
-      "label": "section-2 - recently-move-to-the-uk",
-      "url": "http://localhost:3000/sprint-14/section-2/recently-move-to-the-uk"
+      "label": "step-2 - how-can-we-contact-you",
+      "url": "http://localhost:3000/live/how-can-we-contact-you"
     },
     {
-      "label": "section-2 - recently-moved-date",
-      "url": "http://localhost:3000/sprint-14/section-2/recently-moved-date"
+      "label": "step-2 - how-can-we-contact-inputs-prompt",
+      "url": "http://localhost:3000/live/how-can-we-contact-inputs-prompt"
     },
     {
-      "label": "section-2 - recently-moved-eea",
-      "url": "http://localhost:3000/sprint-14/section-2/recently-moved-eea"
+      "label": "step-2 - do-you-have-emergency-contact",
+      "url": "http://localhost:3000/live/do-you-have-emergency-contact"
     },
     {
-      "label": "section-2 - recently-moved-documents",
-      "url": "http://localhost:3000/sprint-14/section-2/recently-moved-documents"
+      "label": "step-2 - emergency-contact-details",
+      "url": "http://localhost:3000/live/emergency-contact-details"
     },
     {
-      "label": "section-2 - recently-moved-s1-details",
-      "url": "http://localhost:3000/sprint-14/section-2/recently-moved-s1-details"
+      "label": "step-2 - recently-move-to-the-uk",
+      "url": "http://localhost:3000/live/recently-move-to-the-uk"
     },
     {
-      "label": "section-2 - document-details-ehic",
-      "url": "http://localhost:3000/sprint-14/section-2/document-details-ehic"
+      "label": "step-2 - recently-moved-date",
+      "url": "http://localhost:3000/live/recently-moved-date"
     },
     {
-      "label": "section-2 - immigration-surcharge",
-      "url": "http://localhost:3000/sprint-14/section-2/immigration-surcharge"
+      "label": "step-2 - recently-moved-eea",
+      "url": "http://localhost:3000/live/recently-moved-eea"
     },
     {
-      "label": "section-2 - overseas-declaration-ehic",
-      "url": "http://localhost:3000/sprint-14/section-2/overseas-declaration-ehic"
+      "label": "step-2 - recently-moved-documents",
+      "url": "http://localhost:3000/live/recently-moved-documents"
     },
     {
-      "label": "section-2 - overseas-declaration-none-eu",
-      "url": "http://localhost:3000/sprint-14/section-2/overseas-declaration-none-eu"
+      "label": "step-2 - recently-moved-s1-details",
+      "url": "http://localhost:3000/live/recently-moved-s1-details"
     },
     {
-      "label": "section-2 - overseas-declaration-s1",
-      "url": "http://localhost:3000/sprint-14/section-2/overseas-declaration-s1"
+      "label": "step-2 - document-details-ehic",
+      "url": "http://localhost:3000/live/document-details-ehic"
     },
     {
-      "label": "section-2 - overseas-declaration-nodocs",
-      "url": "http://localhost:3000/sprint-14/section-2/overseas-declaration-nodocs"
+      "label": "step-2 - do-you-previous-address",
+      "url": "http://localhost:3000/live/do-you-previous-address"
     },
     {
-      "label": "section-2 - are-they-returning-from-overseas",
-      "url": "http://localhost:3000/sprint-14/section-2/are-you-returning-from-overseas"
+      "label": "step-2 - what-is-your-gp-address-manual",
+      "url": "http://localhost:3000/live/what-is-your-gp-address-manual"
     },
     {
-      "label": "section-2 - are-you-returning-from-overseas",
-      "url": "http://localhost:3000/sprint-14/section-2/are-you-returning-from-overseas?registering-first-time=No"
+      "label": "step-2 - what-is-your-gp-address-selection",
+      "url": "http://localhost:3000/live/what-is-your-gp-address-selection"
     },
     {
-      "label": "section-2 - do-you-previous-address",
-      "url": "http://localhost:3000/sprint-14/section-2/do-you-previous-address"
+      "label": "step-2 - what-is-your-previous-address",
+      "url": "http://localhost:3000/live/what-is-your-previous-address"
     },
     {
-      "label": "section-2 - what-is-your-gp-address-manual",
-      "url": "http://localhost:3000/sprint-14/section-2/what-is-your-gp-address-manual"
+      "label": "step-2 - what-is-your-previous-address-manual",
+      "url": "http://localhost:3000/live/what-is-your-previous-address-manual"
     },
     {
-      "label": "section-2 - what-is-your-gp-address-selection",
-      "url": "http://localhost:3000/sprint-14/section-2/what-is-your-gp-address-selection"
+      "label": "step-2 - what-is-your-previous-address-selection",
+      "url": "http://localhost:3000/live/what-is-your-previous-address-selection"
     },
     {
-      "label": "section-2 - what-is-your-previous-address",
-      "url": "http://localhost:3000/sprint-14/section-2/what-is-your-previous-address"
+      "label": "step-2 - what-is-your-previous-address-selection-dependant",
+      "url": "http://localhost:3000/live/what-is-your-previous-address-selection?who-is-being-registered=dependant"
     },
     {
-      "label": "section-2 - what-is-your-previous-address-manual",
-      "url": "http://localhost:3000/sprint-14/section-2/what-is-your-previous-address-manual"
+      "label": "step-2 - is-this-your-gp",
+      "url": "http://localhost:3000/live/is-this-your-gp"
     },
     {
-      "label": "section-2 - what-is-your-previous-address-selection",
-      "url": "http://localhost:3000/sprint-14/section-2/what-is-your-previous-address-selection"
+      "label": "step-2 - is-this-where-you-were-living",
+      "url": "http://localhost:3000/live/is-this-where-you-were-living"
     },
     {
-      "label": "section-2 - what-is-your-previous-address-selection-dependant",
-      "url": "http://localhost:3000/sprint-14/section-2/what-is-your-previous-address-selection?who-is-being-registered=dependant"
+      "label": "step-2 - do-you-know-previous-postcode-gp-has",
+      "url": "http://localhost:3000/live/do-you-know-previous-postcode-gp-has"
     },
     {
-      "label": "section-2 - is-this-your-gp",
-      "url": "http://localhost:3000/sprint-14/section-2/is-this-your-gp"
+      "label": "step-2 - what-is-your-gp-address",
+      "url": "http://localhost:3000/live/what-is-your-gp-address"
     },
     {
-      "label": "section-2 - is-this-where-you-were-living",
-      "url": "http://localhost:3000/sprint-14/section-2/is-this-where-you-were-living"
+      "label": "step-2 - do-you-previous-address",
+      "url": "http://localhost:3000/live/do-you-previous-address"
     },
     {
-      "label": "section-2 - do-you-know-previous-postcode-gp-has",
-      "url": "http://localhost:3000/sprint-14/section-2/do-you-know-previous-postcode-gp-has"
+      "label": "step-2 - nominate-pharmacy",
+      "url": "http://localhost:3000/live/nominate-pharmacy"
     },
     {
-      "label": "section-2 - date-left-uk",
-      "url": "http://localhost:3000/sprint-14/section-2/date-left-uk"
+      "label": "step-2 - nominate-online-or-street",
+      "url": "http://localhost:3000/live/nominate-online-or-street"
     },
     {
-      "label": "section-2 - date-returned-uk",
-      "url": "http://localhost:3000/sprint-14/section-2/date-returned-uk"
+      "label": "step-2 - nominate-pharmacy-search",
+      "url": "http://localhost:3000/live/nominate-pharmacy-search"
     },
     {
-      "label": "section-2 - what-is-your-gp-address",
-      "url": "http://localhost:3000/sprint-14/section-2/what-is-your-gp-address"
+      "label": "step-2 - nominate-pharmacy-search-selection",
+      "url": "http://localhost:3000/live/nominate-pharmacy-search-selection"
     },
     {
-      "label": "section-2 - do-you-previous-address",
-      "url": "http://localhost:3000/sprint-14/section-2/do-you-previous-address"
+      "label": "step-2 - confirm-pharmacy",
+      "url": "http://localhost:3000/live/confirm-pharmacy"
     },
     {
-      "label": "section-2 - check-answers-2",
-      "url": "http://localhost:3000/sprint-14/section-2/check-answers-2"
+      "label": "step-2 - online-pharmacy",
+      "url": "http://localhost:3000/live/online-pharmacy"
     },
     {
-      "label": "section-3 - nominate-pharmacy",
-      "url": "http://localhost:3000/sprint-14/section-3/nominate-pharmacy"
+      "label": "step-2 - are-you-a-member-of-armed-forces",
+      "url": "http://localhost:3000/live/are-you-a-member-of-armed-forces"
     },
     {
-      "label": "section-3 - nominate-online-or-street",
-      "url": "http://localhost:3000/sprint-14/section-3/nominate-online-or-street"
+      "label": "step-2 - are-you-a-member-of-armed-forces-details",
+      "url": "http://localhost:3000/live/are-you-a-member-of-armed-forces-details"
     },
     {
-      "label": "section-3 - nominate-pharmacy-search",
-      "url": "http://localhost:3000/sprint-14/section-3/nominate-pharmacy-search"
+      "label": "step-2 - do-you-need-a-interpreter",
+      "url": "http://localhost:3000/live/do-you-need-a-interpreter"
     },
     {
-      "label": "section-3 - nominate-pharmacy-search-selection",
-      "url": "http://localhost:3000/sprint-14/section-3/nominate-pharmacy-search-selection"
+      "label": "step-2 - do-you-need-a-interpreter-language",
+      "url": "http://localhost:3000/live/do-you-need-a-interpreter-language"
     },
     {
-      "label": "section-3 - confirm-pharmacy",
-      "url": "http://localhost:3000/sprint-14/section-3/confirm-pharmacy"
+      "label": "step-3 - are-you-immunised",
+      "url": "http://localhost:3000/live/are-you-immunised"
     },
     {
-      "label": "section-3 - online-pharmacy",
-      "url": "http://localhost:3000/sprint-14/section-3/online-pharmacy"
+      "label": "step-3 - are-you-immunised-uk",
+      "url": "http://localhost:3000/live/are-you-immunised-uk"
     },
     {
-      "label": "section-3 - are-you-a-member-of-armed-forces",
-      "url": "http://localhost:3000/sprint-14/section-3/are-you-a-member-of-armed-forces"
+      "label": "step-3 - do-you-have-existing-conditions",
+      "url": "http://localhost:3000/live/do-you-have-existing-conditions"
     },
     {
-      "label": "section-3 - are-you-a-member-of-armed-forces-details",
-      "url": "http://localhost:3000/sprint-14/section-3/are-you-a-member-of-armed-forces-details"
+      "label": "step-3 - what-existing-conditions-do-you-have",
+      "url": "http://localhost:3000/live/what-existing-conditions-do-you-have"
     },
     {
-      "label": "section-3 - do-you-need-a-interpreter",
-      "url": "http://localhost:3000/sprint-14/section-3/do-you-need-a-interpreter"
+      "label": "step-3 - existing-conditions-details",
+      "url": "http://localhost:3000/live/existing-conditions-details"
     },
     {
-      "label": "section-3 - do-you-need-a-interpreter-language",
-      "url": "http://localhost:3000/sprint-14/section-3/do-you-need-a-interpreter-language"
+      "label": "step-3 - do-you-have-allergies",
+      "url": "http://localhost:3000/live/do-you-have-allergies"
     },
     {
-      "label": "section-3 - do-you-have-a-carer",
-      "url": "http://localhost:3000/sprint-14/section-3/do-you-have-a-carer"
+      "label": "step-3 - allergies-details",
+      "url": "http://localhost:3000/live/allergies-details"
     },
     {
-      "label": "section-3 - carer-details",
-      "url": "http://localhost:3000/sprint-14/section-3/carer-details"
+      "label": "step-3 - do-you-have-any-mental-health-conditions",
+      "url": "http://localhost:3000/live/do-you-have-any-mental-health-conditions"
     },
     {
-      "label": "section-3 - carer-details-2",
-      "url": "http://localhost:3000/sprint-14/section-3/carer-details-2"
+      "label": "step-3 - mental-health-conditions-details",
+      "url": "http://localhost:3000/live/mental-health-conditions-details"
     },
     {
-      "label": "section-3 - are-you-a-carer",
-      "url": "http://localhost:3000/sprint-14/section-3/are-you-a-carer"
+      "label": "step-3 - do-you-have-any-disabilities",
+      "url": "http://localhost:3000/live/do-you-have-any-disabilities"
     },
     {
-      "label": "section-3 - type-of-carer",
-      "url": "http://localhost:3000/sprint-14/section-3/type-of-carer"
+      "label": "step-3 - disabilities-details",
+      "url": "http://localhost:3000/live/disabilities-details"
     },
     {
-      "label": "section-3 - carer-type-dependant",
-      "url": "http://localhost:3000/sprint-14/section-3/carer-type?who-is-being-registered=dependant"
+      "label": "step-3 - medication-details-repeat",
+      "url": "http://localhost:3000/live/medication-details-repeat"
     },
     {
-      "label": "section-3 - carer-type",
-      "url": "http://localhost:3000/sprint-14/section-3/carer-type?who-is-being-registered=myself"
+      "label": "step-3 - do-you-have-a-carer",
+      "url": "http://localhost:3000/live/do-you-have-a-carer"
     },
     {
-      "label": "section-3 - carer-type-2",
-      "url": "http://localhost:3000/sprint-14/section-3/carer-type-2"
+      "label": "step-3 - carer-details-1",
+      "url": "http://localhost:3000/live/carer-details"
     },
     {
-      "label": "section-3 - do-you-need-accessible-format",
-      "url": "http://localhost:3000/sprint-14/section-3/do-you-need-accessible-format"
+      "label": "step-3 - carer-details-2",
+      "url": "http://localhost:3000/live/carer-details-2"
     },
     {
-      "label": "section-3 - do-you-need-accessible-format-details",
-      "url": "http://localhost:3000/sprint-14/section-3/do-you-need-accessible-format-details"
+      "label": "step-3 - are-you-a-carer",
+      "url": "http://localhost:3000/live/are-you-a-carer"
     },
     {
-      "label": "section-3 - do-you-need-reasonable-adjustments",
-      "url": "http://localhost:3000/sprint-14/section-3/do-you-need-reasonable-adjustments"
+      "label": "step-3 - type-of-carer",
+      "url": "http://localhost:3000/live/type-of-carer"
     },
     {
-      "label": "section-3 - do-you-need-reasonable-adjustments-details",
-      "url": "http://localhost:3000/sprint-14/section-3/do-you-need-reasonable-adjustments-details"
+      "label": "step-3 - carer-type-dependant",
+      "url": "http://localhost:3000/live/carer-type?who-is-being-registered=dependant"
     },
     {
-      "label": "section-3 - dispencing-surgery",
-      "url": "http://localhost:3000/sprint-14/section-3/dispencing-surgery"
+      "label": "step-3 - carer-type-1",
+      "url": "http://localhost:3000/live/carer-type?who-is-being-registered=myself"
     },
     {
-      "label": "section-3 - distance-from-nearest-pharmacy",
-      "url": "http://localhost:3000/sprint-14/section-3/distance-from-nearest-pharmacy"
+      "label": "step-3 - carer-type-2",
+      "url": "http://localhost:3000/live/carer-type-2"
     },
     {
-      "label": "section-3 - would-you-have-difficulty-reaching-pharmacy",
-      "url": "http://localhost:3000/sprint-14/section-3/would-you-have-difficulty-reaching-pharmacy"
+      "label": "step-3 - do-you-take-prescription-medication",
+      "url": "http://localhost:3000/live/do-you-take-prescription-medication"
     },
     {
-      "label": "section-3 - can-use-dispencing",
-      "url": "http://localhost:3000/sprint-14/section-3/can-use-dispencing"
+      "label": "step-3 - medication-details",
+      "url": "http://localhost:3000/live/medication-details"
     },
     {
-      "label": "section-3 - cant-use-dispencing",
-      "url": "http://localhost:3000/sprint-14/section-3/cant-use-dispencing"
+      "label": "step-3 - do-you-need-accessible-format",
+      "url": "http://localhost:3000/live/do-you-need-accessible-format"
     },
     {
-      "label": "section-3 - check-answers-3",
-      "url": "http://localhost:3000/sprint-14/section-3/check-answers-3"
+      "label": "step-3 - do-you-need-accessible-format-details",
+      "url": "http://localhost:3000/live/do-you-need-accessible-format-details"
     },
     {
-      "label": "section-4 - do-you-have-any-mental-health-conditions",
-      "url": "http://localhost:3000/sprint-14/section-4/do-you-have-any-mental-health-conditions"
+      "label": "step-3 - do-you-need-reasonable-adjustments",
+      "url": "http://localhost:3000/live/do-you-need-reasonable-adjustments"
     },
     {
-      "label": "section-4 - mental-health-conditions-details",
-      "url": "http://localhost:3000/sprint-14/section-4/mental-health-conditions-details"
+      "label": "step-3 - do-you-need-reasonable-adjustments-details",
+      "url": "http://localhost:3000/live/do-you-need-reasonable-adjustments-details"
     },
     {
-      "label": "section-4 - do-you-have-any-disabilities",
-      "url": "http://localhost:3000/sprint-14/section-4/do-you-have-any-disabilities"
+      "label": "step-3 - height",
+      "url": "http://localhost:3000/live/height"
     },
     {
-      "label": "section-4 - disabilities-details",
-      "url": "http://localhost:3000/sprint-14/section-4/disabilities-details"
+      "label": "step-3 - weight",
+      "url": "http://localhost:3000/live/weight"
     },
     {
-      "label": "section-4 - do-you-have-existing-conditions",
-      "url": "http://localhost:3000/sprint-14/section-4/do-you-have-existing-conditions"
+      "label": "step-3 - how-often-do-you-drink-alcohol",
+      "url": "http://localhost:3000/live/how-often-do-you-drink-alcohol"
     },
     {
-      "label": "section-4 - existing-conditions-details",
-      "url": "http://localhost:3000/sprint-14/section-4/existing-conditions-details"
+      "label": "step-3 - how-many-units-of-alcohol",
+      "url": "http://localhost:3000/live/how-many-units-of-alcohol"
     },
     {
-      "label": "section-4 - what-existing-conditions-do-you-have",
-      "url": "http://localhost:3000/sprint-14/section-4/what-existing-conditions-do-you-have"
+      "label": "step-3 - how-often-six-or-more-units",
+      "url": "http://localhost:3000/live/how-often-six-or-more-units"
     },
     {
-      "label": "section-4 - do-you-have-allergies",
-      "url": "http://localhost:3000/sprint-14/section-4/do-you-have-allergies"
+      "label": "step-3 - do-you-smoke",
+      "url": "http://localhost:3000/live/do-you-smoke"
     },
     {
-      "label": "section-4 - allergies-details",
-      "url": "http://localhost:3000/sprint-14/section-4/allergies-details"
+      "label": "step-3 - do-you-smoke-type",
+      "url": "http://localhost:3000/live/do-you-smoke-type"
     },
     {
-      "label": "section-4 - do-you-take-prescription-medication",
-      "url": "http://localhost:3000/sprint-14/section-4/do-you-take-prescription-medication"
+      "label": "step-3 - do-you-smoke-amount",
+      "url": "http://localhost:3000/live/do-you-smoke-amount"
     },
     {
-      "label": "section-4 - medication-details",
-      "url": "http://localhost:3000/sprint-14/section-4/medication-details"
+      "label": "step-3 - do-you-smoke-date",
+      "url": "http://localhost:3000/live/do-you-smoke-date"
     },
     {
-      "label": "section-4 - medication-details-repeat",
-      "url": "http://localhost:3000/sprint-14/section-4/medication-details-repeat"
+      "label": "step-3 - scr",
+      "url": "http://localhost:3000/live/scr"
     },
     {
-      "label": "section-4 - height",
-      "url": "http://localhost:3000/sprint-14/section-4/height"
+      "label": "step-3 - check-answers-b",
+      "url": "http://localhost:3000/live/check-answers-b"
     },
     {
-      "label": "section-4 - weight",
-      "url": "http://localhost:3000/sprint-14/section-4/weight"
+      "label": "step-3 - confirmation-page",
+      "url": "http://localhost:3000/live/confirmation-page"
     },
     {
-      "label": "section-4 - how-often-do-you-drink-alcohol",
-      "url": "http://localhost:3000/sprint-14/section-4/how-often-do-you-drink-alcohol"
-    },
-    {
-      "label": "section-4 - how-many-units-of-alcohol",
-      "url": "http://localhost:3000/sprint-14/section-4/how-many-units-of-alcohol"
-    },
-    {
-      "label": "section-4 - how-often-six-or-more-units",
-      "url": "http://localhost:3000/sprint-14/section-4/how-often-six-or-more-units"
-    },
-    {
-      "label": "section-4 - do-you-smoke",
-      "url": "http://localhost:3000/sprint-14/section-4/do-you-smoke"
-    },
-    {
-      "label": "section-4 - do-you-smoke-type",
-      "url": "http://localhost:3000/sprint-14/section-4/do-you-smoke-type"
-    },
-    {
-      "label": "section-4 - do-you-smoke-amount",
-      "url": "http://localhost:3000/sprint-14/section-4/do-you-smoke-amount"
-    },
-    {
-      "label": "section-4 - do-you-smoke-date",
-      "url": "http://localhost:3000/sprint-14/section-4/do-you-smoke-date"
-    },
-    {
-      "label": "section-4 - scr",
-      "url": "http://localhost:3000/sprint-14/section-4/scr"
-    },
-    {
-      "label": "section-4 - are-you-immunised",
-      "url": "http://localhost:3000/sprint-14/section-4/are-you-immunised"
-    },
-    {
-      "label": "section-4 - are-you-immunised-uk",
-      "url": "http://localhost:3000/sprint-14/section-4/are-you-immunised-uk"
-    },
-    {
-      "label": "section-4 - check-answers-b",
-      "url": "http://localhost:3000/sprint-14/section-4/check-answers-b"
-    },
-    {
-      "label": "section-4 - confirmation-page",
-      "url": "http://localhost:3000/sprint-14/section-4/confirmation-page"
-    },
-    {
-      "label": "section-4 - confirmation-page-thank-you",
-      "url": "http://localhost:3000/sprint-14/section-4/confirmation-page-thank-you"
+      "label": "step-3 - confirmation-page-thank-you",
+      "url": "http://localhost:3000/live/confirmation-page-thank-you"
     },
     {
       "label": "emails - patient-submission-email",

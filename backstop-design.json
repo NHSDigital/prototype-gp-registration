@@ -1,0 +1,678 @@
+{
+  "id": "gpreg-prototype",
+  "viewports": [
+    {
+      "label": "iPhone6/7/8",
+      "width": 375,
+      "height": 667
+    }
+  ],
+  "onBeforeScript": "puppet/onBefore.js",
+  "onReadyScript": "puppet/onReady.js",
+  "scenarios": [
+    {
+      "label": "section-1 - start",
+      "url": "http://localhost:3000/design/start"
+    },
+    {
+      "label": "section-1 - who-is-registering",
+      "url": "http://localhost:3000/design/who-is-registering"
+    },
+    {
+      "label": "section-1 - relation-of-dependant",
+      "url": "http://localhost:3000/design/relation-of-dependant"
+    },
+    {
+      "label": "section-1 - carer-type",
+      "url": "http://localhost:3000/design/carer-type"
+    },
+    {
+      "label": "section-1 - carer-details",
+      "url": "http://localhost:3000/design/carer-details"
+    },
+    {
+      "label": "section-1 - what-is-your-email",
+      "url": "http://localhost:3000/design/what-is-your-email"
+    },
+    {
+      "label": "section-1 - continue-with-nhs-login",
+      "url": "http://localhost:3000/design/continue-with-nhs-login"
+    },
+    {
+      "label": "section-1 - continue-with-nhs-login-no-account",
+      "url": "http://localhost:3000/design/continue-with-nhs-login-no-account"
+    },
+    {
+      "label": "section-1 - nhs-login-email-address",
+      "url": "http://localhost:3000/design/nhs-login-email-address"
+    },
+    {
+      "label": "section-1 - nhs-login-password",
+      "url": "http://localhost:3000/design/nhs-login-password"
+    },
+    {
+      "label": "section-1 - nhs-login-otp",
+      "url": "http://localhost:3000/design/nhs-login-otp"
+    },
+    {
+      "label": "section-1 - what-is-your-title",
+      "url": "http://localhost:3000/design/what-is-your-title"
+    },
+    {
+      "label": "section-1 - is-this-your-current-address",
+      "url": "http://localhost:3000/design/is-this-your-current-address"
+    },
+    {
+      "label": "section-1 - confirm-contact-details",
+      "url": "http://localhost:3000/design/confirm-contact-details"
+    },
+    {
+      "label": "section-1 - what-is-your-name",
+      "url": "http://localhost:3000/design/what-is-your-name"
+    },
+    {
+      "label": "section-1 - what-is-your-date-of-birth",
+      "url": "http://localhost:3000/design/what-is-your-date-of-birth"
+    },
+    {
+      "label": "section-1 - what-is-your-sex",
+      "url": "http://localhost:3000/design/what-is-your-sex"
+    },
+    {
+      "label": "section-1 - where-were-you-born",
+      "url": "http://localhost:3000/design/where-were-you-born"
+    },
+    {
+      "label": "section-1 - where-were-you-born-place-uk",
+      "url": "http://localhost:3000/design/where-were-you-born-place-uk"
+    },
+    {
+      "label": "section-1 - where-were-you-born-place-outside-uk",
+      "url": "http://localhost:3000/design/where-were-you-born-place-outside-uk"
+    },
+    {
+      "label": "section-1 - what-is-your-ethnicity",
+      "url": "http://localhost:3000/design/what-is-your-ethnicity"
+    },
+    {
+      "label": "section-1 - what-is-your-ethnicity-background-white",
+      "url": "http://localhost:3000/design/what-is-your-ethnicity-background-white"
+    },
+    {
+      "label": "section-1 - what-is-your-ethnicity-background-mixed",
+      "url": "http://localhost:3000/design/what-is-your-ethnicity-background-mixed"
+    },
+    {
+      "label": "section-1 - what-is-your-ethnicity-background-asian",
+      "url": "http://localhost:3000/design/what-is-your-ethnicity-background-asian"
+    },
+    {
+      "label": "section-1 - what-is-your-ethnicity-background-black",
+      "url": "http://localhost:3000/design/what-is-your-ethnicity-background-black"
+    },
+    {
+      "label": "section-1 - what-is-your-ethnicity-background-another",
+      "url": "http://localhost:3000/design/what-is-your-ethnicity-background-another"
+    },
+    {
+      "label": "section-1 - do-you-current-address",
+      "url": "http://localhost:3000/design/do-you-current-address"
+    },
+    {
+      "label": "section-1 - what-is-your-current-address",
+      "url": "http://localhost:3000/design/what-is-your-current-address"
+    },
+    {
+      "label": "section-1 - what-is-your-current-address-selection",
+      "url": "http://localhost:3000/design/what-is-your-current-address-selection"
+    },
+    {
+      "label": "section-1 - what-is-your-current-address-manual",
+      "url": "http://localhost:3000/design/what-is-your-current-address-manual"
+    },
+    {
+      "label": "section-2 - current-address-out-of-area",
+      "url": "http://localhost:3000/design/current-address-out-of-area"
+    },
+    {
+      "label": "section-1 - where-was-the-child-born",
+      "url": "http://localhost:3000/design/where-was-the-child-born"
+    },
+    {
+      "label": "section-1 - do-you-know-previous-postcode-when-baby-born",
+      "url": "http://localhost:3000/design/do-you-know-previous-postcode-when-baby-born"
+    },
+    {
+      "label": "section-1 - what-is-previous-postcode-of-mother",
+      "url": "http://localhost:3000/design/what-is-previous-postcode-of-mother"
+    },
+    {
+      "label": "section-1 - do-you-know-nhs-number",
+      "url": "http://localhost:3000/design/do-you-know-nhs-number"
+    },
+    {
+      "label": "section-1 - what-is-your-nhs-number",
+      "url": "http://localhost:3000/design/what-is-your-nhs-number"
+    },
+    {
+      "label": "section-1 - how-can-we-contact-inputs",
+      "url": "http://localhost:3000/design/how-can-we-contact-inputs"
+    },
+    {
+      "label": "section-1 - how-can-we-contact-you",
+      "url": "http://localhost:3000/design/how-can-we-contact-you"
+    },
+    {
+      "label": "section-1 - how-can-we-contact-inputs-prompt",
+      "url": "http://localhost:3000/design/how-can-we-contact-inputs-prompt"
+    },
+    {
+      "label": "section-1 - do-you-have-emergency-contact",
+      "url": "http://localhost:3000/design/do-you-have-emergency-contact"
+    },
+    {
+      "label": "section-1 - emergency-contact-details",
+      "url": "http://localhost:3000/design/emergency-contact-details"
+    },
+    {
+      "label": "section-1 - check-answers-1",
+      "url": "http://localhost:3000/design/check-answers-1"
+    },
+    {
+      "label": "section-2 - registered-for-the-first-time",
+      "url": "http://localhost:3000/design/registered-for-the-first-time"
+    },
+    {
+      "label": "section-2 - do-you-know-previous-postcode-gp-has",
+      "url": "http://localhost:3000/design/do-you-know-previous-postcode-gp-has"
+    },
+    {
+      "label": "section-2 - what-is-previous-postcode-gp-has",
+      "url": "http://localhost:3000/design/what-is-previous-postcode-gp-has"
+    },
+    {
+      "label": "section-2 - recently-move-to-the-uk",
+      "url": "http://localhost:3000/design/recently-move-to-the-uk"
+    },
+    {
+      "label": "section-2 - recently-moved-date",
+      "url": "http://localhost:3000/design/recently-moved-date"
+    },
+    {
+      "label": "section-2 - recently-moved-eea",
+      "url": "http://localhost:3000/design/recently-moved-eea"
+    },
+    {
+      "label": "section-2 - recently-moved-documents",
+      "url": "http://localhost:3000/design/recently-moved-documents"
+    },
+    {
+      "label": "section-2 - recently-moved-s1-details",
+      "url": "http://localhost:3000/design/recently-moved-s1-details"
+    },
+    {
+      "label": "section-2 - document-details-ehic",
+      "url": "http://localhost:3000/design/document-details-ehic"
+    },
+    {
+      "label": "section-2 - immigration-surcharge",
+      "url": "http://localhost:3000/design/immigration-surcharge"
+    },
+    {
+      "label": "section-2 - overseas-declaration-ehic",
+      "url": "http://localhost:3000/design/overseas-declaration-ehic"
+    },
+    {
+      "label": "section-2 - overseas-declaration-none-eu",
+      "url": "http://localhost:3000/design/overseas-declaration-none-eu"
+    },
+    {
+      "label": "section-2 - overseas-declaration-s1",
+      "url": "http://localhost:3000/design/overseas-declaration-s1"
+    },
+    {
+      "label": "section-2 - overseas-declaration-nodocs",
+      "url": "http://localhost:3000/design/overseas-declaration-nodocs"
+    },
+    {
+      "label": "section-2 - are-they-returning-from-overseas",
+      "url": "http://localhost:3000/design/are-you-returning-from-overseas"
+    },
+    {
+      "label": "section-2 - are-you-returning-from-overseas",
+      "url": "http://localhost:3000/design/are-you-returning-from-overseas?registering-first-time=No"
+    },
+    {
+      "label": "section-2 - do-you-previous-address",
+      "url": "http://localhost:3000/design/do-you-previous-address"
+    },
+    {
+      "label": "section-2 - what-is-your-gp-address-manual",
+      "url": "http://localhost:3000/design/what-is-your-gp-address-manual"
+    },
+    {
+      "label": "section-2 - what-is-your-gp-address-selection",
+      "url": "http://localhost:3000/design/what-is-your-gp-address-selection"
+    },
+    {
+      "label": "section-2 - what-is-your-previous-address",
+      "url": "http://localhost:3000/design/what-is-your-previous-address"
+    },
+    {
+      "label": "section-2 - what-is-your-previous-address-manual",
+      "url": "http://localhost:3000/design/what-is-your-previous-address-manual"
+    },
+    {
+      "label": "section-2 - what-is-your-previous-address-selection",
+      "url": "http://localhost:3000/design/what-is-your-previous-address-selection"
+    },
+    {
+      "label": "section-2 - what-is-your-previous-address-selection-dependant",
+      "url": "http://localhost:3000/design/what-is-your-previous-address-selection?who-is-being-registered=dependant"
+    },
+    {
+      "label": "section-2 - is-this-your-gp",
+      "url": "http://localhost:3000/design/is-this-your-gp"
+    },
+    {
+      "label": "section-2 - is-this-where-you-were-living",
+      "url": "http://localhost:3000/design/is-this-where-you-were-living"
+    },
+    {
+      "label": "section-2 - do-you-know-previous-postcode-gp-has",
+      "url": "http://localhost:3000/design/do-you-know-previous-postcode-gp-has"
+    },
+    {
+      "label": "section-2 - date-left-uk",
+      "url": "http://localhost:3000/design/date-left-uk"
+    },
+    {
+      "label": "section-2 - date-returned-uk",
+      "url": "http://localhost:3000/design/date-returned-uk"
+    },
+    {
+      "label": "section-2 - what-is-your-gp-address",
+      "url": "http://localhost:3000/design/what-is-your-gp-address"
+    },
+    {
+      "label": "section-2 - do-you-previous-address",
+      "url": "http://localhost:3000/design/do-you-previous-address"
+    },
+    {
+      "label": "section-2 - check-answers-2",
+      "url": "http://localhost:3000/design/check-answers-2"
+    },
+    {
+      "label": "section-3 - nominate-pharmacy",
+      "url": "http://localhost:3000/design/nominate-pharmacy"
+    },
+    {
+      "label": "section-3 - nominate-online-or-street",
+      "url": "http://localhost:3000/design/nominate-online-or-street"
+    },
+    {
+      "label": "section-3 - nominate-pharmacy-search",
+      "url": "http://localhost:3000/design/nominate-pharmacy-search"
+    },
+    {
+      "label": "section-3 - nominate-pharmacy-search-selection",
+      "url": "http://localhost:3000/design/nominate-pharmacy-search-selection"
+    },
+    {
+      "label": "section-3 - confirm-pharmacy",
+      "url": "http://localhost:3000/design/confirm-pharmacy"
+    },
+    {
+      "label": "section-3 - online-pharmacy",
+      "url": "http://localhost:3000/design/online-pharmacy"
+    },
+    {
+      "label": "section-3 - are-you-a-member-of-armed-forces",
+      "url": "http://localhost:3000/design/are-you-a-member-of-armed-forces"
+    },
+    {
+      "label": "section-3 - are-you-a-member-of-armed-forces-details",
+      "url": "http://localhost:3000/design/are-you-a-member-of-armed-forces-details"
+    },
+    {
+      "label": "section-3 - do-you-need-a-interpreter",
+      "url": "http://localhost:3000/design/do-you-need-a-interpreter"
+    },
+    {
+      "label": "section-3 - do-you-need-a-interpreter-language",
+      "url": "http://localhost:3000/design/do-you-need-a-interpreter-language"
+    },
+    {
+      "label": "section-3 - do-you-have-a-carer",
+      "url": "http://localhost:3000/design/do-you-have-a-carer"
+    },
+    {
+      "label": "section-3 - carer-details",
+      "url": "http://localhost:3000/design/carer-details"
+    },
+    {
+      "label": "section-3 - carer-details-2",
+      "url": "http://localhost:3000/design/carer-details-2"
+    },
+    {
+      "label": "section-3 - are-you-a-carer",
+      "url": "http://localhost:3000/design/are-you-a-carer"
+    },
+    {
+      "label": "section-3 - type-of-carer",
+      "url": "http://localhost:3000/design/type-of-carer"
+    },
+    {
+      "label": "section-3 - carer-type-dependant",
+      "url": "http://localhost:3000/design/carer-type?who-is-being-registered=dependant"
+    },
+    {
+      "label": "section-3 - carer-type",
+      "url": "http://localhost:3000/design/carer-type?who-is-being-registered=myself"
+    },
+    {
+      "label": "section-3 - carer-type-2",
+      "url": "http://localhost:3000/design/carer-type-2"
+    },
+    {
+      "label": "section-3 - do-you-need-accessible-format",
+      "url": "http://localhost:3000/design/do-you-need-accessible-format"
+    },
+    {
+      "label": "section-3 - do-you-need-accessible-format-details",
+      "url": "http://localhost:3000/design/do-you-need-accessible-format-details"
+    },
+    {
+      "label": "section-3 - do-you-need-reasonable-adjustments",
+      "url": "http://localhost:3000/design/do-you-need-reasonable-adjustments"
+    },
+    {
+      "label": "section-3 - do-you-need-reasonable-adjustments-details",
+      "url": "http://localhost:3000/design/do-you-need-reasonable-adjustments-details"
+    },
+    {
+      "label": "section-3 - dispencing-surgery",
+      "url": "http://localhost:3000/design/dispencing-surgery"
+    },
+    {
+      "label": "section-3 - distance-from-nearest-pharmacy",
+      "url": "http://localhost:3000/design/distance-from-nearest-pharmacy"
+    },
+    {
+      "label": "section-3 - would-you-have-difficulty-reaching-pharmacy",
+      "url": "http://localhost:3000/design/would-you-have-difficulty-reaching-pharmacy"
+    },
+    {
+      "label": "section-3 - can-use-dispencing",
+      "url": "http://localhost:3000/design/can-use-dispencing"
+    },
+    {
+      "label": "section-3 - cant-use-dispencing",
+      "url": "http://localhost:3000/design/cant-use-dispencing"
+    },
+    {
+      "label": "section-3 - check-answers-3",
+      "url": "http://localhost:3000/design/check-answers-3"
+    },
+    {
+      "label": "section-4 - do-you-have-any-mental-health-conditions",
+      "url": "http://localhost:3000/design/do-you-have-any-mental-health-conditions"
+    },
+    {
+      "label": "section-4 - mental-health-conditions-details",
+      "url": "http://localhost:3000/design/mental-health-conditions-details"
+    },
+    {
+      "label": "section-4 - do-you-have-any-disabilities",
+      "url": "http://localhost:3000/design/do-you-have-any-disabilities"
+    },
+    {
+      "label": "section-4 - disabilities-details",
+      "url": "http://localhost:3000/design/disabilities-details"
+    },
+    {
+      "label": "section-4 - do-you-have-existing-conditions",
+      "url": "http://localhost:3000/design/do-you-have-existing-conditions"
+    },
+    {
+      "label": "section-4 - existing-conditions-details",
+      "url": "http://localhost:3000/design/existing-conditions-details"
+    },
+    {
+      "label": "section-4 - what-existing-conditions-do-you-have",
+      "url": "http://localhost:3000/design/what-existing-conditions-do-you-have"
+    },
+    {
+      "label": "section-4 - do-you-have-allergies",
+      "url": "http://localhost:3000/design/do-you-have-allergies"
+    },
+    {
+      "label": "section-4 - allergies-details",
+      "url": "http://localhost:3000/design/allergies-details"
+    },
+    {
+      "label": "section-4 - do-you-take-prescription-medication",
+      "url": "http://localhost:3000/design/do-you-take-prescription-medication"
+    },
+    {
+      "label": "section-4 - medication-details",
+      "url": "http://localhost:3000/design/medication-details"
+    },
+    {
+      "label": "section-4 - medication-details-repeat",
+      "url": "http://localhost:3000/design/medication-details-repeat"
+    },
+    {
+      "label": "section-4 - height",
+      "url": "http://localhost:3000/design/height"
+    },
+    {
+      "label": "section-4 - weight",
+      "url": "http://localhost:3000/design/weight"
+    },
+    {
+      "label": "section-4 - how-often-do-you-drink-alcohol",
+      "url": "http://localhost:3000/design/how-often-do-you-drink-alcohol"
+    },
+    {
+      "label": "section-4 - how-many-units-of-alcohol",
+      "url": "http://localhost:3000/design/how-many-units-of-alcohol"
+    },
+    {
+      "label": "section-4 - how-often-six-or-more-units",
+      "url": "http://localhost:3000/design/how-often-six-or-more-units"
+    },
+    {
+      "label": "section-4 - do-you-smoke",
+      "url": "http://localhost:3000/design/do-you-smoke"
+    },
+    {
+      "label": "section-4 - do-you-smoke-type",
+      "url": "http://localhost:3000/design/do-you-smoke-type"
+    },
+    {
+      "label": "section-4 - do-you-smoke-amount",
+      "url": "http://localhost:3000/design/do-you-smoke-amount"
+    },
+    {
+      "label": "section-4 - do-you-smoke-date",
+      "url": "http://localhost:3000/design/do-you-smoke-date"
+    },
+    {
+      "label": "section-4 - scr",
+      "url": "http://localhost:3000/design/scr"
+    },
+    {
+      "label": "section-4 - are-you-immunised",
+      "url": "http://localhost:3000/design/are-you-immunised"
+    },
+    {
+      "label": "section-4 - are-you-immunised-uk",
+      "url": "http://localhost:3000/design/are-you-immunised-uk"
+    },
+    {
+      "label": "section-4 - check-answers-b",
+      "url": "http://localhost:3000/design/check-answers-b"
+    },
+    {
+      "label": "section-4 - confirmation-page",
+      "url": "http://localhost:3000/design/confirmation-page"
+    },
+    {
+      "label": "section-4 - confirmation-page-thank-you",
+      "url": "http://localhost:3000/design/confirmation-page-thank-you"
+    },
+    {
+      "label": "emails - patient-submission-email",
+      "url": "http://localhost:3000/emails/patient-submission-email"
+    },
+    {
+      "label": "emails - gp-email-3",
+      "url": "http://localhost:3000/emails/gp-email-3"
+    },
+    {
+      "label": "legal - spinner",
+      "url": "http://localhost:3000/loading/spinner"
+    },
+    {
+      "label": "legal - cookie-banner",
+      "url": "http://localhost:3000/legal/cookie-banner"
+    },
+    {
+      "label": "legal - cookie-banner-additional",
+      "url": "http://localhost:3000/legal/cookie-banner-additional"
+    },
+    {
+      "label": "legal - privacy",
+      "url": "http://localhost:3000/legal/privacy"
+    },
+    {
+      "label": "legal - terms",
+      "url": "http://localhost:3000/legal/terms"
+    },
+    {
+      "label": "legal - cookies",
+      "url": "http://localhost:3000/legal/cookies"
+    },
+    {
+      "label": "legal - accessibility-statement",
+      "url": "http://localhost:3000/legal/accessibility-statement"
+    },
+    {
+      "label": "legal - feedback-link",
+      "url": "http://localhost:3000/legal/feedback-link"
+    },
+    {
+      "label": "errors - what-is-your-current-address-selection-noresults",
+      "url": "http://localhost:3000/errors/what-is-your-current-address-selection-noresults"
+    },
+    {
+      "label": "errors - error-session-timeout",
+      "url": "http://localhost:3000/errors/error-session-timeout"
+    },
+    {
+      "label": "errors - error-404",
+      "url": "http://localhost:3000/errors/error-404"
+    },
+    {
+      "label": "errors - service-down",
+      "url": "http://localhost:3000/errors/service-down"
+    },
+    {
+      "label": "errors - javascript-not-enabled",
+      "url": "http://localhost:3000/errors/javascript-not-enabled"
+    },
+    {
+      "label": "errors - service-off",
+      "url": "http://localhost:3000/errors/service-off"
+    },
+    {
+      "label": "errors - error-404-bad-url-or-ods",
+      "url": "http://localhost:3000/errors/error-404-bad-url-or-ods"
+    },
+    {
+      "label": "errors - modal-timeout",
+      "url": "http://localhost:3000/errors/modal-timeout"
+    },
+    {
+      "label": "gp - gp-start",
+      "url": "http://localhost:3000/gp/gp-start"
+    },
+    {
+      "label": "gp - gp-service-confirm",
+      "url": "http://localhost:3000/gp/gp-service-confirm"
+    },
+    {
+      "label": "gp - gp-practices",
+      "url": "http://localhost:3000/gp/gp-practices"
+    },
+    {
+      "label": "gp - gp-shared-mailbox",
+      "url": "http://localhost:3000/gp/gp-shared-mailbox"
+    },
+    {
+      "label": "gp - gp-verification-code",
+      "url": "http://localhost:3000/gp/gp-verification-code"
+    },
+    {
+      "label": "gp - gp-additional-questions-language-interpretation",
+      "url": "http://localhost:3000/gp/gp-additional-questions-language-interpretation"
+    },
+    {
+      "label": "gp - gp-additional-questions-dispencing-surgery",
+      "url": "http://localhost:3000/gp/gp-additional-questions-dispencing-surgery"
+    },
+    {
+      "label": "gp - gp-additional-questions-nominated-pharmacy",
+      "url": "http://localhost:3000/gp/gp-additional-questions-nominated-pharmacy"
+    },
+    {
+      "label": "gp - gp-additional-questions-notify-patient",
+      "url": "http://localhost:3000/gp/gp-additional-questions-notify-patient"
+    },
+    {
+      "label": "gp - gp-answers",
+      "url": "http://localhost:3000/gp/gp-answers"
+    },
+    {
+      "label": "gp - gp-reg-complete",
+      "url": "http://localhost:3000/gp/gp-reg-complete"
+    },
+    {
+      "label": "gp - gp-onboard-confirmation",
+      "url": "http://localhost:3000/emails/gp-onboard-confirmation"
+    },
+    {
+      "label": "gp - gp-manage",
+      "url": "http://localhost:3000/gp/gp-manage"
+    },
+    {
+      "label": "gp - gp-privacy",
+      "url": "http://localhost:3000/gp/gp-privacy"
+    },
+    {
+      "label": "gp - gp-error-404",
+      "url": "http://localhost:3000/gp/gp-error-404"
+    },
+    {
+      "label": "gp - gp-error-403",
+      "url": "http://localhost:3000/gp/gp-error-403"
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "engine_scripts": "backstop_data/engine_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "report": ["browser"],
+  "engine": "puppeteer",
+  "engineOptions": {
+    "args": ["--no-sandbox"]
+  },
+  "asyncCaptureLimit": 5,
+  "asyncCompareLimit": 50,
+  "debug": false,
+  "debugWindow": false
+}
