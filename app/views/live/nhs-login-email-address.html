@@ -8,6 +8,18 @@
 Enter your email address - {{ ServiceName }} - NHS
 {% endblock %}
 
+{% block header %}
+  {{ header({
+    "service": {
+      "name": "NHS login",
+      "href": "#"
+    },
+    "showNav": "false",
+    "showSearch": "false"
+    })
+  }}
+{% endblock %}
+
 {% block outerContent %}
   {{ backLink({
     "href": "javascript:history.go(-1)",

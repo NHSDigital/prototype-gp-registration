@@ -5,22 +5,34 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Check your mobile phone - {{ ServiceName }} - NHS
+  Check your mobile phone - {{ ServiceName }} - NHS
 {% endblock %}
 
-{% block beforeContent %}
-
+{% block header %}
+  {{ header({
+    "service": {
+      "name": "NHS login",
+      "href": "#"
+    },
+    "showNav": "false",
+    "showSearch": "false"
+    })
+  }}
 {% endblock %}
+
+{% block outerContent %}
   {{ backLink({
     text: "Go back",
-    href: "javascript:history.go(-1)"
+    href: "nhs-login-password"
   }) }}
+{% endblock %}
+
 {% block content %}
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
-        <form action="what-is-your-title" method="post" autocomplete="off">
+        <form action="nhs-login-share" method="post" autocomplete="off">
 
           {% call fieldset({
               legend: {
