@@ -611,6 +611,22 @@
       "url": "http://localhost:3000/gp/gp-manage"
     },
     {
+      "label": "gp - gp-branch-main",
+      "url": "http://localhost:3000/gp/gp-branch?practice=true&practiceName=Highstreet%20surgery"
+    },
+    {
+      "label": "gp - gp-branch-branch",
+      "url": "http://localhost:3000/gp/gp-branch?practice=false&practiceName=Pucklechuch%20surgery"
+    },
+    {
+      "label": "gp - gp-notify-patient",
+      "url": "http://localhost:3000/gp/gp-notify-patient"
+    },
+    {
+      "label": "gp - gp-patient-access",
+      "url": "http://localhost:3000/gp/gp-patient-access"
+    },
+    {
       "label": "gp - gp-privacy",
       "url": "http://localhost:3000/gp/gp-privacy"
     },
