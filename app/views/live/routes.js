@@ -17,12 +17,17 @@ module.exports = (router) => {
   })
 
 // Does user have NHS login acc
-  router.post('/live/nhs-login-found-answer/', function (req, res) {
-    var nhsAcc = req.session.data['nhs-acc']
-    if (nhsAcc === "yes"){
-      res.redirect('/live/nhs-login-password')
+  router.post('/live/nhs-login-share-answer/', function (req, res) {
+    var nhsLogin = req.session.data['user-auth']
+    var alreadyregistered = req.session.data['alreadyregistered']
+    if (nhsLogin === "p9"){
+      if (alreadyregistered === "true"){
+        res.redirect('/live/already-registered')
+      } else {
+        res.redirect('/live/what-is-your-title')
+      }
     } else {
-      res.redirect('/live/do-you-know-nhs-number')
+      res.redirect('/live/what-is-your-name')
     }
   })
 
