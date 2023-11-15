@@ -24,7 +24,7 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="" method="post" autocomplete="off">
+          <form action="confirm-contact-details-answer" method="post" autocomplete="off">
 
             {% include 'live/includes/step.html' %}
 
@@ -75,12 +75,14 @@
                   },
                   "items": [
                     {
-                      "value": "Yes~/live/what-schooling-do-you-have",
-                      "text": "Yes, use these details"
+                      "value": "Yes",
+                      "text": "Yes, use these details",
+                      checked: checked("use-contacts-login", "Yes")
                     },
                     {
-                      "value": "No~/live/how-can-we-contact-inputs",
-                      "text": "No, use different details"
+                      "value": "No",
+                      "text": "No, use different details",
+                      checked: checked("use-contacts-login", "No")
                     }
                   ]
               }) }}

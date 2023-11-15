@@ -15,7 +15,9 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
-{% if (data['no-contact']) %}
+{% if (data['user-auth'] === 'p9') %}
+  {% set link = 'confirm-contact-details' %}
+{% elif (data['no-contact']) %}
   {% set link = 'how-can-we-contact-inputs-prompt' %}
 {% else %}
   {% set link = 'how-can-we-contact-inputs' %}

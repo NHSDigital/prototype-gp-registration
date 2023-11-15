@@ -17,7 +17,9 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
-{% if (data['have-current-uk-address'] === "No") %}
+{% if (data['user-auth'] === 'p9') %}
+  {% set link = 'confirm-contact-details' %}
+{% elif (data['have-current-uk-address'] === "No") %}
   {% set link = 'do-you-current-address' %}
 {% else %}
   {% if (data['select-current-address']) %}

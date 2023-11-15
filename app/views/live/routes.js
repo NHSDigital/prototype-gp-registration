@@ -16,7 +16,17 @@ module.exports = (router) => {
     }
   })
 
-// Does user have NHS login acc
+// Does user have NHS login
+  router.post('/live/nhs-login-answer/', function (req, res) {
+    var hasLogin = req.session.data['nhs-login']
+    if (hasLogin === "Yes"){
+      res.redirect('/live/nhs-login-email-address')
+    } else {
+      res.redirect('/live/do-you-know-nhs-number')
+    }
+  })
+
+// Does share NHS login acc
   router.post('/live/nhs-login-share-answer/', function (req, res) {
     var nhsLogin = req.session.data['user-auth']
     var alreadyregistered = req.session.data['alreadyregistered']
@@ -24,7 +34,7 @@ module.exports = (router) => {
       if (alreadyregistered === "true"){
         res.redirect('/live/already-registered')
       } else {
-        res.redirect('/live/what-is-your-title')
+        res.redirect('/live/registered-for-the-first-time')
       }
     } else {
       res.redirect('/live/what-is-your-name')
@@ -82,6 +92,36 @@ module.exports = (router) => {
     }
   })
 
+// registered for first time routing
+  router.post('/live/registered-for-the-first-time-answer/', function (req, res) {
+    let choice = req.session.data['registering-first-time']
+    let auth = req.session.data['user-auth']
+    if (auth === "p9"){
+      res.redirect('/live/is-this-your-current-address')
+    } else {
+      if (choice === "Yes"){
+        res.redirect('/live/check-answers-1')
+      } else {
+        res.redirect('/live/do-you-know-previous-postcode-gp-has')
+      }
+    }
+  })
+
+// registered for first time routing
+  router.post('/live/confirm-contact-details-answer/', function (req, res) {
+    let choice = req.session.data['use-contacts-login']
+    let under18 = req.session.data['under-18-years']
+    if (choice === "Yes"){
+      if (under18 === "true"){
+        res.redirect('/live/what-schooling-do-you-have')
+      } else {
+        res.redirect('/live/what-is-your-sex')
+      }
+    } else {
+      res.redirect('/live/how-can-we-contact-inputs')
+    }
+  })
+
 // populate data for display later
   router.post('/live/what-is-your-current-address-selection-post', function (req, res) {
     const address = req.session.data['select-current-address']
@@ -123,16 +163,6 @@ module.exports = (router) => {
       res.redirect('confirm-contact-details')
     } else {
       res.redirect('how-can-we-contact-inputs')
-    }
-  })
-
-// Does user have NHS login
-  router.post('/live/nhs-login-answer/', function (req, res) {
-    var hasLogin = req.session.data['nhs-login']
-    if (hasLogin === "Yes"){
-      res.redirect('/live/nhs-login-email-address')
-    } else {
-      res.redirect('/live/do-you-know-nhs-number')
     }
   })
 
