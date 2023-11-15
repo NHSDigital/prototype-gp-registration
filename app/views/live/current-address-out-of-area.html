@@ -11,10 +11,17 @@
  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
+{% if (data['select-current-address']) %}
+  {% set link = 'what-is-your-current-address' %}
+{% else %}
+  {% set link = 'what-is-your-current-address' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
-    text: "Go back",
-    href: "javascript:history.go(-1)"
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
 {% endblock %}
 
