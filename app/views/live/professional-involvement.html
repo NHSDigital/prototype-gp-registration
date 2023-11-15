@@ -7,8 +7,10 @@
 
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = 'Is anyone else involved in ' + data['name-first-name'] + '\'s care?' %}
+  {% set hintText = "This will help the GP understand the patient's care needs." %}
 {% else %}
   {% set heading = 'Is anyone else involved in your care?' %}
+  {% set hintText = "This will help the GP understand your care needs." %}
 {% endif %}
 
 {% block pageTitle %}
@@ -48,7 +50,7 @@
                   }
                 },
                 "hint": {
-                  "html": "<p>This will help the GP understand the patient's care needs.</p>"
+                  "text": hintText
                 },
                 items: [
                   {

@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Check your mobile phone - {{ ServiceName }} - NHS
+Enter the security code - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block header %}
@@ -37,24 +37,25 @@
 
           {% call fieldset({
               legend: {
-                "text": "Check your mobile phone",
+                "text": "Enter the security code",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
 
           <p>
-            Enter the 6 digit security code we've sent to •••••••0123
+            We sent a text to •••••••0123.
           </p>
 
           <details class="nhsuk-details">
             <summary class="nhsuk-details__summary">
               <span class="nhsuk-details__summary-text">
-                Not received your security code?
+                Not received a text?
               </span>
             </summary>
             <div class="nhsuk-details__text">
-              <p><a href="#">Request a new security code</a></p>
+              <p>When we are really busy it may take a bit longer for us to text you.</p>
+              <p><a href="#">Send the security code again</a></p>
 
             </div>
           </details>
@@ -64,7 +65,7 @@
                   "html": 'Security code'
                 },
                   "hint": {
-                  "text": "The code is 6 numbers"
+                  "text": "The code is 6 digits"
                 },
                 "type": "password",
                 "classes": "nhsuk-input--width-20",

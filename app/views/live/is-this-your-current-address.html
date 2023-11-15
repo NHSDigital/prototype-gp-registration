@@ -33,26 +33,21 @@ Is this your current address - {{ ServiceName }} - NHS
                 "isPageHeading": true
               }
             }) %}
-            <!-- TODO change this -->
-            <div class="nhsuk-card nhsuk-card--care nhsuk-card--care--non-urgent">
-              <div class="nhsuk-card--care__heading-container">
-                <h2 class="nhsuk-card--care__heading">
-                  <span role="text"><span class="nhsuk-u-visually-hidden">
-                </h2>
-                <span class="nhsuk-card--care__arrow" aria-hidden="true"></span>
-              </div>
 
-            {% if data['user-auth'] == "p9" %}
-              <div class="nhsuk-card__content">
-                <p>Address line 1 <br> Address line 2 <br> Address line 3 <br> Address line 4 </p>
+            <dl class="nhsuk-summary-list">
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key address-review-confirmation">Address:</dt>
+                <dd class="nhsuk-summary-list__value">
+                  <p>6 BRAMLEY CLOSE
+                    <br>
+                    BARTON-UPON-HUMBER
+                    <br>
+                    DN18 5GA
+                    <br>
+                  </p>
+                </dd>
               </div>
-            </div>
-            {% else %}
-               <div class="nhsuk-card__content">
-                <p>Add••• line 1 <br> Addr•• line 2 <br> Add••• line 3 <br> Address l•• 4 </p>
-              </div>
-            </div>
-            {% endif %}
+            </dl>
 
             {{ radios({
               "idPrefix": "current-address",
@@ -73,11 +68,11 @@ Is this your current address - {{ ServiceName }} - NHS
               ]
             }) }}
 
+            {% endcall %}
+
             {{ button({
               "text": "Continue"
             }) }}
-
-            {% endcall %}
 
         </form>
       </div>

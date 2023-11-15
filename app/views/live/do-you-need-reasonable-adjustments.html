@@ -1,7 +1,7 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
-{% set section = '2' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
@@ -20,12 +20,18 @@
 {% endif %}
 
 {% block pageTitle %}
-{{ heading }} - {{ ServiceName }} - NHS
+  {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
+
+{% if (data['accessible-needs'] === "Yes") %}
+  {% set link = "do-you-need-accessible-format-details" %}
+{% else %}
+  {% set link = "do-you-need-accessible-format" %}
+{% endif %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -62,7 +68,7 @@
                 checked: checked("reasonable-adjustments", "Yes")
               },
               {
-                "value": "No~/live/dispencing-surgery",
+                "value": "No~/live/do-you-take-prescription-medication",
                 "text": "No",
                 checked: checked("reasonable-adjustments", "No")
               },
@@ -70,7 +76,7 @@
                 "divider": "or"
               },
               {
-                "value": "Prefer not to say~/live/do-you-need-reasonable-adjustments",
+                "value": "Prefer not to say~/live/do-you-take-prescription-medication",
                 "text": "Prefer not to say",
                 checked: checked("accessible-needs", "Prefer not to say")
               }

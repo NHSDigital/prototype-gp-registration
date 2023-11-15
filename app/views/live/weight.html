@@ -12,11 +12,10 @@
 {% endif %}
 
 {% if (data['under-16-years'] === "true") %}
-  {% set link = 'scr' %}
+  {% set action = 'scr' %}
 {% else %}
-  {% set link = 'how-often-do-you-drink-alcohol' %}
+  {% set action = 'how-often-do-you-drink-alcohol' %}
 {% endif %}
-
 
 {% block pageTitle %}
   {{ heading }} - {{ ServiceName }} - NHS
@@ -24,7 +23,7 @@
 
 {% block outerContent %}
   {{ backLink({
-    "href": weight,
+    "href": height,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -35,7 +34,7 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-        <form action="{{ link }}" method="post" autocomplete="off">
+        <form action="{{ action }}" method="post" autocomplete="off">
 
           {% include 'live/includes/step.html' %}
 
