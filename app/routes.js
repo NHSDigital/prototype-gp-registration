@@ -531,6 +531,24 @@ router.post("/*/check-postcode-2", function (req, res) {
   }
 });
 
+router.post("/gp/design/gp-patient-access-post", function (req, res) {
+  let access = req.session.data['access']
+  // if a user swiches of the notifications
+  if (access === 'Off' || access === 'Unique url only'){
+    // set a data item to use to conditionally show the modal
+    res.redirect('/gp/design/gp-patient-access-info')
+  } else {
+    // return the user to the branch page
+    res.redirect('/gp/design/gp-branch')
+  }
+});
+
+router.post("/gp/design/gp-patient-access-info-post", function (req, res) {
+  req.session.data['notifyModal'] = "show"
+  // then return the user to the branch page
+  res.redirect('/gp/design/gp-branch')
+});
+
 router.post("/gp/gp-notify-patient-post", function (req, res) {
   let notify = req.session.data['use-nap']
 

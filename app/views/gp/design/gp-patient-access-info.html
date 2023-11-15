@@ -1,0 +1,43 @@
+{% extends 'layout-gp.html' %}
+
+{% block pageTitle %}
+  Manage patient access information - GP registration service - NHS
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="gp-patient-access-info-post" method="post" autocomplete="off">
+
+
+            <h1 class="nhsuk-heading-l">Pausing patient access</h1>
+
+            <p>Pausing participation in the ‘Register with a GP Surgery’ service due to temporary or informal list closure, for example, where there is an immediate and unpredicted shortfall in the availability of staff, is subject to prior approval from the Commissioner, as outlined in part B, chapter 5 of the Primary Care Policy & Guidance Manual.</p>
+            <p>Please ensure you have engaged with the Commissioner before closing your patient list.</p>
+
+            {{ button({
+              "text": "Turn off patient access"
+            }) }}
+
+            <p><a href="gp-patient-access">Cancel</a></p>
+
+          </form>
+        </div>
+      </div>
+
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% block pageScripts %}
+
+{% endblock %}
+{% endblock %}

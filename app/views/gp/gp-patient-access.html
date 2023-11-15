@@ -31,10 +31,10 @@ Manage patient access - GP registration service - NHS
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="gp-branch" method="post" autocomplete="off">
+          <form action="gp-patient-access-post" method="post" autocomplete="off">
 
 
-            <H2>Manage patient access</H2>
+            <h1 class="nhsuk-heading-l">Manage patient access</h1>
 
             <p>
               Turning 'Find a GP' on or off will take effect immediately.
@@ -55,7 +55,7 @@ Manage patient access - GP registration service - NHS
                 },
                 {
                   "value": "Off",
-                  "text": "Turn off Find a GP and unique URL",
+                  "text": "Turn off Find a GP and unique URL",
                   "hint": {
                     "text": "Remember to remove the url from your website"
                   },
@@ -66,7 +66,7 @@ Manage patient access - GP registration service - NHS
                 },
                 {
                   "value": "On",
-                  "text": "Turn on Find a GP and unique URL",
+                  "text": "Turn on Find a GP and unique URL",
                   checked: checked("access", "On")
                 }
               ]
