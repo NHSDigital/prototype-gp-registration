@@ -17,9 +17,15 @@
   {{ heading }}- {{ ServiceName }} - NHS
 {% endblock %}
 
+{% if (data['country-born'] === "None") %}
+  {% set link = 'recently-moved-date' %}
+{% else %}
+  {% set link = 'where-were-you-born-place-uk' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
