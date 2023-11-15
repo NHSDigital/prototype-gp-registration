@@ -308,11 +308,11 @@
     },
     {
       "label": "step-2 - do-you-need-a-interpreter",
-      "url": "http://localhost:3000/live/do-you-need-a-interpreter"
+      "url": "http://localhost:3000/live/do-you-need-an-interpreter"
     },
     {
       "label": "step-2 - do-you-need-a-interpreter-language",
-      "url": "http://localhost:3000/live/do-you-need-a-interpreter-language"
+      "url": "http://localhost:3000/live/do-you-need-an-interpreter-language"
     },
     {
       "label": "step-2 - what-is-your-gp-address",
