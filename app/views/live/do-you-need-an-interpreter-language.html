@@ -15,17 +15,6 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
-{% set languageHtml %}
-  {{ input({
-    id: "interpreter-language-other",
-    name: "interpreter-language-other",
-    classes: "nhsuk-u-width-two-thirds",
-    label: {
-      text: "Language"
-    }
-  }) }}
-{% endset %}
-
 {% block outerContent %}
   {{ backLink({
     "href": "do-you-need-an-interpreter",
@@ -42,6 +31,17 @@
           <form action="do-you-have-a-carer" method="post" autocomplete="off">
 
             {% include 'live/includes/step.html' %}
+
+            {% set languageHtml %}
+              {{ input({
+                id: "interpreter-language-other",
+                name: "interpreter-language-other",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "Language"
+                }
+              }) }}
+            {% endset %}
 
             {{ radios({
               "idPrefix": "interpreter-language",

@@ -6,12 +6,12 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Is this your current address - {{ ServiceName }} - NHS
+Is this your current UK address? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "registered-for-the-first-time",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -28,7 +28,7 @@ Is this your current address - {{ ServiceName }} - NHS
 
             {% call fieldset({
               legend: {
-                "text": "Is this your current address?",
+                "text": "Is this your current UK address?",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }

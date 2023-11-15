@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% set heading = 'Share your contact details?' %}
+{% set heading = 'Confirm your contact details' %}
 
 {% block pageTitle %}
   {{ heading }} - {{ ServiceName }} - NHS
@@ -31,7 +31,7 @@
             <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
             {{ hint({
-              "text": "You have agreed to share these details with the Register with a GP Surgery service.",
+              "text": "You shared these details from NHS login. We can give these details to your new GP.",
               "classes": "nhsuk-u-margin-bottom-4"
             }) }}
 
@@ -59,7 +59,7 @@
 
               <div class="nhsuk-inset-text">
                 <span class="nhsuk-u-visually-hidden">Information: </span>
-                <p>You can update your contact details by visiting <a href="https://settings.login.nhs.uk/" target="_blank" rel="noopener noreferrer" title="External website">managing your NHS login (opens in new tab)</a>.</p>
+                <p>You can change your NHS login details by visiting <a href="https://settings.login.nhs.uk/" target="_blank" rel="noopener noreferrer" title="External website">managing your NHS login (opens in new tab)</a>.</p>
               </div>
 
               {{ radios({
@@ -68,14 +68,14 @@
                   "classes": "nhsuk-radios",
                   "fieldset": {
                     "legend": {
-                      "text": "Do you want to use these details to register with a new GP surgery?",
+                      "text": "Do you want to use these contact details?",
                       "classes": "nhsuk-fieldset__legend--m",
                       "isPageHeading": false
                     }
                   },
                   "items": [
                     {
-                      "value": "Yes~/live/how-can-we-contact-you",
+                      "value": "Yes~/live/what-schooling-do-you-have",
                       "text": "Yes, use these details"
                     },
                     {
