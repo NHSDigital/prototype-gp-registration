@@ -327,8 +327,20 @@
       "url": "http://localhost:3000/live/what-is-your-gp-address-selection"
     },
     {
-      "label": "step-2 - already-registered",
-      "url": "http://localhost:3000/live/already-registered"
+      "label": "step-2 - already-registered-main",
+      "url": "http://localhost:3000/live/already-registered?ods-match=main&user-auth=p5&who-is-being-registered=myself"
+    },
+    {
+      "label": "step-2 - already-registered-branch",
+      "url": "http://localhost:3000/live/already-registered?ods-match=branch&user-auth=p5&who-is-being-registered=myself"
+    },
+    {
+      "label": "step-2 - already-registered-p9-main",
+      "url": "http://localhost:3000/live/already-registered?ods-match=main&user-auth=p9&who-is-being-registered=myself"
+    },
+    {
+      "label": "step-2 - already-registered-p9-branch",
+      "url": "http://localhost:3000/live/already-registered?ods-match=branch&user-auth=p9&who-is-being-registered=myself"
     },
     {
       "label": "step-3 - are-you-immunised",
