@@ -763,19 +763,19 @@ Recently moved{% set serviceHome = '/live/start' %}
             </dd>
           </div>
 
-          <!--            <div class="nhsuk-summary-list__row">-->
-          <!--              <dt class="nhsuk-summary-list__key">-->
-          <!--                Average number of cigarettes you smoke a day-->
-          <!--              </dt>-->
-          <!--              <dd class="nhsuk-summary-list__value">-->
-          <!--                {{ data['smoke-amount-Number of cigarettes'] }}-->
-          <!--              </dd>-->
-          <!--              <dd class="nhsuk-summary-list__actions">-->
-          <!--                <a href="do-you-smoke-amount?return=true">-->
-          <!--                  Change<span class="nhsuk-u-visually-hidden"> smoking amount</span>-->
-          <!--                </a>-->
-          <!--              </dd>-->
-          <!--            </div>-->
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+               Average number of cigarettes you smoke a day
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+                 {{ data['smoke-amount'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="do-you-smoke-amount?return=true">
+                Change<span class="nhsuk-u-visually-hidden"> smoking amount</span>
+              </a>
+            </dd>
+          </div>
           {% endif %}
 
      {% endif %}
