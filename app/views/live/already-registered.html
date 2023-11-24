@@ -7,7 +7,7 @@
 
 {% if (data['user-auth'] === "p9") %}
   {% if (data['ods-match'] === "branch") %}
-    {% set heading = "You are already registered with this group of surgeries" %}
+    {% set heading = "You are already registered with this surgery" %}
   {% else %}
     {% set heading = "You are already registered with " + data.presets[0].gpsurgery %}
   {% endif %}
@@ -66,7 +66,7 @@
 
         {# if the user logs in with p9 and their ODS code is related to (a branch) the one they are trying to register with #}
 
-        <p>{{ data.presets[0].gpsurgery }} is part of a group of surgeries.</p>
+        <p>{{ data.presets[0].gpsurgery }} is part of the same group as your current surgery. You do not need to complete this registration to use its healthcare services.</p>
         <p>You can use the NHS App or <a href="https://www.nhs.uk/nhs-app/account/">log into your NHS account</a> to:</p>
         <ul class="nhsuk-list nhsuk-list--bullet">
           <li>book, check or cancel appointments with a GP or nurse</li>
