@@ -27,119 +27,18 @@
     <h3 class="nhsuk-warning-callout__label">
       <span role="text">
         <span class="nhsuk-u-visually-hidden">Important: </span>
-        Patient registered
+        Auto accepted registration
       </span>
     </h3>
-    <p>The patient's registration information has been verified and automatically uploaded to your IT system.</p>
-    <p>Additional patient information is provided in this email. This additional information has not been added to your system.</p>
+    <p>This patient's demographic data has been matched in PDS and automatically registered with your surgery system.</p>
+    <p>Please review the updated health information in your system and create appropriate patient tasks.</p>
   </div>
 
   <div class="nhsuk-inset-text nhsuk-u-padding-top-0 nhsuk-u-padding-bottom-0">
-    <p class="nhsuk-u-margin-bottom-0">Find this patient using their:</p>
-    <p class="nhsuk-heading-l nhsuk-u-padding-top-0">Name - Sam Smith</p>
-    <p class="nhsuk-heading-l nhsuk-u-padding-top-0">NHS number - 123 456 7890</p>
+    <p class="nhsuk-u-margin-bottom-0">Trace this patient using their name or NHS number:</p>
+    <p class="nhsuk-heading-l nhsuk-u-padding-top-0">Sam Smith</p>
+    <p class="nhsuk-heading-l nhsuk-u-padding-top-0"> 123 456 7890</p>
   </div>
-
-  <h2 class="nhsuk-heading-l nhsuk-u-padding-top-4">Automatically updated patient details</h2>
-  <p>The following patient details have been matched in PDS and automatically updated in your system.</p>
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Patient details</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Title
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['name-title'] or 'Mr' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Last name
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['name-last-name'] or 'Smith' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        First name
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['name-first-name'] or 'Sam' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Middle name
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['name-middle-name'] or 'Bob' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Previous last name
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data[''] or 'Smart' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Date of birth
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <span id="dob-day">{{ data['dob-day'] or '01/' }}</span><span id="dob-month">{{ data['dob-month'] or '01/' }}</span><span id="dob-year">{{ data['dob-year'] or '1990' }}</span>
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Gender
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['gender'] or 'Male' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        First time registering with a UK GP surgery
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        No
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-
-      <dt class="nhsuk-summary-list__key">
-        Postcode with last UK GP surgery
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data[''] or 'ZZ99 1WZ' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        NHS number given by patient
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['nhs-number'] or '900 000 0009' }}
-      </dd>
-    </div>
-
-  </dl>
-
 
   <h2 class="nhsuk-heading-l nhsuk-u-padding-top-4">Patient details to add to your system</h2>
   <p>The following details have not been added to your system.</p>
@@ -169,188 +68,6 @@
 
   </dl>
 
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Home address</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Building
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['address-building'] or 'Line 1' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Building
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['address-street'] or '28 Address Line 2' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Town or City
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['address-street'] or 'Address Line 4' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Postcode
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['address-street'] or 'ZZ99 3CZ' }}
-      </dd>
-    </div>
-
-  </dl>
-
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Contact Preferences</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Home telephone
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['contact-home-tel'] or '03003034777' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Mobile telephone
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['contact-mobile'] or '07700900077' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Email
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['contact-email'] or 'simulate-delivered@notifications.service.gov.uk' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Consent to contact
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['consent-to-contact'] or 'Home telephone, Mobile telephone, Email' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Interpreter required
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['interpreter'] or 'Yes' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Language
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['language'] or 'French' }}
-      </dd>
-    </div>
-
-  </dl>
-
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Place of birth</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Country of birth
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        England
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Place of birth
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Huntingdon
-      </dd>
-    </div>
-
-  </dl>
-
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Previous GP surgery</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Name of surgery
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['gp-name-prev'] or 'Previous Surgery' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Postcode
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['gp-postcode-prev'] or 'ZZ99 1WZ' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Building
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['gp-building-prev'] or '17 Main Road' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Street
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['gp-street-prev'] or '17 Main Road' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Town or city
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['gp-town-prev'] or 'Leeds' }}
-      </dd>
-    </div>
-
-  </dl>
-
-
   <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Health Authority</h3>
 
   <dl class="nhsuk-summary-list">
@@ -365,50 +82,6 @@
     </div>
 
   </dl>
-
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Patient previous address</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Postcode
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['address-postcode-prev'] or 'ZZ99 3VZ' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Building
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['address-building-prev'] or 'Previous building' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Street
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['address-street-prev'] or 'Previous street' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Town or city
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['address-town-prev'] or 'Previous town' }}
-      </dd>
-    </div>
-
-  </dl>
-
 
   <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Nominated pharmacy</h3>
 
@@ -460,43 +133,6 @@
     </div>
 
   </dl>
-
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Recently moved to the UK</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Date entered the UK
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <span id="dob-day">{{ data['dob-day'] or '01/' }}</span>
-        <span id="dob-month">{{ data['dob-month'] or '01/' }}</span>
-        <span id="dob-year">{{ data['dob-year'] or '1990' }}</span>
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Moved from EU, EEA or Switzerland
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Yes
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Health insurance documents
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        EHIC
-      </dd>
-    </div>
-
-  </dl>
-
 
   <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Armed Forces</h3>
 
@@ -998,23 +634,6 @@
       </dd>
     </div>
 
-<!--    <div class="nhsuk-summary-list__row">-->
-<!--      <dt class="nhsuk-summary-list__key">-->
-<!--        Prescription details-->
-<!--      </dt>-->
-<!--      <dd class="nhsuk-summary-list__value">-->
-<!--        {{ data['medication-details'] }}-->
-<!--      </dd>-->
-<!--    </div>-->
-<!--    <div class="nhsuk-summary-list__row">-->
-<!--      <dt class="nhsuk-summary-list__key">-->
-<!--        Repeat prescriptions-->
-<!--      </dt>-->
-<!--      <dd class="nhsuk-summary-list__value">-->
-<!--        {{ data['repeat-medication'] }}-->
-<!--      </dd>-->
-<!--    </div>-->
-
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
         What is your height?
@@ -1140,48 +759,6 @@
       </dt>
       <dd class="nhsuk-summary-list__value">
         {{ data['dispensing-accepted'] or 'Accepted dispensing patient' }}
-      </dd>
-    </div>
-
-  </dl>
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Registration completed by</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        First name
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['completedby-first-name'] or 'John' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Last name
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['completedby-last-name'] or 'Doe' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Relationship to patient
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['completedby-relationship'] or 'Foster father' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Contact telephone number
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['completedby-phone-number'] or '07700 900077' }}
       </dd>
     </div>
 
