@@ -175,7 +175,8 @@ Recently moved{% set serviceHome = '/live/start' %}
               {{ data['current-address-line-1'] }}<br />
               {{ data['current-address-line-2'] }}<br />
               {{ data['current-address-town'] }}<br />
-              {{ data['current-address-postcode'] }}
+              {{ data['current-address-postcode'] }}<br/>
+              {{ data['current-address-country'] }}
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
@@ -418,7 +419,8 @@ Recently moved{% set serviceHome = '/live/start' %}
         {{ data['previous-address-line-1'] }}<br />
         {{ data['previous-address-line-2'] }}<br />
         {{ data['previous-address-town'] }}<br />
-        {{ data['previous-address-postcode'] }}
+        {{ data['previous-address-postcode'] }}<br/>
+        {{ data['previous-address-country'] }}
         {% endif %}
       </dd>
       <dd class="nhsuk-summary-list__actions">

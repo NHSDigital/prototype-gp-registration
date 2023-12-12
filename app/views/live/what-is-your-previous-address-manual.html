@@ -28,7 +28,7 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="check-answers-2" method="post" autocomplete="off">
+          <form action="do-you-have-existing-conditions" method="post" autocomplete="off">
 
             {% include 'live/includes/step.html' %}
 
@@ -81,6 +81,40 @@
                   "id": "previous-address-postcode",
                   "name": "previous-address-postcode",
                   value: data['previous-address-postcode']
+              }) }}
+
+              {{ select({
+                "id": "previous-address-country",
+                "name": "previous-address-country",
+                "label": {
+                  "text": "Country"
+                },
+                "items": [
+                {
+                  "value": Choose,
+                  "text": "Choose country"
+                },
+                {
+                    "value": "England",
+                    "text": "England"
+                  },
+                  {
+                    "value": "Isle of Man",
+                    "text": "Isle of Man"
+                  },
+                  {
+                    "value": "Northern Ireland",
+                    "text": "Northern Ireland"
+                  },
+                  {
+                    "value": "Scotland",
+                    "text": "Scotland"
+                  },
+                  {
+                    "value": "Wales",
+                    "text": "Wales"
+                  }
+                ]
               }) }}
 
               {% endcall %}

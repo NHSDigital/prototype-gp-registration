@@ -85,6 +85,40 @@
                   value: data['current-address-postcode']
               }) }}
 
+              {{ select({
+              "id": "current-address-country",
+              "name": "current-address-country",
+              "label": {
+                "text": "Country"
+              },
+              "items": [
+              {
+                "value": Choose,
+                "text": "Choose country"
+              },
+              {
+                  "value": "England",
+                  "text": "England"
+                },
+                {
+                  "value": "Isle of Man",
+                  "text": "Isle of Man"
+                },
+                {
+                  "value": "Northern Ireland",
+                  "text": "Northern Ireland"
+                },
+                {
+                  "value": "Scotland",
+                  "text": "Scotland"
+                },
+                {
+                  "value": "Wales",
+                  "text": "Wales"
+                }
+              ]
+            }) }}
+
 
               {{ button({
                 "text": "Continue"
