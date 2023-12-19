@@ -29,7 +29,7 @@ Do you know the postcode used when you last registered with a UK GP? - {{ Servic
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Do you know the postcode {{ data ['name-first-name'] }} used when last registered with a UK GP?</h1>
+            <h1 class="nhsuk-heading-l">Do you know the postcode {{ data ['name-first-name'] }} used when last registered with {name_of_surgery}?</h1>
 
             <div class="nhsuk-hint" id="contact-hint">
               <p>This will be the postcode they used the last time they registered with a GP surgery.
@@ -37,7 +37,7 @@ Do you know the postcode used when you last registered with a UK GP? - {{ Servic
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">Do you know the postcode used when you last registered with a UK GP?</h1>
+            <h1 class="nhsuk-heading-l">Do you know the postcode used when you last registered with {name_of_surgery}?</h1>
 
             <div class="nhsuk-hint" id="contact-hint">
               <p>This will be the postcode you used the last time you registered with a GP surgery. 
