@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Do you know your postcode of where you were living when you last registered with a UK GP? - {{ ServiceName }} - NHS
+Do you know the postcode used when you last registered with {name_of_surgery}? - {{ ServiceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -29,18 +29,18 @@ Do you know your postcode of where you were living when you last registered with
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Do you know the postcode of where {{ data ['name-first-name'] }} was living when they last registered with a GP surgery in the UK?</h1>
+            <h1 class="nhsuk-heading-l">Do you know the postcode {{ data ['name-first-name'] }} used when last registered with {name_of_surgery}?</h1>
 
             <div class="nhsuk-hint" id="contact-hint">
-              <p>This will be the postcode they used last time they registered with a GP surgery.
+              <p>This will be the postcode they used the last time they registered with a GP surgery.
             </div>
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">Do you the postcode of where you were living when you last registered with a GP surgery in the UK?</h1>
+            <h1 class="nhsuk-heading-l">Do you know the postcode used when you last registered with {name_of_surgery}?</h1>
 
             <div class="nhsuk-hint" id="contact-hint">
-              <p>This will be the postcode your previous GP surgery has for you. 
+              <p>This will be the postcode you used the last time you registered with a GP surgery. 
             </div>
 
             {% endif %}
