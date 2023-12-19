@@ -1,7 +1,7 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
-{% set section = '2' %}
+{% set section = '1' %}
 
 {% extends 'layout.html' %}
 
@@ -14,7 +14,7 @@
 {% if (data['user-auth'] === "p9") %}
   {% set action = 'are-you-returning-from-overseas' %}
 {% elif (data['user-auth'] === "p5") %}
-  {% set action = 'are-you-returning-from-overseas' %}
+  {% set action = 'do-you-know-previous-postcode-gp-has' %}
 {% else %}
   {% set action = 'do-you-know-previous-postcode-gp-has' %}
 {% endif %}
@@ -53,7 +53,7 @@
               "classes": "nhsuk-u-margin-bottom-4"
             }) }}
 
-
+            {% if (data['who-is-being-registered'] === "dependant") %}
             {{ radios({
               "idPrefix": "select-gp-address",
               "name": "select-gp-address",
@@ -83,10 +83,11 @@
                   "text": "5 Town Street, London, SW1A 1AA",
                   "checked": checked("select-gp-address", "5 Town Street, London, SW1A 1AA")
                 },
+                
                 {
-                  "value": "6 Town Street, London, SW1A 1AA",
-                  "text": "6 Town Street, London, SW1A 1AA",
-                  "checked": checked("select-gp-address", "6 Town Street, London, SW1A 1AA")
+                  "value": "block~/live/p5-same-same-dependent",
+                  "text": "Trinity Surgery, London, SW1A 1AA",
+                  "checked": checked("select-gp-address", "Trinity Surgery, London, SW1A 1AA")
                 },
                 {
                   "divider": "or"
@@ -98,6 +99,54 @@
                 }
               ]
             }) }}
+          {% else %}
+          {{ radios({
+            "idPrefix": "select-gp-address",
+            "name": "select-gp-address",
+            "items": [
+              {
+                "value": "1 Town Street, London, SW1A 1AA",
+                "text": "1 Town Street, London, SW1A 1AA",
+                "checked": checked("select-gp-address", "1 Town Street, London, SW1A 1AA")
+              },
+              {
+                "value": "2 Town Street, London, SW1A 1AA",
+                "text": "2 Town Street, London, SW1A 1AA",
+                "checked": checked("select-gp-address", "2 Town Street, London, SW1A 1AA")
+              },
+              {
+                "value": "3 Town Street, London, SW1A 1AA",
+                "text": "3 Town Street, London, SW1A 1AA",
+                "checked": checked("select-gp-address", "3 Town Street, London, SW1A 1AA")
+              },
+              {
+                "value": "4 Town Street, London, SW1A 1AA",
+                "text": "4 Town Street, London, SW1A 1AA",
+                "checked": checked("select-gp-address", "4 Town Street, London, SW1A 1AA")
+              },
+              {
+                "value": "5 Town Street, London, SW1A 1AA",
+                "text": "5 Town Street, London, SW1A 1AA",
+                "checked": checked("select-gp-address", "5 Town Street, London, SW1A 1AA")
+              },
+              
+              {
+                "value": "block~/live/p5-same-same",
+                "text": "Trinity Surgery, London, SW1A 1AA",
+                "checked": checked("select-gp-address", "Trinity Surgery, London, SW1A 1AA")
+              },
+              {
+                "divider": "or"
+              },
+              {
+                "value": "wrong address~/live/what-is-your-gp-address",
+                "text": "The address is not listed here.",
+                "checked": checked("select-current-address", "")
+              }
+            ]
+          }) }}
+          {% endif %}
+            
 
             {% endcall %}
 
@@ -116,6 +165,7 @@
 
   {# DEVMODE SCENARIOS #}
   {% if data['devMode'] === 'true' %}
+  {% if (data['who-is-being-registered'] === "dependant") %}
   <details class="nhsuk-details dev-mode dev-mode--routing" role="group">
     <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
       <span class="nhsuk-details__summary-text">
@@ -126,14 +176,35 @@
       <h4>Routes for Repeat registration</h4>
       <ul class="govuk-list govuk-list--bullet">
         <li>
-          <a href="already-registered?ods-match=main">ODS code matches current practice</a>
+          <a href="p5-same-same-dependent">ODS code matches current practice</a>
         </li>
         <li>
-          <a href="already-registered?ods-match=branch">ODS code matches a branch of the main practice</a>
+          <a href="p5-same-same-branch-dependent">ODS code matches a branch of the main practice</a>
         </li>
       </ul>
     </div>
   </details>
+{% else %}
+
+  <details class="nhsuk-details dev-mode dev-mode--routing" role="group">
+    <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+      <span class="nhsuk-details__summary-text">
+        Routing choices
+      </span>
+    </summary>
+    <div class="nhsuk-details__text">
+      <h4>Routes for Repeat registration</h4>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="p5-same-same">ODS code matches current practice</a>
+        </li>
+        <li>
+          <a href="p5-same-same-branch">ODS code matches a branch of the main practice</a>
+        </li>
+      </ul>
+    </div>
+  </details>
+  {% endif %}
   {% endif %}
 
 {% include 'live/includes/devmode.html' %}

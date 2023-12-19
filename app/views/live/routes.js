@@ -102,7 +102,9 @@ module.exports = (router) => {
       if (choice === "Yes"){
         res.redirect('/live/check-answers-1')
       } else {
-        res.redirect('/live/do-you-know-previous-postcode-gp-has')
+        // route before non-p9 block solution (dec 23)
+        // res.redirect('/live/do-you-know-previous-postcode-gp-has')
+        res.redirect('/live/what-is-your-gp-address')
       }
     }
   })

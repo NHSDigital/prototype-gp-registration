@@ -11,10 +11,12 @@
   {% set heading = 'Please confirm these are the correct details for the person registering with ' + data.presets[0].gpsurgery %}
 {% endif %}
 
-{% if (data['registering-first-time'] === "No") %}
+{% if (data['registering-first-time'] === "Yes") %}
   {% set link = 'registered-for-the-first-time' %}
-{% else %}
-  {% set link = 'registered-for-the-first-time' %}
+{% elseif (data['do-you-know-previous-postcode'] === "Yes") %}
+  {% set link = 'what-is-previous-postcode-gp-has' %}
+{% elseif (data['do-you-know-previous-postcode'] === "No") %}
+  {% set link = 'do-you-know-previous-postcode-gp-has' %}
 {% endif %}
 
 {% if data['date-of-birth'][1] %}
@@ -297,6 +299,40 @@
                 actions: {
                   items: [
                     {
+                      href: "registered-for-the-first-time?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "date of birth"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Current GP surgery you want to leave"
+                },
+                value: {
+                  text: data['select-gp-address']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "what-is-your-gp-address-selection?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "date of birth"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Do you know the postcode of where you were living when you last registered with a GP surgery in the UK?"
+                },
+                value: {
+                  text: data['do-you-know-previous-postcode']
+                },
+                actions: {
+                  items: [
+                    {
                       href: "do-you-know-previous-postcode-gp-has?return=true",
                       text: "Change",
                       visuallyHiddenText: "date of birth"
@@ -306,7 +342,7 @@
               },
               {
                 key: {
-                  text: "Do they know the postcode they last registered with a UK GP?"
+                  text: "What is the postcode of where you were living when you last registered with a GP surgery in the UK?"
                 },
                 value: {
                   text: data['gp-postcode-prev']
