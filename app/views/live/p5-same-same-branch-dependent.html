@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-These surgeries are part of the same group - {{ ServiceName }} - NHS
+These surgeries are part of the same group - {{ data.presets[0].servicename }} - NHS
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,12 +17,12 @@ These surgeries are part of the same group - {{ ServiceName }} - NHS
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>
-        {DEPENDENT} is trying to register with {NAME_OF_SURGERY}
+        {{data['name-first-name'] }} is trying to register with {{ data.presets[0].gpsurgery }}
       </h1>
 
       <div class="nhsuk-inset-text">
         <span class="nhsuk-u-visually-hidden">Information: </span>
-        <p>You told us {DEPENDENT} is already registered with {name-of-surgery}</p>
+        <p>You told us {DEPENDENT} is already registered with {{ data.presets[0].gpsurgery }}</p>
         <p>These surgeries are part of the same group. You do not need to complete this registration to use their healthcare services.</p>
             </div>
 
