@@ -15,7 +15,7 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
-{% if (data['are-you-immunised']) %}
+<!--{% if (data['are-you-immunised']) %}
   {% if (data['are-you-immunised'] === "No") %}
     {% set link = 'are-you-immunised' %}
   {% else %}
@@ -42,7 +42,13 @@
 
 
 
-{% endif %}
+{% endif %}-->
+
+  {% if (data['have-previous-uk-address'] == "No") %}
+    {% set link = 'do-you-previous-address' %}
+  {% else %}
+    {% set link = 'what-is-your-previous-address' %}
+  {% endif %}
 
 {% block outerContent %}
   {{ backLink({
