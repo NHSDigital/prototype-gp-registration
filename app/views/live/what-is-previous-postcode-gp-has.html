@@ -6,10 +6,10 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "What postcode did " + data['name-first-name'] + " use when they last registered with " + data.presets[0]['gpsurgery'] + "?" %}
+  {% set heading = "What postcode did " + data['name-first-name'] + " use when they registered with " + data.presets[0]['gpsurgery'] + "?" %}
   {% set hintText = 'This will be the postcode they used the last time they registered with a GP surgery.' %}
 {% else %}
-  {% set heading = 'What postcode did you use when you last registered with ' + data.presets[0]['gpsurgery'] + '?' %}
+  {% set heading = 'What postcode did you use when you registered with ' + data.presets[0]['gpsurgery'] + '?' %}
   {% set hintText = 'This will be the postcode you used the last time you registered with a GP surgery.' %}
 {% endif %}
 

@@ -6,11 +6,10 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "Do you know the postcode of where " + data ['name-first-name'] + " was living when they last registered with a GP surgery in the UK?" %}
-  {% set heading = "Do you know the postcode used when " + data ['name-first-name'] + "  last registered with " + data.presets[0]['gpsurgery'] + "?" %}
+  {% set heading = "Do you know the postcode used when " + data ['name-first-name'] + " registered with " + data.presets[0]['gpsurgery'] + "?" %}
   {% set hintText = 'This will be the postcode they used the last time they registered with a GP surgery.' %}
 {% else %}
-  {% set heading = 'Do you know the postcode used when you last registered with ' + data.presets[0]['gpsurgery'] + '?' %}
+  {% set heading = 'Do you know the postcode used when you registered with ' + data.presets[0]['gpsurgery'] + '?' %}
   {% set hintText = 'This will be the postcode you used the last time you registered with a GP surgery.' %}
 {% endif %}
 
