@@ -50,7 +50,9 @@ module.exports = (router) => {
     } else {
       if (relationship === "Carer"){
         res.redirect('/live/carer-type')
-      } else {
+      } if (relationship === "Parent or guardian") {
+        res.redirect('/live/do-you-know-nhs-number-parent')
+      } if (relationship === "Other") {
         res.redirect('/live/carer-details')
       }
     }

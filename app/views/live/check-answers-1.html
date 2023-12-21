@@ -5,11 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Please confirm these are the correct details for the person registering with ' + data.presets[0].gpsurgery %}
-{% else %}
-  {% set heading = 'Please confirm these are the correct details for the person registering with ' + data.presets[0].gpsurgery %}
-{% endif %}
+{% set heading = 'Please confirm these are the correct details for the person registering with ' + data.presets[0].gpsurgery %}
 
 {% if (data['registering-first-time'] === "Yes") %}
   {% set link = 'registered-for-the-first-time' %}
@@ -44,7 +40,7 @@
 
             <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
-            {% if (data['who-is-being-registered'] === "dependant") %}
+            {% if (data['who-is-being-registered'] === "dependant" and data['know-nhs-number-parent'] ==="No") %}
             <h2 class="nhsuk-heading-m">Your details</h2>
 
             {{ summaryList({
@@ -137,7 +133,130 @@
             ]
           }) }}
 
-
+            {% elseif (data['who-is-being-registered'] === "dependant" and data['know-nhs-number-parent'] ==="Yes") %}
+            {{ summaryList({
+              rows: [
+                {
+                  key: {
+                    text: "Relationship to person being registered"
+                  },
+                  value: {
+                    text: data['relation']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "relation-of-dependant?return=true",
+                        text: "Change",
+                        visuallyHiddenText: "relationship to person being registered"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Do you know your NHS number?"
+                  },
+                  value: {
+                    text: data['know-nhs-number-parent']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "do-you-know-nhs-number-parent?return=true",
+                        text: "Change",
+                        visuallyHiddenText: "Do you know your NHS number"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "What is your NHS number?"
+                  },
+                  value: {
+                    text: data['nhs-number-parent']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "what-is-your-nhs-number-parent?return=true",
+                        text: "Change",
+                        visuallyHiddenText: "your NHS number"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "First name"
+                  },
+                  value: {
+                    text: data['carer-first-name']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "carer-details?return=true",
+                        text: "Change",
+                        visuallyHiddenText: "first name"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Last name"
+                  },
+                  value: {
+                    text: data['carer-last-name']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "carer-details?return=true",
+                        text: "Change",
+                        visuallyHiddenText: "last name"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Relationship"
+                  },
+                  value: {
+                    text: data['carer-relationship']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "carer-details?return=true",
+                        text: "Change",
+                        visuallyHiddenText: "relationship"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Contact telephone"
+                  },
+                  value: {
+                    text: data['carer-telephone']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "carer-details?return=true",
+                        text: "Change",
+                        visuallyHiddenText: "relationship"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }) }}
 
             {% endif %}
 
