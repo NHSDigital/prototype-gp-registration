@@ -21,7 +21,13 @@
   {% set link = 'where-were-you-born-place-uk' %}
 {% endif %}
 
-{% if (data['date-of-birth'][2] >= 2005) %}
+<!--{% if (data['date-of-birth'][2] >= 2005) %}
+  {% set immuniseLink = 'No~/live/are-you-immunised' %}
+{% else %}
+  {% set immuniseLink = 'No~/live/what-is-your-previous-address' %}
+{% endif %}-->
+
+{% if (data['under-18-years'] === 'true') %}
   {% set immuniseLink = 'No~/live/are-you-immunised' %}
 {% else %}
   {% set immuniseLink = 'No~/live/what-is-your-previous-address' %}
