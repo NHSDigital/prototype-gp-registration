@@ -1,0 +1,85 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'You should apply first to speed up processing time' %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <form action="" method="post" autocomplete="off">
+
+      {% include 'live/includes/step.html' %}
+
+      {% call fieldset({
+        legend: {
+          text: heading,
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      {{ hint({
+        "html": '<p>If you are planning to apply at Trinity surgery, you should apply first to speed up the time it takes to process both applications.</p>
+        <p>If you think the person you are applying for needs medical help right now visit <a href="https://111.nhs.uk/">NHS 111 online.</a></p>',
+        "classes": "nhsuk-u-margin-bottom-4"
+      }) }}
+
+      {{ radios({
+          "idPrefix": "apply-self",
+          "name": "apply-self",
+          "classes": "nhsuk-radios",
+          "fieldset": {
+            "legend": {
+              "text": "What would you like to do?",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": false
+            }
+          },
+          "items": [
+          {
+            "value": "No~https://www.nhs.uk/service-search/find-a-gp",
+            "text": "Start again and register myself",
+            "checked": checked("apply-self", "No")
+          },
+          {
+              "value": "Yes~/live/how-can-we-contact-inputs",
+              "text": "Continue with this registration",
+              "checked": checked("apply-self", "Yes")
+            }
+          ]
+       }) }}
+
+      {% endcall %}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
