@@ -4,7 +4,7 @@
 
 {% extends 'layout.html' %}
 
-{% set heading = 'You should apply first to speed up processing time' %}
+{% set heading = 'Register yourself first with [name_of_surgery]' %}
 
 {% block pageTitle %}
   {{ heading }} - {{ data.presets[0].servicename }} - NHS
@@ -36,8 +36,7 @@
       }) %}
 
       {{ hint({
-        "html": '<p>If you are planning to apply at Trinity surgery, you should apply first to speed up the time it takes to process both applications.</p>
-        <p>If you think the person you are applying for needs medical help right now visit <a href="https://111.nhs.uk/">NHS 111 online.</a></p>',
+        "html": '<p>Some GP surgeries will only accept registrations for children or dependents under 16 years if their parent or guardian is already registered.</p>
         "classes": "nhsuk-u-margin-bottom-4"
       }) }}
 
@@ -47,7 +46,7 @@
           "classes": "nhsuk-radios",
           "fieldset": {
             "legend": {
-              "text": "What would you like to do?",
+              "text": "What do you want to do?",
               "classes": "nhsuk-fieldset__legend--m",
               "isPageHeading": false
             }
@@ -55,7 +54,7 @@
           "items": [
           {
             "value": "No~https://www.nhs.uk/service-search/find-a-gp",
-            "text": "Start again and register myself",
+            "text": "Register myself first",
             "checked": checked("apply-self", "No")
           },
           {
