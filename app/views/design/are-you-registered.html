@@ -4,7 +4,7 @@
 
 {% extends 'layout.html' %}
 
-{% set heading = ' + data.presets[0]['gpsurgery'] + ' %}
+{% set heading = 'You and ' + data.presets[0]['gpsurgery'] + '' %}
 
 {% block pageTitle %}
 {{ heading }} - {{ data.presets[0].servicename }} - NHS
