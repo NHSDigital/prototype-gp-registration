@@ -1,0 +1,28 @@
+
+{% extends 'layout.html' %}
+
+{% from 'button/macro.njk' import button %}
+{% from 'back-link/macro.njk' import backLink %}
+
+{% block pageTitle %}
+We cannot find that page - Register with a GP Surgery - NHS
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+      <h1 class="nhsuk-heading-l">
+          [NAME_OF_SURGERY] is not accepting new patients
+      </h1>
+
+      <p class="nhsuk-body">Select a surgery that is accepting new patients using <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a>.</p>
+
+
+
+  </div>
+</div>
+
+
+{% endblock %}
