@@ -1,6 +1,6 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
-{% set feedbackType = 'final' %}
+
 
 {% extends 'layout.html' %}
 
@@ -37,7 +37,7 @@
 
       </div>
 
-      <p>These details have been sent to NAME_OF_SURGERY</p>
+      <p>These details have been sent to {{ data.presets[0].gpsurgery or '{ GP surgery}' }}</p>
 
       <h2>What happens next</h2>
       <ul>
@@ -45,7 +45,10 @@
       <li>For an urgent appointment contact the practice or use the NHS 111 service.</li>
       </ul>
 
-          <form action="confirmation-page-thank-you" autocomplete="off" method="post">
+      <h2>Registering someone else</h2>
+      <p>If you would like to register a family member or someone else, <a href="start">start another registration</a>.</p>
+
+          <form action="confirmation-page-thank-you" autocomplete="off" method="post" style="margin-top: 48px;">
 
           {% call fieldset({
             legend: {

@@ -82,6 +82,40 @@
                 "value": data['carer-relationship']
               }) }}
 
+              <label class="nhsuk-label" for="parentBirth-day">
+                Date of birth?
+              </label>
+              <div class="nhsuk-hint" id="example-hint">
+                For example, 15 3 1984
+              </div>
+          
+              <div class="nhsuk-date-input" id="parentBirth">
+                <div class="nhsuk-date-input__item">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-date-input__label" for="parentBirth-day">
+                      Day
+                    </label>
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="parentBirth-day" name="parentBirth-day" type="text" pattern="[0-9]*" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="nhsuk-date-input__item">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-date-input__label" for="parentBirth-month">
+                      Month
+                    </label>
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="parentBirth-month" name="parentBirth-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="nhsuk-date-input__item">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-date-input__label" for="parentBirth-year">
+                      Year
+                    </label>
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="parentBirth-year" name="parentBirth-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                  </div>
+                </div>
+              </div>
+
               {{ input({
                   label: {
                     "text": "Contact telephone number"
