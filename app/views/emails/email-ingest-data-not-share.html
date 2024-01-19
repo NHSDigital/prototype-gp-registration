@@ -114,19 +114,46 @@
   Patient automatically registered with your surgery
   </strong>
 </td>
-  <p class="nhsuk-u-margin-bottom-0"><strong>Sam Smith</strong> is now registered with your surgery.</p>
-  <br>
-  <p class="nhsuk-u-margin-bottom-0">This patient's registration information has been verified and automatically entered into your records. </p>
+  <p class="nhsuk-u-margin-bottom-0"><strong>Sam Smith</strong> has been automatically registered with your surgery.</p>
+  <div class="nhsuk-inset-text nhsuk-u-padding-top-0 nhsuk-u-padding-bottom-0">
+    <p class="nhsuk-u-margin-bottom-0">Search for this patient using their NHS number:</p>
+    <p class="nhsuk-heading-l nhsuk-u-padding-top-0">123 456 7890</p>
+  </div>
+  
+  <p class="nhsuk-u-margin-bottom-0">This patient's registration details have been verified and automatically entered into your records. </p>
   <p class="nhsuk-u-margin-bottom-0">You still need to enter their additional information.</p>
-  <br>
-  <div class="nhsuk-inset-text">
-    <span class="nhsuk-u-visually-hidden">Information: </span>
-    <p class="nhsuk-u-margin-bottom-0">Search for this patient using their:</p>
-    <ul>
-    <li class="nhsuk-u-margin-bottom-0">NHS number - 123 456 7890</li>
-    <li class="nhsuk-u-margin-bottom-0">Date of birth - 18 September 1966</li>
-  </ul>
+
+  <h3 class="nhsuk-heading-m">Registration information</h3>
+
+  <dl class="nhsuk-summary-list">
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Registration reference number
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['nhs-number'] or 'GPR-12345678' }}
+      </dd>
     </div>
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Registration type
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['nhs-number'] or 'First acceptance registration' }}
+      </dd>
+    </div>
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Date registration submitted
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['nhs-number'] or '2:52pm on Wednesday 23rd August 2023' }}
+      </dd>
+    </div>
+
+  </dl>
+
 
     <details class="nhsuk-details">
       <summary class="nhsuk-details__summary">
@@ -134,19 +161,136 @@
           Information used to automatically register this patient
         </span>
       </summary>
-      <div class="nhsuk-details__text">
-        <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
-        <p>You can find your NHS number by logging in to a GP online service or on any document the NHS has sent you, such as your:</p>
-        <ul>
-          <li>prescriptions</li>
-          <li>test results</li>
-          <li>hospital referral letters</li>
-          <li>appointment letters</li>
-        </ul>
-        <p>Ask your GP surgery for help if you can't find your NHS number.</p>
+      <dl class="nhsuk-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Title
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['name-title'] or 'Mr' }}
+          </dd>
+        </div>
     
-      </div>
-    </details>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Last name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['name-last-name'] or 'Smith' }}
+          </dd>
+        </div>
+    
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            First name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['name-first-name'] or 'Sam' }}
+          </dd>
+        </div>
+    
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Middle name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['name-middle-name'] or 'Bob' }}
+          </dd>
+        </div>
+    
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Previous last name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data[''] or 'Smart' }}
+          </dd>
+        </div>
+    
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <span id="dob-day">{{ data['dob-day'] or '01/' }}</span><span id="dob-month">{{ data['dob-month'] or '01/' }}</span><span id="dob-year">{{ data['dob-year'] or '1990' }}</span>
+          </dd>
+        </div>
+    
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Gender
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['gender'] or 'Male' }}
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Home address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['address'] or '25 Music Street, Radio City, ZX11 9PP' }}
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Place of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['birthplace'] or 'Frome, Somerset' }}
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Previous GP surgery
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['previous'] or 'Broken Bones Medical Centre, Fixit Street, Topple Town. ZZ12 XX66' }}
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Previous health Authority
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['authority'] or 'Whittington Health' }}
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Patient previous address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['patientprevious'] or '2 Fallover House, Topple Town. ZZ13 XX67' }}
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Consent to share Summary Care Record
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Yes, share a Summary Care Record with additional information
+          </dd>
+        </div>
+    
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Dispensing patient
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['dispensing'] or 'No' }}
+          </dd>
+        </div>
+
+      </dl>
+        </details>
 
 <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Additional information</h3>
 
@@ -504,56 +648,6 @@
 
     
 
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Consent to Summary Care Record
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Yes, share a Summary Care Record with additional information
-      </dd>
-    </div>
-
-  </dl>
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Dispensing Patient</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Do you live more than 1 mile from your nearest pharmacy?
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        No
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Would you have serious difficulty travelling to your nearest pharmacy to get medicines or medical appliances?
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Yes
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Eligible for dispensing patient
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Yes
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Dispensing Patient
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Accepted dispensing patient
-      </dd>
-    </div>
 
   </dl>
 
