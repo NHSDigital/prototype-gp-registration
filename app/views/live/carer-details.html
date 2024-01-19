@@ -10,10 +10,14 @@
   {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
-{% if (data['return'] === "true") %}
-  {% set link = 'check-answers-1' %}
-{% else %}
-  {% set link = 'relation-of-dependant' %}
+{% if (data['know-nhs-number-parent'] === "Yes") %}
+  {% set link = 'what-is-your-nhs-number-parent' %}
+{% elseif (data['know-nhs-number-parent'] === "No") %}
+  {% set link = 'do-you-know-nhs-number-parent' %}
+{% elseif (data['are-you-planning-register'] === "No") %}
+  {% set link = 'are-you-planning-register' %}
+{% elseif (data['apply-self'] === "continue") %}
+  {% set link = 'apply-self-first' %}
 {% endif %}
 
 {% block outerContent %}
