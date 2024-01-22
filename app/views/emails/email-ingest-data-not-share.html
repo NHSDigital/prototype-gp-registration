@@ -146,151 +146,11 @@
   </dl>
 
   <p class="nhsuk-u-margin-bottom-0">This patient's registration details have been verified and automatically entered into your records. You may still need to enter their <strong>Additional information</strong>.</p>
-<br>
-    <details class="nhsuk-details">
-      <summary class="nhsuk-details__summary">
-        <span class="nhsuk-details__summary-text">
-          Patient registration details
-        </span>
-      </summary>
-      <p>These details have been automatically entered into your records. You do not need to re-enter them.</p>
-      <dl class="nhsuk-summary-list">
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Title
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['name-title'] or 'Mr' }}
-          </dd>
-        </div>
-    
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Last name
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['name-last-name'] or 'Smith' }}
-          </dd>
-        </div>
-    
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            First name
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['name-first-name'] or 'Sam' }}
-          </dd>
-        </div>
-    
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Middle name
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['name-middle-name'] or 'Bob' }}
-          </dd>
-        </div>
-    
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Previous last name
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data[''] or 'Smart' }}
-          </dd>
-        </div>
-    
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Date of birth
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            <span id="dob-day">{{ data['dob-day'] or '01/' }}</span><span id="dob-month">{{ data['dob-month'] or '01/' }}</span><span id="dob-year">{{ data['dob-year'] or '1990' }}</span>
-          </dd>
-        </div>
-    
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Gender
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['gender'] or 'Male' }}
-          </dd>
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Home address
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['address'] or '25 Music Street, Radio City, ZX11 9PP' }}
-          </dd>
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Place of birth
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['birthplace'] or 'Frome, Somerset' }}
-          </dd>
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Previous GP surgery
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['previous'] or 'Broken Bones Medical Centre, Fixit Street, Topple Town. ZZ12 XX66' }}
-          </dd>
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Previous health Authority
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['authority'] or 'Whittington Health' }}
-          </dd>
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Patient previous address
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['patientprevious'] or '2 Fallover House, Topple Town. ZZ13 XX67' }}
-          </dd>
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Consent to share Summary Care Record
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            Yes, share a Summary Care Record with additional information
-          </dd>
-        </div>
-    
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Dispensing patient
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['dispensing'] or 'No' }}
-          </dd>
-        </div>
-
-      </dl>
-        </details>
 
 <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Additional information</h3>
 
 
 <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Patient health</h3>
-
-  
 
 
   <dl class="nhsuk-summary-list">
@@ -685,6 +545,143 @@
     </div>
 
   </dl>
+  <details class="nhsuk-details">
+    <summary class="nhsuk-details__summary">
+      <span class="nhsuk-details__summary-text">
+        Patient registration details
+      </span>
+    </summary>
+    <p>These details have been automatically entered into your records. You do not need to re-enter them.</p>
+    <dl class="nhsuk-summary-list">
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Title
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['name-title'] or 'Mr' }}
+        </dd>
+      </div>
+  
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Last name
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['name-last-name'] or 'Smith' }}
+        </dd>
+      </div>
+  
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          First name
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['name-first-name'] or 'Sam' }}
+        </dd>
+      </div>
+  
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Middle name
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['name-middle-name'] or 'Bob' }}
+        </dd>
+      </div>
+  
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Previous last name
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data[''] or 'Smart' }}
+        </dd>
+      </div>
+  
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Date of birth
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          <span id="dob-day">{{ data['dob-day'] or '01/' }}</span><span id="dob-month">{{ data['dob-month'] or '01/' }}</span><span id="dob-year">{{ data['dob-year'] or '1990' }}</span>
+        </dd>
+      </div>
+  
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Gender
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['gender'] or 'Male' }}
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Home address
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['address'] or '25 Music Street, Radio City, ZX11 9PP' }}
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Place of birth
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['birthplace'] or 'Frome, Somerset' }}
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Previous GP surgery
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['previous'] or 'Broken Bones Medical Centre, Fixit Street, Topple Town. ZZ12 XX66' }}
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Previous health Authority
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['authority'] or 'Whittington Health' }}
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Patient previous address
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['patientprevious'] or '2 Fallover House, Topple Town. ZZ13 XX67' }}
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Consent to share Summary Care Record
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Yes, share a Summary Care Record with additional information
+        </dd>
+      </div>
+  
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Dispensing patient
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['dispensing'] or 'No' }}
+        </dd>
+      </div>
+
+    </dl>
+      </details>
 
   <p>NHS<br/>
     <span style="color:#888888;">Register with a GP Surgery</span>
