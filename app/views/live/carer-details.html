@@ -86,37 +86,33 @@
                 "value": data['carer-relationship']
               }) }}
 
-              <label class="nhsuk-label" for="parentBirth-day">
+              <label class="nhsuk-label" for="date-of-birth-day">
                 Date of birth
               </label>
-              <div class="nhsuk-hint" id="example-hint">
-                For example, 15 3 1984
+              <div class="nhsuk-hint">
+                <p>For example, 15 3 1984</p>
               </div>
-          
-              <div class="nhsuk-date-input" id="parentBirth">
-                <div class="nhsuk-date-input__item">
-                  <div class="nhsuk-form-group">
-                    <label class="nhsuk-label nhsuk-date-input__label" for="parentBirth-day">
-                      Day
-                    </label>
-                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="parentBirth-day" name="parentBirth-day" type="text" pattern="[0-9]*" inputmode="numeric">
-                  </div>
+
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="date-of-birth-day" id="date-of-birth-day--label">Day</label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="date-of-birth-day" name="[parent-date-of-birth]" type="text" pattern="[0-9]*" inputmode="numeric" spellcheck="false" value="{{ data['date-of-birth'][0] }}" autocomplete="bday-day">
                 </div>
-                <div class="nhsuk-date-input__item">
-                  <div class="nhsuk-form-group">
-                    <label class="nhsuk-label nhsuk-date-input__label" for="parentBirth-month">
-                      Month
-                    </label>
-                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="parentBirth-month" name="parentBirth-month" type="text" pattern="[0-9]*" inputmode="numeric">
-                  </div>
+              </div>
+
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="date-of-birth-month" id="date-of-birth-month--label">Month</label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="date-of-birth-month" name="[parent-date-of-birth]" type="text" pattern="[0-9]*" inputmode="numeric" spellcheck="false" value="{{ data['date-of-birth'][1] }}" autocomplete="bday-month">
                 </div>
-                <div class="nhsuk-date-input__item">
-                  <div class="nhsuk-form-group">
-                    <label class="nhsuk-label nhsuk-date-input__label" for="parentBirth-year">
-                      Year
-                    </label>
-                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="parentBirth-year" name="parentBirth-year" type="text" pattern="[0-9]*" inputmode="numeric">
-                  </div>
+              </div>
+
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="date-of-birth-year" id="date-of-birth-year--label">Year</label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="date-of-birth-year" name="[parent-date-of-birth]" type="text" pattern="[0-9]*" inputmode="numeric" spellcheck="false" value="{{ data['date-of-birth'][2] }}" autocomplete="bday-year">
+                </div>
+              </div>
                 </div>
               </div>
 
@@ -124,7 +120,7 @@
                   label: {
                     "text": "Contact telephone number"
                   },
-                  "classes": "nhsuk-u-width-two-thirds",
+                  "classes": "nhsuk-u-width-one-third",
                   "id": "carer-telephone",
                   "name": "carer-telephone",
                   "autocomplete": "tel",

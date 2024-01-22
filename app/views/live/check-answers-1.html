@@ -115,6 +115,23 @@
               },
               {
                 key: {
+                  text: "Date of birth"
+                },
+                value: {
+                  html: data['parent-date-of-birth'][0] + " " + month + " " + data['parent-date-of-birth'][2]
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "carer-details?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "date of birth"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
                   text: "Contact telephone"
                 },
                 value: {
@@ -234,6 +251,23 @@
                         href: "carer-details?return=true",
                         text: "Change",
                         visuallyHiddenText: "relationship"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Date of birth"
+                  },
+                  value: {
+                    html: data['parent-date-of-birth'][0] + " " + month + " " + data['parent-date-of-birth'][2]
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "carer-details?return=true",
+                        text: "Change",
+                        visuallyHiddenText: "date of birth"
                       }
                     ]
                   }
