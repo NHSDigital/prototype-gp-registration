@@ -40,7 +40,7 @@
 
             <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
-            {% if (data['who-is-being-registered'] === "dependant" and data['know-nhs-number-parent'] ==="No") or (data['are-you-registered'] ==="No") %}
+            {% if (data['who-is-being-registered'] === "dependant" and data['are-you-registered'] ==="No") %}
             <h2 class="nhsuk-heading-m">Your details</h2>
 
             {{ summaryList({
@@ -150,7 +150,7 @@
             ]
           }) }}
 
-            {% elseif (data['who-is-being-registered'] === "dependant" and data['know-nhs-number-parent'] ==="Yes") %}
+            {% elseif (data['who-is-being-registered'] === "dependant" and data['are-you-registered'] ==="Yes") %}
             <h2 class="nhsuk-heading-m">Your details</h2>
             {{ summaryList({
               rows: [
