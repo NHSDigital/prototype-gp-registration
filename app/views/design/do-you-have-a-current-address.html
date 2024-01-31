@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Where ' + data['name-first-name'] + ' is currently living' %}
+  {% set heading = 'Where ' + data['name-first-name'] + ' is living' %}
 {% else %}
-  {% set heading = 'Where you are currently living' %}
+  {% set heading = 'Where you are living' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -54,7 +54,8 @@
             </div>
           </form>
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-            Do you have a current UK address?
+            <p>            Do you have a current UK address?
+            </p>
           </legend>
             {{ radios({
               "idPrefix": "have-current-uk-address",
