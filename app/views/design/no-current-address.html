@@ -1,0 +1,85 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'You told us ' + data['name-first-name'] + ' does not have a current UK address' %}
+{% else %}
+  {% set heading = 'You told us you do not have a current UK address' %}
+{% endif %}
+
+{% block pageTitle %}
+{{ heading }} - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "check-answers-1",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+
+            <p class="govuk-body">
+              By telling us where you are currently living in the UK will help health and care staff across England provide you with direct care. If you do not have an address we can use the address of the GP surgery you want to register with.
+            </p>
+            </div>
+            </div>
+          </form>
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <p>            Do you want to use the address of the GP surgery you want to register with? 
+            </p>
+          </legend>
+            {{ radios({
+              "idPrefix": "have-current-uk-address",
+              "name": "have-current-uk-address",
+              "items": [
+                {
+                  "value": "Yes~/design/what-is-your-current-address",
+                  "text": "Yes",
+                  checked: checked("have-current-uk-address", "Yes")
+                },
+                {
+                  "value": "No~/design/do-you-know-nhs-number",
+                  "text": "No, use a different address",
+                  checked: checked("have-current-uk-address", "No")
+                }
+              ]
+            }) }}
+
+        {% endcall %}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}
