@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Does ' + data['name-first-name'] + ' have a current UK address?' %}
+  {% set heading = 'Where ' + data['name-first-name'] + ' is living' %}
 {% else %}
-  {% set heading = 'Do you have a current UK address?' %}
+  {% set heading = 'Where you are living' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -39,10 +39,21 @@
                 isPageHeading: true
               }
             }) %}
-
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>This includes if they are living at a temporary address.</p>
+<div
+            <p class="govuk-body">
+              Providers do not usually have much flexibility when setting a date and time for interview unless you need adjustments due to a <a href="#" class="govuk-link">health condition or disability</a>.
+            </p>
+            <p class="govuk-body">
+              However, if you need flexibility for other reasons you can tell us about it here.
+            </p>
+            <p class="govuk-body">
+              For example, you have commitments like caring responsibilites or employment.
+            </p>
+            <p class="govuk-body">
+              Contact your provider if you’re concerned about the interview process.
+            </p>
             </div>
+          </form>
 
             {{ radios({
               "idPrefix": "have-current-uk-address",
