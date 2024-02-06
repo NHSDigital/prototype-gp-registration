@@ -604,6 +604,63 @@ router.get('/gp/gp-branch', function (req, res) {
 })
 
 
+
+
+router.post("/gp/gp-auto-accept-patient-post", function (req, res) {
+  let autoAccept = req.session.data['use-auto-accept']
+
+  // if a user swiches of the notifications
+  if (autoAccept === 'No'){
+    // set a data item to use to conditionally show the modal
+    req.session.data['autoAcceptModal'] = "show"
+  }
+  // then return the user to the branch page
+  res.redirect('/gp/gp-branch')
+});
+
+router.post("/gp/design/gp-auto-accept-patient-post", function (req, res) {
+  let autoAccept = req.session.data['use-auto-accept']
+
+  // if a user swiches of the notifications
+  if (autoAccept === 'No'){
+    // set a data item to use to conditionally show the modal
+    req.session.data['notifyModal'] = "show"
+  }
+  // then return the user to the branch page
+  res.redirect('/gp/design/gp-branch')
+});
+
+// decide to show the modal only when Off has been selected
+router.get('/gp/design/gp-branch', function (req, res) {
+  let modal = "show"
+  if (req.session.data['notifyModal'] === "show") {
+    modal = 'true'
+  } else {
+    // do nothing
+    modal = 'false'
+  }
+  req.session.data['notifyModal'] = "hide"
+  return res.render('gp/design/gp-branch', {
+    'modal': modal
+  })
+})
+
+// decide to show the modal only when Off has been selected
+router.get('/gp/gp-branch', function (req, res) {
+  let modal = "show"
+  if (req.session.data['autoAcceptModal'] === "show") {
+    modal = 'true'
+  } else {
+    // do nothing
+    modal = 'false'
+  }
+  req.session.data['autoAcceptModal'] = "hide"
+  return res.render('gp/gp-branch', {
+    'modal': modal
+  })
+})
+
+
 // Dev Mode - Used to show routing by scenario other than user driven
 
 function devModeRoute(req, res, next) {

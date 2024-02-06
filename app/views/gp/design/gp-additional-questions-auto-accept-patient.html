@@ -1,0 +1,87 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-gp.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+The Automatically accept a patient service
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+{% if (data['linkaction'] === "change-questions") %}
+{% set action = 'gp-answers' %}
+{% elseif (data['linkaction'] === "change-settings") %}
+{% set action = 'gp-auto-accept-patient-post' %}
+{% else %}
+{% set action = 'gp-additional-questions-notify-patient' %}
+{% endif %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ backLink({
+      text: "Go back",
+      href: "javascript:history.go(-1)"
+    }) }}
+
+
+    <form action="{{ action }}" method="post" autocomplete="off">
+
+
+
+      <h1 class="nhsuk-heading-l">Automatically accepting patient registrations</h1>
+
+      <p>Register with a GP surgery service can automatically accept patients when they are in your catchment area and don’t require special services. This will save your surgery time processing registrations.</p>
+      <p><a href="https://digital.nhs.uk/services/register-with-a-gp-surgery-service/get-help-using-the-service/telling-patients-when-you-accept-their-registration">Find out more about how this feature works on our resource hub</a></p>
+
+      {{ radios(
+        {
+          "idPrefix": "use-auto-accept",
+          "name": "use-auto-accept",
+          "classes": "nhsuk-radios",
+          "fieldset": {
+          "legend": {
+          "text": "Do you want us to automatically accept patients?",
+          "classes": "nhsuk-fieldset__legend--m",
+          "isPageHeading": true
+        }
+        },
+        "items": [
+          {
+            "value": "Yes",
+            "text": "Yes",
+            "checked": checked("use-auto-accept", "Yes")
+          },
+          {
+            "value": "No",
+            "text": "No",
+            "checked": checked("use-auto-accept", "No")
+          }
+        ]
+      }) }}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
