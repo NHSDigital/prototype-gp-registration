@@ -7,9 +7,11 @@
 {% endblock %}
 
 {% if (data['linkaction'] === "change-questions") %}
-  {% set action = 'gp-answers' %}
+{% set action = 'gp-answers' %}
+{% elseif (data['linkaction'] === "change-settings") %}
+{% set action = 'gp-notify-patient-post' %}
 {% else %}
-  {% set action = 'gp-custom-url' %}
+{% set action = 'gp-reg-answers' %}
 {% endif %}
 
 {% block outerContent %}
