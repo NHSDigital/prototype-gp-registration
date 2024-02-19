@@ -149,6 +149,23 @@
 
 <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Additional information</h3>
 
+<div class="nhsuk-summary-list__row">
+  <dt class="nhsuk-summary-list__key">
+    Place of birth
+  </dt>
+  <dd class="nhsuk-summary-list__value">
+    {{ data['birthplace'] or 'Frome, Somerset' }}
+  </dd>
+</div>
+
+<div class="nhsuk-summary-list__row">
+  <dt class="nhsuk-summary-list__key">
+    Dispensing patient
+  </dt>
+  <dd class="nhsuk-summary-list__value">
+    {{ data['dispensing'] or 'No' }}
+  </dd>
+</div>
 
 <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Patient health</h3>
 
@@ -623,15 +640,6 @@
 
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
-          Place of birth
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {{ data['birthplace'] or 'Frome, Somerset' }}
-        </dd>
-      </div>
-
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
           Previous GP surgery
         </dt>
         <dd class="nhsuk-summary-list__value">
@@ -666,14 +674,6 @@
         </dd>
       </div>
   
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-          Dispensing patient
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {{ data['dispensing'] or 'No' }}
-        </dd>
-      </div>
 
     </dl>
       </details>
