@@ -41,7 +41,7 @@
               }) %}
 
               <div class="nhsuk-hint" id="contact-hint">
-                <p>6 addresses found for {{ data['find-current-address'] or 'LS13 9PO' }}</p>
+                <p>6 addresses found for {{ data['house-number-address'] ~ ' and ' ~ data['find-current-address'] if data['house-number-address'] and data['find-current-address'] else '24 and LS13 9PO' }}</p>
               </div>
 
               {{ radios({

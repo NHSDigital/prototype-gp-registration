@@ -40,10 +40,9 @@
                 }
               }) %}
 
-              {{ hint({
-                "text": '6 addresses found for ' + data['find-previous-address'],
-                "classes": "nhsuk-u-margin-bottom-2"
-              }) }}
+              <div class="nhsuk-hint" id="contact-hint">
+                <p>6 addresses found for {{ data['prev-house-number-address'] ~ ' and ' ~ data['find-previous-address'] if data['prev-house-number-address'] and data['find-previous-address'] else '24 and LS13 9PO' }}</p>
+              </div>
 
               {{ radios({
                 "idPrefix": "select-previous-address",

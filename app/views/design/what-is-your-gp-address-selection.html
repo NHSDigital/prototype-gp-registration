@@ -46,7 +46,7 @@ Select your current GP surgery you want to leave - {{ ServiceName }} - NHS
             }) %}
 
             <div class="nhsuk-hint" id="contact-hint">
-              <p>6 addresses found for <strong>{{ data['find-gp-address'] }}</strong> <strong>{{ data['current-gp-address'] }}</strong></p>
+              <p>6 addresses found for {{ data['find-gp-address'] ~ ' and ' ~ data['current-gp-address'] if data['find-gp-address'] and data['current-gp-address'] else 'Trinity court surgery and LS13 9PO' }}</p>
             </div>
 
                 {{ radios({

@@ -40,7 +40,7 @@ Select your previous address - {{ ServiceName }} - NHS
               }) %}
 
               <div class="nhsuk-hint" id="contact-hint">
-                <p>6 addresses found for <strong>{{ data['prev-house-number-address'] }}</strong> <strong>{{ data['find-previous-address'] }}</strong></p>
+                <p>6 addresses found for {{ data['prev-house-number-address'] ~ ' and ' ~ data['find-previous-address'] if data['prev-house-number-address'] and data['find-previous-address'] else '24 and LS13 9PO' }}</p>
               </div>
 
               {{ radios({
@@ -115,7 +115,7 @@ Select your previous address - {{ ServiceName }} - NHS
               }) %}
 
               <div class="nhsuk-hint" id="contact-hint">
-                <p>6 addresses found for <strong>{{ data['prev-house-number-address'] }}</strong> <strong>{{ data['find-previous-address'] }}</strong></p>
+                <p>6 addresses found for {{ data['prev-house-number-address'] ~ ' and ' ~ data['find-previous-address'] if data['prev-house-number-address'] and data['find-previous-address'] else '24 and LS13 9PO' }}</p>
               </div>
 
                   {{ radios({
