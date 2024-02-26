@@ -29,52 +29,40 @@ Do you know the postcode used when you last registered with {name_of_surgery}? -
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">Do you know the postcode {{ data ['name-first-name'] }} used when last registered with {name_of_surgery}?</h1>
+            <h1 class="nhsuk-heading-l">You told us {{ data ['name-first-name'] }} is registered with {name_of_surgery}</h1>
 
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>This will be the postcode they used the last time they registered with a GP surgery.
+            <p class="govuk-body">
+              Tell us where you are living. This could be your permanent address or a temporary address such as a shelter, hostel or friend's house.
+            </p>
+            <p class="govuk-body">Your GP surgery can use your address to:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>check if you are living within the area it covers</li>
+  <li>update your NHS record</li>
+  <li>contact you about appointments, prescriptions and other things relating to your health</li>
+</ul>
             </div>
-
-            {% else %}
-
-            <h1 class="nhsuk-heading-l">Do you know the postcode used when you last registered with {name_of_surgery}?</h1>
-
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>This will be the postcode you used the last time you registered with a GP surgery. 
             </div>
-
-            {% endif %}
-
-            {% call fieldset({
-            legend: {
-              text: "",
-              classes: "nhsuk-fieldset__legend--l",
-              isPageHeading: true
-            }
-          }) %}
-
-          {{ radios({
-            "idPrefix": "do-you-know-previous-postcode",
-            "name": "do-you-know-previous-postcode",
-            "items": [
-              {
-                "value": "Yes~/design/what-is-previous-postcode-gp-has",
-                "text": "Yes",
-                "hint": {
-                  "text": ""
+          </form>
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h3 class="govuk-fieldset__heading">
+              Do you have an address in the UK?
+            </h3>
+          </legend>            {{ radios({
+              "idPrefix": "have-current-uk-address",
+              "name": "have-current-uk-address",
+              "items": [
+                {
+                  "value": "Yes~/design/what-is-your-current-address",
+                  "text": "Yes",
+                  checked: checked("have-current-uk-address", "Yes")
                 },
-                checked: checked("do-you-know-previous-postcode", "Yes")
-              },
-              {
-                "value": "No~/design/are-you-returning-from-overseas",
-                "text": "No",
-                "hint": {
-                  "text": ""
-                },
-                checked: checked("do-you-know-previous-postcode", "No")
-              }
-            ]
-          }) }}
+                {
+                  "value": "No~/design/do-you-know-nhs-number",
+                  "text": "No",
+                  checked: checked("have-current-uk-address", "No")
+                }
+              ]
+            }) }}
            {% endcall %}
 
           {{ button({
