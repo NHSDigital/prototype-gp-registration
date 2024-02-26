@@ -6,7 +6,7 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = ' ' + data['name-first-name'] + ''s address' %}
+  {% set heading = 'What is ' + data['name-first-name'] + ' address' %}
 {% else %}
   {% set heading = 'Your address' %}
 {% endif %}
