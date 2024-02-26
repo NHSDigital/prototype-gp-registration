@@ -30,7 +30,7 @@ What postcode did you use when you last registered with a UK GP? - {{ ServiceNam
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">What postcode did {{ data ['name-first-name'] }} use when they last registered with a UK GP?</h1>
+            <h1 class="nhsuk-heading-l">What postcode did {{ data ['name-first-name'] }} use to register with their GP surgery?</h1>
 
             {% call fieldset({
               legend: {
@@ -40,16 +40,13 @@ What postcode did you use when you last registered with a UK GP? - {{ ServiceNam
               }
             }) %}
 
-            {{ hint({
-                "text": "This will be the postcode they used the last time they registered with a UK GP surgery."
-            }) }}
 
               {{ input({
                   label: {
                     "text": "Postcode"
                   },
                   "hint": {
-                    "text": "For example LS13 9PO"
+                    "text": ""
                   },
                   "classes": "nhsuk-input--width-10",
                   "id": "gp-postcode-prev",
@@ -61,7 +58,7 @@ What postcode did you use when you last registered with a UK GP? - {{ ServiceNam
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">What postcode did you use when you last registered with a UK GP?</h1>
+            <h1 class="nhsuk-heading-l">What postcode did you use to register with your GP surgery?</h1>
 
             {% call fieldset({
               legend: {
@@ -71,16 +68,13 @@ What postcode did you use when you last registered with a UK GP? - {{ ServiceNam
               }
             }) %}
 
-            {{ hint({
-                "text": "This will be the postcode you used the last time you registered with a UK GP surgeryX."
-            }) }}
 
             {{ input({
                 label: {
                   "text": "Postcode"
                 },
                 "hint": {
-                  "text": "For example LS13 9PO"
+                  "text": ""
                 },
                 "classes": "nhsuk-input--width-10",
                 "id": "gp-postcode-prev",
