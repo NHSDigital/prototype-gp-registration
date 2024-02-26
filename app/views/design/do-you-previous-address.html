@@ -5,7 +5,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Do you have a previous UK address? - {{ serviceName }} - NHS
+Your previous address - {{ serviceName }} - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -32,7 +32,7 @@ Do you have a previous UK address? - {{ serviceName }} - NHS
 
             {% call fieldset({
               legend: {
-                text: "Where you lived before",
+                text: "Your previous address",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
