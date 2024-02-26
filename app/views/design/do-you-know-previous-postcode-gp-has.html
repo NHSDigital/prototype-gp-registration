@@ -29,10 +29,10 @@ Do you know the postcode used when you last registered with {name_of_surgery}? -
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-            <h1 class="nhsuk-heading-l">You told us {{ data ['name-first-name'] }} is registered with {name_of_surgery}?</h1>
+            <h1 class="nhsuk-heading-l">You told us {{ data ['name-first-name'] }} is registered with {name_of_surgery}</h1>
 
             <div class="nhsuk-hint" id="contact-hint">
-              <p>This will be the postcode they used the last time they registered with a GP surgery.
+              <p>We need to know the address you used when you registered with surgery so that we can locate and transfer your medical records.
             </div>
 
             {% else %}
@@ -40,8 +40,8 @@ Do you know the postcode used when you last registered with {name_of_surgery}? -
             <h1 class="nhsuk-heading-l">You told us you are registered with {name_of_surgery}</h1>
 
             <div class="nhsuk-hint" id="contact-hint">
-              <p>This will be the postcode you used the last time you registered with a GP surgery. 
-            </div>
+              <p>We need to know the address you used when you registered with surgery so that we can locate and transfer your medical records.
+              </div>
 
             {% endif %}
 
@@ -52,6 +52,11 @@ Do you know the postcode used when you last registered with {name_of_surgery}? -
               isPageHeading: true
             }
           }) %}
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h3 class="govuk-fieldset__heading">
+              Do you have an address in the UK?
+            </h3>
+          </legend>            
 
           {{ radios({
             "idPrefix": "do-you-know-previous-postcode",
