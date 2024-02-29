@@ -41,7 +41,7 @@ What is your current UK address? - {{ ServiceName }} - NHS
 
             {{ input({
               label: {
-                "text": "House number or name (optionaX)"
+                "text": "House number or name (optional)"
               },
               "hint": {
                 "text": "For example, flat 20A"
@@ -71,7 +71,7 @@ What is your current UK address? - {{ ServiceName }} - NHS
 
         {% call fieldset({
           legend: {
-            "text": "What is your current UK address?",
+            "text": "What is your UK address?",
             "classes": "nhsuk-fieldset__legend--l",
             "isPageHeading": true
           }
@@ -83,7 +83,7 @@ What is your current UK address? - {{ ServiceName }} - NHS
 
           {{ input({
             label: {
-              "text": "House number or name (optional)"
+              "text": "House number or name"
             },
             "hint": {
               "text": "For example, flat 20A"
@@ -110,8 +110,6 @@ What is your current UK address? - {{ ServiceName }} - NHS
       {% endcall %}
 
       {% endif %}
-
-      <p><a href="what-is-your-current-address-manual" id="enter-address-manually-link">Enter the address manually</a></p>
 
       {{ button({
         "text": "Continue"
