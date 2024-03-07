@@ -1,0 +1,93 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What is ' + data['name-first-name'] + ' address' %}
+{% else %}
+  {% set heading = 'Your address' %}
+{% endif %}
+
+{% block pageTitle %}
+{{ heading }} - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "check-answers-1",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <form action="" method="post" autocomplete="off">
+
+      {% include 'live/includes/step.html' %}
+
+      {% call fieldset({
+        legend: {
+          text: heading,
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      <p class="govuk-body">
+        Tell us where you are living. This could be your permanent address or a temporary address such as a shelter, hostel or friend's house.
+      </p>
+      <p class="govuk-body">Your GP surgery can use your address to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>contact you about appointments, prescriptions and other things relating to your health</li>
+        <li>check if you are living within the area it covers</li>
+      </ul>
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h3 class="govuk-fieldset__heading">
+          Do you have an address in the UK?
+        </h3>
+      </legend>
+
+      {{ hint({
+        "text": hintText,
+        "classes": "nhsuk-u-margin-bottom-4"
+      }) }}
+
+      {{ radios({
+        "idPrefix": "have-current-uk-address",
+        "name": "have-current-uk-address",
+        "items": [
+          {
+            "value": "Yes~/test/what-is-your-current-address",
+            "text": "Yes",
+            checked: checked("have-current-uk-address", "Yes")
+          },
+          {
+            "value": "No~/test/thank-you",
+            "text": "No",
+            checked: checked("have-current-uk-address", "No")
+          }
+        ]
+      }) }}
+
+      {% endcall %}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

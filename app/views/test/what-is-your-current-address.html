@@ -1,0 +1,91 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What is " + data['name-first-name'] + "'s current UK address?" %}
+{% else %}
+  {% set heading = 'What is your current UK address?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "do-you-current-address",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="what-is-your-current-address-selection" method="post">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+              {{ input({
+                label: {
+                  "text": "House number or name (optional)"
+                },
+                "hint": {
+                  "text": "For example, flat 20A"
+                },
+                "classes": "nhsuk-input--width-20",
+                "id": "house-number-address",
+                "name": "house-number-address",
+                "autocomplete": "postal-code",
+                "spellcheck": false,
+                value: data['house-number-address']
+            }) }}
+
+            {{ input({
+              label: {
+                "text": "Postcode"
+              },
+              "hint": {
+                "text": ""
+              },          
+              "classes": "nhsuk-input--width-10",
+              "id": "find-current-address",
+              "name": "find-current-address",
+              "autocomplete": "postal-code",
+              "spellcheck": false,
+              value: data['find-current-address']
+          }) }}
+
+          {% endcall %}
+
+          <!--<p><a href="what-is-your-current-address-manual" id="enter-address-manually-link">Enter the address manually</a></p>-->
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
