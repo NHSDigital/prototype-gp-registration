@@ -6,11 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "Do you know the postcode used when " + data ['name-first-name'] + " registered with " + data.presets[0]['gpsurgery'] + "?" %}
-  {% set hintText = 'This will be the postcode they used the last time they registered with a GP surgery.' %}
+  {% set heading = "You told us " + data ['name-first-name'] + "is registered with " + data.presets[0]['gpsurgery'] + "?" %}
 {% else %}
-  {% set heading = 'Do you know the postcode used when you registered with ' + data.presets[0]['gpsurgery'] + '?' %}
-  {% set hintText = 'This will be the postcode you used the last time you registered with a GP surgery.' %}
+  {% set heading = 'You told us you are registered with ' + data.presets[0]['gpsurgery'] + '?' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -42,11 +40,8 @@
             }
           }) %}
 
-          {{ hint({
-            "text": hintText,
-            "classes": "nhsuk-u-margin-bottom-4"
-          }) }}
-
+          <p>We need to know the postcode of the address you used when you registered with this surgery. We'll use it to match you to your medical record.</p>
+          <h2 style="font-size: 1.5rem; padding-top: 0;">Do you know the postcode you used when you registered with this surgery?</h2>
           {{ radios({
             "idPrefix": "do-you-know-previous-postcode",
             "name": "do-you-know-previous-postcode",
