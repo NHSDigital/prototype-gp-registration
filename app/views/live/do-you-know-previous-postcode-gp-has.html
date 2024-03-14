@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "You told us " + data ['name-first-name'] + "is registered with " + data.presets[0]['gpsurgery'] + "?" %}
+  {% set heading = "You told us " + data ['name-first-name'] + " is registered with " + data.presets[0]['gpsurgery'] %}
 {% else %}
-  {% set heading = 'You told us you are registered with ' + data.presets[0]['gpsurgery'] + '?' %}
+  {% set heading = 'You told us you are registered with ' + data.presets[0]['gpsurgery'] %}
 {% endif %}
 
 {% block pageTitle %}
