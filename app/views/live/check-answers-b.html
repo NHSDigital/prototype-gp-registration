@@ -152,7 +152,7 @@ Recently moved{% set serviceHome = '/live/start' %}
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Current address
+              Address
             </dt>
             <dd class="nhsuk-summary-list__value">
               {{ data['have-current-uk-address'] }}
@@ -165,7 +165,7 @@ Recently moved{% set serviceHome = '/live/start' %}
           {% if data['have-current-uk-address'] === "Yes" %}
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Current address details
+              Address details
             </dt>
             <dd class="nhsuk-summary-list__value">
               {% if data['select-current-address'] %}
