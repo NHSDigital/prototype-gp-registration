@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block customStyles %}
+
+<STYLE type="text/css">
+    .nhsuk-summary-list__key {
+        width: 50%;
+    }
+</STYLE>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="pseudo-bg-gp"></div>
+<div class="gpemail-metadata">
+  <p>NAP letter</p>
+</div>
+
+<div class="pseudo-gpemail-template">
+
+  <p style="margin-bottom: 0;">Jane Doe</p>
+  <p style="margin-bottom: 0;">1 patient address lane</p>
+  <p style="margin-bottom: 0;">Leeds</p>
+  <p>LN1 2PQ</p>
+  <p>23 March 2024</p>
+  <h1 class="nhsuk-heading-m">Confirmation of GP registration</h1>
+  <p>Please keep this in a safe place. It is confirmation that you have registered with a GP practice.</p>
+  <p>Your new GP surgery is: Trinity Court Surgery</p>
+  <p>Date of registration: 01 March 2024</p>
+  <p>NHS number: 1234567890</p>
+  <p>Your date of birth: 01 April 2001</p>
+  <p><strong>Please check the above details and notify your GP if anything needs amending.</strong></p>
+  
+  <h2 class="nhsuk-heading-xs">Use of NHS Services</h2>
+  <p>Having an NHS number does not mean you are automatically entitled to the free use of all NHS services.</p>
+  <p>For further information visit: www.nhs.uk/NHSEngland</p>
+</div>
+
+{% endblock %}

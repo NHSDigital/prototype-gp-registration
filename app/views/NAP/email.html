@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block customStyles %}
+
+<STYLE type="text/css">
+    .nhsuk-summary-list__key {
+        width: 50%;
+    }
+</STYLE>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="pseudo-bg-gp"></div>
+<div class="gpemail-metadata">
+  <p><strong>From: </strong>Register with a GP Surgery</p>
+  <p><strong>Subject: </strong>Your GP registration has been successful</p>
+</div>
+
+<div class="pseudo-gpemail-template">
+
+  <p>Dear Jane Doe,</p>
+  <p>Your GP registration has been successful. You are now registered with Trinity Court Surgery</p>
+  
+  <p><strong>What happens next</strong></p>
+  <p style="margin-bottom: 0;">If you:</p>
+  <ul>
+    <li>recognise this registration there is nothing more you need to do</li>
+    <li>want to book or cancel an appointment or order a repeat prescription you may be able to use <a href="https://www.nhs.uk/nhs-services/gps/using-online-services/">NHS online services</a></li>
+  </ul>
+
+  <p><strong>Is something not right?</strong></p>
+  <p style="margin-bottom: 0;">If you:</p>
+  <ul>
+    <li>do not recognise this registration, <a href="#">contact your new surgery</a></li>
+    <li>made this registration in error or have changed your mind, you need to complete a new registration using <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a></li>
+  </ul>
+
+  <p>What did you think of this message? <a href="https://gp-registration.nhs.uk/20211208/gpregistration/overall-feedback">Your feedback</a> will help us to improve it. </p>
+
+  <p style="margin-bottom: 0;">Many thanks,</p>
+  <p>NHS Register with a GP surgery.</p>
+</div>
+
+{% endblock %}
