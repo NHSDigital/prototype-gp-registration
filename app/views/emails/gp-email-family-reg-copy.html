@@ -30,6 +30,79 @@
     <p class="nhsuk-heading-l nhsuk-u-padding-top-0">123 456 7890</p>
   </div>
 
+</dl><h3 class="nhsuk-heading-m">Registration information for Sam Smith</h3>
+
+<dl class="nhsuk-summary-list">
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Registration reference number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      {{ data['nhs-number'] or 'GPR-12345678' }}
+    </dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Registration type
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      {{ data['nhs-number'] or 'First acceptance registration' }}
+    </dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date registration submitted
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      {{ data['nhs-number'] or '2:52pm on Wednesday 23rd August 2023' }}
+    </dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      PDS match status
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      {{ data['nhs-number'] or 'This patient is matched to NHS number 900 000 0009' }}
+    </dd>
+  </div>
+
+  {% if data['under-18-years'] === 'true' and data['under-12-months'] === 'false' %}
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Under 18
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      This patient is {{ data['years-old'] or '17' }} years old
+    </dd>
+  </div>
+
+  {% endif %}
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Identity verification
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      {{ data['nhs-number'] or 'The patient did not use NHS login' }}
+    </dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Catchment area
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      {{ data['nhs-number'] or 'This patient is outside your catchment area' }}
+    </dd>
+  </div>
+
+</dl>
+
   <h3 class="nhsuk-heading-m">Registration completed by Ann Smith</h3>
 
   <dl class="nhsuk-summary-list">
@@ -88,78 +161,6 @@
       </dd>
     </div>
 
-  </dl><h3 class="nhsuk-heading-m">Registration information</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Registration reference number
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['nhs-number'] or 'GPR-12345678' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Registration type
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['nhs-number'] or 'First acceptance registration' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Date registration submitted
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['nhs-number'] or '2:52pm on Wednesday 23rd August 2023' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        PDS match status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['nhs-number'] or 'This patient is matched to NHS number 900 000 0009' }}
-      </dd>
-    </div>
-
-    {% if data['under-18-years'] === 'true' and data['under-12-months'] === 'false' %}
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Under 18
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        This patient is {{ data['years-old'] or '17' }} years old
-      </dd>
-    </div>
-
-    {% endif %}
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Identity verification
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['nhs-number'] or 'The patient did not use NHS login' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Catchment area
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['nhs-number'] or 'This patient is outside your catchment area' }}
-      </dd>
-    </div>
-
-  </dl>
 
   <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Patient details</h3>
 
