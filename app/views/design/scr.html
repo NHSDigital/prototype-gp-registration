@@ -70,6 +70,14 @@ Do you want important information from your GP record to be available to other h
                 },
 
                 checked: checked("scr", "No")
+              },
+              {
+                "value": "No preference",
+                "text": "No preference",
+                "hint": {
+                  "text": "If you choose this option then your SCR consent preference held at your previous GP surgery will be transferred to your new GP surgery."
+                },
+                checked: checked("scr", "No preference")
               }
             ]
           }) }}
@@ -77,7 +85,6 @@ Do you want important information from your GP record to be available to other h
           {% endcall %}
 
           <p> Find out more about <a href="https://digital.nhs.uk/services/summary-care-records-scr/summary-care-records-scr-information-for-patients" target="_blank" rel="noopener noreferrer">Summary Care Records (opens a new tab)</a> <br>and what is included in <a href="https://digital.nhs.uk/services/summary-care-records-scr/summary-care-records-scr-information-for-patients#additional-information-is-included-on-your-scr" target="_blank" rel="noopener noreferrer">'additional information' (opens a new tab)</a>.</p>
-          <p>It is not compulsory for you to select any of these options. If you choose not to then your SCR consent preference held at your previous GP surgery will be transferred to your new GP surgery.</p>
 
           {{ button({
             "text": "Continue"
