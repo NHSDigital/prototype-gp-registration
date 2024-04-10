@@ -39,8 +39,14 @@ Summary Care Record (SCR) - {{ ServiceName }} - NHS
           }) %}
 
           <div class="nhsuk-hint" id="contact-hint">
-            <p>When you register with a GP surgery in England, a SCR is automatically created for you, unless you have already chosen not to have one. Your SCR has information about the medicines you take, any allergies or adverse reactions you might have and may contain additional information. This additional information has details of any significant illnesses and health problems, operations and vaccinations you have had, how you would like to be treated (such as where you would prefer to receive care), what support you might need and who should be contacted for more information about you. Your SCR can only be shared with healthcare staff treating you and provides them with vital information from your health record. If you choose not to select an option your default will apply.</p>
+            <p>Your GP surgery needs permission to share important information from your GP record. This is called a Summary Care Record (SCR). Your SCR can only be shared with health and care staff across England who are providing you with direct care. It gives them access to vital information from your GP record.</p>
           </div>
+
+          <div class="nhsuk-inset-text">
+            <span class="nhsuk-u-visually-hidden">Information: </span>
+            <p>It is not compulsory for you to select any of these options. If you choose not to then your SCR consent preference held at your previous GP surgery will be transferred to your new GP surgery.</p>
+          </div>
+
 
           {{ radios({
             "idPrefix": "scr",
@@ -48,28 +54,35 @@ Summary Care Record (SCR) - {{ ServiceName }} - NHS
             "items": [
               {
                 "value": "Yes",
-                "text": "Yes, I would like a Summary Care Record with medicines, allergies, adverse reactions and additional information.",
+                "text": "Yes, share a Summary Care Record with additional information",
+                "hint": {
+                  "text": "Includes details of your medicines, allergies, adverse reactions and additional information, which includes details of any significant illnesses and health problems, operations and vaccinations"
+                },
                 checked: checked("scr", "Yes")
               },
               {
-                "value": "No",
-                "text": "Yes, I would like a Summary Care Record with medicines, allergies and adverse reactions only.",
+                "value": "Yes",
+                "text": "Yes, share a Summary Care Record without additional information",
+                "hint": {
+                  "text": "Includes details of your medicines, allergies and adverse reactions only"
+                },
                 checked: checked("scr", "Yes only")
               },
               {
                 "value": "No",
-                "text": "No, I would not like a Summary Care Record.",
+                "text": "No, do not share a Summary Care Record",
+                "hint": {
+                  "text": "Details of your medicines, allergies, adverse reactions and any additional information will not be shared with anyone involved in your direct care"
+                },
+
                 checked: checked("scr", "No")
               }
             ]
           }) }}
 
           {% endcall %}
-
-          <div class="nhsuk-inset-text">
-            <span class="nhsuk-u-visually-hidden">Information: </span>
-            <p>It is not compulsory for you to select any of these options. If you choose not to then your SCR consent preference held at your previous GP surgery will be transferred to your new GP surgery.</p>
-          </div>
+          
+          <p> Find out more about <a href="https://digital.nhs.uk/services/summary-care-records-scr/summary-care-records-scr-information-for-patients" target="_blank" rel="noopener noreferrer">Summary Care Records (opens a new tab)</a> <br>and what is included in <a href="https://digital.nhs.uk/services/summary-care-records-scr/summary-care-records-scr-information-for-patients#additional-information-is-included-on-your-scr" target="_blank" rel="noopener noreferrer">'additional information' (opens a new tab)</a>.</p>
 
           {{ button({
             "text": "Continue"
