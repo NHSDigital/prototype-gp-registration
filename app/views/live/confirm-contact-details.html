@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% set heading = 'Confirm your contact details' %}
+{% set heading = 'Contact you using NHS login details' %}
 
 {% block pageTitle %}
   {{ heading }} - {{ ServiceName }} - NHS
@@ -30,10 +30,12 @@
 
             <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
-            {{ hint({
-              "text": "You shared these details from NHS login. We can give these details to your new GP.",
-              "classes": "nhsuk-u-margin-bottom-4"
-            }) }}
+            <p>Your login details will be used by:</p>
+            <ul>
+              <li>your new GP surgery so that they can contact you about your registration or other health care services</li>
+              <li>the NHS to update the contact details on your medical record</li>
+            </ul>
+            <h2 style="font-size: 1.5rem;">NHS login details</h2>
 
             <dl class="nhsuk-summary-list">
 
@@ -57,18 +59,13 @@
 
               </dl>
 
-              <div class="nhsuk-inset-text">
-                <span class="nhsuk-u-visually-hidden">Information: </span>
-                <p>You can change your NHS login details by visiting <a href="https://settings.login.nhs.uk/" target="_blank" rel="noopener noreferrer" title="External website">managing your NHS login (opens in new tab)</a>.</p>
-              </div>
-
               {{ radios({
                   "idPrefix": "use-contacts-login",
                   "name": "use-contacts-login",
                   "classes": "nhsuk-radios",
                   "fieldset": {
                     "legend": {
-                      "text": "Do you want to use these contact details?",
+                      "text": "Do you want to be contacted using your NHS login details?",
                       "classes": "nhsuk-fieldset__legend--m",
                       "isPageHeading": false
                     }
