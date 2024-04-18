@@ -122,7 +122,7 @@ module.exports = (router) => {
         res.redirect('/live/what-is-your-sex')
       }
     } else {
-      res.redirect('/live/how-can-we-contact-inputs')
+      res.redirect('/live/contact-details-warning')
     }
   })
 
