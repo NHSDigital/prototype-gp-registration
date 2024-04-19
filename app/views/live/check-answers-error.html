@@ -1,0 +1,132 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '1' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Please confirm these are the correct details for the person registering with ' + data.presets[0].gpsurgery %}
+
+{% if (data['registering-first-time'] === "Yes") %}
+  {% set link = 'registered-for-the-first-time' %}
+{% elseif (data['do-you-know-previous-postcode'] === "Yes") %}
+  {% set link = 'what-is-previous-postcode-gp-has' %}
+{% elseif (data['do-you-know-previous-postcode'] === "No") %}
+  {% set link = 'do-you-know-previous-postcode-gp-has' %}
+{% endif %}
+
+{% if data['date-of-birth'][1] %}
+  {% set month = data['date-of-birth'][1] | returnDate %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+            <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+              There is a problem
+            </h2>
+            <div class="nhsuk-error-summary__body">
+              <p>
+                Describe the errors and how to correct them
+              </p>
+              <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+                <li>
+                  <a href="#example-error-1">Date of birth must be in the past</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+           <h2 class="nhsuk-heading-m">
+              {% if (data['who-is-being-registered'] === "dependant") %}
+              Patient details</p>
+              {% else %}
+              Your details</p>
+              {% endif %}
+            </h2>
+
+            {{ summaryList({
+            rows: [
+              {
+                key: {
+                  text: "Title"
+                },
+                value: {
+                  text: data['name-title']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "what-is-your-name?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "title"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Date of birth"
+                },
+                value: {
+                  html: data['date-of-birth'][0] + " " + month + " " + data['date-of-birth'][2]
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "what-is-your-date-of-birth?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "date of birth"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+    </div>
+  </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+
+  $(document).ready(function () {
+
+    // Populate any unanswered fields with "Not answered" text
+    $('.nhsuk-summary-list__value').filter(function () {
+      return $.trim($(this).text()) === "";
+    }).each(function (ind, obj) {
+      $(obj).closest('dd').html("<span class='summary-page-unanswered'>Not answered</span>");
+    });
+
+    // Add colon to contact method type if it isn't blank
+    $(".contact-prefs-type:not(:empty)").append(':');
+
+  });
+</script>
+
+{% endblock %}
+
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
