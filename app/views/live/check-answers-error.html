@@ -52,52 +52,57 @@
             </div>
           </div>
 
-           <h2 class="nhsuk-heading-m">
-              {% if (data['who-is-being-registered'] === "dependant") %}
-              Patient details</p>
-              {% else %}
-              Your details</p>
-              {% endif %}
-            </h2>
+           <h2 class="nhsuk-heading-m">Your details</h2>
 
-            {{ summaryList({
-            rows: [
-              {
-                key: {
-                  text: "Title"
-                },
-                value: {
-                  text: data['name-title']
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "what-is-your-name?return=true",
-                      text: "Change",
-                      visuallyHiddenText: "title"
-                    }
-                  ]
-                }
-              },
-              {
-                key: {
-                  text: "Date of birth"
-                },
-                value: {
-                  html: data['date-of-birth'][0] + " " + month + " " + data['date-of-birth'][2]
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "what-is-your-date-of-birth?return=true",
-                      text: "Change",
-                      visuallyHiddenText: "date of birth"
-                    }
-                  ]
-                }
-              }
-            ]
-          }) }}
+            <div class="nhsuk-form-group nhsuk-form-group--error">
+              <label class="nhsuk-label" for="example">
+                Full name
+              </label>
+              <span class="nhsuk-error-message" id="example-error">
+                <span class="nhsuk-u-visually-hidden">Error:</span> Enter your full name
+              </span>
+              <input class="nhsuk-input nhsuk-input--error" id="example" name="example" type="text" aria-describedby="example-error">
+            </div>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Title
+                </dt>
+                <dd class="nhsuk-summary-list__value summary-page-unanswered">
+                  Not answered
+                </dd>
+            
+                <dd class="nhsuk-summary-list__actions">
+            
+                  <a href="#">
+                    Change<span class="nhsuk-u-visually-hidden"> name</span>
+                  </a>
+            
+                </dd>
+            
+              </div>
+            
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Date of birth
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  15 March 1984
+                </dd>
+            
+                <dd class="nhsuk-summary-list__actions">
+            
+                  <a href="#">
+                    Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
+                  </a>
+            
+                </dd>
+            
+              </div>
+            
+            </dl>
     </div>
   </div>
 
