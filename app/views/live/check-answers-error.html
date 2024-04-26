@@ -33,6 +33,79 @@
 
 {% block content %}
 
+<style>
+  
+  .list {
+    display: block; 
+    width: 100%; 
+  }
+
+  .row {
+    border-bottom: 1px solid #d8dde0; 
+    border-left: 4px solid #d5281b; 
+    padding-left: 16px;
+    padding-top: 8px;
+  }
+
+  .error-message {
+    display: block; 
+    width: 100%; 
+    font-size: 1.1875rem; 
+    line-height: 1.47368; 
+    color: #d5281b; 
+    font-weight: 600; 
+  }
+
+  .check-title {
+    display: inline-block; 
+    width: 30%; 
+    padding: 8px 24px 8px 0px; 
+    font-weight: 600; 
+    font-size: 1.1875rem; 
+    line-height: 1.47368;
+    margin-bottom: 4px;
+  }
+
+  .check-data {
+    margin: 0; 
+    display: inline-block; 
+    width: 50%; 
+    padding: 8px 24px 8px 0px; 
+    font-size: 1.1875rem; 
+    line-height: 1.47368;
+  }
+
+  .change {
+    margin: 0; 
+    display: inline-block; 
+    width: 18%; 
+    padding: 8px 0px 8px 0px; 
+    font-size: 1.1875rem; 
+    line-height: 1.47368; 
+    text-align: right;
+  }
+
+  @media (max-width: 40.0525em) {
+    .row {
+      margin-bottom: 16px;
+    }
+    .change, .check-data, .check-title, .error-message {
+      display: block;
+      font-size: 1rem;
+      padding: 0;
+    }
+    .change {
+      text-align: left;
+    }
+    .change, .check-data {
+      margin-bottom: 16px;;
+    }
+    .error-message {
+      margin-bottom: 4px;
+    }
+  }
+  </style>
+
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
@@ -41,67 +114,41 @@
               There is a problem
             </h2>
             <div class="nhsuk-error-summary__body">
-              <p>
-                Describe the errors and how to correct them
-              </p>
               <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
                 <li>
-                  <a href="#example-error-1">Date of birth must be in the past</a>
+                  <a href="#error-1">Enter your title</a>
+                </li>
+                <li>
+                  <a href="#error-2">Date of birth must be today or in the past</a>
                 </li>
               </ul>
             </div>
           </div>
 
-           <h2 class="nhsuk-heading-m">Your details</h2>
+           <h2 class="nhsuk-heading-m">Patient details</h2>
 
-            <div class="nhsuk-form-group nhsuk-form-group--error">
-              <label class="nhsuk-label" for="example">
-                Full name
-              </label>
-              <span class="nhsuk-error-message" id="example-error">
-                <span class="nhsuk-u-visually-hidden">Error:</span> Enter your full name
-              </span>
-              <input class="nhsuk-input nhsuk-input--error" id="example" name="example" type="text" aria-describedby="example-error">
-            </div>
-
-            <dl class="nhsuk-summary-list">
-
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Title
-                </dt>
-                <dd class="nhsuk-summary-list__value summary-page-unanswered">
-                  Not answered
-                </dd>
-            
-                <dd class="nhsuk-summary-list__actions">
-            
-                  <a href="#">
-                    Change<span class="nhsuk-u-visually-hidden"> name</span>
-                  </a>
-            
-                </dd>
-            
+            <dl class="list">
+              <div class="row">
+                <span class="error-message" id="error-2">
+                  <span class="nhsuk-u-visually-hidden">Error:</span> Enter your title
+                </span>
+                <div class="2ndRow" style="display: block; width: 100%;">
+                  <dt class="check-title">Title</dt>
+                  <dd class="check-data summary-page-unanswered">Not answered</dd>
+                  <dd class="change"><a href="#">Change<span class="nhsuk-u-visually-hidden"> date of birth</span></a></dd>
+                </div>  
               </div>
-            
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Date of birth
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  15 March 1984
-                </dd>
-            
-                <dd class="nhsuk-summary-list__actions">
-            
-                  <a href="#">
-                    Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
-                  </a>
-            
-                </dd>
-            
+
+              <div class="row">
+                <span class="error-message" id="error-2">
+                  <span class="nhsuk-u-visually-hidden">Error:</span> Date of birth must be today or in the past
+                </span>
+                <div class="2ndRow" style="display: block; width: 100%;">
+                  <dt class="check-title">Date of birth</dt>
+                  <dd class="check-data">15 March 1984</dd>
+                  <dd class="change"><a href="#">Change<span class="nhsuk-u-visually-hidden"> date of birth</span></a></dd>
+                </div>  
               </div>
-            
             </dl>
     </div>
   </div>
@@ -109,28 +156,6 @@
 {% include 'live/includes/devmode.html' %}
 
 {% endblock %}
-
-{% block pageScripts %}
-
-<script>
-
-  $(document).ready(function () {
-
-    // Populate any unanswered fields with "Not answered" text
-    $('.nhsuk-summary-list__value').filter(function () {
-      return $.trim($(this).text()) === "";
-    }).each(function (ind, obj) {
-      $(obj).closest('dd').html("<span class='summary-page-unanswered'>Not answered</span>");
-    });
-
-    // Add colon to contact method type if it isn't blank
-    $(".contact-prefs-type:not(:empty)").append(':');
-
-  });
-</script>
-
-{% endblock %}
-
 
 {% block footer %}
   {% include 'live/includes/footer.html' %}
