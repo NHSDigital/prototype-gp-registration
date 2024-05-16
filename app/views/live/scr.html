@@ -5,7 +5,11 @@
 
 {% extends 'layout.html' %}
 
-{% set heading = "Do you want important information from your GP record to be available to other health and care professionals?" %}
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Does ' + data['name-first-name'] + ' want important information from their GP record to be available to other health and care professionals?' %}
+{% else %}
+  {% set heading = 'Do you want important information from your GP record to be available to other health and care professionals?' %}
+{% endif %}
 
 {% if (data['under-16-years'] === "true") %}
   {% set link = 'weight' %}
@@ -47,6 +51,53 @@
               isPageHeading: true
             }
           }) %}
+
+          {% if (data['who-is-being-registered'] === "dependant") %}
+
+          {{ hint({
+            "html": "<p>Their GP surgery needs permission to share important information from their GP record. This is called a Summary Care Record (SCR). Their SCR can only be shared with health and care staff across England who are providing them with direct care. It gives the staff access to vital information from their GP record.</p>"
+          }) }}
+
+          {{ radios({
+            "idPrefix": "scr",
+            "name": "scr",
+            "items": [
+              {
+                "value": "Yes",
+                "text": "Yes, share a Summary Care Record with additional information",
+                "hint": {
+                  "text": "Includes details of their medicines, allergies, adverse reactions and additional information, which includes details of any significant illnesses and health problems, operations and vaccinations"
+                },
+                checked: checked("scr", "Yes")
+              },
+              {
+                "value": "Yes only",
+                "text": "Yes, share a Summary Care Record without additional information",
+                "hint": {
+                  "text": "Includes details of their medicines, allergies and adverse reactions only"
+                },
+                checked: checked("scr", "Yes only")
+              },
+              {
+                "value": "No",
+                "text": "No, do not share a Summary Care Record",
+                "hint": {
+                  "text": "Details of their medicines, allergies, adverse reactions and any additional information will not be shared with anyone involved in their direct care"
+                },
+                checked: checked("scr", "No")
+              },
+              {
+                "value": "No preference",
+                "text": "Keep existing Summary Care Record sharing preference",
+                "hint": {
+                  "text": "If you choose this option then your existing SCR sharing preference held at your current GP surgery will be transferred to your new GP surgery."
+                },
+                checked: checked("scr", "No preference")
+              }
+            ]
+          }) }}
+
+          {% else %}
 
           {{ hint({
             "html": "<p>Your GP surgery needs permission to share important information from your GP record. This is called a Summary Care Record (SCR). Your SCR can only be shared with health and care staff across England who are providing you with direct care. It gives them access to vital information from your GP record.</p>"
@@ -90,6 +141,8 @@
               }
             ]
           }) }}
+
+          {% endif %}
 
           {% endcall %}
 
