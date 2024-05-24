@@ -45,7 +45,35 @@
           {{ hint({
             "text": hintText,
             "classes": "nhsuk-u-margin-bottom-2"
-          }) }}
+          }) }}          
+
+          {% set age = data['years-old'] | int %}
+          {% if age <= 34 and age >= 16 %}
+
+          {{ radios({
+            "idPrefix": "eea",
+            "name": "eea",
+            "items": [
+              {
+                "value": "Yes~/live/recently-moved-documents",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("eea", "Yes")
+              },
+              {
+                "value": "No~/live/visited-tb-country",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("eea", "No")
+              }
+            ]
+          }) }}  
+    
+        {% else %}
 
           {{ radios({
             "idPrefix": "eea",
@@ -69,6 +97,8 @@
               }
             ]
           }) }}
+
+          {% endif %}
 
           {% endcall %}
 
