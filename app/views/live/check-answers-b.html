@@ -346,6 +346,22 @@ Recently moved{% set serviceHome = '/live/start' %}
       </dd>
     </div>
 
+    {% if data['visited-tb'] == "No" or data['visited-tb'] == "Yes" or data['visited-tb'] == "I don't know" %}
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        In the last 5 years, did you spend more than 6 months in a country where there was an increased risk of catching tuberculosis (TB)?
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+      {{ data['visited-tb'] }}
+      </dd>
+      <dd class="nhsuk-summary-list__actions">
+        <a href="">
+          Change<span class="nhsuk-u-visually-hidden"> increased risk of catching tuberculosis</span>
+        </a>
+      </dd>
+    </div>
+    {% endif %}
+
     {% if data['health-documents'] === "ehic" %}
 
     <div class="nhsuk-summary-list__row">
@@ -461,7 +477,23 @@ Recently moved{% set serviceHome = '/live/start' %}
       </dd>
     </div>
 
+    {% if data['visited-tb'] == "No" or data['visited-tb'] == "Yes" or data['visited-tb'] == "I don't know" %}
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        In the last 5 years, did you spend more than 6 months in a country where there was an increased risk of catching tuberculosis (TB)?
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+      {{ data['visited-tb'] }}
+      </dd>
+      <dd class="nhsuk-summary-list__actions">
+        <a href="">
+          Change<span class="nhsuk-u-visually-hidden"> increased risk of catching tuberculosis</span>
+        </a>
+      </dd>
+    </div>
+    {% endif %}
 
+    {% if data['registering-first-time'] === "No" %}
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
         Previous GP details
@@ -481,6 +513,7 @@ Recently moved{% set serviceHome = '/live/start' %}
         <a href=""><span class="nhsuk-u-visually-hidden">Previous GP details</span></a>
       </dd>
     </div>
+    {% endif %}
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">

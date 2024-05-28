@@ -135,18 +135,18 @@
             </details>
 
             {{ radios({
-              "idPrefix": "are-you-immunised",
-              "name": "are-you-immunised",
+              "idPrefix": "visited-tb",
+              "name": "visited-tb",
               "items": [
                 {
                   "value": "Yes~/live/do-you-have-existing-conditions",
                   "text": "Yes",
-                  checked: checked("are-you-immunised", "Yes")
+                  checked: checked("visited-tb", "Yes")
                 },
                 {
                   "value": "No~/live/do-you-have-existing-conditions",
                   "text": "No",
-                  checked: checked("are-you-immunised", "No")
+                  checked: checked("visited-tb", "No")
                 },
                 {
                   "divider": "or"
@@ -154,7 +154,7 @@
                 {
                   "value": "I don't know~/live/do-you-have-existing-conditions",
                   "text": "I don't know",
-                  checked: checked("are-you-immunised", "I don't know")
+                  checked: checked("visited-tb", "I don't know")
                 }
               ]
             }) }}
