@@ -1,0 +1,79 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What was the date ' + data ['name-first-name'] + ' returned to the UK?' %}
+{% else %}
+  {% set heading = 'What was the date you returned to the UK?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="visited-tb-country" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {{ dateInput({
+              "id": "returned-uk",
+              "namePrefix": "returned-uk",
+              "fieldset": {
+                "legend": {
+                  "text": heading,
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": true
+                }
+              },
+              "hint": {
+                "text": "For example, 15 3 1984"
+              },
+              "items": [
+                {
+                  "name": "day",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['returnuk-day']
+                },
+                {
+                  "name": "month",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['returnuk-month']
+                },
+                {
+                  "name": "year",
+                  "classes": "nhsuk-input--width-4",
+                  "value": data['returnuk-year']
+                }
+              ]
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}
