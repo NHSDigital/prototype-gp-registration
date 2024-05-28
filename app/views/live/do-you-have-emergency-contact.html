@@ -16,9 +16,9 @@
 {% endblock %}
 
 {% if (data['is-armed-forces-member'] === "Yes") %}
-  {% set link = "are-you-member-of-armed-forces-details" %}
+  {% set link = "are-you-a-member-of-armed-forces-details" %}
 {% elif (data['is-armed-forces-member'] === "No") %}
-  {% set link = "are-you-member-of-armed-forces" %}
+  {% set link = "are-you-a-member-of-armed-forces" %}
 {% else %}
   {% if (data['nominated-pharmacy']) %}
     {% set link = "confirm-pharmacy" %}
@@ -57,6 +57,8 @@
               "classes": "nhsuk-u-margin-bottom-4"
             }) }}
 
+            {% if (data['registering-first-time'] === "Yes") %}
+
            {{ radios({
               "idPrefix": "emergency-contact",
               "name": "emergency-contact",
@@ -73,6 +75,27 @@
                 }
               ]
             }) }}
+
+            {% else %}
+
+            {{ radios({
+              "idPrefix": "emergency-contact",
+              "name": "emergency-contact",
+              "items": [
+                {
+                  "value": "Yes~/live/emergency-contact-details",
+                  "text": "Yes",
+                  "checked": checked("emergency-contact", "Yes")
+                },
+                {
+                  "value": "No~/live/are-you-returning-from-overseas",
+                  "text": "No",
+                  "checked": checked("emergency-contact", "No")
+                }
+              ]
+            }) }}
+
+            {% endif %}
 
             {% endcall %}
 

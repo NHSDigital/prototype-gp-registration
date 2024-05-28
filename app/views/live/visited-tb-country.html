@@ -15,10 +15,10 @@
 {{ heading }} - {{ ServiceName }} - NHS
 {% endblock %}
 
-{% if (data['have-current-uk-address'] === "No") %}
-  {% set link = 'do-you-current-address' %}
+{% if (data['registering-first-time'] === "Yes") %}
+  {% set link = 'recently-moved-eea' %}
 {% else %}
-  {% set link = 'do-you-current-address' %}
+  {% set link = 'date-returned-uk' %}
 {% endif %}
 
 {% block outerContent %}
@@ -139,7 +139,7 @@
               "name": "are-you-immunised",
               "items": [
                 {
-                  "value": "Yes~/live/are-you-immunised-uk",
+                  "value": "Yes~/live/do-you-have-existing-conditions",
                   "text": "Yes",
                   checked: checked("are-you-immunised", "Yes")
                 },
