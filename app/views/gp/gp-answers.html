@@ -71,6 +71,22 @@ Confirm details for your practice and complete registration - GP registration se
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
+                  Dispensing surgery
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if (data['dispencing'] == "Yes") %}
+                  Yes
+                  {% else %}
+                  No
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="gp-additional-questions-dispencing-surgery">Change<span class="nhsuk-u-visually-hidden">dispencing surgery</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
                   Nominated pharmacy service
                 </dt>
                 <dd class="nhsuk-summary-list__value">
@@ -87,17 +103,17 @@ Confirm details for your practice and complete registration - GP registration se
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Dispensing surgery
+                  Tuberculosis (TB) screening service
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  {% if (data['dispencing'] == "Yes") %}
+                  {% if (data['tb-screen'] == "Yes") %}
                   Yes
                   {% else %}
                   No
                   {% endif %}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="">Change<span class="nhsuk-u-visually-hidden">dispencing surgery</span></a>
+                  <a href="gp-additional-questions-tb">Change<span class="nhsuk-u-visually-hidden">tuberculosis screening service</span></a>
                 </dd>
               </div>
 
