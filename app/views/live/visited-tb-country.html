@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "In the last 5 years, has " + data['name-first-name'] + " spent more than 6 months in a country where there was an increased risk of catching tuberculosis (TB)?" %}
+  {% set heading = "Has " + data['name-first-name'] + " ever spent more than 6 months in a country where there was an increased risk of catching tuberculosis (TB)?" %}
 {% else %}
-  {% set heading = 'In the last 5 years, did you spend more than 6 months in a country where there was an increased risk of catching tuberculosis (TB)?' %}
+  {% set heading = 'Have you ever spent more than 6 months in a country where there was an increased risk of catching tuberculosis (TB)?' %}
 {% endif %}
 
 {% block pageTitle %}
