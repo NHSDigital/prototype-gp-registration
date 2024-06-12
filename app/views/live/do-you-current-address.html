@@ -6,11 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Does ' + data['name-first-name'] + ' have a current UK address?' %}
-  {% set hintText = 'This includes if they are living at a temporary address.' %}
+  {% set heading = '' + data['name-first-name'] + 's address' %}
 {% else %}
-  {% set heading = 'Do you have a current UK address?' %}
-  {% set hintText = 'This includes if you are living at a temporary address.' %}
+  {% set heading = 'Your address' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -42,10 +40,22 @@
               }
             }) %}
 
-            {{ hint({
-              "text": hintText,
-              "classes": "nhsuk-u-margin-bottom-4"
-            }) }}
+            <p class="govuk-body">
+              Tell us where you are living. This could be your permanent address or a temporary address such as a shelter, hostel or friend's house.
+            </p>
+            <p class="govuk-body">Your GP surgery can use your address to:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>contact you about appointments, prescriptions and other things relating to your health</li>
+              <li>check if you are living within the area it covers</li>
+            </ul>
+        </div>
+      </div>
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h3 class="govuk-fieldset__heading">
+          Do you have an address in the UK?
+        </h3>
+      </legend> 
 
             {{ radios({
               "idPrefix": "have-current-uk-address",
