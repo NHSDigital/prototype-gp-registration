@@ -32,7 +32,7 @@ Confirm your identity - GP registration service - NHS
         }) }}
 
         {% if (data['linkaction'] == "change-mailbox") %}
-        <form action="/gp/gp-branch" method="post" autocomplete="off">
+        <form action="gp-branch" method="post" autocomplete="off">
         {% else %}
         <form action="gp-additional-questions-language-interpretation" method="post" autocomplete="off">
         {% endif %}
