@@ -1,42 +1,82 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-gp.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
 
-{% set heading = 'Sign up to Register with a GP surgery' %}
-
+<!-- Set the page title -->
 {% block pageTitle %}
-{{ heading }} - {{ data.presets[0].servicenameenroll }} - NHS
+Start - GP registration service - NHS
 {% endblock %}
 
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
-        <h1 class="nhsuk-heading-xl">
-          {{ heading }}
+        <h1>
+          Sign up to Register with a GP surgery
         </h1>
 
       </div>
     </div>
 
+
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
+
 
         <p>Patients in England can now <a href="https://digital.nhs.uk/services/register-with-a-gp-surgery-service/find-out-more-about-the-service-and-its-benefits" target="_blank" rel="noopener noreferrer">Register with a GP surgery online (Opens in new tab)</a>.</p>
         <p>When a practice has been registered using the GP Registration Service it will be able to accept online registrations from new patients.</p>
         <p>Once you have signed up, you will receive a unique url web address to put on your surgery's website.</p>
 
-        <h2 class="nhsuk-heading-l">Before you start</h2>
-
+        <h3>Before you start</h3>
         <p>You'll need access to an nhs.net shared mailbox. Without this you will not be able to see any patient registration details.</p>
 
-        <p><a href="gp-service-confirm" class="nhsuk-button nhsuk-button--green">Start now</a></p>
+        <p><a href="/gp/gp-service-confirm" class="nhsuk-button nhsuk-button--green">Start now</a></p>
 
-        <p><a href="gp-profile-manager">Return to your profiles</a></p>
+        <p><a href="/gp/gp-profile-manager">Return to your profiles</a></p>
 
-        <h2 class="nhsuk-heading-m">About using this service</h2>
 
-        <p>By using this service you are agreeing to our <a href="gp-terms">terms of use</a> and <a href="gp-terms">privacy policy</a>.</p>
+        <h3>About using this service</h3>
+
+        <p>By using this service you are agreeing to our <a href="/gp/gp-terms">terms of use</a> and <a href="/gp-terms">privacy policy</a>.</p>
+
+        <!-- <p>By using this service you are agreeing to our <a href="#">terms of use</a> and <a href="#">privacy policy</a>.</p> -->
+
+
+
+
+
+
 
       </div>
     </div>
+
+
+
+
+
+
+
+<!-- End of content -->
+
 
 {% endblock %}

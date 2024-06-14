@@ -1,19 +1,45 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-gp.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
 
-{% set heading = 'Registration complete for (Practice name)' %}
-
+<!-- Set the page title -->
 {% block pageTitle %}
-{{ heading }} - GP registration service - NHS
+Registration completed - GP registration service - NHS 
 {% endblock %}
 
-{% set emailLink = ['gp-onboard-confirmation', 'Confirmation email to GP'] %}
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
 
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
+
+<form action="gp-manage" method="post" autocomplete="off">
+
+  <div class="nhsuk-form-group">
+
+
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
-
-        <h1 class="nhsuk-heading-xl">{{ heading }}</h1>
+        <h1>
+          Registration complete for (Practice name)
+        </h1>
 
         <p>Your surgery can now offer online registration for patients.</p>
         <p>You need to use your practice's unique URL to link the GP Registration Service to your website.</p>
@@ -21,6 +47,9 @@
         <p>Once the link is on your website patients will be able to apply to register with your surgery using the online GP Registration Service.</p>
       </div>
     </div>
+  </div>
+
+
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
@@ -38,11 +67,19 @@
         <p>Find out more about <a href="https://digital.nhs.uk/services/register-with-a-gp-surgery-service/get-help-using-the-service" target="_blank" rel="noopener noreferrer">Register with a GP surgery service (Opens in new tab)</a>.</p>
 
         {{ button({
-            "text": "Continue",
-            "href":"gp-manage"
+            "text": "Continue"
         }) }}
 
       </div>
     </div>
+
+    <br>
+    <a href="/emails/gp-onboard-confirmation" target="_blank" rel="noopener noreferrer" class="nhsuk-link">Link to confirmation email</a>
+
+
+
+
+<!-- End of content -->
+
 
 {% endblock %}

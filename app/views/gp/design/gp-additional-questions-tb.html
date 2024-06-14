@@ -3,12 +3,12 @@
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'layout.html' %}
+{% extends 'layout-gp.html' %}
 <!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Do you have a contact in case of emergency? - Register with a GP surgery - NHS
+Do you want to offer patients a tuberculosis screening - GP registration service - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -31,55 +31,42 @@ Do you have a contact in case of emergency? - Register with a GP surgery - NHS
             href: "javascript:history.go(-1)"
           }) }}
 
+          <form action="gp-additional-questions-notify-patient" method="post" autocomplete="off">
 
 
-          <form action="" method="post" autocomplete="off">
-
-          <H2>Are you sure this is an NHS shared mailbox?</H2>
-
-
-
-            {% call fieldset({
-              legend: {
-                text: "",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>Your NHS shared mailbox is <strong> {{ data['nhs-shared-email'] }}</strong> ????</p>
-            </div>
+            <h1 class="nhsuk-heading-l">Do you want to check if patients are eligible for tuberculosis (TB) screening?</h1>
+            <p>We will identify patients that:</p>
+            <ul>
+              <li>are aged between 16-35</li>
+              <li>have recently moved to the UK, or</li>
+              <li>recently returned from overseas</li>
+            </ul>
+            <p>They will be asked if have they spent more than 6 months in a country where there was an increased risk of catching TB.</p>
+            <p>Patients who answer yes to this question will be flagged to you as 'Likely to be eligible for tuberculosis screening'.</p>
 
 
-           {{ radios({
-              "idPrefix": "email-confirm",
-              "name": "email-confirm",
+            {{ radios({
+              "idPrefix": "tb-screen",
+              "name": "tb-screen",
               "items": [
                 {
-                  "value": "Yes~/gp/gp-verification-code",
+                  "value": "Yes",
                   "text": "Yes",
-                  checked: checked("email-confirm", "Yes")
+                  checked: checked("tb-screen", "Yes")
                 },
                 {
-                  "value": "No~/gp/gp-shared-mailbox",
+                  "value": "No",
                   "text": "No",
-                  checked: checked("email-confirm", "No")
+                  checked: checked("tb-screen", "No")
                 }
               ]
             }) }}
-
-          {% endcall %}
-
-
-
 
             {{ button({
               "text": "Continue"
             }) }}
 
-            </form>
-
+          </form>
         </div>
       </div>
 
@@ -88,4 +75,7 @@ Do you have a contact in case of emergency? - Register with a GP surgery - NHS
 
   </div>
 </div>
+{% block pageScripts %}
+
+{% endblock %}
 {% endblock %}

@@ -1,29 +1,46 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-gp.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
 
-{% set heading = 'NHS shared mailbox' %}
-
+<!-- Set the page title -->
 {% block pageTitle %}
-{{ heading }} - {{ data.presets[0].servicenameenroll }} - NHS
+NHS shared mailbox - GP registration service - NHS
 {% endblock %}
 
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}{% endblock %}
 
-{% block outerContent %}
-  {{ backLink({
-    text: "Go back",
-    href: "gp-service-confirm",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
-  }) }}
-{% endblock %}
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
 
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
+        {{ backLink({
+          text: "Go back",
+          href: "javascript:history.go(-1)"
+        }) }}
+
         <form action="gp-shared-mailbox-sure" method="post" autocomplete="off">
 
-          <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+          {% call fieldset({
+              legend: {
+                "text": "NHS shared mailbox",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
 
           <p>A verification code will be sent to your NHS shared mailbox. This is also where patient registration details will be sent.</p>
 
@@ -33,17 +50,21 @@
           </div>
 
           {{ input({
-              label: {
-                "html": 'Enter the email address of your shared mailbox'
-              },
-                "hint": {
-                "text": 'This will end in nhs.net'
-              },
-              "type": "email",
-              "classes": "nhsuk-input--width-20",
-              "id": "nhs-shared-email",
-              "name": "nhs-shared-email"
-            }) }}
+                    label: {
+                      "html": 'Enter the email address of your shared mailbox'
+                    },
+                      "hint": {
+                      "text": "This will end in 'nhs.net'"
+                    },
+                    "type": "email",
+                    "classes": "nhsuk-input--width-20",
+                    "id": "nhs-shared-email",
+                    "name": "nhs-shared-email"
+                  }) }}
+
+
+
+          {% endcall %}
 
           <details class="nhsuk-details">
             <summary class="nhsuk-details__summary">
@@ -57,13 +78,24 @@
             </div>
           </details>
 
+
           {{ button({
               "text": "Continue"
             }) }}
 
         </form>
 
+
+
       </div>
     </div>
 
+
+<!-- End of content -->
+
+</div>
+</div>
+{% block pageScripts %}
+
+{% endblock %}
 {% endblock %}

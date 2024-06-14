@@ -3,12 +3,12 @@
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'layout.html' %}
+{% extends 'layout-gp.html' %}
 <!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Do you have a contact in case of emergency? - Register with a GP surgery - NHS
+Are you a dispensing surgery? - GP registration service - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -31,55 +31,38 @@ Do you have a contact in case of emergency? - Register with a GP surgery - NHS
             href: "javascript:history.go(-1)"
           }) }}
 
+          <form action="/gp/gp-additional-questions-nominated-pharmacy" method="post" autocomplete="off">
+
+            <H2>Are you a dispensing surgery?</H2>
+
+            <p>If you are a dispensing surgery you are able to dispense medicines or medical appliances direct to patients.</p>
+            <p>If you choose <strong>yes</strong>, patients who register online with your surgery will be asked to show they are eligible for this service.</p>
 
 
-          <form action="" method="post" autocomplete="off">
 
-          <H2>Are you sure this is an NHS shared mailbox?</H2>
-
-
-
-            {% call fieldset({
-              legend: {
-                text: "",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            }) %}
-
-            <div class="nhsuk-hint" id="contact-hint">
-              <p>Your NHS shared mailbox is <strong> {{ data['nhs-shared-email'] }}</strong> ????</p>
-            </div>
-
-
-           {{ radios({
-              "idPrefix": "email-confirm",
-              "name": "email-confirm",
+            {{ radios({
+              "idPrefix": "dispensing",
+              "name": "dispensing",
               "items": [
                 {
-                  "value": "Yes~/gp/gp-verification-code",
+                  "value": "Yes",
                   "text": "Yes",
-                  checked: checked("email-confirm", "Yes")
+                  checked: checked("dispensing", "Yes")
                 },
                 {
-                  "value": "No~/gp/gp-shared-mailbox",
+                  "value": "No",
                   "text": "No",
-                  checked: checked("email-confirm", "No")
+                  checked: checked("dispensing", "No")
                 }
               ]
             }) }}
-
-          {% endcall %}
-
-
 
 
             {{ button({
               "text": "Continue"
             }) }}
 
-            </form>
-
+          </form>
         </div>
       </div>
 
@@ -88,4 +71,7 @@ Do you have a contact in case of emergency? - Register with a GP surgery - NHS
 
   </div>
 </div>
+{% block pageScripts %}
+
+{% endblock %}
 {% endblock %}

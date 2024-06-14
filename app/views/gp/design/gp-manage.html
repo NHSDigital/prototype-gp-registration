@@ -1,17 +1,11 @@
 {% extends 'layout-gp.html' %}
 
-{% set heading = 'Your registered surgeries' %}
+{% set serviceName %}
+Report a smokey vehicle
+{% endset%}
 
 {% block pageTitle %}
-{{ heading }} - GP registration service - NHS
-{% endblock %}
-
-{% block outerContent %}
-  {{ backLink({
-    text: "Return to Manage your profile",
-    href: "gp-profile-manager-manage",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
-  }) }}
+Your registered surgeries - GP registration service - NHS
 {% endblock %}
 
 {% block content %}
@@ -19,13 +13,19 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-full">
 
-          <h1 class="nhsuk-heading-xl">{{ heading }}</h1>
+          {{ backLink({
+            text: "Return to Manage your profile",
+            href: "/gp/gp-profile-manager-manage"
+          }) }}
+
+
+          <h1 class="nhsuk-heading-xl">Your registered surgeries</h1>
 
           <form action="gp-practices" method="post" autocomplete="off">
-            <input type="hidden" name="gp-prac" id="gp-prac" value="gp-prac" />
-            <button class="nhsuk-button" type="submit">
-            Add practice
-            </button>
+          <input type="hidden" name="gp-prac" id="gp-prac" value="gp-prac" />
+          <button class="nhsuk-button" type="submit">
+          Add practice
+          </button>
           </form>
 
 
@@ -61,7 +61,7 @@
                   <span class="nhsuk-table-responsive__heading">Shared mailbox</span>{{ data['nhs-shared-email'] }}
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading">Additional services</span>Language interpretation: {{ data['interpretation'] }}<br> Dispensing surgery: {{ data['dispensing'] }}<br> Nominated pharmacy: {{ data['pharmacy'] }}
+                  <span class="nhsuk-table-responsive__heading">Additional services</span>Language interpretation: {{ data['interpretation'] }}<br> Dispensing surgery: {{ data['dispensing'] }}<br> Nominated pharmacy: {{ data['pharmacy'] }}<br> Tuberculosis screening: {{ data['tb-screen'] }}
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
                   <span class="nhsuk-table-responsive__heading">Unique URL</span>your-practice-url.com/practice
@@ -70,7 +70,7 @@
                   <span class="nhsuk-table-responsive__heading">Patient access</span>Unique URL only
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading"></span><a href="gp-branch?practice=true&practiceName=Highstreet%20surgery">View details<span class="nhsuk-u-visually-hidden"> </span></a>
+                  <span class="nhsuk-table-responsive__heading"></span><a href="/gp/gp-branch?practice=true&practiceName=Highstreet%20surgery">View details<span class="nhsuk-u-visually-hidden"> </span></a>
                 </td>
               </tr>
 
@@ -82,7 +82,7 @@
                   <span class="nhsuk-table-responsive__heading">Shared mailbox</span>{{ data['nhs-shared-email'] }}
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading">Additional services</span>Language interpretation: {{ data['interpretation'] }}<br> Dispencing surgery: {{ data['dispencing'] }}<br> Nominated pharmacy: {{ data['pharmacy'] }}
+                  <span class="nhsuk-table-responsive__heading">Additional services</span>Language interpretation: {{ data['interpretation'] }}<br> Dispensing surgery: {{ data['dispensing'] }}<br> Nominated pharmacy: {{ data['pharmacy'] }}<br> Tuberculosis screening: {{ data['tb-screen'] }}
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
                   <span class="nhsuk-table-responsive__heading">Unique URL</span>your-practice-url.com/practice
@@ -91,7 +91,7 @@
                   <span class="nhsuk-table-responsive__heading">Patient access</span>Unique URL only
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading"></span><a href="gp-branch?practice=false&practiceName=Pucklechuch%20surgery">View details<span class="nhsuk-u-visually-hidden"> </span></a>
+                  <span class="nhsuk-table-responsive__heading"></span><a href="/gp/gp-branch?practice=false&practiceName=Pucklechuch%20surgery">View details<span class="nhsuk-u-visually-hidden"> </span></a>
                 </td>
               </tr>
 
@@ -103,7 +103,7 @@
                   <span class="nhsuk-table-responsive__heading">Shared mailbox</span>{{ data['nhs-shared-email'] }}
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading">Additional services</span>Language interpretation: {{ data['interpretation'] }}<br> Dispencing surgery: {{ data['dispencing'] }}<br> Nominated pharmacy: {{ data['pharmacy'] }}
+                  <span class="nhsuk-table-responsive__heading">Additional services</span>Language interpretation: {{ data['interpretation'] }}<br> Dispensing surgery: {{ data['dispensing'] }}<br> Nominated pharmacy: {{ data['pharmacy'] }}<br> Tuberculosis screening: {{ data['tb-screen'] }}
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
                   <span class="nhsuk-table-responsive__heading">Unique URL</span>your-practice-url.com/practice
@@ -112,7 +112,7 @@
                   <span class="nhsuk-table-responsive__heading">Patient access</span>Unique URL only
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading"></span><a href="gp-branch?practice=false&practiceName=Highstreet%20surgery">View details<span class="nhsuk-u-visually-hidden"> </span></a>
+                  <span class="nhsuk-table-responsive__heading"></span><a href="/gp/gp-branch?practice=false&practiceName=Highstreet%20surgery">View details<span class="nhsuk-u-visually-hidden"> </span></a>
                 </td>
               </tr>
 
@@ -129,7 +129,14 @@
           <h2 class="nhsuk-heading-l">Support</h2>
           <p>For service support, <strong>email <a href="">ssd.nationalservicedesk@nhs.net</a></strong> or <br><strong>call 03003035035</strong>. Support is available 24 hours a day, 7 days a week.</p>
 
-      </div>
-    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
 
 {% endblock %}
