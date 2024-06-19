@@ -48,7 +48,7 @@
 
           <form action="scr" method="post" autocomplete="off">
 
-           {% include 'live/includes/step.html' %}
+           <!--{% include 'live/includes/step.html' %}
 
             {% call fieldset({
               legend: {
@@ -77,7 +77,43 @@
               "value": data['smoke-amount']
             }) }}
 
-            {% endcall %}
+            {% endcall %}-->
+
+            {% include 'live/includes/step.html' %}
+
+            {{ radios({
+              "idPrefix": "smokes-amount",
+              "name": "smokes-amount",
+              "fieldset": {
+                "legend": {
+                  "text": heading,
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+
+              "hint": {
+                "text": "Enter the average number"
+              },
+
+              "items": [
+                {
+                  "value": "1-10~/live/scr",
+                  "text": "1-10",
+                  checked: checked("smokes-amount", "1-10")
+                },
+                {
+                  "value": "11-20~/live/scr",
+                  "text": "11-20",
+                  checked: checked("smokes-amount", "11-20")
+                },
+                {
+                  "value": "21 or more~/live/scr",
+                  "text": "21 or more",
+                  checked: checked("smokes-amount", "21 or more")
+                }
+              ]
+            }) }}
 
             {{ button({
               "text": "Continue"
