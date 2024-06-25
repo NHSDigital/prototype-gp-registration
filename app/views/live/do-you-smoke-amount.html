@@ -8,18 +8,14 @@
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% if (data['smokes-type'] == "I used to smoke") %}
     {% set heading = "What was the average number of cigarettes " + data['name-first-name'] + " smoked a day?" %}
-    {% set hintText = "Select one." %}
   {% else %}
     {% set heading = "What is the average number of cigarettes " + data['name-first-name'] + " smokes a day?" %}
-    {% set hintText = "Enter the average number." %}
   {% endif %}
 {% else %}
   {% if (data['smokes-type'] == "I used to smoke") %}
-    {% set heading = "What is the average number of cigarettes you smoke a day?" %}
-    {% set hintText = "Select one." %}
+    {% set heading = "What was the average number of cigarettes you smoked a day?" %}
   {% else %}
     {% set heading = "What is the average number of cigarettes you smoke a day?" %}
-    {% set hintText = "Select one." %}
   {% endif %}
 {% endif %}
 
