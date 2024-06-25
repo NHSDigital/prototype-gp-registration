@@ -7,19 +7,19 @@
 
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% if (data['smokes-type'] == "I used to smoke") %}
-    {% set heading = "How many cigarettes did " + data['name-first-name'] + " smoke?" %}
-    {% set hintText = "Enter the average number." %}
+    {% set heading = "What was the average number of cigarettes " + data['name-first-name'] + " smoked a day?" %}
+    {% set hintText = "Select one." %}
   {% else %}
-    {% set heading = "How many cigarettes does " + data['name-first-name'] + " smoke a day?" %}
+    {% set heading = "What is the average number of cigarettes " + data['name-first-name'] + " smokes a day?" %}
     {% set hintText = "Enter the average number." %}
   {% endif %}
 {% else %}
   {% if (data['smokes-type'] == "I used to smoke") %}
-    {% set heading = "How many cigarettes did you smoke a day?" %}
-    {% set hintText = "Enter the average number." %}
+    {% set heading = "What is the average number of cigarettes you smoke a day?" %}
+    {% set hintText = "Select one." %}
   {% else %}
-    {% set heading = "How many cigarettes do you smoke a day?" %}
-    {% set hintText = "Enter the average number." %}
+    {% set heading = "What is the average number of cigarettes you smoke a day?" %}
+    {% set hintText = "Select one." %}
   {% endif %}
 {% endif %}
 
@@ -93,7 +93,7 @@
               },
 
               "hint": {
-                "text": "Select a range that includes the average number"
+                "text": "Select one"
               },
 
               "items": [
