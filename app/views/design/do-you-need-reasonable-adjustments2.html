@@ -1,0 +1,129 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What reasonable adjustments does ' + data ['name-first-name'] + ' need?' %}
+{% else %}
+  {% set heading = 'What reasonable adjustments do you need?' %}
+{% endif %}
+
+{% block pageTitle %}
+{{ heading }} - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "do-you-have-adjustment-details",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="adjustment-details-details" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ checkboxes({
+              "idPrefix": "adjustment-details",
+              "name": "adjustment-details",
+              "items": [
+                {
+                  "value": "Audible alert in the waiting room",
+                  "text": "Audible alert in the waiting room",
+                  checked: checked("adjustment-details", "Audible alert in the waiting room")
+                },
+                {
+                  "value": "Communication support",
+                  "text": "Communication support",
+                  checked: checked("adjustment-details", "Communication support")
+                },
+                {
+                  "value": "Hearing loop",
+                  "text": "Hearing loop",
+                  checked: checked("adjustment-details", "Hearing loop")
+                }
+                ,
+                {
+                  "value": "Learning disability nurse",
+                  "text": "Learning disability nurse",
+                  checked: checked("adjustment-details", "Learning disability nurse")
+                }
+                ,
+                {
+                  "value": "Longer appointments to understand the information given by a doctor or nurse",
+                  "text": "Longer appointments to understand the information given by a doctor or nurse",
+                  checked: checked("adjustment-details", "Longer appointments to understand the information given by a doctor or nurse")
+                }
+                ,
+                {
+                  "value": "Note taker",
+                  "text": "Note taker",
+                  checked: checked("adjustment-details", "Note taker")
+                },
+                {
+                  "value": "Quiet space to wait for an appointment",
+                  "text": "Quiet space to wait for an appointment",
+                  checked: checked("adjustment-details", "Quiet space to wait for an appointment")
+                },
+                {
+                  "value": "Ramps and stairway lifts",
+                  "text": "Ramps and stairway lifts",
+                  checked: checked("adjustment-details", "Ramps and stairway lifts")
+                },
+                {
+                  "value": "Sign language interpreter",
+                  "text": "Sign language interpreter",
+                  checked: checked("adjustment-details", "Sign language interpreter")
+                },
+                {
+                  "value": "Visual alert in the waiting room",
+                  "text": "Visual alert in the waiting room",
+                  checked: checked("adjustment-details", "Visual alert in the waiting room")
+                },
+                {
+                  "value": "Wider doorways",
+                  "text": "Wider doorways",
+                  checked: checked("adjustment-details", "Wider doorways")
+                },
+                {
+                  "value": "Other",
+                  "text": "Other",
+                  checked: checked("adjustment-details", "Other")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+  
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
