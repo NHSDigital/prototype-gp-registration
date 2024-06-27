@@ -1,0 +1,93 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What accessible forms of communication does ' + data ['name-first-name'] + ' need?' %}
+{% else %}
+  {% set heading = 'What accessible forms of communication do you need?' %}
+{% endif %}
+
+{% block pageTitle %}
+{{ heading }} - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "do-you-have-accessible-details-list",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="accessible-details-list-details" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ checkboxes({
+              "idPrefix": "accessible-details-list",
+              "name": "accessible-details-list",
+              "items": [
+                {
+                  "value": "Audio",
+                  "text": "Audio",
+                  checked: checked("accessible-details-list", "Audio")
+                },
+                {
+                  "value": "Braille",
+                  "text": "Braille",
+                  checked: checked("accessible-details-list", "Braille")
+                },
+                {
+                  "value": "EasyRead",
+                  "text": "EasyRead",
+                  checked: checked("accessible-details-list", "EasyRead")
+                }
+                ,
+                {
+                  "value": "Large format",
+                  "text": "Large format",
+                  checked: checked("accessible-details-list", "Large format")
+                }
+                ,
+                {
+                  "value": "Other",
+                  "text": "Other",
+                  checked: checked("accessible-details-list", "Other")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+  
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
