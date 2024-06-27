@@ -1149,17 +1149,16 @@
         Type of smoker
       </dt>
       <dd class="nhsuk-summary-list__value">
-        {{ data['smoking-type'] or 'Ex-smoker' }}
+        {{ data['smoking-type'] or 'I Smoke' }}
       </dd>
     </div>
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
-        Date stopped
+        Average number of cigarettes smoked a day
       </dt>
       <dd class="nhsuk-summary-list__value">
-        <span id="dob-year">{{ data['smoking-quit-year'] or '2020' }}</span>
-        <span id="dob-month">{{ data['smoking-quit-month'] or '-03' }}</span>
+        <span id="smoke-amount">{{ data['smokes-amount'] or '1-9' }}</span>
       </dd>
     </div>
 
