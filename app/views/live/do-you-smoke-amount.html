@@ -6,17 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% if (data['smokes-type'] == "I used to smoke") %}
-    {% set heading = "What was the average number of cigarettes " + data['name-first-name'] + " smoked a day?" %}
-  {% else %}
-    {% set heading = "What is the average number of cigarettes " + data['name-first-name'] + " smokes a day?" %}
-  {% endif %}
+  {% set heading = "What is the average number of cigarettes " + data['name-first-name'] + " smokes a day?" %}
 {% else %}
-  {% if (data['smokes-type'] == "I used to smoke") %}
-    {% set heading = "What was the average number of cigarettes you smoked a day?" %}
-  {% else %}
-    {% set heading = "What is the average number of cigarettes you smoke a day?" %}
-  {% endif %}
+  {% set heading = "What is the average number of cigarettes you smoke a day?" %}
 {% endif %}
 
 {% if (data['smoke-month']) %}
@@ -44,37 +36,6 @@
 
           <form action="scr" method="post" autocomplete="off">
 
-           <!--{% include 'live/includes/step.html' %}
-
-            {% call fieldset({
-              legend: {
-                "text": heading,
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
-              }
-            }) %}
-
-            {{ hint({
-              "html": hintText
-            }) }}
-
-            {{ input({
-            "fieldset": {
-              "legend": {
-                "text": "Number of cigarettes",
-                "classes": "nhsuk-label--l",
-                "isPageHeading": true
-              }
-            },
-              "classes": "nhsuk-u-width-one-third",
-              "id": "smoke-amount",
-              "name": "smoke-amount",
-              "inputmode": "numeric",
-              "value": data['smoke-amount']
-            }) }}
-
-            {% endcall %}-->
-
             {% include 'live/includes/step.html' %}
 
             {{ radios({
@@ -88,25 +49,31 @@
                 }
               },
 
-              "hint": {
-                "text": "Select one"
-              },
-
               "items": [
                 {
-                  "value": "1-10~/live/scr",
-                  "text": "1-10",
-                  checked: checked("smokes-amount", "1-10")
+                  "value": "0~/live/scr",
+                  "text": "Less than 1 cigarette a day",
+                  checked: checked("smokes-amount", "Less than 1")
                 },
                 {
-                  "value": "11-20~/live/scr",
-                  "text": "11-20",
-                  checked: checked("smokes-amount", "11-20")
+                  "value": "1-9~/live/scr",
+                  "text": "1-9",
+                  checked: checked("smokes-amount", "1-9")
                 },
                 {
-                  "value": "21 or more~/live/scr",
-                  "text": "21 or more",
-                  checked: checked("smokes-amount", "21 or more")
+                  "value": "10-19~/live/scr",
+                  "text": "10-19",
+                  checked: checked("smokes-amount", "10-19")
+                },
+                {
+                  "value": "20-39~/live/scr",
+                  "text": "20-39",
+                  checked: checked("smokes-amount", "20-39")
+                },
+                {
+                  "value": "40 or more~/live/scr",
+                  "text": "40 or more",
+                  checked: checked("smokes-amount", "40 or more")
                 }
               ]
             }) }}
