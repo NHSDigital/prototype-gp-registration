@@ -28,7 +28,7 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="do-you-smoke-amount" method="post" autocomplete="off">
+          <form action="scr" method="post" autocomplete="off">
 
            {% include 'live/includes/step.html' %}
 
@@ -49,12 +49,12 @@
                 {
                   "name": "smoke-month",
                   "classes": "nhsuk-input--width-2",
-                  "value": data['smoke-month']
+                  "value": data['Month']
                 },
                 {
                   "name": "smoke-year",
                   "classes": "nhsuk-input--width-4",
-                  "value": data['smoke-year']
+                  "value": data['Year']
                 }
               ]
             }) }}
