@@ -7,8 +7,12 @@
 
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = 'Do you know ' + data['name-first-name'] + '\'s NHS Number?' %}
+  {% set hint1 = 'Telling us their NHS number will give us the best chance of matching them to their NHS record.' %}
+  {% set hint2 = 'You do not need to know their NHS number to continue.' %}
 {% else %}
   {% set heading = 'Do you know your NHS Number?' %}
+  {% set hint1 = 'Telling us your NHS number will give us the best chance of matching you to your NHS record.' %}
+  {% set hint2 = 'You do not need to know your NHS number to continue.' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -41,12 +45,12 @@
             }) %}
 
             {{ hint({
-              "text": "Telling us your NHS number will give us the best chance of matching you to their NHS record.",
+              text: hint1,
               "classes": "nhsuk-u-margin-bottom-4"
             }) }}
 
             {{ hint({
-              "text": "You do not need to know your NHS number to continue. If you do not know it, you can tell us their full name instead.",
+              "text": hint2,
               "classes": "nhsuk-u-margin-bottom-4"
             }) }}
 
