@@ -182,10 +182,35 @@
     <div class="nhsuk-summary-list__row">
 
       <dt class="nhsuk-summary-list__key">
-        Postcode with last UK GP surgery
+        Address with last UK GP surgery
       </dt>
       <dd class="nhsuk-summary-list__value">
-        {{ data[''] or 'ZZ99 1WZ' }}
+      {% if data['gp-postcode-prev-address-line-1'] %}
+      {{ data['gp-postcode-prev-address-line-1']}}
+        {% if data['gp-postcode-prev-address-line-1'] %}
+          <br>
+        {% endif %}
+      {{ data['gp-postcode-prev-address-line-2']}}
+        {% if data['gp-postcode-prev-address-line-2'] %}
+          <br>
+        {% endif %}
+      {{ data['gp-postcode-prev-address-town']}}
+        {% if data['gp-postcode-prev-address-town'] %}
+          <br>
+        {% endif %}
+      {{ data['gp-postcode-prev-postcode']}}
+        {% if data['gp-postcode-prev-postcode'] %}
+          <br>
+        {% endif %}
+      {{ data['gp-postcode-prev-country']}}
+      {% else %}
+        24 Finch Road<br>
+        Earley<br>
+        Reading<br>
+        ZZ99 1WZ
+      {% endif %}
+
+        
       </dd>
     </div>
 

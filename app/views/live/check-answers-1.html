@@ -484,14 +484,26 @@
           <dl class="nhsuk-summary-list" style="margin-top: -40px;">
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Address details
+                Address with last UK GP surgery
               </dt>
               <dd class="nhsuk-summary-list__value">
-                {{ data['gp-postcode-prev-address-line-1'] }}
-                {{ data['gp-postcode-prev-address-line-2'] }}<br />
-                {{ data['gp-postcode-prev-address-town'] }}<br />
-                {{ data['gp-postcode-prev-postcode'] }}<br />
-                {{ data['gp-postcode-prev-country'] }}
+              {{ data['gp-postcode-prev-address-line-1']}}
+                {% if data['gp-postcode-prev-address-line-1'] %}
+                  <br>
+                {% endif %}
+              {{ data['gp-postcode-prev-address-line-2']}}
+                {% if data['gp-postcode-prev-address-line-2'] %}
+                  <br>
+                {% endif %}
+              {{ data['gp-postcode-prev-address-town']}}
+                {% if data['gp-postcode-prev-address-town'] %}
+                  <br>
+                {% endif %}
+              {{ data['gp-postcode-prev-postcode']}}
+                {% if data['gp-postcode-prev-postcode'] %}
+                  <br>
+                {% endif %}
+              {{ data['gp-postcode-prev-country']}}
               </dd>
               <dd class="nhsuk-summary-list__actions">
                 <a href="what-is-previous-postcode-gp-has">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
