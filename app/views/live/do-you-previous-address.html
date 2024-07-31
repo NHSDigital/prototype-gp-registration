@@ -30,7 +30,7 @@
 {% if (data['under-18-years'] === 'true') %}
   {% set immuniseLink = 'No~/live/are-you-immunised' %}
 {% else %}
-  {% set immuniseLink = 'No~/live/what-is-your-previous-address' %}
+  {% set immuniseLink = 'No~/live/do-you-have-existing-conditions' %}
 {% endif %}
 
 {% block outerContent %}
@@ -63,7 +63,7 @@
               "name": "have-previous-uk-address",
               "items": [
                 {
-                  "value": "Yes~/live/what-is-your-previous-address",
+                  "value": "Yes~/live/what-is-your-previous-address-manual",
                   "text": "Yes",
                   "checked": checked("have-previous-uk-address", "Yes")
                 },

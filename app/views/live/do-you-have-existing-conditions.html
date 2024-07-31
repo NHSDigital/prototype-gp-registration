@@ -46,8 +46,10 @@
 
   {% if (data['have-previous-uk-address'] == "No") %}
     {% set link = 'do-you-previous-address' %}
+  {% elseif (data['have-previous-uk-address'] == "Yes") %}
+    {% set link = 'what-is-your-previous-address-manual' %}
   {% else %}
-    {% set link = 'what-is-your-previous-address' %}
+    {% set link = 'where-were-you-born-place-uk' %}
   {% endif %}
 
 {% block outerContent %}
