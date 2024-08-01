@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "What address does " + data.presets[0]['gpsurgery'] + " have " + data['name-first-name'] + " registered as living at?" %}
+  {% set heading = "What address did " + data['name-first-name'] + " use to register with " + data.presets[0]['gpsurgery'] + "?" %}
 {% else %}
-  {% set heading = 'What address does ' + data.presets[0]['gpsurgery'] + ' have you registered as living at?' %}
+  {% set heading = 'What address did you use to register with ' + data.presets[0]['gpsurgery'] + '?' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -79,7 +79,7 @@
               }) %}
 
               {{ hint({
-                "text": 'All fields are optional',
+                "text": 'Provide as many details as possible',
                 "classes": "nhsuk-u-margin-bottom-2"
               }) }}
 

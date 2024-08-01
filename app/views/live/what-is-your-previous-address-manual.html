@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'What is ' + data['name-first-name'] + '\'s previous UK address?' %}
+  {% set heading = 'What was ' + data['name-first-name'] + '\'s previous address in the UK?' %}
 {% else %}
-  {% set heading = 'What was your previous UK address?' %}
+  {% set heading = 'What was your previous address in the UK?' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -41,7 +41,7 @@
               }) %}
 
               {{ hint({
-                "text": 'All fields are optional',
+                "text": 'Provide as many details as possible',
                 "classes": "nhsuk-u-margin-bottom-2"
               }) }}
 
