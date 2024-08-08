@@ -1,10 +1,10 @@
-{% set serviceHome = '/design/start' %}
+{% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
 
 {% extends 'layout.html' %}
 
-{% set heading = 'Would you like to sign in with your NHS login?' %}
+{% set heading = 'Would you like to answer fewer questions by signing in with your NHS login?' %}
 
 {% block pageTitle %}
 {{ heading }} - {{ ServiceName }} - NHS
@@ -25,10 +25,8 @@
 
           <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
-          <div class="nhsuk-inset-text">
-            <span class="nhsuk-u-visually-hidden">Information: </span>
-          
-            <p>If you already have an account you can save time and answer fewer questions by choosing to continue with NHS login. </p>
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>This is the quickest way to complete your registration.</p>
           </div>
 
           <div class="nhsuk-hint" id="contact-hint">
@@ -36,15 +34,16 @@
             <p>We will use details from your NHS login and share them with your <br>new GP.</p>
           </div>
 
-          <p>
-
-          <form action="nhs-login-email?use-login=true&login-level=p9" method="post" autocomplete="off">
-            <button class="nhsuk-button nhsuk-button--blue nhsuk-u-margin-bottom-4" type="submit">
+          <a href="nhs-login-email?use-login=true&login-level=p9" class="nhsuk-button nhsuk-button--blue nhsuk-u-margin-bottom-4" type="submit">
             Continue with NHS login
-            </button>
-          </form>
+          </a>
 
-          <p><a href="what-is-your-name?use-login=false" class="nhsuk-button nhsuk-button--secondary">Continue without</a></p>
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>Alternatively you can continue without using NHS login:</p>
+          </div>
+
+          <p>
+            <a href="what-is-your-name?use-login=false" class="nhsuk-button nhsuk-button--secondary">Continue without</a></p>
 
       </div>
     </div>
@@ -74,5 +73,5 @@
 {% endblock %}
 
 {% block footer %}
-  {% include 'design/includes/footer.html' %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}
