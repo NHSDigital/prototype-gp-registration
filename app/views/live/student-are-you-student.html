@@ -1,0 +1,76 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Is ' + data['name-first-name'] + ' a student at university?' %}
+{% else %}
+  {% set heading = 'Are you a student at university?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "what-is-your-date-of-birth",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ radios({
+              "idPrefix": "are-you-student",
+              "name": "are-you-student",
+              "items": [
+                {
+                  "value": "Yes~/live/student-do-you-know-student-number",
+                  "text": "Yes",
+                  "checked": checked("are-you-student", "Yes")
+                },
+                {
+                  "value": "No~/live/do-you-current-address",
+                  "text": "No",
+                  "checked": checked("are-you-student", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
