@@ -1,0 +1,136 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What is " + data['name-first-name'] + '\'s address when living at university?' %}
+{% else %}
+  {% set heading = 'What is your address when living at university?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% if (data['out-of-area'] === "out-of-area") %}
+  {% set action = 'current-address-out-of-area' %}
+{% elif (data['user-auth'] === "p9") %}
+  {% set action = 'confirm-contact-details' %}
+{% else %}
+  {% set action = 'how-can-we-contact-inputs' %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "what-is-your-current-address",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="{{ action }}" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+              {% call fieldset({
+                legend: {
+                  "text": heading,
+                  "classes": "nhsuk-fieldset__legend--l"
+                }
+              }) %}
+
+              {{ input({
+                label: {
+                  "text": "Room number (optional)"
+                },
+                "classes": "nhsuk-input--width-4",
+                "id": "student-room-number",
+                "name": "student-room-number",
+                value: data['student-room-number']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Address line 1"
+                },
+                "id": "student-address-line-1",
+                "name": "student-address-line-1",
+                value: data['student-address-line-1']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Address line 2 (optional)"
+                },
+                "id": "student-address-line-2",
+                "name": "student-address-line-2",
+                value: data['student-address-line-2']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Town or city"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "student-address-town",
+                "name": "student-address-town",
+                value: data['student-address-town']
+              }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "student-address-postcode",
+                  "name": "student-address-postcode",
+                  value: data['student-address-postcode']
+              }) }}
+
+              {{ button({
+                "text": "Continue"
+              }) }}
+
+              {% endcall %}
+
+          </form>
+        </div>
+      </div>
+
+{# DEVMODE SCENARIOS #}
+{% if data['devMode'] === 'true' %}
+<details class="nhsuk-details dev-mode dev-mode--routing" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+      <span class="nhsuk-details__summary-text">
+        Routing choices
+      </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h4>Routes catchment area</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="current-address-out-of-area">Outside catchment area</a>
+      </li>
+      <li>
+        <a href="not-accepting-registrations">Outside catchment area and GP surgery not accepting out-of-catchment registrations</a>
+      </li>
+    </ul>
+  </div>
+</details>
+{% endif %}
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
