@@ -89,27 +89,18 @@ Recently moved{% set serviceHome = '/live/start' %}
             </dd>
           </div>
 
-          {% if data['have-current-uk-address'] === "Yes" %}
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Student address details
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if data['student-select-current-address'] %}
+              {% if data['student-select-current-address'] %} 
               {{ data['student-select-current-address'] }}
-              {% else %}
-              {{ data['select-current-address'] }}
-              {{ data['student-address-line-1'] }}<br />
-              {{ data['student-address-line-2'] }}<br />
-              {{ data['student-address-town'] }}<br />
-              {{ data['student-address-postcode'] }}
-              {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
               <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
             </dd>
           </div>
-          {% endif %}
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
@@ -134,6 +125,21 @@ Recently moved{% set serviceHome = '/live/start' %}
               <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
             </dd>
           </div>
+
+          {% else %}
+          Room {{ data['student-room-number'] }},
+          {{ data['student-address-line-1'] }}<br />
+          {% if data['student-address-line-2'] %}
+          {{ data['student-address-line-2'] }}<br />
+          {% endif %}
+          {{ data['student-address-town'] }}<br />
+          {{ data['student-address-postcode'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+        </dd>
+      </div>
+          {% endif %}
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
