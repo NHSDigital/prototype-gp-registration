@@ -23,10 +23,9 @@
 <div class="pseudo-gpemail-template">
 
   <p>Dear <strong>Ossett Surgery</strong>,</p>
-  <p>You have received a registration request from <strong>Sam Smith</strong>.</p>
+  <p>You have received a registration request from a patient with the NHS number:</p>
 
   <div class="nhsuk-inset-text nhsuk-u-padding-top-0 nhsuk-u-padding-bottom-0">
-    <p class="nhsuk-u-margin-bottom-0">Trace this patient using their NHS number:</p>
     <p class="nhsuk-heading-l nhsuk-u-padding-top-0">123 456 7890</p>
   </div>
 
@@ -287,49 +286,6 @@
       </dd>
     </div>
   </dl>
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Home address</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Building
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['address-building'] or 'Line 1' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Building
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['address-street'] or '28 Address Line 2' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Town or City
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['address-street'] or 'Address Line 4' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Postcode
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['address-street'] or 'ZZ99 3CZ' }}
-      </dd>
-    </div>
-
-  </dl>
-
 
   <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Previous GP surgery</h3>
 
