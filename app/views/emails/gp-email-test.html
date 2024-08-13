@@ -24,7 +24,6 @@
 
   <p>Dear <strong>Ossett Surgery</strong>,</p>
   <p>You have received a registration request from a patient with the NHS number:<strong>123 456 7890</strong></p>
->
 
   <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Patient tracing</h3>
 
@@ -356,56 +355,6 @@
   </dl>
 
 
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Nominated pharmacy</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Name of pharmacy
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['pharmacy-name'] or 'Green Pharmacy' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Building
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['pharmacy-building'] or '17 Pharmacy Road' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Street
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['pharmacy-street'] or '17 Pharmacy Road' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Town or city
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['pharmacy-city'] or 'Edinburgh' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Postcode
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['pharmacy-street'] or 'E15 2JE' }}
-      </dd>
-    </div>
-
-  </dl>
 
 
   <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Recently moved to the UK</h3>
@@ -885,6 +834,56 @@
       </dt>
       <dd class="nhsuk-summary-list__value">
         {{ data['share-to-scr'] or 'Yes, share a Summary Care Record with additional information' }}
+      </dd>
+    </div>
+
+  </dl>
+  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Nominated pharmacy</h3>
+
+  <dl class="nhsuk-summary-list">
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Name of pharmacy
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['pharmacy-name'] or 'Green Pharmacy' }}
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Building
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['pharmacy-building'] or '17 Pharmacy Road' }}
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Street
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['pharmacy-street'] or '17 Pharmacy Road' }}
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Town or city
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['pharmacy-city'] or 'Edinburgh' }}
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Postcode
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['pharmacy-street'] or 'E15 2JE' }}
       </dd>
     </div>
 
