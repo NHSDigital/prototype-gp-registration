@@ -295,188 +295,6 @@
     </div>
 
   </dl>
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Education</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Attends
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        School
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Name of school
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['school-name'] or 'Grange Hill' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Postcode
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['contact-school'] or 'LS1 2FG' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Telephone number
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['contact-school'] or '01234 5678900' }}
-      </dd>
-    </div>
-  </dl>
-
-
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Health Authority</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Previous Health Authority
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['health-authority-prev'] or 'England' }}
-      </dd>
-    </div>
-
-  </dl>
-
-
-
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Recently moved to the UK</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Date entered the UK
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <span id="dob-day">{{ data['dob-day'] or '01/' }}</span>
-        <span id="dob-month">{{ data['dob-month'] or '01/' }}</span>
-        <span id="dob-year">{{ data['dob-year'] or '1990' }}</span>
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Moved from EU, EEA or Switzerland
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        No
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Have you ever spent more than 6 months in a country where there was an increased risk of catching tuberculosis (TB)?
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['visited-tb'] or 'No' }}
-      </dd>
-    </div>
-
-  </dl>
-
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Armed Forces</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Connection to armed forces or registered with defence medical services
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['is-armed-forces-member'] or 'No' }}
-      </dd>
-    </div>
-
-  </dl>
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">European health insurance card details</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Full name
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Sam Smith
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Date of birth
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <span id="dob-day">{{ data['dob-day'] or '01/' }}</span><span id="dob-month">{{ data['dob-month'] or '01/' }}</span><span id="dob-year">{{ data['dob-year'] or '1990' }}</span>
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Country code
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        FRA
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Personal identification number
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        12345678901
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Identification number of the card
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        98765432109
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Identification number of the institution
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        123
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Expiry date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <span id="dob-day">{{ data['dob-day'] or '2075-' }}</span><span id="dob-month">{{ data['dob-month'] or '01-' }}</span><span id="dob-year">{{ data['dob-year'] or '01' }}</span>
-      </dd>
-    </div>
-
-  </dl>
-
   <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Patient health</h3>
 
   {% if data['under18'] === 'true' %}
@@ -930,6 +748,188 @@
     </div>
 
   </dl>
+
+  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Education</h3>
+
+  <dl class="nhsuk-summary-list">
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Attends
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        School
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Name of school
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['school-name'] or 'Grange Hill' }}
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Postcode
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['contact-school'] or 'LS1 2FG' }}
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Telephone number
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['contact-school'] or '01234 5678900' }}
+      </dd>
+    </div>
+  </dl>
+
+
+
+  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Health Authority</h3>
+
+  <dl class="nhsuk-summary-list">
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Previous Health Authority
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['health-authority-prev'] or 'England' }}
+      </dd>
+    </div>
+
+  </dl>
+
+
+
+
+  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Recently moved to the UK</h3>
+
+  <dl class="nhsuk-summary-list">
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Date entered the UK
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        <span id="dob-day">{{ data['dob-day'] or '01/' }}</span>
+        <span id="dob-month">{{ data['dob-month'] or '01/' }}</span>
+        <span id="dob-year">{{ data['dob-year'] or '1990' }}</span>
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Moved from EU, EEA or Switzerland
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        No
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Have you ever spent more than 6 months in a country where there was an increased risk of catching tuberculosis (TB)?
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['visited-tb'] or 'No' }}
+      </dd>
+    </div>
+
+  </dl>
+
+
+  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Armed Forces</h3>
+
+  <dl class="nhsuk-summary-list">
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Connection to armed forces or registered with defence medical services
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['is-armed-forces-member'] or 'No' }}
+      </dd>
+    </div>
+
+  </dl>
+
+  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">European health insurance card details</h3>
+
+  <dl class="nhsuk-summary-list">
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Full name
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        Sam Smith
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Date of birth
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        <span id="dob-day">{{ data['dob-day'] or '01/' }}</span><span id="dob-month">{{ data['dob-month'] or '01/' }}</span><span id="dob-year">{{ data['dob-year'] or '1990' }}</span>
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Country code
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        FRA
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Personal identification number
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        12345678901
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Identification number of the card
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        98765432109
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Identification number of the institution
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        123
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Expiry date
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        <span id="dob-day">{{ data['dob-day'] or '2075-' }}</span><span id="dob-month">{{ data['dob-month'] or '01-' }}</span><span id="dob-year">{{ data['dob-year'] or '01' }}</span>
+      </dd>
+    </div>
+
+  </dl>
+
 
   <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Safeguarding Flags</h3>
 
