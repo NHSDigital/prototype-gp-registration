@@ -23,7 +23,7 @@
 <div class="pseudo-gpemail-template">
 
   <p>Dear <strong>Ossett Surgery</strong>,</p>
-  <p>You have received a registration request from a patient with the NHS number:<class="nhsuk-heading-l nhsuk-u-padding-top-0">123 456 7890</p>
+  <p>You have received a registration request from a patient with the NHS number:<strong>123 456 7890</strong></p>
 >
 
   <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Patient tracing</h3>
@@ -158,18 +158,6 @@
       </dd>
     </div>
 
-    <div class="nhsuk-summary-list__row">
-
-      <dt class="nhsuk-summary-list__key">
-        Address with last UK GP surgery
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        24 Finch Road<br>
-        Earley<br>
-        Reading<br>
-        ZZ99 1WZ
-      </dd>
-    </div>
 
   </dl>
   <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Patient contact details</h3>
@@ -203,6 +191,67 @@
       </dd>
     </div>
 
+  </dl>
+  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Previous GP surgery</h3>
+
+  <dl class="nhsuk-summary-list">
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Name of surgery
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['gp-name-prev'] or 'Previous Surgery' }}
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Postcode
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['gp-postcode-prev'] or 'ZZ99 1WZ' }}
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Building
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['gp-building-prev'] or '17 Main Road' }}
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Street
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['gp-street-prev'] or '17 Main Road' }}
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Town or city
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['gp-town-prev'] or 'Leeds' }}
+      </dd>
+    </div>
+    <div class="nhsuk-summary-list__row">
+
+      <dt class="nhsuk-summary-list__key">
+        Address with last UK GP surgery
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        24 Finch Road<br>
+        Earley<br>
+        Reading<br>
+        ZZ99 1WZ
+      </dd>
+    </div>
   </dl>
 
 
@@ -289,56 +338,6 @@
     </div>
   </dl>
 
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Previous GP surgery</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Name of surgery
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['gp-name-prev'] or 'Previous Surgery' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Postcode
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['gp-postcode-prev'] or 'ZZ99 1WZ' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Building
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['gp-building-prev'] or '17 Main Road' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Street
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['gp-street-prev'] or '17 Main Road' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Town or city
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['gp-town-prev'] or 'Leeds' }}
-      </dd>
-    </div>
-
-  </dl>
 
 
   <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Health Authority</h3>
