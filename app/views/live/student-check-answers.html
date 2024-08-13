@@ -130,9 +130,11 @@ Recently moved{% set serviceHome = '/live/start' %}
           Room {{ data['student-room-number'] }},
           {{ data['student-address-line-1'] }}<br />
           {% if data['student-address-line-2'] %}
-          {{ data['student-address-line-2'] }}<br />
+            {{ data['student-address-line-2'] }}<br />
           {% endif %}
-          {{ data['student-address-town'] }}<br />
+          {% if data['student-address-town'] %}
+            {{ data['student-address-town'] }}<br />
+          {% endif %}
           {{ data['student-address-postcode'] }}
         </dd>
         <dd class="nhsuk-summary-list__actions">
