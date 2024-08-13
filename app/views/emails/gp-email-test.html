@@ -23,14 +23,10 @@
 <div class="pseudo-gpemail-template">
 
   <p>Dear <strong>Ossett Surgery</strong>,</p>
-  <p>You have received a registration request from a patient with the NHS number:<p class="nhsuk-heading-l nhsuk-u-padding-top-0">123 456 7890</p>
-</p>
+  <p>You have received a registration request from a patient with the NHS number:<class="nhsuk-heading-l nhsuk-u-padding-top-0">123 456 7890</p>
+>
 
-  <div class="nhsuk-inset-text nhsuk-u-padding-top-0 nhsuk-u-padding-bottom-0">
-    <p class="nhsuk-heading-l nhsuk-u-padding-top-0">123 456 7890</p>
-  </div>
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Patient identification</h3>
+  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Patient tracing</h3>
 
   <dl class="nhsuk-summary-list">
 
@@ -95,7 +91,7 @@
 
   </dl>
 
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Patient details</h3>
+  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Patient personal details</h3>
 
   <dl class="nhsuk-summary-list">
 
@@ -146,34 +142,6 @@
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
-        Home telephone
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['contact-home-tel'] or '03003034777' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Mobile telephone
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['contact-mobile'] or '07700900077' }}
-      </dd>
-    </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Email
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['contact-email'] or 'simulate-delivered@notifications.service.gov.uk' }}
-      </dd>
-    </div>
-
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
         Interpreter required
       </dt>
       <dd class="nhsuk-summary-list__value">
@@ -204,6 +172,39 @@
     </div>
 
   </dl>
+  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Patient contact details</h3>
+
+  <dl class="nhsuk-summary-list">
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Home telephone
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['contact-home-tel'] or '03003034777' }}
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Mobile telephone
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['contact-mobile'] or '07700900077' }}
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Email
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['contact-email'] or 'simulate-delivered@notifications.service.gov.uk' }}
+      </dd>
+    </div>
+
+  </dl>
+
 
   <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Emergency contact</h3>
 
