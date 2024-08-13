@@ -90,7 +90,7 @@
 
   </dl>
 
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Patient personal details</h3>
+  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Patient additional details</h3>
 
   <dl class="nhsuk-summary-list">
 
@@ -253,6 +253,35 @@
     </div>
   </dl>
 
+  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Health Authority</h3>
+
+  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Armed Forces</h3>
+
+  <dl class="nhsuk-summary-list">
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Connection to armed forces or registered with defence medical services
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['is-armed-forces-member'] or 'No' }}
+      </dd>
+    </div>
+
+  </dl>
+
+  <dl class="nhsuk-summary-list">
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Previous Health Authority
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['health-authority-prev'] or 'England' }}
+      </dd>
+    </div>
+
+  </dl>
 
   <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Emergency contact</h3>
 
@@ -791,25 +820,6 @@
   </dl>
 
 
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Health Authority</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Previous Health Authority
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['health-authority-prev'] or 'England' }}
-      </dd>
-    </div>
-
-  </dl>
-
-
-
-
   <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Recently moved to the UK</h3>
 
   <dl class="nhsuk-summary-list">
@@ -840,22 +850,6 @@
       </dt>
       <dd class="nhsuk-summary-list__value">
         {{ data['visited-tb'] or 'No' }}
-      </dd>
-    </div>
-
-  </dl>
-
-
-  <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Armed Forces</h3>
-
-  <dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Connection to armed forces or registered with defence medical services
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['is-armed-forces-member'] or 'No' }}
       </dd>
     </div>
 
