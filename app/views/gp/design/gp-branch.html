@@ -94,6 +94,23 @@
               </a>
             </dd>
           </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key" style="width: 50%;">
+              University surgery
+            </dt>
+            <dd class="nhsuk-summary-list__value" style="width: 30%;">
+              {% if data['student'] %}
+                {{ data['student'] }}
+                {% else %}
+                  No
+                {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="gp-additional-questions-student?linkaction=change-questions">Change
+                <span class="nhsuk-u-visually-hidden">university service</span>
+              </a>
+            </dd>
+          </div>
         </dl>
 
         <h2 class="nhsuk-heading-m">Additional questions</h2>

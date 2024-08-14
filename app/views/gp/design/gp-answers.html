@@ -87,6 +87,22 @@ Confirm details for your practice and complete registration - GP registration se
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
+                  University surgery
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if (data['student'] == "Yes") %}
+                  Yes
+                  {% else %}
+                  No
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="gp-additional-questions-student">Change<span class="nhsuk-u-visually-hidden">university surgery</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
                   Send registration message
                 </dt>
                 <dd class="nhsuk-summary-list__value">
