@@ -31,28 +31,26 @@ Are you a dispensing surgery? - GP registration service - NHS
             href: "javascript:history.go(-1)"
           }) }}
 
-          <form action="gp-additional-questions-student" method="post" autocomplete="off">
+          <form action="gp-additional-questions-nominated-pharmacy" method="post" autocomplete="off">
 
-            <H2>Are you a dispensing surgery?</H2>
-
-            <p>If you are a dispensing surgery you are able to dispense medicines or medical appliances direct to patients.</p>
-            <p>If you choose <strong>yes</strong>, patients who register online with your surgery will be asked to show they are eligible for this service.</p>
+            <H2>Are you a university surgery?</H2>
+            <p>If you choose <strong>yes</strong>, patients who register online with your surgery will be asked if they are a student.</p>
 
 
 
             {{ radios({
-              "idPrefix": "dispensing",
-              "name": "dispensing",
+              "idPrefix": "student",
+              "name": "student",
               "items": [
                 {
                   "value": "Yes",
                   "text": "Yes",
-                  checked: checked("dispensing", "Yes")
+                  checked: checked("student", "Yes")
                 },
                 {
                   "value": "No",
                   "text": "No",
-                  checked: checked("dispensing", "No")
+                  checked: checked("student", "No")
                 }
               ]
             }) }}
