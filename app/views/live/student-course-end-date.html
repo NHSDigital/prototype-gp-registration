@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'What year does ' + data['name-first-name'] + '\'s course finish?' %}
+  {% set heading = 'What year does ' + data['name-first-name'] + '\'s course finish? (optional)' %}
 {% else %}
-  {% set heading = 'What year does your course finish?' %}
+  {% set heading = 'What year does your course finish? (optional)' %}
 {% endif %}
 
 {% block pageTitle %}
