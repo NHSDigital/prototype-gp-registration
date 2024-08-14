@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% set heading = 'Confirm these details are correct before continuing with this registration for ' + data.presets[0].gpsurgery %}
+{% set heading = 'Check these details are correct before continuing with this registration for ' + data.presets[0].gpsurgery %}
 
 {% if (data['registering-first-time'] === "Yes") %}
   {% set link = 'registered-for-the-first-time' %}
