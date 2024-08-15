@@ -20,7 +20,8 @@ Example usage:
 module.exports = {
   presets: [
     {
-      "gpsurgery": "Trinity court surgery",
+      /*"gpsurgery": "Trinity court surgery",*/
+      "gpsurgery": "Lordship Lane surgery",
       "servicename": "Register with a GP surgery",
       "servicenameenroll": "Set up Register with a GP service"
     }

@@ -8,7 +8,7 @@
 {% set heading = "Enter the postcode where the mother of " + data ['name-first-name'] + " was living when their baby was born" %}
 
 {% block pageTitle %}
-  {{ heading }} - {{ ServiceName }} - NHS
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
 {% endblock %}
 
 {% block outerContent %}

@@ -8,7 +8,7 @@
 {% set heading = 'Please confirm these are the correct details for the person registering with ' + data.presets[0].gpsurgery %}
 
 {% block pageTitle %}
-  {{ heading }} - {{ ServiceName }} - NHS
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
 {% endblock %}
 
 {% block outerContent %}
