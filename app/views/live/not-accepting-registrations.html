@@ -8,7 +8,7 @@
 {% set heading = data.presets[0].gpsurgery + " is not accepting registrations from this address"  %}
 
 {% block pageTitle %}
-  {{ heading }} - {{ ServiceName }} - NHS
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
 {% endblock %}
 
 {% if (data['select-current-address']) %}

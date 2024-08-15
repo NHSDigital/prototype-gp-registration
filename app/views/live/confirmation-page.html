@@ -7,7 +7,7 @@
 {% set heading = 'Application complete' %}
 
 {% block pageTitle %}
-  {{ heading }} - {{ servicename }} - NHS
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
 {% endblock %}
 
 {% set emailLink = ['gp-email-3', 'Email to GP'] %}
@@ -37,7 +37,7 @@
 
       </div>
 
-      <p>These details have been sent to {{ data.presets[0].gpsurgery }}. Registration usually takes about 5 days.</p>
+      <p>These details have been sent to <!--{{ data.presets[0].gpsurgery }}-->Lordship Lane surgery. Registration usually takes about 5 days.</p>
       <p>If you need non-emergency medical help now visit <a href="https://111.nhs.uk/">NHS 111 online.</a></p>
 
       <h2>Registering someone else</h2>

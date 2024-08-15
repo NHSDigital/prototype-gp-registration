@@ -7,7 +7,7 @@
 {% set heading = 'What are your details?' %}
 
 {% block pageTitle %}
-  {{ heading }} - {{ ServiceName }} - NHS
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
 {% endblock %}
 
 {% if (data['know-nhs-number-parent'] === "Yes") %}
