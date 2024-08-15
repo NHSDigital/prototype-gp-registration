@@ -7,12 +7,10 @@
 
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = 'Do you know ' + data['name-first-name'] + '\'s NHS Number?' %}
-  {% set hint1 = 'Telling us their NHS number will give us the best chance of matching them to their NHS record.' %}
-  {% set hint2 = 'You do not need to know their NHS number to continue.' %}
+  {% set hint1 = 'Their NHS number will make it easier to find their NHS record.' %}
 {% else %}
   {% set heading = 'Do you know your NHS Number?' %}
-  {% set hint1 = 'Telling us your NHS number will give us the best chance of matching you to your NHS record.' %}
-  {% set hint2 = 'You do not need to know your NHS number to continue.' %}
+  {% set hint1 = 'Your NHS number will make it easier to find your NHS record.' %}
 {% endif %}
 
 {% block pageTitle %}
