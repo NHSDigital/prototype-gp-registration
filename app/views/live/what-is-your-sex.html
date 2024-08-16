@@ -17,6 +17,12 @@
   {{ heading }} - {{ data.presets[0].servicename }} - NHS
 {% endblock %}
 
+{{ hint({
+  "text": "Your NHS number will help us find your health record.",
+  "classes": "nhsuk-u-margin-bottom-4"
+}) }}
+
+
 {% if (data['schooling']) %}
   {% set link = 'professional-involvement' %}
 {% else %}
