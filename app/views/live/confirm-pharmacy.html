@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "Check your chosen pharmacy details" %}
+  {% set heading = "Details of your chosen pharmacy" %}
 {% else %}
-  {% set heading = 'Check chosen pharmacy details' %}
+  {% set heading = 'Details of your chosen pharmacy' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -40,7 +40,7 @@
 
             <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
-            <p>Prescriptions will be sent to this pharmacy only after registration has been confirmed by the new GP surgery. You will then be able get your prescription items like medicines and medical appliances from this pharmacy.</p>
+            <p>Prescriptions will be sent to this pharmacy only after registration has been confirmed by the new GP surgery.</p>
 
             <p>Olives pharmacy<br>9 Town street<br>London<br>SW1A 1AA</p>
 
