@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "Select their current GP surgery they want to leave" %}
+  {% set heading = "Select their current GP surgery" %}
 {% else %}
-  {% set heading = 'Select your current GP surgery you want to leave' %}
+  {% set heading = 'Select your current GP surgery' %}
 {% endif %}
 
 {% if (data['user-auth'] === "p9") %}
