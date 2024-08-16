@@ -7,12 +7,14 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Do you know ' + data['name-first-name'] + '\'s NHS Number?' %}
-  {% set hint1 = 'Their NHS number will help us find their NHS record.' %}
+  {% set heading = 'Which of the following best describes ' + data['name-first-name'] %}
+  {% set hint1 = 'This information will be used to match them to their healthcare record.' %}
 {% else %}
-  {% set heading = 'Do you know your NHS Number?' %}
-  {% set hint1 = 'Your NHS number will help us find your NHS record.' %}
+  {% set heading = 'What is your sex as recorded on your NHS record?' %}
+  {% set hint1 = 'This information will be used to match you to your healthcare record.' %}
 {% endif %}
+
+<hint>This information will be used to match you to your healthcare record.</hint>
 
 {% block pageTitle %}
   {{ heading }} - {{ data.presets[0].servicename }} - NHS
