@@ -7,10 +7,10 @@
 
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = 'What is the address of the GP surgery they want to leave?' %}
-  {% set hintText = 'If they have been registered at more than one GP surgery previousy, please enter the name and address of the most recent GP surgery they were registered at.' %}
+  {% set hintText = 'Enter the name and postcode of the most recent GP surgery they were registered at.' %}
 {% else %}
   {% set heading = 'What is the address of the GP surgery you want to leave?' %}
-  {% set hintText = 'If you have been registered at more than one GP surgery previousy, please enter the name and address of the most recent GP surgery you were registered at.' %}
+  {% set hintText = 'Enter the name and postcode of the most recent GP surgery you were registered at.' %}
 {% endif %}
 
 {% block pageTitle %}
