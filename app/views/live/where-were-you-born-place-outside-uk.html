@@ -6,7 +6,7 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "Enter details of where " + data ['name-first-name'] + " was born?" %}
+  {% set heading = "Enter details of where " + data ['name-first-name'] + " was born" %}
   {% set hintText = 'This can be the town, city or other location you were born in.' %}
 {% else %}
   {% set heading = 'Enter details of where you were born' %}
