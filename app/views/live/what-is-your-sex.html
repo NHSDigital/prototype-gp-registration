@@ -3,27 +3,6 @@
 {% set feedbackType = 'step' %}
 {% set section = '2' %}
 
-{% extends 'layout.html' %}
-
-{% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Do you know ' + data['name-first-name'] + '\'s NHS Number?' %}
-  {% set hint1 = 'Their NHS number will help us find their NHS record.' %}
-{% else %}
-  {% set heading = 'Do you know your NHS Number?' %}
-  {% set hint1 = 'Your NHS number will help us find your NHS record.' %}
-{% endif %}
-
-{% block pageTitle %}
-  {{ heading }} - {{ data.presets[0].servicename }} - NHS
-{% endblock %}
-
-{% block outerContent %}
-  {{ backLink({
-    "href": "what-is-your-date-of-birth",
-    "text": "Go back",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
-  }) }}
-{% endblock %}
 
 
 
