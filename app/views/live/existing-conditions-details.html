@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'About ' + data ['name-first-name'] + '\'s current or pre-existing medical conditions?' %}
+  {% set heading = 'About ' + data ['name-first-name'] + '\'s existing or pre-existing medical conditions?' %}
 {% else %}
-  {% set heading = 'About your current or pre-existing medical conditions?' %}
+  {% set heading = 'About your existing or pre-existing medical conditions?' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -44,7 +44,7 @@
               "name": "existing-medical-condition-details",
               "id": "existing-medical-condition-details",
               "label": {
-                "text": "Give a brief description of current and pre-existing medical conditions (optional)"
+                "text": "Give a brief description of any current and pre-existing medical conditions (optional)"
                 }
             }) }}
 
