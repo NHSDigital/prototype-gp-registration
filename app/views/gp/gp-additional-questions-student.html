@@ -34,8 +34,11 @@ Are you a university surgery? - GP registration service - NHS
           <form action="gp-additional-questions-nominated-pharmacy" method="post" autocomplete="off">
 
             <H2>Do you want to receive additional information from university students registering with your surgery?</H2>
-            <p><hint>This includes student ID number and details about their course</hint></p>
 
+            {{ hint({
+              "text": "This includes student ID number, details about their course and student accommodation address"
+
+            }) }}
 
 
             {{ radios({
