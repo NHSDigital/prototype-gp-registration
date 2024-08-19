@@ -9,7 +9,7 @@
   {% if (data['relation'] == "Carer") %}
     {% set heading = "Does " + data['name-first-name'] + " have any other carers the GP should know about?" %}
   {% else %}
-    {% set heading = "Does " + data['name-first-name'] + " have a carer??" %}
+    {% set heading = "Does " + data['name-first-name'] + " have a carer?" %}
   {% endif %}
 {% else %}
   {% set heading = 'Do you have a carer?' %}
