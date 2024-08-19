@@ -6,10 +6,10 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'What existing or pre-existing medical condition does ' + data ['name-first-name'] + ' have?' %}
+  {% set heading = 'What existing or pre-existing medical conditions does ' + data ['name-first-name'] + ' have?' %}
   {% set hintText = 'Select one or more' %}
 {% else %}
-  {% set heading = 'What existing or pre-existing medical condition do you have?' %}
+  {% set heading = 'What existing or pre-existing medical conditions do you have?' %}
   {% set hintText = 'Select one or more' %}
 {% endif %}
 
