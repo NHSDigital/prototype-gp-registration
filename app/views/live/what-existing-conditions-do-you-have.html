@@ -6,11 +6,11 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Does ' + data ['name-first-name'] + ' have any existing or pre-existing medical conditions?' %}
-  {% set hintText = 'Please provide as many details as possible about their existing conditions' %}
+  {% set heading = 'What existing or pre-existing medical condition does ' + data ['name-first-name'] + ' have?' %}
+  {% set hintText = 'Select one or more' %}
 {% else %}
-  {% set heading = 'Do you have any existing or pre-existing medical conditions?' %}
-  {% set hintText = 'Please provide as many details as possible about your existing conditions' %}
+  {% set heading = 'What existing or pre-existing medical condition do you have?' %}
+  {% set hintText = 'Select one or more' %}
 {% endif %}
 
 {% block pageTitle %}
