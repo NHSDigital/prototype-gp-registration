@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'About ' + data ['name-first-name'] + '\'s existing or pre-existing medical conditions?' %}
+  {% set heading = 'About ' + data ['name-first-name'] + '\'s existing or pre-existing medical conditions' %}
 {% else %}
-  {% set heading = 'About your existing or pre-existing medical conditions?' %}
+  {% set heading = 'About your existing or pre-existing medical conditions' %}
 {% endif %}
 
 {% block pageTitle %}
