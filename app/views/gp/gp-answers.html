@@ -149,6 +149,22 @@ Confirm details for your practice and complete registration - GP registration se
                 </dd>
               </div>
 
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Additional questions
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if (data['local-form'] === "Yes") %}
+                  Yes - {{ data['local-form-url'] }}
+                  {% else %}
+                  No
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="gp-additional-questions-local-form">Change<span class="nhsuk-u-visually-hidden">dispencing surgery</span></a>
+                </dd>
+              </div>
+
             </dl>
             <div class="nhsuk-inset-text">
               <span class="nhsuk-u-visually-hidden">Information: </span>

@@ -131,6 +131,26 @@
           </dd>
         </div>
 
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Additional questions
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+
+            {% if (data['local-form'] === "Yes") %}
+              Yes - {{ data['local-form-url'] }}
+            {% else %}
+              No
+            {% endif %}
+
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="/gp/gp-additional-questions-local-form">Change
+              <span class="nhsuk-u-visually-hidden">additional questions</span>
+            </a>
+          </dd>
+        </div>
+
       </dl>
     </form>
   </div>
