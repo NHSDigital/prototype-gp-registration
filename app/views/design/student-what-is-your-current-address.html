@@ -1,0 +1,87 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What is " + data['name-first-name'] + '\'s address when living at university?' %}
+{% else %}
+  {% set heading = 'What is your address when living at university?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "student-course-end-date",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="student-what-is-your-current-address-selection" method="post">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+              {{ input({
+                label: {
+                  "text": "Building and street (optional)"
+                "classes": "nhsuk-input--width-20",
+                "id": "student-address-line-1",
+                "name": "student-address-line-1",
+                "autocomplete": "address-line1",
+                "spellcheck": false,
+                value: data['student-address-line-1']
+            }) }}
+
+            {{ input({
+              label: {
+                "text": "Postcode"
+              },
+              "hint": {
+                "text": ""
+              },          
+              "classes": "nhsuk-input--width-10",
+              "id": "student-address-postcode",
+              "name": "student-address-postcode",
+              "autocomplete": "postal-code",
+              "spellcheck": false,
+              value: data['student-address-postcode']
+          }) }}
+
+          {% endcall %}
+
+          <!--<p><a href="what-is-your-current-address-manual" id="enter-address-manually-link">Enter the address manually</a></p>-->
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
