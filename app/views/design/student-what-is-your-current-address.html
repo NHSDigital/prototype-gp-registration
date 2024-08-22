@@ -6,7 +6,7 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "Where will " + data['name-first-name'] be living when at university?' %}
+  {% set heading = "Where will " + data['name-first-name'] + '\'s address when living at university?' %}
 {% else %}
   {% set heading = 'Where will you be living when at university?' %}
 {% endif %}
@@ -42,7 +42,11 @@
 
               {{ input({
                 label: {
-                  "text": "Building and street (optional)"
+                  "text": "Address line 1 (optional)"
+                },
+                "hint": {
+                  "text": "For example, 20 Finch Road"
+                },
                 "classes": "nhsuk-input--width-20",
                 "id": "student-address-line-1",
                 "name": "student-address-line-1",
