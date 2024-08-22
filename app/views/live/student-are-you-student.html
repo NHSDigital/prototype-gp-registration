@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Is ' + data['name-first-name'] + ' a student at university?' %}
+  {% set heading = 'Is ' + data['name-first-name'] + ' a student at a UK university?' %}
 {% else %}
-  {% set heading = 'Are you a student at university?' %}
+  {% set heading = 'Are you a student at a UK university?' %}
 {% endif %}
 
 {% block pageTitle %}
