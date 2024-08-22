@@ -8,7 +8,7 @@
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = ''+ data['name-first-name'] + '\'s previous address in the UK' %}
 {% else %}
-  {% set heading = 'University practices' %}
+  {% set heading = 'Registering university students' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -58,11 +58,11 @@
               }
             }) %}
 
-            <p>University practices typically receive a large number of registrations over a short period from students at the start of the academic year. If you are a university practice the service can ask students for additional information such as student ID number, details about their course and student accommodation address.</p>
+            <p>Some surgeries located on or near a university receive a large number of registrations over a short period from students at the start of the academic year. The service can ask students for additional information such as student ID number, details about their course and student accommodation address.</p>
             {% if (data['who-is-being-registered'] === "dependant") %}
             <h2 style="font-size: 1.5rem; padding-top: 0;">Does {{ data['name-first-name']}} have a previous address in the UK?</h2>
             {% else %}
-              <h2 style="font-size: 1.5rem; padding-top: 0;">Do you want to get additional information from university students registering at your practice?</h2>
+              <h2 style="font-size: 1.5rem; padding-top: 0;">Do you want to get additional information from university students registering at your surgery?</h2>
             {% endif %}
 
           {{ radios({
