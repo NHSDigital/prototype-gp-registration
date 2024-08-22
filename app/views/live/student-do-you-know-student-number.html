@@ -7,10 +7,10 @@
 
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = 'Does ' + data['name-first-name'] + '\'s have a student ID number?' %}
-  {% set hint1 = 'Student ID numbers are usually found on official documentation from the university.' %}
+  {% set hint1 = 'Student ID numbers can usually found on official documentation from the university' %}
 {% else %}
   {% set heading = 'Do you have a student ID number?' %}
-  {% set hint1 = 'Student ID numbers are usually found on official documentation from the university.' %}
+  {% set hint1 = 'Student ID numbers can usually found on official documentation from the university' %}
 {% endif %}
 
 {% block pageTitle %}
