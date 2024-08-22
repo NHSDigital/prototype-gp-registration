@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'What year does ' + data['name-first-name'] + '\'s course finish? (optional)' %}
+  {% set heading = 'What year does ' + data['name-first-name'] + '\'s course finish?' %}
 {% else %}
-  {% set heading = 'What year does your course finish? (optional)' %}
+  {% set heading = 'What year does your course finish?' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -45,14 +45,12 @@
               "classes": "nhsuk-u-margin-bottom-4"
             }) }}
 
-            {{ input({
-              "label": {
-              },
-                "classes": "nhsuk-input nhsuk-input--width-4",
-                "id": "student-course-end-date",
-                "name": "student-course-end-date",
-                "value": data['student-course-end-date']
-              }) }}
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="input-width-4">
+                Year (optional)
+              </label>
+              <input class="nhsuk-input nhsuk-input--width-4" id="input-width-4" name="test-width-4" type="text">
+            </div>
 
             {% endcall %}
 
