@@ -1,26 +1,46 @@
-<!-- Use this page as the index for your project -->
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
 
-<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+{% extends 'layout.html' %}
 
-<!-- Extends the layout from /views/layout.html -->
-{% extends 'layout-gp.html' %}
-<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = ''+ data['name-first-name'] + '\'s previous address in the UK' %}
+{% else %}
+  {% set heading = 'Your previous address in the UK' %}
+{% endif %}
 
-<!-- Set the page title -->
 {% block pageTitle %}
-Are you a university surgery? - GP registration service - NHS
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
 {% endblock %}
 
-<!-- For adding a breadcrumb -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
-{% block beforeContent %}{% endblock %}
+{% if (data['country-born'] === "None") %}
+  {% set link = 'where-were-you-born-place-outside-uk' %}
+{% else %}
+  {% set link = 'where-were-you-born-place-uk' %}
+{% endif %}
 
-<!-- For adding a Go back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
-{% block outerContent %}{% endblock %}
+<!--{% if (data['date-of-birth'][2] >= 2005) %}
+  {% set immuniseLink = 'No~/live/are-you-immunised' %}
+{% else %}
+  {% set immuniseLink = 'No~/live/what-is-your-previous-address' %}
+{% endif %}-->
 
-<!-- For adding page content -->
-<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% if (data['under-18-years'] === 'true') %}
+  {% set immuniseLink = 'No~/live/are-you-immunised' %}
+{% else %}
+  {% set immuniseLink = 'No~/live/do-you-have-existing-conditions' %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
 {% block content %}
 
       <div class="nhsuk-grid-row">
@@ -74,4 +94,8 @@ Are you a university surgery? - GP registration service - NHS
 
 {% include 'live/includes/devmode.html' %}
 
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
 {% endblock %}
