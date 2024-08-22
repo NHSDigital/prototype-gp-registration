@@ -26,57 +26,52 @@ Are you a university surgery? - GP registration service - NHS
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
+          <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            <p>This is the address of where you were living before your current address. Even if this was temporary accommodation. Your new GP surgery will use this information to see if you have an existing medical record.</p>
+            {% if (data['who-is-being-registered'] === "dependant") %}
+            <h2 style="font-size: 1.5rem; padding-top: 0;">Does {{ data['name-first-name']}} have a previous address in the UK?</h2>
+            {% else %}
+              <h2 style="font-size: 1.5rem; padding-top: 0;">Do you have a previous address in the UK?</h2>
+            {% endif %}
+
+          {{ radios({
+            "idPrefix": "have-previous-uk-address",
+            "name": "have-previous-uk-address",
+            "items": [
+              {
+                "value": "Yes~/live/what-is-your-previous-address-manual",
+                "text": "Yes",
+                "checked": checked("have-previous-uk-address", "Yes")
+              },
+              {
+                "value": immuniseLink,
+                "text": "No",
+                "checked": checked("have-previous-uk-address", "No")
+              }
+            ]
           }) }}
 
-          <form action="gp-additional-questions-nominated-pharmacy" method="post" autocomplete="off">
+         {% endcall %}
 
-            <H2>Do you want to receive additional information from university students registering with your surgery?</H2>
-
-            {{ hint({
-              "text": "This includes student ID number, details about their course and student accommodation address"
-
-            }) }}
-
-
-            {{ radios({
-              "idPrefix": "student",
-              "name": "student",
-              "items": [
-                {
-                  "value": "Yes",
-                  "text": "Yes",
-                  checked: checked("student", "Yes")
-                },
-                {
-                  "value": "No",
-                  "text": "No",
-                  checked: checked("student", "No")
-                }
-              ]
-            }) }}
-            {{ details({
-              "text": "Why are you asking this?",
-              "HTML": "<p>A university campus or student halls of residence is within your surgery's catchment area.</p>"
-            }) }}
-
-
-            {{ button({
-              "text": "Continue"
-            }) }}
+          {{ button({
+            "text": "Continue"
+          }) }}
 
           </form>
         </div>
       </div>
 
+{% include 'live/includes/devmode.html' %}
 
-    <!-- End of content -->
-
-  </div>
-</div>
-{% block pageScripts %}
-
-{% endblock %}
 {% endblock %}
