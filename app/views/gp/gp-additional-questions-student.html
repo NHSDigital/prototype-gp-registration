@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Are you a university surgery? - GP registration service - NHS
+Registering university students - GP registration service - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -33,13 +33,10 @@ Are you a university surgery? - GP registration service - NHS
 
           <form action="gp-additional-questions-nominated-pharmacy" method="post" autocomplete="off">
 
-            <H2>Do you want to receive additional information from university students registering with your surgery?</H2>
+            <H2>Registering university students</H2>
+            <p>If you register a large number of students each year you can choose to ask for extra information such as student ID number, details about their course and student accommodation address.</p>
 
-            {{ hint({
-              "text": "This includes student ID number, details about their course and student accommodation address"
-
-            }) }}
-
+            <h2 style="font-size: 1.5rem; padding-top: 0;">Do you want to ask university students for extra information?</h2>
 
             {{ radios({
               "idPrefix": "student",
@@ -57,11 +54,6 @@ Are you a university surgery? - GP registration service - NHS
                 }
               ]
             }) }}
-            {{ details({
-              "text": "Why are you asking this?",
-              "HTML": "<p>A university campus or student halls of residence is within your surgery's catchment area.</p>"
-            }) }}
-
 
             {{ button({
               "text": "Continue"
