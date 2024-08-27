@@ -114,20 +114,7 @@ Recently moved{% set serviceHome = '/live/start' %}
             </dd>
           </div>
 
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Room number
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {{ data['student-room-number'] or '36' }}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
-            </dd>
-          </div>
-
           {% else %}
-          Room {{ data['student-room-number'] }},
           {{ data['student-address-line-1'] }}<br />
           {% if data['student-address-line-2'] %}
             {{ data['student-address-line-2'] }}<br />
@@ -142,6 +129,18 @@ Recently moved{% set serviceHome = '/live/start' %}
         </dd>
       </div>
           {% endif %}
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Room number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['student-room-number']}}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
+            </dd>
+          </div>
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
