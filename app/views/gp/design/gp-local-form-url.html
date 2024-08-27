@@ -1,0 +1,88 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-gp.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Additional questions URL - GP registration service - NHS
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+          text: "Go back",
+          href: "javascript:history.go(-1)"
+        }) }}
+
+        <form action="gp-branch" method="post" autocomplete="off">
+
+
+          {% call fieldset({
+              legend: {
+                "text": "Additional questions URL",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+          <p>This is where patients will be sent, if they choose to answer your additional questions, from the registration complete page.</p>
+
+          <div class="nhsuk-inset-text">
+            <span class="nhsuk-u-visually-hidden">Information: </span>
+            <p>This URL will be verified by the onboarding team before being approved.</p>
+          </div>
+
+          {{ input({
+                    label: {
+                      "html": 'Enter the URL of your form'
+                    },
+                      "hint": {
+                      "text": "For example, 'www.nhs.uk'"
+                    },
+                    "classes": "nhsuk-input--width-20",
+                    "id": "local-form-url",
+                    "name": "local-form-url"
+                  }) }}
+
+
+
+          {% endcall %}
+
+
+          {{ button({
+              "text": "Continue"
+            }) }}
+
+        </form>
+
+
+
+      </div>
+    </div>
+
+
+<!-- End of content -->
+
+</div>
+</div>
+{% block pageScripts %}
+
+{% endblock %}
+{% endblock %}
