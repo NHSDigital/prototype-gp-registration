@@ -8,11 +8,11 @@
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = "What are the details of " + data ['name-first-name'] + "'s emergency contact?" %}
   {% set relationshipLabel = "Relationship to the person being registered" %}
-  {% set kinLabel = "This person is their next of kin" %}
+  {% set kinLabel = "This is their next of kin" %}
 {% else %}
   {% set heading = 'What are the details of your emergency contact?' %}
   {% set relationshipLabel = "Relationship to you" %}
-  {% set kinLabel = "This person is my next of kin" %}
+  {% set kinLabel = "This is my next of kin" %}
 {% endif %}
 
 {% block pageTitle %}
