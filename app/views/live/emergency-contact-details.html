@@ -7,7 +7,7 @@
 
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = "What are the details of " + data ['name-first-name'] + "'s emergency contact?" %}
-  {% set relationshipLabel = "Relationship to them" %}
+  {% set relationshipLabel = "Relationship to the person registering" %}
   {% set kinLabel = "This person is their next of kin" %}
 {% else %}
   {% set heading = 'What are the details of your emergency contact?' %}
@@ -86,7 +86,7 @@
                   "text": "Contact telephone number"
                 },
                   "hint": {
-                  "text": "For international number include the country code"
+                  "text": "For international numbers include the country code"
                 },
                 "classes": "nhsuk-input--width-20",
                 "id": "ec-contact-tel",
@@ -96,7 +96,7 @@
 
             {% endcall %}
 
-            <p class="nhsuk-u-padding-bottom-4">By continuing you are confirming that is ok to contact this person in an emergency.</p>
+            <p class="nhsuk-u-padding-bottom-4">By continuing you are confirming that your GP surgery can contact this person in an emergency.</p>
 
             {{ button({
               "text": "Continue"
