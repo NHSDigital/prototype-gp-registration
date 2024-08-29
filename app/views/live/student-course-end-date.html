@@ -56,6 +56,11 @@
 
             {% endcall %}
 
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>This information will be used by the GP surgery to confirm when you are no longer a student.</p>"
+            }) }}
+
             {{ button({
               "text": "Continue"
             }) }}
