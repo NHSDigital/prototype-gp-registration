@@ -1,0 +1,41 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Terms and conditions - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1>Register with a GP surgery using a paper form</h1>
+
+  </div>
+</div>
+
+<article>
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <p>Version 1.0, 1 October 2024</p>
+
+      <p>Complete the paper form to register with a GP.</p>
+      <p>Print and fill in the form and return it to the practice you want to register with.</p>  
+      <p>You can also get a copy of this form from the practice.</p>
+      <p>If you would like to register with a GP online, visit <a href="https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/">How to register with a GP surgery</a>.</p>
+
+      <h2>Download the paper form</h2>
+      <p>Download the <a href="">Register with a GP surgery paper form</a> (PDF, 199 KB, 8 pages) and take it to the surgery you want to join.</p>
+
+    </div>
+  </div>
+</article>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
