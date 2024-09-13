@@ -31,14 +31,12 @@
             {% if (data['who-is-being-registered'] == "dependant") %}
 
             {% set languageHtml %}
-              {{ input({
-                id: "other",
-                name: "other",
-                classes: "nhsuk-u-width-two-thirds",
-                label: {
-                  text: "Language"
-                }
-              }) }}
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="country-container">
+                Language
+              </label>
+              <div id="country-container" name="country-visited"></div>
+            </div>
             {% endset %}
 
             {{ radios({
