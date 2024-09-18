@@ -1,87 +1,37 @@
-<!-- Use this page as the index for your project -->
 
-<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-
-<!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
-<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
 
-<!-- Set the page title -->
+{% from 'button/macro.njk' import button %}
+{% from 'back-link/macro.njk' import backLink %}
+
 {% block pageTitle %}
-  GP Registration Prototypes
+We cannot find that page - Register with a GP Surgery - NHS
 {% endblock %}
 
-<!-- For adding a breadcrumb -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
-{% block beforeContent %}{% endblock %}
-
-<!-- For adding a Go back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
-{% block outerContent %}{% endblock %}
-
-<!-- For adding page content -->
-<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
-  <section class="nhsuk-section">
-    <div class="nhsuk-width-container">
-      <div class="nhsuk-grid-row">
-        <div class="nhsuk-grid-column-two-thirds">
 
-          {{ backLink({
-            text: "Go back",
-            href: "javascript:history.go(-1)"
-          }) }}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
 
-            {{ hint({
-              "text": "Step 2 of 3 - Personal Details",
-              "classes": "nhsuk-u-margin-bottom-2"
-            }) }}
+      <h1 class="nhsuk-heading-l">
+          We cannot find that page
+      </h1>
 
+      <p class="nhsuk-body">This can happen if:</p>
 
-          <form action="how-can-we-contact-you" method="post" autocomplete="off">
+      <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>you type a web address and it has a mistake in it</li>
+          <li>you copy and paste only part of a full web address</li>
+          <li>there is a technical problem</li>
+      </ul>
 
+      <p class="nhsuk-body">Check and make sure the web address you typed or pasted is correct and is the full address.</p>
 
+      <p class="nhsuk-body">If the web address is correct, or you selected a link on a page that brought you here, there may be a technical problem. Please try again later.</p>
 
-                {% call fieldset({
-                  legend: {
-                    text: "Select your address",
-                    classes: "nhsuk-fieldset__legend--l",
-                    isPageHeading: true
-                  }
-                }) %}
-
-                <div class="nhsuk-hint" id="contact-hint">
-                  <p>0 addresses found for <strong>LS17 NP0</strong> <strong>{{ data['find-current-address'] }}</strong></p>
-                </div>
-
-
-                    {% endcall %}
-
-
-                <p>
-                  <a href="what-is-your-current-address-manual" id="enter-address-manually-link">Enter the address manually</a>
-                </p>
-
-
-              {{ button({
-                  "text": "Try and different postcode"
-              }) }}
-
-
-
-
-          </form>
-        </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- End of content -->
 
   </div>
 </div>
-{% block pageScripts %}
 
-{% endblock %}
 
 {% endblock %}
