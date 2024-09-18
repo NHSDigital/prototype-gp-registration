@@ -33,14 +33,12 @@
             {% include 'live/includes/step.html' %}
 
             {% set languageHtml %}
-              {{ input({
-                id: "interpreter-language-other",
-                name: "interpreter-language-other",
-                classes: "nhsuk-u-width-two-thirds",
-                label: {
-                  text: "Language"
-                }
-              }) }}
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="country-container">
+                Language
+              </label>
+              <div id="country-container" name="country-visited"></div>
+            </div>
             {% endset %}
 
             {{ radios({
@@ -54,111 +52,106 @@
                 }
               },
               "items": [
-                {
-                  "value": "British Sign Language",
-                  "text": "British Sign Language",
-                  checked: checked("interpreter-language", "British Sign Language")
-                },
-                {
-                  "value": "Arabic",
-                  "text": "Arabic",
-                  checked: checked("interpreter-language", "Arabic")
-                },
-                {
-                  "value": "Bengali - Chatgaya",
-                  "text": "Bengali - Chatgaya",
-                  checked: checked("interpreter-language", "Bengali - Chatgaya")
-                },
-                {
-                  "value": "Bengali - Sylheti",
-                  "text": "Bengali - Sylheti",
-                  checked: checked("interpreter-language", "Bengali - Sylheti")
-                },
-                {
-                  "value": "Chinese - Mandarin",
-                  "text": "Chinese - Mandarin",
-                  checked: checked("interpreter-language", "Chinese - Mandarin")
-                },
-                {
-                  "value": "Chinese - Cantonese",
-                  "text": "Chinese - Cantonese",
-                  checked: checked("interpreter-language", "Chinese - Cantonese")
-                },
-                {
-                  "value": "Farsi",
-                  "text": "Farsi",
-                  checked: checked("interpreter-language", "Farsi")
-                },
-                {
-                  "value": "French",
-                  "text": "French",
-                  checked: checked("interpreter-language", "French")
-                },
-                {
-                  "value": "Gaelic",
-                  "text": "Gaelic",
-                  checked: checked("interpreter-language", "Gaelic")
-                },
-                {
-                  "value": "German",
-                  "text": "German",
-                  checked: checked("interpreter-language", "German")
-                },
-                {
-                  "value": "Gujarati",
-                  "text": "Gujarati",
-                  checked: checked("interpreter-language", "Gujarati")
-                },
-                {
-                  "value": "Italian",
-                  "text": "Italian",
-                  checked: checked("interpreter-language", "Italian")
-                },
-                {
-                  "value": "Lithuanian",
-                  "text": "Lithuanian",
-                  checked: checked("interpreter-language", "Lithuanian")
-                },
-                {
-                  "value": "Polish",
-                  "text": "Polish",
-                  checked: checked("interpreter-language", "Polish")
-                },
-                {
-                  "value": "Portuguese",
-                  "text": "Portuguese",
-                  checked: checked("interpreter-language", "Portuguese")
-                },
-                {
-                  "value": "Punjabi",
-                  "text": "Punjabi",
-                  checked: checked("interpreter-language", "Punjabi")
-                },
-                {
-                  "value": "Somali",
-                  "text": "Somali",
-                  checked: checked("interpreter-language", "Somali")
-                },
-                {
-                  "value": "Spanish",
-                  "text": "Spanish",
-                  checked: checked("interpreter-language", "Spanish")
-                },
-                {
-                  "value": "Tamil",
-                  "text": "Tamil",
-                  checked: checked("interpreter-language", "Tamil")
-                },
-                {
-                  "value": "Turkish",
-                  "text": "Turkish",
-                  checked: checked("interpreter-language", "Turkish")
-                },
-                {
-                  "value": "Urdu",
-                  "text": "Urdu",
-                  checked: checked("interpreter-language", "Urdu")
-                },
+              {
+                "value": "Arabic",
+                "text": "Arabic",
+                checked: checked("language", "Arabic")
+              },
+              {
+                "value": "Bengali - Sylheti",
+                "text": "Bengali - Sylheti",
+                checked: checked("language", "Bengali - Sylheti")
+              },
+              {
+                "value": "British Sign Language",
+                "text": "British Sign Language",
+                checked: checked("language", "British Sign Language")
+              },
+              {
+                "value": "Cantonese",
+                "text": "Cantonese",
+                checked: checked("language", "Cantonese")
+              },
+              {
+                "value": "Chinese - Cantonese",
+                "text": "Chinese - Cantonese",
+                checked: checked("language", "Chinese - Cantonese")
+              },
+              {
+                "value": "Chinese - Mandarin",
+                "text": "Chinese - Mandarin",
+                checked: checked("language", "Chinese - Mandarin")
+              },
+              {
+                "value": "Chinese - Simplified",
+                "text": "Chinese - Simplified",
+                checked: checked("language", "Chinese - Simplified")
+              },
+              {
+                "value": "Farsi",
+                "text": "Farsi",
+                checked: checked("language", "Farsi")
+              },
+              {
+                "value": "Gujarati",
+                "text": "Gujarati",
+                checked: checked("language", "Gujarati")
+              },
+              {
+                "value": "Kurdish sorani",
+                "text": "Kurdish sorani",
+                checked: checked("language", "Kurdish sorani")
+              },
+              {
+                "value": "Pashto",
+                "text": "Pashto",
+                checked: checked("language", "Pashto")
+              },
+              {
+                "value": "Polish",
+                "text": "Polish",
+                checked: checked("language", "Polish")
+              },
+              {
+                "value": "Portuguese",
+                "text": "Portuguese",
+                checked: checked("language", "Portuguese")
+              },
+              {
+                "value": "Punjabi",
+                "text": "Punjabi",
+                checked: checked("language", "Punjabi")
+              },
+              {
+                "value": "Romanian",
+                "text": "Romanian",
+                checked: checked("language", "Romanian")
+              },
+              {
+                "value": "Spanish",
+                "text": "Spanish",
+                checked: checked("language", "Spanish")
+              },
+              {
+                "value": "Tamil",
+                "text": "Tamil",
+                checked: checked("language", "Tamil")
+              },
+              {
+                "value": "Turkish",
+                "text": "Turkish",
+                checked: checked("language", "Turkish")
+              },
+              {
+                "value": "Ukrainian",
+                "text": "Ukrainian",
+                checked: checked("language", "Ukrainian")
+              },
+              {
+                "value": "Urdu",
+                "text": "Urdu",
+                checked: checked("language", "Urdu")
+              },
                 {
                   divider: "or"
                 },
@@ -180,6 +173,366 @@
         </form>
       </div>
      </div>
+
+     <style>
+      .autocomplete__wrapper {
+        position: relative;
+        /*max-width: 35em;*/
+        margin-bottom: 20px;
+        text-transform: capitalize;
+      }
+    
+      @media (min-width: 40.0625em) {
+        .autocomplete__wrapper {
+          margin-bottom: 30px;
+        }
+      }
+    
+      .autocomplete__hint, .autocomplete__input {
+        -webkit-appearance: none;
+        border: 2px solid rgb(76, 98, 114);
+        border-radius: 0;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        margin-bottom: 0;
+        width: 100%;
+        text-transform: capitalize;
+      }
+    
+      .autocomplete__input {
+        background-color: white;
+        position: relative;
+        text-transform: capitalize;
+      }
+    
+      @media (min-width: 40.0625em) {
+        .autocomplete__input {
+          width: 66.66% !important;
+        }
+      }
+    
+      .autocomplete__hint {
+        color: #b1b4b6;
+        position: absolute;
+      }
+    
+      .autocomplete__input--default {
+        padding: 5px;
+        line-height: 1.5;
+      }
+    
+      .autocomplete__input--focused {
+        outline: 3px solid #fd0;
+        outline-offset: 0;
+        box-shadow: inset 0 0 0 2px;
+      }
+    
+      .autocomplete__input--show-all-values {
+        padding: 5px 34px 5px 5px;
+        cursor: pointer;
+      }
+    
+      .autocomplete__dropdown-arrow-down {
+        z-index: -1;
+        display: inline-block;
+        position: absolute;
+        right: 8px;
+        width: 24px;
+        height: 24px;
+        top: 10px;
+      }
+    
+      .autocomplete__menu {
+        background-color: #fff;
+        border: 2px solid #0b0c0c;
+        border-top: 0;
+        color: #0b0c0c;
+        margin: 0;
+        max-height: 342px;
+        overflow-x: hidden;
+        padding: 0;
+        width: 100%;
+        width: calc(100% - 4px);
+      }
+    
+      .autocomplete__menu--visible {
+        display: block;
+      }
+    
+      .autocomplete__menu--hidden {
+        display: none;
+      }
+    
+      .autocomplete__menu--overlay {
+        box-shadow: rgba(0, 0, 0, 0.256863) 0 2px 6px;
+        left: 0;
+        position: absolute;
+        top: 100%;
+        z-index: 100;
+      }
+    
+      .autocomplete__menu--inline {
+        position: relative;
+      }
+    
+      .autocomplete__option {
+        border-bottom: solid #b1b4b6;
+        border-width: 1px 0;
+        cursor: pointer;
+        display: block;
+        position: relative;
+      }
+    
+      .autocomplete__option > * {
+        pointer-events: none;
+      }
+    
+      .autocomplete__option:first-of-type {
+        border-top-width: 0;
+      }
+    
+      .autocomplete__option:last-of-type {
+        border-bottom-width: 0;
+      }
+    
+      .autocomplete__option--odd {
+        background-color: #fafafa;
+      }
+    
+      .autocomplete__option--focused, .autocomplete__option:hover {
+        background-color: #1d70b8;
+        border-color: #1d70b8;
+        color: #fff;
+        outline: 0;
+      }
+    
+      .autocomplete__option--no-results {
+        background-color: #fafafa;
+        color: #646b6f;
+        cursor: not-allowed;
+      }
+    
+      .autocomplete__hint, .autocomplete__input, .autocomplete__option {
+        font-size: 16px;
+        /*line-height: 1.25;*/
+      }
+    
+      .autocomplete__hint, .autocomplete__option {
+        padding: 5px;
+      }
+    
+      @media (min-width: 641px) {
+        .autocomplete__hint, .autocomplete__input, .autocomplete__option {
+          font-size: 19px;
+          line-height: 1.31579;
+        }
+      }
+    </style>
+    <script type="text/javascript" src="/js/accessible-autocomplete.min.js"></script>
+    <script>
+      const countries = [
+      "Afar",
+      "Abkhazian",
+      "Avestan",
+      "Afrikaans",
+      "Akan",
+      "Amharic",
+      "Aragonese",
+      "Arabic",
+      "Assamese",
+      "Avaric",
+      "Aymara",
+      "Azerbaijani",
+      "Bashkir",
+      "Belarusian",
+      "Bulgarian",
+      "Bihari languages",
+      "Bislama",
+      "Bambara",
+      "Bengali",
+      "Tibetan",
+      "Breton",
+      "Bosnian",
+      "Catalan; Valencian",
+      "Chechen",
+      "Chamorro",
+      "Corsican",
+      "Cree",
+      "Czech",
+      "Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic",
+      "Chuvash",
+      "Welsh",
+      "Danish",
+      "German",
+      "Divehi; Dhivehi; Maldivian",
+      "Dzongkha",
+      "Ewe",
+      "Greek, Modern (1453-)",
+      "English",
+      "Esperanto",
+      "Spanish; Castilian",
+      "Estonian",
+      "Basque",
+      "Persian",
+      "Fulah",
+      "Finnish",
+      "Fijian",
+      "Faroese",
+      "French",
+      "Western Frisian",
+      "Irish",
+      "Gaelic; Scottish Gaelic",
+      "Galician",
+      "Guarani",
+      "Gujarati",
+      "Manx",
+      "Hausa",
+      "Hebrew",
+      "Hindi",
+      "Hiri Motu",
+      "Croatian",
+      "Haitian; Haitian Creole",
+      "Hungarian",
+      "Armenian",
+      "Herero",
+      "Interlingua (International Auxiliary Language Association)",
+      "Indonesian",
+      "Interlingue; Occidental",
+      "Igbo",
+      "Sichuan Yi; Nuosu",
+      "Inupiaq",
+      "Ido",
+      "Icelandic",
+      "Italian",
+      "Inuktitut",
+      "Japanese",
+      "Javanese",
+      "Georgian",
+      "Kongo",
+      "Kikuyu; Gikuyu",
+      "Kuanyama; Kwanyama",
+      "Kazakh",
+      "Kalaallisut; Greenlandic",
+      "Central Khmer",
+      "Kannada",
+      "Korean",
+      "Kanuri",
+      "Kashmiri",
+      "Kurdish",
+      "Komi",
+      "Cornish",
+      "Kirghiz; Kyrgyz",
+      "Latin",
+      "Luxembourgish; Letzebuergesch",
+      "Ganda",
+      "Limburgan; Limburger; Limburgish",
+      "Lingala",
+      "Lao",
+      "Lithuanian",
+      "Luba-Katanga",
+      "Latvian",
+      "Malagasy",
+      "Marshallese",
+      "Maori",
+      "Macedonian",
+      "Malayalam",
+      "Mongolian",
+      "Marathi",
+      "Malay",
+      "Maltese",
+      "Burmese",
+      "Nauru",
+      "Bokmål, Norwegian; Norwegian Bokmål",
+      "Ndebele, North; North Ndebele",
+      "Nepali",
+      "Ndonga",
+      "Dutch; Flemish",
+      "Norwegian Nynorsk; Nynorsk, Norwegian",
+      "Norwegian",
+      "Ndebele, South; South Ndebele",
+      "Navajo; Navaho",
+      "Chichewa; Chewa; Nyanja",
+      "Occitan (post 1500)",
+      "Ojibwa",
+      "Oromo",
+      "Oriya",
+      "Ossetian; Ossetic",
+      "Panjabi; Punjabi",
+      "Pali",
+      "Polish",
+      "Pushto; Pashto",
+      "Portuguese",
+      "Quechua",
+      "Romansh",
+      "Rundi",
+      "Romanian; Moldavian; Moldovan",
+      "Russian",
+      "Kinyarwanda",
+      "Sanskrit",
+      "Sardinian",
+      "Sindhi",
+      "Northern Sami",
+      "Sango",
+      "Sinhala; Sinhalese",
+      "Slovak",
+      "Slovenian",
+      "Samoan",
+      "Shona",
+      "Somali",
+      "Albanian",
+      "Serbian",
+      "Swati",
+      "Sotho, Southern",
+      "Sundanese",
+      "Swedish",
+      "Swahili",
+      "Tamil",
+      "Telugu",
+      "Tajik",
+      "Thai",
+      "Tigrinya",
+      "Turkmen",
+      "Tagalog",
+      "Tswana",
+      "Tonga (Tonga Islands)",
+      "Turkish",
+      "Tsonga",
+      "Tatar",
+      "Twi",
+      "Tahitian",
+      "Uighur; Uyghur",
+      "Ukrainian",
+      "Urdu",
+      "Uzbek",
+      "Venda",
+      "Vietnamese",
+      "Volapük",
+      "Walloon",
+      "Wolof",
+      "Xhosa",
+      "Yiddish",
+      "Yoruba",
+      "Zhuang; Chuang",
+      "Chinese",
+      "Zulu"
+    ]
+    
+      accessibleAutocomplete({
+        autoselect: false,
+        element: document.querySelector('#country-container'),
+        id: 'country-born',
+        name: 'country-born',
+        source: countries,
+        defaultValue: "{{ data['country-born'] }}",
+        displayMenu: 'overlay',
+        minLength: 2,
+        tNoResults: function() {
+          return "Other"
+        }
+      });
+    </script>
+    
 
 {% include 'live/includes/devmode.html' %}
 
