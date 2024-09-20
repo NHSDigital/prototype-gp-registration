@@ -1,0 +1,131 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you have any mental health conditions - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+           {{ hint({
+              "text": "Health information",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <h1 class="nhsuk-heading-l">Has {{ data ['name-first-name'] }} had all their routine vaccinations?</h1>
+
+            {% call fieldset({
+              legend: {
+                text: "",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            <div class="nhsuk-inset-text">
+              <span class="nhsuk-u-visually-hidden">Information: </span>
+            
+              <p>You can report any suspected side effect to the <a href="https://yellowcard.mhra.gov.uk/" title="External website">UK safety scheme</a>.</p>
+            </div>
+            
+            {{ radios({
+              "idPrefix": "has-mental-health-conditions",
+              "name": "has-mental-health-conditions",
+              "items": [
+                {
+                  "value": "Yes~/design/mental-health-conditions-details",
+                  "text": "Yes",
+                  checked: checked("has-mental-health-conditions", "Yes")
+                },
+                {
+                  "value": "No~/design/do-you-have-existing-conditions",
+                  "text": "No",
+                  checked: checked("has-mental-health-conditions", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say~/design/do-you-have-existing-conditions",
+                  "text": "Prefer not to say",
+                  checked: checked("has-mental-health-conditions", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+            {% else %}
+
+            {% call fieldset({
+              legend: {
+                text: "Have you had all your routine vaccinations?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            <div class="nhsuk-inset-text">
+              <span class="nhsuk-u-visually-hidden">Information: </span>
+            
+              <p>You can report any suspected side effect to the <a href="https://yellowcard.mhra.gov.uk/" title="External website">UK safety scheme</a>.</p>
+            </div>
+
+            {{ radios({
+              "idPrefix": "has-mental-health-conditions",
+              "name": "has-mental-health-conditions",
+              "items": [
+                {
+                  "value": "Yes~/design/mental-health-conditions-details",
+                  "text": "Yes",
+                  checked: checked("has-mental-health-conditions", "Yes")
+                },
+                {
+                  "value": "No~/design/do-you-have-existing-conditions",
+                  "text": "No",
+                  checked: checked("has-mental-health-conditions", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say~/design/do-you-have-existing-conditions",
+                  "text": "Prefer not to say",
+                  checked: checked("has-mental-health-conditions", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+            {% endif %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}
