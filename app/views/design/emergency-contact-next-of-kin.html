@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Does ' + data['name-first-name'] + ' have a contact in case of emergency?' %}
+  {% set heading = 'Is ' + data['ec-full-name'] + ' also ' + data['name-first-name'] + '\'s next of kin?' %}
 {% else %}
-  {% set heading = 'Do you have an emergency contact?' %}
+{% set heading = 'Is ' + data['ec-full-name'] + ' also your next of kin?' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -41,7 +41,7 @@
             }) %}
 
             {{ hint({
-              "text": "This can be someone like a family member, friend or support worker.",
+              "text": "If you become seriously ill in hospital and unable to communicate, hospital staff will keep your next of kin up to date on your progress.",
               "classes": "nhsuk-u-margin-bottom-4"
             }) }}
 
@@ -49,18 +49,18 @@
             {% if (data['registering-first-time'] === "Yes") %}
 
             {{ radios({
-               "idPrefix": "emergency-contact",
-               "name": "emergency-contact",
+               "idPrefix": "emergency-contact-next-of-kin",
+               "name": "emergency-contact-next-of-kin",
                "items": [
                  {
-                   "value": "Yes~emergency-contact-details",
+                   "value": "Yes~recently-move-to-the-uk",
                    "text": "Yes",
-                   "checked": checked("emergency-contact", "Yes")
+                   "checked": checked("emergency-contact-next-of-kin", "Yes")
                  },
                  {
-                   "value": "No~recently-move-to-the-uk",
+                   "value": "No~do-you-have-next-of-kin",
                    "text": "No",
-                   "checked": checked("emergency-contact", "No")
+                   "checked": checked("emergency-contact-next-of-kin", "No")
                  }
                ]
              }) }}
@@ -68,18 +68,18 @@
              {% else %}
  
              {{ radios({
-               "idPrefix": "emergency-contact",
-               "name": "emergency-contact",
+               "idPrefix": "emergency-contact-next-of-kin",
+               "name": "emergency-contact-next-of-kin",
                "items": [
                  {
-                   "value": "Yes~emergency-contact-details",
+                   "value": "Yes~are-you-returning-from-overseas",
                    "text": "Yes",
-                   "checked": checked("emergency-contact", "Yes")
+                   "checked": checked("emergency-contact-next-of-kin", "Yes")
                  },
                  {
-                   "value": "No~are-you-returning-from-overseas",
+                   "value": "No~do-you-have-next-of-kin",
                    "text": "No",
-                   "checked": checked("emergency-contact", "No")
+                   "checked": checked("emergency-contact-next-of-kin", "No")
                  }
                ]
              }) }}

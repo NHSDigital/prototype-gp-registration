@@ -1,0 +1,132 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+{% set heading = 'What is' + data['name-first-name'] + '\'s relationship with ' + data['ec-full-name'] + '?' %}
+{% else %}
+  {% set heading = 'What is your relationship with ' + data['ec-full-name'] + '?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="emergency-contact-next-of-kin" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {{ radios({
+              "idPrefix": "ec-relationship",
+              "name": "ec-relationship",
+              "fieldset": {
+                "legend": {
+                  "text": heading,
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "items": [
+              {
+                "value": "Spouse",
+                "text": "Spouse",
+                checked: checked("ec-relationship", "Spouse")
+              },
+              {
+                "value": "Partner",
+                "text": "Partner",
+                checked: checked("ec-relationship", "Partner")
+              },
+              {
+                "value": "Parent",
+                "text": "Parent",
+                checked: checked("ec-relationship", "Parent")
+              },
+              {
+                "value": "Guardian",
+                "text": "Guardian",
+                checked: checked("ec-relationship", "Guardian")
+              },
+              {
+                "value": "Carer",
+                "text": "Carer",
+                checked: checked("ec-relationship", "Carer")
+              },
+              {
+                "value": "Foster parent",
+                "text": "Foster parent",
+                checked: checked("ec-relationship", "Foster parent")
+              },
+              {
+                "value": "Step parent",
+                "text": "Step parent",
+                checked: checked("ec-relationship", "Step parent")
+              },
+              {
+                "value": "Polygamous partner",
+                "text": "Polygamous partner",
+                checked: checked("ec-relationship", "Polygamous partner")
+              },
+              {
+                "value": "Child",
+                "text": "Child",
+                checked: checked("ec-relationship", "Child")
+              },
+              {
+                "value": "Brother or Sister",
+                "text": "Brother or Sister",
+                checked: checked("ec-relationship", "Brother or Sister")
+              },
+              {
+                "value": "Relative",
+                "text": "Relative",
+                checked: checked("ec-relationship", "Relative")
+              },
+              {
+                "value": "Other",
+                "text": "Other",
+                checked: checked("ec-relationship", "Other")
+              },
+                {
+                  divider: "or"
+                },
+                {
+                  "value": "Prefer not to say",
+                "text": "Prefer not to say",
+                checked: checked("ec-relationship", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+      </div>
+     </div>
+    
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

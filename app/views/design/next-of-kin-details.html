@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'What are the details of' + data['name-first-name'] + '\'s emergency contact?' %}
+  {% set heading = 'What are the details of' + data['name-first-name'] + '\'s next of kin?' %}
 {% else %}
-  {% set heading = 'What are the details of your emergency contact?' %}
+  {% set heading = 'What are the details of your next of kin?' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -28,8 +28,11 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="emergency-contact-relationship" method="post" autocomplete="off">
-
+          {% if (data['registering-first-time'] === "Yes") %}
+          <form action="recently-move-to-the-uk" method="post" autocomplete="off">
+          {% else %}
+          <form action="are-you-returning-from-overseas" method="post" autocomplete="off">
+          {% endif %}
 
             {% include 'live/includes/step.html' %}
 
@@ -46,9 +49,9 @@
                 "text": "Full name"
               },
               "classes": "nhsuk-u-width-two-thirds",
-              "id": "ec-full-name",
-              "name": "ec-full-name",
-              value: data['ec-full-name']
+              "id": "nok-full-name",
+              "name": "nok-full-name",
+              value: data['nok-full-name']
             }) }}
 
               {{ input({
@@ -59,9 +62,9 @@
                   "text": "For international number include the country code"
                 },
                 "classes": "nhsuk-input--width-10",
-                "id": "ec-contact-tel",
-                "name": "ec-contact-tel",
-                value: data['ec-contact-tel']
+                "id": "nok-contact-tel",
+                "name": "nok-contact-tel",
+                value: data['nok-contact-tel']
               }) }}
 
             {% endcall %}
