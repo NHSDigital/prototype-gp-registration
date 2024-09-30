@@ -8,7 +8,7 @@
 {% if (data['who-is-being-registered'] === "dependant") %}
 {% set heading = 'What is the relationship of ' + data['name-first-name'] + '\'s emergency contact to them?' + data['ec-full-name'] + '?' %}
 {% else %}
-  {% set heading = 'What is the relationship of your emergency contact to you? ' + data['ec-full-name'] + '?' %}
+  {% set heading = 'What is the relationship of your emergency contact to you? ' %}
 {% endif %}
 
 {% block pageTitle %}
