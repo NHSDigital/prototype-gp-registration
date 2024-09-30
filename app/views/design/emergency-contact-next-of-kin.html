@@ -8,7 +8,7 @@
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = 'Is ' + data['ec-full-name'] + ' also ' + data['name-first-name'] + '\'s next of kin?' %}
 {% else %}
-{% set heading = 'Is also your next of kin?' %}
+{% set heading = 'Is your emergency contact also your next of kin?' %}
 {% endif %}
 
 {% block pageTitle %}
