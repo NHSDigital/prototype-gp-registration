@@ -35,23 +35,16 @@ Additional questions URL - GP registration service - NHS
 
 
           {% call fieldset({
-              legend: {
-                "text": "Additional questions URL",
-                "classes": "nhsuk-fieldset__legend--l",
-                "isPageHeading": true
-              }
-            }) %}
-
-          <p>This is where patients will be sent, if they choose to answer your additional questions, from the registration complete page.</p>
-
-          <div class="nhsuk-inset-text">
-            <span class="nhsuk-u-visually-hidden">Information: </span>
-            <p>This URL will be verified by the onboarding team before being approved.</p>
-          </div>
+            legend: {
+              "text": "What is the web address of the online form you want to direct patients to?",
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          }) %}
 
           {{ input({
                     label: {
-                      "html": 'Enter the URL of your form'
+                      "html": 'Enter the address'
                     },
                       "hint": {
                       "text": "For example, 'www.nhs.uk'"
@@ -65,6 +58,7 @@ Additional questions URL - GP registration service - NHS
 
           {% endcall %}
 
+          <p><a href="https://www.nhs.uk/our-policies/linking-from-the-nhs-website/#:~:text=We%20only%20link%20to%20websites,selling%20products%20or%20services%E2%80%8B" target="_blank">Find out how our links are chosen (opens in a new tab)</a></p>
 
           {{ button({
               "text": "Continue"
