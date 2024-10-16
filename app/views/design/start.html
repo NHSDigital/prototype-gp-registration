@@ -9,24 +9,25 @@ Register with a GP surgery: {{ data.presets[0].gpsurgery or '{ GP surgery}' }} -
 {% endblock %}
 
 {% block content %}
+<div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Important
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <p class="govuk-notification-banner__heading">
+      Your registration may take longer than 5 days because of a technical issue.
+      <a class="govuk-notification-banner__link" href="#">View application</a>.
+    </p>
+  </div>
+</div>
+
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
         <h1 class="nhsuk-heading-Xl">
           Register with a GP surgery: {{ data.presets[0].gpsurgery or '{ GP surgery}' }}, Stratford-upon-Avon
         </h1>
-        <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-          <div class="govuk-notification-banner__header">
-            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-              Important
-            </h2>
-          </div>
-          <div class="govuk-notification-banner__content">
-            <p class="govuk-notification-banner__heading">
-              You have 7 days left to send your application.
-              <a class="govuk-notification-banner__link" href="#">View application</a>.
-            </p>
-          </div>
-        </div>
         
         <p>Use this service to register you or someone else with a GP surgery for the first time or to change your current GP surgery.<p/> 
         <p>If you think you need medical help right now visit <a href="https://111.nhs.uk/">NHS 111 online.</a></p>
