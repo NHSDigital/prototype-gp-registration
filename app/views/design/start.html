@@ -7,19 +7,6 @@
 {% block pageTitle %}
 Register with a GP surgery: {{ data.presets[0].gpsurgery or '{ GP surgery}' }} - {{ ServiceName }} - NHS
 {% endblock %}
-<div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-  <div class="govuk-notification-banner__header">
-    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-      Important
-    </h2>
-  </div>
-  <div class="govuk-notification-banner__content">
-    <p class="govuk-notification-banner__heading">
-      You have 7 days left to send your application.
-      <a class="govuk-notification-banner__link" href="#">View application</a>.
-    </p>
-  </div>
-</div>
 
 {% block content %}
     <div class="nhsuk-grid-row">
@@ -27,7 +14,20 @@ Register with a GP surgery: {{ data.presets[0].gpsurgery or '{ GP surgery}' }} -
         <h1 class="nhsuk-heading-Xl">
           Register with a GP surgery: {{ data.presets[0].gpsurgery or '{ GP surgery}' }}, Stratford-upon-Avon
         </h1>
-
+        <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Important
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              You have 7 days left to send your application.
+              <a class="govuk-notification-banner__link" href="#">View application</a>.
+            </p>
+          </div>
+        </div>
+        
         <p>Use this service to register you or someone else with a GP surgery for the first time or to change your current GP surgery.<p/> 
         <p>If you think you need medical help right now visit <a href="https://111.nhs.uk/">NHS 111 online.</a></p>
         <p>If you are already registered with a GP surgery you can access some health and prescription services using <a href="https://www.nhs.uk/nhs-services/gps/online-health-and-prescription-services/">NHS online services.</a></p>
