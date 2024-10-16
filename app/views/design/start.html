@@ -7,8 +7,6 @@
 {% block pageTitle %}
 Register with a GP surgery: {{ data.presets[0].gpsurgery or '{ GP surgery}' }} - {{ ServiceName }} - NHS
 {% endblock %}
-
-{% block content %}
 <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
   <div class="govuk-notification-banner__header">
     <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
@@ -22,6 +20,8 @@ Register with a GP surgery: {{ data.presets[0].gpsurgery or '{ GP surgery}' }} -
     </p>
   </div>
 </div>
+
+{% block content %}
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
         <h1 class="nhsuk-heading-Xl">
