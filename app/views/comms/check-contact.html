@@ -42,10 +42,11 @@ Recently moved{% set serviceHome = '/live/start' %}
                   Email
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  {{ data['contact-email'] }}
+                  {{ data['contact-email'] or 'cityofangels@msn.com' }}
+
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
+                  <a href="email">Change<span class="nhsuk-u-visually-hidden"> </span></a>
                 </dd>
               </div>
 
@@ -57,7 +58,7 @@ Recently moved{% set serviceHome = '/live/start' %}
                   {{ data['contact-mobile'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
+                  <a href="mobile">Change<span class="nhsuk-u-visually-hidden"> </span></a>
                 </dd>
               </div>
 
@@ -66,10 +67,10 @@ Recently moved{% set serviceHome = '/live/start' %}
                   Home phone
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  {{ data['contact-home-phone'] }}
+                  {{ data['contact-home-phone'] or '01189665321' }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
+                  <a href="home">Change<span class="nhsuk-u-visually-hidden"> </span></a>
                 </dd>
               </div>
             </dl>

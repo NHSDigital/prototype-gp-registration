@@ -1,0 +1,70 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'What is your mobile phone number? (Optional)' %}
+{% set hintText = "Leave the box empty if you don't have a mobile phone number" %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="check-contact" method="post">
+
+          {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": hintText,
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {{ input({
+              "classes": "nhsuk-input nhsuk-input--width-20",
+              "id": "contact-mobile",
+              "name": "contact-mobile",
+              "spellcheck": false,
+              "value": data['contact-mobile']
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+                "text": "Continue"
+              }) }}
+
+          </form>
+
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
