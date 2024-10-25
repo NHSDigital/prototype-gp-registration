@@ -1,0 +1,129 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Enter the security code - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block header %}
+  {{ header({
+    "service": {
+      "name": "NHS login",
+      "href": "#"
+    },
+    "showNav": "false",
+    "showSearch": "false"
+    })
+  }}
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    text: "Back to: Enter your password",
+    href: "nhs-login-password",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="registered-for-the-first-time" method="post" autocomplete="off">
+
+          {% call fieldset({
+              legend: {
+                "text": "Enter the security code",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+          <p>
+            We sent a text to •••••••0123.
+          </p>
+
+          <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                Not received a text?
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <p>When we are really busy it may take a bit longer for us to text you.</p>
+              <p><a href="#">Send the security code again</a></p>
+
+            </div>
+          </details>
+
+          {{ input({
+                label: {
+                  "html": 'Security code'
+                },
+                  "hint": {
+                  "text": "The code is 6 digits"
+                },
+                "type": "password",
+                "classes": "nhsuk-input--width-20",
+                "id": "nhs-login-email",
+                "name": "nhs-login-email"
+              }) }}
+
+              {{ checkboxes({
+                "idPrefix": "remember-device",
+                "name": "remember-device",
+                "items": [
+                  {
+                    "value": "remember-device-checkbox",
+                    "text": "Remember this device and stop sending security codes"
+                  }
+                ]
+              }) }}
+
+              {{ details({
+                "text": "What does remember this device mean",
+                "HTML": "
+                <p>We can remember the device you are using now, so you will not need to enter a security code when you log in with this device in the future. </p>
+                <p> To keep your NHS login secure, you should only do this on your own personal or trusted devices. </p>
+                <p>We may ask if you still want us to remember this device in the future.</p>
+                "
+              }) }}
+
+              {{ details({
+                "text": "I do not have access to my mobile phone",
+                "HTML": "
+                <p> If you do not have access to your phone, you can <a href='#'>change your phone number securely</a>.  </p>
+                "
+              }) }}
+
+          {% endcall %}
+
+          {{ button({
+              "text": "Continue"
+            }) }}
+
+        </form>
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  $('#no-previous-address-1').change(function() {
+    if ($('#no-previous-address-1').is(':checked') == true) {
+      $('input[type=text]').prop('disabled', true);
+    } else {
+      $('input[type=text]').prop('disabled', false);
+    }
+  });
+</script>
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
