@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-NHS shared mailbox - GP registration service - NHS
+Secure shared mailbox - GP registration service - NHS
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -36,13 +36,13 @@ NHS shared mailbox - GP registration service - NHS
 
           {% call fieldset({
               legend: {
-                "text": "NHS shared mailbox",
+                "text": "Secure shared mailbox",
                 "classes": "nhsuk-fieldset__legend--l",
                 "isPageHeading": true
               }
             }) %}
 
-          <p>A verification code will be sent to your NHS shared mailbox. This is also where patient registration details will be sent.</p>
+          <p>A verification code will be sent to your secure shared mailbox. This is also where patient registration details will be sent.</p>
 
           <div class="nhsuk-inset-text">
             <span class="nhsuk-u-visually-hidden">Information: </span>
@@ -54,7 +54,7 @@ NHS shared mailbox - GP registration service - NHS
                       "html": 'Enter the email address of your shared mailbox'
                     },
                       "hint": {
-                      "text": "This will end in 'nhs.net'"
+                      "text": ""
                     },
                     "type": "email",
                     "classes": "nhsuk-input--width-20",
@@ -69,11 +69,11 @@ NHS shared mailbox - GP registration service - NHS
           <details class="nhsuk-details">
             <summary class="nhsuk-details__summary">
               <span class="nhsuk-details__summary-text">
-                 I do not have access to a NHS shared mailbox
+                 What is a secure mailbox?
               </span>
             </summary>
             <div class="nhsuk-details__text">
-            <p>Find out more about registering for this service at our <a href="https://digital.nhs.uk/services/register-with-a-gp-surgery-service#resource-hub">Resource Hub</a>)</p>
+            <p>Find out more about <a href="https://digital.nhs.uk/services/nhsmail/the-secure-email-standard">the secure email standard.</a>)</p>
 
             </div>
           </details>
