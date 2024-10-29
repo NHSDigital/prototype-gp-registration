@@ -5,8 +5,8 @@
 
 {% extends 'layout.html' %}
 
-{% set heading = 'What is your email address? (Optional)' %}
-{% set hintText = "Leave the box empty if you don't have an email address" %}
+{% set heading = 'What is your email address? (optional)' %}
+{% set hintText = "If you leave this box empty it will remove your email from this service and your central NHS record." %}
 
 {% block pageTitle %}
   {{ heading }} - {{ data.presets[0].servicename }} - NHS

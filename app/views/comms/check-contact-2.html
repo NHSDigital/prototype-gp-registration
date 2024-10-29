@@ -4,7 +4,7 @@ Recently moved{% set serviceHome = '/live/start' %}
 
 {% extends 'layout.html' %}
 
-{% set heading = 'Are these details correct?' %}
+{% set heading = 'Check your details' %}
 
 {% block pageTitle %}
   {{ heading }} - {{ data.presets[0].servicename }} - NHS
@@ -64,7 +64,7 @@ Recently moved{% set serviceHome = '/live/start' %}
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Home phone
+                  Home
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                   {{ data['contact-home-phone']}}
@@ -78,7 +78,7 @@ Recently moved{% set serviceHome = '/live/start' %}
             </form>
 
         {{ button({
-          "text": "Yes, continue",
+          "text": "Continue",
           "href": "thank-you"
         }) }}
 

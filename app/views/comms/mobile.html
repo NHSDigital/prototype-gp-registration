@@ -5,8 +5,8 @@
 
 {% extends 'layout.html' %}
 
-{% set heading = 'What is your mobile phone number? (Optional)' %}
-{% set hintText = "Leave the box empty if you don't have a mobile phone number" %}
+{% set heading = 'What is your mobile phone number? (optional)' %}
+{% set hintText = "If you leave this box empty it will remove your mobile phone number from this service and your central NHS record." %}
 
 {% block pageTitle %}
   {{ heading }} - {{ data.presets[0].servicename }} - NHS
