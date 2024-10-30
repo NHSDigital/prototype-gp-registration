@@ -42,7 +42,7 @@ Recently moved{% set serviceHome = '/live/start' %}
                   Email
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  {{ data['contact-email'] or 'cityofangels@msn.com' }}
+                  {{ data['contact-email']}}
 
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
@@ -67,7 +67,7 @@ Recently moved{% set serviceHome = '/live/start' %}
                   Home
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  {{ data['contact-home-phone'] or '01189665321' }}
+                  {{ data['contact-home-phone']}}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="home">Change<span class="nhsuk-u-visually-hidden"> </span></a>
@@ -99,7 +99,7 @@ Recently moved{% set serviceHome = '/live/start' %}
     $('.nhsuk-summary-list__value').filter(function () {
       return $.trim($(this).text()) === "";
     }).each(function (ind, obj) {
-      $(obj).closest('dd').html("<span class='summary-page-unanswered'>Not answered</span>");
+      $(obj).closest('dd').html("<span class='summary-page-unanswered'>Not provided</span>");
     });
 
     // Add colon to contact method type if it isn't blank
