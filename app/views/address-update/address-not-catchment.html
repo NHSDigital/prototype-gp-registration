@@ -1,0 +1,95 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% set heading = "Your new address is outside the catchment area for Lordship Lane surgery" %}
+
+{% block pageTitle %}
+  {{ heading }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <form action="" method="post" autocomplete="off">
+
+      {% include 'live/includes/step.html' %}
+
+      {% call fieldset({
+        legend: {
+          text: heading,
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      <p>You want to change your address to:</p>
+      <p>{% if data['select-new-address'] %}
+              {{ data['select-new-address'] }} Town Street,<br />
+              London,<br />
+              SW1A 1AA
+              {% else %}
+              {{ data['new-address-line-1'] }}<br />
+              {{ data['new-address-line-2'] }}<br />
+              {{ data['new-address-town'] }}<br />
+              {{ data['new-address-postcode'] }}<br/>
+              {{ data['new-address-country'] }}
+              {% endif %}
+      </p>
+
+      <p>Some GP surgeries will only accept patients that live within their catchment area.</p>
+      <p>You should contact your GP surgery and check as it may affect your access to healthcare.</p>
+      <p>By continuing you agree to share your new address with your GP surgery.</p>
+
+      {{ radios({
+          "idPrefix": "address-not-catchment",
+          "name": "address-not-catchment",
+          "classes": "nhsuk-radios",
+          "fieldset": {
+            "legend": {
+              "text": "What do you want to do?",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": false
+            }
+          },
+          "items": [
+          {
+            "value": "continue~/live/start",
+            "text": "Confirm my new address",
+            "checked": checked("address-not-catchment", "continue")
+          },
+          {
+              "value": "cancel~/live/carer-details",
+              "text": "Cancel my address update",
+              "checked": checked("address-not-catchment", "cancel")
+            }
+          ]
+       }) }}
+
+      {% endcall %}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
