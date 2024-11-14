@@ -23,7 +23,7 @@
 
           {% include 'live/includes/step.html' %}
 
-          <form action="what-is-your-current-address-selection-post" method="post" autocomplete="off">
+          <form action="confirm-address" method="post" autocomplete="off">
 
               {% call fieldset({
                 legend: {
@@ -38,57 +38,57 @@
               </div>
 
               {{ radios({
-                "idPrefix": "select-current-address",
-                "name": "select-current-address",
+                "idPrefix": "select-new-address",
+                "name": "select-new-address",
                 "items": [
+                {
+                  "value": '1',
+                  "text": '1 Town Street, London, SW1A 1AA',
+                  "checked": checked("select-new-address", "1 Town Street, London, SW1A 1AA")
+                },
+                {
+                  "value": "11 Town Street, London, SW1A 1AA",
+                  "text": "11 Town Street, London, SW1A 1AA",
+                  "checked": checked("select-new-address", "11 Town Street, London, SW1A 1AA")
+                },
+                {
+                  "value": "111 Town Street, London, SW1A 1AA",
+                  "text": "111 Town Street, London, SW1A 1AA",
+                  "checked": checked("select-new-addresss", "111 Town Street, London, SW1A 1AA")
+                },
+                {
+                  "value": "12 Town Street, London, SW1A 1AA",
+                  "text": "12 Town Street, London, SW1A 1AA",
+                  "checked": checked("select-new-addresss", "12 Town Street, London, SW1A 1AA")
+                },
+                {
+                  "value": "13 Town Street, London, SW1A 1AA",
+                  "text": "13 Town Street, London, SW1A 1AA",
+                  "checked": checked("select-new-address", "13 Town Street, London, SW1A 1AA")
+                },
                   {
-                    "value": "address1",
-                    "text": "1 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-address", "address1")
-                  },
-                  {
-                    "value": "address2",
-                    "text": "11 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-address", "address2")
-                  },
-                  {
-                    "value": "address3",
-                    "text": "111 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-addresss", "address3")
-                  },
-                  {
-                    "value": "address4",
-                    "text": "12 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-addresss", "address4")
-                  },
-                  {
-                    "value": "address5",
-                    "text": "13 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-addresss", "address4")
-                  },
-                  {
-                    "value": "address6",
+                    "value": "14 Town Street, London, SW1A 1AA",
                     "text": "14 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-addresss", "address4")
+                    "checked": checked("select-new-addresss", "14 Town Street, London, SW1A 1AA")
                   },
                   {
-                    "value": "address7",
+                    "value": "15 Town Street, London, SW1A 1AA",
                     "text": "15 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-addresss", "address4")
+                    "checked": checked("select-new-addresss", "15 Town Street, London, SW1A 1AA")
                   },
                   {
-                    "value": "address8",
+                    "value": "16 Town Street, London, SW1A 1AA",
                     "text": "16 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-addresss", "address4")
+                    "checked": checked("select-new-addresss", "16 Town Street, London, SW1A 1AA")
                   },{
-                    "value": "address9",
+                    "value": "17 Town Street, London, SW1A 1AA",
                     "text": "17 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-addresss", "address4")
+                    "checked": checked("select-new-addresss", "17 Town Street, London, SW1A 1AA")
                   },
                   {
-                    "value": "address10",
+                    "value": "18 Town Street, London, SW1A 1AA",
                     "text": "18 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-address", "address5")
+                    "checked": checked("select-new-address", "18 Town Street, London, SW1A 1AA")
                   }
                 ]
               }) }}

@@ -23,7 +23,7 @@
 
           {% include 'live/includes/step.html' %}
 
-          <form action="what-is-your-current-address-selection-post" method="post" autocomplete="off">
+          <form action="confirm-address" method="post" autocomplete="off">
 
               {% call fieldset({
                 legend: {
@@ -38,33 +38,33 @@
               </div>
 
               {{ radios({
-                "idPrefix": "select-current-address",
-                "name": "select-current-address",
+                "idPrefix": "select-new-address",
+                "name": "select-new-address",
                 "items": [
                   {
-                    "value": "address1",
+                    "value": "1",
                     "text": "1 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-address", "address1")
+                    "checked": checked("select-new-address", "1 Town Street, London, SW1A 1AA")
                   },
                   {
-                    "value": "address2",
+                    "value": "11",
                     "text": "11 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-address", "address2")
+                    "checked": checked("select-new-address", "11 Town Street, London, SW1A 1AA")
                   },
                   {
-                    "value": "address3",
+                    "value": "111",
                     "text": "111 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-addresss", "address3")
+                    "checked": checked("select-new-addresss", "111 Town Street, London, SW1A 1AA")
                   },
                   {
-                    "value": "address4",
+                    "value": "12",
                     "text": "12 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-addresss", "address4")
+                    "checked": checked("select-new-addresss", "12 Town Street, London, SW1A 1AA")
                   },
                   {
-                    "value": "address5",
+                    "value": "13",
                     "text": "13 Town Street, London, SW1A 1AA",
-                    "checked": checked("select-current-address", "address5")
+                    "checked": checked("select-new-address", "13 Town Street, London, SW1A 1AA")
                   },
                   {
                     "divider": "or"
@@ -72,7 +72,7 @@
                   {
                     "value": "not listed~what-is-your-current-address-selection-extended",
                     "text": "I cannot find the address on the list",
-                    "checked": checked("select-current-address", "")
+                    "checked": checked("select-new-address", "")
                   }
                 ]
               }) }}

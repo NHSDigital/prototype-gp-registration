@@ -1,0 +1,58 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% block pageTitle %}
+Your new address - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <form action="" method="post" autocomplete="off">
+
+      <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+        <h1 class="nhsuk-fieldset__heading">Your new address</h1>
+      </legend>
+
+      <p>You want to change your address to:</p>
+      <p>{% if data['select-new-address'] %}
+              {{ data['select-new-address'] }} Town Street,<br />
+              London,<br />
+              SW1A 1AA
+              {% else %}
+              {{ data['new-address-line-1'] }}<br />
+              {{ data['new-address-line-2'] }}<br />
+              {{ data['new-address-town'] }}<br />
+              {{ data['new-address-postcode'] }}<br/>
+              {{ data['new-address-country'] }}
+              {% endif %}
+      </p>
+
+      <p>By continuing you agree to share your new address with your GP surgery</p>
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
