@@ -2,7 +2,7 @@
 
 {% extends 'address-update/layout.html' %}
 
-{% set heading = "Your home address doesn't seem to be in England" %}
+{% set heading = "Your new address doesn't seem to be in England" %}
 
 {% block pageTitle %}
   {{ heading }} - NHS
@@ -33,10 +33,9 @@
         }
       }) %}
 
-      {{ hint({
-        "html": '<p>We can only accept addresses in England. If you have moved outside of England you should...</p>',
-        "classes": "nhsuk-u-margin-bottom-4"
-      }) }}
+      <p>We can only accept addresses in England.</p>
+      <p>If you have moved to Scotland, Wales or Northern Ireland, you should...</p>
+      <p>If you have moved outside of the UK, you should...</p>
 
       {{ radios({
           "idPrefix": "address-not-england",
@@ -52,13 +51,18 @@
           "items": [
           {
             "value": "continue~/live/start",
-            "text": "Enter address manually",
-            "checked": checked("address-not-england", "continue")
+            "text": "Confirm my new address",
+            "checked": checked("address-not-catchment", "continue")
+          },
+          {
+            "value": "register~/live/start",
+            "text": "Register with a new GP",
+            "checked": checked("address-not-catchment", "register")
           },
           {
               "value": "cancel~/live/carer-details",
               "text": "Cancel update",
-              "checked": checked("address-not-england", "cancel")
+              "checked": checked("address-not-catchment", "cancel")
             }
           ]
        }) }}
