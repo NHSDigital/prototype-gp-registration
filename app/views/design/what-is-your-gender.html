@@ -59,40 +59,32 @@ Which of the following best describes you? - {{ ServiceName }} - NHS
                 }
               },
               "hint": {
-                "html": "<p>Your GP surgery uses this information to improve the experiences of LGBTQ+ people accessing primary care services.</p>
+                "html": "<p>Your GP surgery uses this information to improve the experiences of LGBTQ+ people accessing primary care.</p>
               },
 
               "items": [
                 {
-                  "value": "Straight",
-                  "text": "Heterosexual or straight",
-                  checked: checked("sex", "gay")
+                  "value": "Female",
+                  "text": "Female",
+                  checked: checked("sex", "female")
                 },
                 {
-                  "value": "Gay",
-                  "text": "Lesbian or gay",
-                  checked: checked("sex", "gay")
+                  "value": "Male",
+                  "text": "Male",
+                  checked: checked("sex", "male")
                 },
                 {
-                  "value": "Bisexual",
-                  "text": "Bisexual",
-                  checked: checked("sex", "Bisexual")
+                  "value": "Non-binary",
+                  "text": "Non-binary",
+                  checked: checked("sex", "non-binary")
                 },
                 {
-                  "value": "prefer-not-to-say",
-                  "text": "Prefer not to say",
+                  "value": "prefer-to-self-describe",
+                  "text": "Prefer to self-describe",
                   "conditional": {
                     "html": otherHtml
                   },
-                  checked: checked("sex", "prefer-not-to-say")
-                },
-                {
-                  "value": "Other",
-                  "text": "Other",
-                  "conditional": {
-                    "html": otherHtml
-                  },
-                  checked: checked("sex", "Other")
+                  checked: checked("sex", "prefer-to-self-describe")
                 }
               ]
             }) }}
