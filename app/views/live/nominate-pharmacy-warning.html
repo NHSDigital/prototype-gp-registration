@@ -1,0 +1,59 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Any outstanding prescriptions may still arrive at your current nominated pharmacy?'  %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": 'nominate-pharmacy',
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="nominate-online-or-street" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {{ radios({
+              "idPrefix": "nominate-pharmacy",
+              "name": "nominate-pharmacy",
+              "fieldset": {
+                "legend": {
+                  "text": heading,
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              }              
+            }) }}
+            <p>The new pharmacy you choose is where your prescriptions will be sent in future.</p>
+            <p>Your new pharmacy can help to check on any outstanding prescriptions for you.</p>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+        </form>
+      </div>
+     </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

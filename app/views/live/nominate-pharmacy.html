@@ -29,6 +29,18 @@
   {% set link = 'what-is-your-ethnicity' %}
 {% endif %}
 
+{% if (data['user-auth'] === "p9") %}
+  {% set hintText = 'Choosing a pharmacy now means your GP surgery will send all future prescriptions directly to this new pharmacy.' %}
+{% else %}
+  {% set hintText = 'Choosing a pharmacy means your GP surgery will send prescriptions directly to this pharmacy.' %}
+{% endif %}
+
+{% if (data['user-auth'] === "p9") %}
+  {% set yesLink = 'Yes~nominate-pharmacy-warning' %}
+{% else %}
+  {% set yesLink = 'Yes~nominate-online-or-street' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
     "href": link,
@@ -57,11 +69,11 @@
                 }
               },
               "hint": {
-                "text": "Choosing a pharmacy now means your GP surgery will send all future prescriptions directly to this new pharmacy."
+                "text": hintText
               },
               "items": [
                 {
-                  "value": "Yes~/live/nominate-online-or-street",
+                  "value": yesLink,
                   "text": "Yes, choose a pharmacy",
                   checked: checked("nominate-pharmacy", "Yes")
                 },

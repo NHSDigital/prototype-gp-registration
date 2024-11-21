@@ -11,9 +11,15 @@
   {{ heading }} - {{ data.presets[0].servicename }} - NHS
 {% endblock %}
 
+{% if (data['user-auth'] === "p9") %}
+  {% set link = 'nominate-pharmacy-warning' %}
+{% else %}
+  {% set link = 'nominate-pharmacy' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
-    "href": "nominate-pharmacy",
+    "href": link,
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
