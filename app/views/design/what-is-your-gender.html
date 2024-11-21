@@ -59,34 +59,40 @@ Which of the following best describes you? - {{ ServiceName }} - NHS
                 }
               },
               "hint": {
-                "html": "<p>
-                  You can choose any of these options and we should be able to match their records accurately.</p>
-                  <p>Your answer does not have to match the sex they were given at birth.</p>"
+                "html": "<p>Your GP surgery uses this information to improve the experiences of LGBTQ+ people accessing primary care services.</p>
               },
 
               "items": [
                 {
-                  "value": "Female",
-                  "text": "Female",
-                  checked: checked("sex", "female")
+                  "value": "Straight",
+                  "text": "Heterosexual or straight",
+                  checked: checked("sex", "gay")
                 },
                 {
-                  "value": "Male",
-                  "text": "Male",
-                  checked: checked("sex", "male")
+                  "value": "Gay",
+                  "text": "Lesbian or gay",
+                  checked: checked("sex", "gay")
                 },
                 {
-                  "value": "Non-binary",
-                  "text": "Non-binary",
-                  checked: checked("sex", "non-binary")
+                  "value": "Bisexual",
+                  "text": "Bisexual",
+                  checked: checked("sex", "Bisexual")
                 },
                 {
-                  "value": "prefer-to-self-describe",
-                  "text": "Prefer to self-describe",
+                  "value": "prefer-not-to-say",
+                  "text": "Prefer not to say",
                   "conditional": {
                     "html": otherHtml
                   },
-                  checked: checked("sex", "prefer-to-self-describe")
+                  checked: checked("sex", "prefer-not-to-say")
+                },
+                {
+                  "value": "Other",
+                  "text": "Other",
+                  "conditional": {
+                    "html": otherHtml
+                  },
+                  checked: checked("sex", "Other")
                 }
               ]
             }) }}
