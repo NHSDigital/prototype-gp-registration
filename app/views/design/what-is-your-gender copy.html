@@ -1,0 +1,59 @@
+{% set serviceHome = '/design/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Which of the following best describes you? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="what-is-your-gender-at-birth" method="post" autocomplete="off">
+            {{ hint({
+              "text": "Patient details",
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+
+            <h1 class="nhsuk-heading-l">Which of the following best describes {{ data ['name-first-name'] }}?</h1>
+
+            {% else %}
+
+            <h1 class="nhsuk-heading-l">Which of the following best describes you?</h1>
+
+            {% endif %}
+
+
+
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of gender.</p>"
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}
