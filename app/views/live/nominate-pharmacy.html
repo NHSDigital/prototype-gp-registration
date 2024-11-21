@@ -29,6 +29,12 @@
   {% set link = 'what-is-your-ethnicity' %}
 {% endif %}
 
+{% if (data['user-auth'] === "p9") %}
+  {% set hintText = 'Choosing a pharmacy now means your GP surgery will send all future prescriptions directly to this new pharmacy.' %}
+{% else %}
+  {% set hintText = 'Choosing a pharmacy means your GP surgery will send prescriptions directly to this pharmacy.' %}
+{% endif %}
+
 {% block outerContent %}
   {{ backLink({
     "href": link,
@@ -57,7 +63,7 @@
                 }
               },
               "hint": {
-                "text": "Choosing a pharmacy now means your GP surgery will send all future prescriptions directly to this new pharmacy."
+                "text": hintText
               },
               "items": [
                 {
