@@ -34,18 +34,18 @@
           }) %}
 
           {{ radios({
-            "idPrefix": "who-is-being-registered",
-            "name": "who-is-being-registered",
+            "idPrefix": "is-address-uk",
+            "name": "is-address-uk",
             "items": [
               {
                 "value": "yes~what-is-your-current-address",
                 "text": "Yes",
-                checked: checked("who-is-being-registered", "Yes")
+                checked: checked("is-address-uk", "Yes")
               },
               {
                 "value": "no~address-not-england",
                 "text": "No",
-                checked: checked("who-is-being-registered", "No")
+                checked: checked("is-address-uk", "No")
               }
             ]
           }) }}
