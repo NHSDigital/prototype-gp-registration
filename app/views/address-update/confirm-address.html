@@ -19,7 +19,7 @@ Your new address - NHS
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
 
-    <form action="thank-you" method="post" autocomplete="off">
+    <form action="success" method="post" autocomplete="off">
 
       <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
         <h1 class="nhsuk-fieldset__heading">Your new address</h1>
@@ -27,16 +27,18 @@ Your new address - NHS
 
       <p>You want to change your address to:</p>
       <p>{% if data['select-new-address'] %}
-              {{ data['select-new-address'] }} Town Street,<br />
+          {{ data['select-new-address'] }} Town Street,<br />
               London,<br />
               SW1A 1AA
-              {% else %}
-              {{ data['new-address-line-1'] }}<br />
-              {{ data['new-address-line-2'] }}<br />
-              {{ data['new-address-town'] }}<br />
-              {{ data['new-address-postcode'] }}<br/>
-              {{ data['new-address-country'] }}
-              {% endif %}
+          {% elseif data['new-address-line-1'] %}
+            {{ data['new-address-line-1'] }}<br />
+            {{ data['new-address-line-2'] }}<br />
+            {{ data['new-address-town'] }}<br />
+            {{ data['new-address-postcode'] }}<br/>
+            {{ data['new-address-country'] }}
+          {% else %}
+            {{ data['abroad-address'] }}
+          {% endif %}
       </p>
 
       <p>By continuing you agree to share your new address with your GP surgery</p>
