@@ -2,18 +2,10 @@
 
 {% extends 'address-update/layout.html' %}
 
-{% set heading = "We can only accept addresses in England" %}
+{% set heading = "You have successfully changed your address" %}
 
 {% block pageTitle %}
   {{ heading }} - NHS
-{% endblock %}
-
-{% block outerContent %}
-  {{ backLink({
-    "href": "javascript:history.go(-1)",
-    "text": "Go back",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
-  }) }}
 {% endblock %}
 
 {% block content %}
@@ -21,9 +13,7 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
 
-    <form action="" method="post" autocomplete="off">
-
-      {% include 'live/includes/step.html' %}
+    <form action="thank-you" method="post" autocomplete="off">
 
       {% call fieldset({
         legend: {
@@ -32,14 +22,16 @@
           isPageHeading: true
         }
       }) %}
-      <p>We can only accept addresses in England.</p>
-      <p>If you have moved to Scotland, Wales or Northern Ireland, you should...</p>
-      <p>If you have moved outside of the UK, you should...</p>
+      <p>We have shared your new address with your GP surgery.</p>
+      <h2 class="nhsuk-heading-m">What happens next?</h2>
+      <p>You will be de-registered form Lordship Lane surgery in the next 30 days.</p>
+      <p>As your new address is in the Isle of Man, you should register with a GP via NHS Isle of Man.</p>
+      <p><a href="https://www.gov.im/categories/health-and-wellbeing/doctors/">Find your nearest GP</a></p>
 
       {% endcall %}
 
       {{ button({
-        "text": "Continue"
+        "text": "Go back to contact details"
       }) }}
 
     </form>

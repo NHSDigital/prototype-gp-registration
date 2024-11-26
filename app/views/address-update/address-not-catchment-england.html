@@ -35,17 +35,19 @@
 
       <p>You want to change your address to:</p>
       <p>{% if data['select-new-address'] %}
-              {{ data['select-new-address'] }} Town Street,<br />
-              London,<br />
-              SW1A 1AA
-              {% else %}
-              {{ data['new-address-line-1'] }}<br />
-              {{ data['new-address-line-2'] }}<br />
-              {{ data['new-address-town'] }}<br />
-              {{ data['new-address-postcode'] }}<br/>
-              {{ data['new-address-country'] }}
-              {% endif %}
-      </p>
+        {{ data['select-new-address'] }} Town Street,<br />
+            London,<br />
+            SW1A 1AA
+        {% elseif data['new-address-line-1'] %}
+          {{ data['new-address-line-1'] }}<br />
+          {{ data['new-address-line-2'] }}<br />
+          {{ data['new-address-town'] }}<br />
+          {{ data['new-address-postcode'] }}<br/>
+          {{ data['new-address-country'] }}
+        {% else %}
+          {{ data['abroad-address'] }}
+        {% endif %}
+    </p>
 
       <h2 class="nhsuk-heading-m">Register for a new GP</h2>
 
@@ -83,17 +85,17 @@
           },
           "items": [
           {
-            "value": "register~/live/start",
+            "value": "register~https://www.nhs.uk/service-search/find-a-gp/results/SW1A%201AA",
             "text": "Find my nearest GP",
             "checked": checked("address-not-catchment", "register")
           },
           {
-            "value": "continue~/live/start",
+            "value": "continue~success",
             "text": "Confirm my new address and register with a new GP later",
             "checked": checked("address-not-catchment", "continue")
           },
           {
-              "value": "cancel~/live/carer-details",
+              "value": "cancel~cancel",
               "text": "Cancel update",
               "checked": checked("address-not-catchment", "cancel")
             }
