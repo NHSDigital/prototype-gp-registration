@@ -2,18 +2,10 @@
 
 {% extends 'address-update/layout.html' %}
 
-{% set heading = "Your address update has been cancelled" %}
+{% set heading = "You have successfully changed your address" %}
 
 {% block pageTitle %}
   {{ heading }} - NHS
-{% endblock %}
-
-{% block outerContent %}
-  {{ backLink({
-    "href": "javascript:history.go(-1)",
-    "text": "Go back",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
-  }) }}
 {% endblock %}
 
 {% block content %}
@@ -23,8 +15,6 @@
 
     <form action="thank-you" method="post" autocomplete="off">
 
-      {% include 'live/includes/step.html' %}
-
       {% call fieldset({
         legend: {
           text: heading,
@@ -32,7 +22,11 @@
           isPageHeading: true
         }
       }) %}
-      <p>No changes have been made to your address.</p>
+      <p>We have shared your new address with your GP surgery.</p>
+      <h2 class="nhsuk-heading-m">What happens next?</h2>
+      <p>You will be de-registered form Lordship Lane surgery in the next 30 days.</p>
+      <p>We recommend registering with a new GP.</p>
+      <p><a href="https://www.nhsinform.scot/scotlands-service-directory/gp-practices/">Find your nearest GP</a></p>
 
       {% endcall %}
 

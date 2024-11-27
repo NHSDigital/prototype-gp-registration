@@ -2,7 +2,7 @@
 
 {% extends 'address-update/layout.html' %}
 
-{% set heading = "We can't verify your address" %}
+{% set heading = "We can't find your address" %}
 
 {% block pageTitle %}
   {{ heading }} - NHS
@@ -49,9 +49,10 @@
         {% endif %}
     </p>
 
-      <p>This could be because your address is a new build and hasn't been added to postal address records yet.</p>
-      <h2 class="nhsuk-heading-m">What this means</h2>
-      <p>Your address will be sent to your GP who will verify if it is in their catchment area. If it is not, you will be de-registered.</p>
+      <p>We couldn’t find your details in the postal address records we use to verify an address.</p>
+      <p>This could be because it’s a new build or has been recently converted into flats.</p>
+      <h2 class="nhsuk-heading-m">What happens next</h2>
+      <p>Your address will be sent to your GP surgery who will check if it is in their catchment area. If it is not they will start the process to remove you from their patient list.</p>
       <p>If you know you are no longer in the catchment area for Lordship Lane surgery, you should register with a new GP.</p>
       <p>It takes around 15 minutes to complete a registration.</p>
       <p><a href="www.nhs.uk/service-search/find-a-gp/results/SW1A%201AA">Find your nearest GP</a></p>
@@ -90,7 +91,7 @@
           },
           {
             "value": "continue~success",
-            "text": "Confirm my new address and register with a new GP later",
+            "text": "Continue with this address",
             "checked": checked("address-not-catchment", "continue")
           },
           {
