@@ -2,7 +2,7 @@
 
 {% extends 'address-update/layout.html' %}
 
-{% set heading = "Your new address may be outside the catchment area for Lordship Lane surgery" %}
+{% set heading = "We can't verify your address" %}
 
 {% block pageTitle %}
   {{ heading }} - NHS
@@ -35,20 +35,40 @@
 
       <p>You want to change your address to:</p>
       <p>{% if data['select-new-address'] %}
-              {{ data['select-new-address'] }} Town Street,<br />
-              London,<br />
-              SW1A 1AA
-              {% else %}
-              {{ data['new-address-line-1'] }}<br />
-              {{ data['new-address-line-2'] }}<br />
-              {{ data['new-address-town'] }}<br />
-              {{ data['new-address-postcode'] }}<br/>
-              {{ data['new-address-country'] }}
-              {% endif %}
-      </p>
+        {{ data['select-new-address'] }} Town Street,<br />
+            London,<br />
+            SW1A 1AA
+        {% elseif data['new-address-line-1'] %}
+          {{ data['new-address-line-1'] }}<br />
+          {{ data['new-address-line-2'] }}<br />
+          {{ data['new-address-town'] }}<br />
+          {{ data['new-address-postcode'] }}<br/>
+          {{ data['new-address-country'] }}
+        {% else %}
+          {{ data['abroad-address'] }}
+        {% endif %}
+    </p>
 
-      <p>Some GP surgeries will only accept patients that live within their catchment area.</p>
-      <p>You should contact your GP surgery and check as it may affect your access to healthcare.</p>
+      <p>This could be because your address is a new build and hasn't been added to postal address records yet.</p>
+      <h2 class="nhsuk-heading-m">What this means</h2>
+      <p>Your address will be sent to your GP who will verify if it is in their catchment area. If it is not, you will be de-registered.</p>
+      <p>If you know you are no longer in the catchment area for Lordship Lane surgery, you should register with a new GP.</p>
+      <p>It takes around 15 minutes to complete a registration.</p>
+      <p><a href="www.nhs.uk/service-search/find-a-gp/results/SW1A%201AA">Find your nearest GP</a></p>
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            If you want to stay registered at Lordship Lane surgery
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>Most GP surgeries will only accept patients that live within their catchment area.</p>
+          <p>You should contact your GP surgery and check as it may affect your access to healthcare.</p>
+      
+        </div>
+      </details>
+
       <p>By continuing you agree to share your new address with your GP surgery.</p>
 
       {{ radios({
@@ -64,17 +84,17 @@
           },
           "items": [
           {
-            "value": "continue~/live/start",
-            "text": "Confirm my new address",
-            "checked": checked("address-not-catchment", "continue")
-          },
-          {
-            "value": "register~/live/start",
-            "text": "Register with a new GP",
+            "value": "register~https://www.nhs.uk/service-search/find-a-gp/",
+            "text": "Find my nearest GP",
             "checked": checked("address-not-catchment", "register")
           },
           {
-              "value": "cancel~/live/carer-details",
+            "value": "continue~success",
+            "text": "Confirm my new address and register with a new GP later",
+            "checked": checked("address-not-catchment", "continue")
+          },
+          {
+              "value": "cancel~cancel",
               "text": "Cancel update",
               "checked": checked("address-not-catchment", "cancel")
             }
