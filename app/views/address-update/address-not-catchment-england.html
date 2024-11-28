@@ -50,10 +50,10 @@
     </p>
 
       <h2 class="nhsuk-heading-m">Register for a new GP</h2>
-
-      <p>We recommend registering for a new GP. You will be asked for your new address as part of registration and your NHS record will be updated.</p>
-      <p>It takes around 15 minutes to complete a registration.</p>
-      <p><a href="www.nhs.uk/service-search/find-a-gp/results/SW1A%201AA">Find your nearest GP</a></p>
+      <p>Because your address is outside their catchment area, your GP surgery may start the process to remove you from their patient list.</p>
+      <p>If you still want access to primary care you need to register with a new GP.</p>
+      <!--<p>It takes around 15 minutes to complete a registration.</p>
+      <p><a href="www.nhs.uk/service-search/find-a-gp/results/SW1A%201AA">Find your nearest GP</a></p>-->
       <details class="nhsuk-details">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
@@ -82,13 +82,13 @@
           },
           "items": [
           {
-            "value": "register~https://www.nhs.uk/service-search/find-a-gp/results/SW1A%201AA",
+            "value": "register~proto-find-gp",
             "text": "Find my nearest GP",
             "checked": checked("address-not-catchment", "register")
           },
           {
             "value": "continue~success-england",
-            "text": "Confirm my new address and register with a new GP later",
+            "text": "Confirm new address and register with a new GP later",
             "checked": checked("address-not-catchment", "continue")
           },
           {

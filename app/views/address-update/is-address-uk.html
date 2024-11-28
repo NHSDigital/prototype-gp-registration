@@ -2,7 +2,7 @@
 
 {% extends 'address-update/layout.html' %}
 
-{% set heading = 'Is your home address in the UK?' %}
+{% set heading = 'Do you live in the UK?' %}
 
 {% block pageTitle %}
 {{ heading }} - {{ data.presets[0].servicename }} - NHS
@@ -43,7 +43,7 @@
                 checked: checked("is-address-uk", "Yes")
               },
               {
-                "value": "no~what-is-your-current-address-manual-abroad",
+                "value": "no~go-back",
                 "text": "No",
                 checked: checked("is-address-uk", "No")
               }
