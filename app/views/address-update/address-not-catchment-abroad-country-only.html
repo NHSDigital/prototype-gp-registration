@@ -1,0 +1,95 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% set heading = "Your new address is outside the UK" %}
+
+{% block pageTitle %}
+  {{ heading }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <form action="" method="post" autocomplete="off">
+
+      {% include 'live/includes/step.html' %}
+
+      {% call fieldset({
+        legend: {
+          text: heading,
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      <h2 class="nhsuk-heading-m">What happens next</h2>
+
+      <p>Lordship Lane surgery will start the process to remove you from their patient list.</p>
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            If you want to stay registered at Lordship Lane surgery
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>Most GP surgeries will only accept patients that live within their catchment area.</p>
+          <p>You should contact your GP surgery and check as it may affect your access to healthcare.</p>
+      
+        </div>
+      </details>
+      
+      <p>By continuing you agree to share your new address with your GP surgery.</p>
+
+      {{ radios({
+          "idPrefix": "address-not-catchment",
+          "name": "address-not-catchment",
+          "classes": "nhsuk-radios",
+          "fieldset": {
+            "legend": {
+              "text": "What do you want to do?",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": false
+            }
+          },
+          "items": [
+          {
+            "value": "continue~success-uk",
+            "text": "Confirm new address",
+            "checked": checked("address-not-catchment", "continue")
+          },
+          {
+              "value": "cancel~cancel",
+              "text": "Cancel update",
+              "checked": checked("address-not-catchment", "cancel")
+            }
+          ]
+       }) }}
+
+      {% endcall %}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
