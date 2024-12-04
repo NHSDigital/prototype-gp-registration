@@ -26,7 +26,7 @@ This address is outside the area for this GP surgery - {{ ServiceName }} - NHS
 
       <p>Some GP surgeries will only accept patients that live within the area they cover. You can continue with this address change, but if you are outside the area covered by [[NAME OF SURGERY]] you will need to register with a new GP surgery. </p>
 
-        <p>If you are outside the area covered by your current surgery:</p>
+        <p>If your new address is outside the area covered by your current surgery:</p>
          <ul>
            <li>you may not be offered home visits</li>
            <li>it could affect referrals for hospital tests and treatment, or community health services</li>
@@ -48,9 +48,9 @@ This address is outside the area for this GP surgery - {{ ServiceName }} - NHS
             "items": [
               {
                 "value": "Yes~/design/how-can-we-contact-you",
-                "text": "Find a GP surgery that covers your address",
+                "text": "Find a GP surgery that covers your new address",
                 "hint": {
-                  "text": "If the surgery is not accepting out of area registrations they could reject this application."
+                  "text": "It takes about 15 minutes to register with a new GP surgery"
                 },
                 checked: checked("relation", "Carer")
               },
@@ -58,7 +58,7 @@ This address is outside the area for this GP surgery - {{ ServiceName }} - NHS
                 "value": "Yes~/design/how-can-we-contact-you",
                 "text": "Continue with this change of address",
                 "hint": {
-                  "text": "If the surgery is not accepting out of area registrations they could reject this application."
+                  "text": "You understand that your current GP surgery may not cover your new address."
                 },
                 checked: checked("relation", "Carer")
               },
@@ -66,7 +66,7 @@ This address is outside the area for this GP surgery - {{ ServiceName }} - NHS
                 "value": "Yes~https://www.nhs.uk/service-search/find-a-gp",
                 "text": "Cancel this change of address ",
                 "hint": {
-                  "text": "Use the 'Find a GP' service to search for a GP that accepts patients from your postcode area. Any answers given so far will not be saved and you will have to start again."
+                  "text": "You will speak to your GP surgery about your options."
                 },
                 checked: checked("relation", "Carer")
               }
