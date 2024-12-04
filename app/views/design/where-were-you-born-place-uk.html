@@ -30,7 +30,7 @@ Enter details of where you were born? - {{ ServiceName }} - NHS
 
             {% if (data['who-is-being-registered'] == "dependant") %}
 
-              <h1 class="nhsuk-heading-l">Enter details of where {{ data ['name-first-name'] }} was born?</h1>
+              <h1 class="nhsuk-heading-l">What town or city was {{ data ['name-first-name'] }} born in?</h1>
 
               {% call fieldset({
                 legend: {
@@ -41,10 +41,10 @@ Enter details of where you were born? - {{ ServiceName }} - NHS
 
               {{ input({
                   "label": {
-                    "text": "Place of birth"
+                    "text": "Town or city"
                   },
                   "hint": {
-                    "html": "This can be the city, town or other place you were born."
+                    "html": ""
                   },
                   "classes": "nhsuk-u-width-two-thirds",
                   "id": "town",
@@ -56,7 +56,7 @@ Enter details of where you were born? - {{ ServiceName }} - NHS
 
               {% else %}
 
-              <h1 class="nhsuk-heading-l">Enter details of where you were born</h1>
+              <h1 class="nhsuk-heading-l">What town or city were you born in?</h1>
 
               {% call fieldset({
                 legend: {
@@ -67,10 +67,10 @@ Enter details of where you were born? - {{ ServiceName }} - NHS
 
               {{ input({
                   "label": {
-                    "text": "Place of birth"
+                    "text": "Town or city"
                   },
                   "hint": {
-                    "html": "This can be the city, town or other place you were born."
+                    "html": ""
                   },
                   "classes": "nhsuk-u-width-two-thirds",
                   "id": "town",
