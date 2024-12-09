@@ -1,0 +1,91 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% set heading = "Changing your home address" %}
+
+{% block pageTitle %}
+  {{ heading }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <form action="" method="post" autocomplete="off">
+
+      {% include 'live/includes/step.html' %}
+
+      {% call fieldset({
+        legend: {
+          text: heading,
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      <p>Some GP surgeries will only accept patients that live within the area they cover. You can continue with this address change, but if you are outside the area covered by Lordship Lane surgery you will need to register with a new GP surgery.</p>
+      <p>If your new address is outside the area covered by your current surgery:</p>
+      <ul>
+        <li>you may not be offered home visits</li>
+        <li>it could affect referrals for hospital tests and treatment, or community health services</li>
+      </ul>
+      <p>You should speak to your GP surgery about your options.</p>
+
+      {{ radios({
+          "idPrefix": "address-not-catchment",
+          "name": "address-not-catchment",
+          "classes": "nhsuk-radios",
+          "fieldset": {
+            "legend": {
+              "text": "What do you want to do?",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": false
+            }
+          },
+          "items": [
+          {
+            "value": "register~what-is-your-current-address-abroad",
+            "text": "Find a GP surgery that covers your new address",
+            "hint": {
+              "text": "It takes about 15 minutes to register with a GP surgery"
+            },
+            "checked": checked("address-not-catchment", "register")
+          },
+          {
+            "value": "continue~is-address-uk",
+            "text": "Continue with this change of address",
+            "hint": {
+              "text": "You understand that your current GP surgery may not cover your new address."
+            },
+            "checked": checked("address-not-catchment", "continue")
+          }
+          ]
+       }) }}
+
+      {% endcall %}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
