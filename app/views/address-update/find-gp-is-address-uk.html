@@ -1,0 +1,91 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% set heading = 'What country do you live?' %}
+
+{% block pageTitle %}
+{{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="what-is-your-current-address" method="post" autocomplete="off">
+
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "find-gp-is-address-uk",
+            "name": "find-gp-is-address-uk",
+            "items": [
+              {
+                "value": "England~https://www.nhs.uk/service-search/find-a-gp/",
+                "text": "England",
+                checked: checked("find-gp-is-address-uk", "England")
+              },
+              {
+                "value": "Wales~https://111.wales.nhs.uk/localservices/?s=GPSurgeries&pc=n&sort=default",
+                "text": "Wales",
+                checked: checked("find-gp-is-address-uk", "Wales")
+              },
+              {
+                "value": "Isle of Man~https://www.gov.im/categories/health-and-wellbeing/doctors/",
+                "text": "Isle of Man",
+                checked: checked("find-gp-is-address-uk", "Isle of Man")
+              },
+              {
+                "value": "Scotland~https://www.nhsinform.scot/scotlands-service-directory/gp-practices/",
+                "text": "Scotland",
+                checked: checked("find-gp-is-address-uk", "Scotland")
+              },
+              {
+                "value": "Northern Ireland~https://www.nidirect.gov.uk/services/gp-practices",
+                "text": "Northern Ireland",
+                checked: checked("find-gp-is-address-uk", "Northern Ireland")
+              },
+              {
+                "divider": "or"
+              },
+              {
+                "value": "none~what-is-your-current-address-abroad",
+                "text": "None of these",
+                checked: checked("find-gp-is-address-ukk", "None of these")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
