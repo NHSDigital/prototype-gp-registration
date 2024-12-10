@@ -21,7 +21,7 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
 
-    <form action="" method="post" autocomplete="off">
+    <form action="success-not-found-after-warning" method="post" autocomplete="off">
 
       {% include 'live/includes/step.html' %}
 
@@ -56,50 +56,7 @@
       <p>If you know you are no longer in the catchment area for Lordship Lane surgery, you should register with a new GP.</p>
       <!--<p>It takes around 15 minutes to complete a registration.</p>-->
 
-      <details class="nhsuk-details">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            If you want to stay registered at Lordship Lane surgery
-          </span>
-        </summary>
-        <div class="nhsuk-details__text">
-          <p>Most GP surgeries will only accept patients that live within their catchment area.</p>
-          <p>You should contact your GP surgery and check as it may affect your access to healthcare.</p>
-      
-        </div>
-      </details>
-
       <p>By continuing you agree to share your new address with your GP surgery.</p>
-
-      {{ radios({
-          "idPrefix": "address-not-catchment",
-          "name": "address-not-catchment",
-          "classes": "nhsuk-radios",
-          "fieldset": {
-            "legend": {
-              "text": "What do you want to do?",
-              "classes": "nhsuk-fieldset__legend--m",
-              "isPageHeading": false
-            }
-          },
-          "items": [
-          {
-            "value": "register~https://www.nhs.uk/service-search/find-a-gp/",
-            "text": "Find my nearest GP",
-            "checked": checked("address-not-catchment", "register")
-          },
-          {
-            "value": "continue~success",
-            "text": "Confirm new address and register with a new GP later",
-            "checked": checked("address-not-catchment", "continue")
-          },
-          {
-              "value": "cancel~cancel",
-              "text": "Cancel update",
-              "checked": checked("address-not-catchment", "cancel")
-            }
-          ]
-       }) }}
 
       {% endcall %}
 
