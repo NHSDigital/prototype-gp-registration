@@ -6,11 +6,11 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "Enter details of where " + data ['name-first-name'] + " was born" %}
-  {% set hintText = 'This can be the town, city or other location you were born in.' %}
+  {% set heading = "Where was " + data ['name-first-name'] + " born?" %}
+  {% set hintText = "Enter the name of the town or city nearest to where " + data ['name-first-name'] + " was born." %}
 {% else %}
-  {% set heading = 'Enter details of where you were born' %}
-  {% set hintText = 'This can be the town, city or other location you were born in.' %}
+  {% set heading = 'Where were you born?' %}
+  {% set hintText = 'Enter the name of the town or city nearest to where you were born.' %}
 {% endif %}
 
 {% block pageTitle %}
