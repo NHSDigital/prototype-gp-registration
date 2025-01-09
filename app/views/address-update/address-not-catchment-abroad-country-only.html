@@ -33,9 +33,11 @@
         }
       }) %}
 
-      <h2 class="nhsuk-heading-m">What happens next</h2>
-
+      {% if data['noGP'] === 'false' %}
       <p>As you no longer live in the UK your GP surgery will begin the process of removing you from their patient list.</p>
+      {% else %}
+      <p>As you no longer live in the UK you are not eligible to register with a GP surgery or able to access to primary healthcare services.</p>
+      {% endif %}
       
       {{ radios({
         "idPrefix": "apply-self",

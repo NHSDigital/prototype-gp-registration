@@ -22,9 +22,15 @@
           isPageHeading: true
         }
       }) %}
+
+      {% if data['noGP'] === 'false' %}
       <p>We have shared this information with your GP surgery.</p>
       <h2 class="nhsuk-heading-m">What happens next</h2>
       <p>Lordship Lane surgery will remove you from their patient list.</p>
+
+      {% else %}
+      <p>Your address has been updated on your NHS record.</p>
+      {% endif %}
 
       {% endcall %}
 

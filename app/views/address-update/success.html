@@ -32,9 +32,13 @@
           isPageHeading: true
         }
       }) %}
+
+      {% if data['noGP'] === 'false' %}
       <p>We have shared your new address with your GP surgery.</p>
-      <h2>What happens next</h2>
-      <p>Your GP surgery may contact you to confirm.</p>
+      {% else %}
+      <p>Get access to primary healthcare services by registering with a GP surgery near where you live.</p>
+      <p><a href="#">Find a GP</a></p>
+      {% endif %}
 
       {% endcall %}
 
