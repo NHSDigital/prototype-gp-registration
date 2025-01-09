@@ -2,7 +2,7 @@
 
 {% extends 'address-update/layout.html' %}
 
-{% set heading = "Your new address is outside the UK" %}
+{% set heading = "You told us you now live in " + data['abroad-country'] + "" %}
 
 {% block pageTitle %}
   {{ heading }} - NHS
@@ -35,21 +35,32 @@
 
       <h2 class="nhsuk-heading-m">What happens next</h2>
 
-      <p>Lordship Lane surgery will start the process to remove you from their patient list.</p>
-      <details class="nhsuk-details">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            If you want to stay registered at Lordship Lane surgery
-          </span>
-        </summary>
-        <div class="nhsuk-details__text">
-          <p>Most GP surgeries will only accept patients that live within their catchment area.</p>
-          <p>You should contact your GP surgery and check as it may affect your access to healthcare.</p>
+      <p>As you no longer live in the UK your GP surgery will begin the process of removing you from their patient list.</p>
       
-        </div>
-      </details>
-      
-      <p>By continuing you agree to share your new address with your GP surgery.</p>
+      {{ radios({
+        "idPrefix": "apply-self",
+        "name": "apply-self",
+        "classes": "nhsuk-radios",
+        "fieldset": {
+          "legend": {
+            "text": "Do you want to continue with this address change?",
+            "classes": "nhsuk-fieldset__legend--m",
+            "isPageHeading": false
+          }
+        },
+        "items": [
+        {
+          "value": "Yes~success-abroad",
+          "text": "Yes, continue with this change",
+          "checked": checked("apply-self", "registerSelf")
+        },
+        {
+            "value": "No~go-back",
+            "text": "No",
+            "checked": checked("apply-self", "continue")
+          }
+        ]
+     }) }}
 
       {% endcall %}
 
