@@ -53,8 +53,8 @@
       {% if data['noGP'] === 'false' %}
 
       {{ radios({
-          "idPrefix": "address-not-catchment",
-          "name": "address-not-catchment",
+          "idPrefix": "start",
+          "name": "start",
           "classes": "nhsuk-radios",
           "fieldset": {
             "legend": {
@@ -70,7 +70,7 @@
             "hint": {
               "text": "It takes about 15 minutes to register with a GP surgery."
             },
-            "checked": checked("address-not-catchment", "register")
+            "checked": checked("start", "register")
           },
           {
             "value": "continue~is-address-uk",
@@ -78,7 +78,7 @@
             "hint": {
               "text": "You understand that your current GP surgery may not cover your new address."
             },
-            "checked": checked("address-not-catchment", "continue")
+            "checked": checked("start", "continue")
           }
           ]
        }) }}
@@ -86,8 +86,8 @@
        {% else %}
 
        {{ radios({
-        "idPrefix": "address-not-catchment",
-        "name": "address-not-catchment",
+        "idPrefix": "start",
+        "name": "start",
         "classes": "nhsuk-radios",
         "fieldset": {
           "legend": {
@@ -103,12 +103,12 @@
           "hint": {
             "text": "It takes about 15 minutes to register with a GP surgery."
           },
-          "checked": checked("address-not-catchment", "register")
+          "checked": checked("start", "register")
         },
         {
           "value": "continue~is-address-uk",
           "text": "Continue with this change of address",
-          "checked": checked("address-not-catchment", "continue")
+          "checked": checked("start", "continue")
         }
         ]
      }) }}
