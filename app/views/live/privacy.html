@@ -25,7 +25,7 @@ Your privacy on NHS Register with a GP Surgery - {{ ServiceName }} - NHS
         <nav class="nhsuk-contents-list" role="navigation" aria-label="Pages in this guide">
           <h2 class="nhsuk-u-visually-hidden">Contents</h2>
 
-          <p>Version 2.2, November 2024</p>
+          <p>Version 2.3, December 2024</p>
 
           <p>Contents:</p>
 
@@ -177,7 +177,8 @@ Your privacy on NHS Register with a GP Surgery - {{ ServiceName }} - NHS
         <div id="personal-data-why">
           <h2>4. How we use your data</h2>
           <h3>4.1 Using Personal Demographic Service (PDS) to retrieve and update your PDS record</h3>
-          <p>We use the demographic data you provide to match you to your PDS record. This helps us to find your NHS number so that we can send this to your chosen GP surgery along with your application.  If you provide new contact information such as a new phone number or email address, we use this to update your PDS record.  It is important for the PDS to hold up to date contact information, so that the NHS can contact you to provide you with care e.g. send you appointment reminders and invites to health screening services.</p>
+          <p>We use the demographic data you provide to match you to your PDS record. This helps us to find your NHS number so that we can send this to your chosen GP surgery along with your application.</p>  
+          <p>If you sign in to the 'NHS Register with a GP Surgery' service using your <a href="https://help.login.nhs.uk/setupnhslogin/">NHS login account</a> and your NHS login identity has been <a href="https://digital.nhs.uk/services/nhs-login/nhs-login-for-partners-and-developers/nhs-login-integration-toolkit/how-nhs-login-works">verified to the highest level</a>, any new demographic information you provide (such as a new address or telephone number) will be used to update your PDS record. It is important that your PDS record is accurate and up to date, so that the NHS can contact you to provide you with care, e.g. send you appointment reminders and invites to health screening services. Your updated demographic information will also be passed to your new GP practice as part of your application.</p>
 
           <h3>4.2 Using NHS login to pre-populate your personal data</h3>
           <p>It is possible to use your NHS login account to register with the 'NHS Register with a GP Surgery' service. The benefit is that the information which we hold for your NHS login account will be used to set up your ‘NHS Register with a GP Surgery’ service and save you having to provide the same information again. During the registration process, we will ask you for your permission to use the NHS login information for the 'NHS Register with a GP Surgery' registration. See <a href="https://www.nhs.uk/nhs-app/nhs-app-legal-and-cookies/">NHS login's Privacy Notice and Terms and Conditions for more information</a>.</p>
@@ -268,15 +269,16 @@ Your privacy on NHS Register with a GP Surgery - {{ ServiceName }} - NHS
                   <tr>
                     <td>NHS Register with a GP Surgery demographic data</td>
                     <td>
-                      <p>We transfer the demographic information in your application securely to your GP practice as soon as you submit your application.</p>  
-                      <p>See ’application’ data above.</p>
+                      <p>If your GP practice accepts auto-registrations, we will store your demographic data in the Register with a GP Surgery API store for 3 months. This will allow your new GP practice to retrieve your data and automatically register you.</p>  
+                      <p>In all other cases, we transfer the demographic information in your application securely to your GP practice as soon as you submit your application.</p>
+                      <p>See also 'analytics data' above.</p>
                     </td>
                   </tr>
                   <tr>
                     <td>NHS Register with a GP Surgery Medical & Lifestyle Questionnaire data</td>
                     <td>
-                      <p>We transfer your medical and lifestyle information securely to your GP practice as soon as you submit your application.</p>  
-                      <p>See ’application’ data above.</p>
+                      <p>If your GP practice accepts auto-registrations, we will store your medical and lifestyle data in the Register with a GP Surgery API store for 3 months. This will allow your new GP practice to retrieve your data and automatically register you.</p>  
+                      <p>In all other cases, we transfer your medical and lifestyle information securely to your GP practice as soon as you submit your application.</p>
                     </td>
                   </tr>
                   <tr>
@@ -393,6 +395,7 @@ Your privacy on NHS Register with a GP Surgery - {{ ServiceName }} - NHS
           <p>We may make changes to this notice.  If we do, the version and date on this page will also change. Any changes to this notice will apply immediately from the date of any change.</p>
 
           <h3>12.1 Previous versions</h3>
+          <p>Version 2.2, November 2024 – Section 7 updated to call out Amazon Web Services (AWS)  </p>
           <p>Version 2.1, September 2024 – Information added to Section 4.3 to reflect additional local question functionality</p>
           <p>Version 2.0, August 2024 – Added updates to section 3 to reflect new university student data capture</p>
           <p>Version 1.9, June 2024 – Added updates to section 6 to describe service analytics data processing, updated DPO email address, general formatting changes</p>
@@ -412,7 +415,7 @@ Your privacy on NHS Register with a GP Surgery - {{ ServiceName }} - NHS
 
       <div class="nhsuk-review-date">
         <p class="nhsuk-body-s">
-          Page last reviewed: September 2024
+          Page last reviewed: December 2024
           <!--Next review due: 10 Jan 2022
             (this component at the bottom of the page isn't included in the LIVE page)-->
         </p>
