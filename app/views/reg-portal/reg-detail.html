@@ -1,0 +1,40 @@
+{% extends 'reg-portal/layout.html' %}
+
+{% block pageTitle %}
+6 new registrations - GP registrations portal - NHS
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+        {{ backLink({
+            text: "Return to new registrations",
+            href: "reg-table"
+        }) }}
+
+
+          <h1 class="nhsuk-heading-xl">Sam Smith registration request</h1>
+
+          <div>
+            <p class="nhsuk-u-margin-bottom-0">Name</p>
+            <p class="nhsuk-heading-l nhsuk-u-padding-top-0">Sam Smith</p>
+            <p class="nhsuk-u-margin-bottom-0">NHS number</p>
+            <p class="nhsuk-heading-s nhsuk-u-padding-top-0">123 456 7890</p>
+            <p class="nhsuk-u-margin-bottom-0">Date of birth</p>
+            <p class="nhsuk-heading-s nhsuk-u-padding-top-0">1/1/1990</p>
+            <p class="nhsuk-u-margin-bottom-0">Sex</p>
+            <p class="nhsuk-heading-s nhsuk-u-padding-top-0">Male</p>
+          </div>
+        </div>
+      </div>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}
