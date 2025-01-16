@@ -106,12 +106,18 @@ Sam Smith - GP registrations portal - NHS
                 </div>
             
               </dl>
+            </div>
+          </details>
 
-              <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Contact details</h3>
-              <p>You can use these details for providing primary care services. Consent is required to use them for direct marketing purposes.</p>
-            
+          <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                Contact details
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
               <dl class="nhsuk-summary-list">
-            
+
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
                     Home telephone
@@ -139,7 +145,6 @@ Sam Smith - GP registrations portal - NHS
                   </dd>
                 </div>
             
-            
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
                     Interpreter required
@@ -159,9 +164,16 @@ Sam Smith - GP registrations portal - NHS
                 </div>
             
               </dl>
+            </div>
+          </details>
 
-              <h3 class="nhsuk-heading-m nhsuk-u-padding-top-4">Home address</h3>
-
+          <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                Home address
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
               <dl class="nhsuk-summary-list">
 
                 <div class="nhsuk-summary-list__row">
@@ -172,7 +184,7 @@ Sam Smith - GP registrations portal - NHS
                     {{ data['address-building'] or 'Line 1' }}
                   </dd>
                 </div>
-
+            
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
                     Building
@@ -181,7 +193,7 @@ Sam Smith - GP registrations portal - NHS
                     {{ data['address-street'] or '28 Address Line 2' }}
                   </dd>
                 </div>
-
+            
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
                     Town or City
@@ -190,7 +202,7 @@ Sam Smith - GP registrations portal - NHS
                     {{ data['address-street'] or 'Address Line 4' }}
                   </dd>
                 </div>
-
+            
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
                     Postcode
@@ -199,9 +211,8 @@ Sam Smith - GP registrations portal - NHS
                     {{ data['address-street'] or 'ZZ99 3CZ' }}
                   </dd>
                 </div>
-
+            
               </dl>
-          
             </div>
           </details>
 
