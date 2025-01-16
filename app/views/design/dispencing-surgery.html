@@ -53,6 +53,30 @@ Do you want to get your prescription items direct from {NAME OF SURGERY}? - {{ S
             <li>If you select 'No' and choose a pharmacy you will not be able change your mind later</li>
           </ul>
         </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Where do you live?
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="whereDoYouLive" name="whereDoYouLive" type="radio" value="england">
+                <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+                  England
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="whereDoYouLive-2" name="whereDoYouLive" type="radio" value="scotland">
+                <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+                  Scotland
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
         
           {{ radios({
             "idPrefix": "have-current-uk-address",
