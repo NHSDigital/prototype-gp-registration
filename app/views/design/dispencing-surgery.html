@@ -34,7 +34,7 @@ Do you want to get your prescription items direct from {NAME OF SURGERY}? - {{ S
 
             {% else %}
 
-            <h1 class="nhsuk-heading-l">Do you want to get your prescription items direct from {NAME OF SURGERY}?</h1>
+            <h1 class="nhsuk-heading-l">Where you collect your prescription items</h1>
 
             {% endif %}
 
@@ -47,14 +47,12 @@ Do you want to get your prescription items direct from {NAME OF SURGERY}? - {{ S
             }) %}
 
           <p>{SURGERY NAME} is a dispensing surgery. This means you may be able to get your medicines or medical appliances direct from this GP surgery, rather than from a pharmacy of your choice.</p>
-          <div class="nhsuk-inset-text">          
-            <ul>
-            <li>If you select 'Yes, check if I'm eligible' you must answer the questions you are shown as best you can</li>
-            <li>If you select 'No' and choose a pharmacy you will not be able change your mind later</li>
-          </ul>
+          <p>If you select 'Yes, check if I'm eligible' you must answer the questions you are shown as best you can</p>         
+
+          <div class="nhsuk-inset-text"> 
+            <p>If you select 'No' and choose a pharmacy you will not be able change your mind later</p>
         </div>
 
-        <div
         class="nhsuk-heading-m">Do you want to get your prescription items direct from {NAME OF SURGERY}?</h2>
 
           {{ radios({
@@ -79,7 +77,6 @@ Do you want to get your prescription items direct from {NAME OF SURGERY}? - {{ S
             {{ button({
               "text": "Continue"
             }) }}
-          </div>
           </form>
         </div>
        </div>
