@@ -55,21 +55,21 @@ Do you want to get your prescription items direct from {NAME OF SURGERY}? - {{ S
 
         <h3>Do you want to check if you are eligible?</h3>
 
-          {{ radios({
-            "idPrefix": "have-current-uk-address",
-            "name": "have-current-uk-address",
-            "items": [
-              {
-                "value": "Yes~/design/distance-from-nearest-pharmacy",
-                "text": "Yes,
-                checked: checked("have-current-uk-address", "Yes")
-              },
-              {
-                "value": "No~/design/check-answers-3",
-                "text": "No",
-                checked: checked("have-current-uk-address", "No")
-              }
-            ]
+            {{ radios({
+              "idPrefix": "have-current-uk-address",
+              "name": "have-current-uk-address",
+              "items": [
+                {
+                  "value": "Yes~/design/distance-from-nearest-pharmacy",
+                  "text": "Yes",
+                  "checked": checked("have-current-uk-address", "Yes")
+                },
+                {
+                  "value": "No~/design/check-answers-3",
+                  "text": "No",
+                  "checked": checked("have-current-uk-address", "No")
+                }
+              ]
             }) }}
 
             {% endcall %}
