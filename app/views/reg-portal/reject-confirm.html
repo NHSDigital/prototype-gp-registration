@@ -1,0 +1,57 @@
+{% extends 'reg-portal/layout.html' %}
+
+{% block pageTitle %}
+Sam Smith rejected - GP registrations portal - NHS
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+        {{ backLink({
+            text: "Return to new registrations",
+            href: "reg-table2"
+        }) }}
+
+        <div class="nhsuk-panel nhsuk-panel--reject">
+          <h1 class="nhsuk-heading-xl">
+            Rejected
+          </h1>
+          <p class="nhsuk-body-l">Sam Smith registration rejected</p>
+        </div>
+
+        </div>
+      </div>
+
+      <!--style for the panel component-->
+      <style>
+        .nhsuk-panel {
+          box-sizing: border-box;
+          margin-bottom: 15px;
+          padding: 35px;
+          border: 5px solid transparent;
+          text-align: center;
+        }
+        
+        .nhsuk-panel--reject {
+          color: #fff;
+          background: #d5281b;
+        }
+        
+        @media (min-width: 40.0625em) {
+          .nhsuk-panel {
+            font-size: 2.25rem;
+            line-height: 1.1111111111;
+          }
+        }
+        </style>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}
