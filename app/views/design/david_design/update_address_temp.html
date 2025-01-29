@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% set heading = 'Changing your home address' %}
+{% set heading = '' %}
 
 {% block pageTitle %}
  {{ heading }} - {{ data.presets[0].servicename }} - NHS
@@ -42,7 +42,7 @@
         }
       }) %}
 
-        <h1>Your home address is where you normally live.</h1>
+        <h2>Your home address is where you normally live.</h2>
           <p>Do not update your address if it is a:</p>
           <p><ul>
             <li>Temporary address - you'll live there for less than 3 months</li>
