@@ -1,102 +1,36 @@
-{% set serviceHome = '/live/start' %}
-{% set servicePhase = 'beta' %}
-{% set feedbackType = 'step' %}
-{% set section = '2' %}
-
 {% extends 'layout.html' %}
 
-{% set heading = '' %}
-
 {% block pageTitle %}
- {{ heading }} - {{ data.presets[0].servicename }} - NHS
+  Content page template - NHS.UK prototype kit
 {% endblock %}
 
-{% if (data['select-current-address']) %}
-  {% set link = 'what-is-your-current-address' %}
-{% else %}
-  {% set link = 'what-is-your-current-address' %}
-{% endif %}
-
-{% block outerContent %}
-  {{ backLink({
-    "href": link,
-    "text": "Go back",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+{% block beforeContent %}
+  {{ breadcrumb({
+    href: "/",
+    text: "Home"
   }) }}
 {% endblock %}
 
 {% block content %}
+  <div class="nhsuk-grid-row">
 
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+    <div class="nhsuk-grid-column-two-thirds">
 
-    <form action="" method="post" autocomplete="off">
-
-      {% include 'live/includes/step.html' %}
-
-      {% call fieldset({
-        legend: {
-          text: heading,
-          classes: "nhsuk-fieldset__legend--l",
-          isPageHeading: true
-        }
-      }) %}
-
-        <h2>Your home address is where you normally live.</h2>
-          <p>Do not update your address if it is a:</p>
-          <p><ul>
-            <li>Temporary address - you'll live there for less than 3 months</li>
-            <li>Correspondence address - you only use the address for letters and do not normally live there</li>
-          </ul>
-        </p>
-          <p>To update a temporary or correspondence address you should<a href="https://www.nhs.uk/service-search/find-a-gp/">contact your nearest GP surgery.</a></p>
+      <h2>Your home address is where you normally live</h2>
+      <p>Do not update your address if it is a:</p>
+      <p><ul>
+        <li>Temporary address - you'll live there for less than 3 months</li>
+        <li>Correspondence address - you only use the address for letters and post and do not normally live there</li>
+      </ul>
+    </p>
+      <p>To update a temporary or correspondence address you should <a href="https://www.nhs.uk/service-search/find-a-gp/">contact your nearest GP surgery.</a></p>
 
 
-      {{ radios({
-          "idPrefix": "use-ooo",
-          "name": "use-ooo",
-          "classes": "nhsuk-radios",
-          "fieldset": {
-            "legend": {
-              "text": "What would you like to do?",
-              "classes": "nhsuk-fieldset__legend--m",
-              "isPageHeading": false
-            }
-          },
-          "items": [
-            {
-              "value": "Yes~/live/how-can-we-contact-inputs",
-              "text": "Continue with this registration",
-              "hint": {
-                "text": "If the surgery is not accepting out of area registrations they could reject this application."
-              },
-              checked: checked("use-ooo", "Yes")
-            },
-            {
-              "value": "No~https://www.nhs.uk/service-search/find-a-gp",
-              "text": "Cancel this registration and use Find a GP ",
-              "hint": {
-                "text": "This will end this registration and you will be sent to Find a GP. Any answers given so far will not be saved and a new registration will have to be submitted."
-              },
-              checked: checked("use-ooo", "No")
-            }
-          ]
-       }) }}
+  {{ button({
+    "text": "Continue"
+  }) }}
 
-      {% endcall %}
+    </div>  
 
-      {{ button({
-        "text": "Continue"
-      }) }}
-
-    </form>
   </div>
-</div>
-
-{% include 'live/includes/devmode.html' %}
-
-{% endblock %}
-
-{% block footer %}
-  {% include 'live/includes/footer.html' %}
 {% endblock %}
