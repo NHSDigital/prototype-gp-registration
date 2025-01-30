@@ -19,8 +19,8 @@
       <h2>Changing your home address</h2>
       <p>You can change your home address by either:</p>
       <p><ul>
-        <li><p><a href="https://www.nhs.uk/service-search/find-a-gp/">Registering with a GP surgery that covers your new address</a> (takes about 15 minutes), or</p></li>
-        <li>Choosing 'Continue'</li>
+        <li><p><a href="https://www.nhs.uk/service-search/find-a-gp/">Find and register with a GP surgery that covers your new address</a> (takes about 15 minutes), or</p></li>
+        <li>Choosing to continue</li>
       </ul></p>
 
       <p>Changing your home address will update your NHS record and the address your GP surgery has for you.</p>
@@ -31,6 +31,25 @@
       <li>it could affect referrals for hospital tests and treatment, or community health services</li>
     </ul></p>
     <p>You should speak to your current GP surgery about your options.</p>
+
+<h2>Do you want to continue?</h2>
+{{ radios({
+  "idPrefix": "are-you-student",
+  "name": "are-you-student",
+  "items": [
+    {
+      "value": "Yes~/live/student-do-you-know-student-number",
+      "text": "Yes",
+      "checked": checked("are-you-student", "Yes")
+    },
+    {
+      "value": "No~/live/do-you-current-address",
+      "text": "No - takes you to Find a GP",
+      "checked": checked("are-you-student", "No")
+    }
+  ]
+}) }}
+
 
   {{ button({
     "text": "Continue"
