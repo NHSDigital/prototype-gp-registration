@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Does ' + data['name-first-name'] + ' want to get their prescription items direct from ' + data.presets[0].gpsurgery %}
+  {% set heading = 'Where ' + data['name-first-name'] + ' gets their prescription items' %}
 {% else %}
-  {% set heading = 'Do you want to get your prescription items direct from ' + data.presets[0].gpsurgery  %}
+  {% set heading = 'Where you get your prescription items' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -39,7 +39,12 @@
             }
           }) %}
 
-          <p>{{ data.presets[0].gpsurgery }} is a dispensing surgery. This means you may be able to get your medicines or medical appliances direct from this GP surgery, rather than from a pharmacy of your choice. If you select 'Yes, check if I'm eligible' you must answer the questions you are shown as best you can. The GP surgery may discuss this additional service with you.</p>
+          <p>{{ data.presets[0].gpsurgery }} is a dispensing surgery. This means you may be eligible to get your prescription items such as medicines or medical appliances direct from this GP surgery.</p>
+          <p>If you select 'Yes' you must answer the questions you are asked as best you can. If you are eligible the GP surgery may discuss this additional service with you.</p>
+          <div class="nhsuk-inset-text"> 
+            <p>If you select 'No' and choose a pharmacy you will not be able change your mind later</p>
+          </div>
+          <h2 class="nhsuk-heading-m">Do you want to check if you are eligible?</h2>
 
           {{ radios({
             "idPrefix": "have-current-uk-address",
@@ -47,12 +52,12 @@
             "items": [
               {
                 "value": "Yes~/live/distance-from-nearest-pharmacy",
-                "text": "Yes, check if I'm eligible",
+                "text": "Yes",
                 "checked": checked("have-current-uk-address", "Yes")
               },
               {
                 "value": "No~/live/check-answers-3",
-                "text": "No, I will do this later",
+                "text": "No",
                 "checked": checked("have-current-uk-address", "No")
               }
             ]
