@@ -21,7 +21,7 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
 
-    <form action="" method="post" autocomplete="off">
+    <form action="is-address-uk" method="post" autocomplete="off">
 
       {% include 'live/includes/step.html' %}
 
@@ -33,87 +33,31 @@
         }
       }) %}
 
-      {% if data['noGP'] === 'false' %}
+      {% if data['noGP'] != 'true' %}
 
+      <p>You can change your home address by either:</p>
+      <ul>
+        <li><a href="find-gp-is-address-uk">Find and register with a GP surgery</a> that covers your new address (takes about 15 minutes), or</li>
+        <li>Choosing to continue</li>
+      </ul>
       <p>Changing your home address will update your NHS record and the address your GP surgery has for you.</p>
-      <p>Some GP surgeries will only accept patients that live within the area they cover. You can continue with this address change, but if you are outside the area covered by Lordship Lane surgery you will need to register with a new GP surgery.</p>
-      <p>If your new address is outside the area covered by your current surgery:</p>
+      <p>Some GP surgeries will only accept patients that live within the area they cover. This is called their catchment area.</p>
+      <p>If you continue with this change and Lordship Lane surgery is not accepting registrations from outside their catchment area:</p>
       <ul>
         <li>you may not be offered home visits</li>
         <li>it could affect referrals for hospital tests and treatment, or community health services</li>
       </ul>
-      <p>You should speak to your GP surgery about your options.</p>
+      <p>You should speak to your current GP surgery about your options.</p>
 
       {% else %}
+      <p>You can change your home address by either:</p>
+      <ul>
+        <li><a href="find-gp-is-address-uk">Find and register with a GP surgery</a> that covers your new address (takes about 15 minutes), or</li>
+        <li>Choosing to continue</li>
+      </ul>
       <p>Changing your home address will update your NHS record.</p>
-      <p>Registering with a GP surgery will automatically update your address with the NHS.</p>
 
       {% endif %}
-
-      {% if data['noGP'] === 'false' %}
-
-      {{ radios({
-          "idPrefix": "start",
-          "name": "start",
-          "classes": "nhsuk-radios",
-          "fieldset": {
-            "legend": {
-              "text": "What do you want to do?",
-              "classes": "nhsuk-fieldset__legend--m",
-              "isPageHeading": false
-            }
-          },
-          "items": [
-          {
-            "value": "register~find-gp-is-address-uk",
-            "text": "Find a GP surgery that covers your new address",
-            "hint": {
-              "text": "It takes about 15 minutes to register with a GP surgery."
-            },
-            "checked": checked("start", "register")
-          },
-          {
-            "value": "continue~is-address-uk",
-            "text": "Continue with this change of address",
-            "hint": {
-              "text": "You understand that your current GP surgery may not cover your new address."
-            },
-            "checked": checked("start", "continue")
-          }
-          ]
-       }) }}
-
-       {% else %}
-
-       {{ radios({
-        "idPrefix": "start",
-        "name": "start",
-        "classes": "nhsuk-radios",
-        "fieldset": {
-          "legend": {
-            "text": "What do you want to do?",
-            "classes": "nhsuk-fieldset__legend--m",
-            "isPageHeading": false
-          }
-        },
-        "items": [
-        {
-          "value": "register~find-gp-is-address-uk",
-          "text": "Find a GP surgery that covers your new address",
-          "hint": {
-            "text": "It takes about 15 minutes to register with a GP surgery."
-          },
-          "checked": checked("start", "register")
-        },
-        {
-          "value": "continue~is-address-uk",
-          "text": "Continue with this change of address",
-          "checked": checked("start", "continue")
-        }
-        ]
-     }) }}
-
-       {% endif %}
 
       {% endcall %}
 
