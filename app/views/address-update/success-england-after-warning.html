@@ -22,13 +22,17 @@
           isPageHeading: true
         }
       }) %}
+      {% if data['noGP'] != 'true' %}
       <p>We have shared your new address with your GP surgery.</p>
       <h2 class="nhsuk-heading-m">What happens next</h2>
-      <p>Lordship Lane surgery will remove you from their patient list.</p>
-      <p>We recommend registering with a new GP.</p>
-      <!--<p><a href="https://www.nhs.uk/service-search/find-a-gp/results/SW1A%201AA">Find your nearest GP</a></p>-->
-      <p><a href="thank-you">Find your nearest GP</a></p>
-      
+      <p>Your address will be sent to your GP surgery who will check if it is in their catchment area.</p>
+      <p>If you know you are no longer in the catchment area for Lordship Lane surgery you should register with a new GP.</p>
+      <p>Lordship Lane surgery will remove you from their patient list in 30 days.</p>
+      {% else %}
+      <p>Get access to primary healthcare services by registering with a GP surgery near where you live.</p>
+      {% endif %}
+      <p><a href="thank-you">Find a GP</a></p>
+      {% if data['noGP'] != 'true' %}
       <details class="nhsuk-details">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
@@ -41,6 +45,7 @@
       
         </div>
       </details>
+      {% endif %}
 
       {% endcall %}
 
