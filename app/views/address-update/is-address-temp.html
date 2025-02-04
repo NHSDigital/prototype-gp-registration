@@ -2,7 +2,7 @@
 
 {% extends 'address-update/layout.html' %}
 
-{% set heading = 'This service is not for temporary or correspondence addresses' %}
+{% set heading = 'Changing a temporary or correspondence address' %}
 
 {% block pageTitle %}
 {{ heading }} - {{ data.presets[0].servicename }} - NHS
@@ -21,7 +21,7 @@
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
-        <form action="" method="post" autocomplete="off">
+        <form action="is-address-uk" method="post" autocomplete="off">
 
           {% include 'live/includes/step.html' %}
     
@@ -38,29 +38,7 @@
             <li>Temporary address - you'll live there for less than 3 months</li>
             <li>Correspondence address - you only use the address for letters and post and do not normally live there</li>
           </ul>
-    
-          {{ radios({
-              "idPrefix": "temp",
-              "name": "temp",
-              "classes": "nhsuk-radios",
-              "fieldset": {
-                "legend": {
-                  "text": "What do you want to do?",
-                  "classes": "nhsuk-fieldset__legend--m",
-                  "isPageHeading": false
-                }
-              },
-              "items": [
-              {
-                "value": "update~start",
-                "text": "Update my permanent home address"
-              },
-              {
-                "value": "temp~confirm-temp",
-                "text": "Update a temporary or correspondence address"
-              }
-              ]
-           }) }}
+          <p>To change a temporary or correspondence address you should contact your GP surgery.</p>
     
           {% endcall %}
     
