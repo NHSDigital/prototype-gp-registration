@@ -41,7 +41,7 @@ Your new address - NHS
           {% endif %}
       </p>
 
-      {% if data['noGP'] === 'false' %}
+      {% if data['noGP'] != 'true' %}
       <p>By continuing you agree to share your new address with your GP surgery</p>
       {% endif %}
 
