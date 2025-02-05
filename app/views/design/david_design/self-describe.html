@@ -16,43 +16,23 @@
 
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h2>How you self-describe</h2>
+      <h2>How you choose to self-describe</h2>
       <p>You may choose to self-describe. Your GP surgery will use this information to help them improve the experience of everyone accessing primary care services.</p>
-      <p>For example, you may self describe as:</p>
+      <p>For example, you may self-describe as:</p>
       <p><ul>
         <li>Bisexual - someone who is attracted to men and women</li>
-        <li>Gay or lesbian - Men who are attracted to men, and women who are attracted to women</li>
-        <li>Heterosexua (straight) - Men who are attracted to women, and women who are attracted to men</li>
-        <li></li>
+        <li>Gay or lesbian - men who are attracted to men, and women who are attracted to women</li>
+        <li>Heterosexua (straight) - men who are attracted to women, and women who are attracted to men</li>
       </ul></p>
 
-      <p>Changing your home address will update your NHS record and the address your GP surgery has for you.</p>
-      <p>Some GP surgeries will only accept patients that live within the area they cover. This is called their catchment area.</p>
-      <p>If you continue with this change and [NAME OF SURGERY] is not accepting registrations from outside their catchment area:</p>
-      <p><ul>
-        <li>you may not be offered home visits</li>
-      <li>it could affect referrals for hospital tests and treatment, or community health services</li>
-    </ul></p>
     <p>If you prefer not to answer this question you can just select 'Continue'.</p>
 
-<h2>Do you want to continue?</h2>
-{{ radios({
-  "idPrefix": "are-you-student",
-  "name": "are-you-student",
-  "items": [
-    {
-      "value": "Yes~/live/student-do-you-know-student-number",
-      "text": "Yes",
-      "checked": checked("are-you-student", "Yes")
-    },
-    {
-      "value": "No~/live/do-you-current-address",
-      "text": "No - takes you to Find a GP",
-      "checked": checked("are-you-student", "No")
-    }
-  ]
-}) }}
-
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="one-quarter">
+        Enter how you choose to self-describe
+      </label>
+      <input class="nhsuk-input nhsuk-u-width-one-quarter" id="one-quarter" name="one-quarter" type="text">
+    </div>
 
   {{ button({
     "text": "Continue"
