@@ -1,0 +1,50 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% set heading = "" %}
+
+{% block pageTitle %}
+  {{ heading }} - NHS
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <form action="https://auth.sandpit.signin.nhs.uk/authorize?scope=openid%20profile&vtr=%5B%22P9.Cp.Cd%22%2C%22P9.Cm%22%5D&client_id=address-update-feature&redirect_uri=[https://gp-reg-nhs.herokuapp.com/address-update/start?noGP=false&response_type=code&state=state]" method="post" autocomplete="off">
+
+      {% call fieldset({
+        legend: {
+          text: heading,
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      {% if data['noGP'] != 'true' %}
+      <p>You need to use NHS login to change your address.</p>
+      <p>We will ask for your email address to check if you have an account.</p>
+      <p>If you don't have an account, you can create one. You will then need to restart the process to change your address.</p>
+
+      {% endif %}
+
+      {% endcall %}
+
+      {{ button({
+        "text": "Continue",
+        "classes": "nhsuk-button--blue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
