@@ -37,6 +37,10 @@
         }
       }) %}
 
+      {% if data['error_description'] == 'ConsentNotGiven' %}
+      <p>Consent not given</p>
+      {% endif %}
+
       {% if data['noGP'] != 'true' %}
       <p>Changing your home address will update your NHS record and the address your GP surgery has for you.</p>
       <p>You can change your home address by either:</p>
