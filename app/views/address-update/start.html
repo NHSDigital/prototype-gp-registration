@@ -1,8 +1,11 @@
 {% set serviceHome = '/live/start' %}
 
 {% extends 'address-update/layout.html' %}
-
+{% if data['error_description'] == 'ConsentNotGiven' %}
+  {% set heading = "You cannot continue without sharing your information" %}
+{% else %}
 {% set heading = "Changing your home address" %}
+{% endif %}
 
 {% block pageTitle %}
   {{ heading }} - NHS
@@ -27,8 +30,6 @@
     <form action="is-address-uk" method="post" autocomplete="off">
     {% endif %}
 
-      {% include 'live/includes/step.html' %}
-
       {% call fieldset({
         legend: {
           text: heading,
@@ -38,10 +39,17 @@
       }) %}
 
       {% if data['error_description'] == 'ConsentNotGiven' %}
-      <p>Consent not given</p>
-      {% endif %}
+      <p>To change your address this service needs your NHS login information to verify your identity</p>
+      <h2 class="nhsuk-heading-m">Other ways to change your address</h2>
+      <p>Contact your GP surgery and ask them to update your address.</p>
+      {{ actionLink({
+        text: "Find a GP",
+        href: "#"
+      }) }}
+      <p>Close this tab to go back to the NHS app.</p>
+      
 
-      {% if data['noGP'] != 'true' %}
+      {% elseif data['noGP'] != 'true' %}
       <p>Changing your home address will update your NHS record and the address your GP surgery has for you.</p>
       <p>You can change your home address by either:</p>
       <ul>
@@ -56,7 +64,7 @@
       </ul>
       <p>You should speak to your current GP surgery about your options.</p>
 
-      {% else %}
+      {% elseif data['noGP'] == 'true' %}
       <p>Changing your home address will update your NHS record.</p>
       <p>You can change your home address by either:</p>
       <ul>
@@ -68,9 +76,11 @@
 
       {% endcall %}
 
+      {% if data['error_description'] != 'ConsentNotGiven' %}
       {{ button({
         "text": "Continue"
       }) }}
+      {% endif %}
 
     </form>
   </div>
