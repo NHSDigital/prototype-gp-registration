@@ -31,7 +31,11 @@
       {% else %}
       <p>Get access to primary healthcare services by registering with a GP surgery near where you live.</p>
       {% endif %}
-      <p><a href="thank-you">Find a GP</a></p>
+      {{ actionLink({
+        text: "Find a GP",
+        href: "#"
+      }) }}
+      <!--<p><a href="thank-you">Find a GP</a></p>-->
       {% if data['noGP'] != 'true' %}
       <details class="nhsuk-details">
         <summary class="nhsuk-details__summary">
@@ -49,9 +53,9 @@
 
       {% endcall %}
 
-      {{ button({
+      <!--{{ button({
         "text": "Back to contact details"
-      }) }}
+    }) }}-->
 
     </form>
   </div>
