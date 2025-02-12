@@ -2,18 +2,10 @@
 
 {% extends 'address-update/layout.html' %}
 
-{% set heading = "Your address update has been cancelled" %}
+{% set heading = "No changes have been made to your NHS record" %}
 
 {% block pageTitle %}
   {{ heading }} - NHS
-{% endblock %}
-
-{% block outerContent %}
-  {{ backLink({
-    "href": "javascript:history.go(-1)",
-    "text": "Go back",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
-  }) }}
 {% endblock %}
 
 {% block content %}
@@ -32,13 +24,13 @@
           isPageHeading: true
         }
       }) %}
-      <p>No changes have been made to your address.</p>
+      <p>As you will not be absent from the UK for longer than 3 months you do not need to update your address.</p>
 
       {% endcall %}
 
-      {{ button({
+      <!--{{ button({
         "text": "Back to contact details"
-      }) }}
+    }) }}-->
 
     </form>
   </div>
