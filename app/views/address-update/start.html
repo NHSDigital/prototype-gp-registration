@@ -21,7 +21,11 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
 
+    {% if data['noGP'] != 'true' %}
     <form action="is-address-temp" method="post" autocomplete="off">
+    {% else %}
+    <form action="is-address-uk" method="post" autocomplete="off">
+    {% endif %}
 
       {% include 'live/includes/step.html' %}
 
