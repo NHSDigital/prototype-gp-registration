@@ -12,11 +12,13 @@
 {% endblock %}
 
 {% block outerContent %}
+{% if data['error_description'] != 'ConsentNotGiven' %}
   {{ backLink({
     "href": "javascript:history.go(-1)",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
+{% endif %}
 {% endblock %}
 
 {% block content %}
