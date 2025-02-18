@@ -1,0 +1,97 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+{% if data['error_description'] == 'ConsentNotGiven' %}
+  {% set heading = "You cannot continue without sharing your information" %}
+{% else %}
+{% set heading = "Changing your home address" %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+{% if data['error_description'] != 'ConsentNotGiven' %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    {% if data['noGP'] != 'true' %}
+    <form action="is-address-temp" method="post" autocomplete="off">
+    {% else %}
+    <form action="is-address-uk" method="post" autocomplete="off">
+    {% endif %}
+
+      {% call fieldset({
+        legend: {
+          text: heading,
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      {% if data['error_description'] == 'ConsentNotGiven' %}
+      <p>To change your address this service needs your NHS login information to verify your identity</p>
+      <h2 class="nhsuk-heading-m">Other ways to change your address</h2>
+      <p>Contact your GP surgery and ask them to update your address.</p>
+      {{ actionLink({
+        text: "Find a GP",
+        href: "#"
+      }) }}
+      <p>Close this tab to go back to the NHS app.</p>
+      
+
+      {% elseif data['noGP'] != 'true' %}
+      <!--<p>Changing your home address will update your NHS record and the address your GP surgery has for you.</p>-->
+      <p>It's important the NHS has an up to date address so:</p>
+      <ul>
+        <li>any NHS letters giving appointment dates or test results go to the right place</li>
+        <li>your GP surgery can provide home visits or other services</li>
+      </ul>
+      <p>In most cases, when someone moves address they need to register with a new GP.</p>
+      <p><a href="find-gp-is-address-uk">Registering with a GP surgery</a> takes about 15 minutes and will update your NHS record with your new address.</p>
+      <p>Alternatively, choose 'Continue' to update your address here.</p>
+      <div class="nhsuk-inset-text">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>If you choose to continue it could result in you being removed from your current GP surgery.</p>
+      </div>
+
+      {% elseif data['noGP'] == 'true' %}
+      <p>Changing your home address will update your NHS record.</p>
+      <p>You can change your home address by either:</p>
+      <ul>
+        <li><a href="find-gp-is-address-uk">Registering with a GP surgery</a> that covers your new address (takes about 15 minutes), or</li>
+        <li>Choosing 'Continue'</li>
+      </ul>
+
+      {% endif %}
+
+      {% endcall %}
+
+      {% if data['error_description'] != 'ConsentNotGiven' %}
+      {{ button({
+        "text": "Continue"
+      }) }}
+      {% endif %}
+
+    </form>
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
