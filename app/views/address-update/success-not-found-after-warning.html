@@ -23,27 +23,24 @@
         }
       }) %}
       <p>Your NHS record has been updated and we have shared your new address with your GP surgery.</p>
+      <p>We were unable to check if your new address is still within your GP surgery's catchment area.</p>
       <h2 class="nhsuk-heading-m">What happens next</h2>
-      <p>Your address will be sent to your GP surgery who will check if it is in their catchment area. If it is not they will start the process to remove you from their patient list.</p>
-      <p>If you know you are no longer in the catchment area for Lordship Lane surgery you should register with a new GP.</p>
-      {{ actionLink({
-        text: "Find a GP",
-        href: "#"
-      }) }}
-      <!--<p><a href="thank-you">Find a GP</a></p>-->
-      
+      <p>Your surgery will contact you to check if your new address is outside their catchment area.</p>
+
       <details class="nhsuk-details">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
-            If you want to stay registered at Lordship Lane surgery
+            If you are waiting for surgery or a prescription
           </span>
         </summary>
         <div class="nhsuk-details__text">
-          <p>Most GP surgeries will only accept patients that live within their catchment area.</p>
-          <p>You should contact your GP surgery and check as it may affect your access to healthcare.</p>
-      
+          <p>If you are waiting for elective surgery or a prescription you should contact your GP surgery.</p>      
         </div>
       </details>
+      {{ actionLink({
+        text: "Register with a new GP",
+        href: "#"
+      }) }}
 
       {% endcall %}
 

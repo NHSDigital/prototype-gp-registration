@@ -24,31 +24,31 @@
       }) %}
       {% if data['noGP'] != 'true' %}
       <p>Your NHS record has been updated and we have shared your new address with your GP surgery.</p>
+      <p>Your new address is outside the catchment area for Lordship Lane surgery.</p>
       <h2 class="nhsuk-heading-m">What happens next</h2>
-      <p>Your address will be sent to your GP surgery who will check if it is in their catchment area.</p>
-      <p>If you know you are no longer in the catchment area for Lordship Lane surgery you should register with a new GP.</p>
-      <p>Lordship Lane surgery will remove you from their patient list in 30 days.</p>
-      {% else %}
-      <p>Get access to primary healthcare services by registering with a GP surgery near where you live.</p>
-      {% endif %}
-      {{ actionLink({
-        text: "Find a GP",
-        href: "#"
-      }) }}
-      <!--<p><a href="thank-you">Find a GP</a></p>-->
-      {% if data['noGP'] != 'true' %}
+      <p>Your surgery will contact you to confirm that your new address is outside their catchment area.</p>
       <details class="nhsuk-details">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
-            If you want to stay registered at Lordship Lane surgery
+            If you are waiting for surgery or a prescription
           </span>
         </summary>
         <div class="nhsuk-details__text">
-          <p>Most GP surgeries will only accept patients that live within their catchment area.</p>
-          <p>You should contact your GP surgery and check as it may affect your access to healthcare.</p>
+          <p>If you are waiting for elective surgery or a prescription you should contact your GP surgery.</p>
       
         </div>
       </details>
+      {{ actionLink({
+        text: "Register with a new GP",
+        href: "#"
+      }) }}
+      {% else %}
+      <p>Your NHS record has been updated.</p>
+      <p>Get access to primary healthcare services by registering with a GP surgery near where you live.</p>
+      {{ actionLink({
+        text: "Register with a GP",
+        href: "#"
+      }) }}
       {% endif %}
 
       {% endcall %}
