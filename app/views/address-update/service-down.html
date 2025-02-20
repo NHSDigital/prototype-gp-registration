@@ -1,0 +1,34 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% set heading = "" %}
+
+{% block pageTitle %}
+  {{ heading }} - NHS
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <h1 class="nhsuk-heading-l">Sorry, there is a problem with the service</h1>
+    <p>Try again later.</p>
+    <h2 class="nhsuk-heading-m">Other ways to change your address</h2>
+    <p>Contact your GP surgery and ask them to update your address.</p>
+    {{ actionLink({
+      text: "Find your nearest GP surgery",
+      href: "https://www.nhs.uk/service-search/find-a-gp/"
+    }) }}
+
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
