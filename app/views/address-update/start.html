@@ -52,27 +52,30 @@
       
 
       {% elseif data['noGP'] != 'true' %}
+      <!--<p>Changing your home address will update your NHS record and the address your GP surgery has for you.</p>-->
       <p>Changing your home address will update your NHS record and the address your GP surgery has for you.</p>
-      <p>You can change your home address by either:</p>
+      <p>It's important your address is up to date so that you continue to get:</p>
       <ul>
-        <li><a href="find-gp-is-address-uk">Registering with a GP surgery</a> that covers your new address (takes about 15 minutes), or</li>
-        <li>Choosing 'Continue'</li>
+        <li>letters or test results</li>
+        <li>home visits and urgent care, including out of hours care</li>
+        <li>community services, such as physiotherapy and midwife appointments</li>
       </ul>
-      <p>Some GP surgeries will only accept patients that live within the area they cover. This is called their catchment area.</p>
-      <p>If you choose 'Continue' and Lordship Lane surgery is not accepting registrations from outside their catchment area:</p>
-      <ul>
-        <li>you may not be offered home visits</li>
-        <li>it could affect referrals for hospital tests and treatment, or community health services</li>
-      </ul>
-      <p>You should speak to your current GP surgery about your options.</p>
+      <p>When you change address you may need to register with a new GP surgery.</p>
+      <p><a href="find-gp-is-address-uk">Registering with a GP surgery</a> takes about 15 minutes and automatically updates your NHS record.</p>
+      <div class="nhsuk-inset-text">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>If your new address is outside the catchment area of your current GP surgery they may remove you from their patient list.</p>
+      </div>
 
       {% elseif data['noGP'] == 'true' %}
       <p>Changing your home address will update your NHS record.</p>
-      <p>You can change your home address by either:</p>
+      <p>It's important your address is up to date so that you continue to get:</p>
       <ul>
-        <li><a href="find-gp-is-address-uk">Registering with a GP surgery</a> that covers your new address (takes about 15 minutes), or</li>
-        <li>Choosing 'Continue'</li>
+        <li>letters or test results</li>
+        <li>home visits and urgent care, including out of hours care</li>
+        <li>community services, such as physiotherapy and midwife appointments</li>
       </ul>
+      <p><a href="find-gp-is-address-uk">Registering with a GP surgery</a> takes about 15 minutes and automatically updates your NHS record.</p>
 
       {% endif %}
 
