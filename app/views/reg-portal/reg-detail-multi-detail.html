@@ -110,7 +110,7 @@ Sam Smith - GP registrations portal - NHS
           <details class="nhsuk-details nhsuk-expander">
             <summary class="nhsuk-details__summary">
               <span class="nhsuk-details__summary-text">
-                Contact detail
+                Contact details
               </span>
             </summary>
             <div class="nhsuk-details__text">
@@ -236,7 +236,7 @@ Sam Smith - GP registrations portal - NHS
           <details class="nhsuk-details nhsuk-expander">
             <summary class="nhsuk-details__summary">
               <span class="nhsuk-details__summary-text">
-                Ethnicity
+                Nominated pharmacy
               </span>
             </summary>
             <div class="nhsuk-details__text">
@@ -244,43 +244,49 @@ Sam Smith - GP registrations portal - NHS
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Ethnicity
+                    Name of pharmacy
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    Black African, Black British or Caribbean, African
-                  </dd>
-                </div>
-            
-              </dl>
-            </div>
-          </details>
-
-          <details class="nhsuk-details nhsuk-expander">
-            <summary class="nhsuk-details__summary">
-              <span class="nhsuk-details__summary-text">
-                Place of birth
-              </span>
-            </summary>
-            <div class="nhsuk-details__text">
-              <dl class="nhsuk-summary-list">
-
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Country of birth
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    England
+                    {{ data['pharmacy-name'] or 'Green Pharmacy' }}
                   </dd>
                 </div>
             
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Place of birth
+                    Building
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    Huntingdon
+                    {{ data['pharmacy-building'] or '17 Pharmacy Road' }}
                   </dd>
                 </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Street
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['pharmacy-street'] or '17 Pharmacy Road' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Town or city
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['pharmacy-city'] or 'Edinburgh' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Postcode
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['pharmacy-street'] or 'E15 2JE' }}
+                  </dd>
+                </div>
+            
               </dl>
             </div>
           </details>
@@ -339,6 +345,58 @@ Sam Smith - GP registrations portal - NHS
                   </dd>
                 </div>
             
+              </dl>
+            </div>
+          </details>
+
+          <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                Ethnicity
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <dl class="nhsuk-summary-list">
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Ethnicity
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    Black African, Black British or Caribbean, African
+                  </dd>
+                </div>
+            
+              </dl>
+            </div>
+          </details>
+
+          <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                Place of birth
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <dl class="nhsuk-summary-list">
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Country of birth
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    England
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Place of birth
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    Huntingdon
+                  </dd>
+                </div>
               </dl>
             </div>
           </details>
@@ -406,64 +464,6 @@ Sam Smith - GP registrations portal - NHS
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['address-town-prev'] or 'Previous town' }}
-                  </dd>
-                </div>
-            
-              </dl>
-            </div>
-          </details>
-
-          <details class="nhsuk-details nhsuk-expander">
-            <summary class="nhsuk-details__summary">
-              <span class="nhsuk-details__summary-text">
-                Nominated pharmacy
-              </span>
-            </summary>
-            <div class="nhsuk-details__text">
-              <dl class="nhsuk-summary-list">
-
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Name of pharmacy
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['pharmacy-name'] or 'Green Pharmacy' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Building
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['pharmacy-building'] or '17 Pharmacy Road' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Street
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['pharmacy-street'] or '17 Pharmacy Road' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Town or city
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['pharmacy-city'] or 'Edinburgh' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Postcode
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['pharmacy-street'] or 'E15 2JE' }}
                   </dd>
                 </div>
             
