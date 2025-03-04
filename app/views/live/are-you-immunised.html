@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "Has " + data['name-first-name'] + " had all their routine vaccinations?" %}
+  {% set heading = "Has " + data['name-first-name'] + " had all the vaccinations they are eligible for in the UK?" %}
 {% else %}
-  {% set heading = 'Have you got all your immunisations?' %}
+  {% set heading = 'Have you had all the vaccinations you are eligible for in the UK?' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -47,7 +47,7 @@
             }) %}
 
             {{ hint({
-              "text": "These are vaccinations or immunisations received at school or from a GP, either in the UK or abroad. "
+              "text": "You would have got these vaccinations when at school, from your GP surgery or other healthcare provider."
             }) }}
 
             {{ radios({
