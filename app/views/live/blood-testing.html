@@ -1,0 +1,107 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Blood testing' %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            <p class="govuk-body">NHS England is committed to identifying all those infected with a bloodborne illness no matter how it is transmitted.</p>
+            <p class="govuk-body">You may have received infected blood, blood products or tissues if you have had:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>an accident</li>
+              <li>complications during childbirth</li>
+              <li>surgery or medical treatment requiring blood products or tissues</li>
+            </ul>
+            <p>The information you give will be used by your GP surgery to consider your suitability for blood screening in the unlikely event you may have been given infected blood.</p>
+        
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        {% if (data['who-is-being-registered'] === "dependant") %}
+          <h3 class="govuk-fieldset__heading">
+            Did {{ data['name-first-name'] }} receive a blood transfusion or blood products or tissues before 1996?
+          </h3>
+        {% else %}
+          <h3 class="govuk-fieldset__heading">
+            Did you receive a blood transfusion or blood products or tissues before 1996?
+          </h3>
+        {% endif %}
+      </legend> 
+
+      {{ radios({
+        "idPrefix": "blood-test",
+        "name": "blood-test",
+        "items": [
+          {
+            "value": "Yes~/live/blood-inquiry",
+            "text": "Yes",
+            checked: checked("blood-test", "Yes")
+          },
+          {
+            "value": "No~/live/scr",
+            "text": "No",
+            checked: checked("blood-test", "No")
+          },
+          {
+            "divider": "or"
+          },
+          {
+            "value": "I don't know~/live/blood-inquiry",
+            "text": "I don't know",
+            "checked": checked("blood-test", "I don't know")
+          }
+        ]
+      }) }}
+
+            {% endcall %}
+
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>In response to the Infected Blood Inquiry, NHS England wants to identify anyone that may have received infected blood before the introduction of universal blood screening in September 1991.</p>"
+              }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
