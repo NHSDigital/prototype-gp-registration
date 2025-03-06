@@ -245,6 +245,7 @@
       {% else %}
         <li>Registration completed for a dependant</li>
         <li>Patient has social worker</li>
+        <li>Patient received a blood transfusion, blood products or tissues before 1996</li>
       {% endif %}
     </ul>
   </div>
@@ -1188,6 +1189,17 @@
     </div>
 
     {% endif %}
+
+    {% if data['blood-test'] %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Received a blood transfusion, blood products or tissues before 1996
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+            {{ data['blood-test'] }}
+            </dd>
+          </div>
+          {% endif %}
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
