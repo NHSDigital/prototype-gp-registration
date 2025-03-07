@@ -4,7 +4,7 @@
 
 {% extends 'layout.html' %}
 
-{% set heading = 'Would you like to continue with your NHS login?' %}
+{% set heading = 'Would you like to continue with your NHS account?' %}
 
 {% block pageTitle %}
 {{ heading }} - {{ data.presets[0].servicename }} - NHS
@@ -25,27 +25,15 @@
 
           <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
-          <div class="nhsuk-inset-text">
-            <span class="nhsuk-u-visually-hidden">Information: </span>
-          
-            <p>If you already have an account you can save time and answer fewer questions by choosing to continue with NHS login. </p>
-          </div>
-
-          <div class="nhsuk-hint" id="contact-hint">
-            <p>You may have set up an NHS login when using other health websites or apps, like COVID-19 service or the NHS App.</p>
-            <p>We will use details from your NHS login and share them with your <br>new GP.</p>
-          </div>
-
-          <a href="nhs-login-email?use-login=true&login-level=p9" class="nhsuk-button nhsuk-button--blue nhsuk-u-margin-bottom-4" type="submit">
-            Continue with NHS login
-          </a>
-
-          <div class="nhsuk-hint" id="contact-hint">
-            <p>Continue without NHS login.</p>
-          </div>
-
-          <p>
-            <a href="what-is-your-name?use-login=false" class="nhsuk-button nhsuk-button--secondary">Continue without</a></p>
+          <p>This will be quicker as we can use the details from your NHS record to register.</p>
+          <div class="nhs-login">
+            <p>You’ll have an account if you signed up for the <span class="nhsuk-u-font-weight-bold">NHS App</span> or other online health services that use NHS login.</p>
+            <a href="nhs-login-email?use-login=true&login-level=p9" class="nhsuk-button nhsuk-button--blue nhsuk-u-margin-bottom-4" type="submit">
+              Continue with NHS login
+            </a>
+        </div>
+          <p>Or, continue without</p>
+          <p><a href="what-is-your-name?use-login=false" class="nhsuk-button nhsuk-button--secondary">Continue without</a></p>
 
       </div>
     </div>
@@ -71,6 +59,16 @@
   </div>
 </details>
 {% endif %}
+
+<style>
+  .nhs-login {
+    background-color: #ffffff;
+    border: 1px solid #d8dde0;
+    padding: 24px 24px 12px 24px;
+    margin-bottom: 24px;
+    margin-top: 24px;
+  }
+</style>
 
 {% endblock %}
 
