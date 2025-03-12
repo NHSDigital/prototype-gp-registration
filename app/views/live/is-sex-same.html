@@ -7,11 +7,11 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Which of the following best describes ' + data['name-first-name'] %}
-  {% set hint1 = 'This information will be used to match them to their healthcare record' %}
+  {% set heading = 'Is the sex ' + data['name-first-name'] + ' is now the same as when they were born?' %}
+  {% set hint1 = 'The GP surgery will use this information to offer them screening for specific conditions.' %}
 {% else %}
-  {% set heading = 'What is your sex as recorded on your NHS record?' %}
-  {% set hint1 = 'This information will be used to match you to your healthcare record' %}
+  {% set heading = 'Is the sex you are now the same as when you were born?' %}
+  {% set hint1 = 'Your GP surgery will use this information to offer you screening for specific conditions.' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -31,7 +31,7 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="is-sex-same" method="post" autocomplete="off">
+          <form action="sex-description" method="post" autocomplete="off">
 
             {% include 'live/includes/step.html' %}
 
@@ -49,28 +49,23 @@
             }) }}
 
             {{ radios({
-              "idPrefix": "gender",
-              "name": "gender",
+              "idPrefix": "sex-born",
+              "name": "sex-born",
               "items": [
               {
-                "value": "Female",
-                "text": "Female",
-                checked: checked("gender", "Female")
+                "value": "Yes",
+                "text": "Yes",
+                checked: checked("sex-born", "Yes")
               },
               {
-                "value": "Intersex",
-                "text": "Intersex",
-                checked: checked("gender", "Intersex")
+                "value": "No",
+                "text": "No",
+                checked: checked("sex-born", "No")
               },
               {
-                "value": "Male",
-                "text": "Male",
-                checked: checked("gender", "Male")
-              },
-              {
-                "value": "Not specified or known",
-                "text": "Not specified or known",
-                checked: checked("gender", "Not specified or known")
+                "value": "Prefer not to say",
+                "text": "Prefer not to say",
+                checked: checked("sex-born", "Prefer not to say")
               }
               ]
             }) }}
