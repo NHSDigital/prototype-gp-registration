@@ -172,6 +172,24 @@
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
+        Is sex now same as when born?
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['sex-born'] or 'Yes' }}
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Describes as
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['sex-description'] or 'Bisexual' }}
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
         First time registering with a UK GP surgery
       </dt>
       <dd class="nhsuk-summary-list__value">

@@ -120,7 +120,31 @@ Recently moved{% set serviceHome = '/live/start' %}
               {{ data['gender'] }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="">Change<span class="nhsuk-u-visually-hidden"> selected gender</span></a>
+              <a href="">Change<span class="nhsuk-u-visually-hidden"> selected sex</span></a>
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Is the sex you are now the same as when you were born?
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['sex-born'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="">Change<span class="nhsuk-u-visually-hidden"> selected sex when you were born</span></a>
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Which of the following best describes you?
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['sex-description'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="">Change<span class="nhsuk-u-visually-hidden"> which best describes you</span></a>
             </dd>
           </div>
 
