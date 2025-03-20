@@ -1,6 +1,7 @@
 {% set serviceHome = '/design/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+{% set section = '3' %}
 
 {% extends 'layout.html' %}
 
@@ -23,80 +24,35 @@ Do you want important information from your GP record to be available to other h
 
         <form action="check-answers-b" method="post" autocomplete="off">
 
-          {{ hint({
-             "text": "Health information",
-             "classes": "nhsuk-u-margin-bottom-2"
-           }) }}
-
-          <h1 class="nhsuk-heading-l">Do you want important information from your GP record to be available to other health and care professionals?</h1>
+          {% include 'live/includes/step.html' %}
 
           {% call fieldset({
             legend: {
-              text: "",
+              text: "Sharing your Summary Care Record",
               classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
           }) %}
 
-          <div class="nhsuk-hint" id="contact-hint">
-            <p>Your GP surgery needs permission to share important information from your GP record. This is called a Summary Care Record (SCR). Your SCR can only be shared with health and care staff across England who are providing you with direct care. It gives them access to vital information from your GP record.</p>
-          </div>
-
-          {{ radios({
-            "idPrefix": "scr",
-            "name": "scr",
-            "items": [
-              {
-                "value": "Yes",
-                "text": "Yes, share a Summary Care Record with additional information",
-                "hint": {
-                  "text": "Includes details of your medicines, allergies, adverse reactions and additional information, which includes details of any significant illnesses and health problems, operations and vaccinations"
-                },
-                checked: checked("scr", "Yes")
-              },
-              {
-                "value": "Yes",
-                "text": "Yes, share a Summary Care Record without additional information",
-                "hint": {
-                  "text": "Includes details of your medicines, allergies and adverse reactions only"
-                },
-                checked: checked("scr", "Yes only")
-              },
-              {
-                "value": "No",
-                "text": "No, do not share a Summary Care Record",
-                "hint": {
-                  "text": "Details of your medicines, allergies, adverse reactions and any additional information will not be shared with anyone involved in your direct care"
-                },
-
-                checked: checked("scr", "No")
-              },
-              {
-                "value": "No preference",
-                "text": "Keep existing Summary Care Record consent preference",
-                "hint": {
-                  "text": "If you choose this option then your existing SCR preference held at your current GP surgery will be transferred to your new GP surgery."
-                },
-                checked: checked("scr", "No preference")
-              }
-            ]
-          }) }}
-
+          <p>Your GP surgery shares your important  healthcare information with other healthcare professionals in England when they provide you with direct care, such as emergency care or referral to a specialist service.  This is called a Summary Care Record (SCR).</p>
+          <h2>Why we share your information</h2>
+          <p>Your SCR is shared with healthcare professionals to ensure the quality and safety of your care. This reduces the risk of things like adverse medical reactions or delays in urgent care.</p>
+          <h2>What information is shared</h2>
+          <p>Your SCR contains details of your:</p>
+          <ul>
+            <li>medicines</li>
+            <li>allergies</li>
+            <li>adverse reactions</li>
+          </ul>
+          <p>You can also choose to share additional information such as:</p>
+          <ul>
+            <li>illnesses and health problems</li>
+            <li>past operations and vaccinations</li>
+          </ul>
+          <h2>Your rights</h2>
+          <p>You can choose not to share your SCR. However, this will mean healthcare professionals will not have access to important information about your healthcare. If you are happy with your SCR being shared you do not need to do anything.</p>
+          <p>If you do not want to share your SCR, or you have previously chosen not to share your SCR and have changed your mind, <a href="#">download the SCR patient consent preference form (Word format, 79k)</a> and give it to your GP surgery.</p>
           {% endcall %}
-
-          <details class="nhsuk-details">
-            <summary class="nhsuk-details__summary">
-              <span class="nhsuk-details__summary-text">
-                How to find your existing SCR consent preference
-              </span>
-            </summary>
-            <div class="nhsuk-details__text">
-              
-              <p>Your current GP surgery will be able to tell you what your SCR consent preference is.</p>
-          
-            </div>
-          </details>
-          <p> Find out more about <a href="https://digital.nhs.uk/services/summary-care-records-scr/summary-care-records-scr-information-for-patients" target="_blank" rel="noopener noreferrer">Summary Care Records (opens a new tab)</a> <br>and what is included in <a href="https://digital.nhs.uk/services/summary-care-records-scr/summary-care-records-scr-information-for-patients#additional-information-is-included-on-your-scr" target="_blank" rel="noopener noreferrer">'additional information' (opens a new tab)</a>.</p>
 
           {{ button({
             "text": "Continue"
