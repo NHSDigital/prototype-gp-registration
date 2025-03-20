@@ -7,10 +7,16 @@
 
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = 'Do you know ' + data['name-first-name'] + '\'s NHS Number?' %}
-  {% set hint1 = 'Their NHS number will help us find their NHS record.' %}
+  {% set hint1 = 'This is a 10 digit number, like 485 777 3456.' %}
+  {% set hint2 = 'You can find it on any letter the NHS has sent them, on a prescription or by logging in to a GP practice online service.' %}
+  {% set option1 = 'Yes, I know their NHS number' %}
+  {% set option2 = 'No, I do not know their NHS number' %}
 {% else %}
   {% set heading = 'Do you know your NHS Number?' %}
-  {% set hint1 = 'Your NHS number will help us find your NHS record.' %}
+  {% set hint1 = 'This is a 10 digit number, like 485 777 3456.' %}
+  {% set hint2 = 'You can find it on any letter the NHS has sent you, on a prescription or by logging in to a GP practice online service.' %}
+  {% set option1 = 'Yes, I know my NHS number' %}
+  {% set option2 = 'No, I do not know my NHS number' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -59,38 +65,18 @@
               "items": [
                 {
                   "value": "Yes~/live/what-is-your-nhs-number",
-                  "text": "Yes, I know their NHS number",
+                  "text": option1,
                   "checked": checked("know-nhs-number", "Yes")
                 },
                 {
                   "value": "No~/live/registered-for-the-first-time",
-                  "text": "No, continue without",
+                  "text": option2,
                   "checked": checked("know-nhs-number", "No")
                 }
               ]
             }) }}
 
             {% endcall %}
-
-            <details class="nhsuk-details">
-              <summary class="nhsuk-details__summary">
-                <span class="nhsuk-details__summary-text">
-                  How to find your NHS number
-                </span>
-              </summary>
-              <div class="nhsuk-details__text">
-                <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
-                <p>You can find your NHS number by logging in to a GP online service or on any document the NHS has sent you, such as your:</p>
-                <ul>
-                  <li>prescriptions</li>
-                  <li>test results</li>
-                  <li>hospital referral letters</li>
-                  <li>appointment letters</li>
-                </ul>
-                <p>Ask your GP surgery for help if you can't find your NHS number.</p>
-
-              </div>
-            </details>
 
             {{ button({
               "text": "Continue"
