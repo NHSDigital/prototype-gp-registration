@@ -36,7 +36,7 @@
 
             {% call fieldset({
               legend: {
-                text: "Have you ever been a member of the armed forces?",
+                text: "Have you ever ever served in the regular or reserved armed forces?",
                 classes: "nhsuk-fieldset__legend--l",
                 isPageHeading: true
               }
@@ -46,16 +46,16 @@
               "idPrefix": "is-armed-forces-member",
               "name": "is-armed-forces-member",
               "items": [
-                {
+              {
+                "value": "Yes",
+                "text": "Yes",
+                checked: checked("is-armed-forces-member", "Yes")
+
+              },
+              {
                   "value": "No",
                   "text": "No",
                   checked: checked("is-armed-forces-member", "No")
-                },
-                {
-                  "value": "Yes",
-                  "text": "Yes",
-                  checked: checked("is-armed-forces-member", "Yes")
-
                 }
               ]
             }) }}
