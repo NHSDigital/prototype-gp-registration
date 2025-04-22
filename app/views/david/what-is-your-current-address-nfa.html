@@ -69,7 +69,23 @@
               "spellcheck": false,
               value: data['find-current-address']
           }) }}
-
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h1 class="govuk-fieldset__heading">
+                  Organisation
+                </h1>
+              </legend>
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                  <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                    No current UK address
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
           {% endcall %}
 
           <!--<p><a href="what-is-your-current-address-manual" id="enter-address-manually-link">Enter the address manually</a></p>-->
