@@ -8,7 +8,7 @@
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = '' + data['name-first-name'] + 's address' %}
 {% else %}
-  {% set heading = 'Your address' %}
+  {% set heading = 'Do you have an address in the UK?' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -39,15 +39,10 @@
                 isPageHeading: true
               }
             }) %}
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                Do you have an address in the UK?
-              </h1>
-            </legend> 
       
-            <p class="govuk-body">
-            This can include a temporary address such as a shelter, hostel or friend's house.
-            </p>
+            <div class="nhsuk-hint" id="contact-hint">
+              This can include a temporary address such as a shelter, hostel or friend's house.
+            </div>
         </div>
       </div>
 
