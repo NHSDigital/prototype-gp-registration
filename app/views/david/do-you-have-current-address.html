@@ -39,23 +39,18 @@
                 isPageHeading: true
               }
             }) %}
-
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Do you have an address in the UK?
+              </h1>
+            </legend> 
+      
             <p class="govuk-body">
-              Tell us where you are living. This could be your permanent address or a temporary address such as a shelter, hostel or friend's house.
+            This can include a temporary address such as a shelter, hostel or friend's house.
             </p>
-            <p class="govuk-body">Your GP surgery can use your address to:</p>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>contact you about appointments, prescriptions and other things relating to your health</li>
-              <li>check if you are living within the area it covers</li>
-            </ul>
         </div>
       </div>
 
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-        <h3 class="govuk-fieldset__heading">
-          Do you have an address in the UK?
-        </h3>
-      </legend> 
 
             {{ radios({
               "idPrefix": "have-current-uk-address",
