@@ -20,7 +20,7 @@
 
       <form action="/templates/check-your-answers" method="post" class="form">
 
-        {{ radios({
+        {{ radios{
           "idPrefix": "example",
           "name": "example",
           "fieldset": {
@@ -38,7 +38,7 @@
               "text": "GP surgery"
             }
           ]
-        }) }}
+        } }
 
         {{ button({
           "text": "Continue",
