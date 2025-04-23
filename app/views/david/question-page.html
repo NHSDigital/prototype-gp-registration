@@ -20,25 +20,27 @@
 
       <form action="/templates/check-your-answers" method="post" class="form">
 
-        {{ radios{
+        {{ radios({
           "idPrefix": "example",
           "name": "example",
           "fieldset": {
             "legend": {
-              "text": "Where do you want your pharmacy to be?",
+              "text": "Heading or question goes here",
               "classes": "nhsuk-fieldset__legend--l",
               "isPageHeading": true
             }
           },
+          "items": [
+            {
               "value": "yes",
-              "text": "Current address"
+              "text": "Yes"
             },
             {
               "value": "no",
-              "text": "GP surgery"
+              "text": "No"
             }
           ]
-        } }
+        }) }}
 
         {{ button({
           "text": "Continue",
