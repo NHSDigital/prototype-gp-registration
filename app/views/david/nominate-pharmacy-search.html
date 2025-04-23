@@ -1,0 +1,69 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Find a pharmacy'  %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "nominate-online-or-street",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <form action="nominate-pharmacy-search-selection" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+<p>This could be the postcode for your current address, place of work or a school.</p>
+            {{ input({
+              label: {
+                "text": "Postcode"
+              },
+              "hint": {
+                "text": ""
+              },
+              "classes": "nhsuk-input--width-10",
+              "id": "pharmacy-postcode",
+              "name": "pharmacy-postcode",
+              value: data['pharmacy-postcode']
+            }) }}
+
+            {% endcall %}
+
+            <p><a href="nominate-pharmacy-manual" id="enter-address-manually-link">Enter the address manually</a></p>
+
+            {{ button({
+              "text": "Search"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
