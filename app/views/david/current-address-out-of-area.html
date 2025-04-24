@@ -44,7 +44,13 @@
 
       {{ hint({
         "html": '<p>Some GP surgeries will only accept patients that live within their catchment areas. You can continue with this registration, but it may not be accepted.</p>
-          <p>By using the Find a GP service you can find a surgery for this address.</p>',
+          <p>Continuing with this registration means:</p>
+          <ul>
+            <li>you may not be offered home visits</li>
+            <li>it could affect referrals for hospital tests and treatment or community health services</li>
+          </ul>
+          
+          ',
         "classes": "nhsuk-u-margin-bottom-4"
       }) }}
 
@@ -70,9 +76,9 @@
             },
             {
               "value": "No~https://www.nhs.uk/service-search/find-a-gp",
-              "text": "Cancel this registration and use Find a GP ",
+              "text": "Cancel this registration and find a different GP surgery ",
               "hint": {
-                "text": "This will end this registration and you will be sent to Find a GP. Any answers given so far will not be saved and a new registration will have to be submitted."
+                "text": "Any answers given so far will not be saved and a new registration will have to be submitted."
               },
               checked: checked("use-ooo", "No")
             }
