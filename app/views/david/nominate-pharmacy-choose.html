@@ -12,52 +12,38 @@
 {% endblock %}
 
 {% block content %}
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-two-thirds">
+<div class="nhsuk-form-group">
 
-    <form action="/templates/check-your-answers" method="post" class="form">
-
-      {{ radios({
-        "idPrefix": "example",
-        "name": "example",
-        "fieldset": {
-          "legend": {
-            "text": "Where do you want your pharmacy to be close to?",
-            "classes": "nhsuk-fieldset__legend--l",
-            "isPageHeading": true
-          }
-          {{ hint({
-            "html": '<p>Choose a location closest to your preferred pharmacy.</p>',
-            "classes": "nhsuk-u-margin-bottom-4"
-          }) }}  
-        },
-  
-        "items": [
-          {
-            "value": "yes",
-            "text": "Current address"
-          },
-          {
-            "value": "yes",
-            "text": "New GP surgery"
-          },
-          {
-            "value": "no",
-            "text": "Somewhere else"
-          }
-        ]
-      }) }}
-
-      {{ button({
-        "text": "Continue",
-        "id": "btn_submit"
-      }) }}
-
-      <p>[See the <a href="https://service-manual.nhs.uk/design-system/componnets">NHS digital service manual</a> for examples.]</p>
-
-    </form>
-
-  </div>
+  <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      <h1 class="nhsuk-fieldset__heading">
+        Do you know your NHS number?
+      </h1>
+    </legend>
+    <div class="nhsuk-hint" id="example-hints-hint">
+      <p class="nhsuk-u-margin-bottom-2">This is a 10 digit number, like 485 777 3456.</p>
+      <p>You can find it on any letter the NHS has sent you, on a prescription or by logging in to a GP practice online service.</p>
+    </div>
+    <div class="nhsuk-radios">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-hints-1" name="example-hints" type="radio" value="yes">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-hints-1">
+          Yes, I know my NHS number
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-hints-2" name="example-hints" type="radio" value="no">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+          No, I do not know my NHS number
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-hints-3" name="example-hints" type="radio" value="not sure">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-hints-3">
+          I&#39;m not sure
+        </label>
+      </div>
+    </div>
+  </fieldset>
 </div>
-
 {% endblock %}
