@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Would ' + data['name-first-name'] + ' have serious difficulty travelling to their nearest pharmacy to get medicines or medical appliances?' %}
+  {% set heading = 'Would ' + data['name-first-name'] + ' have serious difficulty travelling to or communicating with their nearest pharmacy?' %}
 {% else %}
-  {% set heading = 'Would you have serious difficulty travelling to your nearest pharmacy to get medicines or medical appliances?' %}
+  {% set heading = 'Would you have serious difficulty travelling to or communicating with your nearest pharmacy?' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -39,9 +39,7 @@
               }
             }) %}
 
-            {{ hint({
-              "text": "Serious difficulty could be because of the distance needed to travel to the nearest pharmacy or in communicating with them."
-            }) }}
+            <p>Serious difficulty could be because of the distance needed to travel to the nearest pharmacy or in communicating with them.</p>
 
             {{ radios({
               "idPrefix": "difficulty-in-reaching-pharmacy",
