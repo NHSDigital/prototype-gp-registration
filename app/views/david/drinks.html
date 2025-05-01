@@ -23,17 +23,27 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>How many alcoholic drinks do you have in an average week?</h1>
-      <div class="nhsuk-hint" id="example-with-hint-text-hint">
-        For example, 4 glasses of wine or spirit, 5 pints of lager, 4 tins of cider or 1 bottle of alcopop. 
-      </div>
 
-      <div class="nhsuk-form-group">
-        <label class="nhsuk-label" for="input-width-3">
-          Enter number of drinks
-        </label> <input class="nhsuk-input nhsuk-input--width-3" id="input-width-3" name="test-width-3" type="text">
-      </div>
     </div>  
-    
+    <div class="nhsuk-radios">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-hints-1" name="example-hints" type="radio" value="yes">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-hints-1">
+          1 to 4
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-hints-2" name="example-hints" type="radio" value="no">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+          5 to 10
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-hints-3" name="example-hints" type="radio" value="not sure">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-hints-3">
+          More than 10
+        </label>
+      </div>
     
     {% endblock %}
     </div>
