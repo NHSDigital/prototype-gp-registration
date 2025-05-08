@@ -25,7 +25,7 @@
         }
       }) %}
 
-      {% if data['noGP'] === 'false' %}
+      {% if data['noGP'] != 'true' %}
       <p>Your NHS record has been updated and we have shared your new address with your GP surgery.</p>
       {% else %}
       <p>Get access to primary healthcare services by registering with a GP surgery near where you live.</p>
