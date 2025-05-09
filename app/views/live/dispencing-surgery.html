@@ -39,12 +39,23 @@
             }
           }) %}
 
+          {% if (data['who-is-being-registered'] === "dependant") %}
+          <p>{{ data.presets[0].gpsurgery }} is a dispensing surgery. This means they may be eligible to get their prescription items such as medicines or medical appliances direct from this GP surgery.</p>
+          <p>If they select 'Yes' they must answer the questions they are asked as best they can. If they are eligible the GP surgery may discuss this additional service with them.</p>
+          <div class="nhsuk-inset-text"> 
+            <p>If they select 'No' and choose a pharmacy they will not be able change their mind later.</p>
+          </div>
+          <h2 class="nhsuk-heading-m">Do you want to check if they are eligible?</h2>
+
+          {% else %}
           <p>{{ data.presets[0].gpsurgery }} is a dispensing surgery. This means you may be eligible to get your prescription items such as medicines or medical appliances direct from this GP surgery.</p>
           <p>If you select 'Yes' you must answer the questions you are asked as best you can. If you are eligible the GP surgery may discuss this additional service with you.</p>
           <div class="nhsuk-inset-text"> 
-            <p>If you select 'No' and choose a pharmacy you will not be able change your mind later</p>
+            <p>If you select 'No' and choose a pharmacy you will not be able change your mind later.</p>
           </div>
           <h2 class="nhsuk-heading-m">Do you want to check if you are eligible?</h2>
+
+          {% endif %}
 
           {{ radios({
             "idPrefix": "have-current-uk-address",
