@@ -42,11 +42,7 @@
         }
       }) %}
 
-      {{ hint({
-        "html": '<p>Some GP surgeries will only accept patients that live within their catchment areas. You can continue with this registration, but it may not be accepted.</p>
-          <p>By using the Find a GP service you can find a surgery for this address.</p>',
-        "classes": "nhsuk-u-margin-bottom-4"
-      }) }}
+      <p>Some GP surgeries will only accept patients that live within their catchment areas. You can continue with this application, but it may affect some of the services they provide.</p>
 
       {{ radios({
           "idPrefix": "use-ooo",
@@ -62,17 +58,17 @@
           "items": [
             {
               "value": "Yes~/live/how-can-we-contact-inputs",
-              "text": "Continue with this registration",
+              "text": "Continue with this application",
               "hint": {
-                "text": "If the surgery is not accepting out of area registrations they could reject this application."
+                "text": "The surgery could reject this application if they are not accepting out of area registrations."
               },
               checked: checked("use-ooo", "Yes")
             },
             {
               "value": "No~https://www.nhs.uk/service-search/find-a-gp",
-              "text": "Cancel this registration and use Find a GP ",
+              "text": "Cancel this application and find a different GP surgery ",
               "hint": {
-                "text": "This will end this registration and you will be sent to Find a GP. Any answers given so far will not be saved and a new registration will have to be submitted."
+                "text": "A new application will have to be submitted and any answers given so far will not be saved."
               },
               checked: checked("use-ooo", "No")
             }

@@ -2,7 +2,7 @@
 
 {% extends 'address-update/layout.html' %}
 
-{% set heading = 'Do not use this service to change a temporary or correspondence address' %}
+{% set heading = 'Changing a temporary or correspondence address' %}
 
 {% block pageTitle %}
 {{ heading }} - {{ data.presets[0].servicename }} - NHS
@@ -33,7 +33,7 @@
             }
           }) %}
 
-          <p>Do not use this service if your address is a:</p>
+          <p>Do not change your address using this service if it is a:</p>
           <ul>
             <li>Temporary address - you'll live there for less than 3 months</li>
             <li>Correspondence address - you only use the address for letters and post and do not normally live there</li>
