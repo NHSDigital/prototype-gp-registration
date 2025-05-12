@@ -8,7 +8,7 @@
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = '' + data['name-first-name'] + 's address' %}
 {% else %}
-  {% set heading = 'Do you have an address in the UK?' %}
+  {% set heading = 'Do you know the postcode of where Jane's mother was living when Jane was born?' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -41,7 +41,7 @@
             }) %}
       
             <div class="nhsuk-hint" id="contact-hint">
-              This can include a temporary address such as a shelter, hostel or friend's house.
+              This will help us match the baby's health record to their mother's.
             </div>
         </div>
       </div>
