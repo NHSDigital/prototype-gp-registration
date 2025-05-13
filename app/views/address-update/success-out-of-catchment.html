@@ -1,0 +1,76 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% set heading = "Home address updated" %}
+
+{% block pageTitle %}
+  {{ heading }} - NHS
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <div class="nhsuk-panel">
+      <h1 class="nhsuk-panel__title">
+        Home address updated
+      </h1>
+      <div class="nhsuk-panel__body">
+        Your NHS record has been updated and we’ve shared your new address with your GP surgery
+      </div>
+    </div>
+
+    <p>You've changed your home address to:</p>
+    <p>{% if data['select-new-address'] %}
+        {{ data['select-new-address'] }} Town Street,<br />
+        London,<br />
+        SW1A 1AA
+      {% elseif data['new-address-line-1'] %}
+        {{ data['new-address-line-1'] }}<br />
+        {{ data['new-address-line-2'] }}<br />
+        {{ data['new-address-town'] }}<br />
+        {{ data['new-address-postcode'] }}<br/>
+        {{ data['new-address-country'] }}
+      {% else %}
+        35 Clock Tower Way<br>
+        York<br>
+        YO23 1PP<br>   
+      {% endif %}
+    </p>
+
+    <div class="nhsuk-inset-text">
+      <span class="nhsuk-u-visually-hidden">Information: </span>
+      <p>Your new address is outside the catchment area for Lordship Lane surgery.</p>
+    </div>
+
+    <h2 class="nhsuk-heading-m">What happens next</h2>
+    <p>The NHS may contact you to confirm you have moved outside the catchment area of your GP surgery and you'll be removed from their patient list.</p>
+    <details class="nhsuk-details">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          If you're waiting for surgery or a prescription
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+        <p>If you're waiting for elective surgery or a prescription you should contact your GP surgery.</p>
+    
+      </div>
+    </details>
+    {{ actionLink({
+      text: "Find a new GP",
+      href: "#"
+    }) }}
+
+
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

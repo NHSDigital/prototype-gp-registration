@@ -13,33 +13,23 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
 
-    <form action="thank-you" method="post" autocomplete="off">
+    <div class="nhsuk-panel">
+      <h1 class="nhsuk-panel__title">
+        Home address updated
+      </h1>
+      <div class="nhsuk-panel__body">
+        {% if data['noGP'] != 'true' %}
+        Your NHS record has been updated and we’ve shared your new address with your GP surgery
+        {% else %}
+        Your NHS record has been updated
+        {% endif %}
+      </div>
+    </div>
 
-      {% call fieldset({
-        legend: {
-          text: heading,
-          classes: "nhsuk-fieldset__legend--l",
-          isPageHeading: true
-        }
-      }) %}
+    <p>You’ve changed the country you live in to Argentina.</p>
+    <h2 class="nhsuk-heading-m">What happens next</h2>
+    <p>Lordship Lane surgery will remove you from their patient list.</p>
 
-      {% if data['noGP'] != 'true' %}
-      <p>You’ve changed the country you live in to Argentina.</p>
-      <p>Your NHS record has been updated we’ve shared this change with your GP surgery.</p>
-      <h2 class="nhsuk-heading-m">What happens next</h2>
-      <p>Lordship Lane surgery will remove you from their patient list.</p>
-
-      {% else %}
-      <p>Your NHS record has been updated</p>
-      {% endif %}
-
-      {% endcall %}
-
-      <!--{{ button({
-        "text": "Back to contact details"
-    }) }}-->
-
-    </form>
   </div>
 </div>
 

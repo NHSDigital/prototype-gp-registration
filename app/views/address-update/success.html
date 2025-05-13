@@ -13,41 +13,45 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
 
-    <form action="thank-you" method="post" autocomplete="off">
+    <div class="nhsuk-panel">
+      <h1 class="nhsuk-panel__title">
+        Home address updated
+      </h1>
+      <div class="nhsuk-panel__body">
+        {% if data['noGP'] != 'true' %}
+        Your NHS record has been updated and we’ve shared your new address with your GP surgery
+        {% else %}
+        Your NHS record has been updated
+        {% endif %}
+      </div>
+    </div>
 
-      {% include 'live/includes/step.html' %}
-
-      {% call fieldset({
-        legend: {
-          text: heading,
-          classes: "nhsuk-fieldset__legend--l",
-          isPageHeading: true
-        }
-      }) %}
-
-      {% if data['noGP'] != 'true' %}
-      <p>You've changed your home address to:<br>
-        35 Clock Tower Way<br>
-        York<br>
-        YO23 1PP<br>
+      <p>You've changed your home address to:</p>
+      <p>{% if data['select-new-address'] %}
+          {{ data['select-new-address'] }} Town Street,<br />
+              London,<br />
+              SW1A 1AA
+          {% elseif data['new-address-line-1'] %}
+            {{ data['new-address-line-1'] }}<br />
+            {{ data['new-address-line-2'] }}<br />
+            {{ data['new-address-town'] }}<br />
+            {{ data['new-address-postcode'] }}<br/>
+            {{ data['new-address-country'] }}
+          {% else %}
+            35 Clock Tower Way<br>
+            York<br>
+            YO23 1PP<br>   
+          {% endif %}
       </p>
-      <p>Your NHS record has been updated and we’ve shared your new address with your GP surgery.</p>
-      {% else %}
+
+      {% if data['noGP'] == 'true' %}
       <p>Get access to primary healthcare services by registering with a GP surgery near where you live.</p>
       {{ actionLink({
         text: "Find a GP",
         href: "#"
       }) }}
-      <!--<p><a href="#">Find a GP</a></p>-->
       {% endif %}
 
-      {% endcall %}
-
-      <!--{{ button({
-        "text": "Back to contact details"
-    }) }}-->
-
-    </form>
   </div>
 </div>
 
