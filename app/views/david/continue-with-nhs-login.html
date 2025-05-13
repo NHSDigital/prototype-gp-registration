@@ -4,7 +4,7 @@
 
 {% extends 'layout.html' %}
 
-{% set heading = 'Would you like to continue with your NHS account?' %}
+{% set heading = 'Use your NHS account to apply' %}
 
 {% block pageTitle %}
 {{ heading }} - {{ data.presets[0].servicename }} - NHS
@@ -25,7 +25,7 @@
 
           <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
-          <p>This will be quicker as we can use the details from your NHS record to register.</p>
+          <p>Using your NHS account means you'll have to answer fewer question because the NHS already has this information. It will also save you time in completing this registration application.</p>
           <div class="nhs-login">
             <p>You’ll have an account if you signed up for the <span class="nhsuk-u-font-weight-bold">NHS App</span> or other online health services that use NHS login.</p>
             <a href="nhs-login-email?use-login=true&login-level=p9" class="nhsuk-button nhsuk-button--blue nhsuk-u-margin-bottom-4" type="submit">
