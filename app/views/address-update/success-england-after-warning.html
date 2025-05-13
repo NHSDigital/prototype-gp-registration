@@ -2,7 +2,7 @@
 
 {% extends 'address-update/layout.html' %}
 
-{% set heading = "You have successfully changed your address" %}
+{% set heading = "Home address updated" %}
 
 {% block pageTitle %}
   {{ heading }} - NHS
@@ -23,30 +23,34 @@
         }
       }) %}
       {% if data['noGP'] != 'true' %}
-      <p>Your NHS record has been updated and we have shared your new address with your GP surgery.</p>
+            <p>You've changed your home address to:<br>
+        35 Clock Tower Way<br>
+        York<br>
+        YO23 1PP<br>
+      </p>
       <p>Your new address is outside the catchment area for Lordship Lane surgery.</p>
       <h2 class="nhsuk-heading-m">What happens next</h2>
-      <p>The NHS may contact you to confirm you have moved outside the catchment area of your GP surgery and you will be removed from their patient list.</p>
+      <p>The NHS may contact you to confirm you have moved outside the catchment area of your GP surgery and you'll be removed from their patient list.</p>
       <details class="nhsuk-details">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
-            If you are waiting for surgery or a prescription
+            If you're waiting for surgery or a prescription
           </span>
         </summary>
         <div class="nhsuk-details__text">
-          <p>If you are waiting for elective surgery or a prescription you should contact your GP surgery.</p>
+          <p>If you're waiting for elective surgery or a prescription you should contact your GP surgery.</p>
       
         </div>
       </details>
       {{ actionLink({
-        text: "Register with a new GP",
+        text: "Find a GP",
         href: "#"
       }) }}
       {% else %}
       <p>Your NHS record has been updated.</p>
       <p>Get access to primary healthcare services by registering with a GP surgery near where you live.</p>
       {{ actionLink({
-        text: "Register with a GP",
+        text: "Find a GP",
         href: "#"
       }) }}
       {% endif %}

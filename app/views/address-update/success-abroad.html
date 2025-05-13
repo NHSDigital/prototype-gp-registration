@@ -2,7 +2,7 @@
 
 {% extends 'address-update/layout.html' %}
 
-{% set heading = "You told us you no longer live in the UK" %}
+{% set heading = "Home address updated" %}
 
 {% block pageTitle %}
   {{ heading }} - NHS
@@ -24,12 +24,13 @@
       }) %}
 
       {% if data['noGP'] != 'true' %}
-      <p>Your NHS record has been updated and we have shared your new address with your GP surgery.</p>
+      <p>You’ve changed the country you live in to Argentina.</p>
+      <p>Your NHS record has been updated we’ve shared this change with your GP surgery.</p>
       <h2 class="nhsuk-heading-m">What happens next</h2>
       <p>Lordship Lane surgery will remove you from their patient list.</p>
 
       {% else %}
-      <p>Your address has been updated on your NHS record.</p>
+      <p>Your NHS record has been updated</p>
       {% endif %}
 
       {% endcall %}

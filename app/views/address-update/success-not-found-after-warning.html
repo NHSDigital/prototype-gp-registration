@@ -2,7 +2,7 @@
 
 {% extends 'address-update/layout.html' %}
 
-{% set heading = "You have successfully changed your address" %}
+{% set heading = "Home address updated" %}
 
 {% block pageTitle %}
   {{ heading }} - NHS
@@ -22,6 +22,11 @@
           isPageHeading: true
         }
       }) %}
+      <p>You've changed your home address to:<br>
+        35 Clock Tower Way<br>
+        York<br>
+        YO23 1PP<br>
+      </p>
       <p>Your NHS record has been updated.</p>
       <p>We were unable to check if your new address is still within your GP surgery's catchment area.</p>
       <h2 class="nhsuk-heading-m">What happens next</h2>
@@ -30,15 +35,15 @@
       <details class="nhsuk-details">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
-            If you are waiting for surgery or a prescription
+            If you're waiting for surgery or a prescription
           </span>
         </summary>
         <div class="nhsuk-details__text">
-          <p>If you are waiting for elective surgery or a prescription you should contact your GP surgery.</p>      
+          <p>If you're waiting for elective surgery or a prescription you should contact your GP surgery.</p>      
         </div>
       </details>
       {{ actionLink({
-        text: "Register with a new GP",
+        text: "Find a GP",
         href: "#"
       }) }}
 

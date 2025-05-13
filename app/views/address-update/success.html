@@ -2,7 +2,7 @@
 
 {% extends 'address-update/layout.html' %}
 
-{% set heading = "You have successfully changed your address" %}
+{% set heading = "Home address updated" %}
 
 {% block pageTitle %}
   {{ heading }} - NHS
@@ -26,7 +26,12 @@
       }) %}
 
       {% if data['noGP'] != 'true' %}
-      <p>Your NHS record has been updated and we have shared your new address with your GP surgery.</p>
+      <p>You've changed your home address to:<br>
+        35 Clock Tower Way<br>
+        York<br>
+        YO23 1PP<br>
+      </p>
+      <p>Your NHS record has been updated and we’ve shared your new address with your GP surgery.</p>
       {% else %}
       <p>Get access to primary healthcare services by registering with a GP surgery near where you live.</p>
       {{ actionLink({
