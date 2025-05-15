@@ -26,16 +26,14 @@
           <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
           <p>This will be quicker as we can use the details from your NHS record to register.</p>
-          <div class="nhs-login">
-            <p>You’ll have an account if you signed up for the <span class="nhsuk-u-font-weight-bold">NHS App</span> or other online health services that use NHS login.</p>
-            <a href="nhs-login-email?use-login=true&login-level=p9" class="nhsuk-button nhsuk-button--blue nhsuk-u-margin-bottom-4" type="submit">
-              Continue with my NHS account to answer fewer questions</a>
-        </div>
-          <p>Or, continue without</p>
-          <p><a href="what-is-your-name?use-login=false" class="nhsuk-button nhsuk-button--secondary">Continue without</a></p>
-
-      </div>
-    </div>
+<div class="nhsuk-inset-text">
+    <span class="nhsuk-u-visually-hidden">Information: </span>
+    <h3 class="nhsuk-heading-m">Use NHS account</h3>
+    <ul class="nhsuk-list nhsuk-u-clear">
+        <li class="nhsuk-u-float-left"><a href="https://www.nhsapp.service.nhs.uk/patient/?referrer=NHS_UK&amp;origin=about_nhs_login" role="button" draggable="false" class="nhsuk-button nhsuk-button--beta-login">Log in</a></li>
+        <li class="nhsuk-u-float-left"><a href="https://www.nhsapp.service.nhs.uk/login" role="button" draggable="false" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0">Do not use account</a>
+    </ul>
+</div>
 
 {# DEVMODE SCENARIOS #}
 {% if data['devMode'] === 'true' %}
