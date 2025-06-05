@@ -8,7 +8,7 @@
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = '' + data['name-first-name'] + 's address' %}
 {% else %}
-  {% set heading = 'Your address' %}
+  {% set heading = 'Temporary registrations' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -41,19 +41,15 @@
             }) %}
 
             <p class="govuk-body">
-              Tell us where you are living. This could be your permanent address or a temporary address such as a shelter, hostel or friend's house.
+              You can temporarily register with a GP surgery for up to 3 months. This can be helpful if you're living away from home for a short period and do not want to change your existing GP surgery.
             </p>
-            <p class="govuk-body">Your GP surgery can use your address to:</p>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>contact you about appointments, prescriptions and other things relating to your health</li>
-              <li>check if you are living within the area it covers</li>
-            </ul>
+            <p class="govuk-body">You should visit the GP surgery you want to register with and ask them for a temporary services form, also called a GMS3.</p>
         </div>
       </div>
 
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
         <h3 class="govuk-fieldset__heading">
-          Do you have an address in the UK?
+          Is this a temporary registration?
         </h3>
       </legend> 
 
@@ -63,12 +59,12 @@
               "items": [
                 {
                   "value": "Yes~/live/what-is-your-current-address",
-                  "text": "Yes",
+                  "text": "Yes, find out more about temporary registrations",
                   checked: checked("have-current-uk-address", "Yes")
                 },
                 {
                   "value": "No~/live/how-can-we-contact-inputs",
-                  "text": "No",
+                  "text": "No, continue with this application",
                   checked: checked("have-current-uk-address", "No")
                 }
               ]
