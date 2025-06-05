@@ -3,15 +3,12 @@
 {% set feedbackType = 'step' %}
 {% set section = '2' %}
 
-
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'What is ' + data['name-first-name'] + "'s sex as recorded on their NHS record?" %}
-  {% set hint1 = 'This information will be used to match them to their healthcare record' %}
+  {% set heading = '' + data['name-first-name'] + 's address' %}
 {% else %}
-  {% set heading = 'Is this a temporary registration?' %}
-  {% set hint1 = 'This information will be used to match you to your healthcare record' %}
+  {% set heading = 'Your address' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -20,7 +17,7 @@
 
 {% block outerContent %}
   {{ backLink({
-    "href": "javascript:history.go(-1)",
+    "href": "check-answers-1",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
@@ -31,7 +28,7 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="is-sex-same" method="post" autocomplete="off">
+          <form action="" method="post" autocomplete="off">
 
             {% include 'live/includes/step.html' %}
 
@@ -43,25 +40,37 @@
               }
             }) %}
 
-            {{ hint({
-              text: hint1,
-              "classes": "nhsuk-u-margin-bottom-4"
-            }) }}
+            <p class="govuk-body">
+              Tell us where you are living. This could be your permanent address or a temporary address such as a shelter, hostel or friend's house.
+            </p>
+            <p class="govuk-body">Your GP surgery can use your address to:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>contact you about appointments, prescriptions and other things relating to your health</li>
+              <li>check if you are living within the area it covers</li>
+            </ul>
+        </div>
+      </div>
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h3 class="govuk-fieldset__heading">
+          Do you have an address in the UK?
+        </h3>
+      </legend> 
 
             {{ radios({
-              "idPrefix": "gender",
-              "name": "gender",
+              "idPrefix": "have-current-uk-address",
+              "name": "have-current-uk-address",
               "items": [
-              {
-                "value": "Female",
-                "text": "Yes",
-                checked: checked("gender", "Female")
-              },
-              {
-                "value": "Not specified or known",
-                "text": "No",
-                checked: checked("gender", "Not specified or known")
-              }
+                {
+                  "value": "Yes~/live/what-is-your-current-address",
+                  "text": "Yes",
+                  checked: checked("have-current-uk-address", "Yes")
+                },
+                {
+                  "value": "No~/live/how-can-we-contact-inputs",
+                  "text": "No",
+                  checked: checked("have-current-uk-address", "No")
+                }
               ]
             }) }}
 
@@ -73,7 +82,7 @@
 
           </form>
         </div>
-       </div>
+      </div>
 
 {% include 'live/includes/devmode.html' %}
 
