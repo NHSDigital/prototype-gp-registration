@@ -8,7 +8,7 @@
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = '' + data['name-first-name'] + 's address' %}
 {% else %}
-  {% set heading = 'Temporary registrations' %}
+  {% set heading = 'Family or multiple registrations' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -41,18 +41,17 @@
             }) %}
 
             <p class="govuk-body">
-              You can temporarily register with a GP surgery for up to 3 months.
+              For multiple or family registrations you need to complete and submit an application for each person.
             </p>
             <p class="govuk-body">
-              This can be helpful if you're living away from home for a short period and do not want to change your existing GP surgery.
+              If you are registering children aged 15 years and under it is important that you register yourself first.
             </p>
-            <p class="govuk-body">You should visit the GP surgery you want to register with and ask them for a temporary services form, also called a GMS3.</p>
         </div>
       </div>
 
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
         <h3 class="govuk-fieldset__heading">
-          Is this a temporary registration?
+          Is this a multiple or family registration?
         </h3>
       </legend> 
 
@@ -62,7 +61,12 @@
               "items": [
                 {
                   "value": "Yes~/live/what-is-your-current-address",
-                  "text": "Yes, find out more about temporary registrations",
+                  "text": "Yes, register myself first",
+                  checked: checked("have-current-uk-address", "Yes")
+                },
+                {
+                  "value": "Yes~/live/what-is-your-current-address",
+                  "text": "Yes, I'm already registered",
                   checked: checked("have-current-uk-address", "Yes")
                 },
                 {
