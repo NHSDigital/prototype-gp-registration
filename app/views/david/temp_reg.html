@@ -10,7 +10,7 @@
   {% set heading = 'What is ' + data['name-first-name'] + "'s sex as recorded on their NHS record?" %}
   {% set hint1 = 'This information will be used to match them to their healthcare record' %}
 {% else %}
-  {% set heading = 'What is your sex as recorded on your NHS record?' %}
+  {% set heading = 'Is this a temporary registration?' %}
   {% set hint1 = 'This information will be used to match you to your healthcare record' %}
 {% endif %}
 
@@ -54,12 +54,12 @@
               "items": [
               {
                 "value": "Female",
-                "text": "Female",
+                "text": "Yes",
                 checked: checked("gender", "Female")
               },
               {
                 "value": "Not specified or known",
-                "text": "Not specified or known",
+                "text": "No",
                 checked: checked("gender", "Not specified or known")
               }
               ]
