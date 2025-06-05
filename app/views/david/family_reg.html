@@ -1,0 +1,92 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = '' + data['name-first-name'] + 's address' %}
+{% else %}
+  {% set heading = 'Temporary registrations' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "check-answers-1",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            <p class="govuk-body">
+              You can temporarily register with a GP surgery for up to 3 months.
+            </p>
+            <p class="govuk-body">
+              This can be helpful if you're living away from home for a short period and do not want to change your existing GP surgery.
+            </p>
+            <p class="govuk-body">You should visit the GP surgery you want to register with and ask them for a temporary services form, also called a GMS3.</p>
+        </div>
+      </div>
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h3 class="govuk-fieldset__heading">
+          Is this a temporary registration?
+        </h3>
+      </legend> 
+
+            {{ radios({
+              "idPrefix": "have-current-uk-address",
+              "name": "have-current-uk-address",
+              "items": [
+                {
+                  "value": "Yes~/live/what-is-your-current-address",
+                  "text": "Yes, find out more about temporary registrations",
+                  checked: checked("have-current-uk-address", "Yes")
+                },
+                {
+                  "value": "No~/live/how-can-we-contact-inputs",
+                  "text": "No, continue with this application",
+                  checked: checked("have-current-uk-address", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
