@@ -10,3 +10,12 @@
 .nhsuk-button--blue:active {
   background-color: #002f5c;
 }
+
+.app-button--cis2 {
+    align-items: center;
+    background-color: #005eb8;
+    box-shadow: 0 4px 0 #003087;
+    display: inline-flex
+;
+    gap: 16px;
+}
