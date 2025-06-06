@@ -1,0 +1,85 @@
+{% extends 'reg-portal/layout.html' %}
+
+{% block pageTitle %}
+Select your login method - CIS2 - Care Identity Authentication
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            text: "Go back",
+            href: "login"
+        }) }}
+    
+            <form action="reject-confirm" method="post" autocomplete="off">
+    
+              {% call fieldset({
+                legend: {
+                  text: "Select your login method",
+                  classes: "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              }) %}
+
+              {{ hint({
+              text: "Your choice will be saved as your preferred login method for this browser."
+            }) }}
+
+            {{ hint({
+              text: "You may have to repeat this step if you clear your browser's cookies.",
+              "classes": "nhsuk-u-margin-bottom-4"
+            }) }}
+    
+              {{ radios({
+                "idPrefix": "login-option",
+                "name": "login-option",
+                "items": [
+                  {
+                    "value": "Smartcard",
+                    "text": "Smartcard",
+                    checked: checked("login-option", "Smartcard")
+                  },
+                  
+                  {
+                    "value": "Windows Hello for Business",
+                    "text": "Windows Hello for Business",
+                    checked: checked("login-option", "Windows Hello for Business")
+                  },
+                  {
+                    "value": "Security key",
+                    "text": "Security key",
+                    checked: checked("login-option", "Security key")
+                  },
+                  {
+                    "value": "iPad app",
+                    "text": "iPad app",
+                    checked: checked("login-option", "iPad app")
+                  }
+                ]
+              }) }}
+    
+              {% endcall %}
+    
+              {{ button({
+                "text": "Continue"
+              }) }}
+    
+            </form>
+    
+          </div>
+        </div>
+
+        </div>
+      </div>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}
