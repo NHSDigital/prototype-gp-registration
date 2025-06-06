@@ -172,6 +172,26 @@
               </a>
             </dd>
           </div>
+                    <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key" style="width: 50%;">
+              Patient access
+            </dt>
+            <dd class="nhsuk-summary-list__value" style="width: 30%;">
+              {% if (data['access'] == "Unique url only") %}
+              Unique url only
+              {% elif (data['access'] == "Off") %}
+              Off
+              {% else %}
+              On
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="gp-patient-access">Change
+                <span class="nhsuk-u-visually-hidden">patient access</span>
+              </a>
+            </dd>
+          </div>
+
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key" style="width: 50%;">
