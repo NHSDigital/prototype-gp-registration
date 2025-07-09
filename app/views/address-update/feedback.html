@@ -13,7 +13,7 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
 <h1 class="nhsuk-heading-l">Give feedback on Change your home address</h1>
-<p>Your feedback is anonymous and will be used to help us improve this form.</p>
+<p>Your feedback is anonymous and will be used to help us make improvements.</p>
 <!--<div class="nhsuk-inset-text">
   <span class="nhsuk-u-visually-hidden">Information: </span>
 <h2 class="nhsuk-heading-s">If you need medical help</h2>
@@ -34,6 +34,8 @@
 </ul>
 
 </div>-->
+
+<form action="feedback-submitted" method="post" autocomplete="off">
 
 {% from 'radios/macro.njk' import radios %}
 
@@ -77,7 +79,8 @@
   name: "example",
   id: "example",
   label: {
-    text: "How could we improve? (optional)"
+    text: "How could we improve? (optional)",
+    classes: "nhsuk-label--m"
   },
   hint: {
     text: "Do not include any personal or financial information, such as your National Insurance number or credit card numbers."
@@ -88,6 +91,8 @@
 {{ button({
   text: "Send feedback"
 }) }}
+
+</form>
 
   </div>
 </div>
