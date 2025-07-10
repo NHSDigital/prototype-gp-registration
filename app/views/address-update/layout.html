@@ -30,13 +30,16 @@
     })
   }}
 
-  {% if feedbackType %}
+  {% include 'live/includes/auf-feedback.html' %}
+
+
+  <!--{% if feedbackType %}
     {% if servicePhase === 'beta' %}
       {% include 'live/includes/feedback.html' %}
     {% else %}
 
     {% endif %}
-  {% endif %}
+  {% endif %}-->
 
 {% endblock %}
 
