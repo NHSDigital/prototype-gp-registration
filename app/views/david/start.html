@@ -1,0 +1,57 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Register with a GP surgery: {{ data.presets[0].gpsurgery }} - NHS
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <h1 class="nhsuk-heading-Xl">
+          Register with a GP surgery: {{ data.presets[0].gpsurgery or '{ GP surgery}' }}, Stratford-upon-Avon
+        </h1>
+
+        <p>Use this service to register you or someone else with a GP surgery for the first time or to change your current GP surgery.<p/> 
+          <p>If you think you need medical help right now visit <a href="https://111.nhs.uk/">NHS 111 online (opens in a new tab).</a></p>
+          <p>If you are already registered with a GP surgery you can access some health and prescription services using <a href="https://www.nhs.uk/nhs-services/gps/online-health-and-prescription-services/">NHS online services.</a></p>
+          
+          <h2 class="nhsuk-heading-l">How long it takes</h2>
+          <p>It takes around 15 minutes to complete a registration.</p> 
+          <p>Your chosen GP surgery should register you within 5 days of receiving your details.</p>
+                
+        <h2 class="nhsuk-heading-l">Before you start</h2>
+        <p>You do not need your NHS number, but it could make registration easier.</p>
+        <p>We may ask you for:</p>
+        <ul>
+          <li>details of your previous GP surgery</li>
+          <li>basic health and medical information</li>
+        </ul>
+    
+        <p>The information you provide will be used to identify the correct medical records.  It will also help the GP surgery to offer relevant and appropriate healthcare services.</p>
+    
+        <p><a href="who-is-registering" class="nhsuk-button">Start now</a></p>
+    
+        <h2 class="nhsuk-heading-m">Other ways to register</h2>
+
+        <ul>
+          <li>Fill in the <a href="">Register with a GP surgery paper form</a> (PDF, 199 KB, 8 pages) and take it to the surgery you want to join.</li> 
+          <li>Contact the surgery you want to join directly.</li>
+        </ul>
+        
+        <p>You can view <a href="https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/">guidance about how to register with a GP.</a></p>
+        <p>By using this service you are agreeing to our <a href="start">terms of use</a> and <a href="start">privacy policy.</a> </p>
+
+      </div>
+    </div>
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
