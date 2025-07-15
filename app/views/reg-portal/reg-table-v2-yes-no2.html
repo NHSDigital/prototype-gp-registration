@@ -1,0 +1,181 @@
+{% extends 'reg-portal/layout.html' %}
+
+{% block pageTitle %}
+6 new registrations - GP registrations portal - NHS
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+          {{ backLink({
+            text: "Return to dashboard",
+            href: "dashboard"
+        }) }}
+
+
+          <h1 class="nhsuk-heading-xl">New registrations</h1>
+
+
+          <table role="table" class="nhsuk-table-responsive">
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  Name
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Matched
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Age
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  In catchment
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>Jane Jones
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Matched</span>Not matched
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>14
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">In catchment</span>Out of catchment
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <a href="reg-detail-multi-detail-child">View details</a>
+                </td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>Justin Girdler
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Matched</span>Yes
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>39
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">In catchment</span>Yes
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <a href="#">View details</a>
+                </td>
+              </tr>
+
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>Louise Ednie
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Matched</span>Yes
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>31
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">In catchment</span>Out of catchment
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <a href="#">View details</a>
+                </td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>Victoria Shirt
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Matched</span>Yes
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>21
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">In catchment</span>Yes
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <a href="#">View details</a>
+                </td>
+              </tr>
+
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>Philip Wilson
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Matched</span>Yes
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>69
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">In catchment</span>Yes
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <a href="#">View details</a>
+                </td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>James Briggs
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Matched</span>Yes
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>89
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">In catchment</span>Yes
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <a href="#">View details</a>
+                </td>
+              </tr>
+
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>Philip Muggeridge
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Matched</span>Not matched
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>19
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">In catchment</span>Yes
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <a href="#">View details</a>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+          <h2 class="nhsuk-heading-l nhsuk-u-padding-top-6">Support</h2>
+          <p>For service support, <strong>email <a href="">ssd.nationalservicedesk@nhs.net</a></strong> or <br><strong>call 03003035035</strong>. Support is available 24 hours a day, 7 days a week.</p>
+
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}
