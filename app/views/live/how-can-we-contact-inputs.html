@@ -6,7 +6,7 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'What are the contact details for ' + data['name-first-name'] + '\'s?' %}
+  {% set heading = 'What are the contact details for ' + data['name-first-name'] + '?' %}
   {% set hintText = 'The NHS and GP surgery can use these details to call, text or email about health care services.' %}
 {% else %}
   {% set heading = 'What are your contact details?' %}
