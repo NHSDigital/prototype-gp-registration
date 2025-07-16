@@ -2,7 +2,7 @@
 
 {% extends 'address-update/layout.html' %}
 
-{% set heading = 'Do you live in the UK or the Isle of Man?' %}
+{% set heading = 'Changing a temporary or correspondence address' %}
 
 {% block pageTitle %}
 {{ heading }} - {{ data.presets[0].servicename }} - NHS
@@ -20,8 +20,11 @@
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
-        <form action="what-is-your-current-address" method="post" autocomplete="off">
 
+        <form action="is-address-uk" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+    
           {% call fieldset({
             legend: {
               text: heading,
@@ -29,32 +32,20 @@
               isPageHeading: true
             }
           }) %}
-          {{ radios({
-            "idPrefix": "is-address-uk",
-            "name": "is-address-uk",
-              hint: {
-    text: "The UK is England, Wales, Scotland and Northern Ireland."
-  },
-            "items": [
-              {
-                "value": "yes~what-is-your-current-address",
-                "text": "Yes",
-                checked: checked("is-address-uk", "Yes")
-              },
-              {
-                "value": "no~what-is-your-current-address-abroad",
-                "text": "No",
-                checked: checked("is-address-uk", "No")
-              }
-            ]
-          }) }}
 
+          <p>Do not change your address using this service if it is a:</p>
+          <ul>
+            <li>Temporary address - you'll live there for less than 3 months</li>
+            <li>Correspondence address - you only use the address for letters and post and do not normally live there</li>
+          </ul>
+          <p>To change a temporary or correspondence address you should contact your GP surgery.</p>
+    
           {% endcall %}
-
+    
           {{ button({
             "text": "Continue"
           }) }}
-
+    
         </form>
 
       </div>
