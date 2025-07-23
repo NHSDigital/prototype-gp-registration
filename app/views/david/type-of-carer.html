@@ -1,77 +1,24 @@
-{% set serviceHome = '/live/start' %}
-{% set servicePhase = 'beta' %}
-{% set feedbackType = 'step' %}
-{% set section = '3' %}
-
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "What type of carer are they?" %}
-{% else %}
-  {% set heading = "What type of carer are you?" %}
-{% endif %}
-
 {% block pageTitle %}
-  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+  Blank template - NHS.UK prototype kit
 {% endblock %}
 
-{% block outerContent %}
-  {{ backLink({
-    "href": "are-you-a-carer",
-    "text": "Go back",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+{% block beforeContent %}
+  {{ breadcrumb({
+    href: "/",
+    text: "Home"
   }) }}
 {% endblock %}
 
 {% block content %}
+  <div class="nhsuk-grid-row">
 
-      <div class="nhsuk-grid-row">
-        <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="do-you-need-accessible-format" method="post" autocomplete="off">
+      <!-- Add your content here -->
 
-<div class="nhsuk-form-group">
+    </div>  
 
-  <fieldset class="nhsuk-fieldset">
-    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-      <h1 class="nhsuk-fieldset__heading">
-        Do you have a mobile phone with signal?
-      </h1>
-    </legend>
-    <div class="nhsuk-radios">
-      <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="example-hints-1" name="example-hints" type="radio" value="mobile" aria-describedby="example-hints-1-item-hint">
-        <label class="nhsuk-label nhsuk-radios__label" for="example-hints-1">
-          Yes, I have a mobile phone with signal
-        </label>
-        <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
-          We will text you a 6 digit security code
-        </div>
-      </div>
-      <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="example-hints-2" name="example-hints" type="radio" value="landline" aria-describedby="example-hints-2-item-hint">
-        <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
-          No, I want to use my landline
-        </label>
-        <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
-          We will call you to give you a 6 digit security code
-        </div>
-      </div>
-    </div>
-  </fieldset>
-</div>
-            {{ button({
-              "text": "Continue"
-            }) }}
-
-          </form>
-        </div>
-       </div>
-
-{% include 'live/includes/devmode.html' %}
-
-{% endblock %}
-
-{% block footer %}
-  {% include 'live/includes/footer.html' %}
+  </div>
 {% endblock %}
