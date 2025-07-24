@@ -1,0 +1,95 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'This address may be outside the area for this GP surgery' %}
+
+{% block pageTitle %}
+ {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% if (data['select-current-address']) %}
+  {% set link = 'what-is-your-current-address' %}
+{% else %}
+  {% set link = 'what-is-your-current-address' %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <form action="" method="post" autocomplete="off">
+
+      {% include 'live/includes/step.html' %}
+
+      {% call fieldset({
+        legend: {
+          text: heading,
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      <p>If you entered the address manually we were unable to check if it was inside the catchment area for this surgery. If you are able to use our automatic address checker we can check if the address is in catchment.</p>
+      <p>If you continue without checking it may affect some of the services the surgery provides.</p>
+
+      {{ radios({
+          "idPrefix": "use-ooo",
+          "name": "use-ooo",
+          "classes": "nhsuk-radios",
+          "fieldset": {
+            "legend": {
+              "text": "What would you like to do?",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": false
+            }
+          },
+          "items": [
+            {
+              "value": "Yes~/live/how-can-we-contact-inputs",
+              "text": "Go back to automatic address checker",
+              "hint": {
+                "text": "You will need your postcode."
+              },
+              checked: checked("use-ooo", "Yes")
+            },
+            {
+              "value": "No~https://www.nhs.uk/service-search/find-a-gp",
+              "text": "Continue without checking ",
+              "hint": {
+                "text": "The GP surgery will tell you if you are outside their catchment area."
+              },
+              checked: checked("use-ooo", "No")
+            }
+          ]
+       }) }}
+
+      {% endcall %}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
