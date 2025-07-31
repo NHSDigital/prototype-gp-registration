@@ -16,33 +16,83 @@
 
     <div class="nhsuk-grid-column-two-thirds">
 
-<h2>Carers</h2>
+                <fieldset class="nhsuk-fieldset">
+  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+    <h1 class="nhsuk-fieldset__heading">
+      Your previous address in the UK
+    </h1>
+  </legend>
 
-                 <p>This is the address of where you were living before your current address. Even if this was temporary accommodation. Your new GP surgery will use this information to see if you have an existing medical record.</p>
-            {% if (data['who-is-being-registered'] === "dependant") %}
-            <h2 style="font-size: 1.5rem; padding-top: 0;">Does {{ data['name-first-name']}} have a previous address in the UK?</h2>
-            {% else %}
+
+            <p>This is the address of where you were living before your current address. Even if this was temporary accommodation. Your new GP surgery will use this information to see if you have an existing medical record.</p>
+            
               <h2 style="font-size: 1.5rem; padding-top: 0;">Do you have a previous address in the UK?</h2>
-            {% endif %}
+            
 
-          {{ radios({
-            "idPrefix": "have-previous-uk-address",
-            "name": "have-previous-uk-address",
-            "items": [
-              {
-                "value": "Yes~/live/what-is-your-previous-address-manual",
-                "text": "Yes",
-                "checked": checked("have-previous-uk-address", "Yes")
-              },
-              {
-                "value": immuniseLink,
-                "text": "No",
-                "checked": checked("have-previous-uk-address", "No")
-              }
-            ]
-          }) }}
+          
 
 
+
+
+
+  
+
+  
+<div class="nhsuk-form-group">
+
+  <div class="nhsuk-radios">
+    
+    <div class="nhsuk-radios__item">
+      <input class="nhsuk-radios__input" id="have-previous-uk-address-1" name="have-previous-uk-address" type="radio" value="Yes~/live/what-is-your-previous-address-manual">
+      <label class="nhsuk-label nhsuk-radios__label" for="have-previous-uk-address-1">
+        Yes
+      </label>
+    </div>
+    
+    
+    <div class="nhsuk-radios__item">
+      <input class="nhsuk-radios__input" id="have-previous-uk-address-2" name="have-previous-uk-address" type="radio" value="No~/live/do-you-have-existing-conditions">
+      <label class="nhsuk-label nhsuk-radios__label" for="have-previous-uk-address-2">
+        No
+      </label>
+    </div>
+    
+  </div>
+</div>
+
+
+         </fieldset>
+
+
+          
+
+
+  
+    
+  
+
+
+
+
+<button class="nhsuk-button"
+  data-module="nhsuk-button"
+   type="submit">
+  Continue
+</button>
+
+
+
+
+          </form>
+        </div>
+      </div>
+
+
+
+
+
+          </main>
+        </div>
 
     </div>  
 
