@@ -16,7 +16,31 @@
 
     <div class="nhsuk-grid-column-two-thirds">
 
-      <!-- Add your content here -->
+                 <p>This is the address of where you were living before your current address. Even if this was temporary accommodation. Your new GP surgery will use this information to see if you have an existing medical record.</p>
+            {% if (data['who-is-being-registered'] === "dependant") %}
+            <h2 style="font-size: 1.5rem; padding-top: 0;">Does {{ data['name-first-name']}} have a previous address in the UK?</h2>
+            {% else %}
+              <h2 style="font-size: 1.5rem; padding-top: 0;">Do you have a previous address in the UK?</h2>
+            {% endif %}
+
+          {{ radios({
+            "idPrefix": "have-previous-uk-address",
+            "name": "have-previous-uk-address",
+            "items": [
+              {
+                "value": "Yes~/live/what-is-your-previous-address-manual",
+                "text": "Yes",
+                "checked": checked("have-previous-uk-address", "Yes")
+              },
+              {
+                "value": immuniseLink,
+                "text": "No",
+                "checked": checked("have-previous-uk-address", "No")
+              }
+            ]
+          }) }}
+
+
 
     </div>  
 
