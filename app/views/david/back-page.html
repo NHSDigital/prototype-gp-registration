@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Blank template - NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    href: "/",
+    text: "Home"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+          <h1>
+        Your registration application has been submitted
+      </h1>
+<p>You are unable to go back and change your details once you have accepted and submitted an application.</p>
+
+
+                  <h2 class="nhsuk-heading-l">What do you want to do next?</h2>
+
+
+    </div>  
+
+  </div>
+{% endblock %}
