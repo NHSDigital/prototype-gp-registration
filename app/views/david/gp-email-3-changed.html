@@ -32,14 +32,33 @@
 
   <h3 class="nhsuk-heading-m">Registration information</h3>
 
-  <div class="nhsuk-inset-text nhsuk-u-padding-top-0 nhsuk-u-padding-bottom-0">
-    <p></p>
-    <p class="nhsuk-u-margin-bottom-0">This patient has changed their name</p>
-    <p></p>
-  </div>
-
 
   <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Patient name
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['nhs-number'] or 'This patient has changed their name' }}
+      </dd>
+    </div>
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Patient date of birth
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['nhs-number'] or 'This patient has changed their date of birth' }}
+      </dd>
+    </div>
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Patient sex
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['nhs-number'] or 'This patient has changed their sex' }}
+      </dd>
+    </div>
+
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
