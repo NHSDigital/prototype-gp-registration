@@ -1,7 +1,7 @@
 {% extends 'reg-portal/login-layout.html' %}
 
 {% block pageTitle %}
-Select your login method - CIS2 - Care Identity Authentication
+Choose your preferred authentication method - CIS2 - Care Identity Authentication
 {% endblock %}
 
 {% block content %}
@@ -18,45 +18,50 @@ Select your login method - CIS2 - Care Identity Authentication
     
               {% call fieldset({
                 legend: {
-                  text: "Select your login method",
+                  text: "Choose your preferred authentication method",
                   classes: "nhsuk-fieldset__legend--l",
                   isPageHeading: true
                 }
               }) %}
-
-              {{ hint({
-              text: "Your choice will be saved as your preferred login method for this browser."
-            }) }}
-
-            {{ hint({
-              text: "You may have to repeat this step if you clear your browser's cookies.",
-              "classes": "nhsuk-u-margin-bottom-4"
-            }) }}
     
               {{ radios({
                 "idPrefix": "login-option",
                 "name": "login-option",
                 "items": [
                   {
-                    "value": "Smartcard",
-                    "text": "Smartcard",
-                    checked: checked("login-option", "Smartcard")
+                    "value": "iPad",
+                    "text": "iPad",
+                    checked: checked("login-option", "iPad")
                   },
-                  
                   {
-                    "value": "Windows Hello for Business",
-                    "text": "Windows Hello for Business",
-                    checked: checked("login-option", "Windows Hello for Business")
+                    "value": "Microsoft Authenticator",
+                    "text": "Microsoft Authenticator",
+                    checked: checked("login-option", "Microsoft Authenticator")
                   },
+                  {
+                    "value": "NHS.net Connect (formerly NHSmail)",
+                    "text": "NHS.net Connect (formerly NHSmail)",
+                    checked: checked("login-option", "NHS.net Connect (formerly NHSmail)")
+                  },
+                  {
+                    "value": "Passkey",
+                    "text": "Passkey",
+                    checked: checked("login-option", "Passkey")
+                  },                
                   {
                     "value": "Security key",
                     "text": "Security key",
                     checked: checked("login-option", "Security key")
                   },
                   {
-                    "value": "iPad app",
-                    "text": "iPad app",
-                    checked: checked("login-option", "iPad app")
+                    "value": "Smartcard",
+                    "text": "Smartcard",
+                    checked: checked("login-option", "Smartcard")
+                  },
+                  {
+                    "value": "Windows Hello for Business",
+                    "text": "Windows Hello for Business",
+                    checked: checked("login-option", "Windows Hello for Business")
                   }
                 ]
               }) }}
