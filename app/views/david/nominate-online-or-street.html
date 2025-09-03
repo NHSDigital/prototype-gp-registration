@@ -1,0 +1,131 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'High Street or online pharmacy'  %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% if (data['user-auth'] === "p9") %}
+  {% set link = 'nominate-pharmacy-warning' %}
+{% else %}
+  {% set link = 'nominate-pharmacy' %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+                <fieldset class="nhsuk-fieldset">
+  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+    <h1 class="nhsuk-fieldset__heading">
+      High Street or online pharmacy
+    </h1>
+  </legend>
+
+
+            <p>A carer looks after a family member or friend who is not able to look after themselves. This could be because they have long-term physical or mental health conditions or illnesses, or problems related to old age.</p>
+          <p>Carers can be adults or children. They can be paid, unpaid, or getting benefits for being a carer.</p>
+
+            
+              <h2 style="font-size: 1.5rem; padding-top: 0;">Do you look after someone?</h2>
+            
+
+          
+
+
+
+
+
+  
+
+  
+<div class="nhsuk-form-group">
+
+  <div class="nhsuk-radios">
+    
+    <div class="nhsuk-radios__item">
+      <input class="nhsuk-radios__input" id="are-carer-1" name="are-carer" type="radio" value="Yes~/live/type-of-carer">
+      <label class="nhsuk-label nhsuk-radios__label" for="are-carer-1">
+        Yes
+      </label>
+    </div>
+    
+    
+    <div class="nhsuk-radios__item">
+      <input class="nhsuk-radios__input" id="are-carer-2" name="are-carer" type="radio" value="No~/live/do-you-need-accessible-format">
+      <label class="nhsuk-label nhsuk-radios__label" for="are-carer-2">
+        No
+      </label>
+    </div>
+    
+    
+    <div class="nhsuk-radios__divider">or</div>
+    
+    <div class="nhsuk-radios__item">
+      <input class="nhsuk-radios__input" id="are-carer-4" name="are-carer" type="radio" value="prefer not to say~/live/do-you-need-accessible-format">
+      <label class="nhsuk-label nhsuk-radios__label" for="are-carer-4">
+        Prefer not to say
+      </label>
+    </div>
+    
+  </div>
+</div>
+
+         </fieldset>
+
+
+          
+
+
+  
+    
+  
+
+
+
+
+<button class="nhsuk-button"
+  data-module="nhsuk-button"
+   type="submit">
+  Continue
+</button>
+
+
+
+
+          </form>
+        </div>
+      </div>
+
+
+
+
+
+          </main>
+        </div>
+
+    </div>  
+
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
