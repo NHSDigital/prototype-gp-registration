@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "What is " + data['name-first-name'] + "'s height?" %}
+  {% set heading = "What is " + data['name-first-name'] + "'s height? (optional)" %}
 {% else %}
-  {% set heading = 'What is your height?' %}
+  {% set heading = 'What is your height? (optional)' %}
 {% endif %}
 
 {% if (data['accessible-needs'] === "Yes") %}
@@ -50,7 +50,7 @@
                 }
               },
               "hint": {
-                "text": "This question is (optional)"
+                  "text": "The GP surgery may use this information to give you health guidance and support."
               },
               "items": [
                 {
@@ -87,7 +87,7 @@
                   }
                 },
                 "hint": {
-                  "text": "This question is (optional)"
+                  "text": "The GP surgery may use this information to give you health guidance and support."
                 },
                 "items": [
                   {
@@ -104,10 +104,6 @@
 
             </div>
 
-            {{ details({
-            "text": "Why are you asking this?",
-            "HTML": "<p>The GP surgery may use this information to give you health guidance and support.</p>"
-            }) }}
 
             {{ button({
               "text": "Continue"
