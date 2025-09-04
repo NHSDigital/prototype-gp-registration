@@ -51,7 +51,7 @@
                 }
               },
               "hint": {
-                "text": "This question is (optional)"
+                "text": "The GP surgery may use this information to give you health guidance and support"
               },
               "items": [
                 {
@@ -86,7 +86,7 @@
                   }
                 },
                 "hint": {
-                  "text": "The GP surgery may use this information to give you health guidance and support"
+                  "text": "This question is (optional)"
                 },
                 "items": [
                   {
@@ -100,6 +100,11 @@
               <p><a href="#" id="use-postcode-lookup-link">Switch to stone and pounds</a></p>
 
             </div>
+
+            {{ details({
+            "text": "Why are you asking this?",
+            "HTML": "<p>The GP surgery may use this information to give you health guidance and support.</p>"
+            }) }}
 
             {{ button({
               "text": "Continue"
