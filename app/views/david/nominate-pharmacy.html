@@ -8,7 +8,7 @@
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = 'Would ' + data['name-first-name'] + ' like to choose a pharmacy for their prescriptions?' %}
 {% else %}
-  {% set heading = 'Would you like to choose a pharmacy for your prescriptions?'  %}
+  {% set heading = 'Would you like to choose a Hign Street pharmacy for your prescriptions?'  %}
 {% endif %}
 
 {% block pageTitle %}
@@ -30,9 +30,9 @@
 {% endif %}
 
 {% if (data['user-auth'] === "p9") %}
-  {% set hintText = 'Choosing a pharmacy now means your GP surgery will send all future prescriptions directly to this new pharmacy.' %}
+  {% set hintText = 'Your GP surgery will send all future prescriptions directly to this new pharmacy.' %}
 {% else %}
-  {% set hintText = 'Choosing a pharmacy means your GP surgery will send prescriptions directly to this pharmacy.' %}
+  {% set hintText = 'Your GP surgery will send prescriptions directly to this pharmacy.' %}
 {% endif %}
 
 {% if (data['user-auth'] === "p9") %}
@@ -74,7 +74,7 @@
               "items": [
                 {
                   "value": yesLink,
-                  "text": "Yes, choose a pharmacy",
+                  "text": "Yes, choose a High Street pharmacy",
                   checked: checked("nominate-pharmacy", "Yes")
                 },
                 {
