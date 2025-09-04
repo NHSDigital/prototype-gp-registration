@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "What is " + data['name-first-name'] + "'s weight?" %}
+  {% set heading = "What is " + data['name-first-name'] + "'s weight? (optional)" %}
 {% else %}
-  {% set heading = 'What is your weight?' %}
+  {% set heading = 'What is your weight? (optional)' %}
 {% endif %}
 
 {% if (data['under-16-years'] === "true") %}
@@ -86,7 +86,7 @@
                   }
                 },
                 "hint": {
-                  "text": "This question is (optional)"
+                  "text": "The GP surgery may use this information to give you health guidance and support"
                 },
                 "items": [
                   {
@@ -100,11 +100,6 @@
               <p><a href="#" id="use-postcode-lookup-link">Switch to stone and pounds</a></p>
 
             </div>
-
-            {{ details({
-            "text": "Why are you asking this?",
-            "HTML": "<p>The GP surgery may use this information to give you health guidance and support.</p>"
-            }) }}
 
             {{ button({
               "text": "Continue"
