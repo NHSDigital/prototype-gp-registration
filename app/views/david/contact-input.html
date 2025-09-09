@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Content page template - NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    href: "/",
+    text: "Home"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        How we contact you
+      </h1>
+
+      <p>
+        The NHS and Hilltop surgery may need to contact you about:
+        <ul>
+          <li>this registration application</li>
+          <li>important information about your health</li>
+          <li>screening and other healthcare services</li>
+        </ul> 
+      </p>
+
+<div class="govuk-inset-text">
+  Your contact will not be used for marketing or shared with anyone outside your GP surgery or the NHS.
+</div>
+<legend>Tell us how you want to be contacted (optional)</legend>
+
+            {{ input({
+              label: {
+                "text": "Home telephone number (optional)"
+              },
+              "classes": "nhsuk-input nhsuk-input--width-20",
+              "id": "contact-home-phone",
+              "name": "contact-home-phone",
+              "spellcheck": false,
+              "value": data['contact-home-phone']
+            }) }}
+
+            {{ input({
+              label: {
+                "text": "Mobile telephone number (optional)"
+              },
+              "classes": "nhsuk-input nhsuk-input--width-20",
+              "id": "contact-mobile",
+              "name": "contact-mobile",
+              "spellcheck": false,
+              "value": data['contact-mobile']
+            }) }}
+
+            {{ input({
+              label: {
+                "text": "Email address (optional)"
+              },
+              "id": "contact-email",
+              "name": "contact-email",
+              "spellcheck": false,
+              "value": data['contact-email']
+            }) }}
+
+
+
+    </div>  
+
+  </div>
+{% endblock %}
