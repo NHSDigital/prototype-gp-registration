@@ -20,52 +20,84 @@
 
 
           <table role="table" class="nhsuk-table-responsive">
-            <thead role="rowgroup" class="nhsuk-table__head">
+            <thead class="nhsuk-table__head">
               <tr role="row">
-                <th role="columnheader" class="" scope="col">
-                  Name
+              
+                <th role="columnheader" scope="col" class="govuk-table__header" aria-sort="ascending">
+                  <a href="reg-table-v2-yes-no-sorted-reverse">
+                    <button type="button" data-index="0">Name<svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                      </svg>
+                    </button>
+                  </a>
                 </th>
-                <th role="columnheader" class="" scope="col">
-                  Matched
+              
+                <th role="columnheader" scope="col" class="govuk-table__header" aria-sort="none">
+                  <button type="button" data-index="1">Matched<svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                    <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                    </svg>
+                  </button>
                 </th>
-                <th role="columnheader" class="" scope="col">
-                  Age
+              
+                <th role="columnheader" scope="col" class="govuk-table__header" aria-sort="none">
+                  <button type="button" data-index="2">Age<svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                    <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                    </svg>
+                  </button>
                 </th>
-                <th role="columnheader" class="" scope="col">
-                  In catchment
+              
+                <th role="columnheader" scope="col" class="govuk-table__header govuk-table__header--numeric" aria-sort="none">
+                  <button type="button" data-index="3">Catchment<svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                    <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                    </svg>
+                  </button>
                 </th>
-                <th role="columnheader" class="" scope="col">
-                  
-                </th>
+
+                <th role="columnheader" class="" scope="col"></th>
+              
               </tr>
             </thead>
+
+            <style>
+              .govuk-table__header {
+                padding: 10px 20px 10px 0;
+                text-align: left;
+                vertical-align: top;
+              }
+
+              [aria-sort] button, [aria-sort] button:hover {
+                align-items: center;
+                background-color: initial;
+                border-width: 0;
+                box-shadow: 0 0 0 0;
+                color: #005ea5;
+                cursor: pointer;
+                display: inline-flex;
+                font-family: inherit;
+                font-size: inherit;
+                font-size: 1em;
+                font-weight: inherit;
+                margin: 0;
+                padding: 0;
+                position: relative;
+                text-align: inherit;
+              }
+            </style>
+            
             <tbody class="nhsuk-table__body">
+              
               <tr role="row" class="nhsuk-table__row">
                 <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>Jane Jones
-                </td>
-                <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Matched</span>Not matched
-                </td>
-                <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>14
-                </td>
-                <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">In catchment</span>Out of catchment
-                </td>
-                <td role="cell" class="nhsuk-table__cell">
-                  <a href="reg-detail-multi-detail-child">View details</a>
-                </td>
-              </tr>
-              <tr role="row" class="nhsuk-table__row">
-                <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>Justin Girdler
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>James Briggs
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
                   <span class="nhsuk-table-responsive__heading" aria-hidden="true">Matched</span>Yes
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>39
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>89
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
                   <span class="nhsuk-table-responsive__heading" aria-hidden="true">In catchment</span>Yes
@@ -92,6 +124,61 @@
                   <a href="#">View details</a>
                 </td>
               </tr>
+
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>Justin Girdler
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Matched</span>Yes
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>39
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">In catchment</span>Yes
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <a href="#">View details</a>
+                </td>
+              </tr>
+
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>Jane Jones
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Matched</span>Not matched
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>14
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">In catchment</span>Out of catchment
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <a href="reg-detail-multi-detail-child">View details</a>
+                </td>
+              </tr>
+
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>Philip Muggeridge
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Matched</span>Not matched
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>19
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">In catchment</span>Yes
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <a href="#">View details</a>
+                </td>
+              </tr>
+
               <tr role="row" class="nhsuk-table__row">
                 <td role="cell" class="nhsuk-table__cell">
                   <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>Victoria Shirt
@@ -109,6 +196,24 @@
                   <a href="#">View details</a>
                 </td>
               </tr>
+              
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>Sam Smith
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Matched</span>Yes
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>35
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">In catchment</span>Yes
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <a href="reg-detail-multi-detail">View details</a>
+                </td>
+              </tr>
 
               <tr role="row" class="nhsuk-table__row">
                 <td role="cell" class="nhsuk-table__cell">
@@ -119,41 +224,6 @@
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
                   <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>69
-                </td>
-                <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">In catchment</span>Yes
-                </td>
-                <td role="cell" class="nhsuk-table__cell">
-                  <a href="#">View details</a>
-                </td>
-              </tr>
-              <tr role="row" class="nhsuk-table__row">
-                <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>James Briggs
-                </td>
-                <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Matched</span>Yes
-                </td>
-                <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>89
-                </td>
-                <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">In catchment</span>Yes
-                </td>
-                <td role="cell" class="nhsuk-table__cell">
-                  <a href="#">View details</a>
-                </td>
-              </tr>
-
-              <tr role="row" class="nhsuk-table__row">
-                <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>Philip Muggeridge
-                </td>
-                <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Matched</span>Not matched
-                </td>
-                <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>19
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
                   <span class="nhsuk-table-responsive__heading" aria-hidden="true">In catchment</span>Yes
@@ -216,6 +286,8 @@
     right: -38px;
   }
 </style>
+
+
 
 {% endblock %}
 
