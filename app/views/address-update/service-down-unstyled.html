@@ -1,0 +1,31 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout-no-feedback.html' %}
+
+{% set heading = "" %}
+
+{% block pageTitle %}
+  Sorry there is a problem - NHS
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <h1 class="nhsuk-heading-l">Sorry, there is a problem</h1>
+    <p>This may be a temporary problem.</p>
+    <p>Close this tab and try logging in again. If you cannot log in, try again later.</p>
+    <h2 class="nhsuk-heading-m">Other ways to change your address</h2>
+    <p>You can also change your home address by contacting your current GP surgery or <a href="https://www.nhs.uk/service-search/find-a-gp/">registering with your nearest GP surgery</a>.</p>
+
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer-blank.html' %}
+{% endblock %}
