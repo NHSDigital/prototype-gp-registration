@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "What is " + data['name-first-name'] + "'s current UK address?" %}
+  {% set heading = "What is " + data['name-first-name'] + "'s address?" %}
 {% else %}
-  {% set heading = 'What is your current UK address?' %}
+  {% set heading = 'What is your address?' %}
 {% endif %}
 
 {% block pageTitle %}
