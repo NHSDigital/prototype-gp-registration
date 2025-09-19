@@ -35,15 +35,8 @@
               }
             }) %}
 
-            {{ hint({
-              "text": "This is a 10 digit number, like 485 777 3456.",
-              "classes": "nhsuk-u-margin-bottom-4"
-            }) }}
-
-            {{ hint({
-              "text": "You can find it on any letter the NHS has sent you, on a prescription or by logging in to a GP practice online service.",
-              "classes": "nhsuk-u-margin-bottom-4"
-            }) }}
+            <p>This is a 10 digit number, like 485 777 3456.</p>
+            <p>It can be found on any letter the NHS has sent you, on a prescription, in the NHS App or by asking your GP. It will be used to match you to your NHS record.</p>
 
             {{ radios({
               "idPrefix": "know-nhs-number-parent",
@@ -51,12 +44,12 @@
               "items": [
                 {
                   "value": "Yes~/live/what-is-your-nhs-number-parent",
-                  "text": "Yes, I know my NHS number",
+                  "text": "Yes",
                   "checked": checked("know-nhs-number-parent", "Yes")
                 },
                 {
                   "value": "No~/live/carer-details",
-                  "text": "No, I do not know my NHS number",
+                  "text": "No",
                   "checked": checked("know-nhs-number-parent", "No")
                 }
               ]
