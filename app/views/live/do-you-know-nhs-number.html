@@ -7,16 +7,12 @@
 
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = 'Do you know ' + data['name-first-name'] + '\'s NHS Number?' %}
-  {% set hint1 = 'This is a 10 digit number, like 485 777 3456.' %}
-  {% set hint2 = 'You can find it on any letter the NHS has sent them, on a prescription or by logging in to a GP practice online service.' %}
   {% set option1 = 'Yes, I know their NHS number' %}
-  {% set option2 = 'No, I do not know their NHS number' %}
+  {% set option2 = 'No, continue without' %}
 {% else %}
   {% set heading = 'Do you know your NHS Number?' %}
-  {% set hint1 = 'This is a 10 digit number, like 485 777 3456.' %}
-  {% set hint2 = 'You can find it on any letter the NHS has sent you, on a prescription or by logging in to a GP practice online service.' %}
   {% set option1 = 'Yes, I know my NHS number' %}
-  {% set option2 = 'No, I do not know my NHS number' %}
+  {% set option2 = 'No, continue without' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -48,16 +44,13 @@
               }
             }) %}
 
-            {{ hint({
-              text: hint1,
-              "classes": "nhsuk-u-margin-bottom-4"
-            }) }}
-
-            {{ hint({
-              "text": hint2,
-              "classes": "nhsuk-u-margin-bottom-4"
-            }) }}
-
+            {% if (data['who-is-being-registered'] === "dependant") %}
+            <p>This is a 10 digit number, like 485 777 3456.</p>
+            <p>It can be found on any letter the NHS has sent them, on a prescription, in the NHS App or by asking their GP. It will be used to match them to their NHS record.</p>
+            {% else %}
+            <p>This is a 10 digit number, like 485 777 3456.</p>
+            <p>It can be found on any letter the NHS has sent you, on a prescription, in the NHS App or by asking your GP. It will be used to match you to your NHS record.</p>
+            {% endif %}
 
             {{ radios({
               "idPrefix": "know-nhs-number",
