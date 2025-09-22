@@ -40,9 +40,7 @@
                 }
               }) %}
 
-              <div class="nhsuk-hint" id="contact-hint">
-                <p>6 addresses found for {{ data['house-number-address'] ~ ' and ' ~ data['find-current-address'] if data['house-number-address'] and data['find-current-address'] else '24 and LS13 9PO' }}</p>
-              </div>
+              <p>6 addresses found for {{ data['house-number-address'] ~ ' and ' ~ data['find-current-address'] if data['house-number-address'] and data['find-current-address'] else '24 and LS13 9PO' }}</p>
 
               {{ radios({
                 "idPrefix": "select-current-address",
@@ -74,12 +72,9 @@
                     "checked": checked("select-current-address", "address5")
                   },
                   {
-                    "divider": "or"
-                  },
-                  {
-                    "value": "wrong address~/live/what-is-your-current-address-manual",
-                    "text": "I cannot find the address on the list.",
-                    "checked": checked("select-current-address", "")
+                    "value": "address6",
+                    "text": "6 Town Street, London, SW1A 1AA",
+                    "checked": checked("select-current-address", "address6")
                   }
                 ]
               }) }}
