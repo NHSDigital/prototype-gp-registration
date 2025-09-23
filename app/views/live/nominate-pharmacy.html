@@ -5,14 +5,8 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Would ' + data['name-first-name'] + ' like to choose a pharmacy for their prescriptions?' %}
-{% else %}
-  {% set heading = 'Would you like to choose a pharmacy for your prescriptions?'  %}
-{% endif %}
-
 {% block pageTitle %}
-  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+Where you get your prescription items - {{ data.presets[0].servicename }} - NHS
 {% endblock %}
 
 {% if (data['ethnicity'] === "Asian or Asian British") %}
@@ -27,18 +21,6 @@
   {% set link = 'what-is-your-ethnicity-background-another' %}
 {% else %}
   {% set link = 'what-is-your-ethnicity' %}
-{% endif %}
-
-{% if (data['user-auth'] === "p9") %}
-  {% set hintText = 'Choosing a pharmacy now means your GP surgery will send all future prescriptions directly to this new pharmacy.' %}
-{% else %}
-  {% set hintText = 'Choosing a pharmacy means your GP surgery will send prescriptions directly to this pharmacy.' %}
-{% endif %}
-
-{% if (data['user-auth'] === "p9") %}
-  {% set yesLink = 'Yes~nominate-pharmacy-warning' %}
-{% else %}
-  {% set yesLink = 'Yes~nominate-online-or-street' %}
 {% endif %}
 
 {% block outerContent %}
@@ -58,23 +40,29 @@
 
             {% include 'live/includes/step.html' %}
 
+            <h1 class="nhsuk-fieldset__legend--l">Where you get your prescription items</h1>
+            <p>Trinity Court Surgery (Demo GP Practice) is a dispensing surgery. This means you may be eligible to get your prescription items such as medicines or medical appliances direct from this GP surgery.</p>
+            <p>If you select 'Yes' you must answer the questions you are asked as best you can. If you are eligible the GP surgery may discuss this additional service with you.</p>
+            
+            <div class="nhsuk-inset-text">
+              <span class="nhsuk-u-visually-hidden">Information: </span>
+               <p>If you select 'No' and choose a pharmacy you will not be able change your mind later.</p>
+            </div>
+
             {{ radios({
               "idPrefix": "nominate-pharmacy",
               "name": "nominate-pharmacy",
               "fieldset": {
                 "legend": {
-                  "text": heading,
-                  "classes": "nhsuk-fieldset__legend--l",
-                  "isPageHeading": "true"
+                  "text": "Do you want to check if you are eligible?",
+                  "classes": "nhsuk-fieldset__legend--m",
+                  "isPageHeading": "false"
                 }
-              },
-              "hint": {
-                "text": hintText
               },
               "items": [
                 {
-                  "value": yesLink,
-                  "text": "Yes, choose a pharmacy",
+                  "value": "Yes~nominate-online-or-street",
+                  "text": "Yes",
                   checked: checked("nominate-pharmacy", "Yes")
                 },
                 {
