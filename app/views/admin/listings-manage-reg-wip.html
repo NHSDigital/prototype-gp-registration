@@ -1,0 +1,42 @@
+{% extends 'reg-portal/layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Page listings - Manage patient registrations - NHS
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+
+    <h1 class="app-page-heading">
+        <span class="nhsuk-caption-l">Prototype work</span>
+        Page by page listings
+    </h1>
+
+
+    <h2 class="nhsuk-heading-l">Alerts</h2>
+
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li><a href="/reg-portal/reg-table-v2-yes-no-wip">Registrations table</a></li>
+      <li><a href="/reg-portal/reg-detail-multi-detail-child-wip">Alerts registration details</li>
+    </ul>
+
+  </div>
+</div>
+
+{% endblock %}
