@@ -1,18 +1,8 @@
-<!-- Use this page as the index for your project -->
-
-<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-
-<!-- Extends the layout from /views/layout.html -->
-{% extends 'layout.html' %}
-<!--
-  In /views/layout.html you can:
-    - change the header and footer
-    - add custom CSS and JavaScript
--->
+{% extends 'reg-portal/layout.html' %}
 
 <!-- Set the page title -->
 {% block pageTitle %}
-GP Registration Prototype
+Manage patient registrations Prototype
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -36,47 +26,25 @@ GP Registration Prototype
               Prototype work
               <span class="nhsuk-u-visually-hidden"></span>
             </span>
-            Register with a GP Surgery
+            Manage patient registrations
           </h1>
 
-          <!--<ul class="nhsuk-list nhsuk-body-s">
-            <li>Last updated: 01 June 2023</li>
-            <li>Prototype version: v3.0.4</li>
-          </ul>-->
-
-          <p>Use this service to register with GP surgeries in England.</p>
-
-          <p><a href="/live/start?devMode=true">run 'live' in devMode</a></p>
-          <p><a href="/design/start?devMode=true">run 'design' in devMode</a></p>
-
-          <h2 class="nhsuk-heading-l">Latest live flow</h2>
-          <!--<p>This sprint will be focusing on:</p>
-
-          <ul class="nhsuk-list nhsuk-list--bullet">
-            <li>New question set grouping and NHS login provisioning API</li>
-          </ul>-->
+          <h2 class="nhsuk-heading-l">Phase 1 flow</h2>
 
           {{ button({
             "text": "Continue",
-                "href": "/live/start"
+                "href": "/reg-portal/login"
         }) }}
 
           {{ button({
             "text": "Page listings",
             "classes": "nhsuk-button--secondary",
-                "href": "admin/listings"
+                "href": "admin/listings-manage-reg"
           }) }}
-
-          <!--{{ button({
-            "text": "Preload options",
-                "href": "admin/preload"
-        }) }}-->
 
           <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
-
-          <h2 class="nhsuk-heading-l">GP self onboarding portal</h2>
-          <p>GP admin portal for self onboarding</p>
+          <!--<h2 class="nhsuk-heading-l">Work in progress</h2>
 
           {{ button({
             "text": "Continue",
@@ -89,184 +57,10 @@ GP Registration Prototype
                 "href": "admin/listings-gp"
           }) }}
 
-
-        <br>
-
-        {{ button({
-        "text": "Journey flow for NaP",
-        "href": "/gp/nap-email"
-        }) }}
-
-
-          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
-
-
-          <!--<h2 class="nhsuk-heading-l">NHS App intergration</h2>
-          <p>NHS App intergration authentication journeys + errors pages</p>
-
-          <form action="/sprint-12/section-1/registered-for-the-first-time" method="post" autocomplete="off">
-          <input type="hidden" name="user-auth" id="user-auth" value="p9" />
-          {{ button({
-            "text": "Continue (P9)",
-                "href": ""
-          }) }}
-
-          </form>
-
-          <form action="/sprint-12/section-1/registered-for-the-first-time" method="post" autocomplete="off">
-          <input type="hidden" name="user-auth" id="user-auth" value="p5" />
-          {{ button({
-            "text": "Continue (P5)",
-                "href": ""
-          }) }}
-
-          {{ button({
-            "text": "Page listings",
-            "classes": "nhsuk-button--secondary",
-                "href": "admin/listings-app"
-          }) }}
-
-          </form>
-
           <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">-->
 
-
-         <!--<h2 class="nhsuk-heading-l">User research</h2>
-          <p>Area of the prototype for user research purposes, including link to share with user testing participants.</p>
-
-          {{ button({
-            "text": "Continue",
-                "href": "admin/user-research"
-          }) }}
-
-          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
-
-
-          <h2 class="nhsuk-heading-l">Development baseline</h2>
-          <p>Version of the prototype for use by the development team. Does not contain any content or design work not yet approved for build or gone through user research.</p>
-
-          {{ button({
-            "text": "Continue",
-                "href": "https://register.dev.gp-registration.nhs.uk/1234/gpregistration/landing"
-          }) }}
-
-          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">-->
-
-
-          <!--<h2 class="nhsuk-heading-l">Previous iterations</h2>
-          <p>Previous sprint work and iterations of the service at a given point in time (Still working on implementation).</p>
-
-          <table class="nhsuk-table">
-
-            <thead role="rowgroup" class="nhsuk-table__head">
-              <tr role="row">
-                <th role="columnheader" class="" scope="col" width="25%">
-                Iteration
-                </th>
-                <th role="columnheader" class="" scope="col">
-                Description
-                </th>
-              </tr>
-            </thead>
-            <tbody class="nhsuk-table__body">
-              <tr role="row" class="nhsuk-table__row">
-                <td class="nhsuk-table__cell"><a href="/sprint-12/landing">Sprint 13</td>
-                <td class="nhsuk-table__cell ">New question set order / Height and weight / SCR</td>
-              </tr>
-              <tr role="row" class="nhsuk-table__row">
-                <td class="nhsuk-table__cell"><a href="/sprint-12/landing">Sprint 12</td>
-                <td class="nhsuk-table__cell ">Contact prefrences / NHS App interegration</td>
-              </tr>
-              <tr role="row" class="nhsuk-table__row">
-                <td class="nhsuk-table__cell"><a href="/sprint-11/landing">Sprint 11</td>
-                <td class="nhsuk-table__cell ">Mandatory questions added / Dispencing doctors</td>
-              </tr>
-              <tr role="row" class="nhsuk-table__row">
-                <td class="nhsuk-table__cell"><a href="/sprint-10/landing">Sprint 10</td>
-                <td class="nhsuk-table__cell ">GP self onboarding / Out of area / Dispencing doctors</td>
-              </tr>
-              <tr role="row" class="nhsuk-table__row">
-                <td class="nhsuk-table__cell"><a href="/sprint-9/landing">Sprint 9</td>
-                <td class="nhsuk-table__cell ">GP self onboarding and GP email</td>
-              </tr>
-              <tr role="row" class="nhsuk-table__row">
-                <td class="nhsuk-table__cell"><a href="/sprint-8/landing">Sprint 8</td>
-                <td class="nhsuk-table__cell ">Updates from beta service for Nominated pharmacy</td>
-              </tr>
-              <tr role="row" class="nhsuk-table__row">
-                <td class="nhsuk-table__cell"><a href="/sprint-7/landing">Sprint 7</td>
-                <td class="nhsuk-table__cell ">Dependant and carer journeys</td>
-              </tr>
-              <tr role="row" class="nhsuk-table__row">
-                <td class="nhsuk-table__cell"><a href="/sprint-6/landing">Sprint 6</td>
-                <td class="nhsuk-table__cell ">PDS matching upfront testing with type 4 (immigration) and Dependant journeys and ex UK armed forces</td>
-              </tr>
-              <tr role="row" class="nhsuk-table__row">
-                <td class="nhsuk-table__cell"><a href="/sprint-5/landing">Sprint 5</td>
-                <td class="nhsuk-table__cell ">PDS matching upfront testing with type 4 (immigration) and Dependant journeys and ex UK armed forces</td>
-              </tr>
-              <tr role="row" class="nhsuk-table__row">
-                <td class="nhsuk-table__cell"><a href="/sprint-4/landing">Sprint 4</td>
-                <td class="nhsuk-table__cell ">PDS matching upfront to ask supplementry questions for user types</td>
-              </tr>
-              <tr role="row" class="nhsuk-table__row">
-                <td class="nhsuk-table__cell"><a href="/sprint-3/landing">Sprint 3</td>
-                <td class="nhsuk-table__cell ">Testing with Type 4 (immigration) and no fixed abode user groups</td>
-              </tr>
-              <tr role="row" class="nhsuk-table__row">
-                <td class="nhsuk-table__cell"><a href="/sprint-2/landing">Sprint 2</td>
-                <td class="nhsuk-table__cell ">Testing with GP admins to understand if the flows + outputs meet their needs</td>
-              </tr>
-              <tr role="row" class="nhsuk-table__row">
-                <td class="nhsuk-table__cell"><a href="/sprint-1/landing">Sprint 1</td>
-                <td class="nhsuk-table__cell ">Looking at NHS login intergration from authentication levels p9/p5/unauth + Using NHS number </td>
-              </tr>
-              <tr role="row" class="nhsuk-table__row">
-                <td class="nhsuk-table__cell"><a href="/v1/1/landing">Discovery</td>
-                <td class="nhsuk-table__cell ">Team spent time on working out initial user journey and interactions for users 'Changing GP surgery' </td>
-              </tr>
-            </tbody>
-          </table>-->
-
       </div>
     </div>
-
-
-<!-- <section class="nhsuk-section">
-  <div class="nhsuk-width-container">
-    <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-two-thirds">
-        <h2>
-          Latest prototypes test
-        </h2>
-        <h3 class="nhsuk-heading-xs">Version 1 - July 2020</h3>
-        <p>
-          <a class="nhsuk-link nhsuk-link--no-visited-state" href="v1/1/01/index">Updated user flow</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="nhsuk-section">
-  <div class="nhsuk-width-container">
-    <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-two-thirds">
-        <h2>
-          Older prototypes
-        </h2>
-        <h3 class="nhsuk-heading-xs">Version 0 - June 2020</h3>
-        <p>
-          <a class="nhsuk-link nhsuk-link--no-visited-state" href="v1/0/00/index">Discovery prototype</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
- -->
-
-<!-- End of content -->
 
 {% endblock %}
 
