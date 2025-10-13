@@ -1,0 +1,83 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Use your NHS account to apply' %}
+
+{% block pageTitle %}
+{{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "who-is-registering",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+          <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+          <p>Using your NHS account means you:</p>
+          <ul>
+            <li>may save time completing this application</li>
+            <li>can link your profile to the child you are applying on behalf of</li>
+          </ul>
+          <p>Use your own account, not the details of a child's account if they have one.</p>
+          
+          <h2 class="nhsuk-heading-m">Would you like to use your NHS account?</h2>
+
+          <div class="nhs-login">
+            <p>You’ll have an account if you signed up for the <span class="nhsuk-u-font-weight-bold">NHS App</span> or other online health services that use NHS login.</p>
+            <a href="nhs-login-email?use-login=true&login-level=p9" class="nhsuk-button nhsuk-button--blue nhsuk-u-margin-bottom-4" type="submit">
+              Use NHS account</a>
+        </div>
+          <p><a href="what-is-your-name?use-login=false" class="nhsuk-button nhsuk-button--secondary">Do not use account</a></p>
+
+      </div>
+    </div>
+
+{# DEVMODE SCENARIOS #}
+{% if data['devMode'] === 'true' %}
+<details class="nhsuk-details dev-mode" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+    <span class="nhsuk-details__summary-text">
+      Switch scenario
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h4>Login user</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="nhs-login-email?use-login=true&login-level=p5">P5 level of identity</a>
+      </li>
+      <li>
+        <a href="nhs-login-email?use-login=true&login-level=p9">P9 level of identity</a>
+      </li>
+    </ul>
+  </div>
+</details>
+{% endif %}
+
+<style>
+  .nhs-login {
+    background-color: #ffffff;
+    border: 1px solid #d8dde0;
+    padding: 24px 24px 12px 24px;
+    margin-bottom: 24px;
+    margin-top: 24px;
+  }
+</style>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
