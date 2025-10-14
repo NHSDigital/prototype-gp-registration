@@ -28,18 +28,26 @@ module.exports = (router) => {
 
 // Does share NHS login acc
   router.post('/live/nhs-login-share-answer/', function (req, res) {
-    var nhsLogin = req.session.data['user-auth']
-    var alreadyregistered = req.session.data['alreadyregistered']
-    if (nhsLogin === "p9"){
-      if (alreadyregistered === "true"){
-        res.redirect('/live/already-registered')
-      } else {
-        res.redirect('/live/registered-for-the-first-time')
-      }
+  var nhsLogin = req.session.data['user-auth']
+  var loginLevel = req.session.data['login-level']
+  var alreadyregistered = req.session.data['alreadyregistered']
+  
+  if (nhsLogin === "p9") {
+    if (alreadyregistered === "true") {
+      res.redirect('/live/already-registered')
     } else {
-      res.redirect('/live/what-is-your-name')
+      res.redirect('/live/registered-for-the-first-time')
     }
-  })
+  } else if (loginLevel === "parent-same-gp") {
+    res.redirect('/live/carer-details')
+  } else if (loginLevel === "parent-same-gp-no-nhs") {
+    res.redirect('/live/do-you-know-nhs-number-parent')
+  } else if (loginLevel === "parent-diff-gp") {
+    res.redirect('/live/are-you-planning-register')
+  } else {
+    res.redirect('/live/what-is-your-name')
+  }
+})
 
   // relationship to dependant
   router.post('/live/relation-of-dependant-answer/', function (req, res) {

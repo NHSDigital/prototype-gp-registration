@@ -45,7 +45,7 @@ Pre-load - GP registration - NHS
 
               {% call fieldset({
                 legend: {
-                  text: "Authentication level (NHS Login)",
+                  text: "Myself login levels",
                   classes: "nhsuk-fieldset__legend--l",
                   isPageHeading: true
                 }
@@ -67,13 +67,37 @@ Pre-load - GP registration - NHS
                   },
                   {
                     "value": "p9",
-                    "text": "p9",
+                    "text": "P9",
                     checked: checked("user-auth", "p9")
                   },
                   {
                     "value": "p5",
-                    "text": "p5",
+                    "text": "P5",
                     checked: checked("user-auth", "p5")
+                  }
+                ]
+              }) }}
+
+              <h3>Parent login</h3>
+
+              {{ radios({
+                "idPrefix": "login-level",
+                "name": "login-level",
+                "items": [
+                  {
+                    "value": "parent-same-gp",
+                    "text": "Parent registered at same GP",
+                    checked: checked("login-level", "parent-same-gp")
+                  },
+                  {
+                    "value": "parent-same-gp-no-nhs",
+                    "text": "Parent registered at same GP but no NHS number",
+                    checked: checked("login-level", "parent-same-gp-no-nhs")
+                  },
+                  {
+                    "value": "parent-diff-gp",
+                    "text": "Parent registered at different GP",
+                    checked: checked("login-level", "parent-diff-gp")
                   }
                 ]
               }) }}
@@ -91,90 +115,6 @@ Pre-load - GP registration - NHS
                 }
                 ]
               }) }}
-
-              <h3>Prototype version</h3>
-
-              {{ radios({
-                "idPrefix": "Prototype version",
-                "name": "proto-version",
-                "items": [
-                {
-                  "value": "Sprint-10~/sprint-10/section-1/start",
-                  "text": "Sprint 10",
-                  "checked": checked("proto-version", "sprint-10")
-                },
-                {
-                  "value": "Sprint-9~/sprint-9/section-1/start",
-                  "text": "Sprint 9",
-                  "checked": checked("proto-version", "sprint-9")
-                },
-                {
-                  "value": "Sprint-8~/sprint-8/section-1/start",
-                  "text": "Sprint 8",
-                  "checked": checked("proto-version", "sprint-8")
-                },
-                {
-                  "value": "Sprint-7~/sprint-7/section-1/start",
-                  "text": "Sprint 7",
-                  "checked": checked("proto-version", "sprint-7")
-                },
-                {
-                  "value": "Sprint-6~/sprint-6/section-1/start",
-                  "text": "Sprint 6",
-                  "checked": checked("proto-version", "sprint-6")
-                },
-                {
-                  "value": "Sprint-5~/sprint-5/section-1/start",
-                  "text": "Sprint 5",
-                  "checked": checked("proto-version", "sprint-5")
-                },
-                {
-                  "value": "Sprint-4~/sprint-4/start",
-                  "text": "Sprint 4",
-                  "checked": checked("proto-version", "sprint-4")
-                },
-                {
-                  "value": "Sprint-3~/sprint-3/start",
-                  "text": "Sprint 3",
-                  "checked": checked("proto-version", "sprint-3")
-                },
-                  {
-                    "value": "Sprint-2~/sprint-2/start",
-                    "text": "Sprint 2",
-                    "checked": checked("proto-version", "sprint-2")
-                  },
-                  {
-                    "value": "Sprint-1~/sprint-1/start",
-                    "text": "Sprint 1",
-                    "checked": checked("proto-version", "pilot")
-                  },
-                  {
-                    "value": "Pilot~/pilot",
-                    "text": "Pilot",
-                    "checked": checked("proto-version", "pilot")
-                  }
-                ]
-              }) }}
-
-              <!-- <h3>Sprint 4 A/B for Questionairre</h3>
-
-              {{ radios({
-                "idPrefix": "ab",
-                "name": "ab",
-                "items": [
-                {
-                  "value": "a~/sprint-4/start",
-                  "text": "A (Questionnaire post search)",
-                  "checked": checked("ab", "a")
-                },
-                {
-                  "value": "b~/sprint-4/start",
-                  "text": "B (Questionnaire upfront)",
-                  "checked": checked("ab", "b")
-                }
-                ]
-              }) }} -->
-
 
               {% endcall %}
 
