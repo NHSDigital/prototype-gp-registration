@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block customStyles %}
+
+<STYLE type="text/css">
+    .nhsuk-summary-list__key {
+        width: 50%;
+    }
+</STYLE>
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<div class="pseudo-bg-gp"></div>
+<div class="gpemail-metadata">
+  <p><strong>From: </strong>Register with a GP Surgery</p>
+  <p><strong>Subject: </strong>12 registrations waiting to be accepted</p>
+</div>
+
+<div class="pseudo-gpemail-template">
+
+  <p>Dear Ossett Surgery,</p>
+  <div id="main-email-body" class="nhsuk-u-padding-bottom-9">
+  <p>Yesterday, <strong>12 people completed a registration</strong> which were added to the Manage my registrations portal.</p>
+  <p>You can review these registrations in Manage my registrations and accept them.</p>
+  </div>
+
+  <p>If you cannot access Manage my registrations...</p>
+
+
+{% endblock %}
