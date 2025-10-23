@@ -1,7 +1,7 @@
 {% extends 'reg-portal/layout.html' %}
 
 {% block pageTitle %}
-Sam Smith - GP registrations portal - NHS
+Jane Jones - GP registrations portal - NHS
 {% endblock %}
 
 {% block content %}
@@ -14,21 +14,129 @@ Sam Smith - GP registrations portal - NHS
             href: "reg-table-v2-yes-no"
         }) }}
 
-          <h1 id="patient-name" class="nhsuk-heading-l">Sam Smith</h1>
+          <h1 class="nhsuk-heading-l">Jane Jones</h1>
 
           <p class="nhsuk-u-margin-bottom-0">NHS number</p>
           <p class="nhsuk-heading-s nhsuk-u-padding-top-0">123 456 7890</p>
           <p class="nhsuk-u-margin-bottom-0">Date of birth</p>
-          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">1 January 1990</p>
+          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">2 February 2011 - Child</p>
           <p class="nhsuk-u-margin-bottom-0">Sex</p>
-          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">Male</p>
+          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">Female</p>
           <p class="nhsuk-u-margin-bottom-0">Postcode</p>
-          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">RG6 7JU</p>
+          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">BH12 7ER</p>
           <div style="display: flex; height: 100%; margin-bottom: 48px;">
-            <a class="nhsuk-button" style="margin-top:auto; margin-bottom:auto; margin-left:0; margin-right:24px;" href="accept-confirm?name-approved=Sam Smith">Approve</a>
+            <a class="nhsuk-button" style="margin-top:auto; margin-bottom:auto; margin-left:0; margin-right:24px;" href="accept-confirm">Approve</a>
             <a href="reject-reasons" style="margin-top:auto; margin-bottom:auto; margin-left:0; margin-right:0;">Reject</a>
           </div>
 
+          <div class="nhsuk-warning-callout">
+            <h3 class="nhsuk-warning-callout__label"> <span role="text">
+                <span class="nhsuk-u-visually-hidden">Important: </span>
+                3 alerts
+              </span> 
+            </h3>
+            <p>Jane Jones is:</p>
+            <ul>
+              <li>a returning patient</li>
+              <li>missing contact details</li>
+              <li>a carer</li>
+            </ul>
+          </div>
+
+          <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                Registration completed by
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <dl class="nhsuk-summary-list">
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    First name
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['carer-first-name'] or 'Ann' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Last name
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['carer-last-name'] or 'Jones' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Declared relationship to patient
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['carer-relationship'] or 'Mum' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Relationship in PDS
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['carer-relationship'] or 'Mother' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Date of birth
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['parent-date-of-birth'] or '28/01/1986' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Contact telephone number
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['carer-telephone'] or '01189 654 321' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    NHS number given
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['nhs-number-parent'] or '235 555 7891' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    PDS match
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ 'This patient is matched to NHS number 235 555 7891' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    GP surgery
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{  'This patient is registered at your surgery' }}
+                  </dd>
+                </div>
+            
+              </dl>
+            </div>
+          </details>
+          
           <details class="nhsuk-details nhsuk-expander">
             <summary class="nhsuk-details__summary">
               <span class="nhsuk-details__summary-text">
@@ -52,7 +160,7 @@ Sam Smith - GP registrations portal - NHS
                     Registration type
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['nhs-number'] or 'First acceptance registration' }}
+                    {{ data['nhs-number'] or 'Transfer' }}
                   </dd>
                 </div>
             
@@ -61,7 +169,7 @@ Sam Smith - GP registrations portal - NHS
                     Date registration submitted
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['nhs-number'] or '2:52pm on Wednesday 23rd August 2023' }}
+                    {{ data['nhs-number'] or '2:52pm on Wednesday 23rd October 2025' }}
                   </dd>
                 </div>
             
@@ -70,7 +178,7 @@ Sam Smith - GP registrations portal - NHS
                     PDS match status
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['nhs-number'] or 'This patient is matched to NHS number 900 000 0009' }}
+                    {{ data['nhs-number'] or 'This patient is matched to NHS number 123 456 7890' }}
                   </dd>
                 </div>
             
@@ -123,7 +231,7 @@ Sam Smith - GP registrations portal - NHS
                     Home telephone
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['contact-home-tel'] or '03003034777' }}
+                    Not provided
                   </dd>
                 </div>
             
@@ -132,7 +240,7 @@ Sam Smith - GP registrations portal - NHS
                     Mobile telephone
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['contact-mobile'] or '07700900077' }}
+                    Not provided
                   </dd>
                 </div>
             
@@ -141,7 +249,7 @@ Sam Smith - GP registrations portal - NHS
                     Email
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['contact-email'] or 'simulate-delivered@notifications.service.gov.uk' }}
+                    Not provided
                   </dd>
                 </div>
             
@@ -150,16 +258,7 @@ Sam Smith - GP registrations portal - NHS
                     Interpreter required
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['interpreter'] or 'Yes' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Language
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['language'] or 'French' }}
+                    No
                   </dd>
                 </div>
             
@@ -178,19 +277,10 @@ Sam Smith - GP registrations portal - NHS
 
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Building
+                    Address line 1
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['address-building'] or 'Line 1' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Building
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['address-street'] or '28 Address Line 2' }}
+                    {{ data['address-building'] or '12 Bourne Road' }}
                   </dd>
                 </div>
             
@@ -199,7 +289,7 @@ Sam Smith - GP registrations portal - NHS
                     Town or City
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['address-street'] or 'Address Line 4' }}
+                    {{ data['address-street'] or 'Bournemouth' }}
                   </dd>
                 </div>
             
@@ -208,7 +298,7 @@ Sam Smith - GP registrations portal - NHS
                     Postcode
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['address-street'] or 'ZZ99 3CZ' }}
+                    {{ data['address-street'] or 'BH12 7ER' }}
                   </dd>
                 </div>
             
@@ -225,12 +315,7 @@ Sam Smith - GP registrations portal - NHS
             <div class="nhsuk-details__text">
               <ul class="nhsuk-u-margin-bottom-0">
                 <li>Registration completed for a dependent</li>
-                <li>Patient has a young or unpaid carer</li>
                 <li>Patient is a young or unpaid carer</li>
-                <li>Patient has a social worker</li>
-                <li>Patient vaccinations not up to date</li>
-                <li>Patient vaccinations done outside the UK</li>
-                <li>Patient could be eligible for tuberculosis (TB) screening</li>
               </ul>
             </div>
           </details>
@@ -255,7 +340,7 @@ Sam Smith - GP registrations portal - NHS
             
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Building
+                    Address line 1
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['pharmacy-building'] or '17 Pharmacy Road' }}
@@ -264,19 +349,10 @@ Sam Smith - GP registrations portal - NHS
             
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Street
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['pharmacy-street'] or '17 Pharmacy Road' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
                     Town or city
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['pharmacy-city'] or 'Edinburgh' }}
+                    {{ data['pharmacy-city'] or 'Bournemouth' }}
                   </dd>
                 </div>
             
@@ -285,7 +361,7 @@ Sam Smith - GP registrations portal - NHS
                     Postcode
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['pharmacy-street'] or 'E15 2JE' }}
+                    {{ data['pharmacy-street'] or 'BH5 2JE' }}
                   </dd>
                 </div>
             
@@ -316,13 +392,13 @@ Sam Smith - GP registrations portal - NHS
                     Postcode
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['gp-postcode-prev'] or 'ZZ99 1WZ' }}
+                    {{ data['gp-postcode-prev'] or 'BH1 1WZ' }}
                   </dd>
                 </div>
             
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Building
+                    Address line 1
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['gp-building-prev'] or '17 Main Road' }}
@@ -331,19 +407,10 @@ Sam Smith - GP registrations portal - NHS
             
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Street
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['gp-street-prev'] or '17 Main Road' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
                     Town or city
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['gp-town-prev'] or 'Leeds' }}
+                    {{ data['gp-town-prev'] or 'Bournemouth' }}
                   </dd>
                 </div>
             
@@ -438,25 +505,16 @@ Sam Smith - GP registrations portal - NHS
                     Postcode
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['address-postcode-prev'] or 'ZZ99 3VZ' }}
+                    {{ data['address-postcode-prev'] or 'BH1 5AB' }}
                   </dd>
                 </div>
             
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Building
+                    Address line 1
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['address-building-prev'] or 'Previous building' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Street
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['address-street-prev'] or 'Previous street' }}
+                    {{ data['address-building-prev'] or '7 Grange Road' }}
                   </dd>
                 </div>
             
@@ -465,49 +523,7 @@ Sam Smith - GP registrations portal - NHS
                     Town or city
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['address-town-prev'] or 'Previous town' }}
-                  </dd>
-                </div>
-            
-              </dl>
-            </div>
-          </details>
-
-          <details class="nhsuk-details nhsuk-expander">
-            <summary class="nhsuk-details__summary">
-              <span class="nhsuk-details__summary-text">
-                Recently moved to the UK
-              </span>
-            </summary>
-            <div class="nhsuk-details__text">
-              <dl class="nhsuk-summary-list">
-
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Date entered the UK
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    <span id="dob-day">{{ data['dob-day'] or '01/' }}</span>
-                    <span id="dob-month">{{ data['dob-month'] or '01/' }}</span>
-                    <span id="dob-year">{{ data['dob-year'] or '1990' }}</span>
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Moved from EU, EEA or Switzerland
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    No
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Have you ever spent more than 6 months in a country where there was an increased risk of catching tuberculosis (TB)?
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['visited-tb'] or 'No' }}
+                    {{ data['address-town-prev'] or 'Bournemouth' }}
                   </dd>
                 </div>
             
@@ -600,7 +616,7 @@ Sam Smith - GP registrations portal - NHS
                     Attends
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['schooling'] or 'School, Nursery' }}
+                    {{ data['schooling'] or 'School' }}
                   </dd>
                 </div>
             
@@ -631,136 +647,6 @@ Sam Smith - GP registrations portal - NHS
                   </dd>
                 </div>
             
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Name of nursery
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['nursery-name'] or 'Test nursery' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Nursery Postcode
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['nursery-postcode'] or 'ZZ99 3VZ' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Nursery telephone
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['nursery-telephone'] or '0300 3035035' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Home school postcode
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['nursery-name'] or 'ZZ99 3CZ' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Home school telephone
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['nursery-school'] or '0300 3034777' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Professional care provider
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['care-provider'] or 'Social worker' }}
-                  </dd>
-                </div>
-            
-              </dl>
-            </div>
-          </details>
-
-          <details class="nhsuk-details nhsuk-expander">
-            <summary class="nhsuk-details__summary">
-              <span class="nhsuk-details__summary-text">
-                European health insurance card details
-              </span>
-            </summary>
-            <div class="nhsuk-details__text">
-              <dl class="nhsuk-summary-list">
-
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Full name
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    Sam Smith
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Date of birth
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    <span id="dob-day">{{ data['dob-day'] or '01/' }}</span><span id="dob-month">{{ data['dob-month'] or '01/' }}</span><span id="dob-year">{{ data['dob-year'] or '1990' }}</span>
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Country code
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    FRA
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Personal identification number
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    12345678901
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Identification number of the card
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    98765432109
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Identification number of the institution
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    123
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Expiry date
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    <span id="dob-day">{{ data['dob-day'] or '2075-' }}</span><span id="dob-month">{{ data['dob-month'] or '01-' }}</span><span id="dob-year">{{ data['dob-year'] or '01' }}</span>
-                  </dd>
-                </div>
-            
               </dl>
             </div>
           </details>
@@ -788,7 +674,7 @@ Sam Smith - GP registrations portal - NHS
                     Vaccinations in the UK
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['are-you-immunised-uk'] or 'I don\'t know' }}
+                    {{ data['are-you-immunised-uk'] or 'Yes' }}
                   </dd>
                 </div>
             
@@ -824,7 +710,7 @@ Sam Smith - GP registrations portal - NHS
                     Allergies
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['has-allergies'] or 'Not provided' }}
+                    {{ data['has-allergies'] or 'No' }}
                   </dd>
                 </div>
             
@@ -833,16 +719,7 @@ Sam Smith - GP registrations portal - NHS
                     Mental health conditions
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['has-mental-health-conditions'] or 'Not provided' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Mental health details
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['mental-health-details'] or 'Not provided' }}
+                    {{ data['has-mental-health-conditions'] or 'No' }}
                   </dd>
                 </div>
             
@@ -851,7 +728,7 @@ Sam Smith - GP registrations portal - NHS
                     Disabilities
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['has-disabilities'] or 'Not provided' }}
+                    {{ data['has-disabilities'] or 'No' }}
                   </dd>
                 </div>
             
@@ -860,97 +737,7 @@ Sam Smith - GP registrations portal - NHS
                     Patient has a carer
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['need-carer'] or 'Yes' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Carer type
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['carer-type'] or 'Foster carer' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    First name
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['carer-first-name'] or 'Jane' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Last name
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['carer-last-name'] or 'Doe' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Relationship to patient
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['carer-relationship'] or 'Foster mother' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Contact telephone number
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['carer-telephone'] or '07700900077' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Additional carer type
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['additional-carer-type'] or 'Paid as a job' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Additional carer's first name
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['additional-carer-first-name'] or 'John' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Additional carer's last name
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['additional-carer-last-name'] or 'Smith' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Additional carer's relationship to patient
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['additional-carer-relationship'] or 'Social worker' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Additional carer's contact telephone number
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['additional-carer-telephone-number'] or '03003034777' }}
+                    {{ data['need-carer'] or 'No' }}
                   </dd>
                 </div>
             
@@ -959,7 +746,16 @@ Sam Smith - GP registrations portal - NHS
                     Patient is a carer
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['are-carer'] or 'Not provided' }}
+                    {{ data['are-carer'] or 'Yes' }}
+                  </dd>
+                </div>
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Carer type
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    Young or unpaid carer
                   </dd>
                 </div>
             
@@ -974,28 +770,10 @@ Sam Smith - GP registrations portal - NHS
             
                 <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key">
-                    Accessible Format Details
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['accessible-format-details'] or 'Not Answered' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
                     Patient needs Reasonable Adjustments
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['reasonable-adjustments'] or 'No' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Reasonable Adjustments Details
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['reasonable-adjustments-details'] or 'Not Answered' }}
                   </dd>
                 </div>
             
@@ -1013,7 +791,7 @@ Sam Smith - GP registrations portal - NHS
                     What is your height?
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['height'] or '180 centimetres' }}
+                    {{ data['height'] or '150 centimetres' }}
                   </dd>
                 </div>
             
@@ -1022,7 +800,7 @@ Sam Smith - GP registrations portal - NHS
                     What is your weight?
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['weight'] or '80 kilograms' }}
+                    {{ data['weight'] or '40 kilograms' }}
                   </dd>
                 </div>
             
@@ -1032,104 +810,6 @@ Sam Smith - GP registrations portal - NHS
                   </dt>
                   <dd class="nhsuk-summary-list__value">
                     {{ data['share-to-scr'] or 'Yes, share a Summary Care Record with additional information' }}
-                  </dd>
-                </div>
-            
-              </dl>
-            </div>
-          </details>
-
-          <details class="nhsuk-details nhsuk-expander">
-            <summary class="nhsuk-details__summary">
-              <span class="nhsuk-details__summary-text">
-                Dispensing patient
-              </span>
-            </summary>
-            <div class="nhsuk-details__text">
-              <dl class="nhsuk-summary-list">
-
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Do you live more than 1 mile from your nearest pharmacy?
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['live-over-mile-to-pharmacy'] or 'No' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Would you have serious difficulty travelling to your nearest pharmacy to get medicines or medical appliances?
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['difficulty-traveling'] or 'Yes' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Eligible for dispensing patient
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['dispensing-eligible'] or 'Yes' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Dispensing Patient
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['dispensing-accepted'] or 'Accepted dispensing patient' }}
-                  </dd>
-                </div>
-            
-              </dl>
-            </div>
-          </details>
-
-          <details class="nhsuk-details nhsuk-expander">
-            <summary class="nhsuk-details__summary">
-              <span class="nhsuk-details__summary-text">
-                Registration completed by
-              </span>
-            </summary>
-            <div class="nhsuk-details__text">
-              <dl class="nhsuk-summary-list">
-
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    First name
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['completedby-first-name'] or 'John' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Last name
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['completedby-last-name'] or 'Doe' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Relationship to patient
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['completedby-relationship'] or 'Foster father' }}
-                  </dd>
-                </div>
-            
-                <div class="nhsuk-summary-list__row">
-                  <dt class="nhsuk-summary-list__key">
-                    Contact telephone number
-                  </dt>
-                  <dd class="nhsuk-summary-list__value">
-                    {{ data['completedby-phone-number'] or '07700 900077' }}
                   </dd>
                 </div>
             
