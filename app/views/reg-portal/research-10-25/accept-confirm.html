@@ -1,7 +1,13 @@
 {% extends 'reg-portal/layout.html' %}
 
+{% if data['patient-name'] %}
+  {% set name = data['patient-name'] %}
+{% else %}
+  {% set name = 'Sam Smith' %}
+{% endif %}
+
 {% block pageTitle %}
-Sam Smith accepted - GP registrations portal - NHS
+{{ name }} accepted - GP registrations portal - NHS
 {% endblock %}
 
 {% block content %}
@@ -18,7 +24,7 @@ Sam Smith accepted - GP registrations portal - NHS
           <h1 class="nhsuk-heading-xl">
             Approved
           </h1>
-          <p class="nhsuk-body-l">Sam Smith has been added to your patient list</p>
+          <p class="nhsuk-body-l">{{ name }} has been added to your patient list</p>
           <p>You should follow your surgery's guidance for managing newly registered patients.</p>
         </div>
 
