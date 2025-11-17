@@ -7,19 +7,13 @@
 
 {% set heading = 'Would you like to donate your organs and tissue?' %}
 
-{% if (data['alcohol-consumption'] !== "Never" and data['alcohol-consumption'] !== "Prefer not to say" and data['units']) %}
-  {% set link = 'how-often-six-or-more-units' %}
-{% else %}
-  {% set link = 'how-often-do-you-drink-alcohol' %}
-{% endif %}
-
 {% block pageTitle %}
   {{ heading }} - {{ data.presets[0].servicename }} - NHS
 {% endblock %}
 
 {% block outerContent %}
   {{ backLink({
-    "href": link,
+    "href": "javascript:history.go(-1)",
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
