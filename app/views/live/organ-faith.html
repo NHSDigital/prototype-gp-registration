@@ -1,0 +1,80 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Faith and beliefs' %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "check-answers-1",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            <p>If you have chosen to donate your organs when you die, the NHS will talk to your family for their support.</p>
+            <p>When they talk to your family, they can explain your faith and beliefs were important to you and help your family support your decision in line with your faith and belief system.</p>
+            <p><a href="https://www.organdonation.nhs.uk/about-organ-donation/your-faith-and-beliefs/our-faith-and-beliefs-commitment/" target="_blank">Visit the NHS faith and beliefs commitment (opens in a new tab)</a></p>
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h3 class="govuk-fieldset__heading">Would you like NHS staff to discuss your faith and beliefs with your family?</h3>
+            </legend> 
+
+            {{ radios({
+              "idPrefix": "organ-faith",
+              "name": "organ-faith",
+              "items": [
+                {
+                  "value": "Yes~/live/scr",
+                  "text": "Yes",
+                  checked: checked("organ-faith", "Yes")
+                },
+                {
+                  "value": "No~/live/scr",
+                  "text": "No",
+                  checked: checked("organ-faith", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
