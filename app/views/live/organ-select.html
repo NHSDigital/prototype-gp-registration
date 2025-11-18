@@ -1,0 +1,209 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Select which organs and tissue you would like to donate' %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "what-is-your-date-of-birth",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="scr" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            <p><a href="#">Find out more about organs and tissue</a></p>
+            
+            <h2 class="nhsuk-heading-m">Kidneys</h2>
+            {{ radios({
+              "idPrefix": "kidney-select",
+              "name": "kidney-select",
+              classes: "nhsuk-radios--inline",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  "checked": checked("kidney-select", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  "checked": checked("kidney-select", "No")
+                }
+              ]
+            }) }}
+
+            <h2 class="nhsuk-heading-m">Corneas</h2>
+            {{ radios({
+              "idPrefix": "corneas-select",
+              "name": "corneas-select",
+              classes: "nhsuk-radios--inline",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  "checked": checked("corneas-select", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  "checked": checked("corneas-select", "No")
+                }
+              ]
+            }) }}
+
+            <h2 class="nhsuk-heading-m">Heart</h2>
+            {{ radios({
+              "idPrefix": "heart-select",
+              "name": "heart-select",
+              classes: "nhsuk-radios--inline",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  "checked": checked("heart-select", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  "checked": checked("heart-select", "No")
+                }
+              ]
+            }) }}
+
+            <h2 class="nhsuk-heading-m">Lungs</h2>
+            {{ radios({
+              "idPrefix": "lung-select",
+              "name": "lung-select",
+              classes: "nhsuk-radios--inline",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  "checked": checked("lung-select", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  "checked": checked("lung-select", "No")
+                }
+              ]
+            }) }}
+
+            <h2 class="nhsuk-heading-m">Liver</h2>
+            {{ radios({
+              "idPrefix": "liver-select",
+              "name": "liver-select",
+              classes: "nhsuk-radios--inline",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  "checked": checked("liver-select", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  "checked": checked("liver-select", "No")
+                }
+              ]
+            }) }}
+
+            <h2 class="nhsuk-heading-m">Pancreas</h2>
+            {{ radios({
+              "idPrefix": "pancreas-select",
+              "name": "pancreas-select",
+              classes: "nhsuk-radios--inline",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  "checked": checked("pancreas-select", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  "checked": checked("pancreas-select", "No")
+                }
+              ]
+            }) }}
+
+            <h2 class="nhsuk-heading-m">Tissue</h2>
+            {{ radios({
+              "idPrefix": "tissue-select",
+              "name": "tissue-select",
+              classes: "nhsuk-radios--inline",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  "checked": checked("tissue-select", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  "checked": checked("tissue-select", "No")
+                }
+              ]
+            }) }}
+
+            <h2 class="nhsuk-heading-m">Small bowel</h2>
+            {{ radios({
+              "idPrefix": "bowel-select",
+              "name": "bowel-select",
+              classes: "nhsuk-radios--inline",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  "checked": checked("bowel-select", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  "checked": checked("bowel-select", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
