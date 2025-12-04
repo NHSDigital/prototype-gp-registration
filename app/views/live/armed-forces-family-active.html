@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Has a family member of ' + data['name-first-name'] + ' ever been in the UK Armed Forces or Armed Forces Reserves?' %}
+  {% set heading = 'Are they currently active in the ' + data['armed-forces-family-choice'] + '?' %}
 {% else %}
-  {% set heading = 'Has a family member ever been in the UK Armed Forces or Armed Forces Reservists?' %}
+  {% set heading = 'Are they currently active in the ' + data['armed-forces-family-choice'] + '?' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -41,18 +41,18 @@
           }) %}
 
           {{ radios({
-            "idPrefix": "armed-forces-family",
-            "name": "armed-forces-family",
+            "idPrefix": "armed-forces-family-active",
+            "name": "armed-forces-family-active",
             "items": [
               {
-                "value": "Yes~/live/armed-forces-family-choice",
+                "value": "Yes~/live/do-you-have-emergency-contact",
                 "text": "Yes",
-                "checked": checked("armed-forces-family", "Yes")
+                "checked": checked("armed-forces-family-active", "Yes")
               },
               {
                 "value": "No~/live/do-you-have-emergency-contact",
                 "text": "No",
-                "checked": checked("armed-forces-family", "No")
+                "checked": checked("armed-forces-family-active", "No")
               }
             ]
           }) }}
