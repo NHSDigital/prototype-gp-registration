@@ -6,9 +6,9 @@
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = 'Are they currently active in the ' + data['armed-forces-family-choice'] + '?' %}
+  {% set heading = 'Are they currently active in the UK Armed Forces or Armed Forces Reserves?' %}
 {% else %}
-  {% set heading = 'Are they currently active in the ' + data['armed-forces-family-choice'] + '?' %}
+  {% set heading = 'Are they currently active in the UK Armed Forces or Armed Forces Reserves?' %}
 {% endif %}
 
 {% block pageTitle %}
