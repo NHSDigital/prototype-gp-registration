@@ -8,7 +8,7 @@
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = 'Has a family member of ' + data['name-first-name'] + ' ever been in the UK Armed Forces or Armed Forces Reserves?' %}
 {% else %}
-  {% set heading = 'Has a family member ever been in the UK Armed Forces or Armed Forces Reservists?' %}
+  {% set heading = 'Has a family member ever been in the UK Armed Forces or Armed Forces Reserves?' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -39,7 +39,7 @@
               isPageHeading: true
             }
           }) %}
-          <p>Family member is defined as spouse, civil partner or children</p>
+          <p>A family member is defined as a spouse, civil partner, or a child.</p>
 
           {{ radios({
             "idPrefix": "armed-forces-family",
