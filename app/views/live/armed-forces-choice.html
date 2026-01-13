@@ -1,0 +1,82 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Which did ' + data['name-first-name'] + ' serve in?' %}
+{% else %}
+  {% set heading = 'Which did you serve in?' %}
+{% endif %}
+
+{% block pageTitle %}
+ {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": 'javascript:history.go(-1)',
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "armed-forces-choice",
+            "name": "armed-forces-choice",
+            "items": [
+              {
+                "value": "Armed Forces~/live/armed-forces-active",
+                "text": "Armed Forces",
+                "checked": checked("armed-forces-choice", "Armed Forces")
+              },
+              {
+                "value": "Armed Forces Reserves~/live/armed-forces-active",
+                "text": "Armed Forces Reserves",
+                "checked": checked("armed-forces-choice", "Armed Forces Reserves")
+              },
+              {
+                "value": "Both~/live/armed-forces-both-active",
+                "text": "Both",
+                "checked": checked("armed-forces-choice", "Both")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
