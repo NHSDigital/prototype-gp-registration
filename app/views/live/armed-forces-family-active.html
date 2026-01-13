@@ -1,30 +1,30 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
-{% set section = '1' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "You told us " + data ['name-first-name'] + " is registered with " + data.presets[0]['gpsurgery'] %}
+  {% set heading = 'Are they currently active in the UK Armed Forces or Armed Forces Reserves?' %}
 {% else %}
-  {% set heading = 'You told us you are registered with ' + data.presets[0]['gpsurgery'] %}
+  {% set heading = 'Are they currently active in the UK Armed Forces or Armed Forces Reserves?' %}
 {% endif %}
 
 {% block pageTitle %}
-  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+ {{ heading }} - {{ data.presets[0].servicename }} - NHS
 {% endblock %}
-
 
 {% block outerContent %}
   {{ backLink({
-    "href": "what-is-your-gp-address-selection",
+    "href": 'javascript:history.go(-1)',
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
 {% endblock %}
 
 {% block content %}
+
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
@@ -40,32 +40,31 @@
             }
           }) %}
 
-          <p>We need to know the postcode of the address you used when you registered with this surgery. We'll use it to match you to your medical record.</p>
-          <h2 style="font-size: 1.5rem; padding-top: 0;">Do you know the postcode you used when you registered with this surgery?</h2>
           {{ radios({
-            "idPrefix": "do-you-know-previous-postcode",
-            "name": "do-you-know-previous-postcode",
+            "idPrefix": "armed-forces-family-active",
+            "name": "armed-forces-family-active",
             "items": [
               {
-                "value": "Yes~/live/what-is-previous-postcode-gp-has",
+                "value": "Yes~/live/do-you-have-emergency-contact",
                 "text": "Yes",
-                "checked": checked("do-you-know-previous-postcode", "Yes")
+                "checked": checked("armed-forces-family-active", "Yes")
               },
               {
-                "value": "No~/live/check-answers-1",
+                "value": "No~/live/do-you-have-emergency-contact",
                 "text": "No",
-                "checked": checked("do-you-know-previous-postcode", "No")
+                "checked": checked("armed-forces-family-active", "No")
               }
             ]
           }) }}
 
-         {% endcall %}
+          {% endcall %}
 
           {{ button({
             "text": "Continue"
           }) }}
 
         </form>
+
       </div>
     </div>
 

@@ -48,7 +48,7 @@
               }
             }) %}
 
-            <div class="nhsuk-hint" id="contact-hint">
+            <div>
               <p>6 addresses found for {{ data['find-gp-address'] ~ ' and ' ~ data['current-gp-address'] if data['find-gp-address'] and data['current-gp-address'] else '24 and LS13 9PO' }}</p>
             </div>
 
@@ -87,14 +87,6 @@
                   "value": "block~/live/p5-same-same-dependent",
                   "text": "Trinity Surgery, London, SW1A 1AA",
                   "checked": checked("select-gp-address", "Trinity Surgery, London, SW1A 1AA")
-                },
-                {
-                  "divider": "or"
-                },
-                {
-                  "value": "wrong address~/live/what-is-your-gp-address",
-                  "text": "The address is not listed here.",
-                  "checked": checked("select-current-address", "")
                 }
               ]
             }) }}
@@ -133,14 +125,6 @@
                 "value": "block~/live/p5-same-same",
                 "text": "Trinity Surgery, London, SW1A 1AA",
                 "checked": checked("select-gp-address", "Trinity Surgery, London, SW1A 1AA")
-              },
-              {
-                "divider": "or"
-              },
-              {
-                "value": "wrong address~/live/what-is-your-gp-address",
-                "text": "The address is not listed here.",
-                "checked": checked("select-current-address", "")
               }
             ]
           }) }}

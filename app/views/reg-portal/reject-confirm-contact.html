@@ -1,0 +1,130 @@
+{% extends 'reg-portal/layout.html' %}
+
+{% block pageTitle %}
+Janes Jones rejected - GP registrations portal - NHS
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+        {{ backLink({
+            text: "Back to patient registrations",
+            href: "reg-table-v2"
+        }) }}
+
+        <div class="nhsuk-panel nhsuk-panel--reject">
+          <h1 class="nhsuk-heading-xl">
+            Rejected
+          </h1>
+          <p class="nhsuk-body-l">Jane Jones has not been added to your patient list</p>
+        </div>
+
+        <div class="nhsuk-grid-column-two-thirds" style="padding:0;">
+          <h2 class="nhsuk-u-margin-top-6">What you need to do next</h2>
+          <p>Write down this patient's details. You will need to keep them for your records.</p>
+
+          <dl class="nhsuk-summary-list nhsuk-u-padding-bottom-3">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Name
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                Jane Jones
+              </dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                NHS number
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                123 456 7890
+              </dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Date of birth
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                02/02/2011
+              </dd>
+              </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Home telephone
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                03003034777
+              </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Mobile telephone
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                	07700900077
+              </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Email
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                	Janesjones@hotmail.com
+              </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Address
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                	24 Finch Road<br>
+                  Earley<br>
+                  Reading<br>
+                  Berkshire<br>
+                  RG6 7JU
+              </dd>
+              </div>
+            </dl>
+
+            <p>Follow your surgery's process for rejecting patient registration applications.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!--style for the panel component-->
+      <style>
+        .nhsuk-panel {
+          box-sizing: border-box;
+          margin-bottom: 15px;
+          padding: 35px;
+          border: 5px solid transparent;
+          text-align: center;
+        }
+        
+        .nhsuk-panel--reject {
+          color: #fff;
+          background: #005eb8;
+        }
+        
+        @media (min-width: 40.0625em) {
+          .nhsuk-panel {
+            font-size: 2.25rem;
+            line-height: 1.1111111111;
+          }
+        }
+        </style>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}

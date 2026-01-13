@@ -6,7 +6,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Where you get your prescription items - {{ data.presets[0].servicename }} - NHS
+Would you like to choose a pharmacy for your prescriptions? - {{ data.presets[0].servicename }} - NHS
 {% endblock %}
 
 {% if (data['ethnicity'] === "Asian or Asian British") %}
@@ -40,29 +40,16 @@ Where you get your prescription items - {{ data.presets[0].servicename }} - NHS
 
             {% include 'live/includes/step.html' %}
 
-            <h1 class="nhsuk-fieldset__legend--l">Where you get your prescription items</h1>
-            <p>Trinity Court Surgery (Demo GP Practice) is a dispensing surgery. This means you may be eligible to get your prescription items such as medicines or medical appliances direct from this GP surgery.</p>
-            <p>If you select 'Yes' you must answer the questions you are asked as best you can. If you are eligible the GP surgery may discuss this additional service with you.</p>
-            
-            <div class="nhsuk-inset-text">
-              <span class="nhsuk-u-visually-hidden">Information: </span>
-               <p>If you select 'No' and choose a pharmacy you will not be able change your mind later.</p>
-            </div>
+            <h1 class="nhsuk-fieldset__legend--l">Would you like to choose a pharmacy for your prescriptions?</h1>
+            <p>Choosing a pharmacy means your GP surgery will send prescriptions directly to this pharmacy.</p>
 
             {{ radios({
               "idPrefix": "nominate-pharmacy",
               "name": "nominate-pharmacy",
-              "fieldset": {
-                "legend": {
-                  "text": "Do you want to check if you are eligible?",
-                  "classes": "nhsuk-fieldset__legend--m",
-                  "isPageHeading": "false"
-                }
-              },
               "items": [
                 {
                   "value": "Yes~nominate-online-or-street",
-                  "text": "Yes",
+                  "text": "Yes, choose a pharmacy",
                   checked: checked("nominate-pharmacy", "Yes")
                 },
                 {

@@ -1,30 +1,30 @@
 {% set serviceHome = '/live/start' %}
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
-{% set section = '1' %}
+{% set section = '2' %}
 
 {% extends 'layout.html' %}
 
 {% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "You told us " + data ['name-first-name'] + " is registered with " + data.presets[0]['gpsurgery'] %}
+  {% set heading = 'Which did ' + data['name-first-name'] + ' serve in?' %}
 {% else %}
-  {% set heading = 'You told us you are registered with ' + data.presets[0]['gpsurgery'] %}
+  {% set heading = 'Which did you serve in?' %}
 {% endif %}
 
 {% block pageTitle %}
-  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+ {{ heading }} - {{ data.presets[0].servicename }} - NHS
 {% endblock %}
-
 
 {% block outerContent %}
   {{ backLink({
-    "href": "what-is-your-gp-address-selection",
+    "href": 'javascript:history.go(-1)',
     "text": "Go back",
     "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
 {% endblock %}
 
 {% block content %}
+
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
@@ -40,32 +40,36 @@
             }
           }) %}
 
-          <p>We need to know the postcode of the address you used when you registered with this surgery. We'll use it to match you to your medical record.</p>
-          <h2 style="font-size: 1.5rem; padding-top: 0;">Do you know the postcode you used when you registered with this surgery?</h2>
           {{ radios({
-            "idPrefix": "do-you-know-previous-postcode",
-            "name": "do-you-know-previous-postcode",
+            "idPrefix": "armed-forces-choice",
+            "name": "armed-forces-choice",
             "items": [
               {
-                "value": "Yes~/live/what-is-previous-postcode-gp-has",
-                "text": "Yes",
-                "checked": checked("do-you-know-previous-postcode", "Yes")
+                "value": "Armed Forces~/live/armed-forces-active",
+                "text": "Armed Forces",
+                "checked": checked("armed-forces-choice", "Armed Forces")
               },
               {
-                "value": "No~/live/check-answers-1",
-                "text": "No",
-                "checked": checked("do-you-know-previous-postcode", "No")
+                "value": "Armed Forces Reserves~/live/armed-forces-active",
+                "text": "Armed Forces Reserves",
+                "checked": checked("armed-forces-choice", "Armed Forces Reserves")
+              },
+              {
+                "value": "Both~/live/armed-forces-both-active",
+                "text": "Both",
+                "checked": checked("armed-forces-choice", "Both")
               }
             ]
           }) }}
 
-         {% endcall %}
+          {% endcall %}
 
           {{ button({
             "text": "Continue"
           }) }}
 
         </form>
+
       </div>
     </div>
 
