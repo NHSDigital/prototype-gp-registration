@@ -1,0 +1,122 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% set heading = 'Select an address' %}
+
+{% block pageTitle %}
+  {{ heading }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {% include 'live/includes/step.html' %}
+
+          <form action="confirm-address" method="post" autocomplete="off">
+
+              {% call fieldset({
+                legend: {
+                  text: heading,
+                  classes: "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              }) %}
+
+              <div class="nhsuk-hint" id="contact-hint">
+                <p>5 addresses found for {{ data['house-number-address'] ~ ' and ' ~ data['find-current-address'] if data['house-number-address'] and data['find-current-address'] else '1 and SW1A 1AA' }}</p>
+              </div>
+
+              {{ radios({
+                "idPrefix": "select-new-address",
+                "name": "select-new-address",
+                "items": [
+                  {
+                    "value": "1",
+                    "text": "1 Town Street, London, SW1A 1AA",
+                    "checked": checked("select-new-address", "1 Town Street, London, SW1A 1AA")
+                  },
+                  {
+                    "value": "11",
+                    "text": "11 Town Street, London, SW1A 1AA",
+                    "checked": checked("select-new-address", "11 Town Street, London, SW1A 1AA")
+                  },
+                  {
+                    "value": "111",
+                    "text": "111 Town Street, London, SW1A 1AA",
+                    "checked": checked("select-new-addresss", "111 Town Street, London, SW1A 1AA")
+                  },
+                  {
+                    "value": "12",
+                    "text": "12 Town Street, London, SW1A 1AA",
+                    "checked": checked("select-new-addresss", "12 Town Street, London, SW1A 1AA")
+                  },
+                  {
+                    "value": "13",
+                    "text": "13 Town Street, London, SW1A 1AA",
+                    "checked": checked("select-new-address", "13 Town Street, London, SW1A 1AA")
+                  },
+                  {
+                    "divider": "or"
+                  },
+                  {
+                    "value": "not listed~what-is-your-current-address-selection-extended",
+                    "text": "I cannot find the address on the list",
+                    "checked": checked("select-new-address", "")
+                  }
+                ]
+              }) }}
+
+              {% endcall %}
+
+              <p>
+                <a href="what-is-your-current-address-manual" id="enter-address-manually-link">Enter the address manually</a>
+              </p>
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{# DEVMODE SCENARIOS #}
+{% if data['devMode'] === 'true' %}
+<details class="nhsuk-details dev-mode dev-mode--routing" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+      <span class="nhsuk-details__summary-text">
+        Routing choices
+      </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h4>Routes catchment area</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="current-address-out-of-area">Outside catchment area</a>
+      </li>
+      <li>
+        <a href="not-accepting-registrations">Outside catchment area and GP surgery not accepting out-of-catchment registrations</a>
+      </li>
+    </ul>
+  </div>
+</details>
+{% endif %}
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
