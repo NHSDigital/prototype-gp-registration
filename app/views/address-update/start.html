@@ -60,12 +60,28 @@
         <li>home visits and urgent care, including out of hours care</li>
         <li>community services, such as physiotherapy and midwife appointments</li>
       </ul>
-      <p>When you change address you may need to register with a new GP surgery.</p>
-      <p><a href="find-gp-is-address-uk">Registering with a GP surgery</a> takes about 15 minutes and automatically updates your NHS record.</p>
-      <div class="nhsuk-inset-text">
-        <span class="nhsuk-u-visually-hidden">Information: </span>
-        <p>If your new address is outside the catchment area of your current GP surgery they may remove you from their patient list.</p>
-      </div>
+
+      <details class="nhsuk-details nhsuk-expander">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+          When you change address you may need to register with a new GP surgery
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>If your new address is outside the catchment area of your current GP surgery they may remove you from their patient list.</p>
+          <p>Guidance on delay between old GP and new GP...?</p>
+          <p><a href="find-gp-is-address-uk">Registering with a GP surgery</a> takes about 15 minutes and automatically updates your NHS record.</p>
+        </div>
+      </details>
+
+      <h2 class="nhsuk-heading-m">Students living in student or private accommodation</h2>
+      <p>The home address on your NHS record should be your term-time address.</p>
+     
+      
+      
+      
+      
+      
 
       {% elseif data['noGP'] == 'true' %}
       <p>Changing your home address will update your NHS record.</p>
@@ -76,7 +92,8 @@
         <li>community services, such as physiotherapy and midwife appointments</li>
       </ul>
       <p><a href="find-gp-is-address-uk">Registering with a GP surgery</a> takes about 15 minutes and automatically updates your NHS record.</p>
-
+      <h2 class="nhsuk-heading-m">Students living in student or private accommodation</h2>
+      <p>The home address on your NHS record should be your term-time address.</p>
       {% endif %}
 
       {% endcall %}
@@ -86,8 +103,7 @@
         "text": "Continue"
       }) }}
       {% endif %}
-      <h2 class="nhsuk-heading-m">Students living in student or private accommodation</h2>
-      <p>The home address on your NHS record should be your term-time address.</p>
+      
 
     </form>
   </div>

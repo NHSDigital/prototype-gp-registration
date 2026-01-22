@@ -43,26 +43,33 @@
     <div class="nhsuk-inset-text">
       <span class="nhsuk-u-visually-hidden">Information: </span>
       <p>Your new address is outside the catchment area for Lordship Lane surgery.</p>
+       {{ actionLink({
+      text: "Find a GP",
+      href: "#"
+    }) }}
     </div>
 
     <h2 class="nhsuk-heading-m">What happens next</h2>
     <p>The NHS may contact you to confirm you have moved outside the catchment area of your GP surgery and you'll be removed from their patient list.</p>
-    <details class="nhsuk-details">
-      <summary class="nhsuk-details__summary">
-        <span class="nhsuk-details__summary-text">
-          If you're waiting for surgery or a prescription
-        </span>
-      </summary>
-      <div class="nhsuk-details__text">
-        <p>If you're waiting for elective surgery or a prescription you should contact your GP surgery.</p>
-    
-      </div>
-    </details>
-    {{ actionLink({
-      text: "Find a GP",
-      href: "#"
-    }) }}
-
+   
+   
+   <details class="nhsuk-details nhsuk-expander">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+           If you're waiting for surgery or a prescription
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>If you're waiting for elective surgery or a prescription you should contact your GP surgery.</p>
+        </div>
+      </details>
+   
+   
+   
+   
+  
+   
+      <br>
     <p><a href="feedback">Tell us about your experience updating your address (opens in a new tab)</a></p>
   </div>
 </div>
