@@ -22,12 +22,19 @@ Your new address - NHS
     <form action="success-out-of-catchment" method="post" autocomplete="off">
 
       <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-        <h1 class="nhsuk-fieldset__heading">Your new address</h1>
+        <h1 class="nhsuk-fieldset__heading">Check your new address before submitting it</h1>
       </legend>
 
-      <p>You want to change your address to:</p>
+     
       <p>{% if data['select-new-address'] %}
-          {{ data['select-new-address'] }} Town Street,<br />
+
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              New address
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['select-new-address'] }} Town Street,<br />
               London,<br />
               SW1A 1AA
           {% elseif data['new-address-line-1'] %}
@@ -39,7 +46,14 @@ Your new address - NHS
           {% else %}
             {{ data['abroad-address'] }}
           {% endif %}
-      </p>
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a class="nhsuk-link" href="what-is-your-current-address">Change<span class="nhsuk-u-visually-hidden"> your address</span></a>
+            </dd>
+          </div>
+        </dl>
+
+   
 
       {% if data['noGP'] != 'true' %}
       <p>Your address will be updated on your NHS record immediately.</p>
