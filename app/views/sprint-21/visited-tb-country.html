@@ -1,0 +1,178 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Has " + data['name-first-name'] + " ever spent more than 6 months in a country where there was an increased risk of catching tuberculosis (TB)?" %}
+{% else %}
+  {% set heading = 'Have you ever spent more than 6 months in a country where there was an increased risk of catching tuberculosis (TB)?' %}
+{% endif %}
+
+{% block pageTitle %}
+{{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% if (data['registering-first-time'] === "Yes") %}
+  {% set link = 'recently-moved-eea' %}
+{% else %}
+  {% set link = 'date-returned-uk' %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "The GP surgery will use this information to offer appropriate health care services."
+            }) }}
+
+            <details class="nhsuk-details">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Countries with a high number of cases of tuberculosis (TB)
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <ul>
+                  <li>Afghanistan</li>
+                  <li>Angola</li>
+                  <li>Bangladesh</li>
+                  <li>Benin</li>
+                  <li>Bhutan</li>
+                  <li>Botswana</li>
+                  <li>Burkina Faso</li>
+                  <li>Burundi</li>
+                  <li>Cote d’Ivoire</li>
+                  <li>Cabo Verde</li>
+                  <li>Cambodia</li>
+                  <li>Cameroon</li>
+                  <li>Central African Republic</li>
+                  <li>Chad</li>
+                  <li>Comoros</li>
+                  <li>Congo</li>
+                  <li>DRP Korea</li>
+                  <li>DR Congo</li>
+                  <li>Djibouti</li>
+                  <li>Eritrea</li>
+                  <li>Equatorial Guinea</li>
+                  <li>Ethiopia</li>
+                  <li>Gabon</li>
+                  <li>Gambia</li>
+                  <li>Ghana</li>
+                  <li>Greenland</li>
+                  <li>Guinea</li>
+                  <li>Guinea Bissau</li>
+                  <li>Haiti</li>
+                  <li>India</li>
+                  <li>Indonesia</li>
+                  <li>Kenya</li>
+                  <li>Kiribati</li>
+                  <li>Laos PDR</li>
+                  <li>Lesotho</li>
+                  <li>Liberia</li>
+                  <li>Madagascar</li>
+                  <li>Malawi</li>
+                  <li>Mali</li>
+                  <li>Marshall Islands</li>
+                  <li>Mauritania</li>
+                  <li>Mauritius</li>
+                  <li>Micronesia</li>
+                  <li>Mongolia</li>
+                  <li>Mozambique</li>
+                  <li>Myanmar</li>
+                  <li>Namibia</li>
+                  <li>Nepal</li>
+
+                  <li>Niger</li>
+                  <li>Nigeria</li>
+                  <li>Pakistan</li>
+                  <li>Papua New Guinea</li>
+                  <li>Philippines</li>
+                  <li>Republic of Moldova</li>
+                  <li>Rwanda</li>
+                  <li>Sao Tome and Principe</li>
+                  <li>Senegal</li>
+                  <li>Seychelles</li>
+                  <li>Sierra Leone</li>
+                  <li>Somalia</li>
+                  <li>South Africa</li>
+                  <li>South Sudan</li>
+                  <li>Swaziland</li>
+                  <li>Timor Leste</li>
+                  <li>Togo</li>
+                  <li>Tuvalu</li>
+                  <li>Uganda</li>
+                  <li> UR Tanzania</li>
+                  <li>Zambia</li>
+                  <li>Zimbabwe</li>
+                </ul>
+              </div>
+
+            </details>
+
+            {{ radios({
+              "idPrefix": "visited-tb",
+              "name": "visited-tb",
+              "items": [
+                {
+                  "value": "Yes~/live/do-you-have-existing-conditions",
+                  "text": "Yes",
+                  checked: checked("visited-tb", "Yes")
+                },
+                {
+                  "value": "No~/live/do-you-have-existing-conditions",
+                  "text": "No",
+                  checked: checked("visited-tb", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "I don't know~/live/do-you-have-existing-conditions",
+                  "text": "I don't know",
+                  checked: checked("visited-tb", "I don't know")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+  
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

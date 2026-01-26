@@ -1,0 +1,122 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Which of the following best describes ' + data['name-first-name'] + '?' %}
+  {% set hint1 = 'The GP surgery will use this information to improve the experiences of everyone accessing primary care services.' %}
+{% else %}
+  {% set heading = 'Which of the following best describes you?' %}
+  {% set hint1 = 'Your GP surgery will use this information to improve the experiences of everyone accessing primary care services.' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="what-is-your-ethnicity" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              text: hint1,
+              "classes": "nhsuk-u-margin-bottom-4"
+            }) }}
+
+            {% set elseHtml %}
+              {{ input({
+                id: "sex-description",
+                name: "sex-description",
+                classes: "nhsuk-u-width-two-thirds",
+                label: {
+                  text: "Enter description"
+                }
+              }) }}
+            {% endset -%}
+
+            {{ radios({
+              "idPrefix": "sex-description",
+              "name": "sex-description",
+              "items": [
+              {
+                "value": "Bisexual",
+                "text": "Bisexual",
+                checked: checked("sex-description", "Bisexual"),
+                hint: {
+                  text: "Someone who is attracted to men and women"
+                }
+              },
+              {
+                "value": "Gay or lesbian",
+                "text": "Gay or lesbian",
+                checked: checked("sex-description", "Gay or lesbian"),
+                hint: {
+                  text: "Men who are attracted to men, and women who are attracted to women"
+                }
+              },
+              {
+                "value": "Heterosexual (straight)",
+                "text": "Heterosexual (straight)",
+                checked: checked("sex-description", "Heterosexual (straight)"),
+                hint: {
+                  text: "Men who are attracted to women, and women who are attracted to men"
+                }
+              },
+              {
+                "value": "Prefer not to say",
+                "text": "Prefer not to say",
+                checked: checked("sex-description", "Prefer not to say")
+              },
+              {
+                "value": "Something else",
+                "text": "Something else",
+                checked: checked("sex-description", "Something else"),
+                conditional: {
+                  html: elseHtml
+                }
+              }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

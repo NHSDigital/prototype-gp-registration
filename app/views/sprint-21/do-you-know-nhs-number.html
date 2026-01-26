@@ -1,0 +1,88 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '1' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Do you know ' + data['name-first-name'] + '\'s NHS Number?' %}
+  {% set option1 = 'Yes, I know their NHS number' %}
+  {% set option2 = 'No, continue without' %}
+{% else %}
+  {% set heading = 'Do you know your NHS Number?' %}
+  {% set option1 = 'Yes, I know my NHS number' %}
+  {% set option2 = 'No, continue without' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "what-is-your-date-of-birth",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {% if (data['who-is-being-registered'] === "dependant") %}
+            <p>This is a 10 digit number, like 485 777 3456.</p>
+            <p>It can be found on any letter the NHS has sent them, on a prescription, in the NHS App or by asking their GP. It will be used to match them to their NHS record.</p>
+            {% else %}
+            <p>This is a 10 digit number, like 485 777 3456.</p>
+            <p>It can be found on any letter the NHS has sent you, on a prescription, in the NHS App or by asking your GP. It will be used to match you to your NHS record.</p>
+            {% endif %}
+
+            {{ radios({
+              "idPrefix": "know-nhs-number",
+              "name": "know-nhs-number",
+              "items": [
+                {
+                  "value": "Yes~/live/what-is-your-nhs-number",
+                  "text": option1,
+                  "checked": checked("know-nhs-number", "Yes")
+                },
+                {
+                  "value": "No~/live/registered-for-the-first-time",
+                  "text": option2,
+                  "checked": checked("know-nhs-number", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+You cannot register with the same surgery - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    href: "/",
+    text: "Home"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        You are trying to register with {{ data.presets[0].gpsurgery }}
+      </h1>
+
+      <div class="nhsuk-inset-text">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>You told us you are already registered with {{ data.presets[0].gpsurgery }}.</p>
+        <p>You cannot register with the same surgery.</p>
+        
+        </div>
+
+      <p>
+        Use NHS services online to:
+        <ul>
+          <li>book, check or cancel appointments with a GP or nurse</li>
+          <li>order repeat prescriptions</li>
+          <li>see parts of your health record, including information about medicines, vaccinations and test results</li>
+          <li>see communications between your GP surgery and other services, such as hospitals</li>
+        </ul>
+      </p>
+<p>Create an account to <a href="https://www.nhs.uk/nhs-services/gps/using-online-services/">access NHS services online</a></p>
+
+
+<h3>Register with a different GP surgery</h3>
+      <p>
+        If you want to register with a different GP surgery use 
+          <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a> 
+      </p>
+
+    </div>  
+
+  </div>
+{% endblock %}

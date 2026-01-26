@@ -1,0 +1,148 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'What are your details?' %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% if (data['know-nhs-number-parent'] === "Yes") %}
+  {% set link = 'what-is-your-nhs-number-parent' %}
+{% elseif (data['know-nhs-number-parent'] === "No") %}
+  {% set link = 'do-you-know-nhs-number-parent' %}
+{% elseif (data['are-you-planning-register'] === "No") %}
+  {% set link = 'are-you-planning-register' %}
+{% elseif (data['apply-self'] === "continue") %}
+  {% set link = 'apply-self-first' %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="carer-details-answer" method="post">
+
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {% if data['relation'] !== 'Other' %}
+            <div class="nhsuk-hint" id="contact-hint">
+              <p>The surgery will use this information to match you to your patient record.</p>
+            </div>
+            {% endif %}
+
+            {{ input({
+                label: {
+                  "text": "First name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "carer-first-name",
+                "name": "carer-first-name",
+                "autocomplete": "given-name",
+                "spellcheck": false,
+                "value": data['carer-first-name']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Last name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "carer-last-name",
+                "name": "carer-last-name",
+                "autocomplete": "family-name",
+                "spellcheck": false,
+                "value": data['carer-last-name']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "Relationship to the person being registered"
+                },
+                "hint": {
+                  "text": "For example, you are a family member or friend."
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "carer-relationship",
+                "name": "carer-relationship",
+                "value": data['carer-relationship']
+              }) }}
+
+              <label class="nhsuk-label" for="date-of-birth-day">
+                Date of birth
+              </label>
+              <div class="nhsuk-hint">
+                <p>For example, 15 3 1984</p>
+              </div>
+
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="date-of-birth-day" id="date-of-birth-day--label">Day</label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="date-of-birth-day" name="[parent-date-of-birth]" type="text" pattern="[0-9]*" inputmode="numeric" spellcheck="false" value="{{ (data['parent-date-of-birth'] | default('')).split(',')[0] }}" autocomplete="bday-day">
+                </div>
+              </div>
+
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="date-of-birth-month" id="date-of-birth-month--label">Month</label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="date-of-birth-month" name="[parent-date-of-birth]" type="text" pattern="[0-9]*" inputmode="numeric" spellcheck="false" value="{{ (data['parent-date-of-birth'] | default('')).split(',')[1] }}" autocomplete="bday-month">
+                </div>
+              </div>
+
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="date-of-birth-year" id="date-of-birth-year--label">Year</label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="date-of-birth-year" name="[parent-date-of-birth]" type="text" pattern="[0-9]*" inputmode="numeric" spellcheck="false" value="{{ (data['parent-date-of-birth'] | default('')).split(',')[2] }}" autocomplete="bday-year">
+                </div>
+              </div>
+                </div>
+              </div>
+
+              {{ input({
+                  label: {
+                    "text": "Contact telephone number"
+                  },
+                  "classes": "nhsuk-u-width-one-third",
+                  "id": "carer-telephone",
+                  "name": "carer-telephone",
+                  "autocomplete": "tel",
+                  "spellcheck": false,
+                  "value": data['carer-telephone']
+                }) }}
+
+            {% endcall %}
+
+            <br>
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

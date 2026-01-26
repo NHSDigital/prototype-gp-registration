@@ -1,0 +1,76 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "When did " + data['name-first-name'] + " stop smoking?" %}
+{% else %}
+  {% set heading = 'When did you stop smoking?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "do-you-smoke-type",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="scr" method="post" autocomplete="off">
+
+           {% include 'live/includes/step.html' %}
+
+            {{ dateInput({
+              "id": "smoke-date",
+              "namePrefix": "smoke-date",
+              "fieldset": {
+                "legend": {
+                  "text": heading,
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": true
+                }
+              },
+              "hint": {
+                "text": "The date does not have to be exact."
+              },
+              "items": [
+                {
+                  "name": "Month",
+                  "classes": "nhsuk-input--width-2",
+                  "value": data['Month']
+                },
+                {
+                  "name": "Year",
+                  "classes": "nhsuk-input--width-4",
+                  "value": data['Year']
+                }
+              ]
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

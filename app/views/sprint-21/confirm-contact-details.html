@@ -1,0 +1,101 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Contact you using NHS login details' %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="confirm-contact-details-answer" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+            <p>Your login details will be used by:</p>
+            <ul>
+              <li>your new GP surgery so that they can contact you about your registration or other health care services</li>
+              <li>the NHS to update the contact details on your health record</li>
+            </ul>
+            <h2 style="font-size: 1.5rem;">NHS login details</h2>
+
+            <dl class="nhsuk-summary-list">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  UK mobile telephone number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  07799123456
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Email address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  example@email.com
+                </dd>
+              </div>
+
+              </dl>
+
+              {{ radios({
+                  "idPrefix": "use-contacts-login",
+                  "name": "use-contacts-login",
+                  "classes": "nhsuk-radios",
+                  "fieldset": {
+                    "legend": {
+                      "text": "Do you want to be contacted using your NHS login details?",
+                      "classes": "nhsuk-fieldset__legend--m",
+                      "isPageHeading": false
+                    }
+                  },
+                  "items": [
+                    {
+                      "value": "Yes",
+                      "text": "Yes, use these details",
+                      checked: checked("use-contacts-login", "Yes")
+                    },
+                    {
+                      "value": "No",
+                      "text": "No, use different details",
+                      checked: checked("use-contacts-login", "No")
+                    }
+                  ]
+              }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+            </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

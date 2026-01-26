@@ -1,0 +1,69 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What is their country of birth?" %}
+{% else %}
+  {% set heading = 'What is your country of birth?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="recently-moved-date" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+              {% call fieldset({
+                legend: {
+                  "text": heading,
+                  "classes": "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              }) %}
+
+              {{ input({
+                  label: {
+                    "text": "Country name (Optional)"
+                  },
+                  "classes": "nhsuk-u-width-two-thirds",
+                  "id": "moved-address-country",
+                  "name": "moved-address-country",
+                  value: data['moved-address-country']
+              }) }}
+
+              {% endcall %}
+
+              {{ button({
+                "text": "Continue"
+              }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

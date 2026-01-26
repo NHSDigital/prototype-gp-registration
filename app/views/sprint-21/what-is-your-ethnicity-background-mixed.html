@@ -1,0 +1,110 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Which of the following best describes ' + data['name-first-name'] + '\'s Mixed or Multiple ethnic groups background?' %}
+  {% set label = 'How would you describe their background? (optional)' %}
+{% else %}
+  {% set heading = 'Which of the following best describes your Mixed or Multiple ethnic groups background?' %}
+  {% set label = 'How would you describe your background? (optional)' %}
+{% endif %}
+
+{% if (data['skip-nominate-pharmacy'] === "true") %}
+  {% set action = 'are-you-a-member-of-armed-forces' %}
+{% else %}
+  {% set action = 'nominate-pharmacy' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "what-is-your-ethnicity",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <form action="{{ action }}" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          {% set ethnicityHtml %}
+            {{ input({
+              id: "ethMix",
+              name: "ethMix",
+              classes: "nhsuk-u-width-two-thirds",
+              label: {
+                text: label
+              }
+            }) }}
+          {% endset -%}
+
+          {{ radios({
+            idPrefix: "ethnicity-detail-mixed",
+            name: "ethnicity-detail-mixed",
+            fieldset: {
+              legend: {
+                text: heading,
+                isPageHeading: true,
+                classes: "nhsuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "White and Black Caribbean",
+                text: "White and Black Caribbean",
+                checked: checked("ethnicity-detail-mixed", "White and Black Caribbean")
+              },
+              {
+                value: "White and Black African",
+                text: "White and Black African",
+                checked: checked("ethnicity-detail-mixed", "White and Black African")
+              },
+              {
+                value: "White and Asian",
+                text: "White and Asian",
+                checked: checked("ethnicity-detail-mixed", "White and Asian")
+              },
+              {
+                value: "other",
+                text: "Any other Mixed or Multiple ethnic background",
+                conditional: {
+                  html: ethnicityHtml
+                }
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Prefer not to say",
+                text: "Prefer not to say"
+              }
+            ]
+          }) }}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

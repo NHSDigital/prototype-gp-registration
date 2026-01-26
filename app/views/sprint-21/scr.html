@@ -1,0 +1,71 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Sharing your Summary Care Record - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="check-answers-b" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          {% call fieldset({
+            legend: {
+              text: "Sharing your Summary Care Record",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          <p>Your GP surgery shares your important  healthcare information with other healthcare professionals in England when they provide you with direct care, such as emergency care or referral to a specialist service.  This is called a Summary Care Record (SCR).</p>
+          <h2>Why we share your information</h2>
+          <p>Your SCR is shared with healthcare professionals to ensure the quality and safety of your care. This reduces the risk of things like adverse medical reactions or delays in urgent care.</p>
+          <h2>What information is shared</h2>
+          <p>Your SCR contains details of your:</p>
+          <ul>
+            <li>medicines</li>
+            <li>allergies and adverse reactions</li>
+            <li>illnesses and health problems</li>
+            <li>past operations and vaccinations</li>
+          </ul>
+          <h2>Your rights</h2>
+          <p>You can choose not to share your SCR. However, this will mean healthcare professionals will not have access to important information about your healthcare.</p>
+          <div class="nhsuk-inset-text">
+            <span class="nhsuk-u-visually-hidden">Information: </span>
+          
+            <p>If you do not want to share your SCR, or you have previously chosen not to share your SCR and have changed your mind, <a href="https://digital.nhs.uk/services/summary-care-records-scr/scr-patient-consent-preference-form">download the SCR patient consent preference form (Word format, 79k)</a> and give it to your GP surgery.</p>
+          </div>        
+          
+          <p>If you are happy with your SCR being shared you do not need to do anything.</p>
+          {% endcall %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+      </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

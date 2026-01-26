@@ -1,0 +1,102 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Choose a pharmacy' %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "nominate-pharmacy-search",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <form action="confirm-pharmacy" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "html": '<p>3 addresses found for ' + data['pharmacy-postcode'],
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {{ radios({
+              "idPrefix": "have-previous-uk-address",
+              "name": "nominated-pharmacy",
+              "items": [
+                {
+                  value: "Highstreet pharmacy, 1 Town Street, London, SW1A 1AA",
+                  text: "Highstreet pharmacy",
+                  hint: {
+                    "html": '1 Town Street, London, SW1A 1AA <span class="nhsuk-body-s nhsuk-u-margin-bottom-4">Less than 50 metres away</span>'
+                  },
+                  checked: checked("nominated-pharmacy", "Highstreet pharmacy, 1 Town Street, London, SW1A 1AA")
+                },
+                {
+                  value: "Boots, 2 Town Street, London, SW1A 1AA",
+                  text: "Boots",
+                  hint: {
+                    "html": '2 Town Street, London, SW1A 1AA <span class="nhsuk-body-s nhsuk-u-margin-bottom-4">Less than 1.1km away</span>'
+                  },
+                  checked: checked("nominated-pharmacy", "Boots, 2 Town Street, London, SW1A 1AA")
+                },
+                {
+                  value: "Elliots pharmacy, 3 Town Street, London, SW1A 1AA",
+                  text: "Elliots pharmacy",
+                  hint: {
+                    "html": '3 Town Street, London, SW1A 1AA <span class="nhsuk-body-s nhsuk-u-margin-bottom-4">Less than 1.8km away</span>'
+                  },
+                  checked: checked("nominated-pharmacy", "Elliots pharmacy, 3 Town Street, London, SW1A 1AA")
+                },
+                {
+                "divider": "or"
+                },
+                {
+                  value: "Other~/live/nominate-pharmacy-search",
+                  text: "The pharmacy I want to choose is not listed",
+                  checked: checked("nominated-pharmacy", "Other")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+              <p>
+                <a href="nominate-pharmacy-manual" id="enter-address-manually-link">Enter the address manually</a>
+              </p>
+
+              {{ button({
+                  "text": "Continue"
+              }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
