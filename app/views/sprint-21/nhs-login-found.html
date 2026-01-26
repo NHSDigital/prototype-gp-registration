@@ -1,0 +1,73 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'We found your NHS login' %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block header %}
+  {{ header({
+      "service": {
+        "name": "NHS login",
+        "href": "#"
+      },
+      "showNav": "false",
+      "showSearch": "false"
+    })
+  }}
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": nhs-login-email,
+    "text": "Back to: Enter your email address",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="nhs-login-password" method="post" autocomplete="off">
+
+            <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+            <p>We found an NHS Login linked to <strong>{{ data['emailAddress'] or 'mail@mail.com' }}</strong></p>
+            <p>We are showing you this because you are accessing <strong>Register with a GP surgery</strong> for the first time on this device, or you have not logged in to this service for a while.</p>
+            <p>Continue to visit <strong>Register with a GP surgery</strong></p>
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">Don't remember setting up an account?</span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  <p>You may have set up an NHS login when using other health websites or apps, like a COVID-19 service.</p>
+                </div>
+            </details>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+            <div class="nhsuk-inset-text">
+              <span class="nhsuk-u-visually-hidden">Information: </span>
+              <h3> What is NHS login?</h3>
+              <p>NHS login allows you to securely access health websites and apps with just one username and password.</p>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer-login.html' %}
+{% endblock %}

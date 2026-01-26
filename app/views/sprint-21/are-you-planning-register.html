@@ -1,0 +1,72 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Will you be registering yourself at ' + data.presets[0]['gpsurgery'] + '?' %}
+
+{% block pageTitle %}
+{{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% set link = 'start' %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "are-you-registered",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="" method="post" autocomplete="off">
+
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "are-you-planning-register",
+            "name": "are-you-planning-register",
+            "items": [
+              {
+                "value": "Yes~/live/apply-self-first",
+                "text": "Yes",
+                checked: checked("are-you-planning-register", "yes")
+              },
+              {
+                "value": "No~/live/carer-details",
+                "text": "No",
+                checked: checked("are-you-planning-register", "no")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

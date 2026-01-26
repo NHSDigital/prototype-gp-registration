@@ -1,0 +1,73 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Register with a GP surgery: {{ data.presets[0].gpsurgery }} - NHS
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-Xl">
+        Register with a GP surgery: {{ data.presets[0].gpsurgery or '{ GP surgery}' }}, Stratford-upon-Avon
+      </h1>
+      
+      <p>Use this service to register yourself or someone else with a GP surgery for the first time or to transfer to a new GP surgery.</p>
+      <p>Do not use this service if you:</p>
+      <ul>
+        <li>need medical help right now. Instead visit <a href="https://111.nhs.uk/">NHS 111 online.</a></li>
+        <li>want to make an urgent appointment. Instead you should contact your current GP.</li>
+        <li>want a temporary registration of less than 3 months. <a href="https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery">Find out about temporary registrations</a>.</li>
+        <li>are already registered with a GP surgery and want other <a href="https://www.nhs.uk/nhs-services/gps/online-health-and-prescription-services/">NHS online health and prescription services</a>.</li>
+      </ul>
+      
+      <h2 class="nhsuk-heading-l">How long it takes</h2>
+      <p>It takes around 15 minutes to complete a registration.</p>
+      <p>You need to complete the process in one session.</p>
+      <p>Your preferred GP surgery should register you within 1 to 5 working days of receiving your details.</p>
+              
+      <!--<h2 class="nhsuk-heading-l">Before you start</h2>
+      <p>We may ask you for:</p> 
+      <ul>
+        <li>details of your previous GP surgery</li>
+        <li>basic health and medical information</li>
+      </ul>
+      <p>The information you provide will be used to match you to your medical record. It will also help the GP surgery to offer relevant and appropriate healthcare services.</p>-->
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            If you are registering more than one person
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>For multiple or family registrations you must complete and submit a registration for each person.</p> 
+          <p>If you are registering children aged 15 years or under it is important that you register yourself first.</p>
+        </div>
+      </details>
+  
+      <p><a href="who-is-registering" class="nhsuk-button">Start now</a></p>
+  
+      <h2 class="nhsuk-heading-m">Other ways to register</h2>
+
+      <ul>
+        <li>Fill in the <a href="">Register with a GP surgery paper form</a> (PDF, 199 KB, 8 pages) and take it to the surgery you want to join.</li> 
+        <li>Contact the surgery you want to join directly.</li>
+      </ul>
+      
+      <p>You can view <a href="https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/">guidance about how to register with a GP.</a></p>
+      <p>By using this service you are agreeing to our <a href="start">terms of use</a> and <a href="start">privacy policy.</a> </p>
+
+    </div>
+  </div>
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

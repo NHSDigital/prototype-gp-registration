@@ -1,0 +1,99 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "How often does " + data['name-first-name'] + " drink alcohol or have a drink containing alcohol" %}
+{% else %}
+  {% set heading = 'How often do you drink alcohol or have a drink containing alcohol?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "weight",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="how-many-units-of-alcohol" method="post" autocomplete="off">
+
+           {% include 'live/includes/step.html' %}
+
+            {{ radios({
+              "idPrefix": "alcohol-consumption",
+              "name": "alcohol-consumption",
+              "fieldset": {
+                "legend": {
+                  "text": heading,
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "This includes wine, beer, spirits, Alcopops, cocktails or hot drinks with spirits such as a coffee with whiskey."
+              },
+              "items": [
+                {
+                  "value": "Never~/live/do-you-smoke",
+                  "text": "Never",
+                  checked: checked("alcohol-consumption", "Never")
+                },
+                {
+                  "value": "Monthly or less",
+                  "text": "Monthly or less",
+                  checked: checked("alcohol-consumption", "Monthly or less")
+                },
+                {
+                  "value": "2 to 4 times a month",
+                  "text": "2 to 4 times a month",
+                  checked: checked("alcohol-consumption", "2 to 4 times a month")
+                },
+                {
+                  "value": "2 to 3 times a week",
+                  "text": "2 to 3 times a week",
+                  checked: checked("alcohol-consumption", "2 to 3 times a week")
+                },
+                {
+                  "value": "4 or more times a week",
+                  "text": "4 or more times a week",
+                  checked: checked("alcohol-consumption", "4 or more times a week")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say~/live/do-you-smoke",
+                  "text": "Prefer not to say",
+                  checked: checked("alcohol-consumption", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

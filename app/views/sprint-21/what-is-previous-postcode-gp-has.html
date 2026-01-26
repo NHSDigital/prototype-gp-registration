@@ -1,0 +1,174 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '1' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What address did " + data['name-first-name'] + " use to register with " + data.presets[0]['gpsurgery'] + "?" %}
+{% else %}
+  {% set heading = 'What address did you use to register with ' + data.presets[0]['gpsurgery'] + '?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "do-you-know-previous-postcode-gp-has",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<!-- *Previous design just asking for postcode*
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="check-answers-1" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ input({
+                label: {
+                  "text": "Postcode"
+                },
+                "classes": "nhsuk-input--width-10",
+                "id": "gp-postcode-prev",
+                "name": "gp-postcode-prev",
+                value: data['gp-postcode-prev']
+              }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+-->
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="check-answers-1" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+              {% call fieldset({
+                legend: {
+                  "text": heading,
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": true
+                }
+              }) %}
+
+              {{ hint({
+                "text": 'Provide as many details as possible',
+                "classes": "nhsuk-u-margin-bottom-2"
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Address line 1"
+                },
+                "id": "gp-postcode-prev-address-line-1",
+                "name": "gp-postcode-prev-address-line-1",
+                value: data['gp-postcode-prev-address-line-1']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Address line 2"
+                },
+                "id": "gp-postcode-prev-address-line-2",
+                "name": "gp-postcode-prev-address-line-2",
+                value: data['gp-postcode-prev-address-line-2']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Town or city"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "gp-postcode-prev-address-town",
+                "name": "gp-postcode-prev-address-town",
+                value: data['gp-postcode-prev-address-town']
+              }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "gp-postcode-prev-postcode",
+                  "name": "gp-postcode-prev-postcode",
+                  value: data['gp-postcode-prev-postcode']
+              }) }}
+
+              {{ select({
+                "id": "gp-postcode-prev-country",
+                "name": "gp-postcode-prev-country",
+                "label": {
+                  "text": "Country"
+                },
+                "items": [
+                {
+                  "value": Choose,
+                  "text": "Choose country"
+                },
+                {
+                    "value": "England",
+                    "text": "England"
+                  },
+                  {
+                    "value": "Isle of Man",
+                    "text": "Isle of Man"
+                  },
+                  {
+                    "value": "Northern Ireland",
+                    "text": "Northern Ireland"
+                  },
+                  {
+                    "value": "Scotland",
+                    "text": "Scotland"
+                  },
+                  {
+                    "value": "Wales",
+                    "text": "Wales"
+                  }
+                ]
+              }) }}
+
+              {% endcall %}
+
+              {{ button({
+                "text": "Continue"
+              }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

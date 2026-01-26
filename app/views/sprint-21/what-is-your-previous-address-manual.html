@@ -1,0 +1,136 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What was ' + data['name-first-name'] + '\'s previous address in the UK?' %}
+{% else %}
+  {% set heading = 'What was your previous address in the UK?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="do-you-have-existing-conditions" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+              {% call fieldset({
+                legend: {
+                  "text": heading,
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": true
+                }
+              }) %}
+
+              {{ hint({
+                "text": 'Provide as many details as possible',
+                "classes": "nhsuk-u-margin-bottom-2"
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Address line 1"
+                },
+                "id": "previous-address-line-1",
+                "name": "previous-address-line-1",
+                value: data['previous-address-line-1']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Address line 2"
+                },
+                "id": "previous-address-line-2",
+                "name": "previous-address-line-2",
+                value: data['previous-address-line-2']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Town or city"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "previous-address-town",
+                "name": "previous-address-town",
+                value: data['previous-address-town']
+              }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "previous-address-postcode",
+                  "name": "previous-address-postcode",
+                  value: data['previous-address-postcode']
+              }) }}
+
+              {{ select({
+                "id": "previous-address-country",
+                "name": "previous-address-country",
+                "label": {
+                  "text": "Country"
+                },
+                "items": [
+                {
+                  "value": Choose,
+                  "text": "Choose country"
+                },
+                {
+                    "value": "England",
+                    "text": "England"
+                  },
+                  {
+                    "value": "Isle of Man",
+                    "text": "Isle of Man"
+                  },
+                  {
+                    "value": "Northern Ireland",
+                    "text": "Northern Ireland"
+                  },
+                  {
+                    "value": "Scotland",
+                    "text": "Scotland"
+                  },
+                  {
+                    "value": "Wales",
+                    "text": "Wales"
+                  }
+                ]
+              }) }}
+
+              {% endcall %}
+
+              {{ button({
+                "text": "Continue"
+              }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

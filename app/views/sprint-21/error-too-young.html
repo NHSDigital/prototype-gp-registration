@@ -1,0 +1,75 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'You have told us you are under 12 months old' %}
+{% else %}
+  {% set heading = 'You have told us you are under 12 months old' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "what-is-your-date-of-birth",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="error-too-young-post" method="post" autocomplete="off">
+
+            <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+            <p>You may have entered an incorrect date or you are trying to register someone else.</p>
+
+            {{ radios({
+              "idPrefix": "error-age-next",
+              "name": "error-age-next",
+              "fieldset": {
+                "legend": {
+                  "text": "What do you want to do?",
+                  "classes": "nhsuk-fieldset__legend--m",
+                  "isPageHeading": "false"
+                }
+              },
+              "items": [
+                {
+                  "value": "dependant",
+                  "text": "Register someone else",
+                  "checked": checked("error-age-next", "dependant")
+                },
+                {
+                  "value": "goback",
+                  "text": "Enter a different date of birth",
+                  "checked": checked("error-age-next", "goback")
+                }
+              ]
+            }) }}
+
+            {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

@@ -1,0 +1,79 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What town or city was " + data ['name-first-name'] + " born in?" %}
+  {% set hintText = "Enter the name of the town or city nearest to where " + data ['name-first-name'] + " was born." %}
+{% else %}
+  {% set heading = 'What town or city were you born in?' %}
+  {% set hintText = 'Enter the name of the town or city nearest to where you were born.' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% if (data['under-18-years'] === "true") %}
+  {% set action = 'do-you-have-existing-conditions' %}
+{% elseif (data['registering-first-time'] === "No") %}
+  {% set action = 'do-you-have-existing-conditions' %}
+{% else %}
+  {% set action = 'do-you-previous-address' %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "where-were-you-born",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="{{ action }}" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ input({
+                "hint": {
+                  "text": hintText
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "town-born",
+                "name": "town-born",
+                "value": data['town-born']
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

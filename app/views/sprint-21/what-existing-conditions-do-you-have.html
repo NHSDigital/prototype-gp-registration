@@ -1,0 +1,123 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What existing or pre-existing medical conditions does ' + data ['name-first-name'] + ' have?' %}
+  {% set hintText = 'Select one or more' %}
+{% else %}
+  {% set heading = 'What existing or pre-existing medical conditions do you have?' %}
+  {% set hintText = 'Select one or more' %}
+{% endif %}
+
+{% block pageTitle %}
+{{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "do-you-have-existing-conditions",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="existing-conditions-details" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": hintText
+            }) }}
+
+            {{ checkboxes({
+              "idPrefix": "existing-conditions",
+              "name": "existing-conditions",
+              "items": [
+                {
+                  "value": "Alzheimer's disease or dementia",
+                  "text": "Alzheimer's disease or dementia",
+                  checked: checked("existing-conditions", "Alzheimer's disease or dementia")
+                },
+                {
+                  "value": "Asthma",
+                  "text": "Asthma",
+                  checked: checked("existing-conditions", "Asthma")
+                }
+                ,
+                {
+                  "value": "Cancer",
+                  "text": "Cancer",
+                  checked: checked("existing-conditions", "Cancer")
+                },
+                {
+                  "value": "Diabetes",
+                  "text": "Diabetes",
+                  checked: checked("existing-conditions", "Diabetes")
+                },
+                {
+                  "value": "Epilepsy",
+                  "text": "Epilepsy",
+                  checked: checked("existing-conditions", "Epilepsy")
+                },
+                {
+                  "value": "Heart disease",
+                  "text": "Heart disease",
+                  checked: checked("existing-conditions", "Heart disease")
+                },
+                {
+                  "value": "High blood pressure (hypertension)",
+                  "text": "High blood pressure (hypertension)",
+                  checked: checked("existing-conditions", "High blood pressure (hypertension)")
+                },
+                {
+                  "value": "Stroke",
+                  "text": "Stroke",
+                  checked: checked("existing-conditions", "Stroke")
+                },
+                {
+                  "value": "Thyroid disease",
+                  "text": "Thyroid disease",
+                  checked: checked("existing-conditions", "Thyroid disease")
+                },
+                {
+                  "value": "Other",
+                  "text": "Other",
+                  checked: checked("existing-conditions", "Other")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+  
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

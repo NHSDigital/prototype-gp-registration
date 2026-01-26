@@ -1,0 +1,96 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "How often has " + data['name-first-name'] + " had six or more units of alcohol on a single occasion in the last year?" %}
+{% else %}
+  {% set heading = 'How often have you had six or more units of alcohol on a single occasion in the last year?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "how-many-units-of-alcohol",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="do-you-smoke" method="post" autocomplete="off">
+
+           {% include 'live/includes/step.html' %}
+
+            {{ radios({
+              "idPrefix": "alcohol-consumption-day",
+              "name": "alcohol-consumption-day",
+              "fieldset": {
+                "legend": {
+                  "text": heading,
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "items": [
+                {
+                  "value": "Never",
+                  "text": "Never",
+                  checked: checked("alcohol-consumption-day", "Never")
+                },
+                {
+                  "value": "Less than monthly",
+                  "text": "Less than monthly",
+                  checked: checked("alcohol-consumption-day", "Less than monthly")
+                },
+                {
+                  "value": "Monthly",
+                  "text": "Monthly",
+                  checked: checked("alcohol-consumption-day", "Monthly")
+                },
+                {
+                  "value": "Weekly",
+                  "text": "Weekly",
+                  checked: checked("alcohol-consumption-day", "Weekly")
+                },
+                {
+                  "value": "Daily or almost daily",
+                  "text": "Daily or almost daily",
+                  checked: checked("alcohol-consumption-day", "Daily or almost daily")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say",
+                  "text": "Prefer not to say",
+                  checked: checked("alcohol-consumption-day", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

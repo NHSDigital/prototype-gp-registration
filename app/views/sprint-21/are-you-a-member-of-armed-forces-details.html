@@ -1,0 +1,73 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Leaving the Defence Medical Services' %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "are-you-a-member-of-armed-forces",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="do-you-have-emergency-contact" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+          <p>Depending on your type of service or your relationship to a former member of the armed forces you may need to do one of the following when you leave the Defence Medical Services (DMS):</p>
+
+            <ul class="nhsuk-list nhsuk-list--bullet">
+
+              <li>
+              <p><strong>Former regulars</strong><br>
+              You should have been given a FMED133A form (sometimes called an FMED1 form) when you left the UK armed forces. You should give this to your GP at the earliest opportunity. Your GP will then arrange for your records to be transferred.</p>
+              </li>
+
+              <li>
+              <p><strong>Former reservists</strong><br>
+                If you had previously received healthcare from the DMS you should have been given an FMED133A form. If you haven't receive one and think you should have you can follow the <a href="https://www.nhs.uk/nhs-services/armed-forces-community/service-leavers-guide/" target="_blank" rel="noopener noreferrer">NHS Step by step guide for service leavers.</a></p>
+              </li>
+
+              <li>
+              <p><strong>Family of former members of UK armed forces</strong><br>
+              You should inform your GP surgery who will arrange the transfer of you medical records from the DMS.</p>
+              </li>
+
+              <li>
+              <p><strong>All other former regulars and reservists</strong><br>
+              If you have previously been in the UK armed forces, but your care has recently been with an NHS GP, your records will be transferred from your previous GP to your new one.</p>
+              </li>
+
+            </ul>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

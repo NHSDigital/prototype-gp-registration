@@ -60,7 +60,7 @@
                   </label>
 
                   <select class="nhsuk-select nhsuk-select--new" id="name-title" name="name-title" autocomplete="honorific-prefix" onchange="showOther(this)">
-                    <option value="">-- Select title --</option>
+                    <option value="" disabled >-- Choose a title --</option>
                     <option value="Mr" {% if data['name-title'] === "Mr" %} selected{% endif %}>Mr</option>
                     <option value="Mrs" {% if data['name-title'] === "Mrs" %} selected{% endif %}> Mrs</option>
                     <option value="Miss" {% if data['name-title'] === "Miss" %} selected{% endif %}>Miss</option>
@@ -104,7 +104,7 @@
 
             {{ input({
                 label: {
-                  "text": "Middle name (optional)"
+                  "text": "Middle names (if you have any)"
                 },
                 "classes": "nhsuk-u-width-two-thirds",
                 "id": "name-middle-name",
@@ -127,7 +127,7 @@
 
               {{ input({
                 label: {
-                  "text": "Previous last name (optional)"
+                  "text": "Previous Last name (if you have one)"
                 },
                 "classes": "nhsuk-u-width-two-thirds",
                 "id": "name-previous-last-name",

@@ -1,0 +1,119 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Details of your chosen pharmacy" %}
+{% else %}
+  {% set heading = 'Details of your chosen pharmacy' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% if (data['under-16-years'] === 'true' ) %}
+  {% set action = 'do-you-have-emergency-contact' %}
+{% else %}
+  {% set action = 'are-you-a-member-of-armed-forces' %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "nominate-pharmacy-search-selection",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="{{ action }}" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+            {% if (data['user-auth'] === "p9") %}
+              <p>Prescriptions will be sent to this pharmacy from now on.</p>
+            {% else %}
+              <p>Prescriptions will be sent to this pharmacy only after registration has been confirmed by the new GP surgery.</p>
+            {% endif %}
+
+            <p>Olives pharmacy<br>9 Town street<br>London<br>SW1A 1AA</p>
+
+            <p>Less than 4.4km away</p>
+
+            <details class="nhsuk-details nhsuk-expander">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Opening times
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <table class="nhsuk-table">
+                  <thead role="rowgroup" class="nhsuk-table__head">
+                    <tr role="row">
+                      <th role="columnheader" class="" scope="col">
+                        Day of the week
+                      </th>
+                      <th role="columnheader" class="" scope="col">
+                        Opening hours
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="nhsuk-table__body">
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Monday</td>
+                      <td class="nhsuk-table__cell ">9am to 6pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Tuesday</td>
+                      <td class="nhsuk-table__cell ">9am to 6pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Wednesday</td>
+                      <td class="nhsuk-table__cell ">9am to 6pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Thursday</td>
+                      <td class="nhsuk-table__cell ">9am to 6pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Friday</td>
+                      <td class="nhsuk-table__cell ">9am to 6pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Saturday</td>
+                      <td class="nhsuk-table__cell ">9am to 1pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Sunday</td>
+                      <td class="nhsuk-table__cell ">Closed</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

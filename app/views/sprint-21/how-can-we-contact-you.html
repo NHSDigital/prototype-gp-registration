@@ -1,0 +1,80 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Can ' + data.presets[0].gpsurgery + ' contact ' + data['name-first-name'] + '?' %}
+{% else %}
+  {% set heading = 'Can ' + data.presets[0].gpsurgery + ' contact you?'  %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <form action="do-you-have-emergency-contact" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ hint({
+            "text": "By giving consent, your GP surgery and the NHS can contact you using SMS or text messages, or by email about application, appointments, prescriptions or other medical services.",
+            "classes": "nhsuk-u-margin-bottom-4"
+          }) }}
+
+          {{ radios({
+            "idPrefix": "can-gp-contact-you",
+            "name": "can-gp-contact-you",
+            "items": [
+              {
+                "value": "Yes",
+                "text": "Yes",
+                checked: checked("can-gp-contact-you", "Yes")
+              },
+              {
+                "value": "No",
+                "text": "No",
+                checked: checked("can-gp-contact-you", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

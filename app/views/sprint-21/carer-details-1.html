@@ -1,0 +1,110 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What are the details of their carer" %}
+{% else %}
+  {% set heading = "What are your carer's details" %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "carer-type-1",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="are-you-a-carer" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ input({
+                label: {
+                  "text": "First name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "carer-first-name",
+                "name": "carer-first-name",
+                "value": data['carer-first-name']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Last name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "carer-last-name",
+                "name": "carer-last-name",
+                "value": data['carer-last-name']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "Relationship to you"
+                },
+                "hint": {
+                  "text": "For example, they are a family member or friend."
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "carer-relationship",
+                "name": "carer-relationship",
+                "value": data['carer-relationship']
+              }) }}
+
+
+              {{ input({
+                  label: {
+                    "text": "Contact telephone number"
+                  },
+                  "classes": "nhsuk-u-width-two-thirds",
+                  "id": "carer-telephone",
+                  "name": "carer-telephone",
+                  "value": data['carer-telephone']
+                }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Add another carer",
+              "classes": "nhsuk-button--secondary",
+                  "href": "carer-type-2"
+            }) }}
+
+            <br>
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
