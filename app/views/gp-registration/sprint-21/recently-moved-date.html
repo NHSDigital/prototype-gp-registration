@@ -1,0 +1,88 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'When did ' + data['name-first-name'] + ' enter the UK?' %}
+{% else %}
+  {% set heading = 'When did you enter the UK?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% if (data['recently-moved'] === "Yes") %}
+  {% set action = 'recently-moved-eea' %}
+{% else %}
+  {% set action = 'do-you-previous-address' %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "where-were-you-born-place-outside-uk",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <form action="{{ action }}" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          {{ dateInput({
+            "id": "moved",
+            "namePrefix": "moved",
+            "fieldset": {
+              "legend": {
+                "text": heading,
+                "classes": "nhsuk-label--l",
+                "isPageHeading": true
+              }
+
+            },
+            "hint": {
+              "text": "For example 09 10 2021."
+            },
+            "items": [
+              {
+                "name": "day",
+                "classes": "nhsuk-input--width-2",
+                "value": data['moved-day']
+              },
+              {
+                "name": "month",
+                "classes": "nhsuk-input--width-2",
+                "value": data['moved-month']
+              },
+              {
+                "name": "year",
+                "classes": "nhsuk-input--width-4",
+                "value": data['moved-year']
+              }
+            ]
+          }) }}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

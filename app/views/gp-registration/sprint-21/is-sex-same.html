@@ -1,0 +1,89 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Is the sex ' + data['name-first-name'] + ' is now the same as when they were born?' %}
+  {% set hint1 = 'The GP surgery will use this information to offer them screening for specific conditions.' %}
+{% else %}
+  {% set heading = 'Is the sex you are now the same as when you were born?' %}
+  {% set hint1 = 'Your GP surgery will use this information to offer you screening for specific conditions.' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="sex-description" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              text: hint1,
+              "classes": "nhsuk-u-margin-bottom-4"
+            }) }}
+
+            {{ radios({
+              "idPrefix": "sex-born",
+              "name": "sex-born",
+              "items": [
+              {
+                "value": "Yes",
+                "text": "Yes",
+                checked: checked("sex-born", "Yes")
+              },
+              {
+                "value": "No",
+                "text": "No",
+                checked: checked("sex-born", "No")
+              },
+              {
+                "value": "Prefer not to say",
+                "text": "Prefer not to say",
+                checked: checked("sex-born", "Prefer not to say")
+              }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

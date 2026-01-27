@@ -1,0 +1,74 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-gp.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Registering university students - GP registration service - NHS
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {{ backLink({
+            text: "Go back",
+            href: "javascript:history.go(-1)"
+          }) }}
+
+          <form action="gp-additional-questions-nominated-pharmacy" method="post" autocomplete="off">
+
+            <H2>Registering university students</H2>
+            <p>If you register a large number of students each year you can choose to ask for extra information such as student ID number, details about their course and student accommodation address.</p>
+
+            <h2 style="font-size: 1.5rem; padding-top: 0;">Do you want to ask university students for extra information?</h2>
+
+            {{ radios({
+              "idPrefix": "student",
+              "name": "student",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: checked("student", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("student", "No")
+                }
+              ]
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+
+    <!-- End of content -->
+
+  </div>
+</div>
+{% block pageScripts %}
+
+{% endblock %}
+{% endblock %}

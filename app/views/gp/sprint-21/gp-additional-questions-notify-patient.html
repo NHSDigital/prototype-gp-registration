@@ -1,0 +1,95 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-gp.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+The Notify a Patient service
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ backLink({
+      text: "Go back",
+      href: "javascript:history.go(-1)"
+    }) }}
+
+
+    {% if (data['linkaction'] == "change-questions") %}
+    <form action="/gp/gp-branch" method="post" autocomplete="off">
+    {% else %}
+    <form action="gp-answers" method="post" autocomplete="off">
+    {% endif %}
+
+
+      <h1 class="nhsuk-heading-l">Telling patients their registration has been accepted</h1>
+
+      <p>Register with a GP surgery service will message the patient when you have accepted their registration. We will send the message by email, text message, post or through the NHS App. There is no cost to you for this.</p>
+      <p><a href="https://digital.nhs.uk/services/register-with-a-gp-surgery-service/get-help-using-the-service/telling-patients-when-you-accept-their-registration">Find out more about how this feature works on our resource hub</a></p>
+
+      {{ radios(
+        {
+          "idPrefix": "use-nap",
+          "name": "use-nap",
+          "classes": "nhsuk-radios",
+          "fieldset": {
+          "legend": {
+          "text": "Do you want us to message patients?",
+          "classes": "nhsuk-fieldset__legend--m",
+          "isPageHeading": true
+        }
+        },
+        "items": [
+          {
+            "value": "Yes",
+            "text": "Yes",
+            "checked": checked("use-nap", "Yes")
+          },
+          {
+            "value": "No",
+            "text": "No",
+            "checked": checked("use-nap", "No")
+          }
+        ]
+      }) }}
+{#
+      {{ checkboxes({
+        "idPrefix": "example",
+        "name": "nap-opt-out",
+        "items": [
+          {
+            "value": "out",
+            "text": "I do not want to send notifications to patients"
+          }
+        ]
+      }) }}
+
+      #}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

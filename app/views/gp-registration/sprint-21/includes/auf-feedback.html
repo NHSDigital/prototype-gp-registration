@@ -1,0 +1,16 @@
+<div class="nhsuk-width-container">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      {% if feedbackType !== '' %}
+      <div class="nhsuk-phase-banner">
+        <p class="nhsuk-phase-banner__content">
+          <strong class="nhsuk-tag nhsuk-phase-banner__content__tag">FEEDBACK</strong>
+          <span class="nhsuk-phase-banner__text">
+            {% if feedbackType !== 'final' %} This is a new form. Help improve it by <a class="govuk-link" href="feedback" target="_blank">giving your feedback (opens in a new tab)</a>.{% endif %}
+          </span>
+        </p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

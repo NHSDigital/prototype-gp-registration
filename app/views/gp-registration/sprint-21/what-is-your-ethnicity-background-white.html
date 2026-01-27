@@ -1,0 +1,110 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Which of the following best describes ' + data['name-first-name'] + '\'s White background?' %}
+  {% set labelText = 'How would you describe their background? (optional)' %}
+{% else %}
+  {% set heading = 'Which of the following best describes your White background?' %}
+  {% set labelText = 'How would you describe your background? (optional)' %}
+{% endif %}
+
+{% if (data['skip-nominate-pharmacy'] === "true") %}
+  {% set action = 'are-you-a-member-of-armed-forces' %}
+{% else %}
+  {% set action = 'nominate-pharmacy' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "what-is-your-ethnicity",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <form action="{{ action }}" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          {% set ethnicityHtml %}
+            {{ input({
+              label: {
+                "text": labelText
+              },
+              "id": "ethWhite",
+              "name": "ethWhite",
+              "classes": "nhsuk-input--width-20"
+            }) }}
+          {% endset -%}
+
+          {{ radios({
+            idPrefix: "ethnicity-detail-white",
+            name: "ethnicity-detail-white",
+            fieldset: {
+              legend: {
+                text: heading,
+                isPageHeading: true,
+                classes: "nhsuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "English, Welsh, Scottish, Northern Irish or British",
+                text: "English, Welsh, Scottish, Northern Irish or British",
+                checked: checked("ethnicity-detail-white", "English, Welsh, Scottish, Northern Irish or British")
+              },
+              {
+                value: "Irish",
+                text: "Irish",
+                checked: checked("ethnicity-detail-white", "Irish")
+              },
+              {
+                value: "Gypsy or Irish Traveller",
+                text: "Gypsy or Irish Traveller",
+                checked: checked("ethnicity-detail-white", "Gypsy or Irish Traveller")
+              },
+              {
+                value: "Other",
+                text: "Any other White background",
+                conditional: {
+                  html: ethnicityHtml
+                }
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Prefer not to say",
+                text: "Prefer not to say"
+              }
+            ]
+          }) }}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

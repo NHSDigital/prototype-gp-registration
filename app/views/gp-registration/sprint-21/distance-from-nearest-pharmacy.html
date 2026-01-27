@@ -1,0 +1,91 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Does ' + data['name-first-name'] + ' live more than 1 mile from their nearest pharmacy?' %}
+{% else %}
+  {% set heading = 'Do you live more than 1 mile from your nearest pharmacy?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <form action="" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "One mile is the same as 1.6 kilometres. It would take about 20 minutes to walk this distance, 7 minutes in a car or bus or 10 minutes to cycle."
+            }) }}
+
+            {{ radios({
+              "idPrefix": "distance-from-pharmacy",
+              "name": "distance-from-pharmacy",
+              "items": [
+                {
+
+                  "value": "Yes~/live/can-use-dispencing",
+                  "text": "Yes",
+                  checked: checked("distance-from-pharmacy", "Yes")
+                },
+                {
+                  "value": "No~/live/would-you-have-difficulty-reaching-pharmacy",
+                  "text": "No",
+                  checked: checked("distance-from-pharmacy", "No")
+                },
+                {
+                  "value": "Dont-know~/design/would-you-have-difficulty-reaching-pharmacy",
+                  "text": "I don't know",
+                  checked: checked("have-current-uk-address", "I don't know")
+                }
+
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ details({
+              "text": "Why are we asking this?",
+              "HTML": "<p>If you have to travel more than 1 mile or 1.6 kilometres in a straight line to your nearest pharmacy, you may be able to get your prescription items direct from your GP surgery.</p>"
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

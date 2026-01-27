@@ -1,0 +1,78 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '1' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "You told us " + data ['name-first-name'] + " is registered with " + data.presets[0]['gpsurgery'] %}
+{% else %}
+  {% set heading = 'You told us you are registered with ' + data.presets[0]['gpsurgery'] %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "what-is-your-gp-address-selection",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          <p>We need to know the postcode of the address you used when you registered with this surgery. We'll use it to match you to your medical record.</p>
+          <h2 style="font-size: 1.5rem; padding-top: 0;">Do you know the postcode you used when you registered with this surgery?</h2>
+          {{ radios({
+            "idPrefix": "do-you-know-previous-postcode",
+            "name": "do-you-know-previous-postcode",
+            "items": [
+              {
+                "value": "Yes~/live/what-is-previous-postcode-gp-has",
+                "text": "Yes",
+                "checked": checked("do-you-know-previous-postcode", "Yes")
+              },
+              {
+                "value": "No~/live/check-answers-1",
+                "text": "No",
+                "checked": checked("do-you-know-previous-postcode", "No")
+              }
+            ]
+          }) }}
+
+         {% endcall %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

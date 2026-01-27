@@ -1,0 +1,75 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Who is registering with a GP?' %}
+
+{% block pageTitle %}
+{{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% set link = 'start' %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="who-is-registering-answer" method="post" autocomplete="off">
+
+          {% call fieldset({
+            legend: {
+              text: "Who is registering with a GP?",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "who-is-being-registered",
+            "name": "who-is-being-registered",
+            "items": [
+              {
+                "value": "myself",
+                "text": "Myself",
+                checked: checked("who-is-being-registered", "myself")
+              },
+              {
+                "value": "dependant",
+                "text": "Someone else",
+                "hint": {
+                  "text": "You are registering your child or someone else who needs help completing this form"
+                },
+                checked: checked("who-is-being-registered", "dependant")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

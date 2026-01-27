@@ -1,0 +1,99 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '1' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What is the address of the GP surgery they want to leave?' %}
+  {% set hintText = 'Enter the name and postcode of the most recent GP surgery they were registered at.' %}
+{% else %}
+  {% set heading = 'What is the address of the GP surgery you want to leave?' %}
+  {% set hintText = 'Enter the name and postcode of the most recent GP surgery you were registered at.' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }}- {{ ServiceName }} - NHS
+{% endblock %}
+
+{% if (data['country-born'] === "None") %}
+  {% set link = 'recently-moved-date' %}
+{% else %}
+  {% set link = 'where-were-you-born-place-uk' %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "registered-for-the-first-time",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="what-is-your-gp-address-selection" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ hint({
+              "text": hintText,
+              "classes": ""
+            }) }}
+
+            {{ input({
+              label: {
+                "text": "Surgery name"
+              },
+              "hint": {
+                "text": "For example, Leeds general practice"
+              },
+              "classes": "nhsuk-input--width-20",
+              "id": "find-gp-address",
+              "name": "find-gp-address",
+              value: data['find-gp-address']
+          }) }}
+
+          {{ input({
+            label: {
+              "text": "Postcode"
+            },
+            "hint": {
+              "text": ""
+            },
+            "classes": "nhsuk-input--width-10",
+            "id": "current-gp-address",
+            "name": "current-gp-address",
+            value: data['current-gp-address']
+        }) }}
+
+          {% endcall %}
+
+            {{ button({
+              "text": "Continue",
+              "classes": "postcode-lookup-btn"
+          }) }}
+
+        </form>
+      </div>
+   </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

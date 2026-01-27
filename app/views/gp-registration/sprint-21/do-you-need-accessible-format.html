@@ -1,0 +1,98 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% if (data['need-carer'] == "Yes") %}
+    {% set heading = "Do you or your carer need to be communicated with in an accessible form?" %}
+  {% else %}
+    {% set heading = "Does " + data['name-first-name'] + " or their carer need to be communicated with in an accessible form?" %}
+  {% endif %}
+{% else %}
+  {% set heading = 'Do you need to be communicated with in an accessible form?' %}
+{% endif %}
+
+{% if (data['are-carer'] === "Yes") %}
+  {% set link = 'type-of-carer' %}
+{% else %}
+  {% set link = 'are-you-a-carer' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "html": "<p>For example, braille, audio, large format or EasyRead.</p>"
+            }) }}
+
+            {{ radios({
+              "idPrefix": "accessible-needs",
+              "name": "accessible-needs",
+              "items": [
+                {
+                  "value": "Yes~/live/do-you-need-accessible-format-details",
+                  "text": "Yes",
+                  checked: checked("accessible-needs", "Yes")
+                },
+                {
+                  "value": "No~/live/do-you-need-reasonable-adjustments",
+                  "text": "No",
+                  checked: checked("accessible-needs", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say~/live/do-you-need-reasonable-adjustments",
+                  "text": "Prefer not to say",
+                  checked: checked("accessible-needs", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+          {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

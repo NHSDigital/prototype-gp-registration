@@ -1,0 +1,177 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '1' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What is the name of the person you are registering?' %}
+  {% set link = 'carer-details' %}
+{% else %}
+  {% set heading = 'What is your name?' %}
+  {% set link = 'continue-with-nhs-login' %}
+{% endif %}
+
+{% block pageTitle %}
+{{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% if (data['return'] === "true") %}
+  {% set link = 'check-answers-1' %}
+{% else %}
+  {% if (data['use-login'] === "false") %}
+    {% set link = 'continue-with-nhs-login' %}
+  {% else %}
+    {% set link = 'relation-of-dependant' %}
+  {% endif %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="what-is-your-name-post" method="post">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            <div class="nhsuk-select__wrapper-outer">
+              <div class="nhsuk-select__wrapper">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label" for="name-title">
+                    Title
+                  </label>
+
+                  <select class="nhsuk-select nhsuk-select--new" id="name-title" name="name-title" autocomplete="honorific-prefix" onchange="showOther(this)">
+                    <option value="" disabled >-- Choose a title --</option>
+                    <option value="Mr" {% if data['name-title'] === "Mr" %} selected{% endif %}>Mr</option>
+                    <option value="Mrs" {% if data['name-title'] === "Mrs" %} selected{% endif %}> Mrs</option>
+                    <option value="Miss" {% if data['name-title'] === "Miss" %} selected{% endif %}>Miss</option>
+                    <option value="Ms" {% if data['name-title'] === "Ms" %} selected{% endif %}>Ms</option>
+                    <option value="Dr" {% if data['name-title'] === "Dr" %} selected{% endif %}>Dr</option>
+                    <option value="Mx" {% if data['name-title'] === "Mx" %} selected{% endif %}>Mx</option>
+                    <option value="Master" {% if data['name-title'] === "Master" %} selected{% endif %}>Master</option>
+                    <option value="Other" {% if data['name-title'] === "Other" %} selected{% endif %}>Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div id="other-title" style="display:none;" class="nhsuk-inset-text nhsuk-u-margin-bottom-4 nhsuk-u-margin-top-0 nhsuk-u-padding-top-0 nhsuk-u-padding-bottom-0">
+
+            {{ input({
+              label: {
+                "text": "Other title"
+              },
+              "classes": "nhsuk-u-width-one-third",
+              "id": "name-title-other",
+              "name": "name-title-other",
+              "autocomplete": "honorific-prefix",
+              "spellcheck": false,
+              "value": data['name-title-other']
+            }) }}
+
+            </div>
+
+            {{ input({
+                label: {
+                  "text": "First name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "name-first-name",
+                "name": "name-first-name",
+                "autocomplete": "given-name",
+                "spellcheck": false,
+                "value": data['name-first-name']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "Middle names (if you have any)"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "name-middle-name",
+                "name": "name-middle-name",
+                "spellcheck": false,
+                "value": data['name-middle-name']
+              }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Last name"
+                  },
+                  "classes": "nhsuk-u-width-two-thirds",
+                  "id": "name-last-name",
+                  "name": "name-last-name",
+                  "autocomplete": "family-name",
+                  "spellcheck": false,
+                  "value": data['name-last-name']
+                }) }}
+
+              {{ input({
+                label: {
+                  "text": "Previous Last name (if you have one)"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "name-previous-last-name",
+                "name": "name-previous-last-name",
+                "value": data['name-previous-last-name']
+              }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script type="text/javascript">
+
+    function checkOther() {
+      var selects = document.getElementById('name-title')
+      var value = selects.value
+      if (value === 'Other') {
+        showOther(selects)
+      }
+    }
+
+    function showOther(select){
+      if(select.value=='Other'){
+        document.getElementById('other-title').style.display = "block";
+      } else{
+        document.getElementById('other-title').style.display = "none";
+      }
+    }
+
+    checkOther()
+  </script>
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

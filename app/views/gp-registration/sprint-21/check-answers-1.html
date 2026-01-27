@@ -1,0 +1,560 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '1' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Check these details are correct before continuing with this registration for ' + data.presets[0].gpsurgery %}
+
+{% if (data['registering-first-time'] === "Yes") %}
+  {% set link = 'registered-for-the-first-time' %}
+{% elseif (data['do-you-know-previous-postcode'] === "Yes") %}
+  {% set link = 'what-is-previous-postcode-gp-has' %}
+{% elseif (data['do-you-know-previous-postcode'] === "No") %}
+  {% set link = 'do-you-know-previous-postcode-gp-has' %}
+{% endif %}
+
+{% if data['date-of-birth'][1] %}
+  {% set month = data['date-of-birth'][1] | returnDate %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          {% if (data['student-on'] === "Yes") %}
+          <form action="student-are-you-student" method="post" autocomplete="off">
+          {% else %}
+            <form action="do-you-current-address" method="post" autocomplete="off">
+          {% endif %}
+
+            <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+            {% if (data['who-is-being-registered'] === "dependant" and data['are-you-registered'] ==="No") %}
+            <h2 class="nhsuk-heading-m">Your details</h2>
+
+            {{ summaryList({
+            rows: [
+              {
+                key: {
+                  text: "Relationship to person being registered"
+                },
+                value: {
+                  text: data['relation']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "relation-of-dependant?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "relationship to person being registered"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "First name"
+                },
+                value: {
+                  text: data['carer-first-name']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "carer-details?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "first name"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Last name"
+                },
+                value: {
+                  text: data['carer-last-name']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "carer-details?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "last name"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Relationship"
+                },
+                value: {
+                  text: data['carer-relationship']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "carer-details?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "relationship"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Date of birth"
+                },
+                value: {
+                  html: data['parent-date-of-birth'][0] + " " + month + " " + data['parent-date-of-birth'][2]
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "carer-details?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "date of birth"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Contact telephone"
+                },
+                value: {
+                  text: data['carer-telephone']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "carer-details?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "relationship"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+
+            {% elseif (data['who-is-being-registered'] === "dependant" and data['are-you-registered'] ==="Yes") %}
+            <h2 class="nhsuk-heading-m">Your details</h2>
+            {{ summaryList({
+              rows: [
+                {
+                  key: {
+                    text: "Relationship to person being registered"
+                  },
+                  value: {
+                    text: data['relation']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "relation-of-dependant?return=true",
+                        text: "Change",
+                        visuallyHiddenText: "relationship to person being registered"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Do you know your NHS number?"
+                  },
+                  value: {
+                    text: data['know-nhs-number-parent']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "do-you-know-nhs-number-parent?return=true",
+                        text: "Change",
+                        visuallyHiddenText: "Do you know your NHS number"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "NHS number"
+                  },
+                  value: {
+                    text: data['nhs-number-parent']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "what-is-your-nhs-number-parent?return=true",
+                        text: "Change",
+                        visuallyHiddenText: "your NHS number"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "First name"
+                  },
+                  value: {
+                    text: data['carer-first-name']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "carer-details?return=true",
+                        text: "Change",
+                        visuallyHiddenText: "first name"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Last name"
+                  },
+                  value: {
+                    text: data['carer-last-name']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "carer-details?return=true",
+                        text: "Change",
+                        visuallyHiddenText: "last name"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Relationship"
+                  },
+                  value: {
+                    text: data['carer-relationship']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "carer-details?return=true",
+                        text: "Change",
+                        visuallyHiddenText: "relationship"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Date of birth"
+                  },
+                  value: {
+                    html: data['parent-date-of-birth'][0] + " " + month + " " + data['parent-date-of-birth'][2]
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "carer-details?return=true",
+                        text: "Change",
+                        visuallyHiddenText: "date of birth"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Contact telephone"
+                  },
+                  value: {
+                    text: data['carer-telephone']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "carer-details?return=true",
+                        text: "Change",
+                        visuallyHiddenText: "relationship"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }) }}
+
+            {% endif %}
+
+
+            <h2 class="nhsuk-heading-m">
+              {% if (data['who-is-being-registered'] === "dependant") %}
+              Patient details</p>
+              {% else %}
+              Your details</p>
+              {% endif %}
+            </h2>
+
+            {{ summaryList({
+            rows: [
+              {
+                key: {
+                  text: "Title"
+                },
+                value: {
+                  text: data['name-title']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "what-is-your-name?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "title"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "First name"
+                },
+                value: {
+                  text: data['name-first-name']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "what-is-your-name?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "first name"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Middle name(s)"
+                },
+                value: {
+                  text: data['name-middle-name']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "what-is-your-name?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "middle names"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Last name"
+                },
+                value: {
+                  text: data['name-last-name']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "what-is-your-name?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "last name"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Previous last name"
+                },
+                value: {
+                  text: data['name-previous-last-name']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "what-is-your-name?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "previous last name"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Do you know your NHS number?"
+                },
+                value: {
+                  text: data['know-nhs-number']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "do-you-know-nhs?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "NHS number"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "NHS number"
+                },
+                value: {
+                  text: data['nhs-number']
+                },
+                classes: "nhsuk-u-visually-hidden",
+                actions: {
+                  items: [
+                    {
+                      href: "do-you-know-nhs?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "NHS number"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Date of birth"
+                },
+                value: {
+                  html: data['date-of-birth'][0] + " " + month + " " + data['date-of-birth'][2]
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "what-is-your-date-of-birth?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "date of birth"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Registering with a UK GP for the first time?"
+                },
+                value: {
+                  text: data['registering-first-time']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "registered-for-the-first-time?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "date of birth"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Current GP"
+                },
+                value: {
+                  text: data['select-gp-address']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "what-is-your-gp-address-selection?return=true",
+                      text: "Change",
+                      visuallyHiddenText: "date of birth"
+                    }
+                  ]
+                }
+              }              
+            ]
+          }) }}
+
+          {% if data['do-you-know-previous-postcode'] === "Yes" %}
+          <dl class="nhsuk-summary-list" style="margin-top: -40px;">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Address with last UK GP surgery
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+              {{ data['gp-postcode-prev-address-line-1']}}
+                {% if data['gp-postcode-prev-address-line-1'] %}
+                  <br>
+                {% endif %}
+              {{ data['gp-postcode-prev-address-line-2']}}
+                {% if data['gp-postcode-prev-address-line-2'] %}
+                  <br>
+                {% endif %}
+              {{ data['gp-postcode-prev-address-town']}}
+                {% if data['gp-postcode-prev-address-town'] %}
+                  <br>
+                {% endif %}
+              {{ data['gp-postcode-prev-postcode']}}
+                {% if data['gp-postcode-prev-postcode'] %}
+                  <br>
+                {% endif %}
+              {{ data['gp-postcode-prev-country']}}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="what-is-previous-postcode-gp-has">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+              </dd>
+            </div>
+          </dl>
+          {% endif %}
+
+        {% if (data['who-is-being-registered'] == "dependant") %}
+        <p>We use this information to match their details to our database. We cannot access their medical record and no medical information will be shared at this stage.</p>
+        {% else %}
+        <p>We use this information to match your details to our database. We cannot access your medical record and no medical information will be shared at this stage.</p>
+        {% endif %}
+
+        {{ button({
+          "text": "Confirm and continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+
+  $(document).ready(function () {
+
+    // Populate any unanswered fields with "Not answered" text
+    $('.nhsuk-summary-list__value').filter(function () {
+      return $.trim($(this).text()) === "";
+    }).each(function (ind, obj) {
+      $(obj).closest('dd').html("<span class='summary-page-unanswered'>Not answered</span>");
+    });
+
+    // Add colon to contact method type if it isn't blank
+    $(".contact-prefs-type:not(:empty)").append(':');
+
+  });
+</script>
+
+{% endblock %}
+
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

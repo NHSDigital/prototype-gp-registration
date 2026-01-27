@@ -1,0 +1,161 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '1' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What is the name of the person being registered' %}
+  {% set link = 'carer-details' %}
+{% else %}
+  {% set heading = 'What is your name?' %}
+  {% set link = 'continue-with-nhs-login' %}
+{% endif %}
+
+{% block pageTitle %}
+{{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% if (data['return'] === "true") %}
+  {% set link = 'check-answers-1' %}
+{% else %}
+  {% if (data['use-login'] === "false") %}
+    {% set link = 'continue-with-nhs-login' %}
+  {% else %}
+    {% set link = 'relation-of-dependant' %}
+  {% endif %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<style>
+.nhsuk-header__search-form--search-results {
+  margin-bottom: 25px;
+  background-color: transparent;
+  display: flex;
+  padding: 0;
+  width:100%
+}
+
+.nhsuk-search__input {
+  -ms-flex-positive: 2;
+  -webkit-appearance: listbox;
+  background-color: #fff !important;
+  border-bottom: 1px solid #aeb7bd;
+  border-radius: 4px 0 0 4px;
+  border-left: 1px solid #aeb7bd;
+  border-right: 0;
+  border-top: 1px solid #aeb7bd;
+  flex-grow: 2;
+  font-size: inherit;
+  height: 52px;
+  margin: 0;
+  outline: 0;
+  padding: 0 16px;
+  width:100%
+}
+
+.nhsuk-search__submit {
+  color: #fff;
+  background-color: #007f3b;
+  border: 0;
+  border-radius: 0 4px 4px 0;
+  float: right;
+  font-size: inherit;
+  height: 52px;
+  line-height: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 8px 8px 0;
+  width: 52px;
+  position:inherit !important
+}
+
+.nhsuk-search__submit:hover {
+  background-color: #00662f;
+  cursor:pointer
+}
+
+.nhsuk-search__submit:focus {
+  background-color: #ffeb3b;
+  border-bottom: 4px solid #212b32;
+  box-shadow:none
+}
+
+.nhsuk-icon__search {
+  fill:#fff
+}
+
+@media (max-width: 40.0525em) {
+  .nhsuk-search__submit .nhsuk-icon__search {
+    fill: #fff;
+    height: 27px;
+    width: 27px
+  }
+}
+
+</style>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <form action="what-is-your-name-post" method="post">
+
+      <div class="nhsuk-form-group  nhsuk-header__search-form--search-results">
+        <label class="nhsuk-label nhsuk-u-visually-hidden" for="search-field">Enter a search term</label>
+        <input class="nhsuk-input nhsuk-search__input" type="search" name="q" autocomplete="off" id="search-field" value="dddd">
+        <button class="nhsuk-search__submit" type="submit">
+          <span class="nhsuk-u-visually-hidden">
+              Submit
+          </span>
+          <svg class="nhsuk-icon nhsuk-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"></path>
+          </svg>
+        </button>
+      </div>
+
+    </form>
+  </div>
+ </div>
+
+<button class="nhsuk-button">Continue</button>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script type="text/javascript">
+
+    function checkOther() {
+      var selects = document.getElementById('name-title')
+      var value = selects.value
+      if (value === 'Other') {
+        showOther(selects)
+      }
+    }
+
+    function showOther(select){
+      if(select.value=='Other'){
+        document.getElementById('other-title').style.display = "block";
+      } else{
+        document.getElementById('other-title').style.display = "none";
+      }
+    }
+
+    checkOther()
+  </script>
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

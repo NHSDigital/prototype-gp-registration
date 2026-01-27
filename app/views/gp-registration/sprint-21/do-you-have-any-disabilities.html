@@ -1,0 +1,96 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Does " + data['name-first-name'] + " have any disabilities?" %}
+  {% set hintText = "It is important to tell us about any disabilities they may have, so their GP can ensure they are given the necessary treatment." %}
+{% else %}
+  {% set heading = 'Do you have any disabilities?' %}
+  {% set hintText = "It is important to tell us about any disabilities you may have, so your GP can ensure you are given the necessary treatment." %}
+{% endif %}
+
+{% if (data['has-mental-health-conditions'] === "Yes") %}
+  {% set link = 'mental-health-conditions-details' %}
+{% else %}
+  {% set link = 'do-you-have-any-mental-health-conditions' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+           {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": hintText
+            }) }}
+
+            {{ radios({
+              "idPrefix": "has-disabilities",
+              "name": "has-disabilities",
+              "items": [
+                {
+                  "value": "Yes~/live/disabilities-details",
+                  "text": "Yes",
+                  checked: checked("has-disabilities", "Yes")
+                },
+                {
+                  "value": "No~/live/do-you-have-a-carer",
+                  "text": "No",
+                  checked: checked("has-disabilities", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say~/live/do-you-have-a-carer",
+                  "text": "Prefer not to say",
+                  checked: checked("has-disabilities", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
