@@ -1,0 +1,97 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What year does ' + data['name-first-name'] + '\'s course finish? (optional)' %}
+{% else %}
+  {% set heading = 'What year does your course finish? (optional)' %}
+{% endif %}
+
+{% block pageTitle %}
+{{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="student-what-is-your-current-address" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ hint({
+              text: "For example, 2026",
+              "classes": "nhsuk-u-margin-bottom-4"
+            }) }}
+
+            {{ input({
+              "label": {
+              },
+                "classes": "nhsuk-input nhsuk-input--width-4",
+                "id": "student-course-end-date",
+                "name": "student-course-end-date",
+                "value": data['student-course-end-date']
+              }) }}
+
+            {% endcall %}
+
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>This information will be used by the GP surgery to confirm when you are no longer a student.</p>"
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{# DEVMODE SCENARIOS #}
+{% if data['devMode'] === 'true' %}
+<details class="nhsuk-details dev-mode dev-mode--routing" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+    <span class="nhsuk-details__summary-text">
+      Routing choices
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h4>Routes</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="error-too-young">Inputted age is under 12 months</a>
+      </li>
+    </ul>
+  </div>
+</details>
+{% endif %}
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

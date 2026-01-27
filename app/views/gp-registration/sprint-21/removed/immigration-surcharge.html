@@ -1,0 +1,88 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Does ' + data.presets[0].gpsurgery + ' know their chargeable status?' %}
+{% else %}
+  {% set heading = 'Do you know your chargeable status?'  %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <form action="overseas-declaration-none-eu" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          {% call fieldset({
+            legend: {
+              text: "",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ hint({
+            "html": "<p>You may have paid an Immigration Health Surcharge online as part of your application for a visa. The amount you pay depends on your visa type and length of stay.</p>
+              <p>You may also be exempt from charges for other reasons, such as being covered by a reciprocal healthcare agreement or being an asylum seeker.</p>",
+            "classes": "nhsuk-u-margin-bottom-4"
+          }) }}
+
+          {{ radios({
+            "idPrefix": "health-surcharge",
+            "name": "health-surcharge",
+            "items": [
+              {
+                "value": "Yes",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("health-surcharge", "Yes")
+              },
+              {
+                "value": "No",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("health-surcharge", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

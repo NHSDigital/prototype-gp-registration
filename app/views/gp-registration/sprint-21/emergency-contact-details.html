@@ -1,0 +1,115 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What are the details of " + data ['name-first-name'] + "'s emergency contact?" %}
+  {% set relationshipLabel = "Relationship to the person being registered" %}
+  {% set kinLabel = "This is their next of kin" %}
+{% else %}
+  {% set heading = 'What are the details of your emergency contact?' %}
+  {% set relationshipLabel = "Relationship to you" %}
+  {% set kinLabel = "This is my next of kin" %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "do-you-have-emergency-contact",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {% if (data['registering-first-time'] === "Yes") %}
+          <form action="recently-move-to-the-uk" method="post" autocomplete="off">
+          {% else %}
+          <form action="are-you-returning-from-overseas" method="post" autocomplete="off">
+          {% endif %}
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ input({
+                label: {
+                  "text": "Full name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-full-name",
+                "name": "ec-full-name",
+                value: data['ec-full-name']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "Relationship to you"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-relationship",
+                "name": "ec-relationship",
+                value: data['ec-relationship']
+              }) }}
+
+            {{ checkboxes({
+              "idPrefix": "health-contact",
+              "name": "health-contact",
+              items: [
+                {
+                  value: "Hospital specialist or consultant",
+                  text: kinLabel,
+                  checked: checked("health-contact", "hospital-specialist"),
+                  exclusiveGroup: "care-list"
+                }
+              ]
+              }) }}
+
+              {{ input({
+                "label": {
+                  "text": "Contact telephone number"
+                },
+                  "hint": {
+                  "text": "For international numbers include the country code"
+                },
+                "classes": "nhsuk-input--width-20",
+                "id": "ec-contact-tel",
+                "name": "ec-contact-tel",
+                value: data['ec-contact-tel']
+              }) }}
+
+            {% endcall %}
+
+            <p class="nhsuk-u-padding-bottom-4">By continuing you are confirming that the GP surgery can contact this person in an emergency.</p>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

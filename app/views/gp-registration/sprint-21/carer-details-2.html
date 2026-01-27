@@ -1,0 +1,96 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = "What are the details of your second carer?" %}
+
+{% block pageTitle %}
+  {{ heading }}  - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "carer-type-2",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="are-you-a-carer" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ input({
+                label: {
+                  "text": "Company or Council name (Optional)"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "carer-company-2",
+                "name": "carer-company-2",
+                "value": data['carer-company-2']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "Full name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "carer-full-name-2",
+                "name": "carer-full-name-2",
+                "value": data['carer-full-name-2']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "Relationship to you"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "carer-relationship-2",
+                "name": "carer-relationship-2",
+                "value": data['carer-relationship-2']
+              }) }}
+
+
+              {{ input({
+                  label: {
+                    "text": "Contact telephone number"
+                  },
+                  "classes": "nhsuk-u-width-two-thirds",
+                  "id": "carer-telephone-2",
+                  "name": "carer-telephone-2",
+                  "value": data['carer-telephone-2']
+                }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

@@ -1,0 +1,55 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- In /views/layout.html you can: - change the header and footer - add custom CSS and JavaScript -->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  Enter name - Register with a GP surgery - NHS
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "confirmation-page",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h2 class="nhsuk-modal__heading">You are about to leave the Register with a GP surgery service</h2>
+
+    <p class="nhsuk-modal__description">If you choose to leave the service you will be taken to the website of the GP surgery you want to register with.</p>
+
+    <h2 class="nhsuk-heading-m">What you need to know</h2>
+
+    <ul>
+      <li>You do not have to answer these extra questions and this will not affect the GP surgery's decision when considering your registration application.</li> 
+      <li>We will not share any of your details at this stage, but the information you provide in these extra questions will be linked by the GP surgery to your registration.</li>
+      <li>You may be asked for some of the information you have already given us.</li>
+      <li>The Register with a GP surgery service cannot help you with these extra questions.</li>
+      <li>You should read the Privacy policy and Terms of use on the GP surgery's website.</li>
+    </ul>
+
+    <p><a href="/test/local-forms">Leave Register with a GP surgery service</a></p>
+      
+  </div>
+</div>
+
+
+    <!-- End of content -->
+
+{% endblock %}

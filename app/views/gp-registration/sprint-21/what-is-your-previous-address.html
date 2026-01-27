@@ -1,0 +1,87 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What is ' + data['name-first-name'] + '\'s previous UK address?' %}
+{% else %}
+  {% set heading = 'What was your previous UK address?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "do-you-previous-address",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="what-is-your-previous-address-selection" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ input({
+              label: {
+                "text": "House number or name (optional)"
+              },
+              "hint": {
+                "text": "For example, flat 20A"
+              },
+              "classes": "nhsuk-input--width-20",
+              "id": "prev-house-number-address",
+              "name": "prev-house-number-address",
+              value: data['prev-house-number-address']
+          }) }}
+
+            {{ input({
+              label: {
+                "text": "Postcode"
+              },
+              "hint": {
+                "text": ""
+              },
+              "classes": "nhsuk-input--width-10",
+              "id": "find-previous-address",
+              "name": "find-previous-address",
+              value: data['find-previous-address']
+          }) }}
+
+          {% endcall %}
+
+          <p><a href="what-is-your-previous-address-manual" id="enter-address-manually-link">Enter the address manually</a></p>
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

@@ -3,7 +3,7 @@
 {% extends 'address-update/layout.html' %}
 
 {% block pageTitle %}
-Your new address - NHS
+Confirm your new address - NHS
 {% endblock %}
 
 {% block outerContent %}
@@ -22,7 +22,7 @@ Your new address - NHS
     <form action="success-out-of-catchment" method="post" autocomplete="off">
 
       <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-        <h1 class="nhsuk-fieldset__heading">Check your new address before submitting it</h1>
+        <h1 class="nhsuk-fieldset__heading">Confirm your new address</h1>
       </legend>
 
      
@@ -60,7 +60,7 @@ Your new address - NHS
       {% endif %}
 
       {{ button({
-        "text": "Continue"
+        "text": "Confirm"
       }) }}
 
     </form>

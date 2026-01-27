@@ -1,0 +1,85 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-gp.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Registration completed - GP registration service - NHS 
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<form action="gp-manage" method="post" autocomplete="off">
+
+  <div class="nhsuk-form-group">
+
+
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <h1>
+          Registration complete for (Practice name)
+        </h1>
+
+        <p>Your surgery can now offer online registration for patients.</p>
+        <p>You need to use your practice's unique URL to link the GP Registration Service to your website.</p>
+        <p><strong>Your practices service link:</strong> <a href="#">your-practice-url.com/practice</a></p>
+        <p>Once the link is on your website patients will be able to apply to register with your surgery using the online GP Registration Service.</p>
+      </div>
+    </div>
+  </div>
+
+
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <h3>More information about using the service</h3>
+
+        <p>Use your practice's unique URL to link to the Register with a GP surgery service.</p>
+
+        <p>A <a href="https://digital.nhs.uk/services/register-with-a-gp-surgery-service/get-help-using-the-service" target="_blank" rel="noopener noreferrer">resource hub</a> has been made available which explains how you can:</p>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+            <li>promote the service in your surgery</li>
+            <li>get support while using the service </li>
+          </ul>
+
+        <p>Find out more about <a href="https://digital.nhs.uk/services/register-with-a-gp-surgery-service/get-help-using-the-service" target="_blank" rel="noopener noreferrer">Register with a GP surgery service (Opens in new tab)</a>.</p>
+
+        {{ button({
+            "text": "Continue"
+        }) }}
+
+      </div>
+    </div>
+
+    <br>
+    <a href="/emails/gp-onboard-confirmation" target="_blank" rel="noopener noreferrer" class="nhsuk-link">Link to confirmation email</a>
+
+
+
+
+<!-- End of content -->
+
+
+{% endblock %}

@@ -1,0 +1,408 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Please confirm these are the correct details for the person registering with ' + data.presets[0].gpsurgery %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="are-you-a-member-of-armed-forces" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {{ fieldset({
+              "legend": {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-5",
+                "isPageHeading": true
+              }
+            }) }}
+
+              <dl class="nhsuk-summary-list">
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Are you registering with a UK GP for the first time?
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['registering-first-time'] }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__actions">
+                    <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
+                  </dd>
+                </div>
+
+                {% if (data['registering-first-time'] == "No") %}
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Postcode with last UK GP
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if (data['do-you-know-previous-postcode'] == "No") %}
+                  No
+                  {% else %}
+                  Yes
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              {% endif %}
+
+              {% if (data['do-you-know-previous-postcode'] == "Yes") %}
+              <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Postcode
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['gp-postcode-prev'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="">Change<span class="nhsuk-u-visually-hidden"> address</span></a>
+              </dd>
+            </div>
+            {% endif %}
+
+            {% if (data['registering-first-time'] == "Yes")  %}
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Have you recently moved to the UK from another country?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['recently-moved'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden"> </span></a>
+                </dd>
+              </div>
+
+              {% if data['recently-moved'] == "Yes" %}
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Date entered UK
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['moved-day'] }} -
+                  {{ data['moved-month'] }} -
+                  {{ data['moved-year'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">
+                    Change<span class="nhsuk-u-visually-hidden"> enter date</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Moved from EU, EEA or Switzerland
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                {{ data['eea'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">
+                    Change<span class="nhsuk-u-visually-hidden"> enter date</span>
+                  </a>
+                </dd>
+              </div>
+
+              {% if data['health-documents'] == "ehic" %}
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  European health insurance card details
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  First name:                     <br /> {{ data['ehic-name'] }} <br />
+                  Last name:                      <br /> {{ data['ehic-name-last'] }} <br />
+                  Expiry date:                           {{ data['ehic-dob-day'] }} -
+                                                         {{ data['ehic-dob-month'] }} -
+                                                         {{ data['ehic-dob-year'] }}<br />
+                  Country code:                   <br /> {{ data['ehic-cc'] }} <br />
+                  Personal Identification number: <br /> {{ data['ehic-id'] }} <br />
+                  Number of the card:             <br /> {{ data['ehic-id-2'] }} <br />
+                  Number of the institution:      <br /> {{ data['ehic-id-3'] }} <br />
+                  Expiry date:  {{ data['ehic-from-day'] }} -
+                                {{ data['ehic-from-month'] }} -
+                                {{ data['ehic-from-year'] }}<br />
+
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">
+                    Change<span class="nhsuk-u-visually-hidden"> eehic</span>
+                  </a>
+                </dd>
+              </div>
+
+            {% endif %}
+            {% endif %}
+            {% endif %}
+
+            {% if data['recently-moved'] == "No" %}
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Where were you born?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['country-born'] }} <br> {{ data['town'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">
+                    Change<span class="nhsuk-u-visually-hidden"> country</span>
+                  </a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Previous UK address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['have-previous-uk-address'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">overseas</span></a>
+                </dd>
+              </div>
+
+              {% if data['have-previous-uk-address'] == "Yes" %}
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Previous address details
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if data['select-previous-address'] %}
+                  {{ data['select-previous-address'] }}
+                  {% else %}
+                  {{ data['select-previous-address'] }}
+                  {{ data['previous-address-line-1'] }}<br />
+                  {{ data['previous-address-line-2'] }}<br />
+                  {{ data['previous-address-town'] }}<br />
+                  {{ data['previous-address-postcode'] }}
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+
+              {% endif %}
+              {% endif %}
+
+              {% if data['overseas'] == "Yes" %}
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Date left UK
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['left-uk-day'] }} -
+                  {{ data['left-uk-month'] }} -
+                  {{ data['left-uk-year'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">moved date</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Date returned to UK
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['returned-uk-day'] }} -
+                  {{ data['returned-uk-month'] }} -
+                  {{ data['returned-uk-year'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">moved date</span></a>
+                </dd>
+              </div>
+
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Previous GP details
+                </dt>
+                <dd class="nhsuk-summary-list__value previous-gp__value">
+                  {% if data['select-gp-address'] %}
+                  {{ data['select-gp-address'] }}
+                  {% else %}
+                  {{ data['select-gp-address'] }}
+                  {{ data['previous-gp-address-line-1'] }}<br />
+                  {{ data['previous-gp-address-line-2'] }}<br />
+                  {{ data['previous-gp-town'] }}<br />
+                  {{ data['previous-gp-postcode'] }}
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden">Previous GP details</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Previous UK address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['have-previous-uk-address'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">overseas</span></a>
+                </dd>
+              </div>
+
+              {% if data['have-previous-uk-address'] == "Yes" %}
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Previous address details
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if data['select-previous-address'] %}
+                  {{ data['select-previous-address'] }}
+                  {% else %}
+                  {{ data['select-previous-address'] }}
+                  {{ data['previous-address-line-1'] }}<br />
+                  {{ data['previous-address-line-2'] }}<br />
+                  {{ data['previous-address-town'] }}<br />
+                  {{ data['previous-address-postcode'] }}
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+
+              {% endif %}
+              {% endif %}
+
+              {% if data['overseas'] == "No" %}
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Previous GP details
+                </dt>
+                <dd class="nhsuk-summary-list__value previous-gp__value">
+                  {% if data['select-gp-address'] %}
+                  {{ data['select-gp-address'] }}
+                  {% else %}
+                  {{ data['select-gp-address'] }}
+                  {{ data['previous-gp-address-line-1'] }}<br />
+                  {{ data['previous-gp-address-line-2'] }}<br />
+                  {{ data['previous-gp-town'] }}<br />
+                  {{ data['previous-gp-postcode'] }}
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden">Previous GP details</span></a>
+                </dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Previous UK address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['have-previous-uk-address'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="">Change<span class="nhsuk-u-visually-hidden">overseas</span></a>
+                </dd>
+              </div>
+
+              {% if data['have-previous-uk-address'] == "Yes" %}
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Previous address details
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if data['select-previous-address'] %}
+                  {{ data['select-previous-address'] }}
+                  {% else %}
+                  {{ data['select-previous-address'] }}
+                  {{ data['previous-address-line-1'] }}<br />
+                  {{ data['previous-address-line-2'] }}<br />
+                  {{ data['previous-address-town'] }}<br />
+                  {{ data['previous-address-postcode'] }}
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href=""><span class="nhsuk-u-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+
+              {% endif %}
+              {% endif %}
+
+              </dl>
+
+            {% if (data['who-is-being-registered'] == "dependant") %}
+            <p>We use this information to match their details to our database. We cannot access their medical record and no medical information will be shared at this stage.</p>
+            <p>By submitting these details you they confirming that, to the best of their knowledge, they are correct.</p>
+            {% else %}
+            <p>We use this information to match your details to our database. We cannot access your medical record and no medical information will be shared at this stage.</p>
+            <p>By submitting these details you are confirming that, to the best of your knowledge, they are correct.</p>
+
+            {% endif %}
+
+            {{ button({
+              "text": "Confirm and continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+
+  $(document).ready(function () {
+
+    // Populate any unanswered fields with "Not answered" text
+    $('.nhsuk-summary-list__value').filter(function () {
+      return $.trim($(this).text()) === "";
+    }).each(function (ind, obj) {
+      $(obj).closest('dd').html("<span class='summary-page-unanswered'>Not answered</span>");
+    });
+
+    // Add colon to contact method type if it isn't blank
+    $(".contact-prefs-type:not(:empty)").append(':');
+
+  });
+</script>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

@@ -1,0 +1,142 @@
+{% extends 'layout-gp.html' %}
+
+{% set serviceName %}
+Report a smokey vehicle
+{% endset%}
+
+{% block pageTitle %}
+Your registered surgeries - GP registration service - NHS
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+          {{ backLink({
+            text: "Return to Manage your profile",
+            href: "/gp/gp-profile-manager-manage"
+          }) }}
+
+
+          <h1 class="nhsuk-heading-xl">Your registered surgeries</h1>
+
+          <form action="gp-practices" method="post" autocomplete="off">
+          <input type="hidden" name="gp-prac" id="gp-prac" value="gp-prac" />
+          <button class="nhsuk-button" type="submit">
+          Add practice
+          </button>
+          </form>
+
+
+          <table role="table" class="nhsuk-table-responsive">
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  Registered surgery
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Shared mailbox
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Additional services
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Unique URL
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Patient access
+                </th>
+                <th role="columnheader" class="" scope="col">
+
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Registered surgery</span>Highstreet surgery<br>1 Town Street, London, SW1A 1AA
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Shared mailbox</span>{{ data['nhs-shared-email'] }}
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Additional services</span>Language interpretation: {{ data['interpretation'] }}<br> Dispensing surgery: {{ data['dispensing'] }}<br> Registering students: {{ data['student'] }}<br> Nominated pharmacy: {{ data['pharmacy'] }}<br> Tuberculosis screening: {{ data['tb-screen'] }}
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Unique URL</span>your-practice-url.com/practice
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Patient access</span>Unique URL only
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading"></span><a href="/gp/gp-branch?practice=true&practiceName=Highstreet%20surgery">View details<span class="nhsuk-u-visually-hidden"> </span></a>
+                </td>
+              </tr>
+
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Registered surgery</span>Pucklechuch surgery<br>Boots, 2 Town Street, London, SW1A 1AA
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Shared mailbox</span>{{ data['nhs-shared-email'] }}
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Additional services</span>Language interpretation: {{ data['interpretation'] }}<br> Dispensing surgery: {{ data['dispensing'] }}<br> Registering students: {{ data['student'] }}<br> Nominated pharmacy: {{ data['pharmacy'] }}<br> Tuberculosis screening: {{ data['tb-screen'] }}
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Unique URL</span>your-practice-url.com/practice
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Patient access</span>Unique URL only
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading"></span><a href="/gp/gp-branch?practice=false&practiceName=Pucklechuch%20surgery">View details<span class="nhsuk-u-visually-hidden"> </span></a>
+                </td>
+              </tr>
+
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Registered surgery</span>Highstreet surgery<br>Elliots pharmacy, 3 Town Street, London, SW1A 1AA
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Shared mailbox</span>{{ data['nhs-shared-email'] }}
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Additional services</span>Language interpretation: {{ data['interpretation'] }}<br> Dispensing surgery: {{ data['dispensing'] }}<br> Registering students: {{ data['student'] }}<br> Nominated pharmacy: {{ data['pharmacy'] }}<br> Tuberculosis screening: {{ data['tb-screen'] }}
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Unique URL</span>your-practice-url.com/practice
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Patient access</span>Unique URL only
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading"></span><a href="/gp/gp-branch?practice=false&practiceName=Highstreet%20surgery">View details<span class="nhsuk-u-visually-hidden"> </span></a>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+
+          <h2 class="nhsuk-heading-l nhsuk-u-padding-top-6">Download the paper form</h2>
+
+          <p class="nhsuk-body">Download a paper version of the digital service.<br><a href="">Register with a GP surgery paper form</a> PDF, (199 KB), 8 pages</p>
+          <p>Help us improve the paper form by filling in <a href="https://feedback.digital.nhs.uk/jfe/form/SV_9RXOfWvpaUCe4Gq">our survey on the Qualtrics website.</a><p/>
+
+
+          <h2 class="nhsuk-heading-l">Support</h2>
+          <p>Contact Henry Naylor-Stead (henry.naylor-stead1@nhs.net) if you need help or have a question about the service.</p>
+
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}

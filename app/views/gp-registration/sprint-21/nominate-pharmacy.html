@@ -1,0 +1,77 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Would you like to choose a pharmacy for your prescriptions? - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% if (data['ethnicity'] === "Asian or Asian British") %}
+  {% set link = 'what-is-your-ethnicity-background-asian' %}
+{% elif (data['ethnicity'] === "Black African, Black British or Caribbean") %}
+  {% set link = 'what-is-your-ethnicity-background' %}
+{% elif (data['ethnicity'] === "Mixed or multiple ethnic groups") %}
+  {% set link = 'what-is-your-ethnicity-background-mixed' %}
+{% elif (data['ethnicity'] === "White") %}
+  {% set link = 'what-is-your-ethnicity-background-white' %}
+{% elif (data['ethnicity'] === "Another ethnic group") %}
+  {% set link = 'what-is-your-ethnicity-background-another' %}
+{% else %}
+  {% set link = 'what-is-your-ethnicity' %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            <h1 class="nhsuk-fieldset__legend--l">Would you like to choose a pharmacy for your prescriptions?</h1>
+            <p>Choosing a pharmacy means your GP surgery will send prescriptions directly to this pharmacy.</p>
+
+            {{ radios({
+              "idPrefix": "nominate-pharmacy",
+              "name": "nominate-pharmacy",
+              "items": [
+                {
+                  "value": "Yes~nominate-online-or-street",
+                  "text": "Yes, choose a pharmacy",
+                  checked: checked("nominate-pharmacy", "Yes")
+                },
+                {
+                  "value": "No~/live/are-you-a-member-of-armed-forces",
+                  "text": "No",
+                  checked: checked("nominate-pharmacy", "No")
+                }
+              ]
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+        </form>
+      </div>
+     </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

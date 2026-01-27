@@ -1,0 +1,95 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = "What type of carer are they?" %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "carer-details-1",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+           {{ radios({
+            "idPrefix": "type-additional-carer",
+            "name": "type-additional-carer",
+            "items": [
+              {
+                "value": "Young carer~/live/carer-details-2",
+                "text": "Young carer",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("type-additional-carer", "Young carer")
+              },
+               {
+                "value": "Informal carer~/live/carer-details-2",
+                "text": "Unpaid carer",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("type-additional-carer", "Informal carer")
+              },
+              {
+                "value": "Occupational carer~/live/carer-details-2",
+                "text": "Paid carer (Occupational)",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("type-additional-carer", "Occupational carer")
+              },
+              {
+                "value": "Foster carer~/live/carer-details-2",
+                "text": "Foster carer",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("type-additional-carer", "Foster carer")
+              }
+
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

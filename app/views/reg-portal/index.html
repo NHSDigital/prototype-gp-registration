@@ -2,7 +2,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Manage patient registrations Prototype
+Manage patient registrations prototype
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -21,7 +21,7 @@ Manage patient registrations Prototype
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
-        <h1 class="app-page-heading">
+        <h1 class="nhsuk-heading-l">
             <span class="nhsuk-caption-l">
               Prototype work
               <span class="nhsuk-u-visually-hidden"></span>
@@ -29,10 +29,10 @@ Manage patient registrations Prototype
             Manage patient registrations
           </h1>
 
-          <h2 class="nhsuk-heading-l">Phase 1 flow</h2>
+         <p>GPs use this service to accept and manahge patients</p>
 
           {{ button({
-            "text": "Continue",
+            "text": "Go to prototype",
                 "href": "/reg-portal/login"
         }) }}
 
@@ -42,27 +42,38 @@ Manage patient registrations Prototype
                 "href": "admin/listings-manage-reg"
           }) }}
 
-          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
-
-          <h2 class="nhsuk-heading-l">Work in progress</h2>
+        
 
           {{ button({
-            "text": "Page listings",
+            "text": "WIP",
             "classes": "nhsuk-button--secondary",
                 "href": "admin/listings-manage-reg-wip"
           }) }}
 
-          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
-
-          <h2 class="nhsuk-heading-l">Research</h2>
+          
 
           {{ button({
-            "text": "Start prototype",
+            "text": "Research",
             "classes": "nhsuk-button--secondary",
                 "href": "/reg-portal/research-10-25/login"
           }) }}
 
 
+      </div>
+      <div class="nhsuk-grid-column-one-third">
+
+        <h2 class="nhsuk-heading-s">Dev mode</h2>
+        <p><a href="/live/start?devMode=true">Run 'live' in devMode</a></p>
+        <p><a href="/design/start?devMode=true">Run 'design' in devMode</a></p>
+
+        <h2 class="nhsuk-heading-s">Environments</h2>
+        <p><a href="https://gp-registration.nhs.uk/M84015/gpregistration/landing" target="_blank">Prod environment</a></p>
+        <p><a href="https://register.int.gp-registration.nhs.uk/1234/gpregistration/landing" target="_blank">Int environment</a></p>
+        
+
+        <h2 class="nhsuk-heading-s">Related prototypes</h2>
+        <p><a href="https://patient-list-inflation-eebf515757e0.herokuapp.com/" target="_blank">PLI prototype</a></p>
+    
       </div>
     </div>
 

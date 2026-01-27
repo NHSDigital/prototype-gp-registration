@@ -1,0 +1,128 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '1' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What is the address of the GP surgery they want to leave" %}
+{% else %}
+  {% set heading = 'What is the address of the GP surgery you want to leave?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "what-is-your-gp-address",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="do-you-know-previous-postcode-gp-has" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+              {% call fieldset({
+                legend: {
+                  "text": heading,
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": true
+                }
+              }) %}
+
+              {{ input({
+                label: {
+                  "text": "Name of surgery"
+                },
+                "id": "previous-gp-address-line-name",
+                "name": "previous-gp-address-line-name",
+                value: data['previous-gp-address-line-name']
+              }) }}
+
+              {{ input({
+                label: {
+                "text": "Address line 1"
+                },
+                "id": "previous-gp-address-line-1",
+                "name": "previous-gp-address-line-1",
+                value: data['previous-gp-address-line-1']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Address line 2"
+                },
+                "id": "previous-gp-address-line-2",
+                "name": "previous-gp-address-line-2",
+                value: data['previous-gp-address-line-2']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Town or city"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "previous-gp-town",
+                "name": "previous-gp-town",
+                value: data['previous-gp-town']
+              }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "previous-gp-postcode",
+                  "name": "previous-gp-postcode",
+                  value: data['previous-gp-postcode']
+              }) }}
+
+              {% endcall %}
+
+              {{ button({
+                "text": "Continue"
+              }) }}
+
+          </form>
+        </div>
+      </div>
+
+{# DEVMODE SCENARIOS #}
+{% if data['devMode'] === 'true' %}
+<details class="nhsuk-details dev-mode dev-mode--routing" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+      <span class="nhsuk-details__summary-text">
+        Routing choices
+      </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h4>Routes for Repeat registration</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="already-registered?ods-match=main">ODS code matches current practice</a>
+      </li>
+      <li>
+        <a href="already-registered?ods-match=branch">ODS code matches a branch of the main practice</a>
+      </li>
+    </ul>
+  </div>
+</details>
+{% endif %}
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
