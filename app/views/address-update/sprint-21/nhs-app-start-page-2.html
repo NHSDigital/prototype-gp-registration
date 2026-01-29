@@ -1,0 +1,93 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% block pageTitle %}
+Confirm your new address - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <form action="success-out-of-catchment" method="post" autocomplete="off">
+
+      <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+        <h1 class="nhsuk-fieldset__heading">Your home address</h1>
+      </legend>
+
+     
+      <p>
+
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Your home address
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              111 Town Street,<br />
+              London,<br />
+              SW1A 1AA
+            </dd>
+            <!--
+            <dd class="nhsuk-summary-list__actions">
+              <a class="nhsuk-link" href="what-is-your-current-address">Change<span class="nhsuk-u-visually-hidden"> your address</span></a>
+            </dd>
+            -->
+          </div>
+        </dl>
+
+        <p>Use this form to change your home address on your NHS record.</p>
+        <p>We'll check if your new address is still in your GP surgery's catchment area.</p>
+        <p>If your new address is outside of your current GP surgery's catchment area, you may need to <a href="https://www.nhs.uk/service-search/find-a-gp" target="_blank">find a new GP</a> to register with.</p>
+
+        <h2 class="nhsuk-heading-m">Before you start</h2>
+
+        <p>Speak to your current GP if you:</p>
+        <ul>
+            <li>are on a waiting list for elective surgery</li>
+            <li>have any GP appointments you are waiting for</li>
+            <li>are waiting on a referral to hospital</li>
+            <li>take any prescription medications</li>
+        </ul>
+
+
+
+        <div class="nhsuk-inset-text">
+  
+  <h2 class="nhsuk-heading-m">After you update your address</h2>
+
+        <p>You'll lose access to your health information in the NHS App. You'll get access again once you've registered with a new GP surgery.</p>
+</div>
+
+       
+        
+
+
+   
+
+      {{ button({
+        "text": "Continue",
+         "href": "start"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
