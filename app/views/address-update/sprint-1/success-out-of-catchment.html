@@ -18,10 +18,11 @@
         Home address updated
       </h1>
       <div class="nhsuk-panel__body">
-        Your NHS record has been updated and we’ve shared your new address with your GP surgery
+        We’ve shared this with your GP surgery
       </div>
     </div>
-    <p>You've changed your home address to:</p>
+
+    <p>Your NHS record has been updated with your new address:</p>
     <p>{% if data['select-new-address'] %}
         {{ data['select-new-address'] }} Town Street,<br />
         London,<br />
@@ -41,27 +42,51 @@
 
     <div class="nhsuk-inset-text">
       <span class="nhsuk-u-visually-hidden">Information: </span>
-      <p>We were unable to check if your new address is still within your GP surgery's catchment area.</p>
+      <p>Your new address is outside the catchment area for Lordship Lane Surgery. Your current GP may contact you to confirm this.</p>
+      <p>If your current surgery doesn't accept patients outside of their catchment area, you will have 30 days to find a new GP to register with.</p>
     </div>
 
-    <h2 class="nhsuk-heading-m">What happens next</h2>
-    <p>Your surgery may contact you to check if your new address is outside their catchment area.</p>
 
-    <details class="nhsuk-details">
+    
+
+
+    <h2 class="nhsuk-heading-m">Register with a new GP</h2>
+    <p>Registering with a new GP in your area takes about 15 minutes.</p>
+
+
+    <details class="nhsuk-details nhsuk-expander">
       <summary class="nhsuk-details__summary">
         <span class="nhsuk-details__summary-text">
-          If you're waiting for surgery or a prescription
+          When to speak to your current GP first
         </span>
-      </summary>
-      <div class="nhsuk-details__text">
-        <p>If you're waiting for elective surgery or a prescription you should contact your GP surgery.</p>      
-      </div>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>Speak to your current GP if you:</p>
+          <ul>
+            <li>are on a waiting list for elective surgery</li>
+            <li>have any GP appointments you are waiting for</li>
+            <li>take any prescription medications</li>
+          </ul>
+        </div>
     </details>
+
+
     {{ actionLink({
       text: "Find a GP",
-      href: "#"
+      href: "https://www.nhs.uk/service-search/find-a-gp",
+      openInNewWindow: true
     }) }}
-    <p><a href="feedback">Tell us about your experience updating your address (opens in a new tab)</a></p>  </div>
+   
+   
+   
+   
+   
+   
+    <!--
+    <br>
+    <p><a href="feedback">Tell us about your experience updating your address (opens in a new tab)</a></p>
+    -->
+  </div>
 </div>
 
 {% include 'live/includes/devmode.html' %}
