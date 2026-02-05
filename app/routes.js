@@ -8,8 +8,11 @@ router.use(radioButtonRedirect)
 
 // Add your routes here - above the module.exports line
 
+require("./routes/sprint-21/routes.js")(router);
 require("./views/live/routes.js")(router);
 require("./views/design/routes.js")(router);
+
+
 
 
 router.use((req, res, next) => {

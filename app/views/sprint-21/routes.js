@@ -77,12 +77,12 @@ module.exports = (router) => {
   })
 
 // name
-  router.post('/live/what-is-your-name-post/', function (req, res) {
+  router.post('/gp-registration/sprint-21/what-is-your-name-post/', function (req, res) {
     if (req.session.data['return'] === 'true') {
-      res.redirect('/live/check-answers-1')
+      res.redirect('/gp-registration/sprint-21/check-answers-1')
       req.session.data['return'] = ''
     } else {
-      res.redirect('/live/what-is-your-date-of-birth')
+      res.redirect('/gp-registration/sprint-21/what-is-your-date-of-birth')
     }
   })
 
@@ -324,4 +324,6 @@ module.exports = (router) => {
     res.redirect("/live/nominate-pharmacy")
   });
 
+
+// After all rules
 };
