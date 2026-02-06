@@ -22,7 +22,6 @@ const locals = require('./app/locals');
 const routes = require('./app/routes');
 const documentationRoutes = require('./docs/documentation_routes');
 const utils = require('./lib/utils');
-const { watch } = require('browser-sync');
 
 // Set configuration variables
 const port = process.env.PORT || config.port;
@@ -233,24 +232,6 @@ app.use((err, req, res) => {
 });
 
 // Run the application
-app.listen(port, '127.0.0.1', () => {
-  console.log(`Listening on http://127.0.0.1:${port}`)
-})
-// Original
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Listening on port ${process.env.PORT || 3000}`)
-})
-
-// Additional fixed port for testing
-app.listen(50000, '127.0.0.1', () => {
-  console.log('Listening on http://127.0.0.1:50000')
-})
-
-// Use a fixed, safe port and force binding to 127.0.0.1 const PORT = 3000; // You can change this if needed
-
-app.listen(PORT, '127.0.0.1', () => {
-  console.log(`✅ Prototype server running on https://127.0.0.1:${PORT}`);
-  console.log('Use 127.0.0.1 in your browser to avoid localhost/firewall issues.'); });
-
+app.listen(port);
 
 module.exports = app;
