@@ -2,27 +2,45 @@
 const moment=require('moment')
 moment.locale("en-gb")
 
-// Add your routes here - above the module.exports line
+
+// Add your routes here 
 
 module.exports = (router) => {
 
-  // Who is registering branch
-  router.post('/live/who-is-registering-answer/', function (req, res) {
-    var registee = req.session.data['who-is-being-registered']
-    if (registee === "myself"){
-      res.redirect('/live/continue-with-nhs-login')
+  //*** Sprint variable — change this for new sprints ***//
+  const sprint = 'sprint-21'
+  const basePath = `/gp-registration/${sprint}`   // absolute base path for the sprint
+
+  // Helper for absolute redirects within this sprint
+  const sprintRedirect = (res, page) => res.redirect(`${basePath}/${page}`)
+
+
+  // Who is registering with a GP //
+  router.post(`${basePath}/who-is-registering-answer/`, function (req, res) {
+    if (req.session.data['who-is-being-registered'] === "myself") {
+      sprintRedirect(res, 'continue-with-nhs-login')
     } else {
-      res.redirect('/live/relation-of-dependant')
+      sprintRedirect(res, 'relation-of-dependant')
     }
   })
 
-// Does user have NHS login
-  router.post('/live/nhs-login-answer/', function (req, res) {
-    var hasLogin = req.session.data['nhs-login']
-    if (hasLogin === "Yes"){
-      res.redirect('/live/nhs-login-email-address')
+  // What is your name //
+  router.post(`${basePath}/what-is-your-name-post/`, function (req, res) {
+    if (req.session.data['return'] === 'true') {
+      req.session.data['return'] = ''  // clear session flag
+      sprintRedirect(res, 'check-answers-1')
     } else {
-      res.redirect('/live/do-you-know-nhs-number')
+      sprintRedirect(res, 'what-is-your-date-of-birth')
+    }
+  })
+
+  // Does user have NHS login
+  router.post('/gp-registration/sprint-21/nhs-login-answer/', function (req, res) {
+   var hasLogin = req.session.data['nhs-login']
+    if (hasLogin === "Yes"){
+      res.redirect('/gp-registration/sprint-21/nhs-login-email-address')
+    } else {
+      res.redirect('/gp-registration/sprint-21/do-you-know-nhs-number')
     }
   })
 
@@ -76,15 +94,11 @@ module.exports = (router) => {
     }
   })
 
-// name
-  router.post('/live/what-is-your-name-post/', function (req, res) {
-    if (req.session.data['return'] === 'true') {
-      res.redirect('/live/check-answers-1')
-      req.session.data['return'] = ''
-    } else {
-      res.redirect('/live/what-is-your-date-of-birth')
-    }
-  })
+
+  
+
+
+
 
 // Who is registering branch
   router.post('/live/error-too-young-post/', function (req, res) {
@@ -103,18 +117,18 @@ module.exports = (router) => {
   })
 
 // registered for first time routing
-  router.post('/live/registered-for-the-first-time-answer/', function (req, res) {
+  router.post('/gp-registration/sprint-21/registered-for-the-first-time-answer/', function (req, res) {
     let choice = req.session.data['registering-first-time']
     let auth = req.session.data['user-auth']
     if (auth === "p9"){
-      res.redirect('/live/is-this-your-current-address')
+      res.redirect('/gp-registration/sprint-21/is-this-your-current-address')
     } else {
       if (choice === "Yes"){
-        res.redirect('/live/check-answers-1')
+        res.redirect('/gp-registration/sprint-21/check-answers-1')
       } else {
         // route before non-p9 block solution (dec 23)
-        // res.redirect('/live/do-you-know-previous-postcode-gp-has')
-        res.redirect('/live/what-is-your-gp-address')
+        // res.redirect('/gp-registration/sprint-21/do-you-know-previous-postcode-gp-has')
+        res.redirect('/gp-registration/sprint-21/what-is-your-gp-address')
       }
     }
   })
@@ -135,7 +149,7 @@ module.exports = (router) => {
   })
 
 // populate data for display later
-  router.post('/live/what-is-your-current-address-selection-post', function (req, res) {
+  router.post('/gp-registration/sprint-21/what-is-your-current-address-selection-post', function (req, res) {
     const address = req.session.data['select-current-address']
     if (address === 'address1') {
       req.session.data['address-flat-number-current'] = ''
@@ -209,15 +223,18 @@ module.exports = (router) => {
     }
   })
 
-// Does user have communication needs
-  router.post('/live/do-you-have-communication-needs-answer/', function (req, res) {
-    var communicationNeeds = req.session.data['has-communication-needs']
-    if (communicationNeeds === "Yes"){
-      res.redirect('/live/what-are-your-communication-needs')
+
+// Does user have communication needs //
+  router.post(`${basePath}/do-you-have-communication-needs-answer/`, function (req, res) {
+    const communicationNeeds = req.session.data['has-communication-needs']
+
+    if (communicationNeeds === "Yes") {
+      sprintRedirect(res, 'what-are-your-communication-needs')
     } else {
-      res.redirect('/live/previous-gp-details')
+      sprintRedirect(res, 'previous-gp-details')
     }
   })
+ 
 
 // Does user need a dispensing doctor
   router.post('/live/how-do-you-collect-prescriptions-answer/', function (req, res) {
@@ -291,7 +308,7 @@ module.exports = (router) => {
   })
 
 // set DOB variables based on inputted
-  router.post('/live/what-is-your-date-of-birth-answer', function (req, res) {
+  router.post('/gp-registration/sprint-21/what-is-your-date-of-birth-answer', function (req, res) {
     var dob = req.session.data['date-of-birth'][2]+ '-'+ req.session.data['date-of-birth'][1]+ '-'+ req.session.data['date-of-birth'][0]
     var years = moment().diff(dob, 'years');
     // reset everything
@@ -312,16 +329,16 @@ module.exports = (router) => {
     if (years < 18){
       req.session.data["under-18-years"] = 'true'
     }
-    res.redirect('/live/do-you-know-nhs-number')
+    res.redirect('/gp-registration/sprint-21/do-you-know-nhs-number')
   });
 
   router.post("/*/check-postcode", function (req, res) {
     var postcode = (req.session.data["find-current-address"]);
     console.log("postcode check " + postcode)
     if(postcod.toUpperCase()=="LS28 7FG"){
-      res.redirect("/live/dispencing-surgery")
+      res.redirect("/gp-registration/sprint-21/dispencing-surgery")
     }
-    res.redirect("/live/nominate-pharmacy")
+    res.redirect("/gp-registration/sprint-21/nominate-pharmacy")
   });
 
 };

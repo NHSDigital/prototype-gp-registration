@@ -10,6 +10,7 @@ router.use(radioButtonRedirect)
 
 require("./views/live/routes.js")(router);
 require("./views/design/routes.js")(router);
+require("./views/gp-registration/sprint-21/routes.js")(router);
 
 
 router.use((req, res, next) => {
