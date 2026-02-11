@@ -1,0 +1,90 @@
+{% extends 'reg-portal/login-layout.html' %}
+
+{% block pageTitle %}
+Choose your preferred authentication method - CIS2 - Care Identity Authentication
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            text: "Go back",
+            href: "login"
+        }) }}
+    
+            <form action="dashboard" method="post" autocomplete="off">
+    
+              {% call fieldset({
+                legend: {
+                  text: "Choose your preferred authentication method",
+                  classes: "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              }) %}
+    
+              {{ radios({
+                "idPrefix": "login-option",
+                "name": "login-option",
+                "items": [
+                  {
+                    "value": "iPad",
+                    "text": "iPad",
+                    checked: checked("login-option", "iPad")
+                  },
+                  {
+                    "value": "Microsoft Authenticator",
+                    "text": "Microsoft Authenticator",
+                    checked: checked("login-option", "Microsoft Authenticator")
+                  },
+                  {
+                    "value": "NHS.net Connect (formerly NHSmail)",
+                    "text": "NHS.net Connect (formerly NHSmail)",
+                    checked: checked("login-option", "NHS.net Connect (formerly NHSmail)")
+                  },
+                  {
+                    "value": "Passkey",
+                    "text": "Passkey",
+                    checked: checked("login-option", "Passkey")
+                  },                
+                  {
+                    "value": "Security key",
+                    "text": "Security key",
+                    checked: checked("login-option", "Security key")
+                  },
+                  {
+                    "value": "Smartcard",
+                    "text": "Smartcard",
+                    checked: checked("login-option", "Smartcard")
+                  },
+                  {
+                    "value": "Windows Hello for Business",
+                    "text": "Windows Hello for Business",
+                    checked: checked("login-option", "Windows Hello for Business")
+                  }
+                ]
+              }) }}
+    
+              {% endcall %}
+    
+              {{ button({
+                "text": "Continue"
+              }) }}
+    
+            </form>
+    
+          </div>
+        </div>
+
+        </div>
+      </div>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}

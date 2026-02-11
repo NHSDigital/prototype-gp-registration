@@ -29,22 +29,25 @@ router.use((req, res, next) => {
 
 
 // Who is registering branch
-router.post('*/who-is-registering-answer/', function (req, res) {
+// router.post('*/who-is-registering-answer/', function (req, res) {
 
   // Make a variable and give it the value from 'juggling-balls'
-  var registee = req.session.data['who-is-registering']
+  // var registee = req.session.data['who-is-registering']
 
   // Check whether the variable matches a condition
-  if (registee == "You"){
+  // if (registee == "You"){
     // Send user to next page
-    res.redirect('continue-with-nhs-login')
-  } else {
+   // res.redirect('continue-with-nhs-login')
+  // } else {
     // Send user to ineligible page
-    res.redirect('continue-with-nhs-login')
-  }
+   // res.redirect('continue-with-nhs-login')
+  // }
 
-})
+ // })
 
+
+
+ 
 // Does user have NHS login acc
 router.post('*/nhs-login-found-answer/', function (req, res) {
 

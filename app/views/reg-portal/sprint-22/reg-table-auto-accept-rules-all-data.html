@@ -1,0 +1,115 @@
+{% extends 'reg-portal/layout.html' %}
+
+{% block pageTitle %}
+6 new registrations - GP registrations portal - NHS
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+          <!--{{ backLink({
+            text: "Return to Manage your profile",
+            href: "/gp/gp-profile-manager-manage"
+        }) }}-->
+
+
+          <h1 class="nhsuk-heading-xl">Registration requests</h1>
+
+
+          <table role="table" class="nhsuk-table-responsive">
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  Name
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Matched
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Age
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Catchment
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Registration type
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Flags
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>Sam Smith
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Matched</span>Matched
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>35
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Catchment</span>In catchment
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Registration type</span>Transfer
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Flags</span>0 flags
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <a href="reg-detail">View details</a>
+                </td>
+              </tr>
+
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span>Jane Jones
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Matched</span>Not matched
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Age</span>14
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Catchment</span>Out of catchment
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Registration type</span>Visitors & Migrants
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Flags</span>
+                  <strong class="nhsuk-tag nhsuk-tag--red">
+                    2 Flags
+                  </strong>
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <a href="reg-detail">View details</a>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+          <h2 class="nhsuk-heading-l nhsuk-u-padding-top-6">Get help using the service</h2>
+          <p>Contact Henry Naylor-Stead (henry.naylor-stead1@nhs.net) if you need help or have a question about the service.</p>
+
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}

@@ -7,7 +7,7 @@ moment.locale("en-gb")
 module.exports = (router) => {
 
   // Who is registering branch
-  router.post('/live/who-is-registering-answer/', function (req, res) {
+   router.post('/live/who-is-registering-answer/', function (req, res) {
     var registee = req.session.data['who-is-being-registered']
     if (registee === "myself"){
       res.redirect('/live/continue-with-nhs-login')

@@ -1,0 +1,77 @@
+<!--
+  This is the main layout where you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Extends the layout from /docs/views/template.html -->
+{% extends "template.html" %}
+
+<!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+{% endblock %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  GP Registration
+{% endblock %}
+
+<!-- Edit the header -->
+<!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
+{% block header %}
+  {{ header({
+    "service": {
+        "name": "CIS2 Authentication",
+        "href": "/"
+      },
+      "showNav": "false",
+      "showSearch": "false"
+    })
+  }}
+
+  {% if feedbackType %}
+    {% if servicePhase === 'beta' %}
+      {% include 'live/includes/feedback.html' %}
+    {% else %}
+
+    {% endif %}
+  {% endif %}
+
+{% endblock %}
+
+<!-- Edit the footer -->
+<!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
+{% block footer %}
+  {{ footer({
+    "links": [
+      {
+        "URL": "/legal/terms",
+        "label": "Terms of use"
+      },
+      {
+        "URL": "/",
+        "label": "Cookies"
+      },
+      {
+      "URL": "/legal/accessibility-statement",
+      "label": "Accessibility"
+      }
+    ]
+  })}}
+{% endblock %}
+
+{% block bodyEnd %}
+
+  {% if data['devMode'] === 'true' %}
+    {% include "includes/devmode.html" %}
+  {% endif %}
+
+
+  {% block scripts %}
+    <!-- Custom JavaScript files can be added to this file -->
+    {% include "includes/scripts.html" %}
+    <!-- For adding page specific JavsScript -->
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}
