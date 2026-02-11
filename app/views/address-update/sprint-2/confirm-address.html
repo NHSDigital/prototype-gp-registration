@@ -1,0 +1,76 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% block pageTitle %}
+Confirm your new address - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <form action="success-out-of-catchment" method="post" autocomplete="off">
+
+      <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+        <h1 class="nhsuk-fieldset__heading">Confirm your new address</h1>
+      </legend>
+
+     
+      <p>{% if data['select-new-address'] %}
+
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              New address
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['select-new-address'] }} Town Street,<br />
+              London,<br />
+              SW1A 1AA
+          {% elseif data['new-address-line-1'] %}
+            {{ data['new-address-line-1'] }}<br />
+            {{ data['new-address-line-2'] }}<br />
+            {{ data['new-address-town'] }}<br />
+            {{ data['new-address-postcode'] }}<br/>
+            {{ data['new-address-country'] }}
+          {% else %}
+            {{ data['abroad-address'] }}
+          {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a class="nhsuk-link" href="what-is-your-current-address">Change<span class="nhsuk-u-visually-hidden"> your address</span></a>
+            </dd>
+          </div>
+        </dl>
+
+   
+
+      {% if data['noGP'] != 'true' %}
+      <p>Your address will be updated on your NHS record immediately.</p>
+      {% endif %}
+
+      {{ button({
+        "text": "Confirm"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
