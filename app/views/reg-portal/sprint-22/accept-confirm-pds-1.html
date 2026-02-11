@@ -1,0 +1,78 @@
+{% extends 'reg-portal/layout.html' %}
+
+{% block pageTitle %}
+Sam Smith accepted - GP registrations portal - NHS
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+        <!--
+        {{ backLink({
+            text: "Back to patient registrations",
+            href: "reg-table-v2-yes-no2"
+        }) }}
+        -->
+
+        <div class="nhsuk-panel nhsuk-panel--confirmation">
+          <h1 class="nhsuk-heading-xl">
+            Approved
+          </h1>
+          <p class="nhsuk-body-l">Sam Smith has been added to your patient list</p>
+          <p>Follow your surgery's guidance for managing newly registered patients.</p>
+        </div>
+        <br><br>
+        <p>Some content about PDS being updated.</p>
+        <br>
+
+        {{ button({
+            "text": "Return to new patient registrations",
+                "href": "reg-table-pds-1-updated"
+          }) }}
+
+          
+
+          {{ button({
+            "text": "Return to dashboard",
+            "classes": "nhsuk-button--secondary",
+                "href": "dashboard-pds-1-updated"
+          }) }}
+
+
+        
+        </div>
+      </div>
+
+      <!--style for the panel component-->
+      <style>
+        .nhsuk-panel {
+          box-sizing: border-box;
+          margin-bottom: 15px;
+          padding: 35px;
+          border: 5px solid transparent;
+          text-align: center;
+        }
+        
+        .nhsuk-panel--confirmation {
+          color: #fff;
+          background: #00703c;
+        }
+        
+        @media (min-width: 40.0625em) {
+          .nhsuk-panel {
+            font-size: 2.25rem;
+            line-height: 1.1111111111;
+          }
+        }
+        </style>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}

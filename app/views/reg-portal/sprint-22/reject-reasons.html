@@ -1,0 +1,80 @@
+{% extends 'reg-portal/layout.html' %}
+
+{% block pageTitle %}
+Sam Smith - GP registrations portal - NHS
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            text: "Go back",
+            href: "reg-detail-multi-detail"
+        }) }}
+    
+            <form action="reject-confirm" method="post" autocomplete="off">
+    
+              {% call fieldset({
+                legend: {
+                  text: "Why are you rejecting Sam Smith?",
+                  classes: "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              }) %}
+    
+              {{ radios({
+                "idPrefix": "reject-reason",
+                "name": "reject-reason",
+                "items": [
+                  {
+                    "value": "Care needs would be better met by a practice nearer their home",
+                    "text": "Care needs would be better met by a practice nearer their home",
+                    checked: checked("reject-reason", "Care needs would be better met by a practice nearer their home")
+                  },
+                  {
+                    "value": "Not currently accepting patients",
+                    "text": "Not currently accepting patients",
+                    checked: checked("reject-reason", "Not currently accepting patients")
+                  },
+                  {
+                    "value": "Out of catchment",
+                    "text": "Out of catchment",
+                    checked: checked("reject-reason", "Out of catchment")
+                  },
+                  {
+                    "value": "Previous removal",
+                    "text": "Previous removal",
+                    checked: checked("reject-reason", "Previous removal")
+                  },
+                  {
+                    "value": "Other~/reg-portal/reject-reasons-details",
+                    "text": "Other reasonable grounds",
+                    checked: checked("reject-reason", "Other")
+                  }
+                ]
+              }) }}
+    
+              {% endcall %}
+    
+              {{ button({
+                "text": "Continue"
+              }) }}
+    
+            </form>
+    
+          </div>
+        </div>
+
+        </div>
+      </div>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}

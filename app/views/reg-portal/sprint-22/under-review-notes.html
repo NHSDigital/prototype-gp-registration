@@ -1,0 +1,57 @@
+{% extends 'reg-portal/layout.html' %}
+
+{% block pageTitle %}
+GP portal - NHS
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+          <!--{{ backLink({
+            text: "Return to Manage your profile",
+            href: "/gp/gp-profile-manager-manage"
+        }) }}-->
+
+          <span class="nhsuk-caption-m">Bob Roberts</span>
+          <h1 class="nhsuk-heading-xl">Why are you reviewing this patient's details?</h1>
+          <!--<p>Review new registration requests from patients who have had their identities confirmed and are matched to their health record.</p>-->
+
+           <form action="under-review" method="post" autocomplete="off">
+
+          <div class="nhsuk-form-group">
+            <!--
+            <h1 class="nhsuk-label-wrapper">
+              <label class="nhsuk-label nhsuk-label--l" for="example">
+              Why are you reviewing this patient's details?
+              </label>
+            </h1>
+            -->
+            <div id="example-hint" class="nhsuk-hint">
+              Provide some information about what needs to be checked and why.
+            </div>
+            <textarea class="nhsuk-textarea" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
+          </div>
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+          
+
+          
+          
+
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}
