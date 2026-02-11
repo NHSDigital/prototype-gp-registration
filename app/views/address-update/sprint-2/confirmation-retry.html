@@ -1,0 +1,29 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% set heading = "Home address updated" %}
+
+{% block pageTitle %}
+  {{ heading }} - NHS
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+    <h1 class="nhsuk-fieldset__legend--l">Your home address has been updated</h1>
+    <p>You do not need to do anything else.</p>
+    <p>If you made a mistake, you can <a href="/address-update/landing">change your home address</a> again.</p>
+    <p></p>
+
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

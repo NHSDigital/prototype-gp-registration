@@ -1,0 +1,60 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% set heading = 'Changing a temporary or correspondence address' %}
+
+{% block pageTitle %}
+{{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="is-address-uk" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+    
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          <p>Do not change your address using this service if it is a:</p>
+          <ul>
+            <li>temporary address - you'll live there for less than 3 months</li>
+            <li>correspondence address - you only use the address for letters and post and do not normally live there</li>
+          </ul>
+          <p>To change a temporary or correspondence address you should contact your GP surgery.</p>
+    
+          {% endcall %}
+    
+          {{ button({
+            "text": "Continue"
+          }) }}
+    
+        </form>
+
+      </div>
+    </div>
+
+{% include 'includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
