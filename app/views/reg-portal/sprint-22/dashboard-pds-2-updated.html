@@ -1,0 +1,67 @@
+{% extends 'reg-portal/layout.html' %}
+
+{% block pageTitle %}
+GP portal - NHS
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+          <!--{{ backLink({
+            text: "Return to Manage your profile",
+            href: "/gp/gp-profile-manager-manage"
+        }) }}-->
+
+          <span class="nhsuk-caption-m">In the last 90 days</span>
+          <h1 class="nhsuk-heading-xl">	Patient registrations</h1>
+          <p>Review new registration requests from patients who have had their identities confirmed and are matched to their health record.</p>
+
+          <ul class="nhsuk-grid-row nhsuk-card-group">
+            <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+
+              <div class="nhsuk-card nhsuk-card--clickable">
+                <div class="nhsuk-card__content">
+                  <p class="nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1">7 <span class="nhsuk-u-visually-hidden">New</span></p>
+                  <p><a href="reg-table-pds-2" class="nhsuk-card__link nhsuk-u-font-weight-normal nhsuk-u-font-size-19 nhsuk-link--no-visited-state">New</a></p>
+                </div>
+              </div>
+
+            </li>
+            <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+
+              <div class="nhsuk-card nhsuk-card--clickable">
+                <div class="nhsuk-card__content">
+                  <p class="nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1">1000 <span class="nhsuk-u-visually-hidden">Accepted</span></p>
+                  <p>Accepted</p>
+                </div>
+              </div>
+
+            </li>
+            <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+
+              <div class="nhsuk-card nhsuk-card--clickable">
+                <div class="nhsuk-card__content">
+                  <p class="nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1">5 <span class="nhsuk-u-visually-hidden">Rejected</span></p>
+                  <p>Rejected</p>
+                </div>
+              </div>
+
+            </li>
+          </ul>
+
+          <h2 class="nhsuk-heading-l nhsuk-u-padding-top-6">Get help using the service</h2>
+          <p>Contact Henry Naylor-Stead (henry.naylor-stead1@nhs.net) if you need help or have a question about the service.</p>
+
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}
