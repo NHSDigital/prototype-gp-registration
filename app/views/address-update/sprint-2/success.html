@@ -26,7 +26,8 @@
       </div>
     </div>
 
-      <p>You've changed your home address to:</p>
+      <p>You have confirmed your home address with the NHS. You do not need to do anything else.</p>
+      <p>You changed your home address to:</p>
       <p>{% if data['select-new-address'] %}
           {{ data['select-new-address'] }} Town Street,<br />
               London,<br />
@@ -44,14 +45,23 @@
           {% endif %}
       </p>
 
-      {% if data['noGP'] == 'true' %}
-      <p>Get access to primary healthcare services by registering with a GP surgery near where you live.</p>
-      {{ actionLink({
-        text: "Find a GP",
-        href: "#"
-      }) }}
-      {% endif %}
-    <p><a href="feedback">Tell us about your experience updating your address (opens in a new tab)</a></p>
+       {% if data['noGP'] != 'true' %}
+
+      <p>We have sent a confirmation email to the address on your record.</p>
+
+      <p>You will stay registered with your current GP surgery. This is because your new address is still within your GP surgery’s catchment area.</p>
+
+      <p>If this address is wrong, you can <a href="https://change-your-address.account.nhs.uk/" target="_blank">change your home address</a> or <a href="https://www.nhs.uk/service-search/find-a-gp" target="_blank">find a new GP</a> in your area.</p>
+
+      <p>If you did not make this change, report it to your GP surgery as soon as possible.</p>
+
+       {% else %}
+
+
+        {% endif %}
+
+
+     
   </div>
 </div>
 

@@ -18,11 +18,11 @@
         Home address updated
       </h1>
       <div class="nhsuk-panel__body">
-        We’ve shared this with your GP surgery
+        Your NHS record has been updated and we’ve shared your new address with your GP surgery
       </div>
     </div>
 
-    <p>Your NHS record has been updated with your new address:</p>
+    <p>You've changed your home address to:</p>
     <p>{% if data['select-new-address'] %}
         {{ data['select-new-address'] }} Town Street,<br />
         London,<br />
@@ -39,7 +39,8 @@
         YO23 1PP<br>   
       {% endif %}
     </p>
-
+    
+    <p>We have sent a confirmation email to the address on your record.</p>
     <div class="nhsuk-inset-text">
       <span class="nhsuk-u-visually-hidden">Information: </span>
       <p>Your new address is outside the catchment area for Lordship Lane Surgery. Your current GP may contact you to confirm this.</p>
