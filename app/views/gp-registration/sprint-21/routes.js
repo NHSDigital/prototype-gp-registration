@@ -11,6 +11,11 @@ module.exports = (router) => {
   const sprint = 'sprint-21'
   const basePath = `/gp-registration/${sprint}`   // absolute base path for the sprint
 
+  router.use((req, res, next) => {
+    res.locals.basePath = basePath
+    next()
+  })
+
   // Helper for absolute redirects within this sprint
   const sprintRedirect = (res, page) => res.redirect(`${basePath}/${page}`)
 
