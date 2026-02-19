@@ -29,24 +29,19 @@ Sam Smith - GP registrations portal - NHS
           
 
           
-
-          {% from "warning-callout/macro.njk" import warningCallout %}
-
-{{ warningCallout({
-  heading: "School, nursery or work",
-  text: "Stay away from school, nursery or work until all the spots have crusted over. This is usually 5 days after the spots first appeared."
-}) }}
-
-         <div class="nhsuk-card nhsuk-card--warning">
-  <div class="nhsuk-card__content">
-    <h3 class="nhsuk-card__heading">
-      <span role="text">
-        <span class="nhsuk-u-visually-hidden">Important:</span> School, nursery or work
-      </span>
-    </h3>
-    <p class="nhsuk-card__description">Stay away from school, nursery or work until all the spots have crusted over. This is usually 5 days after the spots first appeared.</p>
-  </div>
-</div>
+        <div class="nhsuk-warning-callout">
+            <h3 class="nhsuk-warning-callout__label"> <span role="text">
+                <span class="nhsuk-u-visually-hidden">Important: </span>
+                Sam Smith has changed their following details:
+              </span> 
+            </h3>
+            <ul>
+              <li>name</li>
+              <li>address</li>
+              <li>telephone number</li>
+            </ul>
+          </div>
+          
 
           <div style="display: flex; height: 100%; margin-bottom: 48px;">
             <a class="nhsuk-button" style="margin-top:auto; margin-bottom:auto; margin-left:0; margin-right:24px;" href="accept-confirm-pds-2">Approve</a>
