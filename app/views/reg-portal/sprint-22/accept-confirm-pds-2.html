@@ -37,9 +37,18 @@ Sam Smith accepted - GP registrations portal - NHS
 
         <p>Follow your surgery's guidance for managing newly registered patients.</p>
 
-        <a href="reg-table-pds-2-updated" class="nhsuk-link">Back to patient registrations</a>
-          &nbsp;&nbsp;&nbsp;
-        <a href="dashboard-pds-2-updated" class="nhsuk-link">Back to the dashboard</a>
+        {{ button({
+            "text": "Return to new patient registrations",
+                "href": "reg-table-pds-2-updated"
+          }) }}
+
+          
+
+          {{ button({
+            "text": "Return to dashboard",
+            "classes": "nhsuk-button--secondary",
+                "href": "dashboard-pds-2-updated"
+          }) }}
 
         <!--
         {{ button({

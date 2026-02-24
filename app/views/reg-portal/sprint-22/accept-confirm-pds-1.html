@@ -16,13 +16,15 @@ Sam Smith accepted - GP registrations portal - NHS
         }) }}
         -->
 
-        <div class="nhsuk-panel nhsuk-panel--confirmation">
-          <h1 class="nhsuk-heading-xl">
+       <div class="nhsuk-panel">
+          <h1 class="nhsuk-panel__title">
             Approved
           </h1>
-          <p class="nhsuk-body-l">Sam Smith has been added to your patient list</p>
-          <p>Follow your surgery's guidance for managing newly registered patients.</p>
+          <div class="nhsuk-panel__body">
+            Sam Smith has been added to your patient list
+          </div>
         </div>
+
        <h2 class="nhsuk-heading-l">What happens next</h1>
 
         <p>A record will be created for the patient in your clinical systems. This usually takes about 10 minutes.</p>
@@ -31,46 +33,19 @@ Sam Smith accepted - GP registrations portal - NHS
 
         <p>Follow your surgery's guidance for managing newly registered patients.</p>
 
-        {{ button({
-            "text": "Return to new patient registrations",
-                "href": "reg-table-pds-1-updated"
-          }) }}
+         <a href="reg-table-pds-1-updated" class="nhsuk-link">Back to patient registrations</a>
+          &nbsp;&nbsp;&nbsp;
+        <a href="dashboard-pds-1-updated" class="nhsuk-link">Back to the dashboard</a>
 
-          
 
-          {{ button({
-            "text": "Return to dashboard",
-            "classes": "nhsuk-button--secondary",
-                "href": "dashboard-pds-1-updated"
-          }) }}
+       
 
 
         
         </div>
       </div>
 
-      <!--style for the panel component-->
-      <style>
-        .nhsuk-panel {
-          box-sizing: border-box;
-          margin-bottom: 15px;
-          padding: 35px;
-          border: 5px solid transparent;
-          text-align: center;
-        }
-        
-        .nhsuk-panel--confirmation {
-          color: #fff;
-          background: #00703c;
-        }
-        
-        @media (min-width: 40.0625em) {
-          .nhsuk-panel {
-            font-size: 2.25rem;
-            line-height: 1.1111111111;
-          }
-        }
-        </style>
+      
 
 
 
