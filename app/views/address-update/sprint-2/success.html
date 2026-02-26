@@ -45,9 +45,9 @@
           {% endif %}
       </p>
 
-       {% if data['noGP'] != 'true' %}
-
       <p>We have sent a confirmation email to the address on your record.</p>
+
+      {% if data['noGP'] != 'true' %}
 
       <p>You will stay registered with your current GP surgery. This is because your new address is still within your GP surgery’s catchment area.</p>
 
@@ -55,10 +55,11 @@
 
       <p>If you did not make this change, report it to your GP surgery as soon as possible.</p>
 
-       {% else %}
+      {% else %}
 
+      <p>Get access to primary healthcare services by registering with a GP near where you live.</p>
 
-        {% endif %}
+      {% endif %}
 
 
      
