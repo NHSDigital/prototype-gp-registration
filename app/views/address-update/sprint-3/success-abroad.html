@@ -1,0 +1,53 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% set heading = "Home address updated" %}
+
+{% block pageTitle %}
+  {{ heading }} - NHS
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <div class="nhsuk-panel">
+      
+      <h1 class="nhsuk-panel__title margin-bottom-0">
+        You told us you no longer live in the the UK
+      </h1>
+      <!--
+      <div class="nhsuk-panel__body">
+        You told us you no longer live in the the UK
+      </div>
+      -->
+      
+
+    </div>
+
+    <p>Your address has been updated on your NHS record.</p>
+
+    <p>You've told us that you've left the UK and moved abroad.</p>
+
+    <p>We have sent a confirmation email to the email address on your record.</p>
+
+    <h2>What happens next</h2>
+
+    <p>Lordship Lane Surgery will remove you from their patient list.</p>
+
+    <p>If you return to live in the UK, you can <a href="https://www.nhs.uk/service-search/find-a-gp" target="_blank">find a new GP</a> in your area.</p>
+
+    <p>If you did not make this change, report it to your GP surgery as soon as possible.</p>
+
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
