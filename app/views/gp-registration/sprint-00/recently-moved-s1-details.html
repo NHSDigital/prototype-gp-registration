@@ -1,0 +1,77 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'S1 certificate' %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% set action = 'do-you-have-existing-conditions' %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "recently-moved-documents",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="{{ action }}" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+            {% if (data['who-is-being-registered'] === "dependant") %}
+            <p>If they have an S1 certificate or believe they are eligible for one they should email ohsfaregistrations@nhsbsa.nhs.uk with either:</p>
+            <ul>
+              <li>a copy of the certificate, or</li>
+              <li>an explanation of why they believe they are eligible for one</li>
+            </ul>
+            {% else %}
+            <p>If you have an S1 certificate or believe you are eligible for one you should email ohsfaregistrations@nhsbsa.nhs.uk with either:</p>
+            <ul>
+              <li>a copy of the certificate, or</li>
+              <li>an explanation of why you believe you are eligible for one</li>
+            </ul>
+            {% endif %}
+            <details class="nhsuk-details">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  What is an S1 certificate?
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p>An S1 certificate is a document issued by an EU country or Switzerland which shows that you are entitled to healthcare in the UK paid for by that country. You may be eligible for an S1 certificate if you have worked in the European Economic Area or receive benefits from abroad.</p>
+                <p>If you have worked in or are paid benefits (including a state pension) by a country in the European Economic Area (EEA) or Switzerland, that country may be responsible for paying for the cost of your healthcare under international agreements. This may also be the case if you are a posted or frontier worker employed in the EEA or Switzerland but living in the UK.</p>
+                <p>The country may have issued you with an S1 certificate which needs to be registered in the UK or you may be eligible to request one.</p>
+                <p>If you are currently paying the Immigration Health Surcharge (IHS) but are eligible for an S1, you may be entitled to a reimbursement of the IHS following registration of the form.</p>
+                <p>For more information on accessing healthcare for citizens from EU countries, Norway, Iceland, Liechtenstein and Switzerland living in or moving to the UK <a href="https://www.gov.uk/guidance/healthcare-for-eu-and-efta-nationals-living-in-the-uk">read the guidance on healthcare for EU citizens living in or moving to the UK (opens in new tab).</a></p>
+              </div>
+            </details>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

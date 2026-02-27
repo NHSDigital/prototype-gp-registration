@@ -1,0 +1,187 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['user-auth'] === "p9") %}
+  {% if (data['ods-match'] === "branch") %}
+    {% set heading = "You are already registered with this surgery" %}
+  {% else %}
+    {% set heading = "You are already registered with " + data.presets[0].gpsurgery %}
+  {% endif %}
+{% elif (data['user-auth'] === "p5") %}
+  {% if (data['ods-match'] === "branch") %}
+    {% set heading = "You may already be registered with this group of GP surgeries" %}
+  {% else %}
+    {% set heading = "You may already be registered with " + data.presets[0].gpsurgery %}
+  {% endif %}
+{% else %}
+  {% if (data['who-is-being-registered'] === "dependant") %}
+    {% if (data['ods-match'] === "branch") %}
+      {% set heading = data['name-first-name'] + " may already be registered with this group of GP surgeries" %}
+    {% else %}
+      {% set heading = data['name-first-name'] + " may already be registered with " + data.presets[0].gpsurgery %}
+    {% endif %}
+  {% else %}
+    {% if (data['ods-match'] === "branch") %}
+      {% set heading = "You may already be registered with this group of GP surgeries" %}
+    {% else %}
+      {% set heading = "You may already be registered with " + data.presets[0].gpsurgery %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% if (data['select-gp-address']) %}
+  {% set link = 'what-is-your-gp-address-selection' %}
+{% else %}
+  {% set link = 'what-is-your-gp-address-manual' %}
+{% endif %}
+
+{% block outerContent %}
+  {% if (data['user-auth'] !== "p9") %}
+    {{ backLink({
+      "href": link,
+      "text": "Go back",
+      "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+    }) }}
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+    {% if (data['user-auth'] === "p9") %}
+
+      {% if (data['ods-match'] === "branch") %}
+
+        {# if the user logs in with p9 and their ODS code is related to (a branch) the one they are trying to register with #}
+
+        <p>{{ data.presets[0].gpsurgery }} is part of the same group as your current surgery. You do not need to complete this registration to use its healthcare services.</p>
+        <p>You can use the NHS App or <a href="https://www.nhs.uk/nhs-app/account/">log into your NHS account</a> to:</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>book, check or cancel appointments with a GP or nurse</li>
+          <li>order repeat prescriptions</li>
+          <li>see parts of your health record, including information about medicines, vaccinations and test results</li>
+          <li>see communications between your GP surgery and other services, such as hospitals</li>
+        </ul>
+        <h2 class="nhsuk-heading-m">Register with a different GP surgery</h2>
+        <p>If you want to register with a different GP surgery use <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a></p>
+
+      {% else %}
+
+        {# if the user logs in with p9 and their ODS code is an exact match to the one they are trying to register with #}
+
+        <p>You can use the NHS App or <a href="https://www.nhs.uk/nhs-app/account/">log into your NHS account</a> to:</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>book, check or cancel appointments with a GP or nurse</li>
+          <li>order repeat prescriptions</li>
+          <li>see parts of your health record, including information about medicines, vaccinations and test results</li>
+          <li>see communications between your GP surgery and other services, such as hospitals</li>
+        </ul>
+        <h2 class="nhsuk-heading-m">Register with a different GP surgery</h2>
+        <p>If you want to register with a different GP surgery use <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a></p>
+
+      {% endif %}
+
+    {% else %}
+
+      {% if (data['ods-match'] === "branch") %}
+
+        {# if the user either logs in with p5 or doesn't use login and their ODS code is related to (a branch) of the one they are trying to register with #}
+
+        <p>{{ data.presets[0].gpsurgery }} is part of a group of surgeries.</p>
+        <p>Use NHS services online to:</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>book, check or cancel appointments with a GP or nurse</li>
+          <li>order repeat prescriptions</li>
+          <li>see parts of your health record, including information about medicines, vaccinations and test results</li>
+          <li>see communications between your GP surgery and other services, such as hospitals</li>
+        </ul>
+        <p>Create an account to <a href="https://www.nhs.uk/nhs-services/gps/using-online-services/">access NHS services online</a></p>
+        <h2 class="nhsuk-heading-m">Register with a different GP surgery</h2>
+        <p>If you want to register with a different GP surgery use <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a></p>
+
+      {% else %}
+
+        {# if the user either logs in with p5 or doesn't use login and their ODS code is an exact match to the one they are trying to register with #}
+
+        <p>Use NHS services online to:</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>book, check or cancel appointments with a GP or nurse</li>
+          <li>order repeat prescriptions</li>
+          <li>see parts of your health record, including information about medicines, vaccinations and test results</li>
+          <li>see communications between your GP surgery and other services, such as hospitals</li>
+        </ul>
+        <p>Create an account to <a href="https://www.nhs.uk/nhs-services/gps/using-online-services/">access NHS services online</a></p>
+        <h2 class="nhsuk-heading-m">Register with a different GP surgery</h2>
+        <p>If you want to register with a different GP surgery use <a href="https://www.nhs.uk/service-search/find-a-gp">Find a GP</a></p>
+
+      {% endif %}
+
+    {% endif %}
+
+  </div>
+</div>
+
+{# DEVMODE SCENARIOS #}
+{% if data['devMode'] === 'true' %}
+<details class="nhsuk-details dev-mode dev-mode--routing" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+      <span class="nhsuk-details__summary-text">
+        Page variations
+      </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h2 class="nhsuk-heading-m">Repeat registration</h2>
+
+    <h3 class="nhsuk-heading-s">NHS login p9</h3>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="already-registered?ods-match=main&user-auth=p9&who-is-being-registered=myself">ODS code matches current practice</a>
+      </li>
+      <li>
+        <a href="already-registered?ods-match=branch&user-auth=p9&who-is-being-registered=myself">ODS code matches a branch of the main practice</a>
+      </li>
+    </ul>
+
+    <h3 class="nhsuk-heading-s">NHS login p5/p0 & Non login users</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="already-registered?ods-match=main&user-auth=p5&who-is-being-registered=myself">ODS code matches current practice</a>
+      </li>
+      <li>
+        <a href="already-registered?ods-match=branch&user-auth=p5&who-is-being-registered=myself">ODS code matches a branch of the main practice</a>
+      </li>
+    </ul>
+
+    <h3 class="nhsuk-heading-s">Dependant</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="already-registered?ods-match=main&user-auth=none&who-is-being-registered=dependant&relation=Parent%20or%20guardian">ODS code matches current practice</a>
+      </li>
+      <li>
+        <a href="already-registered?ods-match=branch&user-auth=none&who-is-being-registered=dependant&relation=Parent%20or%20guardian">ODS code matches a branch of the main practice</a>
+      </li>
+    </ul>
+  </div>
+</details>
+{% endif %}
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

@@ -1,0 +1,142 @@
+<!-- Set any variables here -->
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What are the details of " + data ['name-first-name'] + "'s emergency contact?" %}
+  {% set relationshipLabel = "Relationship to the person being registered" %}
+  {% set kinLabel = "This is their next of kin" %}
+{% else %}
+  {% set heading = 'What are the details of your emergency contact?' %}
+  {% set relationshipLabel = "Relationship to you" %}
+  {% set kinLabel = "This is my next of kin" %}
+{% endif %}
+    
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
+
+
+<!-- For adding a phase banner, breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../includes/phase-banner.html' %}
+
+{{ backLink({
+    "href": "do-you-have-emergency-contact",
+    "text": "Go back"
+  })
+}}
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {% if (data['registered-for-the-first-time'] === "Yes") %}
+          <form action="recently-move-to-the-uk" method="post" autocomplete="off">
+          {% else %}
+          <form action="are-you-returning-from-overseas" method="post" autocomplete="off">
+          {% endif %}
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ input({
+                label: {
+                  "text": "Full name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-full-name",
+                "name": "ec-full-name",
+                value: data['ec-full-name']
+              }) }}
+
+            {{ input({
+                label: {
+                  "text": "Relationship to you"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ec-relationship",
+                "name": "ec-relationship",
+                value: data['ec-relationship']
+              }) }}
+
+            {% set fieldVar = data['health-contact'] %}
+            {{ checkboxes({
+              "idPrefix": "health-contact",
+              "name": "health-contact",
+              items: [
+                {
+                  value: "Hospital specialist or consultant",
+                  text: kinLabel,
+                  "checked": fieldVar and fieldVar.indexOf("Hospital specialist or consultantt") !== -1,
+                  exclusiveGroup: "care-list"
+                }
+              ]
+              }) }}
+
+              {{ input({
+                "label": {
+                  "text": "Contact telephone number"
+                },
+                  "hint": {
+                  "text": "For international numbers include the country code"
+                },
+                "classes": "nhsuk-input--width-20",
+                "id": "ec-contact-tel",
+                "name": "ec-contact-tel",
+                value: data['ec-contact-tel']
+              }) }}
+
+            {% endcall %}
+
+            <p class="nhsuk-u-padding-bottom-4">By continuing you are confirming that the GP surgery can contact this person in an emergency.</p>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}

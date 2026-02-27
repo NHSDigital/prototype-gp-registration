@@ -1,0 +1,89 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Does ' + data['name-first-name'] + ' have any of these documents?' %}
+  {% set labelText = 'They don\'t have any of these documents.' %}
+{% else %}
+  {% set heading = 'Do you have any of these documents?' %}
+  {% set labelText = 'I don\'t have any of these documents' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "recently-moved-eea",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "health-documents",
+            "name": "health-documents",
+            "items": [
+              {
+                "value": "ehic~/live/document-details-ehic",
+                "text": "European health insurance card (EHIC)",
+                "checked": checked("health-documents", "ehic")
+              },
+              {
+               "value": "s1~/live/recently-moved-s1-details",
+               "text": "S1 form",
+               "checked": checked("health-documents", "S1")
+             },
+              {
+                "value": "No~/live/overseas-declaration-nodocs",
+                "text": labelText,
+                "checked": checked("health-documents", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {{ details({
+            "text": "Why are you asking this?",
+            "HTML": "<p>You will need to provide the information from your EHIC or S1 form. This will help NHS to reclaim the costs for your care. We do not share this information with anyone outside NHS services.</p>"
+            }) }}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

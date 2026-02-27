@@ -1,0 +1,432 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Your privacy on NHS Register with a GP Surgery - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1>Your privacy on NHS Register with a GP Surgery</h1>
+
+  </div>
+</div>
+
+<article>
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <section>
+        <nav class="nhsuk-contents-list" role="navigation" aria-label="Pages in this guide">
+          <h2 class="nhsuk-u-visually-hidden">Contents</h2>
+
+          <p>Version 2.3, December 2024</p>
+
+          <p>Contents:</p>
+
+          <ol class="nhsuk-contents-list__list">
+            <li class="nhsuk-contents-list__item" aria-current="page">
+              <a class="nhsuk-contents-list__link" href="#how-we-use">1. How we use your personal information</a>
+            </li>
+            <li class="nhsuk-contents-list__item">
+              <a class="nhsuk-contents-list__link" href="#who-we-are">2. The ‘NHS GP Registration’ service and who we are</a>
+            </li>
+            <li class="nhsuk-contents-list__item">
+              <a class="nhsuk-contents-list__link" href="#how-personal-info">3. What information we collect about you</a>
+            </li>
+            <li class="nhsuk-contents-list__item">
+              <a class="nhsuk-contents-list__link" href="#personal-data-why">4. How NHS Digital uses your personal data and why</a>
+            </li>
+            <li class="nhsuk-contents-list__item">
+              <a class="nhsuk-contents-list__link" href="#legal-basis">5. Our legal basis and how long NHS England hold your data</a>
+            </li>
+            <li class="nhsuk-contents-list__item">
+              <a class="nhsuk-contents-list__link" href="#how-long-we-keep-your-data">6. How long we keep your data for</a>
+            </li>
+            <li class="nhsuk-contents-list__item">
+              <a class="nhsuk-contents-list__link" href="#where-your-data-is-stored">7. Where your data is stored</a>
+            </li>
+            <li class="nhsuk-contents-list__item">
+              <a class="nhsuk-contents-list__link" href="#personal-data">8. Personal data for which NHS England is the controller outside the scope of the 'NHS Register with a GP Surgery'</a>
+            </li>
+            <li class="nhsuk-contents-list__item">
+              <a class="nhsuk-contents-list__link" href="#your-rights">9. Your rights</a>
+            </li>
+            <li class="nhsuk-contents-list__item">
+              <a class="nhsuk-contents-list__link" href="#points-of-contact">10. Points of contact for queries</a>
+            </li>
+            <li class="nhsuk-contents-list__item">
+              <a class="nhsuk-contents-list__link" href="#objections">11. Complaints</a>
+            </li>
+            <li class="nhsuk-contents-list__item">
+              <a class="nhsuk-contents-list__link" href="#changes">12. Changes to the privacy policy</a>
+            </li>
+          </ol>
+        </nav>
+      </section>
+
+      <section>
+
+        <div id="how-we-use">
+          <h2>1. How we use your personal information</h2>
+          <p>This privacy policy explains how we use your personal data when you use the ‘NHS Register with a GP Surgery’ service.  You can use this online service to register with a GP surgery or change your GP surgery, so that you can access NHS primary care services in England.</p>
+          <p>This service is available via web browser and the <a href="https://www.nhs.uk/nhs-app/">NHS App</a>.</p>
+          <p>You should read this policy alongside the <a href="/legal/terms">Terms of use</a> For this service.</p>
+
+          <h3>1.1 In this privacy policy the following terms have the following meanings:</h3>
+
+          <ul>
+            <li>Controller: "The person or organisation (alone or with others) who decides what personal data to process and how it will be used"</li>
+            <li>Processor: "An organisation which processes personal data on behalf of, and under the instruction, of the controller"</li>
+            <li>Special Category Data: "Sensitive personal data given special protection in data protection law including personal data about your health"</li>
+          </ul>
+        </div>
+
+        <div id="who-we-are">
+          <h2>2. The ‘NHS Register with a GP Surgery’ service and who we are</h2>
+          <p>The 'NHS Register with a GP Surgery' service is provided by NHS England. The service allows you to apply to register with a GP surgery or change your GP surgery.</p>
+          <p>The Secretary of State for Health and Social Care has issued NHS England a legal document called a ‘Direction’ under section 254 of the Health and Social Care Act 2012, which instructs NHS England to provide the 'NHS Register with a GP Surgery' service. <a href="https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/directions-and-data-provision-notices/nhs-england-directions/register-with-a-gp-surgery-directions-2022">You can read this Direction here</a>.</p>
+          <p>Under data protection law, NHS England is a controller for the personal data you provide when you use the 'NHS Register with a GP Surgery' service.</p>
+          <p>NHS England is also the controller for the following services which are used to provide the 'NHS Register with a GP Surgery' service:</p>
+          <ul>
+            <li>NHS login, which provides patients with a simple, secure and re-usable way to access multiple digital health and care services, including 'NHS Register with a GP Surgery'.</li>
+            <li>The Personal Demographics Service (PDS) which is the national electronic database of NHS patient details such as name, address, date of birth and NHS Number (known as demographic information).</li>
+            <li>The ‘Demographics Notify a Patient’ service, which provides patients with a notification to inform them that their change of GP has been successful. If you are an NHS App user, these notifications may be sent through the NHS App Messaging Service. For further information see <a href="https://www.nhs.uk/nhs-app/nhs-app-legal-and-cookies/nhs-app-privacy-policy/messaging-services/%20">NHS App privacy policy: messaging services</a>.</li>
+          </ul>
+        </div>
+
+
+        <div id="how-personal-info">
+          <h2>3. What information we collect about you</h2>
+
+          <div class="block-table">
+
+            <div class="nnhsuk-table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Category of information</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>NHS Register with a GP Surgery log/audit data</td>
+                    <td>
+                      <p>Information captured against your NHS Register with a GP Surgery session ID about your use of the 'NHS Register with a GP Surgery', such as the time of use, actions you took using the 'NHS Register with a GP Surgery', and associated technical log events.</p>
+                  </tr>
+                  <tr>
+                    <td>NHS Register with a GP Surgery performance data</td>
+                    <td>
+                      <p>IP addresses are transmitted to Adobe as part of performance data but are not stored so users cannot be identified.</p>
+                      <p>We also measure how many connecting IP addresses do not have JavaScript enabled on their device to improve the accessibility of the service. For more information see our <a href="https://gp-registration.nhs.uk/gpregistration/legal/cookies">cookie policy</a>.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>NHS login account information</td>
+                    <td>
+                      <p>The personal data provided by NHS login should you choose to use NHS login to access the service.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>NHS Register with a GP Surgery demographic data</td>
+                    <td>
+                      <p>The personal data you provide to register with a GP surgery such as your name, address, date of birth, NHS number, your email address, contact telephone numbers, your sex and ethnicity.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>NHS Register with a GP Surgery Medical & Lifestyle Questionnaire data (optional)</td>
+                    <td>
+                      <p>The personal data you provide to inform your new GP of your medical history and lifestyle, such as your existing or pre-existing medical conditions, allergies and current medications.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>European Health Insurance Card (EHIC) data</td>
+                    <td>
+                      <p>If you are a visitor from outside of the UK, we collect EHIC details to determine your charging eligibility for NHS care. Providing this information is optional. If you choose to provide this, we ask for your:</p>
+                      <ul>
+                        <li>Country code</li>
+                        <li>Personal Identification number</li>
+                        <li>Identification number of your EHIC card</li>
+                        <li>Identification number of the institution</li>
+                        <li>Expiry date</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>NHS Register with a GP Surgery application metadata</td>
+                    <td>
+                      <p>The personal data that is derived by the service from the demographic information you provide and is auto generated. Metadata includes: registration type, date and time of submission, application reference number, NHS login identity proofing level, PDS match, PDS date of death, PDS matched NHS number, the organisation code for your current GP practice, PDS number (if different to patient entered NHS number), confirmation of EHIC details sent to National Back Office.</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div> <!-- table container -->
+
+          </div> <!-- block table -->
+
+        </div> <!-- personal info -->
+
+
+        <div id="personal-data-why">
+          <h2>4. How we use your data</h2>
+          <h3>4.1 Using Personal Demographic Service (PDS) to retrieve and update your PDS record</h3>
+          <p>We use the demographic data you provide to match you to your PDS record. This helps us to find your NHS number so that we can send this to your chosen GP surgery along with your application.</p>  
+          <p>If you sign in to the 'NHS Register with a GP Surgery' service using your <a href="https://help.login.nhs.uk/setupnhslogin/">NHS login account</a> and your NHS login identity has been <a href="https://digital.nhs.uk/services/nhs-login/nhs-login-for-partners-and-developers/nhs-login-integration-toolkit/how-nhs-login-works">verified to the highest level</a>, any new demographic information you provide (such as a new address or telephone number) will be used to update your PDS record. It is important that your PDS record is accurate and up to date, so that the NHS can contact you to provide you with care, e.g. send you appointment reminders and invites to health screening services. Your updated demographic information will also be passed to your new GP practice as part of your application.</p>
+
+          <h3>4.2 Using NHS login to pre-populate your personal data</h3>
+          <p>It is possible to use your NHS login account to register with the 'NHS Register with a GP Surgery' service. The benefit is that the information which we hold for your NHS login account will be used to set up your ‘NHS Register with a GP Surgery’ service and save you having to provide the same information again. During the registration process, we will ask you for your permission to use the NHS login information for the 'NHS Register with a GP Surgery' registration. See <a href="https://www.nhs.uk/nhs-app/nhs-app-legal-and-cookies/">NHS login's Privacy Notice and Terms and Conditions for more information</a>.</p>
+
+          <h3>4.3 Securely send your application to your chosen GP surgery</h3>
+          <p>The data collected by this service, is securely sent to your chosen GP surgery so that they can process your application to register with them.</p>
+          <p>Your chosen GP surgery will become the data controller for your application when it is securely received by them.</p>
+          <p>After you have submitted your registration application at the end of the Register with a GP Surgery service, your chosen GP surgery may want to ask you some additional questions. If you click the link to answer these additional questions, you will be taken to your chosen GP surgery’s website. The only information we share to the GP surgery’s website is a unique reference number associated with your application. This will allow your chosen GP surgery to link your registration application to any additional questions you answer.</p>
+
+          <h3>4.4 Service improvement, audit and troubleshooting</h3>
+          <p>We look at how the service is being used to help us make it better. To do this we put small files called “analytic cookies” on to your device using a software called These cookies are optional.  The information collected includes: the type of device you used, your browser type, your operating system, the date/time you used the service and how you interacted with the service. For more information, please see our <a href="https://gp-registration.nhs.uk/gpregistration/legal/cookies">cookie policy</a>.</p>
+          <p>We also store technical log data for audit and troubleshooting (bug/fix) purposes and to make improvements to the service.</p>
+          <p>The personal data collected by the service will be de-identified and analysed to optimize the service and for policy developments. Information on how many people use the service and its performance will also be used to publish anonymous statistical dashboards. See log/audit data in the table below for more information.</p>
+          <p>We also count how many users have Javascript disabled or use a browser which does not support javascript in order to improve the accessibility of the service.</p>
+
+          <h3>4.5 Send you notifications about your GP application </h3>
+          <p>If you provide an email address when using Register with a GP surgery online, the service will send you an email notification to confirm that your application has been submitted to your chosen GP surgery.</p>
+          <p>The service may also send you a notification via the NHS App, email, SMS and post to inform you if your registration is accepted by your chosen GP. This will only be in cases when your new GP practice has enabled this feature in the service.</p>
+          <p>Your chosen GP may also send you a notification to let you know if your application is accepted or rejected.</p>
+
+        </div>
+
+        <div id="legal-basis">
+          <h2>5. Our legal basis and how long NHS hold your data</h2>
+          <p>Our legal basis to process your personal data to provide this service is:</p>
+          <ul>
+            <li>Legal obligation - Article 6(1)(c) of UK GDPR.  This is because the Secretary of State for Health and Social Care has issued us with a Direction to provide this service. This Direction is called the <a href="https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/directions-and-data-provision-notices/nhs-england-directions/register-with-a-gp-surgery-directions-2022">Register with a GP Surgery Directions 2022</a>.</li>
+            <li>Consent – Article 6(1)(a) of UK GDPR, if you choose to accept optional analytics cookies. See our <a href="https://gp-registration.nhs.uk/gpregistration/legal/cookies">cookie policy</a> for more information.</li>
+          </ul>
+          <p>We also need an additional legal basis in the UK GDPR and the Data Protection Act 2018 (DPA 2018) to use data which is extra sensitive. This is known as ‘special categories of personal data’. Our legal basis to use data relating to your health is:</p>
+          <ul>
+            <li>Health or social care – Article 9(2)(h) of UK GDPR, plus Schedule 1, Part 1, Paragraph 2 “Health or social care purposes” of DPA 2018</li>
+          </ul>
+
+        </div> <!-- legal basis -->
+
+        <div id="how-long-we-keep-your-data">
+          <h2>6. How long we keep your data for</h2>
+          <div class="block-table">
+
+            <div class="nnhsuk-table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Category of information</th>
+                    <th>Retention period</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>NHS Register with a GP Surgery application data</td>
+                    <td>
+                      <p>We keep a copy of your application in our logs for 3 months to:</p>
+                      <ul>
+                        <li>update your GP Practice should you have a question about the status of your application</li>
+                        <li>investigate and resolve any errors which occur when you submit your application.</li>
+                      </ul>
+                  </tr>
+                  <tr>
+                    <td>NHS Register with a GP Surgery analytics data</td>
+                    <td>
+                      <p>We keep some information for up to 2 years to:</p>
+                      <ul>
+                        <li>monitor the uptake of the service, e.g. how many applications result in practice acceptance;</li>
+                        <li>analyse demographic data to understand the reach of the service and to understand if the service is meeting the needs of vulnerable groups, e.g. those who do not have a permanent address.</li>
+                      </ul>
+                      <p>Data minimisation is undertaken where possible but some identifiable information is required such as NHS number (where provided) to match to PDS. If NHS number is not provided, then a combination of full postcode, date of birth and surname are used. Example metrics include: registration acceptance rate by address status; registration acceptance rate over time; 64% of total applications were from female applicants.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>NHS Register with a GP Surgery audit data</td>
+                    <td>
+                      <p>7 years for legal and security compliance purposes</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>NHS Register with a GP Surgery performance data</td>
+                    <td>
+                      <p>12 months</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>NHS login account information</td>
+                    <td>
+                      <p>2 years</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>NHS Register with a GP Surgery demographic data</td>
+                    <td>
+                      <p>If your GP practice accepts auto-registrations, we will store your demographic data in the Register with a GP Surgery API store for 3 months. This will allow your new GP practice to retrieve your data and automatically register you.</p>  
+                      <p>In all other cases, we transfer the demographic information in your application securely to your GP practice as soon as you submit your application.</p>
+                      <p>See also 'analytics data' above.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>NHS Register with a GP Surgery Medical & Lifestyle Questionnaire data</td>
+                    <td>
+                      <p>If your GP practice accepts auto-registrations, we will store your medical and lifestyle data in the Register with a GP Surgery API store for 3 months. This will allow your new GP practice to retrieve your data and automatically register you.</p>  
+                      <p>In all other cases, we transfer your medical and lifestyle information securely to your GP practice as soon as you submit your application.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>NHS Register with a GP Surgery application metadata</td>
+                    <td>
+                      <p>2 years</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div> <!-- table container -->
+        </div> <!-- how long data -->
+
+        <div id="where-your-data-is-stored">
+          <h2>7. Where your data is stored</h2>
+          <p>We only store and process your personal data within the UK with Amazon Web Service (AWS).</p>
+        </div>
+
+        <div id="personal-data">
+          <h2>8. Personal data for which NHS is the controller outside the scope of the 'NHS Register with a GP Surgery'</h2>
+
+          <table class="nhsuk-table">
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  Category of information
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  How the data is used and handled
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">NHS login account information</td>
+                <td class="nhsuk-table__cell "><a href="https://access.login.nhs.uk/privacy">See the NHS login privacy policy</a></td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">NHS demographic information</td>
+                <td class="nhsuk-table__cell "><a href="https://digital.nhs.uk/services/demographics/personal-demographics-service-fair-processing">Personal Demographics Service Fair Processing Notice</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div> <!-- personal data -->
+
+        <div id="your-rights">
+          <h2>9. Your rights</h2>
+          <p>Data protection law provides you with a number of rights. You can exercise your rights by contacting NHS England’s Data Protection Officer at <a href="mailto:england.dpo@nhs.net">england.dpo@nhs.net</a>.</p>
+          <ul>
+            <li><strong>Right to be informed</strong> – this privacy policy explains how we use your personal data to provide this service.</li>
+            <li><strong>Right of access</strong> – to get a copy of your data submitted to this service, you can request this by completing a <a href="https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/how-to-make-a-subject-access-request">Subject Access Request (SAR)</a>. If you would like a copy of your GP record, please contact your GP Surgery.</li>
+            <li><strong>Right to rectification</strong> – you can use this service to provide up to date contact information which will be sent to the GP Surgery you are registering with.  If after registering with this service you need to update your details, you will need to contact your GP practice.</li>
+            <li><strong>Right to restrict processing</strong> – you have the right to ask us to limit the way we use your data if you think the data in certain circumstances.</li>
+            <li><strong>Right to withdraw consent</strong> – you have the right to withdraw consent for analytical cookies to be placed on your device by selecting ‘Reject analytics cookies’.<a href="https://gp-registration.nhs.uk/gpregistration/legal/cookies">See our cookie policy</a>.</li>
+          </ul>
+        </div> <!-- your rights -->
+
+        <div id="points-of-contact">
+          <h2>10. Points of contact for queries</h2>
+          <p>If you have any queries in relation to the use of your personal data within 'NHS Register with a GP Surgery', refer to the table below to find out where to direct your query.</p>
+
+          <table class="nhsuk-table">
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  Query
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Who do I contact?
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">Queries about your application to register with a new GP</td>
+                <td class="nhsuk-table__cell ">Your GP surgery</td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">Queries about login information or issues </td>
+                <td class="nhsuk-table__cell "><a href="">See our help and support page</a></td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">Queries about your organ donation preferences</td>
+                <td class="nhsuk-table__cell "><a href="">See NHS Blood and Transplant's organ donation FAQ</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div> <!-- point of contact -->
+
+        <div id="objections">
+          <h2>11. Complaints</h2>
+          <p>You can contact our Data Protection Officer to make a complaint:</p>
+
+          <h3>By email</h3>
+          <p><a href="mailto:england.dpo@nhs.net">england.dpo@nhs.net</a></p>
+
+          <h3>By post</h3>
+          <p>Data Protection Officer<br>
+            7 and 8 Wellington Place<br>
+            Leeds<br>
+            West Yorkshire<br>
+            LS1 4AP</p>
+
+          <p>We ask that you try to resolve any issues with us first, although you have a right to lodge a complaint with the Information Commissioner's Office (ICO) at any time.  The ICO is the UK regulator for data protection and upholds information rights.</p>
+          <p><a href="https://ico.org.uk/global/contact-us/">Contact the ICO</a></p>
+
+        </div> <!-- objections -->
+
+        <div id="changes">
+          <h2>12. Changes to the privacy policy</h2>
+          <p>We may make changes to this notice.  If we do, the version and date on this page will also change. Any changes to this notice will apply immediately from the date of any change.</p>
+
+          <h3>12.1 Previous versions</h3>
+          <p>Version 2.2, November 2024 – Section 7 updated to call out Amazon Web Services (AWS)  </p>
+          <p>Version 2.1, September 2024 – Information added to Section 4.3 to reflect additional local question functionality</p>
+          <p>Version 2.0, August 2024 – Added updates to section 3 to reflect new university student data capture</p>
+          <p>Version 1.9, June 2024 – Added updates to section 6 to describe service analytics data processing, updated DPO email address, general formatting changes</p>
+          <p>Version 1.8, October 2023 – Added information about updating PDS and notifications. General formatting changes</p>
+          <p>Version 1.7, August 2023 – Added information about JavaScript tracking</p>
+          <p>Version 1.6, 12 July 2023 – Further information added on the new ‘Demographics Notify a Patient’ service</p>
+          <p>Version 1.5, 28 June 2023 – Information added on the new ‘Demographics Notify a Patient’ service.</p>
+          <p>Version 1.4, 26 April 2023 – Updates to reflect new RPA functionality and processor.</p>
+          <p>Version 1.3, 20 March 2023 – Updates to reflect new integration with NHS App</p>  
+          <p>Version 1.2, 12 October 2022 – Link added for 'Register with a GP Surgery Directions 2022</p> 
+          <p>Version 1.1, 29 March 2022 – Added references to Qualtrics and Adobe analytics</p>
+          <p>Version 1.0, 9 December 2021 – First version.</p>
+        </div> <!-- changes -->
+
+      </section>
+
+
+      <div class="nhsuk-review-date">
+        <p class="nhsuk-body-s">
+          Page last reviewed: December 2024
+          <!--Next review due: 10 Jan 2022
+            (this component at the bottom of the page isn't included in the LIVE page)-->
+        </p>
+      </div>
+
+    </div>
+  </div>
+</article>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

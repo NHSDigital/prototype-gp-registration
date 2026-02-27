@@ -1,0 +1,103 @@
+<!-- Set any variables here -->
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '1' %}
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Select their current GP surgery" %}
+{% else %}
+  {% set heading = 'Select your current GP surgery' %}
+{% endif %}
+    
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
+
+
+<!-- For adding a phase banner, breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../includes/phase-banner.html' %}
+
+ {{ backLink({
+    "href": "what-is-your-gp-address-selection",
+    "text": "Go back"
+  }) }}
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        {% set fieldVar = data['who-is-registering'] %}
+        <form action="{{ basePath }}/do-you-know-previous-postcode-gp-has-answer" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          <p>We need to know the postcode of the address you used when you registered with this surgery. We'll use it to match you to your medical record.</p>
+          <h2 style="font-size: 1.5rem; padding-top: 0;">Do you know the postcode you used when you registered with this surgery?</h2>
+          {{ radios({
+            "idPrefix": "do-you-know-previous-postcode-gp-has",
+            "name": "do-you-know-previous-postcode-gp-has",
+            "items": [
+              {
+                "value": "Yes",
+                "text": "Yes",
+                checked: fieldVar == "Yes"
+              },
+              {
+                "value": "No~/gp-registration/sprint-21/check-answers-1",
+                "text": "No",
+                checked: fieldVar == "No"
+              }
+            ]
+          }) }}
+
+         {% endcall %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}

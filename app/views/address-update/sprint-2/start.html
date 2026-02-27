@@ -1,30 +1,61 @@
-{% set serviceHome = '/live/start' %}
+<!-- Use this page as the index for your project -->
 
-{% extends 'address-update/layout.html' %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'address-update/_layout.html' %}
+
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
 {% if data['error_description'] == 'ConsentNotGiven' %}
   {% set heading = "You cannot continue without sharing your information" %}
 {% else %}
 {% set heading = "Changing your home address" %}
 {% endif %}
 
-{% block pageTitle %}
-  {{ heading }} - NHS
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = heading + "- NHS" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Add phase banner include here too -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../includes/auf-feedback.html' %}
+
+{{ backLink({
+    href: "javascript:history.go(-1)",
+    text: "Go back"
+  }) 
+}}
+
 {% endblock %}
 
-{% block outerContent %}
-{% if data['error_description'] != 'ConsentNotGiven' %}
-  {{ backLink({
-    "href": "javascript:history.go(-1)",
-    "text": "Go back",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
-  }) }}
-{% endif %}
-{% endblock %}
-
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
+
+
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+  <div class="nhsuk-grid-column-two-thirds">
 
     {% if data['noGP'] != 'true' %}
     <form action="is-address-temp" method="post" autocomplete="off">
@@ -32,6 +63,7 @@
     <form action="is-address-uk" method="post" autocomplete="off">
     {% endif %}
 
+      
       {% call fieldset({
         legend: {
           text: heading,
@@ -39,6 +71,9 @@
           isPageHeading: true
         }
       }) %}
+    
+
+
 
       {% if data['error_description'] == 'ConsentNotGiven' %}
       <p>To change your address this service needs your NHS login information to verify your identity</p>
@@ -55,39 +90,16 @@
       <p>Changing your home address will update your NHS record.</p>
       <p>It's important your address is up to date so that you continue to get:</p>
       <ul>
-        <li>letters or test results</li>
+        <li>letters or test results.</li>
         <li>home visits and urgent care, including out of hours care</li>
         <li>community services, such as physiotherapy and midwife appointments</li>
       </ul>
 
-      <h2 class="nhsuk-heading-m">If your new address is outside of your practice catchment area</h2>
-      <p>Your current GP surgery may contact you to confirm you've moved outside of their catchment area. You might:</p>
-
-      <ul>
-        <li>stay with your current surgery, but with some changes to the care you get</li>
-        <li>have to find a new GP surgery</li>
-      </ul>
-
-      <p>This is because your current GP might not be the right place for you to get care if your address has changed.</p>
-
-      <p>If your current surgery doesn't accept patients outside of their catchment area, you will have 30 days to find a new GP to register with.</p>
-      
+      <h2 class="nhsuk-heading-m">If your new address is outside your practice catchment area</h2>
+      <p>Your current GP surgery may contact you to confirm you've moved outside of their catchment area. You may need to find a new GP to register with.</p>
       <p><a href="https://www.nhs.uk/service-search/find-a-gp" target="_blank">Registering with a GP surgery</a> takes about 15 minutes and automatically updates your NHS record.</p>
 
-      <p>Some of your health information may not show in the NHS App while your records are sent to your new GP surgery.</p>
       
-      <h2 class="nhsuk-heading-m">Before you start</h2>
-
-      <p>Speak to your current GP first if you:</p>
-      <ul>
-        <li>are on a waiting list for elective surgery </li>
-        <li>have any GP appointments you are waiting for</li>
-        <li>take any prescription medications </li>
-      </ul>
-
-
-      
-
 
       {% elseif data['noGP'] == 'true' %}
       <p>Changing your home address will update your NHS record.</p>
@@ -115,8 +127,4 @@
 
 {% include 'live/includes/devmode.html' %}
 
-{% endblock %}
-
-{% block footer %}
-  {% include 'live/includes/footer.html' %}
 {% endblock %}

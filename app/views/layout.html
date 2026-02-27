@@ -4,74 +4,78 @@
     - add custom CSS and JavaScript
 -->
 
-<!-- Extends the layout from /docs/views/template.html -->
-{% extends "template.html" %}
+<!-- Extends the prototype kit template which in turn extends the NHS.UK frontend template -->
+{% extends "prototype-kit-template.njk" %}
 
-<!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-{% block headCSS %}
-  <link href="/css/main.css" rel="stylesheet">
-{% endblock %}
-
-<!-- Set the page title -->
-{% block pageTitle %}
-  GP Registration
+{% block head %}
+  <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+  <link href="/assets/sass/main.css" rel="stylesheet">
 {% endblock %}
 
 <!-- Edit the header -->
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
+
+
 {% block header %}
   {{ header({
-    "service": {
-        "name": "Register with a GP Surgery",
-        "href": "/"
-      },
-      "showNav": "false",
-      "showSearch": "false"
-    })
-  }}
-
-  {% if feedbackType %}
-    {% if servicePhase === 'beta' %}
-      {% include 'live/includes/feedback.html' %}
-    {% else %}
-
-    {% endif %}
-  {% endif %}
-
+    service: {
+      text: serviceName,
+      href: "/"
+    }
+  }) }}
 {% endblock %}
+
+<!-- For any phase banners -->
+
+{% block phaseBanner %}
+  <p>phase benner here</p>
+{% endblock %}
+
+
+
+
+
 
 <!-- Edit the footer -->
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
+
+ 
+
 {% block footer %}
-  {{ footer({
-    "links": [
-      {
-        "URL": "/legal/terms",
-        "label": "Terms of use"
-      },
-      {
-        "URL": "/",
-        "label": "Cookies"
-      },
-      {
-      "URL": "/legal/accessibility-statement",
-      "label": "Accessibility"
-      }
-    ]
-  })}}
+
+   {{ footer({
+    meta: {
+      items: [
+        {
+          href: "/legal/terms",
+          text: "Terms and conditions",
+          attributes: { target: "_blank" }
+        },
+        {
+          href: "/legal/cookies",
+          text: "Cookies policy",
+          attributes: { target: "_blank" }
+        },
+         {
+          href: "/legal/privacy",
+          text: "Privacy policy",
+          attributes: { target: "_blank" }
+        },
+        {
+          href: "/legal/accessibility-statement",
+          text: "Accessibility statement",
+          attributes: { target: "_blank" }
+        }
+      ]
+    }
+  }) }}
+
+  
 {% endblock %}
 
+
 {% block bodyEnd %}
-
-  {% if data['devMode'] === 'true' %}
-    {% include "includes/devmode.html" %}
-  {% endif %}
-
-
-  {% block scripts %}
-    <!-- Custom JavaScript files can be added to this file -->
-    {% include "includes/scripts.html" %}
-    <!-- For adding page specific JavsScript -->
-    {% block pageScripts %}{% endblock %}
-  {% endblock %}
+  {{ super() }}
+  <script type="module" src="/assets/javascript/application.js"></script>
+  {% block pageScripts %}{% endblock %}
 {% endblock %}

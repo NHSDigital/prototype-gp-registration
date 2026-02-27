@@ -1,0 +1,153 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'address-update/_layout.html' %}
+
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
+{% set heading = "Select an address" %}
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = heading + "- NHS" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Add phase banner include here too -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../includes/auf-feedback.html' %}
+
+{{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back"
+  }) }}
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {% include 'live/includes/step.html' %}
+
+          <form action="{{ basePath }}/select-new-address-answer" method="post" autocomplete="off">
+
+        {% call fieldset({
+          legend: {
+            text: heading,
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <div class="nhsuk-hint" id="contact-hint">
+          <p>
+            5 addresses found for 
+            {{ data['house-number-address'] ~ ' and ' ~ data['find-current-address'] 
+               if data['house-number-address'] and data['find-current-address'] else '1 and SW1A 1AA' }}
+          </p>
+        </div>
+
+        {# Set fieldVar from session data for radios #}
+        {% set fieldVar = data['select-new-address'] | default('') %}
+
+        {{ radios({
+          "idPrefix": "select-new-address",
+          "name": "select-new-address",
+          "items": [
+            {
+              "value": "1",
+              "text": "1 Town Street, London, SW1A 1AA",
+              "checked": fieldVar == "1"
+            },
+            {
+              "value": "11",
+              "text": "11 Town Street, London, SW1A 1AA",
+              "checked": fieldVar == "11"
+            },
+            {
+              "value": "111",
+              "text": "111 Town Street, London, SW1A 1AA",
+              "checked": fieldVar == "111"
+            },
+            {
+              "value": "12",
+              "text": "12 Town Street, London, SW1A 1AA",
+              "checked": fieldVar == "12"
+            },
+            {
+              "value": "13",
+              "text": "13 Town Street, London, SW1A 1AA",
+              "checked": fieldVar == "13"
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "not listed",
+              "text": "I cannot find the address on the list",
+              "checked": fieldVar == "not listed"
+            }
+          ]
+        }) }}
+
+        {% endcall %}
+
+        <p>
+          <a href="what-is-your-current-address-manual" id="enter-address-manually-link">Enter the address manually</a>
+        </p>
+
+        {{ button({
+            "text": "Continue"
+        }) }}
+
+      </form>
+        </div>
+      </div>
+
+{# DEVMODE SCENARIOS #}
+{% if data['devMode'] === 'true' %}
+<details class="nhsuk-details dev-mode dev-mode--routing" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+      <span class="nhsuk-details__summary-text">
+        Routing choices
+      </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h4>Routes catchment area</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="current-address-out-of-area">Outside catchment area</a>
+      </li>
+      <li>
+        <a href="not-accepting-registrations">Outside catchment area and GP surgery not accepting out-of-catchment registrations</a>
+      </li>
+    </ul>
+  </div>
+</details>
+{% endif %}
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}

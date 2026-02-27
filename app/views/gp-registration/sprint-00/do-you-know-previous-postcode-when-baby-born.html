@@ -1,0 +1,77 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '1' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Do you know the postcode of where the mother of ' + data ['name-first-name'] + ' was living when their baby was born?' %}
+
+{% block pageTitle %}
+  {{ heading }}- {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "registered-for-the-first-time",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "do-you-know-previous-postcode",
+            "name": "do-you-know-previous-postcode",
+            "items": [
+              {
+                "value": "Yes~/live/what-is-previous-postcode-of-mother",
+                "text": "Yes",
+                "checked": checked("registering-first-time", "Yes")
+              },
+              {
+                "value": "No~/live/check-answers",
+                "text": "No",
+                "checked": checked("registering-first-time", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {{ details({
+            "text": "Why are you asking this?",
+            "HTML": "<p>We use this information to try and match the birth records.</p>"
+          }) }}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

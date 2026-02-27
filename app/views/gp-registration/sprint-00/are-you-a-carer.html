@@ -1,0 +1,98 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Is " + data['name-first-name'] + " a carer?" %}
+{% else %}
+  {% set heading = 'Are you a carer?' %}
+{% endif %}
+
+{% if (data['need-carer'] === "Yes") %}
+  {% if (data['type-additional-carer']) %}
+    {% set link = 'carer-details-2' %}
+  {% else %}
+    {% set link = 'carer-details-1' %}
+  {% endif %}
+{% else %}
+  {% set link = 'do-you-have-a-carer' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "A carer looks after a family member or friend who is not able to look after themselves. This could be because of illness, disability or addiction. Carers can be adults or children. They can be paid or unpaid, but may get benefits."
+            }) }}
+
+            {{ radios({
+              "idPrefix": "are-carer",
+              "name": "are-carer",
+              "items": [
+                {
+                  "value": "Yes~/live/type-of-carer",
+                  "text": "Yes",
+                  checked: checked("are-carer", "Yes")
+                },
+                {
+                  "value": "No~/live/do-you-need-accessible-format",
+                  "text": "No",
+                  checked: checked("are-carer", "no")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "prefer not to say~/live/do-you-need-accessible-format",
+                  "text": "Prefer not to say",
+                  checked: checked("are-carer", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

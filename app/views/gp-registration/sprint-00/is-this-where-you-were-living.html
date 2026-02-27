@@ -1,0 +1,89 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'Is this where you were living when you registered with your current GP surgery?' %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            <!-- TODO change pattern to match live -->
+
+            <div class="nhsuk-card nhsuk-card--care nhsuk-card--care--non-urgent">
+              <div class="nhsuk-card--care__heading-container">
+                <h2 class="nhsuk-card--care__heading">
+                  <span role="text"><span class="nhsuk-u-visually-hidden">
+                </h2>
+                <span class="nhsuk-card--care__arrow" aria-hidden="true"></span>
+              </div>
+
+              <div class="nhsuk-card__content">
+                <p>Address line 1 <br> Address line 2 <br> Address line 3 <br> Address line 4 </p>
+
+              </div>
+            </div>
+
+            {{ radios({
+              "idPrefix": "current-address",
+              "name": "current-address",
+              "classes": "nhsuk-radios",
+              "items": [
+                {
+                  "value": "Yes~/live/are-you-returning-from-overseas",
+                  "text": "Yes",
+                  checked: checked("current-address", "Yes")
+                },
+                {
+                  "value": "No~/live/what-is-previous-postcode-gp-has",
+                  "text": "No",
+                  checked: checked("current-address", "No")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

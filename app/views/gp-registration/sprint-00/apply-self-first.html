@@ -1,0 +1,84 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'If you are registering a child under 16 years' %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "are-you-planning-register",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <form action="" method="post" autocomplete="off">
+
+      {% include 'live/includes/step.html' %}
+
+      {% call fieldset({
+        legend: {
+          text: heading,
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      {{ hint({
+        "html": '<p>Some GP surgeries will only accept registrations for children under 16 years if their parent or guardian is already registered.</p>',
+        "classes": "nhsuk-u-margin-bottom-4"
+      }) }}
+
+      {{ radios({
+          "idPrefix": "apply-self",
+          "name": "apply-self",
+          "classes": "nhsuk-radios",
+          "fieldset": {
+            "legend": {
+              "text": "What do you want to do?",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": false
+            }
+          },
+          "items": [
+          {
+            "value": "registerSelf~/live/start",
+            "text": "Register myself first",
+            "checked": checked("apply-self", "registerSelf")
+          },
+          {
+              "value": "continue~/live/carer-details",
+              "text": "Continue with this registration",
+              "checked": checked("apply-self", "continue")
+            }
+          ]
+       }) }}
+
+      {% endcall %}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

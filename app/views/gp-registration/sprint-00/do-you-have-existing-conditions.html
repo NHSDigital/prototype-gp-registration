@@ -1,0 +1,125 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Does ' + data ['name-first-name'] + ' have any existing or pre-existing medical conditions?' %}
+{% else %}
+  {% set heading = 'Do you have any existing or pre-existing medical conditions?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+<!--{% if (data['are-you-immunised']) %}
+  {% if (data['are-you-immunised'] === "No") %}
+    {% set link = 'are-you-immunised' %}
+  {% else %}
+    {% set link = 'are-you-immunised-uk' %}
+  {% endif %}
+
+{% else %}
+
+  {% if (data['recently-moved'] === 'No') %}
+    {% set link = 'recently-move-to-the-uk' %}
+  {% endif %}
+
+  {% if (data['recently-moved-s1-details']) %}
+    {% set link = 'recently-moved-s1-details' %}
+  {% endif %}
+
+  {% set link = 'document-details-ehic' %}
+  {% set link = 'recently-moved-documents' %}
+  {% set link = 'recently-moved-eea' %}
+
+  {% set link = 'do-you-previous-address' %}
+  {% set link = 'what-is-your-current-address-selection' %}
+  {% set link = 'what-is-your-current-address-manual' %}
+
+
+
+{% endif %}-->
+
+  {% if (data['have-previous-uk-address'] == "No") %}
+    {% set link = 'do-you-previous-address' %}
+  {% elseif (data['have-previous-uk-address'] == "Yes") %}
+    {% set link = 'what-is-your-previous-address-manual' %}
+  {% else %}
+    {% set link = 'where-were-you-born-place-uk' %}
+  {% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "Conditions include asthma, dementia, diabetes, cancer or heart disease. This will help the GP give the right treatment."
+            }) }}
+
+            {{ radios({
+              "idPrefix": "has-existing-conditions",
+              "name": "has-existing-conditions",
+              "items": [
+                {
+                  "value": "Yes~/live/what-existing-conditions-do-you-have",
+                  "text": "Yes",
+                  checked: checked("has-existing-conditions", "Yes")
+                },
+                {
+                  "value": "No~/live/do-you-have-allergies",
+                  "text": "No",
+                  checked: checked("has-existing-conditions", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say~/live/do-you-have-allergies",
+                  "text": "Prefer not to say",
+                  checked: checked("has-existing-conditions", "Prefer not to say")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
