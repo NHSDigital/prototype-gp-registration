@@ -1,0 +1,82 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% set heading = "You told us you now live in " + data['abroad-country'] + "" %}
+
+{% block pageTitle %}
+  {{ heading }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <form action="success-abroad" method="post" autocomplete="off">
+
+      {% include 'live/includes/step.html' %}
+
+      {% call fieldset({
+        legend: {
+          text: heading,
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      {% if data['noGP'] != 'true' %}
+      <p>If you intend to be absent from the UK for 3 months or longer your GP surgery will remove you from their patient list.</p>
+      {% else %}
+      {% endif %}
+      
+      {{ radios({
+        "idPrefix": "apply-self",
+        "name": "apply-self",
+        "classes": "nhsuk-radios",
+        "fieldset": {
+          "legend": {
+            "text": "Are you going to be absent from the UK for 3 months or longer?",
+            "classes": "nhsuk-fieldset__legend--m",
+            "isPageHeading": false
+          }
+        },
+        "items": [
+        {
+          "value": "Yes~success-abroad",
+          "text": "Yes",
+          "checked": checked("apply-self", "yes")
+        },
+        {
+            "value": "No~cancel",
+            "text": "No",
+            "checked": checked("apply-self", "no")
+          }
+        ]
+     }) }}
+
+      {% endcall %}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

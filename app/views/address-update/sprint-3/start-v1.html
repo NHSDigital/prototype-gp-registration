@@ -1,0 +1,119 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+{% if data['error_description'] == 'ConsentNotGiven' %}
+  {% set heading = "You cannot continue without sharing your information" %}
+{% else %}
+{% set heading = "Changing your home address" %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+{% if data['error_description'] != 'ConsentNotGiven' %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    {% if data['noGP'] != 'true' %}
+    <form action="is-address-temp" method="post" autocomplete="off">
+    {% else %}
+    <form action="is-address-uk" method="post" autocomplete="off">
+    {% endif %}
+
+      {% call fieldset({
+        legend: {
+          text: heading,
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      {% if data['error_description'] == 'ConsentNotGiven' %}
+      <p>To change your address this service needs your NHS login information to verify your identity</p>
+      <h2 class="nhsuk-heading-m">Other ways to change your address</h2>
+      <p>Contact your GP surgery and ask them to update your address.</p>
+      {{ actionLink({
+        text: "Find a GP",
+        href: "#"
+      }) }}
+      <p>Close this tab to go back to the NHS app.</p>
+      
+
+      {% elseif data['noGP'] != 'true' %}
+      <!--<p>Changing your home address will update your NHS record and the address your GP surgery has for you.</p>-->
+      <p>Changing your home address will update your NHS record.</p>
+      <p>It's important your address is up to date so that you continue to get:</p>
+      <ul>
+        <li>letters or test results</li>
+        <li>home visits and urgent care, including out of hours care</li>
+        <li>community services, such as physiotherapy and midwife appointments</li>
+      </ul>
+
+      <details class="nhsuk-details nhsuk-expander">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+          If your new address is outside your practice catchment area
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>Your current GP surgery may contact you to confirm you've moved outside of their catchment area. You may need to find a new GP to register with.</p>
+          <p><!--<a href="find-gp-is-address-uk">--><a href="https://www.nhs.uk/service-search/find-a-gp" target="_blank">Registering with a GP surgery</a> takes about 15 minutes and automatically updates your NHS record.</p>
+        </div>
+      </details>
+
+      
+      <h2 class="nhsuk-heading-m">Students living in student or private accommodation</h2>
+      <p>The home address on your NHS record should be your term-time address.</p>
+      
+     
+      
+      
+      
+      
+      
+
+      {% elseif data['noGP'] == 'true' %}
+      <p>Changing your home address will update your NHS record.</p>
+      <p>It's important your address is up to date so that you continue to get:</p>
+      <ul>
+        <li>letters or test results</li>
+        <li>home visits and urgent care, including out of hours care</li>
+        <li>community services, such as physiotherapy and midwife appointments</li>
+      </ul>
+      <p><a href="find-gp-is-address-uk">Registering with a GP surgery</a> takes about 15 minutes and automatically updates your NHS record.</p>
+      <h2 class="nhsuk-heading-m">Students living in student or private accommodation</h2>
+      <p>The home address on your NHS record should be your term-time address.</p>
+      {% endif %}
+
+      {% endcall %}
+
+      {% if data['error_description'] != 'ConsentNotGiven' %}
+      {{ button({
+        "text": "Continue"
+      }) }}
+      {% endif %}
+      
+
+    </form>
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
