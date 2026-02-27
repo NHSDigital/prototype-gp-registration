@@ -1,0 +1,155 @@
+<!-- Set any variables here -->
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'What is ' + data['name-first-name'] + '\'s ethnic group?' %}
+{% else %}
+  {% set heading = 'What is your ethnic group?' %}
+{% endif %}
+    
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
+
+
+<!-- For adding a phase banner, breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../includes/phase-banner.html' %}
+
+{{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back"
+  })
+}}
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {% set fieldVar = data['what-is-your-ethnicity'] %}
+          <form action="{{ basePath }}/what-is-your-ethnicity-answer" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {{ radios({
+              "idPrefix": "what-is-your-ethnicity",
+              "name": "what-is-your-ethnicity",
+              "fieldset": {
+                "legend": {
+                  "text": heading,
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "text": "Select one option"
+              },
+              "items": [
+                {
+                  "value": "Asian or Asian British",
+                  "text": "Asian or Asian British",
+                  "hint": {
+                    "text": "Includes any Asian background, for example, Bangladeshi, Chinese, Indian, Pakistani"
+                  },
+                  checked: fieldVar == "Asian or Asian British"
+                },
+                {
+                  "value": "Black African, Black British or Caribbean",
+                  "text": "Black African, Black British or Caribbean",
+                  "hint": {
+                    "text": "Includes any Black background"
+                  },
+                  checked: fieldVar == "Black African, Black British or Caribbean"
+                },
+                {
+                  "value": "Mixed or multiple ethnic groups",
+                  "text": "Mixed or multiple ethnic groups",
+                  "hint": {
+                    "text": "Includes any Mixed background"
+                  },
+                  checked: fieldVar == "Mixed or multiple ethnic groups"
+                },
+                {
+                  "value": "White",
+                  "text": "White",
+                  "hint": {
+                    "text": "Includes any White background"
+                  },
+                  checked: fieldVar == "White"
+                },
+                {
+                  "value": "Another ethnic group",
+                  "text": "Another ethnic group",
+                  "hint": {
+                    "text": "Includes any other ethnic background, for example, Arab"
+                  },
+                  checked: fieldVar == "Another ethnic group"
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say",
+                  "text": "Prefer not to say",
+                  checked: fieldVar == "Prefer not to say"
+                }
+              ]
+            }) }}
+
+        
+
+
+
+            {% from "details/macro.njk" import details %}
+
+            {% call details({
+              summaryText: "Why are you asking this?"
+              })
+              %}
+              <p>We collect this information to better tailor healthcare services to your needs. We do not discriminate on grounds of ethnicity.</p>
+            {% endcall %}
+
+       
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}

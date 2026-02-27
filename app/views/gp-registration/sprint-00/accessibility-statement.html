@@ -1,0 +1,176 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Accessibility statement - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1 class="nhsuk-heading-xl">Accessibility statement</h1>
+
+  </div>
+</div>
+
+<article>
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <section>
+        <nav class="nhsuk-contents-list" role="navigation" aria-label="Pages in this guide">
+          <h2 class="nhsuk-u-visually-hidden">Contents</h2>
+
+          <p>This accessibility statement applies to the NHS' Register with a GP Surgery digital service for England.
+
+          <p>We want as many people as possible to be able to use this website. This means you should be able to:</p>
+
+        <ul>
+          <li>change colours, contrast levels and fonts using browser functionality</li>
+      
+          <li>zoom in up to 400 per cent without the text spilling off the screen</li>
+      
+          <li>navigate most of the website using just a keyboard</li>
+      
+          <li>navigate most of the website using speech recognition software</li>
+        
+          <li>Interact with most of the website using a screen reader (including recent versions of JAWS, NVDA and VoiceOver)</li>
+        </ul>
+
+        <p>We also try to make the website text as simple as possible to understand.</p>
+
+        <p>If you have a disability, search <a href="https://mcmw.abilitynet.org.uk/">AbilityNet</a> for "how to" guides to make your device easier to use.
+
+        </p>
+             
+        </nav>
+      </section>
+
+      <section>
+
+        <div id="">
+          <h2>How accessible this website is</h2>
+          <p>We know from an accessibility reports that parts of this website are not fully accessible. Various accessibility and usability issues were reported by automated testing tools and manual user testing. Numerous access issues were reported by users who require audio feedback to navigate and interact with page content.
+          </p>
+          <p>For example:</p>
+
+          <ul>
+            <li>Some page elements either did not contain discernible text or were not descriptive enough for users to determine their function or purpose.</li>
+          
+            <li>Some pages are difficult to navigate due to multiple generic page titles and non-sequential heading structures.</li>
+          
+            <li>Users are not warned of the duration in which inactivity will result in their session expiring and users are not given the opportunity to extend their session before it expires.</li>
+          
+            <li>Some of the colour combinations found on the site are low contrast and are likely to be difficult for people with low vision to read.</li>
+          </ul>
+          
+          
+          <p>We cannot guarantee that all accessibility issues have been identified. The issues reported are examples of any assistive technology barriers which were encountered during accessibility testing. Information has been provided detailing how to resolve them. The test does not list each specific area that requires change but highlights patterns of problems where they exist. Additional instances of these barriers may exist in other pages of the service, wherever these barriers are present, they will also need to be resolved.</p>
+         
+          <p>We are actively working to address these issues as part of an ongoing programme to improve the accessibility of this website.</p>
+         
+          <h3>Feedback and contact information</h3>
+          <p>We are always looking to improve the accessibility of this website. <a href="https://gp-registration.nhs.uk/20211208/gpregistration/feedback">Give us feedback</a> if you have an accessibility query including:</p>
+          <ul>
+            <li>issues with accessing information or using this website</li>
+            <li>an accessibility problem not listed on this statement</li>
+            <li>any positive feedback about this website's accessibility</li>
+          </ul>
+        </div>
+
+        <div id="">
+          <h2 class="nhsuk-heading-l">Enforcement procedure</h2>
+          <p>If you contact us with a complaint and you are not happy with our response, <a href=" https://www.equalityadvisoryservice.com/">contact the Equality Advisory and Support Service (EASS)</a>.
+          </p>
+          <p>The Equality and Human Rights Commission (EHRC) is responsible for enforcing the <a href="https://www.legislation.gov.uk/uksi/2018/952/contents/made">Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 on legislation.gov.uk</a> (the "accessibility regulations").
+          </p>
+          <h3>Technical information about this website's accessibility</h3>
+          <p>We're committed to making this website accessible in accordance with the accessibility regulations.</p>
+          
+          <h4>Compliance status</h4>
+          <p>This website is partially compliant with the <a href="http://www.w3.org/TR/WCAG21/">Web Content Accessibility Guidelines (WCAG) version 2.1</a> AA standard, due to the non-compliances listed below.</p>
+          
+          <h3>Non-accessible content</h3>
+          <p>The content that is not accessible is listed below together with an explanation and reference to the relevant WCAG section.</p>
+        </div>
+
+        <div id="">
+          <h2 class="nhsuk-heading-l">Non-compliance with the accessibility regulations WCAG Level A</h2>
+          <p>The following section contains areas that failed to meet WCAG 2.1 A. For the service to fall in line with WCAG 2.1 requirements, all A issues must be resolved.</p>
+          
+          <ul>
+            <li>Page titles do not uniquely describe or introduce the page content (WCAG Reference: 2.4.2 Page Titled)).</li>
+            <li>Image links are present that do not contain text that accurately describes its destination or purpose (WCAG Reference: 1.1.1 Non-text Content (Level A), 2.4.4 Link Purpose (In Context) (Level A), 2.4.9 Link Purpose (Link Only) (Level AAA)).</li>
+            <li>The relationship of related form controls is not conveyed to screen reader users (WCAG Reference: 1.3.1 Info and Relationships (Level A), 3.3.2 Labels or Instructions (Level A)).</li>
+            <li>Users are not able to turn off, adjust or extend the time in which inactivity will result in a loss of data (WCAG Reference: 2.2.1 Timing Adjustable (Level A)).</li>
+            <li>A form element is present that does not contain an explicit label (WCAG Reference: 1.3.1 Info and Relationships (Level A), 4.1.2 Name, Role, Value (Level A)).</li>
+            <li>The label indicates that numbers with a decimal place may be inputted; however, this is not possible (WCAG Reference: 3.3.2 Labels or Instructions (Level A)).</li>
+          </ul>
+
+          <h2 class="nhsuk-heading-l">Non-compliance with the accessibility regulations WCAG Level AA</h2>
+          <p>The following section contains areas that failed to meet WCAG 2.1 AA. For the service to fall in line with WCAG 2.1 requirements, all A and AA issues must be resolved.</p>
+          
+          <ul>
+            <li>Page elements are present that do not meet the minimum colour contrast requirements (WCAG Reference: 1.4.3 Contrast (Minimum) (Level AA), 1.4.6 Contrast (Enhanced) (Level AAA)).</li>
+            <li>Headings are present that are not uniquely descriptive of the page content they introduce (WCAG Reference:2.4.6 Headings and Labels (Level AA)).</li>
+            <li>The auto-complete attribute has not been used on input fields or it has been turned off (WCAG Reference: 1.3.5 Identify Input Purpose (Level AA)).</li>
+            <li>Character limits are not identified by a character count upon input (WCAG Reference: 4.1.3 Status Messages (Level AA)).</li>
+          </ul>
+
+          <h2 class="nhsuk-heading-l">Content that's not within the scope of the accessibility regulations</h2>
+          <p>Areas of the service which fail to meet the WCAG 2.1 AAA requirements, but are not within the scope of the accessibility regulations.</p>
+          
+          <ul>
+            <li>Links are present that do not indicate that they will open in a new browser window.</li>
+            <li>Some text content difficult to read due to the colour contrast of foreground and background colours.</li>
+            <li>Acronyms are present that are not expanded in their first instance.</li>
+            <li>Multiple generic links are present that are not descriptive out of context.</li>
+          </ul>
+       
+          
+        </div>
+
+        <div id="features">
+          <h3>What we're doing to improve accessibility</h3>
+         
+          <p>We have published tools and guidance on accessibility in the <a href="https://service-manual.nhs.uk/">NHS digital service manual</a> based on extensive testing. The service manual helps our teams build products and services to meet the same accessibility standards.</p>
+   
+          <p>At NHS Digital, creating an accessible service is a team effort. We want our teams to make accessible services by:</p>
+          <ul>
+            <li>considering accessibility at the start of their project, and throughout</li>
+            <li>making accessibility the whole team's responsibility</li>
+            <li>researching with disabled users</li>
+            <li>using a library of accessible components and patterns</li>
+            <li>carrying out regular accessibility audits and testing</li>
+            <li>designing and building to level AA of WCAG 2.1 – which is NHS Digital policy</li>
+          </ul>
+
+          <p>As part of this commitment, we have set up a cross-functional accessibility working group to make sure that accessibility remains at the core of everything we do.
+          </p>
+
+          <p>We are making sure that accessibility issues highlighted in this statement are being prioritised and fixed.</p>
+
+        </div>
+
+        <div id="">
+          <h4>Preparation of this accessibility statement</h4>
+          <p>This statement was updated in September 2022.</p>
+          <p>This website was tested in July 2022 by the <a href="https://digitalaccessibilitycentre.org/">Digital Accessibility Centre (DAC)</a> who performed an expert evaluation of the service against all level A and AA success criteria of WCAG 2.1. Content was selected to make sure a good representation of different pages, templates and components were tested as well as key content and user journeys.</p>
+        </div>
+
+      </section>
+
+    </div>
+  </div>
+</article>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

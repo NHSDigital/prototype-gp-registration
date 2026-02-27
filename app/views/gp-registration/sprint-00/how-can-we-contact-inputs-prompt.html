@@ -1,0 +1,85 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Are you sure that ' + data['name-first-name'] + ' has no access to a phone or email?' %}
+  {% set labelText = 'Yes, the patient does not have access to a phone or email' %}
+  {% set hintText = 'It\'s important that the NHS and the patient\'s GP surgery have a convenient way of contacting them about this application, appointments, prescriptions or other health services.' %}
+{% else %}
+  {% set heading = 'Are you sure that you have no access to a phone or email?' %}
+  {% set labelText = 'Yes, I don\'t have access to a phone or email' %}
+  {% set hintText = 'It\'s important that the NHS and your GP surgery have a convenient way of contacting you about this application, appointments, prescriptions or other health services.' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "how-can-we-contact-inputs",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="how-can-we-contact-inputs-prompt-answer" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ hint({
+            "text": hintText,
+            "classes": "nhsuk-u-margin-bottom-4"
+          }) }}
+
+          {{ radios({
+            "idPrefix": "no-contact",
+            "name": "no-contact",
+            "items": [
+              {
+                "value": "Yes",
+                "text": labelText,
+                "checked": checked("no-contact", "Yes")
+              },
+              {
+                "value": "No",
+                "text": "No",
+                "checked": checked("no-contact", "No")
+              }
+            ]
+          }) }}
+
+        {% endcall %}
+
+        <button class="nhsuk-button" type="submit">
+          Continue
+        </button>
+
+        </form>
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

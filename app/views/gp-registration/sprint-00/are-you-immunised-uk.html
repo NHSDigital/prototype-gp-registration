@@ -1,0 +1,84 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Did " + data['name-first-name'] + " get all their vaccinations in the UK??" %}
+{% else %}
+  {% set heading = 'Did you get all your vaccinations in the UK?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "are-you-immunised",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="do-you-have-existing-conditions" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ radios({
+              "idPrefix": "are-you-immunised-uk",
+              "name": "are-you-immunised-uk",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: checked("are-you-immunised-uk", "Yes")
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: checked("are-you-immunised-uk", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "I don't know",
+                  "text": "I don't know",
+                  checked: checked("are-you-immunised-uk", "I don't know")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

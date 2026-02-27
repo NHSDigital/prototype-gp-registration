@@ -1,27 +1,37 @@
-{% extends 'layout.html' %}
+<!-- Use this page as the index for your project -->
 
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+
+<!-- Set the page title -->
 {% block pageTitle %}
 Feedback link
 {% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}
+{% endblock %}
 
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
 
-<div class="app-phase-banner">
-<div class="nhsuk-width-container app-phase-banner__container">
-<p class="app-phase-banner__content">
- <strong class="nhsuk-tag app-phase-banner__tag">
-   NEW SERVICE
- </strong>
- <span class="app-phase-banner__text">
- Your <a href="#">feedback (opens in new tab)</a> will help us improve it.
- </span>
-</p>
-</div>
-</div>
 
 {% endblock %}
 
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
 
@@ -126,10 +136,4 @@ Feedback link
 </div>
 {% endblock %}
 
-{% block bodyEnd %}
-{% block scripts %}
-<!-- Custom JavaScript files can be added to this file -->
-{% include "includes/scripts.html" %}
-{% block pageScripts %}{% endblock %}
-{% endblock %}
-{% endblock %}
+

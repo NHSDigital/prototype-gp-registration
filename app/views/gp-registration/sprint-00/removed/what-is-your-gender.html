@@ -1,0 +1,106 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Which of the following best describes ' + data['name-first-name'] %}
+  {% set hintText = '<p>You can choose any of these options and we should be able to match their records accurately.</p><p>Your answer does not have to match the sex they were given at birth.</p>' %}
+{% else %}
+  {% set heading = 'Which of the following best describes you?' %}
+  {% set hintText = '<p>You can choose any of these options and we should be able to match to your records accurately.</p><p>Your answer does not have to match the sex you were given at birth.</p>' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% set otherHtml %}
+  {{ input({
+    id: "other-gender",
+    name: "other-gender",
+    classes: "nhsuk-u-width-two-thirds",
+    label: {
+      text: "Gender"
+    }
+  }) }}
+{% endset -%}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="what-is-your-gender-at-birth" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {{ radios({
+              "idPrefix": "sex",
+              "name": "sex",
+              "fieldset": {
+                "legend": {
+                  "text": heading,
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "hint": {
+                "html": hintText
+              },
+              "items": [
+                {
+                  "value": "Female",
+                  "text": "Female",
+                  checked: checked("sex", "female")
+                },
+                {
+                  "value": "Male",
+                  "text": "Male",
+                  checked: checked("sex", "male")
+                },
+                {
+                  "value": "Non-binary",
+                  "text": "Non-binary",
+                  checked: checked("sex", "non-binary")
+                },
+                {
+                  "value": "prefer-to-self-describe",
+                  "text": "Prefer to self-describe",
+                  "conditional": {
+                    "html": otherHtml
+                  },
+                  checked: checked("sex", "prefer-to-self-describe")
+                }
+              ]
+            }) }}
+
+            {{ details({
+              "text": "Why are you asking this?",
+              "HTML": "<p>This information will be used to match you to your healthcare record.</p>"
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

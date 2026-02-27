@@ -1,0 +1,94 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Has " + data['name-first-name'] + " had all the vaccinations they are eligible for in the UK?" %}
+{% else %}
+  {% set heading = 'Have you had all the vaccinations you are eligible for in the UK?' %}
+{% endif %}
+
+{% block pageTitle %}
+{{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% if (data['have-current-uk-address'] === "No") %}
+  {% set link = 'do-you-current-address' %}
+{% else %}
+  {% set link = 'do-you-current-address' %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "You would have got these vaccinations when at school, from your GP surgery or other healthcare provider."
+            }) }}
+
+            {{ radios({
+              "idPrefix": "are-you-immunised",
+              "name": "are-you-immunised",
+              "items": [
+                {
+                  "value": "Yes~/live/are-you-immunised-uk",
+                  "text": "Yes",
+                  checked: checked("are-you-immunised", "Yes")
+                },
+                {
+                  "value": "No~/live/do-you-have-existing-conditions",
+                  "text": "No",
+                  checked: checked("are-you-immunised", "No")
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "I don't know~/live/do-you-have-existing-conditions",
+                  "text": "I don't know",
+                  checked: checked("are-you-immunised", "I don't know")
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+  
+{% endblock %}
+
+{% block footer %}
+  {% include 'design/includes/footer.html' %}
+{% endblock %}

@@ -1,0 +1,126 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'mpr/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{{ backLink({
+    href: "javascript:history.go(-1)",
+    text: "Go back"
+  }) }}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <h1 class="nhsuk-heading-l">
+            <span class="nhsuk-caption-l">
+              Prototype work
+              <span class="nhsuk-u-visually-hidden"></span>
+            </span>
+            Manage patient registrations
+          </h1>
+
+         <p>GPs use this service to accept and manahge patients</p>
+
+          {{ button({
+            "text": "Go to prototype",
+                "href": "/mpr/sprint-22/login"
+        }) }}
+
+          {{ button({
+            "text": "Page listings",
+            "classes": "nhsuk-button--secondary",
+                "href": "admin/listings-manage-reg"
+          }) }}
+
+        
+
+          {{ button({
+            "text": "WIP",
+            "classes": "nhsuk-button--secondary",
+                "href": "admin/listings-manage-reg-wip"
+          }) }}
+
+          
+
+          {{ button({
+            "text": "Research",
+            "classes": "nhsuk-button--secondary",
+                "href": "/mpr/research-10-25/login"
+          }) }}
+
+          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible margin-top-minus-5">
+
+
+           <h2 class="nh
+           suk-heading-m">Sprint 22 (5 Feb 2026 - 18 Feb 26)</h2>
+
+          <details class="nhsuk-details nhsuk-expander">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+          GP REG 19521<br>MPR to PDS design options
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>Options:</p>
+          <ul>
+            <li><a href="sprint-22/dashboard-pds-1">Guidance text version - no check</a></li>
+            <li><a href="sprint-22/dashboard-pds-2">Guidance text version - check</a></li>
+            <li><a href="sprint-22/dashboard-pds-4">Under review with notes version</a></li>
+            
+            
+          </ul>
+          <p class="nhsuk-body-s"><a href="https://nhsd-jira.digital.nhs.uk/browse/GPREG-19521" target="_blank">Link to Jira ticket</a></p>
+        </div>
+      </details>
+
+          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible margin-top-minus-5">
+
+          <h2 class="nhsuk-heading-s">Previous iterations</h2>
+           <p><a href="/mpr/login">Version up to Sprint 20</a></p>
+
+
+      </div>
+      <div class="nhsuk-grid-column-one-third">
+
+        <!--
+        <h2 class="nhsuk-heading-s">Dev mode</h2>
+        <p><a href="/live/start?devMode=true">Run 'live' in devMode</a></p>
+        <p><a href="/design/start?devMode=true">Run 'design' in devMode</a></p>
+        -->
+
+        <h2 class="nhsuk-heading-s">Environments</h2>
+        <p><a href="https://gp-registration.nhs.uk/M84015/gpregistration/landing" target="_blank">Prod environment</a></p>
+        <p><a href="https://register.int.gp-registration.nhs.uk/1234/gpregistration/landing" target="_blank">Int environment</a></p>
+        
+
+        <h2 class="nhsuk-heading-s">Related prototypes</h2>
+        <p><a href="https://patient-list-inflation-eebf515757e0.herokuapp.com/" target="_blank">PLI prototype</a></p>
+    
+      </div>
+    </div>
+
+{% endblock %}

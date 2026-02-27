@@ -1,0 +1,148 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% set heading = 'What is your address?' %}
+
+{% block pageTitle %}
+  {{ heading }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="confirm-address" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+              {% call fieldset({
+                legend: {
+                  "text": heading,
+                  "classes": "nhsuk-fieldset__legend--l"
+                }
+              }) %}
+
+              {{ input({
+                label: {
+                  "text": "Address line 1"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "new-address-line-1",
+                "name": "new-address-line-1",
+                value: data['new-address-line-1']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Address line 2"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "new-address-line-2",
+                "name": "new-address-line-2",
+                value: data['new-address-line-2']
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Town or city"
+                },
+                "classes": "nhsuk-u-width-one-half",
+                "id": "new-address-town",
+                "name": "new-address-town",
+                value: data['new-address-town']
+              }) }}
+
+              {{ input({
+                  label: {
+                    "text": "Postcode"
+                  },
+                  "classes": "nhsuk-input--width-10",
+                  "id": "new-address-postcode",
+                  "name": "new-address-postcode",
+                  value: data['new-address-postcode']
+              }) }}
+
+              {{ select({
+                "id": "new-address-country",
+                "name": "new-address-country",
+                "label": {
+                  "text": "Country"
+                },
+                "items": [
+                {
+                  "value": Choose,
+                  "text": "Choose country"
+                },
+                {
+                    "value": "England",
+                    "text": "England"
+                  },
+                  {
+                    "value": "Isle of Man",
+                    "text": "Isle of Man"
+                  },
+                  {
+                    "value": "Northern Ireland",
+                    "text": "Northern Ireland"
+                  },
+                  {
+                    "value": "Scotland",
+                    "text": "Scotland"
+                  },
+                  {
+                    "value": "Wales",
+                    "text": "Wales"
+                  }
+                ]
+              }) }}
+
+
+              {{ button({
+                "text": "Continue"
+              }) }}
+
+              {% endcall %}
+
+          </form>
+        </div>
+      </div>
+
+{# DEVMODE SCENARIOS #}
+{% if data['devMode'] === 'true' %}
+<details class="nhsuk-details dev-mode dev-mode--routing" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+      <span class="nhsuk-details__summary-text">
+        Routing choices
+      </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h4>Routes catchment area</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="current-address-out-of-area">Outside catchment area</a>
+      </li>
+      <li>
+        <a href="not-accepting-registrations">Outside catchment area and GP surgery not accepting out-of-catchment registrations</a>
+      </li>
+    </ul>
+  </div>
+</details>
+{% endif %}
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

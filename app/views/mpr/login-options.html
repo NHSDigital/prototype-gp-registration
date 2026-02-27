@@ -1,0 +1,116 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'mpr/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Choose your preferred authentication method - CIS2 - Care Identity Authentication" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{{ backLink({
+  href: "login",
+  text: "Go back"
+  })
+}}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+
+             {% set fieldVar = data['login-option'] %}
+            <form action="dashboard" method="post" autocomplete="off">
+    
+             {% call fieldset({
+                legend: {
+                  text: "Choose your preferred authentication method",
+                  classes: "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              }) %}
+    
+              {{ radios({
+                "idPrefix": "login-option",
+                "name": "login-option",
+                "items": [
+                  {
+                    "value": "iPad",
+                    "text": "iPad",
+                    "checked": fieldVar == "iPad"
+                  },
+                  {
+                    "value": "Microsoft Authenticator",
+                    "text": "Microsoft Authenticator",
+                    "checked": fieldVar == "Microsoft Authenticator"
+                  },
+                  {
+                    "value": "NHS.net Connect (formerly NHSmail)",
+                    "text": "NHS.net Connect (formerly NHSmail)",
+                    "checked": fieldVar == "NHS.net Connect (formerly NHSmail)"
+                  },
+                  {
+                    "value": "Passkey",
+                    "text": "Passkey",
+                    "checked": fieldVar == "Passkey"
+                  },                
+                  {
+                    "value": "Security key",
+                    "text": "Security key",
+                    "checked": fieldVar == "Security key"
+                  },
+                  {
+                    "value": "Smartcard",
+                    "text": "Smartcard",
+                    "checked": fieldVar == "Smartcard"
+                  },
+                  {
+                    "value": "Windows Hello for Business",
+                    "text": "Windows Hello for Business",
+                    "checked": fieldVar == "Windows Hello for Business"
+                  }
+                ]
+              }) }}
+    
+              {% endcall %}
+    
+              {{ button({
+                "text": "Continue"
+              }) }}
+    
+            </form>
+    
+          </div>
+        </div>
+
+        </div>
+      </div>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}

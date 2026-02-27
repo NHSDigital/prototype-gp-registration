@@ -1,0 +1,96 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = "Where was " + data['name-first-name'] + " born?" %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="do-you-know-previous-postcode-when-baby-born" method="post" autocomplete="off">
+
+        {% include 'live/includes/step.html' %}
+
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "child-born",
+            "name": "child-born",
+            "items": [
+              {
+                "value": "England",
+                "text": "England",
+                checked: checked("child-born", "England")
+              },
+              {
+                "value": "Wales",
+                "text": "Wales",
+                checked: checked("child-born", "England")
+              },
+              {
+                "value": "Isle of Man",
+                "text": "Isle of Man",
+                checked: checked("child-born", "Isle of Man")
+              },
+              {
+                "value": "Scotland",
+                "text": "Scotland",
+                checked: checked("child-born", "Scotland")
+              },
+              {
+                "value": "Northern Ireland",
+                "text": "Northern Ireland",
+                checked: checked("child-born", "Northern Ireland")
+              },
+              {
+                "divider": "or"
+              },
+              {
+                "value": "Outside of the UK",
+                "text": "Outside of the UK",
+                checked: checked("child-born", "Outside of the UK")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

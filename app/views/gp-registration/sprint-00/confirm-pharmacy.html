@@ -1,0 +1,144 @@
+<!-- Set any variables here -->
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% if (data['under-16-years'] === 'true' ) %}
+  {% set action = 'do-you-have-emergency-contact' %}
+{% else %}
+  {% set action = 'are-you-a-member-of-armed-forces' %}
+{% endif %}
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "Details of your chosen pharmacy" %}
+{% else %}
+  {% set heading = 'Details of your chosen pharmacy' %}
+{% endif %}
+    
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
+
+
+<!-- For adding a phase banner, breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../includes/phase-banner.html' %}
+
+{{ backLink({
+    "href": "nominate-pharmacy-search-selection",
+    "text": "Go back"
+  })
+}}
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="{{ action }}" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+            {% if (data['user-auth'] === "p9") %}
+              <p>Prescriptions will be sent to this pharmacy from now on.</p>
+            {% else %}
+              <p>Prescriptions will be sent to this pharmacy only after registration has been confirmed by the new GP surgery.</p>
+            {% endif %}
+
+            <p>Olives pharmacy<br>9 Town street<br>London<br>SW1A 1AA</p>
+
+            <p>Less than 4.4km away</p>
+
+            <details class="nhsuk-details nhsuk-expander">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Opening times
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <table class="nhsuk-table">
+                  <thead role="rowgroup" class="nhsuk-table__head">
+                    <tr role="row">
+                      <th role="columnheader" class="" scope="col">
+                        Day of the week
+                      </th>
+                      <th role="columnheader" class="" scope="col">
+                        Opening hours
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="nhsuk-table__body">
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Monday</td>
+                      <td class="nhsuk-table__cell ">9am to 6pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Tuesday</td>
+                      <td class="nhsuk-table__cell ">9am to 6pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Wednesday</td>
+                      <td class="nhsuk-table__cell ">9am to 6pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Thursday</td>
+                      <td class="nhsuk-table__cell ">9am to 6pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Friday</td>
+                      <td class="nhsuk-table__cell ">9am to 6pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Saturday</td>
+                      <td class="nhsuk-table__cell ">9am to 1pm</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <td class="nhsuk-table__cell">Sunday</td>
+                      <td class="nhsuk-table__cell ">Closed</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}

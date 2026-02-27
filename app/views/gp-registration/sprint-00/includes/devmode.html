@@ -1,0 +1,87 @@
+{# DEVMODE SCENARIOS #}
+{% if data['devMode'] === 'true' %}
+<details class="nhsuk-details dev-mode" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+    <span class="nhsuk-details__summary-text">
+      Switch scenario
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h4>Registration type</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="?who-is-being-registered=myself">Self</a>
+      </li>
+      <li>
+        <a href="?who-is-being-registered=dependant&relation=Parent%20or%20guardian">Dependant - parent or guardian</a>
+      </li>
+      <li>
+        <a href="?who-is-being-registered=dependant&relation=Carer">Dependant - carer</a>
+      </li>
+      <li>
+        <a href="?who-is-being-registered=dependant&relation=Other">Dependant - other</a>
+      </li>
+    </ul>
+
+    <h4>Age</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="?under-18-years=false&under-16-years=false&under-13-years=false&under-12-months=false">Over 18</a>
+      </li>
+      <li>
+        <a href="?under-18-years=true&under-16-years=true&under-13-years=true&under-12-months=true">Under 1</a>
+      </li>
+      <li>
+        <a href="?under-18-years=true&under-16-years=true&under-13-years=true&under-12-months=false">Under 13</a>
+      </li>
+      <li>
+        <a href="?under-18-years=true&under-16-years=true&under-13-years=false&under-12-months=false">Under 16</a>
+      </li>
+      <li>
+        <a href="?under-18-years=true&under-16-years=false&under-13-years=false&under-12-months=false">Under 18</a>
+      </li>
+    </ul>
+
+    <h4>Identity verification</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="?user-auth=p9">Login p9</a>
+      </li>
+      <li>
+        <a href="?user-auth=p5">Login p5</a>
+      </li>
+      <li>
+        <a href="?user-auth=p0">Login p0</a>
+      </li>
+      <li>
+        <a href="?user-auth=none">Not a login user</a>
+      </li>
+      <li>
+        <a href="?login-level=parent-same-gp">Parent at the same GP as patient</a>
+      </li><li>
+        <a href="?login-level=parent-same-gp-no-nhs">Parent at same GP as patient but no NHS number</a>
+      </li><li>
+        <a href="?login-level=parent-diff-gp">Parent at a different GP</a>
+      </li>
+    </ul>
+
+    <h4>Tuberculosis question</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="?overseas=Yes&visited-tb=Yes">Include TB answer in check answers</a>
+      </li>
+    </ul>
+
+    <h4>Student questions on</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="?student-on=Yes">Include student question set</a>
+      </li>
+      <li>
+        <a href="?student-on=No">Turn off student question set</a>
+      </li>
+    </ul>
+
+  </div>
+</details>
+{% endif %}

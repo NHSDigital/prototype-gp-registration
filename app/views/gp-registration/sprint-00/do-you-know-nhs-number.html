@@ -1,0 +1,117 @@
+<!-- Set any variables here -->
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '1' %}
+
+
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Do you know ' + data['name-first-name'] + '\'s NHS Number?' %}
+  {% set option1 = 'Yes, I know their NHS number' %}
+  {% set option2 = 'No, continue without' %}
+{% else %}
+  {% set heading = 'Do you know your NHS Number?' %}
+  {% set option1 = 'Yes, I know my NHS number' %}
+  {% set option2 = 'No, continue without' %}
+{% endif %}
+    
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
+
+
+<!-- For adding a phase banner, breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../includes/phase-banner.html' %}
+
+  {{ backLink({
+    "href": "what-is-your-date-of-birth",
+    "text": "Go back"
+    })
+}}
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+             {% set fieldVar = data['do-you-know-nhs-number'] %}
+          <form action="{{ basePath }}/do-you-know-nhs-number-answer" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {% if (data['who-is-being-registered'] === "dependant") %}
+            <p>This is a 10 digit number, like 485 777 3456.</p>
+            <p>Age test {{ years-old }}</p>
+            <p>It can be found on any letter the NHS has sent them, on a prescription, in the NHS App or by asking their GP. It will be used to match them to their NHS record.</p>
+            {% else %}
+            <p>This is a 10 digit number, like 485 777 3456.</p>
+            <p>It can be found on any letter the NHS has sent you, on a prescription, in the NHS App or by asking your GP. It will be used to match you to your NHS record.</p>
+            {% endif %}
+
+            {{ radios({
+              "idPrefix": "do-you-know-nhs-number",
+              "name": "do-you-know-nhs-number",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": option1,
+                 checked: fieldVar == "Yes"
+                },
+                {
+                  "value": "No",
+                  "text": option2,
+                 checked: fieldVar == "No"
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}

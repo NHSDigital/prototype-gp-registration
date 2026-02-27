@@ -1,17 +1,37 @@
-{% set serviceHome = '/live/start' %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
-{% extends 'address-update/layout.html' %}
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'address-update/_layout.html' %}
 
-{% set heading = "Home address updated" %}
 
-{% block pageTitle %}
-  {{ heading }} - NHS
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Home address updated" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{% include '../includes/auf-feedback.html' %}
 {% endblock %}
 
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+  <div class="nhsuk-grid-column-two-thirds">
 
     <div class="nhsuk-panel">
       <h1 class="nhsuk-panel__title">
@@ -39,17 +59,13 @@
       {% endif %}
     </p>
 
-    <p>We have sent a confirmation email to the address on your record.</p>
-
     <div class="nhsuk-inset-text">
       <span class="nhsuk-u-visually-hidden">Information: </span>
-      <p>We were unable to check if your new address is still within your GP surgery's catchment area. Your current GP may contact you to confirm this.</p>
-      <p>If your current surgery doesn't accept patients outside of their catchment area, you will have 30 days to find a new GP to register with.</p>
+      <p>We were unable to check if your new address is still within your GP surgery's catchment area.</p>
     </div>
 
-    <h2 class="nhsuk-heading-m">Register with a new GP</h2>
-    <p>Registering with a new GP in your area takes about 15 minutes.</p>
-
+    <h2 class="nhsuk-heading-m">What happens next</h2>
+    <p>Your surgery may contact you to check if your new address is outside their catchment area.</p>
 
     <details class="nhsuk-details nhsuk-expander">
       <summary class="nhsuk-details__summary">
@@ -62,18 +78,16 @@
           <ul>
             <li>are on a waiting list for elective surgery</li>
             <li>have any GP appointments you are waiting for</li>
+            <!--<li>are waiting on a referral to hospital</li>-->
             <li>take any prescription medications</li>
           </ul>
         </div>
     </details>
 
-
     {{ actionLink({
       text: "Find a GP",
-      href: "https://www.nhs.uk/service-search/find-a-gp",
-      openInNewWindow: true
+      href: "#"
     }) }}
-   
 
     <!--
     <p><a href="feedback">Tell us about your experience updating your address (opens in a new tab)</a></p> 
@@ -84,8 +98,4 @@
 
 {% include 'live/includes/devmode.html' %}
 
-{% endblock %}
-
-{% block footer %}
-  {% include 'live/includes/footer.html' %}
 {% endblock %}

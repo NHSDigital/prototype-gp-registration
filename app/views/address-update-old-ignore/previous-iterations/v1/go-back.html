@@ -1,0 +1,29 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% block pageTitle %}
+Thank you for your feedback - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <div aria-live="polite" class="nhsuk-u-reading-width">
+           <div class="nhsuk-card">
+             <div class="nhsuk-card__content">
+               <h1 class="nhsuk-card__heading nhsuk-heading-l">That part of the journey has not been designed yet</h1>
+               <p class="nhsuk-card__description"><a href="is-address-uk">Please go back and choose 'Yes'.</a></p>
+             </div>
+           </div>
+           </div>
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

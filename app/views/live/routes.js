@@ -1,10 +1,13 @@
 // External dependencies
-const moment=require('moment')
+const express = require('express');
+const router = express.Router();
+
+const moment = require('moment');
 moment.locale("en-gb")
 
 // Add your routes here - above the module.exports line
 
-module.exports = (router) => {
+
 
   // Who is registering branch
    router.post('/live/who-is-registering-answer/', function (req, res) {
@@ -315,13 +318,4 @@ module.exports = (router) => {
     res.redirect('/live/do-you-know-nhs-number')
   });
 
-  router.post("/*/check-postcode", function (req, res) {
-    var postcode = (req.session.data["find-current-address"]);
-    console.log("postcode check " + postcode)
-    if(postcod.toUpperCase()=="LS28 7FG"){
-      res.redirect("/live/dispencing-surgery")
-    }
-    res.redirect("/live/nominate-pharmacy")
-  });
-
-};
+  module.exports = router;

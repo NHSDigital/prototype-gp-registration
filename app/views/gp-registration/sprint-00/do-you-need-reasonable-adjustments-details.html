@@ -1,0 +1,79 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% if (data['need-carer'] == "Yes") %}
+    {% set heading = "About the reasonable adjustments for " + data['name-first-name'] + " or their carer?" %}
+    {% set label = "Tell us what they need (optional)" %}
+  {% else %}
+    {% set heading = "About the reasonable adjustments for " + data['name-first-name'] %}
+    {% set label = "Tell us what they need (optional)" %}
+  {% endif %}
+{% else %}
+  {% if (data['need-carer'] == "Yes") %}
+    {% set heading = "Tell us what you or your carer need (optional)?" %}
+    {% set label = "Tell us what you or your carer need (optional)" %}
+  {% else %}
+    {% set heading = 'About your reasonable adjustments' %}
+    {% set label = "Tell us what you need (optional)" %}
+  {% endif %}
+{% endif %}
+
+{% block pageTitle %}
+{{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "do-you-need-reasonable-adjustments",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="do-you-take-prescription-medication" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ textarea({
+              "name": "adjustment-details",
+              "id": "adjustment-details",
+              "label": {
+                "text": label
+                }
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

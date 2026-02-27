@@ -1,0 +1,69 @@
+{% set serviceHome = '/live/start' %}
+
+{% extends 'address-update/layout.html' %}
+
+{% set heading = 'Do you live in the UK or the Isle of Man?' %}
+
+{% block pageTitle %}
+{{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <form action="what-is-your-current-address" method="post" autocomplete="off">
+
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+          {{ radios({
+            "idPrefix": "is-address-uk",
+            "name": "is-address-uk",
+              hint: {
+    text: "The UK is England, Wales, Scotland and Northern Ireland."
+  },
+            "items": [
+              {
+                "value": "yes~what-is-your-current-address",
+                "text": "Yes",
+                checked: checked("is-address-uk", "Yes")
+              },
+              {
+                "value": "no~what-is-your-current-address-abroad",
+                "text": "No",
+                checked: checked("is-address-uk", "No")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+      </div>
+    </div>
+
+{% include 'includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

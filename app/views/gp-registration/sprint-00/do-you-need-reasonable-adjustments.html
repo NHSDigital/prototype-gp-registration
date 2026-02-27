@@ -1,0 +1,102 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% if (data['need-carer'] == "Yes") %}
+    {% set heading = "Does " + data['name-first-name'] + " or their carer need any reasonable adjustments to make their visit to the GP surgery accessible?" %}
+  {% else %}
+    {% set heading = "Does " + data['name-first-name'] + " need any reasonable adjustments to make their visit to the GP surgery accessible?" %}
+  {% endif %}
+{% else %}
+  {% if (data['need-carer'] == "Yes") %}
+    {% set heading = "Do you or your carer need any reasonable adjustments to make your visit to the GP surgery accessible?" %}
+  {% else %}
+    {% set heading = 'Do you need any reasonable adjustments to make your visit to the GP surgery accessible?' %}
+  {% endif %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% if (data['accessible-needs'] === "Yes") %}
+  {% set link = "do-you-need-accessible-format-details" %}
+{% else %}
+  {% set link = "do-you-need-accessible-format" %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "html": "<p>For example, an audible or visual alert in the waiting room, access to a hearing loop or the support of a note taker.</p>"
+            }) }}
+
+          {{ radios({
+            "idPrefix": "reasonable-adjustments",
+            "name": "reasonable-adjustments",
+            "items": [
+              {
+                "value": "Yes~/live/do-you-need-reasonable-adjustments-details",
+                "text": "Yes",
+                checked: checked("reasonable-adjustments", "Yes")
+              },
+              {
+                "value": "No~/live/do-you-take-prescription-medication",
+                "text": "No",
+                checked: checked("reasonable-adjustments", "No")
+              },
+              {
+                "divider": "or"
+              },
+              {
+                "value": "Prefer not to say~/live/do-you-take-prescription-medication",
+                "text": "Prefer not to say",
+                checked: checked("accessible-needs", "Prefer not to say")
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

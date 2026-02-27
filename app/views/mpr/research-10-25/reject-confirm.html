@@ -1,0 +1,86 @@
+<!-- Use this page as the index for your project -->
+{% if data['patient-name'] %}
+  {% set name = data['patient-name'] %}
+{% else %}
+  {% set name = 'Sam Smith' %}
+{% endif %}
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'mpr/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "{{name}} rejected - GP registrations portal - NHS" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{{ backLink({
+  href: "reg-table-v2-yes-no-2",
+  text: "Back to patient registrations"
+  })
+}}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+        <div class="nhsuk-panel nhsuk-panel--reject">
+          <h1 class="nhsuk-heading-xl">
+            Rejected
+          </h1>
+          <p class="nhsuk-body-l">{{ name }} has not been added to your patient list</p>
+          <p>You should follow your surgery's guidance for rejecting patient registration applications.</p>
+        </div>
+
+        </div>
+      </div>
+
+      <!--style for the panel component-->
+      <style>
+        .nhsuk-panel {
+          box-sizing: border-box;
+          margin-bottom: 15px;
+          padding: 35px;
+          border: 5px solid transparent;
+          text-align: center;
+        }
+        
+        .nhsuk-panel--reject {
+          color: #fff;
+          background: #005eb8;
+        }
+        
+        @media (min-width: 40.0625em) {
+          .nhsuk-panel {
+            font-size: 2.25rem;
+            line-height: 1.1111111111;
+          }
+        }
+        </style>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}

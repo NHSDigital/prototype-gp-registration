@@ -1,0 +1,99 @@
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '1' %}
+
+{% extends 'gp-registration/_layout.html' %}
+
+{% set heading = 'What are your details?' %} {% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
+
+
+{% if data['return'] == "true" %}
+  {% set backHref = 'check-answers-1' %} {% else %}
+  {% set backHref = 'relation-of-dependant' %} {% endif %}
+
+
+{% block beforeContent %}
+  {% include '../includes/phase-banner.html' %}
+
+  {{ backLink({
+    "href": backHref,
+    "text": "Go back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <form action="{{ res.locals.basePath }}/carer-details-answer" method="post">
+
+      {% call fieldset({
+        legend: {
+          "text": heading,
+          "classes": "nhsuk-fieldset__legend--l",
+          "isPageHeading": true
+        }
+      }) %}
+
+        {{ input({
+            label: { "text": "First name" },
+            "classes": "nhsuk-u-width-two-thirds",
+            "id": "carer-first-name",
+            "name": "carer-first-name",
+            "autocomplete": "given-name",
+            "spellcheck": false,
+            "value": data['carer-first-name'] | default('')
+        }) }}
+
+        {{ input({
+            label: { "text": "Last name" },
+            "classes": "nhsuk-u-width-two-thirds",
+            "id": "carer-last-name",
+            "name": "carer-last-name",
+            "autocomplete": "family-name",
+            "spellcheck": false,
+            "value": data['carer-last-name'] | default('')
+        }) }}
+
+        {{ input({
+            label: { "text": "Relationship to the person being registered" },
+            "hint": { "text": "For example, you are a family member or friend." },
+            "classes": "nhsuk-u-width-two-thirds",
+            "id": "carer-relationship",
+            "name": "carer-relationship",
+            "value": data['carer-relationship'] | default('')
+        }) }}
+
+        <label class="nhsuk-label" for="carer-dob-day">Date of birth (optional)</label>
+        <div class="nhsuk-date-input">
+          <div class="nhsuk-date-input__item">
+            <input class="nhsuk-input nhsuk-input--width-2" id="carer-dob-day" name="carer-dob-day" type="text" pattern="[0-9]*" inputmode="numeric" spellcheck="false" value="{{ data['carer-dob-day'] | default('') }}" placeholder="DD">
+          </div>
+          <div class="nhsuk-date-input__item">
+            <input class="nhsuk-input nhsuk-input--width-2" id="carer-dob-month" name="carer-dob-month" type="text" pattern="[0-9]*" inputmode="numeric" spellcheck="false" value="{{ data['carer-dob-month'] | default('') }}" placeholder="MM">
+          </div>
+          <div class="nhsuk-date-input__item">
+            <input class="nhsuk-input nhsuk-input--width-4" id="carer-dob-year" name="carer-dob-year" type="text" pattern="[0-9]*" inputmode="numeric" spellcheck="false" value="{{ data['carer-dob-year'] | default('') }}" placeholder="YYYY">
+          </div>
+        </div>
+
+        {{ input({
+            label: { "text": "Contact telephone number" },
+            "classes": "nhsuk-u-width-one-third",
+            "id": "carer-telephone",
+            "name": "carer-telephone",
+            "autocomplete": "tel",
+            "spellcheck": false,
+            "value": data['carer-telephone'] | default('')
+        }) }}
+
+      {% endcall %}
+
+      <br>
+      {{ button({ "text": "Continue" }) }}
+
+    </form>
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %} {% endblock %}
+

@@ -1,0 +1,154 @@
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
+{% set heading = 'Enter the security code' %}
+    
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
+
+
+<!-- For adding a phase banner, breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../includes/phase-banner.html' %}
+
+    {{ backLink({
+      text: "Back to: Enter your password",
+      href: "nhs-login-password"
+    })
+  }}
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="nhs-login-share" method="post" autocomplete="off">
+
+          {% call fieldset({
+              legend: {
+                "text": "Enter the security code",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+          <p>
+            We sent a text to •••••••0123.
+          </p>
+
+          <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                Not received a text?
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <p>When we are really busy it may take a bit longer for us to text you.</p>
+              <p><a href="#">Send the security code again</a></p>
+
+            </div>
+          </details>
+
+          {{ input({
+                label: {
+                  "html": 'Security code'
+                },
+                  "hint": {
+                  "text": "The code is 6 digits"
+                },
+                "type": "password",
+                "classes": "nhsuk-input--width-20",
+                "id": "nhs-login-email",
+                "name": "nhs-login-email"
+              }) }}
+
+              {{ checkboxes({
+                "idPrefix": "remember-device",
+                "name": "remember-device",
+                "items": [
+                  {
+                    "value": "remember-device-checkbox",
+                    "text": "Remember this device and stop sending security codes"
+                  }
+                ]
+              }) }}
+
+              {% from "details/macro.njk" import details %}
+
+              {% set dummyNhsNumber = "999 123 4567" %}
+
+              {% call details({
+                summaryText: "What does remember this device mean"
+                }) 
+              %}
+                <p>We can remember the device you are using now, so you will not need to enter a security code when you log in with this device in the future. </p>
+                <p> To keep your NHS login secure, you should only do this on your own personal or trusted devices. </p>
+                <p>We may ask if you still want us to remember this device in the future.</p>
+             {% endcall %}
+             
+
+              {% call details({
+                summaryText: "I do not have access to my mobile phone"
+                }) 
+              %}
+                <p>If you do not have access to your phone, you can <a href='#'>change your phone number securely</a>.</p>
+              {% endcall %}
+
+              
+ {% endcall %}
+
+
+
+
+            
+
+
+          {{ button({
+              "text": "Continue"
+            }) }}
+
+        </form>
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  $('#no-previous-address-1').change(function() {
+    if ($('#no-previous-address-1').is(':checked') == true) {
+      $('input[type=text]').prop('disabled', true);
+    } else {
+      $('input[type=text]').prop('disabled', false);
+    }
+  });
+</script>
+{% endblock %}

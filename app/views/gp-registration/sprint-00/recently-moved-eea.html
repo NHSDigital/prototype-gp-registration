@@ -1,0 +1,120 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Has ' + data['name-first-name'] + ' moved to the UK from living in EU, EEA or Switzerland?' %}
+  {% set hintText = 'They may need to pay an immigration health surcharge as part of their visa application if they\'re staying for 6 months or more.' %}
+{% else %}
+  {% set heading = 'Have you moved to the UK from EU, EEA or Switzerland?' %}
+  {% set hintText = 'You may need to pay an immigration health surcharge as part of your visa application if you\'re staying for 6 months or more.' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "recently-moved-date",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ hint({
+            "text": hintText,
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}          
+
+          {% set age = data['years-old'] | int %}
+          {% if age <= 34 and age >= 16 %}
+
+          {{ radios({
+            "idPrefix": "eea",
+            "name": "eea",
+            "items": [
+              {
+                "value": "Yes~/live/recently-moved-documents",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("eea", "Yes")
+              },
+              {
+                "value": "No~/live/visited-tb-country",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("eea", "No")
+              }
+            ]
+          }) }}  
+    
+        {% else %}
+
+          {{ radios({
+            "idPrefix": "eea",
+            "name": "eea",
+            "items": [
+              {
+                "value": "Yes~/live/recently-moved-documents",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("eea", "Yes")
+              },
+              {
+                "value": "No~/live/do-you-have-existing-conditions",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("eea", "No")
+              }
+            ]
+          }) }}
+
+          {% endif %}
+
+          {% endcall %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+        </form>
+
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

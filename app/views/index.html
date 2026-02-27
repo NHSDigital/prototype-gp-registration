@@ -2,27 +2,26 @@
 
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
-<!-- Extends the layout from /views/layout.html -->
+<!-- Extends the layout from /app/views/layout.html -->
 {% extends 'layout.html' %}
 <!--
-  In /views/layout.html you can:
+  In /app/views/layout.html you can:
     - change the header and footer
     - add custom CSS and JavaScript
 -->
 
-<!-- Set the page title -->
-{% block pageTitle %}
-GP Registration Prototype
-{% endblock %}
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Register with a GP surgery" %}
 
-<!-- For adding a breadcrumb -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block beforeContent %}
-{% endblock %}
-
-<!-- For adding a Go back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
-{% block outerContent %}
 {% endblock %}
 
 <!-- For adding page content -->
@@ -119,7 +118,7 @@ GP Registration Prototype
 
           {{ button({
             "text": "Continue",
-                "href": "/reg-portal/"
+                "href": "/mpr/"
           }) }}
 
 
@@ -127,39 +126,119 @@ GP Registration Prototype
       </div>
       <div class="nhsuk-grid-column-one-third">
 
-        <h2 class="nhs-heading-s">Dev mode</h2>
-        <p><a href="/live/start?devMode=true">Run 'live' in devMode</a></p>
-        <p><a href="/design/start?devMode=true">Run 'design' in devMode</a></p>
 
-        <h2 class="nhs-heading-s">Environments</h2>
-        <p><a href="https://gp-registration.nhs.uk/M84015/gpregistration/landing" target="_blank">Prod environment</a></p>
-        <p><a href="https://register.int.gp-registration.nhs.uk/1234/gpregistration/landing" target="_blank">Int environment</a></p>
+      <div class="nhsuk-card nhsuk-card--outline nhsuk-u-margin-bottom-4">
+        <div class="nhsuk-card__content">
+          <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">
+          Prototype information
+          </h3>
+          <ul class="nhsuk-list nhsuk-u-font-size-16">
+            <li>
+              <strong>Prototype kit:</strong><br>
+              {{ prototypeKitVersion }}
+            </li>
+            <li class="nhsuk-u-margin-top-2">
+              <strong>NHS frontend:</strong><br>
+              {{ nhsFrontendVersion }}
+            </li>
+            <li class="nhsuk-u-margin-top-2">
+              <strong>Node:</strong><br>
+              {{ nodeVersion }}
+            </li>
+          </ul>
+          <hr class="nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-3">
+          <h4 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">
+          Release history
+          </h4>
+          <ul class="nhsuk-list nhsuk-list--bullet nhsuk-u-font-size-16">
+            <li>
+              <a href="https://github.com/nhsuk/nhsuk-prototype-kit/releases" target="_blank" rel="noopener noreferrer">
+              Prototype kit releases
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/nhsuk/nhsuk-frontend/releases" target="_blank" rel="noopener noreferrer">
+              NHS frontend releases
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <br>
+      <div class="nhsuk-card nhsuk-card--outline nhsuk-u-margin-bottom-4">
+        <div class="nhsuk-card__content">
+          <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">
+          Environments
+          </h3>
+          <ul class="nhsuk-list nhsuk-list--bullet nhsuk-u-font-size-16">
+            <li>
+              <a href="https://register.int.gp-registration.nhs.uk/1234/gpregistration/landing" target="_blank">
+              Int environment
+              </a>
+            </li>
+            <li>
+              <a href="https://gp-registration.nhs.uk/M84015/gpregistration/landing" target="_blank">
+              Prod environment
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <br>
+      <div class="nhsuk-card nhsuk-card--outline nhsuk-u-margin-bottom-4">
+        <div class="nhsuk-card__content">
+          <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">
+          Dev mode<br>(currently disabled)
+          </h3>
+          <ul class="nhsuk-list nhsuk-list--bullet nhsuk-u-font-size-16">
+            <li>
+              <a href="?devMode=true" target="_blank" rel="noopener noreferrer">
+              Turn on devMode
+              </a>
+            </li>
+            <li>
+              <a href="/live/start?devMode=true">
+              Run 'live' in devMode
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <br>
+      <div class="nhsuk-card nhsuk-card--outline nhsuk-u-margin-bottom-4">
+        <div class="nhsuk-card__content">
+          <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">
+          Other links
+          </h3>
+          <ul class="nhsuk-list nhsuk-list--bullet nhsuk-u-font-size-16">
+            <li>
+              <a href="https://patient-list-inflation-eebf515757e0.herokuapp.com/" target="_blank">
+              PLI Prototype
+              </a>
+            </li>
+            <li>
+              <a href="/clear-data" target="_blank">
+              Clear data
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      
+
+
+
+
+
+      
         
 
-        <h2 class="nhs-heading-s">Related prototypes</h2>
-        <p><a href="https://patient-list-inflation-eebf515757e0.herokuapp.com/" target="_blank">PLI prototype</a></p>
+       
+            
+          
     
       </div>
     </div>
 
-{% endblock %}
-
-
-{% block footer %}
-{{ footer({
-"links": [
-{
-"URL": "https://github.com/nhsuk/nhsuk-prototype-kit/releases",
-"label": "Prototype kit version: " + version
-},
-{
-"URL": "?devMode=true",
-"label": "Turn on devMode"
-},
-{
-"URL": "/examples/passing-data/clear-data",
-"label": "Clear data"
-}
-]
-})}}
 {% endblock %}

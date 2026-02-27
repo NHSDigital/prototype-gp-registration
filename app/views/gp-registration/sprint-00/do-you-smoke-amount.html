@@ -1,0 +1,95 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What is the average number of cigarettes " + data['name-first-name'] + " smokes a day?" %}
+{% else %}
+  {% set heading = "What is the average number of cigarettes you smoke a day?" %}
+{% endif %}
+
+{% if (data['smoke-month']) %}
+  {% set link = 'do-you-smoke-date' %}
+{% else %}
+  {% set link = 'do-you-smoke-type' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="scr" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {{ radios({
+              "idPrefix": "smokes-amount",
+              "name": "smokes-amount",
+              "fieldset": {
+                "legend": {
+                  "text": heading,
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+
+              "items": [
+                {
+                  "value": "Less than 1~/live/scr",
+                  "text": "Fewer than 1 a day",
+                  checked: checked("smokes-amount", "Less than 1")
+                },
+                {
+                  "value": "1-9~/live/scr",
+                  "text": "1-9",
+                  checked: checked("smokes-amount", "1-9")
+                },
+                {
+                  "value": "10-19~/live/scr",
+                  "text": "10-19",
+                  checked: checked("smokes-amount", "10-19")
+                },
+                {
+                  "value": "20-39~/live/scr",
+                  "text": "20-39",
+                  checked: checked("smokes-amount", "20-39")
+                },
+                {
+                  "value": "40 or more~/live/scr",
+                  "text": "40 or more",
+                  checked: checked("smokes-amount", "40 or more")
+                }
+              ]
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

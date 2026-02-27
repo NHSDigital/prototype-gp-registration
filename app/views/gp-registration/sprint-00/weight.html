@@ -1,0 +1,141 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What is " + data['name-first-name'] + "'s weight?" %}
+{% else %}
+  {% set heading = 'What is your weight?' %}
+{% endif %}
+
+{% if (data['under-16-years'] === "true") %}
+  {% set action = 'scr' %}
+{% else %}
+  {% set action = 'how-often-do-you-drink-alcohol' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": height,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="{{ action }}" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          <div id="current-address-lookup-container">
+
+            {{ dateInput({
+              "id": "weight",
+              "namePrefix": "weight",
+              "fieldset": {
+                "legend": {
+                  "text": heading,
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": true
+                }
+              },
+              "hint": {
+                "text": "This question is (optional)"
+              },
+              "items": [
+                {
+                  "name": "stone",
+                  "classes": "nhsuk-input--width-5",
+                  "value": data['weight-stone']
+                },
+                {
+                  "name": "pounds",
+                  "classes": "nhsuk-input--width-5",
+                  "value": data['weight-pounds']
+                }
+              ]
+            }) }}
+
+            <p><a href="#" id="enter-address-manually-link">Switch to kilograms</a></p>
+
+          </div>
+
+          <form action="{{ link }}" method="post" autocomplete="off">
+
+            <div class="current-address-form hidden-section">
+
+              {{ dateInput({
+                "id": "weight",
+                "namePrefix": "weight",
+                "fieldset": {
+                  "legend": {
+                    "text": "What is your weight?",
+                    "classes": "nhsuk-label--l",
+                    "isPageHeading": false
+                  }
+                },
+                "hint": {
+                  "text": "This question is (optional)"
+                },
+                "items": [
+                  {
+                    "name": "kilograms",
+                    "classes": "nhsuk-input--width-10",
+                    "value": data['weight-kilograms']
+                  }
+                ]
+              }) }}
+
+              <p><a href="#" id="use-postcode-lookup-link">Switch to stone and pounds</a></p>
+
+            </div>
+
+            {{ details({
+            "text": "Why are you asking this?",
+            "HTML": "<p>The GP surgery may use this information to give you health guidance and support.</p>"
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    $('#enter-address-manually-link').click(function () {
+      $('#current-address-lookup-container').addClass("hidden-section");
+      $('.current-address-form').removeClass("hidden-section");
+    });
+
+    $('#use-postcode-lookup-link').click(function () {
+      $('#current-address-lookup-container').removeClass("hidden-section");
+      $('#select-address-section').addClass("hidden-section");
+      $('.current-address-form').addClass("hidden-section");
+    });
+
+  </script>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

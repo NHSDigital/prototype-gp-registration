@@ -1,0 +1,81 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'mpr/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Sam Smith accepted - GP registrations portal - NHS" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+        <!--
+        {{ backLink({
+            text: "Back to patient registrations",
+            href: "reg-table-v2-yes-no2"
+        }) }}
+        -->
+
+        <div class="nhsuk-panel nhsuk-panel--confirmation">
+          <h1 class="nhsuk-heading-xl">
+            Approved
+          </h1>
+          <p class="nhsuk-body-l">Sam Smith has been added to your patient list</p>
+          <p>Follow your surgery's guidance for managing newly registered patients.</p>
+        </div>
+        <br><br>
+        <p>Some content about PDS being updated.</p>
+        <br>
+
+        {{ button({
+            "text": "Return to new patient registrations",
+                "href": "reg-table-pds-1-updated"
+          }) }}
+
+          
+
+          {{ button({
+            "text": "Return to dashboard",
+            "classes": "nhsuk-button--secondary",
+                "href": "dashboard-pds-1-updated"
+          }) }}
+
+
+        
+        </div>
+      </div>
+
+      
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}

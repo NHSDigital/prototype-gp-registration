@@ -1,0 +1,89 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'address-update/_layout.html' %}
+
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
+{% set heading = "Confirm your new address" %}
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = heading + "- NHS" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Add phase banner include here too -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../includes/auf-feedback.html' %}
+
+{{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back"
+  }) }}
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <form action="success-out-of-catchment" method="post" autocomplete="off">
+
+      <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+        <h1 class="nhsuk-fieldset__heading">Your new address</h1>
+      </legend>
+
+      <p>You want to change your address to:</p>
+      <p>{% if data['select-new-address'] %}
+          {{ data['select-new-address'] }} Town Street,<br />
+              London,<br />
+              SW1A 1AA
+          {% elseif data['new-address-line-1'] %}
+            {{ data['new-address-line-1'] }}<br />
+            {{ data['new-address-line-2'] }}<br />
+            {{ data['new-address-town'] }}<br />
+            {{ data['new-address-postcode'] }}<br/>
+            {{ data['new-address-country'] }}
+          {% else %}
+            {{ data['abroad-address'] }}
+          {% endif %}
+      </p>
+
+      {% if data['noGP'] != 'true' %}
+      <p>Your address will be updated on your NHS record immediately.</p>
+      {% endif %}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}

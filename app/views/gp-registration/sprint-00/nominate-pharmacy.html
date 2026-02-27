@@ -1,0 +1,105 @@
+<!-- Set any variables here -->
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% if (data['ethnicity'] === "Asian or Asian British") %}
+  {% set link = 'what-is-your-ethnicity-background-asian' %}
+{% elif (data['ethnicity'] === "Black African, Black British or Caribbean") %}
+  {% set link = 'what-is-your-ethnicity-background' %}
+{% elif (data['ethnicity'] === "Mixed or multiple ethnic groups") %}
+  {% set link = 'what-is-your-ethnicity-background-mixed' %}
+{% elif (data['ethnicity'] === "White") %}
+  {% set link = 'what-is-your-ethnicity-background-white' %}
+{% elif (data['ethnicity'] === "Another ethnic group") %}
+  {% set link = 'what-is-your-ethnicity-background-another' %}
+{% else %}
+  {% set link = 'what-is-your-ethnicity' %}
+{% endif %}
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
+{% set heading = "Would you like to choose a pharmacy for your prescriptions?" %}
+    
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
+
+
+<!-- For adding a phase banner, breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../includes/phase-banner.html' %}
+
+{{ backLink({
+    "href": link,
+    "text": "Go back"
+  })
+}}
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {% set fieldVar = data['nominate-pharmacy'] %}
+          <form action="{{ basePath }}/nominate-pharmacy-answer" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            <h1 class="nhsuk-fieldset__legend--l">Would you like to choose a pharmacy for your prescriptions?</h1>
+            <p>Choosing a pharmacy means your GP surgery will send prescriptions directly to this pharmacy.</p>
+
+            {{ radios({
+              "idPrefix": "nominate-pharmacy",
+              "name": "nominate-pharmacy",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes, choose a pharmacy",
+                  checked: fieldVar == "Yes"
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: fieldVar == "Yes"
+                }
+              ]
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+        </form>
+      </div>
+     </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'For people with S1 form?' %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <form action="check-answers-2" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+          <p>By continuing you are agreeing to the following statements.</p>
+          <p>I understand that registration with  a GP surgery is free of charge and that I can receive free medical care from them.</p>
+          <p>I may need to pay for other NHS treatment, such as referrals to hospital, if:</p>
+
+          <ul class="nhsuk-list nhsuk-list--bullet">
+            <li>I do not present my S1 form to the GP surgery as soon as possible after registration</li>
+            <li>I do not present it if requested at other times</li>
+          </ul>
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

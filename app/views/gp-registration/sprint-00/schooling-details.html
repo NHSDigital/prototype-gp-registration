@@ -1,0 +1,143 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Enter details of where ' + data['name-first-name'] + ' goes for their education' %}
+{% else %}
+  {% set heading = 'Enter details of where you go for your education' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "what-schooling-do-you-have",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <form action="professional-involvement" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {% if 'School' in data['schooling'] or data['screenshot'] %}
+
+            <h3>School details:</h3>
+
+              {{ input({
+                label: {
+                  "text": 'Name of school'
+                },
+                "id": "school-name",
+                "name": "school-name"
+              }) }}
+
+              {{ input({
+              label: {
+                "text": 'Postcode'
+              },
+              "classes": "nhsuk-input--width-20",
+              "id": "school-postcode",
+              "name": "school-postcode"
+            }) }}
+
+            {{ input({
+              label: {
+                "text": 'Telephone number'
+              },
+              "id": "school-phone",
+              "name": "school-phone"
+            }) }}
+
+          {% endif %}
+
+          {% if 'Nursery' in data['schooling']  or data['screenshot'] %}
+
+          <h3>Nursery details:</h3>
+
+          {{ input({
+            label: {
+              "text": 'Name of nursery'
+            },
+            "id": "nursery-name",
+            "name": "nursery-name"
+          }) }}
+
+            {{ input({
+            label: {
+              "text": 'Postcode'
+            },
+            "classes": "nhsuk-input--width-20",
+            "id": "nursery-postcode",
+            "name": "nursery-postcode"
+          }) }}
+
+            {{ input({
+            label: {
+              "text": 'Telephone number'
+            },
+            "id": "nursery-phone",
+            "name": "nursery-phone"
+          }) }}
+
+          {% endif %}
+
+          {% if 'Homeschool' in data['schooling']  or data['screenshot'] %}
+
+          <h3>Home school details:</h3>
+
+            {{ input({
+            label: {
+              "text": 'Postcode'
+            },
+            "classes": "nhsuk-input--width-20",
+            "id": "homeschool-postcode",
+            "name": "homeschool-postcode"
+          }) }}
+
+            {{ input({
+            label: {
+              "text": 'Telephone number'
+            },
+            "id": "homeschool-phone",
+            "name": "homeschool-phone"
+          }) }}
+
+          {% endif %}
+
+          {% endcall %}
+
+          {{ button({
+          "text": "Continue"
+        }) }}
+
+        </form>
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

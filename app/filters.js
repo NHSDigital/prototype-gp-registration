@@ -1,12 +1,8 @@
-const moment = require('moment');
+/**
+ * @param {Environment} env
+ */
 module.exports = function (env) {
-  /**
-   * Instantiate object used to store the methods registered as a
-   * 'filter' (of the same name) within nunjucks. You can override
-   * gov.uk core filters by creating filter methods of the same name.
-   * @type {Object}
-   */
-  var filters = {}
+  const filters = {}
 
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
@@ -39,14 +35,10 @@ module.exports = function (env) {
 
   ------------------------------------------------------------------ */
 
-  filters.returnDate = (input) => {
-    var dateFormat = "MMM"
-    var d = moment().month(input-1).format(dateFormat)
-    return d;
-  }
-
-  /* ------------------------------------------------------------------
-    keep the following line to return your filters to the app
-  ------------------------------------------------------------------ */
+  /* keep the following line to return your filters to the app  */
   return filters
 }
+
+/**
+ * @import { Environment } from 'nunjucks'
+ */

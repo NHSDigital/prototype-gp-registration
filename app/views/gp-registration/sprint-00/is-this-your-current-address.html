@@ -1,0 +1,87 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Is this your current UK address? - {{ ServiceName }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "registered-for-the-first-time",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                "text": "Is this your address?",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            <dl class="nhsuk-summary-list">
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key address-review-confirmation">Address:</dt>
+                <dd class="nhsuk-summary-list__value">
+                  <p>6 BRAMLEY CLOSE
+                    <br>
+                    BARTON-UPON-HUMBER
+                    <br>
+                    DN18 5GA
+                    <br>
+                  </p>
+                </dd>
+              </div>
+            </dl>
+
+            {{ radios({
+              "idPrefix": "current-address",
+              "name": "current-address",
+              "classes": "nhsuk-radios",
+              "items": [
+                {
+                  "value": "Yes~/live/confirm-contact-details",
+                  "text": "Yes",
+                  checked: checked("current-address", "Yes")
+                },
+                {
+                  "value": "No~/live/what-is-your-current-address",
+                  "text": "No",
+                  checked: checked("current-address", "No")
+                }
+
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+        </form>
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

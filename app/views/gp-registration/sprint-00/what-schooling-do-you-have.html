@@ -1,0 +1,98 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Does ' + data['name-first-name'] + ' go to any of the following for their education?' %}
+{% else %}
+  {% set heading = 'Do you go to any of the following for your education?' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% if (data['user-auth'] === 'p9') %}
+  {% set link = 'confirm-contact-details' %}
+{% elif (data['no-contact']) %}
+  {% set link = 'how-can-we-contact-inputs-prompt' %}
+{% else %}
+  {% set link = 'how-can-we-contact-inputs' %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <form action="check-schooling" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {{ checkboxes({
+                "idPrefix": "schooling",
+                "name": "schooling",
+                "fieldset": {
+                  "legend": {
+                    "text": heading,
+                    "classes": "nhsuk-fieldset__legend--l",
+                    isPageHeading: true
+                  }
+                },
+                hint: {
+                  html: '<p>This will help the GP understand what other services the patient has access to.</p>'
+                },
+                items: [
+                  {
+                    value: "School",
+                    text: "School",
+                    checked: checked("schooling", "School"),
+                    exclusiveGroup: "education-list"
+                  },
+                  {
+                    value: "Nursery",
+                    text: "Nursery",
+                    checked: checked("schooling", "Nursery"),
+                    exclusiveGroup: "education-list"
+                  },
+                  {
+                    value: "Homeschool",
+                    text: "Home schooled",
+                    checked: checked("schooling", "Homeschool"),
+                    exclusiveGroup: "education-list"
+                  },
+                  {
+                    value: "None",
+                    text: "None of the above",
+                    exclusive: true,
+                    checked: checked("schooling", "None"),
+                    exclusiveGroup: "education-list"
+                  }
+                ]
+              }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

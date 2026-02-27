@@ -1,0 +1,167 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'European health insurance card details' %}
+  {% set hintText = 'They should take their EHIC to any medical appointment as they may be asked to show it.' %}
+{% else %}
+  {% set heading = 'European health insurance card details' %}
+  {% set hintText = 'You should keep your EHIC with you at any medical appointment as you may be asked to show it.' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "recently-moved-documents",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <form action="overseas-declaration-ehic" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+          {% call fieldset({
+            legend: {
+              text: heading,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+              {{ hint({
+                "text": hintText,
+                "classes": "nhsuk-u-margin-bottom-2"
+              }) }}
+
+              {{ input({
+                label: {
+                  "text": "Full name"
+                },
+                "classes": "nhsuk-u-width-two-thirds",
+                "id": "ehic-full-name",
+                "name": "ehic-full-name",
+                "value": data['ehic-full-name']
+              }) }}
+
+               {{ dateInput({
+                 "id": "ehic-dob",
+                 "namePrefix": "ehic-dob",
+                 "fieldset": {
+                   "legend": {
+                     "text": "Date of birth",
+                     "classes": "nhsuk-label",
+                     "isPageHeading": false
+                   }
+                 },
+                 "hint": {
+                   "text": "For example, 15 3 2011"
+                 },
+                 "items": [
+                   {
+                     "name": "day",
+                     "classes": "nhsuk-input--width-2",
+                     "value": data['ehic-dob-day']
+                   },
+                   {
+                     "name": "month",
+                     "classes": "nhsuk-input--width-2",
+                     "value": data['ehic-dob-month']
+                   },
+                   {
+                     "name": "year",
+                     "classes": "nhsuk-input--width-4",
+                     "value": data['ehic-dob-year']
+                   }
+                 ]}) }}
+
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="ehic-cc">
+                  Country code
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-5" id="ehic-cc" name="ehic-cc" type="text" aria-describedby="ehic-id" inputmode="numeric">
+              </div>
+
+
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="ehic-id">
+                 Personal Identification number
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="ehic-id" name="ehic-id" type="text" aria-describedby="ehic-id" inputmode="numeric">
+              </div>
+
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="ehic-id-2">
+                 Identification number of the card
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="ehic-id-2" name="ehic-id-2" type="text" aria-describedby="ehic-id-2" inputmode="numeric">
+              </div>
+
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="ehic-id-3">
+                  Identification number of the institution
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="ehic-id-3" name="ehic-id-3" type="text" aria-describedby="ehic-id-3" inputmode="numeric">
+              </div>
+
+              {{ dateInput({
+                "id": "ehic-from",
+                "namePrefix": "ehic-from",
+                "fieldset": {
+                  "legend": {
+                    "text": "Expiry date",
+                    "classes": "nhsuk-label",
+                    "isPageHeading": false
+                  }
+                },
+                "hint": {
+                  "text": "For example, 15 3 2011"
+                },
+                "items": [
+                  {
+                    "name": "day",
+                    "classes": "nhsuk-input--width-2",
+                    "value": data['ehic-from-day']
+                  },
+                  {
+                    "name": "month",
+                    "classes": "nhsuk-input--width-2",
+                    "value": data['ehic-from-month']
+                  },
+                  {
+                    "name": "year",
+                    "classes": "nhsuk-input--width-4",
+                    "value": data['ehic-from-year']
+                  }
+                ]
+              }) }}
+
+          {% endcall %}
+
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

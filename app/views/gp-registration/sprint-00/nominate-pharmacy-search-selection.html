@@ -1,0 +1,135 @@
+<!-- Set any variables here -->
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% if (data['user-auth'] === "p9") %}
+  {% set link = 'nominate-pharmacy-warning' %}
+{% else %}
+  {% set link = 'nominate-pharmacy' %}
+{% endif %}
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
+{% set heading = 'Choose a pharmacy' %}
+    
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
+
+
+<!-- For adding a phase banner, breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../includes/phase-banner.html' %}
+
+{{ backLink({
+    "href": "nominate-pharmacy-search",
+    "text": "Go back"
+  })
+}}
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {% set fieldVar = data['nominated-pharmacy'] %}
+          <form action="confirm-pharmacy" method="post" autocomplete="off">
+
+          {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "html": '<p>3 addresses found for ' + data['pharmacy-postcode'],
+              "classes": "nhsuk-u-margin-bottom-2"
+            }) }}
+
+            {{ radios({
+              "idPrefix": "have-previous-uk-address",
+              "name": "nominated-pharmacy",
+              "items": [
+                {
+                  value: "Highstreet pharmacy, 1 Town Street, London, SW1A 1AA",
+                  text: "Highstreet pharmacy",
+                  hint: {
+                    "html": '1 Town Street, London, SW1A 1AA<br><br><span class="nhsuk-body-s nhsuk-u-margin-bottom-4">Less than 50 metres away</span>'
+                  },
+                  checked: fieldVar == "Highstreet pharmacy, 1 Town Street, London, SW1A 1AA"
+                },
+                {
+                  value: "Boots, 2 Town Street, London, SW1A 1AA",
+                  text: "Boots",
+                  hint: {
+                    "html": '2 Town Street, London, SW1A 1AA<br><br><span class="nhsuk-body-s nhsuk-u-margin-bottom-4">Less than 1.1km away</span>'
+                  },
+                  checked: fieldVar == "Boots, 2 Town Street, London, SW1A 1AA"
+                },
+                {
+                  value: "Elliots pharmacy, 3 Town Street, London, SW1A 1AA",
+                  text: "Elliots pharmacy",
+                  hint: {
+                    "html": '3 Town Street, London, SW1A 1AA<br><br><span class="nhsuk-body-s nhsuk-u-margin-bottom-4">Less than 1.8km away</span>'
+                  },
+                  checked: fieldVar == "Elliots pharmacy, 3 Town Street, London, SW1A 1AA"
+                },
+                {
+                "divider": "or"
+                },
+                {
+                  value: "Other",
+                  text: "The pharmacy I want to choose is not listed",
+                  checked: fieldVar == "Other"
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+              <p>
+                <a href="nominate-pharmacy-manual" id="enter-address-manually-link">Enter the address manually</a>
+              </p>
+
+              {{ button({
+                  "text": "Continue"
+              }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}

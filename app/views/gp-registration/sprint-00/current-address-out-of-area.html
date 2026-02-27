@@ -1,0 +1,94 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% set heading = 'This address is outside the area for this GP surgery' %}
+
+{% block pageTitle %}
+ {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% if (data['select-current-address']) %}
+  {% set link = 'what-is-your-current-address' %}
+{% else %}
+  {% set link = 'what-is-your-current-address' %}
+{% endif %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": link,
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <form action="" method="post" autocomplete="off">
+
+      {% include 'live/includes/step.html' %}
+
+      {% call fieldset({
+        legend: {
+          text: heading,
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      <p>Some GP surgeries will only accept patients that live within their catchment areas. You can continue with this application, but it may affect some of the services they provide.</p>
+
+      {{ radios({
+          "idPrefix": "use-ooo",
+          "name": "use-ooo",
+          "classes": "nhsuk-radios",
+          "fieldset": {
+            "legend": {
+              "text": "What would you like to do?",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": false
+            }
+          },
+          "items": [
+            {
+              "value": "Yes~/live/how-can-we-contact-inputs",
+              "text": "Continue with this application",
+              "hint": {
+                "text": "The surgery could reject this application if they are not accepting out of area registrations."
+              },
+              checked: checked("use-ooo", "Yes")
+            },
+            {
+              "value": "No~https://www.nhs.uk/service-search/find-a-gp",
+              "text": "Cancel this application and find a different GP surgery ",
+              "hint": {
+                "text": "A new application will have to be submitted and any answers given so far will not be saved."
+              },
+              checked: checked("use-ooo", "No")
+            }
+          ]
+       }) }}
+
+      {% endcall %}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

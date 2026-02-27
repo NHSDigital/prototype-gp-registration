@@ -1,0 +1,113 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = 'Select ' + data['name-first-name'] + '\'s previous address' %}
+{% else %}
+  {% set heading = 'Select your address' %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "what-is-your-previous-address",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="do-you-have-existing-conditions" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+              {% call fieldset({
+                legend: {
+                  text: heading,
+                  classes: "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              }) %}
+
+              <div class="nhsuk-hint" id="contact-hint">
+                <p>6 addresses found for {{ data['prev-house-number-address'] ~ ' and ' ~ data['find-previous-address'] if data['prev-house-number-address'] and data['find-previous-address'] else '24 and LS13 9PO' }}</p>
+              </div>
+
+              {{ radios({
+                "idPrefix": "select-previous-address",
+                "name": "select-previous-address",
+                "items": [
+                  {
+                    "value": "1 Town Street, London, SW1A 1AA",
+                    "text": "1 Town Street, London, SW1A 1AA",
+                    "checked": checked("select-previous-address", "1 Town Street, London, SW1A 1AA")
+                  },
+                  {
+                    "value": "2 Town Street, London, SW1A 1AA",
+                    "text": "2 Town Street, London, SW1A 1AA",
+                    "checked": checked("select-previous-address", "2 Town Street, London, SW1A 1AA")
+                  },
+                  {
+                    "value": "3 Town Street, London, SW1A 1AA",
+                    "text": "3 Town Street, London, SW1A 1AA",
+                    "checked": checked("select-previous-addresss", "3 Town Street, London, SW1A 1AA")
+                  },
+                  {
+                    "value": "4 Town Street, London, SW1A 1AA",
+                    "text": "4 Town Street, London, SW1A 1AA",
+                    "checked": checked("select-previous-addresss", "4 Town Street, London, SW1A 1AA")
+                  },
+                  {
+                    "value": "5 Town Street, London, SW1A 1AA",
+                    "text": "5 Town Street, London, SW1A 1AA",
+                    "checked": checked("select-previous-address", "5 Town Street, London, SW1A 1AA")
+                  },
+                  {
+                    "value": "6 Town Street, London, SW1A 1AA",
+                    "text": "6 Town Street, London, SW1A 1AA",
+                    "checked": checked("select-previous-address", "6 Town Street, London, SW1A 1AA")
+                  },
+                  {
+                    "divider": "or"
+                  },
+                  {
+                    "value": "wrong address~/live/what-is-your-previous-address",
+                    "text": "I cannot find the address on the list.",
+                    "checked": checked("select-current-address", "")
+                  }
+                ]
+              }) }}
+
+              {% endcall %}
+
+              <p>
+                <a href="what-is-your-previous-address-manual" id="enter-address-manually-link">Enter the address manually</a>
+              </p>
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+
+          </form>
+
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}

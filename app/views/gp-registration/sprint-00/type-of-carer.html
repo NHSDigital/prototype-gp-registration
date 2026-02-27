@@ -1,0 +1,84 @@
+{% set serviceHome = '/live/start' %}
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% extends 'layout.html' %}
+
+{% if (data['who-is-being-registered'] === "dependant") %}
+  {% set heading = "What type of carer are they?" %}
+{% else %}
+  {% set heading = "What type of carer are you?" %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ heading }} - {{ data.presets[0].servicename }} - NHS
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "are-you-a-carer",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <form action="do-you-need-accessible-format" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {{ radios({
+              "idPrefix": "carer-type",
+              "name": "carer-type",
+              "fieldset": {
+                "legend": {
+                  "text": heading,
+                  "classes": "nhsuk-fieldset__legend--l",
+                  "isPageHeading": "true"
+                }
+              },
+              "items": [
+                {
+                  "value": "Young carer",
+                  "text": "Young carer, under 18",
+                  checked: checked("carer-type", "Young carer")
+                },
+                {
+                  "value": "Informal carer",
+                  "text": "Unpaid, but may get benefits",
+                  checked: checked("carer-type", "Informal carer")
+                },
+                {
+                  "value": "Occupational carer",
+                  "text": "Paid as a job",
+                  checked: checked("carer-type", "Occupational carer")
+                },
+                {
+                  "value": "Foster carer",
+                  "text": "Foster carer",
+                  checked: checked("carer-type", "Foster carer")
+                }
+
+              ]
+            }) }}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+       </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'live/includes/footer.html' %}
+{% endblock %}
