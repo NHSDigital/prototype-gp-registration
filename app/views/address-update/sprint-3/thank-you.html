@@ -1,11 +1,33 @@
-{% set serviceHome = '/live/start' %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
-{% extends 'address-update/layout.html' %}
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'address-update/_layout.html' %}
 
-{% block pageTitle %}
-Thank you for your feedback - {{ ServiceName }} - NHS
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Thank you for your feedback" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{% include '../includes/auf-feedback.html' %}
 {% endblock %}
 
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
     <div class="nhsuk-grid-row">
@@ -22,8 +44,4 @@ Thank you for your feedback - {{ ServiceName }} - NHS
       </div>
     </div>
 
-{% endblock %}
-
-{% block footer %}
-  {% include 'live/includes/footer.html' %}
 {% endblock %}

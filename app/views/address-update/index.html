@@ -2,37 +2,32 @@
 
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
-<!-- Extends the layout from /app/views/layout.html -->
-{% extends 'address-update/_layout.html' %}
-
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
 <!--
-  In /app/views/layout.html you can:
+  In /views/layout.html you can:
     - change the header and footer
     - add custom CSS and JavaScript
 -->
 
-<!--
-  Use this to set the page name which will appear at the
-  start of the <title> tag, followed by the service name.
-  This is often not needed on the homepage, where only the
-  service name is needed. You can also reuse this variable
-  within the <h1>, where they are the same.
--->
-{% set pageName = "" %}
+<!-- Set the page title -->
+{% block pageTitle %}
+GP Registration Prototype
+{% endblock %}
 
-<!-- For adding a breadcrumb or back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}
-{{ backLink({
-    "href": "javascript:history.go(-1)",
-    "text": "Go back"
-  }) }}
+{% endblock %}
+
+<!-- For adding a Go back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/Go back-link -->
+{% block outerContent %}
 {% endblock %}
 
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
-
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
@@ -55,8 +50,13 @@
          
           
           {{ button({
-            "text": "Go to prototype",
-                "href": "/address-update/sprint-2/start"
+            "text": "Go to app journey",
+                "href": "/address-update/sprint-3/start"
+          }) }}
+
+          {{ button({
+            "text": "Go to web journey",
+                "href": "/address-update/sprint-3/landing"
           }) }}
 
           <!--
@@ -74,10 +74,67 @@
 
           <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible margin-top-minus-5">
 
-          
+          <h2 class="nhsuk-heading-m">PLI Sprint 3 (19 Feb 26 - 4 Mar 26)</h2>
+
+          <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+              PLI 2527<br>AUF - Align prototype and live journey
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <p>Adding new-address-country page to take users to correct 'find a GP' service</p>
+              <ul>
+                <li><a href="sprint-3/new-address-country">New address - country page</a></li>
+              </ul>
+              <p class="nhsuk-body-s"><a href="https://nhsd-jira.digital.nhs.uk/browse/PLI-2527" target="_blank">Link to Jira ticket</a></p>
+            </div>
+          </details>
+
+          <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+              PLI 2125<br>AUF - Warning messages on address updated page
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <p>Final versions</p>
+              <ul>
+                <li><a href="sprint-3/success">Success - in catchment</a></li>
+                <li><a href="sprint-3/success-out-of-catchment">Success - out of catchment</a></li>
+                <li><a href="sprint-3/success-not-found">Success - not found</a></li>
+                <li><a href="sprint-3/success-abroad">Success - abroad</a></li>
+              </ul>
+              <p class="nhsuk-body-s"><a href="https://nhsd-jira.digital.nhs.uk/browse/PLI-2125" target="_blank">Link to Jira ticket</a></p>
+            </div>
+          </details>
+
+
            <h2 class="nhsuk-heading-m">PLI Sprint 2 (5 Feb 26 - 18 Feb 26)</h2>
 
           <details class="nhsuk-details nhsuk-expander">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+          PLI 2125<br>AUF - Warning messages on address updated page
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>New version with NHS App info</p>
+          <ul>
+            <li><a href="sprint-2/success">Success - in catchment</a></li>
+            <li><a href="sprint-2/success-out-of-catchment">Success - out of catchment</a></li>
+            <li><a href="sprint-2/success-not-found">Success - not found</a></li>
+            <li><a href="sprint-2/success-abroad">Success - abroad</a></li>
+            
+          </ul>
+          <p class="nhsuk-body-s"><a href="https://nhsd-jira.digital.nhs.uk/browse/PLI-2125" target="_blank">Link to Jira ticket</a></p>
+        </div>
+      </details>
+
+      
+
+
+      <details class="nhsuk-details nhsuk-expander">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
           PLI 2286<br>AUF - Updated AUF start page
@@ -86,7 +143,7 @@
         <div class="nhsuk-details__text">
           <p>New version with NHS App info</p>
           <ul>
-            <li><a href="sprint-2/start-new">New option incorporating NHS App info</a></li>
+            <li><a href="sprint-2/start">New option incorporating NHS App info</a></li>
             
           </ul>
           <p class="nhsuk-body-s"><a href="https://nhsd-jira.digital.nhs.uk/browse/PLI-2286" target="_blank">Link to Jira ticket</a></p>
@@ -181,4 +238,24 @@
       </div>
     </div>
 
+{% endblock %}
+
+
+{% block footer %}
+{{ footer({
+"links": [
+{
+"URL": "https://github.com/nhsuk/nhsuk-prototype-kit/releases",
+"label": "Prototype kit version: " + version
+},
+{
+"URL": "?devMode=true",
+"label": "Turn on devMode"
+},
+{
+"URL": "/examples/passing-data/clear-data",
+"label": "Clear data"
+}
+]
+})}}
 {% endblock %}
