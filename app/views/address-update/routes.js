@@ -3,101 +3,148 @@ const express = require('express');
 const router = express.Router();
 
 // --------------------------
-// Dynamic sprint routing
+// Sprint middleware
 // --------------------------
 
-// Middleware to extract sprint from URL and set basePath
 router.use('/:sprint', (req, res, next) => {
   const sprint = req.params.sprint;
   res.locals.basePath = `/address-update/${sprint}`;
-  res.locals.sprint = sprint; // optional: in case templates need the sprint name
+  res.locals.sprint = sprint;
   next();
 });
 
-// Helper to redirect within the current sprint
-const sprintRedirect = (res, sprint, page) => res.redirect(`/address-update/${sprint}/${page}`);
+// Helper redirect
+const sprintRedirect = (res, sprint, page) => {
+  res.redirect(`/address-update/${sprint}/${page}`);
+};
 
+// ==========================
+// IS YOUR ADDRESS IN THE UK
+// ==========================
 
-// -------
-//
-// ROUTES 
-//
-// -------
-
-
-// --------------------------
-// Route: Is your address in the UK?
-// URL example: /address-update/sprint-2/is-address-uk
-// --------------------------
-
-// GET: show the form
+// GET
 router.get('/:sprint/is-address-uk', (req, res) => {
-  res.render('address-update/' + req.params.sprint + '/is-address-uk', {
+  res.render(`address-update/${req.params.sprint}/is-address-uk`, {
     data: req.session.data || {}
   });
 });
 
-// POST: handle radio selection
+// POST
 router.post('/:sprint/is-address-uk-answer', (req, res) => {
-  const sprint = req.params.sprint;
-  const isAddressUK = req.session.data['is-address-uk'];
 
-  if (isAddressUK === 'yes') {
-    res.redirect(`/address-update/${sprint}/what-is-your-current-address`);
+  const sprint = req.params.sprint;
+
+  const answer = req.body['is-address-uk'];
+  req.session.data['is-address-uk'] = answer;
+
+  if (answer === 'yes') {
+    sprintRedirect(res, sprint, 'what-is-your-current-address');
   } else {
-    res.redirect(`/address-update/${sprint}/what-is-your-current-address-abroad`);
+    sprintRedirect(res, sprint, 'what-is-your-current-address-abroad');
   }
+
 });
 
+// ======================================
+// ABSENT FROM UK FOR 3 MONTHS OR LONGER 
+// // ===================================
 
-
-
-
-// --------------------------------------------------------------
-// Are you going to be absent from the UK for 3 months or longer?
-// --------------------------------------------------------------
-
-// GET: show the form
+// GET
 router.get('/:sprint/absent-three-months', (req, res) => {
-  res.render('address-update/' + req.params.sprint + '/absent-three-months', {
+  res.render(`address-update/${req.params.sprint}/absent-three-months`, {
     data: req.session.data || {}
   });
 });
 
-// POST: handle radio selection
+// POST
 router.post('/:sprint/absent-three-months-answer', (req, res) => {
-  const sprint = req.params.sprint;
-  const isAddressUK = req.session.data['absent-three-months'];
 
-  if (isAddressUK === 'yes') {
-    res.redirect(`/address-update/${sprint}/success-abroad`);
+  const sprint = req.params.sprint;
+
+  const answer = req.body['absent-three-months'];
+  req.session.data['absent-three-months'] = answer;
+
+  if (answer === 'yes') {
+    sprintRedirect(res, sprint, 'success-abroad');
   } else {
-    res.redirect(`/address-update/${sprint}/cancel`);
+    sprintRedirect(res, sprint, 'cancel');
   }
+
 });
 
-// ------------------------
-// ROUTE: Select an address
-// ------------------------
+// ===================
+// SELECT NEW ADDRESS
+// ===================
 
-// GET: show the form
+// GET
 router.get('/:sprint/select-new-address', (req, res) => {
-  res.render('address-update/' + req.params.sprint + '/select-new-address', {
+  res.render(`address-update/${req.params.sprint}/select-new-address`, {
     data: req.session.data || {}
   });
 });
 
-// POST: handle radio selection
+// POST
 router.post('/:sprint/select-new-address-answer', (req, res) => {
-  const sprint = req.params.sprint;
-  const isAddressUK = req.session.data['select-new-address'];
 
-  if (isAddressUK === 'not listed') {
-    res.redirect(`/address-update/${sprint}/what-is-your-current-address-selection-extended`);
+  const sprint = req.params.sprint;
+
+  const answer = req.body['select-new-address'];
+  req.session.data['select-new-address'] = answer;
+
+  if (answer === 'not listed') {
+    sprintRedirect(res, sprint, 'what-is-your-current-address-selection-extended');
   } else {
-    res.redirect(`/address-update/${sprint}/confirm-address`);
+    sprintRedirect(res, sprint, 'confirm-address');
   }
+
 });
+
+
+
+// ==================================
+// WHERE DO YOU LIVE? (FOR FIND A GP)
+// ==================================
+
+// GET
+router.get('/:sprint/new-address-country', (req, res) => {
+  res.render(`address-update/${req.params.sprint}/new-address-country`, {
+    data: req.session.data || {}
+  });
+});
+
+// POST
+router.post('/:sprint/new-address-country-answer', (req, res) => {
+
+  const sprint = req.params.sprint;
+
+  const answer = req.body['new-address-country'];
+  req.session.data['new-address-country'] = answer;
+
+  if (answer === 'England') {
+    return res.redirect('https://www.nhs.uk/service-search/find-a-gp');
+  }
+
+  if (answer === 'Isle of Man') {
+    return res.redirect('https://www.gov.im/categories/health-and-wellbeing/doctors/');
+  }
+
+  if (answer === 'Northern Ireland') {
+    return res.redirect('https://www.nidirect.gov.uk/services/gp-practices');
+  }
+
+  if (answer === 'Scotland') {
+    return res.redirect('https://www.nhsinform.scot/scotlands-service-directory/gp-practices/');
+  }
+
+  if (answer === 'Wales') {
+    return res.redirect('https://111.wales.nhs.uk/localservices/gpinformation/');
+  }
+
+  // None of these
+  sprintRedirect(res, sprint, 'what-is-your-current-address-abroad');
+
+});
+
 
 
 

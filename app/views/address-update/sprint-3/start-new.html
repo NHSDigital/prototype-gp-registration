@@ -1,30 +1,62 @@
-{% set serviceHome = '/live/start' %}
+<!-- Use this page as the index for your project -->
 
-{% extends 'address-update/layout.html' %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'address-update/_layout.html' %}
+
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
 {% if data['error_description'] == 'ConsentNotGiven' %}
   {% set heading = "You cannot continue without sharing your information" %}
 {% else %}
 {% set heading = "Changing your home address" %}
 {% endif %}
 
-{% block pageTitle %}
-  {{ heading }} - NHS
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = heading + "- NHS" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Add phase banner include here too -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../includes/auf-feedback.html' %}
+
+{{ backLink({
+    href: "javascript:history.go(-1)",
+    text: "Go back"
+  }) 
+}}
+
 {% endblock %}
 
-{% block outerContent %}
-{% if data['error_description'] != 'ConsentNotGiven' %}
-  {{ backLink({
-    "href": "javascript:history.go(-1)",
-    "text": "Go back",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
-  }) }}
-{% endif %}
-{% endblock %}
-
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
+
+
+
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+  <div class="nhsuk-grid-column-two-thirds">
 
     {% if data['noGP'] != 'true' %}
     <form action="is-address-temp" method="post" autocomplete="off">
@@ -60,7 +92,7 @@
         <li>community services, such as physiotherapy and midwife appointments</li>
       </ul>
 
-      <h2 class="nhsuk-heading-m">If your new address is outside of your practice catchment area</h2>
+      <h2 class="nhsuk-heading-m">If your new address is outside your practice catchment area</h2>
       <p>Your current GP surgery may contact you to confirm you've moved outside of their catchment area. You might:</p>
 
       <ul>
@@ -74,19 +106,27 @@
       
       <p><a href="https://www.nhs.uk/service-search/find-a-gp" target="_blank">Registering with a GP surgery</a> takes about 15 minutes and automatically updates your NHS record.</p>
 
-      <p>Some of your health information may not show in the NHS App while your records are sent to your new GP surgery.</p>
+      <p>If you do not register with a new GP surgery, you will lose access to the NHS App. You will get access again after you register.</p>
       
-      <h2 class="nhsuk-heading-m">Before you start</h2>
+      <details class="nhsuk-details">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      When to speak to your current GP first
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <p>Speak to your current GP if you:</p>
+   
+    <ul>
+      <li>are on a waiting list for elective surgery </li>
+      <li>have any GP appointments you are waiting for</li>
+      <li>take any prescription medications </li>
+    
+    </ul>
+  
 
-      <p>Speak to your current GP first if you:</p>
-      <ul>
-        <li>are on a waiting list for elective surgery </li>
-        <li>have any GP appointments you are waiting for</li>
-        <li>take any prescription medications </li>
-      </ul>
-
-
-      
+  </div>
+</details>
 
 
       {% elseif data['noGP'] == 'true' %}
@@ -113,10 +153,7 @@
   </div>
 </div>
 
-{% include 'live/includes/devmode.html' %}
+<!--{% include 'live/includes/devmode.html' %}-->
 
 {% endblock %}
 
-{% block footer %}
-  {% include 'live/includes/footer.html' %}
-{% endblock %}

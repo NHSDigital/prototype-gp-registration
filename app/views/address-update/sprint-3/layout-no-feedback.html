@@ -1,67 +1,41 @@
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'address-update/_layout.html' %}
+
 <!--
-  This is the main layout where you can:
+  In /app/views/layout.html you can:
     - change the header and footer
     - add custom CSS and JavaScript
 -->
 
-<!-- Extends the layout from /docs/views/template.html -->
-{% extends "template.html" %}
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
+{% set heading = 'GP registration' %}
 
-<!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-{% block headCSS %}
-  <link href="/css/main.css" rel="stylesheet">
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = heading + "- NHS" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{% include '../includes/auf-feedback.html' %}
 {% endblock %}
 
-<!-- Set the page title -->
-{% block pageTitle %}
-  GP Registration
-{% endblock %}
-
-<!-- Edit the header -->
-<!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
-{% block header %}
-  {{ header({
-    "service": {
-        "name": "Change your home address",
-        "href": "/"
-      },
-      "showNav": "false",
-      "showSearch": "false"
-    })
-  }}
-
-
-  <!--{% if feedbackType %}
-    {% if servicePhase === 'beta' %}
-      {% include 'live/includes/feedback.html' %}
-    {% else %}
-
-    {% endif %}
-  {% endif %}-->
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
 
 {% endblock %}
-
-<!-- Edit the footer -->
-<!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
-{% block footer %}
-  {{ footer({
-    "links": [
-      {
-        "URL": "/legal/terms",
-        "label": "Terms of use"
-      },
-      {
-        "URL": "/",
-        "label": "Cookies"
-      },
-      {
-      "URL": "/legal/accessibility-statement",
-      "label": "Accessibility"
-      }
-    ]
-  })}}
-{% endblock %}
-
 {% block bodyEnd %}
 
   {% if data['devMode'] === 'true' %}
@@ -69,10 +43,5 @@
   {% endif %}
 
 
-  {% block scripts %}
-    <!-- Custom JavaScript files can be added to this file -->
-    {% include "includes/scripts.html" %}
-    <!-- For adding page specific JavsScript -->
-    {% block pageScripts %}{% endblock %}
-  {% endblock %}
+
 {% endblock %}
