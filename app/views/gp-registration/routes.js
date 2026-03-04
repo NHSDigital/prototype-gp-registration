@@ -697,6 +697,67 @@ router.post('/:sprint/do-you-previous-address-answer', (req, res) => {
   }
 })
 
+// =====================================================
+// RETURNING FROM OVERSEAS
+// =====================================================
+
+// GET
+router.get('/:sprint/are-you-returning-from-overseas', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/are-you-returning-from-overseas`, {
+    data: req.session.data || {}
+  });
+});
+
+// POST
+router.post('/:sprint/are-you-returning-from-overseas-answer', (req, res) => {
+  const sprint = req.params.sprint;
+
+  // Save answer
+  const answer = req.body['are-you-returning-from-overseas'];
+  req.session.data['are-you-returning-from-overseas'] = answer;
+
+  // If coming back from check answers
+  if (req.session.data['return'] === 'true') {
+    sprintRedirect(res, sprint, 'check-answers-b');
+    return;
+  }
+
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'date-left-uk');
+  } else {
+    sprintRedirect(res, sprint, 'where-were-you-born');
+  }
+});
+
+// ====================
+// RECENTLY MOVED DATE
+// ====================
+
+// GET
+router.get('/:sprint/recently-moved-date', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/recently-moved-date`, {
+    data: req.session.data || {}
+  });
+});
+
+// POST
+router.post('/:sprint/recently-moved-date-answer', (req, res) => {
+  const sprint = req.params.sprint;
+
+  // Save date fields (if you're collecting them separately)
+  req.session.data['recently-moved-date-day'] = req.body['recently-moved-date-day'];
+  req.session.data['recently-moved-date-month'] = req.body['recently-moved-date-month'];
+  req.session.data['recently-moved-date-year'] = req.body['recently-moved-date-year'];
+
+  const recentlyMoved = req.session.data['recently-move-to-the-uk'];
+
+  if (recentlyMoved === 'Yes') {
+    sprintRedirect(res, sprint, 'recently-moved-eea');
+  } else {
+    sprintRedirect(res, sprint, 'do-you-previous-address');
+  }
+});
+
 
 
 module.exports = router;
