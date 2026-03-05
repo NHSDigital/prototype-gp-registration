@@ -1,0 +1,265 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'mpr/_layout.html' %}
+{% from "inset-text/macro.njk" import insetText %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Sam Smith - GP registrations portal - NHS" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{{ backLink({
+    href: "registrations-rejected",
+    text: "Back to rejected registrations"
+  })
+}}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+      
+          <h1 class="nhsuk-heading-l">Sam Smith</h1>
+
+          <p class="nhsuk-u-margin-bottom-0">NHS number</p>
+          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">123 456 7890</p>
+          <p class="nhsuk-u-margin-bottom-0">Date of birth</p>
+          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">1 January 1990</p>
+          <p class="nhsuk-u-margin-bottom-0">Sex</p>
+          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">Male</p>
+          <p class="nhsuk-u-margin-bottom-0">Postcode</p>
+          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">ZZ99 3CZ</p>
+          <p class="nhsuk-u-margin-bottom-0">Rejected by</p>
+          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">Dr Gary Sanchez</p>
+          <p class="nhsuk-u-margin-bottom-0">Date</p>
+          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">4 Mar 2026</p>
+          <p class="nhsuk-u-margin-bottom-0">Reason</p>
+          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">Other reasonable grounds</p>
+
+{% set insetTextHtml %}
+  <p>They informed us they had mistakenly registered.</p>
+{% endset %}
+
+{{ insetText({
+  html: insetTextHtml
+}) }}
+
+
+          <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                Registration information
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <dl class="nhsuk-summary-list">
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Registration reference number
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['nhs-number'] or 'GPR-12345678' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Registration type
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['nhs-number'] or 'First acceptance registration' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Date registration submitted
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['nhs-number'] or '2:52pm on Wednesday 23rd August 2023' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    PDS match status
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['nhs-number'] or 'This patient is matched to NHS number 900 000 0009' }}
+                  </dd>
+                </div>
+            
+                {% if data['under-18-years'] === 'true' and data['under-12-months'] === 'false' %}
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Under 18
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    This patient is {{ data['years-old'] or '17' }} years old
+                  </dd>
+                </div>
+            
+                {% endif %}
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Identity verification
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['nhs-number'] or 'The patient did not use NHS login' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Catchment area
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['nhs-number'] or 'This patient is outside your catchment area' }}
+                  </dd>
+                </div>
+            
+              </dl>
+            </div>
+          </details>
+
+          <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                Contact details
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <dl class="nhsuk-summary-list">
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Home telephone
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['contact-home-tel'] or '03003034777' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Mobile telephone
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['contact-mobile'] or '07700900077' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Email
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['contact-email'] or 'simulate-delivered@notifications.service.gov.uk' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Interpreter required
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['interpreter'] or 'Yes' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Language
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['language'] or 'French' }}
+                  </dd>
+                </div>
+            
+              </dl>
+            </div>
+          </details>
+
+          <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                Home address
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <dl class="nhsuk-summary-list">
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Building
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['address-building'] or 'Line 1' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Building
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['address-street'] or '28 Address Line 2' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Town or City
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['address-street'] or 'Address Line 4' }}
+                  </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Postcode
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['address-street'] or 'ZZ99 3CZ' }}
+                  </dd>
+                </div>
+            
+              </dl>
+            </div>
+          </details>
+
+        </div>
+      </div>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}
