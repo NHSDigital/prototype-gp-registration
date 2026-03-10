@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = 'Does ' + data['name-first-name'] + ' need a language interpreter for their GP appointments?' %}
 {% else %}
   {% set heading = 'Do you need a language interpreter for your GP appointments?' %}

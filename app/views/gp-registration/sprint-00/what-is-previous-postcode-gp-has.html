@@ -19,7 +19,7 @@
   depending on previous errors, such as consent not being
   given.
 -->
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = "What address did " + data['name-first-name'] + " use to register with " + data['find-gp-address'] + "?" %}
 {% else %}
   {% set heading = 'What address did you use to register with ' + data['find-gp-address'] + '?' %}

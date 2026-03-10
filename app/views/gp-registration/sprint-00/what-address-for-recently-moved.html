@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = "What is their country of birth?" %}
 {% else %}
   {% set heading = 'What is your country of birth?' %}

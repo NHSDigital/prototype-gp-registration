@@ -1,11 +1,32 @@
-{% set serviceHome = '/live/start' %}
+<!-- Set any variables here -->
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
 {% set section = '3' %}
 
-{% extends 'layout.html' %}
+{% if (data['are-carer'] === "Yes") %}
+  {% set link = 'type-of-carer' %}
+{% else %}
+  {% set link = 'are-you-a-carer' %}
+{% endif %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
+{% if (data['who-is-registering'] === "dependant") %}
   {% if (data['need-carer'] == "Yes") %}
     {% set heading = "Do you or your carer need to be communicated with in an accessible form?" %}
   {% else %}
@@ -15,30 +36,41 @@
   {% set heading = 'Do you need to be communicated with in an accessible form?' %}
 {% endif %}
 
-{% if (data['are-carer'] === "Yes") %}
-  {% set link = 'type-of-carer' %}
-{% else %}
-  {% set link = 'are-you-a-carer' %}
-{% endif %}
+    
 
-{% block pageTitle %}
-  {{ heading }} - {{ data.presets[0].servicename }} - NHS
-{% endblock %}
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
 
-{% block outerContent %}
-  {{ backLink({
+
+<!-- For adding a phase banner, breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../includes/phase-banner.html' %}
+
+{{ backLink({
     "href": link,
-    "text": "Go back",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
-  }) }}
+    "text": "Go back"
+  })
+}}
+
 {% endblock %}
 
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="" method="post" autocomplete="off">
+          {% set fieldVar = data['accessible-needs'] %}
+          <form action="{{ basePath }}/do-you-need-accessible-format-answer" method="post" autocomplete="off">
 
             {% include 'live/includes/step.html' %}
 
@@ -59,22 +91,22 @@
               "name": "accessible-needs",
               "items": [
                 {
-                  "value": "Yes~/live/do-you-need-accessible-format-details",
+                  "value": "Yes",
                   "text": "Yes",
-                  checked: checked("accessible-needs", "Yes")
+                  checked: fieldVar == "Yes"
                 },
                 {
-                  "value": "No~/live/do-you-need-reasonable-adjustments",
+                  "value": "No",
                   "text": "No",
-                  checked: checked("accessible-needs", "No")
+                  checked: fieldVar == "No"
                 },
                 {
                   "divider": "or"
                 },
                 {
-                  "value": "Prefer not to say~/live/do-you-need-reasonable-adjustments",
+                  "value": "Prefer not to say",
                   "text": "Prefer not to say",
-                  checked: checked("accessible-needs", "Prefer not to say")
+                  checked: fieldVar == "Prefer not to say"
                 }
               ]
             }) }}
@@ -91,8 +123,4 @@
 
 {% include 'live/includes/devmode.html' %}
 
-{% endblock %}
-
-{% block footer %}
-  {% include 'live/includes/footer.html' %}
 {% endblock %}

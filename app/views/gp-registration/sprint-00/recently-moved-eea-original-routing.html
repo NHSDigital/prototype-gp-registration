@@ -26,9 +26,11 @@
   given.
 -->
 {% if (data['who-is-registering'] === "dependant") %}
-  {% set heading = "Where was " + data ['name-first-name'] + " born?" %}
+  {% set heading = 'Has ' + data['name-first-name'] + ' moved to the UK from living in EU, EEA or Switzerland?' %}
+  {% set hintText = 'They may need to pay an immigration health surcharge as part of their visa application if they\'re staying for 6 months or more.' %}
 {% else %}
-  {% set heading = 'Where were you born?' %}
+  {% set heading = 'Have you moved to the UK from EU, EEA or Switzerland?' %}
+  {% set hintText = 'You may need to pay an immigration health surcharge as part of your visa application if you\'re staying for 6 months or more.' %}
 {% endif %}
     
 
@@ -49,8 +51,9 @@
 {% include '../includes/phase-banner.html' %}
 
 {{ backLink({
-  "href": "recently-move-to-the-uk",
-  "text": "Go back"
+    "href": "recently-moved-date",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   })
 }}
 
@@ -60,11 +63,14 @@
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
+
+
+
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-two-thirds">
 
-        {% set fieldVar = data['where-were-you-born'] %}
-        <form action="{{ basePath }}/where-were-you-born-answer" method="post" autocomplete="off">
+        {% set fieldVar = data['recently-moved-eea'] %}
+        <form action="" method="post" autocomplete="off">
 
           {% include 'live/includes/step.html' %}
 
@@ -76,45 +82,64 @@
             }
           }) %}
 
+          {{ hint({
+            "text": hintText,
+            "classes": "nhsuk-u-margin-bottom-2"
+          }) }}          
+
+          {% set age = data['years-old'] | int %}
+          {% if age <= 34 and age >= 16 %}
+
           {{ radios({
-            "idPrefix": "where-were-you-born",
-            "name": "where-were-you-born",
+            "idPrefix": "recently-moved-eea",
+            "name": "recently-moved-eea",
             "items": [
               {
-                "value": "England",
-                "text": "England",
-                checked: fieldVar == "England"
+                "value": "Yes~/live/recently-moved-documents",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: fieldVar == "Yes"
               },
               {
-                "value": "Wales",
-                "text": "Wales",
-                checked: fieldVar == "Wales"
+                "value": "No~/live/visited-tb-country",
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("eea", "No")
+              }
+            ]
+          }) }}  
+    
+        {% else %}
+
+          {{ radios({
+            "idPrefix": "eea",
+            "name": "eea",
+            "items": [
+              {
+                "value": "Yes~/live/recently-moved-documents",
+                "text": "Yes",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("eea", "Yes")
               },
               {
-                "value": "Isle of Man",
-                "text": "Isle of Man",
-                checked: fieldVar == "Isle of Man"
-              },
-              {
-                "value": "Scotland",
-                "text": "Scotland",
-                checked: fieldVar == "Scotland"
-              },
-              {
-                "value": "Northern Ireland",
-                "text": "Northern Ireland",
-               checked: fieldVar == "Northern Ireland"
-              },
-              {
-                "divider": "or"
-              },
-              {
-                "value": "None",
-                "text": "None of these",
-                checked: fieldVar == "None"
+                "value": "No~/live/do-you-have-existing-conditions",
+                
+                "text": "No",
+                "hint": {
+                  "text": ""
+                },
+                checked: checked("eea", "No")
               }
             ]
           }) }}
+
+          {% endif %}
 
           {% endcall %}
 

@@ -19,7 +19,9 @@
   "December"
 ] %}
 
-{% set month = months[data['date-of-birth'][1] | int] %} {% set GPsurgery = "Lordship Lane Surgery" %}
+{% set month = months[data['date-of-birth'][1] | int] %} 
+{% set carerMonth = months[data['carer-date-of-birth'][1] | int] %}
+{% set GPsurgery = "Lordship Lane Surgery" %}
 
 {% if (data['registered-for-the-first-time'] === "Yes") %}
   {% set link = 'registered-for-the-first-time' %}
@@ -83,7 +85,7 @@
       <h1 class="nhsuk-heading-l">{{ heading }}</h1>
 
       {# --- Dependant, Not registered --- #}
-      {% if (data['who-is-being-registered'] === "dependant" and data['are-you-registered'] === "No") %}
+      {% if (data['who-is-registering'] === "dependant" and data['are-you-registered'] === "No") %}
         <h2 class="nhsuk-heading-m">Your details</h2>
 
         {% set rows = [
@@ -91,14 +93,14 @@
           { key: { text: "First name" }, value: { text: data['carer-first-name'] }, actions: { items: [ { href: "carer-details?return=true", text: "Change", visuallyHiddenText: "first name" } ] } },
           { key: { text: "Last name" }, value: { text: data['carer-last-name'] }, actions: { items: [ { href: "carer-details?return=true", text: "Change", visuallyHiddenText: "last name" } ] } },
           { key: { text: "Relationship" }, value: { text: data['carer-relationship'] }, actions: { items: [ { href: "carer-details?return=true", text: "Change", visuallyHiddenText: "relationship" } ] } },
-          { key: { text: "Date of birth" }, value: { html: data['parent-date-of-birth'][0] + " " + month + " " + data['parent-date-of-birth'][2] }, actions: { items: [ { href: "carer-details?return=true", text: "Change", visuallyHiddenText: "date of birth" } ] } },
+          { key: { text: "Date of birth" }, value: { html: data['carer-date-of-birth'][0] + " " + carerMonth + " " + data['carer-date-of-birth'][2] }, actions: { items: [ { href: "carer-details?return=true", text: "Change", visuallyHiddenText: "date of birth" } ] } },
           { key: { text: "Contact telephone" }, value: { text: data['carer-telephone'] }, actions: { items: [ { href: "carer-details?return=true", text: "Change", visuallyHiddenText: "contact telephone" } ] } }
         ] %}
 
         {{ summaryList({ rows: rows }) }}
 
       {# --- Dependant, Already registered --- #}
-      {% elseif (data['who-is-being-registered'] === "dependant" and data['are-you-registered'] === "Yes") %}
+      {% elseif (data['who-is-registering'] === "dependant" and data['are-you-registered'] === "Yes") %}
         <h2 class="nhsuk-heading-m">Your details</h2>
 
         {% set rows = [
@@ -116,7 +118,7 @@
           { key: { text: "First name" }, value: { text: data['carer-first-name'] }, actions: { items: [ { href: "carer-details?return=true", text: "Change", visuallyHiddenText: "first name" } ] } },
           { key: { text: "Last name" }, value: { text: data['carer-last-name'] }, actions: { items: [ { href: "carer-details?return=true", text: "Change", visuallyHiddenText: "last name" } ] } },
           { key: { text: "Relationship" }, value: { text: data['carer-relationship'] }, actions: { items: [ { href: "carer-details?return=true", text: "Change", visuallyHiddenText: "relationship" } ] } },
-          { key: { text: "Date of birth" }, value: { html: data['parent-date-of-birth'][0] + " " + month + " " + data['parent-date-of-birth'][2] }, actions: { items: [ { href: "carer-details?return=true", text: "Change", visuallyHiddenText: "date of birth" } ] } },
+          { key: { text: "Date of birth" }, value: { html: data['carer-date-of-birth'][0] + " " + carerMonth + " " + data['carer-date-of-birth'][2] }, actions: { items: [ { href: "carer-details?return=true", text: "Change", visuallyHiddenText: "date of birth" } ] } },
           { key: { text: "Contact telephone" }, value: { text: data['carer-telephone'] }, actions: { items: [ { href: "carer-details?return=true", text: "Change", visuallyHiddenText: "contact telephone" } ] } }
         ]) %}
 
@@ -125,7 +127,7 @@
 
       {# --- Patient details (always shown) --- #}
       <h2 class="nhsuk-heading-m">
-        {% if (data['who-is-being-registered'] === "dependant") %}
+        {% if (data['who-is-registering'] === "dependant") %}
           Patient details
         {% else %}
           Your details
@@ -183,7 +185,7 @@
         </dl>
       {% endif %}
 
-      {% if (data['who-is-being-registered'] == "dependant") %}
+      {% if (data['who-is-registering'] == "dependant") %}
         <p>We use this information to match their details to our database. We cannot access their medical record and no medical information will be shared at this stage.</p>
       {% else %}
         <p>We use this information to match your details to our database. We cannot access your medical record and no medical information will be shared at this stage.</p>

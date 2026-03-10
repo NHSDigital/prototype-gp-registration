@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = 'Is ' + data['name-first-name'] + ' currently active in either the Armed Forces or Armed Forces Reserves?' %}
 {% else %}
   {% set heading = 'Are you currently active in either the Armed Forces or Armed Forces Reserves?' %}

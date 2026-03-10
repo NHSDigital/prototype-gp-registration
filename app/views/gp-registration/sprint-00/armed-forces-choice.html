@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = 'Which did ' + data['name-first-name'] + ' serve in?' %}
 {% else %}
   {% set heading = 'Which did you serve in?' %}

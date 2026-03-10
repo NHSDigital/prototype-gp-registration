@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = 'Is anyone else involved in ' + data['name-first-name'] + '\'s care?' %}
   {% set hintText = "This will help the GP understand the patient's care needs." %}
 {% else %}

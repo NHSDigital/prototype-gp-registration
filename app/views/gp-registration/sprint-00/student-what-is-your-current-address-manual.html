@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = "Where will " + data['name-first-name'] + ' be living when at university?' %}
 {% else %}
   {% set heading = 'Where will you be living when at university?' %}

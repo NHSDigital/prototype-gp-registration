@@ -19,7 +19,7 @@
   depending on previous errors, such as consent not being
   given.
 -->
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = 'Is the sex ' + data['name-first-name'] + ' is now the same as when they were born?' %}
   {% set hint1 = 'The GP surgery will use this information to offer them screening for specific conditions.' %}
 {% else %}

@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = 'Does ' + data['name-first-name'] + ' live more than 1 mile from their nearest pharmacy?' %}
 {% else %}
   {% set heading = 'Do you live more than 1 mile from your nearest pharmacy?' %}

@@ -1,34 +1,72 @@
-{% set serviceHome = '/live/start' %}
+<!-- Set any variables here -->
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
 {% set section = '3' %}
 
-{% extends 'layout.html' %}
+{% if (data['accessible-needs'] === "Yes") %}
+  {% set link = "do-you-need-accessible-format-details" %}
+{% else %}
+  {% set link = "do-you-need-accessible-format" %}
+{% endif %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = "How often does " + data['name-first-name'] + " drink alcohol or have a drink containing alcohol" %}
 {% else %}
   {% set heading = 'How often do you drink alcohol or have a drink containing alcohol?' %}
 {% endif %}
 
-{% block pageTitle %}
-  {{ heading }} - {{ data.presets[0].servicename }} - NHS
-{% endblock %}
+    
 
-{% block outerContent %}
-  {{ backLink({
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
+
+
+<!-- For adding a phase banner, breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../includes/phase-banner.html' %}
+
+{{ backLink({
     "href": "weight",
-    "text": "Go back",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
-  }) }}
+    "text": "Go back"
+  })
+}}
+
 {% endblock %}
 
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="how-many-units-of-alcohol" method="post" autocomplete="off">
+          {% set fieldVar = data['alcohol-consumption'] %}
+          <form action="{{ basePath }}/how-often-do-you-drink-alcohol-answer" method="post" autocomplete="off">
 
            {% include 'live/includes/step.html' %}
 
@@ -47,37 +85,38 @@
               },
               "items": [
                 {
-                  "value": "Never~/live/do-you-smoke",
+                  "value": "Never",
                   "text": "Never",
-                  checked: checked("alcohol-consumption", "Never")
+                  checked: fieldVar == "Never"
                 },
                 {
                   "value": "Monthly or less",
                   "text": "Monthly or less",
-                  checked: checked("alcohol-consumption", "Monthly or less")
+                  checked: fieldVar == "Monthly or less"
+
                 },
                 {
                   "value": "2 to 4 times a month",
                   "text": "2 to 4 times a month",
-                  checked: checked("alcohol-consumption", "2 to 4 times a month")
+                  checked: fieldVar == "2 to 4 times a month"
                 },
                 {
                   "value": "2 to 3 times a week",
                   "text": "2 to 3 times a week",
-                  checked: checked("alcohol-consumption", "2 to 3 times a week")
+                  checked: fieldVar == "2 to 3 times a week"
                 },
                 {
                   "value": "4 or more times a week",
                   "text": "4 or more times a week",
-                  checked: checked("alcohol-consumption", "4 or more times a week")
+                  checked: fieldVar == "4 or more times a week"
                 },
                 {
                   "divider": "or"
                 },
                 {
-                  "value": "Prefer not to say~/live/do-you-smoke",
+                  "value": "Prefer not to say",
                   "text": "Prefer not to say",
-                  checked: checked("alcohol-consumption", "Prefer not to say")
+                  checked: fieldVar == "Prefer not to say"
                 }
               ]
             }) }}
@@ -92,8 +131,4 @@
 
 {% include 'live/includes/devmode.html' %}
 
-{% endblock %}
-
-{% block footer %}
-  {% include 'live/includes/footer.html' %}
 {% endblock %}

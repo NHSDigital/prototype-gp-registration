@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = data['name-first-name'] + ' is not able to get their prescription items direct from ' + data.presets[0].gpsurgery %}
 {% else %}
   {% set heading = 'You are not able to get your prescription items direct from ' + data.presets[0].gpsurgery  %}

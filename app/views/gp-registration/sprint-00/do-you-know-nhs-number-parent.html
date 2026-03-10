@@ -1,29 +1,58 @@
-{% set serviceHome = '/live/start' %}
+<!-- Use this page as the index for your project -->
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
-{% extends 'layout.html' %}
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
 
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
 {% set heading = 'Do you know your NHS number?' %}
+    
 
-{% block pageTitle %}
-  {{ heading }} - {{ data.presets[0].servicename }} - NHS
-{% endblock %}
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
 
-{% block outerContent %}
-  {{ backLink({
+
+<!-- For adding a phase banner, breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../includes/phase-banner.html' %}
+
+{{ backLink({
     "href": "are-you-registered",
-    "text": "Go back",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
-  }) }}
+    "text": "Go back"
+  })
+}}
+
 {% endblock %}
 
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="" method="post" autocomplete="off">
+          {% set fieldVar = data['know-nhs-number-parent'] %}
+          <form action="{{ basePath }}/do-you-know-nhs-number-parent-answer" method="post" autocomplete="off">
 
             {% include 'live/includes/step.html' %}
 
@@ -43,14 +72,14 @@
               "name": "know-nhs-number-parent",
               "items": [
                 {
-                  "value": "Yes~/live/what-is-your-nhs-number-parent",
+                  "value": "Yes",
                   "text": "Yes",
-                  "checked": checked("know-nhs-number-parent", "Yes")
+                  checked: fieldVar == "Yes"
                 },
                 {
-                  "value": "No~/live/carer-details",
+                  "value": "No",
                   "text": "No",
-                  "checked": checked("know-nhs-number-parent", "No")
+                  checked: fieldVar == "No"
                 }
               ]
             }) }}
@@ -67,8 +96,4 @@
 
 {% include 'live/includes/devmode.html' %}
 
-{% endblock %}
-
-{% block footer %}
-  {% include 'live/includes/footer.html' %}
 {% endblock %}

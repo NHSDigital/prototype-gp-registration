@@ -19,7 +19,7 @@
   depending on previous errors, such as consent not being
   given.
 -->
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = "What town or city was " + data ['name-first-name'] + " born in?" %}
   {% set hintText = "Enter the name of the town or city nearest to where " + data ['name-first-name'] + " was born." %}
 {% else %}
