@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = 'What is ' + data['name-first-name'] + '\'s room number?' %}
 {% else %}
   {% set heading = 'What is your room number?' %}

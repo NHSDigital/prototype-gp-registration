@@ -1,122 +1,113 @@
-{% set serviceHome = '/live/start' %}
+<!-- Set any variables here -->
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
 {% set section = '3' %}
 
-{% extends 'layout.html' %}
-
-{% if (data['who-is-being-registered'] === "dependant") %}
-  {% set heading = "What is " + data['name-first-name'] + "'s height?" %}
-{% else %}
-  {% set heading = 'What is your height?' %}
-{% endif %}
-
 {% if (data['accessible-needs'] === "Yes") %}
-  {% set link = 'medication-details-repeat' %}
-{% else %}
-  {% set link = 'do-you-take-prescription-medication' %}
-{% endif %}
+  {% set link = 'medication-details-repeat' %} {% else %}
+  {% set link = 'do-you-take-prescription-medication' %} {% endif %}
 
-{% block pageTitle %}
-  {{ heading }} - {{ data.presets[0].servicename }} - NHS
-{% endblock %}
+<!-- Extends the layout -->
+{% extends 'gp-registration/_layout.html' %}
 
-{% block outerContent %}
+<!-- Page heading -->
+{% if (data['who-is-registering'] === "dependant") %}
+  {% set heading = "What is " + data['name-first-name'] + "'s height?" %} {% else %}
+  {% set heading = 'What is your height?' %} {% endif %}
+
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
+
+<!-- Phase banner and back link -->
+{% block beforeContent %}
+  {% include '../includes/phase-banner.html' %}
+
   {{ backLink({
-    "href": link,
-    "text": "Go back",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
-  }) }}
+      "href": link,
+      "text": "Go back"
+    })
+  }}
 {% endblock %}
 
+<!-- Page content -->
 {% block content %}
-    <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-two-thirds">
 
-        <form action="weight" method="post" autocomplete="off">
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
 
-          {% include 'live/includes/step.html' %}
+    <form action="weight" method="post" autocomplete="off">
 
-          <div id="current-address-lookup-container">
+      {% include 'live/includes/step.html' %}
 
-            {{ dateInput({
-              "id": "height",
-              "namePrefix": "height",
-              "fieldset": {
-                "legend": {
-                  "text": heading,
-                  "classes": "nhsuk-label--l",
-                  "isPageHeading": true
-                }
-              },
-              "hint": {
-                "text": "This question is (optional)"
-              },
-              "items": [
-                {
-                  "name": "feet",
-                  "classes": "nhsuk-input--width-5",
-                  "value": data['height-feet']
-                },
-                {
-                  "name": "inches",
-                  "classes": "nhsuk-input--width-5",
-                  "value": data['height-inches']
-                }
-              ]
-            }) }}
-
-            <p>
-              <a href="#" id="enter-address-manually-link">Switch to centimetres</a>
-            </p>
-
-          </div>
-
-          <form action="weight" method="post" autocomplete="off">
-
-            <div class="current-address-form hidden-section">
-
-              {{ dateInput({
-                "id": "height",
-                "namePrefix": "height",
-                "fieldset": {
-                  "legend": {
-                    "text": heading,
-                    "classes": "nhsuk-label--l",
-                    "isPageHeading": true
-                  }
-                },
-                "hint": {
-                  "text": "This question is (optional)"
-                },
-                "items": [
-                  {
-                    "name": "Centimetres",
-                    "classes": "nhsuk-input--width-10",
-                    "value": data['height-centimetres']
-                  }
-                ]
-              }) }}
-
-              <p>
-                <a href="#" id="use-postcode-lookup-link">Switch to feet and inches</a>
-              </p>
-
-            </div>
-
-            {{ details({
-            "text": "Why are you asking this?",
-            "HTML": "<p>The GP surgery may use this information to give you health guidance and support.</p>"
-            }) }}
-
-            {{ button({
-              "text": "Continue"
-            }) }}
-
-        </form>
-
+      {# Multi-line HTML for feet and inches #}
+      {% set feetInchesHtml %}
+      <div class="nhsuk-form-group" style="display:flex; gap:1rem; align-items:flex-end;">
+        <div>
+          <label class="nhsuk-label" for="height-feet">Feet</label>
+          <input class="nhsuk-input nhsuk-input--width-5" id="height-feet" name="height-feet" type="number" value="{{ data['height-feet'] }}">
+        </div>
+        <div>
+          <label class="nhsuk-label" for="height-inches">Inches</label>
+          <input class="nhsuk-input nhsuk-input--width-5" id="height-inches" name="height-inches" type="number" value="{{ data['height-inches'] }}">
         </div>
       </div>
+      {% endset %}
+
+      {# Multi-line HTML for centimetres #}
+      {% set centimetresHtml %}
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label" for="height-centimetres">Centimetres</label>
+        <input class="nhsuk-input nhsuk-input--width-10"
+               id="height-centimetres"
+               name="height-centimetres"
+               type="number"
+               inputmode="numeric"
+               min="30"
+               max="300"
+               value="{{ data['height-centimetres'] }}">
+      </div>
+      {% endset %}
+
+      {{ radios({
+        "idPrefix": "height-unit",
+        "name": "height-unit",
+        "fieldset": {
+          "legend": {
+            "text": heading,
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        },
+        "hint": { "text": "This question is optional" },
+        "items": [
+          {
+            "value": "feet-inches",
+            "text": "Feet and inches",
+            "checked": data['height-unit'] == "feet-inches",
+            "conditional": { "html": feetInchesHtml }
+          },
+          {
+            "value": "centimetres",
+            "text": "Centimetres",
+            "checked": data['height-unit'] == "centimetres",
+            "conditional": { "html": centimetresHtml }
+          }
+        ]
+      }) }}
+
+      {% from "details/macro.njk" import details %}
+
+      {% call details({
+        summaryText: "Why are you asking this?"
+      }) %}
+      <p>The GP surgery may use this information to give you health guidance and support.</p>
+      {% endcall %}
+
+      {{ button({ "text": "Continue" }) }}
+
+    </form>
+
+  </div>
+</div>
 
 {% include 'live/includes/devmode.html' %}
 
@@ -134,11 +125,5 @@
     $('#select-address-section').addClass("hidden-section");
     $('.current-address-form').addClass("hidden-section");
   });
-
 </script>
-
-{% endblock %}
-
-{% block footer %}
-  {% include 'live/includes/footer.html' %}
 {% endblock %}

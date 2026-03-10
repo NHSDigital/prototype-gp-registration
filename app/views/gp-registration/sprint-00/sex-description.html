@@ -6,7 +6,7 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = 'Which of the following best describes ' + data['name-first-name'] + '?' %}
   {% set hint1 = 'The GP surgery will use this information to improve the experiences of everyone accessing primary care services.' %}
 {% else %}

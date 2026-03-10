@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = "Has " + data['name-first-name'] + " had all the vaccinations they are eligible for in the UK?" %}
 {% else %}
   {% set heading = 'Have you had all the vaccinations you are eligible for in the UK?' %}

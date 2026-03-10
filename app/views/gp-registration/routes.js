@@ -19,6 +19,13 @@ const sprintRedirect = (res, sprint, page) => {
   res.redirect(`/gp-registration/${sprint}/${page}`);
 };
 
+// Helper: check if age is within a range
+function isAgeBetween(data, min, max) {
+  const age = parseInt(data['years-old'], 10)
+  return age >= min && age <= max
+};
+
+
 // =====================================================
 // WHO IS REGISTERING
 // =====================================================
@@ -183,15 +190,28 @@ router.post('/:sprint/relation-answer', (req, res) => {
 // =====================================================
 
 router.post('/:sprint/carer-details-answer', (req, res) => {
-  const sprint = req.params.sprint;
 
+  const sprint = req.params.sprint
+
+  // Get carer DOB fields from form
+  const day = req.body['carer-dob-day'] || ''
+  const month = req.body['carer-dob-month'] || ''
+  const year = req.body['carer-dob-year'] || ''
+
+  // Store as array for summary pages
+  req.session.data['carer-date-of-birth'] = [day, month, year]
+
+  // If returning from check answers
   if (req.session.data['return'] === 'true') {
-    req.session.data['return'] = '';
-    sprintRedirect(res, sprint, 'check-answers-1');
-  } else {
-    sprintRedirect(res, sprint, 'what-is-your-name');
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-1')
   }
-});
+
+  // Normal journey
+  sprintRedirect(res, sprint, 'what-is-your-name')
+
+})
+
 
 
 // =====================================================
@@ -266,7 +286,6 @@ router.get('/:sprint/do-you-know-nhs-number', (req, res) => {
 router.post('/:sprint/do-you-know-nhs-number-answer', (req, res) => {
 
   const sprint = req.params.sprint
-
   const answer = req.body['do-you-know-nhs-number']
   req.session.data['do-you-know-nhs-number'] = answer
 
@@ -758,6 +777,640 @@ router.post('/:sprint/recently-moved-date-answer', (req, res) => {
   }
 });
 
+
+// =====================================================
+// RECENTLY MOVED FROM EU / EEA
+// =====================================================
+
+// GET
+router.get('/:sprint/recently-moved-eea', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/recently-moved-eea`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/recently-moved-eea-answer', (req, res) => {
+
+  const sprint = req.params.sprint
+  const answer = req.body['recently-moved-eea']
+  req.session.data['recently-moved-eea'] = answer
+
+  // Return to check answers if coming from there
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  // Use helper to decide next page
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'recently-moved-documents')
+  } else if (answer === 'No' && isAgeBetween(req.session.data, 16, 34)) {
+    sprintRedirect(res, sprint, 'visited-tb-country')
+  } else {
+    sprintRedirect(res, sprint, 'do-you-have-existing-conditions')
+  }
+
+})
+
+
+// =====================================================
+// RECENTLY MOVED DOCUMENTS
+// =====================================================
+
+// GET
+router.get('/:sprint/recently-moved-documents', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/recently-moved-documents`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/recently-moved-documents-answer', (req, res) => {
+
+  const sprint = req.params.sprint
+  const answer = req.body['recently-moved-documents']
+  req.session.data['recently-moved-documents'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'ehic') {
+    sprintRedirect(res, sprint, 'document-details-ehic')
+  } else if (answer === 'S1') {
+    sprintRedirect(res, sprint, 'recently-moved-s1-details')
+  } else if (answer === 'No') {
+    sprintRedirect(res, sprint, 'do-you-have-existing-conditions')
+  }
+
+})
+
+
+// ================================
+// DO YOU HAVE EXISTING CONDITIONS
+// ================================
+
+// GET
+router.get('/:sprint/do-you-have-existing-conditions', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/do-you-have-existing-conditions`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/do-you-have-existing-conditions-answer', (req, res) => {
+
+  const sprint = req.params.sprint
+  const answer = req.body['has-existing-conditions']
+  req.session.data['has-existing-conditions'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'what-existing-conditions-do-you-have')
+  } else if (answer === 'No') {
+    sprintRedirect(res, sprint, 'do-you-have-allergies')
+  } else if (answer === 'Prefer not to say') {
+    sprintRedirect(res, sprint, 'do-you-have-allergies')
+  }
+
+})
+
+// ======================
+// DO YOU HAVE ALLERGIES
+// ======================
+
+// GET
+router.get('/:sprint/do-you-have-allergies', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/do-you-have-allergies`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/do-you-have-allergies-answer', (req, res) => {
+
+  const sprint = req.params.sprint
+  const answer = req.body['has-allergies']
+  req.session.data['has-allergies'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'allergies-details')
+  } else if (answer === 'No') {
+    sprintRedirect(res, sprint, 'do-you-have-any-mental-health-conditions')
+  } else if (answer === 'Prefer not to say') {
+    sprintRedirect(res, sprint, 'do-you-have-any-mental-health-conditions')
+  }
+
+})
+
+
+// =========================================
+// DO YOU HAVE ANY MENTAL HEALTH CONDITIONS 
+// =========================================
+
+// GET
+router.get('/:sprint/do-you-have-any-mental-health-conditions', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/do-you-have-any-mental-health-conditions`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/do-you-have-any-mental-health-conditions-answer', (req, res) => {
+
+  const sprint = req.params.sprint
+  const answer = req.body['has-mental-health-conditions']
+  req.session.data['has-mental-health-conditions'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'mental-health-conditions-details')
+  } else if (answer === 'No') {
+    sprintRedirect(res, sprint, 'do-you-have-any-disabilities')
+  } else if (answer === 'Prefer not to say') {
+    sprintRedirect(res, sprint, 'do-you-have-any-disabilities')
+  }
+
+})
+
+
+// =============================
+// DO YOU HAVE ANY DISABILITIES
+// =============================
+
+// GET
+router.get('/:sprint/do-you-have-any-disabilities', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/do-you-have-any-disabilities`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/do-you-have-any-disabilities-answer', (req, res) => {
+
+  const sprint = req.params.sprint
+  const answer = req.body['has-disabilities']
+  req.session.data['has-disabilities'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'disabilities-details')
+  } else if (answer === 'No') {
+    sprintRedirect(res, sprint, 'do-you-have-a-carer')
+  } else if (answer === 'Prefer not to say') {
+    sprintRedirect(res, sprint, 'do-you-have-a-carer')
+  }
+
+})
+
+
+// ====================
+// DO YOU HAVE A CARER
+// ====================
+
+// GET
+router.get('/:sprint/do-you-have-a-carer', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/do-you-have-a-carer`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/do-you-have-a-carer-answer', (req, res) => {
+
+  const sprint = req.params.sprint
+  const answer = req.body['need-carer']
+  req.session.data['need-carer'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'carer-type-1')
+  } else if (answer === 'No') {
+    sprintRedirect(res, sprint, 'are-you-a-carer')
+  } else if (answer === 'Prefer not to say') {
+    sprintRedirect(res, sprint, 'are-you-a-carer')
+  }
+
+})
+
+
+// ================
+// ARE YOU A CARER
+// ================
+
+// GET
+router.get('/:sprint/are-you-a-carer', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/are-you-a-carer`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/are-you-a-carer-answer', (req, res) => {
+
+  const sprint = req.params.sprint
+  const answer = req.body['are-carer']
+  req.session.data['are-carer'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'type-of-carer')
+  } else if (answer === 'No') {
+    sprintRedirect(res, sprint, 'do-you-need-accessible-format')
+  } else if (answer === 'Prefer not to say') {
+    sprintRedirect(res, sprint, 'do-you-need-accessible-format')
+  }
+
+})
+
+
+// ==============================
+// DO YOU NEED ACCESSIBLE FORMAT
+// ==============================
+
+// GET
+router.get('/:sprint/do-you-need-accessible-format', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/do-you-need-accessible-format`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/do-you-need-accessible-format-answer', (req, res) => {
+
+  const sprint = req.params.sprint
+  const answer = req.body['accessible-needs']
+  req.session.data['accessible-needs'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'do-you-need-accessible-format-details')
+  } else if (answer === 'No') {
+    sprintRedirect(res, sprint, 'do-you-need-reasonable-adjustments')
+  } else if (answer === 'Prefer not to say') {
+    sprintRedirect(res, sprint, 'do-you-need-reasonable-adjustments')
+  }
+
+})
+
+
+// ===================================
+// DO YOU NEED REASONABLE ADJUSTMENTS
+// ===================================
+
+// GET
+router.get('/:sprint/do-you-need-reasonable-adjustments', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/do-you-need-reasonable-adjustments`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/do-you-need-reasonable-adjustments-answer', (req, res) => {
+
+  const sprint = req.params.sprint
+  const answer = req.body['reasonable-adjustments']
+  req.session.data['reasonable-adjustments'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'do-you-need-reasonable-adjustments-details')
+  } else if (answer === 'No') {
+    sprintRedirect(res, sprint, 'do-you-take-prescription-medication')
+  } else if (answer === 'Prefer not to say') {
+    sprintRedirect(res, sprint, 'do-you-take-prescription-medication')
+  }
+
+})
+
+
+// =====================================================
+// DO YOU TAKE PRESCRIPTION MEDICATION
+// =====================================================
+
+// GET
+router.get('/:sprint/do-you-take-prescription-medication', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/do-you-take-prescription-medication`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/do-you-take-prescription-medication-answer', (req, res) => {
+
+  const sprint = req.params.sprint
+  const answer = req.body['takes-prescription-meds']
+  req.session.data['takes-prescription-meds'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'medication-details')
+  } else if (answer === 'No') {
+    sprintRedirect(res, sprint, 'height')
+  } else if (answer === 'Prefer not to say') {
+    sprintRedirect(res, sprint, 'height')
+  }
+
+})
+
+
+// =====================================================
+// HOW OFTEN DO YOU DRINK ALCOHOL
+// =====================================================
+
+// GET
+router.get('/:sprint/how-often-do-you-drink-alcohol', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/how-often-do-you-drink-alcohol`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/how-often-do-you-drink-alcohol-answer', (req, res) => {
+  const sprint = req.params.sprint
+  const answer = req.body['alcohol-consumption']
+  req.session.data['alcohol-consumption'] = answer
+
+  // Returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'Never' || answer === 'Prefer not to say') {
+    sprintRedirect(res, sprint, 'do-you-smoke')
+  } else {
+    sprintRedirect(res, sprint, 'how-many-units-of-alcohol')
+  }
+})
+
+
+// =============
+// DO YOU SMOKE
+// =============
+
+// GET
+router.get('/:sprint/do-you-smoke', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/do-you-smoke`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/do-you-smoke-answer', (req, res) => {
+  const sprint = req.params.sprint
+  const answer = req.body['smokes']
+  req.session.data['smokes'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'do-you-smoke-type')
+  } else {
+    sprintRedirect(res, sprint, 'scr')
+  }
+})
+
+
+// ==================
+// DO YOU SMOKE TYPE
+// ==================
+
+// GET
+router.get('/:sprint/do-you-smoke-type', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/do-you-smoke-type`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/do-you-smoke-type-answer', (req, res) => {
+  const sprint = req.params.sprint
+  const answer = req.body['smokes-type']
+  req.session.data['smokes-type'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'I smoke') {
+    sprintRedirect(res, sprint, 'do-you-smoke-amount')
+  } else if (answer === 'I used to smoke') {
+    sprintRedirect(res, sprint, 'do-you-smoke-date')
+  } else {
+    sprintRedirect(res, sprint, 'scr')
+  }
+})
+
+
+// ==============
+// BLOOD TESTING
+// ==============
+
+// GET
+router.get('/:sprint/blood-testing', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/blood-testing`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/blood-testing-answer', (req, res) => {
+  const sprint = req.params.sprint
+  const answer = req.body['blood-test']
+  req.session.data['blood-test'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'No') {
+    sprintRedirect(res, sprint, 'scr')
+  } else {
+    sprintRedirect(res, sprint, 'blood-inquiry')
+  }
+})
+
+
+// ===================
+// ARE YOU REGISTERED
+// ===================
+
+// GET
+router.get('/:sprint/are-you-registered', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/are-you-registered`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/are-you-registered-answer', (req, res) => {
+  const sprint = req.params.sprint
+  const answer = req.body['are-you-registered']
+  req.session.data['are-you-registered'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-1')
+  }
+
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'do-you-know-nhs-number-parent')
+  } else {
+    sprintRedirect(res, sprint, 'are-you-planning-register')
+  }
+})
+
+
+// =====================================================
+// DO YOU KNOW NHS NUMBER (PARENT)
+// =====================================================
+
+// GET
+router.get('/:sprint/do-you-know-nhs-number-parent', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/do-you-know-nhs-number-parent`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/do-you-know-nhs-number-parent-answer', (req, res) => {
+  const sprint = req.params.sprint
+  const answer = req.body['know-nhs-number-parent']
+  req.session.data['know-nhs-number-parent'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-1')
+  }
+
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'what-is-your-nhs-number-parent')
+  } else {
+    sprintRedirect(res, sprint, 'are-you-planning-register')
+  }
+})
+
+
+// =====================================================
+// ARE YOU PLANNING TO REGISTER
+// =====================================================
+
+// GET
+router.get('/:sprint/are-you-planning-register', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/are-you-planning-register`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/are-you-planning-register-answer', (req, res) => {
+  const sprint = req.params.sprint
+  const answer = req.body['are-you-planning-register']
+  req.session.data['are-you-planning-register'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-1')
+  }
+
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'apply-self-first')
+  } else {
+    sprintRedirect(res, sprint, 'carer-details')
+  }
+})
+
+
+// =================
+// APPLY SELF FIRST
+// =================
+
+// GET
+router.get('/:sprint/apply-self-first', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/apply-self-first`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/apply-self-first-answer', (req, res) => {
+  const sprint = req.params.sprint
+  const answer = req.body['apply-self']
+  req.session.data['apply-self'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-1')
+  }
+
+  if (answer === 'registerSelf') {
+    sprintRedirect(res, sprint, 'start')
+  } else if (answer === 'continue') {
+    sprintRedirect(res, sprint, 'carer-details')
+  }
+})
 
 
 module.exports = router;

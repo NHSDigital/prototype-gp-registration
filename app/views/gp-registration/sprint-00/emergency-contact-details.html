@@ -19,7 +19,7 @@
   depending on previous errors, such as consent not being
   given.
 -->
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = "What are the details of " + data ['name-first-name'] + "'s emergency contact?" %}
   {% set relationshipLabel = "Relationship to the person being registered" %}
   {% set kinLabel = "This is their next of kin" %}

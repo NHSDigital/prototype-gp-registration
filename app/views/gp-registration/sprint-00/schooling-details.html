@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = 'Enter details of where ' + data['name-first-name'] + ' goes for their education' %}
 {% else %}
   {% set heading = 'Enter details of where you go for your education' %}

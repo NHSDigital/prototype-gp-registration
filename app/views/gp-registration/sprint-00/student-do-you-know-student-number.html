@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = 'Does ' + data['name-first-name'] + '\'s have a student ID number?' %}
   {% set hint1 = 'Student ID numbers can usually be found on official documentation from the university' %}
 {% else %}

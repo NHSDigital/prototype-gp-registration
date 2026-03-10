@@ -4,7 +4,7 @@ Recently moved{% set serviceHome = '/live/start' %}
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = "Check their details before submitting your application to {Surgery name}" %}
 {% else %}
   {% set heading = 'Check your details before submitting your application to {Surgery name}' %}

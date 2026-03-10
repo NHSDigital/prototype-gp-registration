@@ -18,7 +18,7 @@
   depending on previous errors, such as consent not being
   given.
 -->
-{% set heading = 'If you are registering a child under 16 years' %}
+{% set heading = 'Will you be registering yourself at Lordship Lane Surgery' %}
     
 
 <!--
@@ -50,12 +50,10 @@
 {% block content %}
 
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+  <div class="nhsuk-grid-column-two-thirds">
 
-    {% set fieldVar = data['apply-self'] %}
-    <form action="{{ basePath }}/apply-self-first-answer" method="post" autocomplete="off">
-
-      {% include 'live/includes/step.html' %}
+    {% set fieldVar = data['are-you-planning-register'] %}
+    <form action="{{ basePath }}/are-you-planning-register-answer" method="post" autocomplete="off">
 
       {% call fieldset({
         legend: {
@@ -65,35 +63,22 @@
         }
       }) %}
 
-      {{ hint({
-        "html": '<p>Some GP surgeries will only accept registrations for children under 16 years if their parent or guardian is already registered.</p>',
-        "classes": "nhsuk-u-margin-bottom-4"
-      }) }}
-
-      {{ radios({
-          "idPrefix": "apply-self",
-          "name": "apply-self",
-          "classes": "nhsuk-radios",
-          "fieldset": {
-            "legend": {
-              "text": "What do you want to do?",
-              "classes": "nhsuk-fieldset__legend--m",
-              "isPageHeading": false
-            }
-          },
+        {{ radios({
+          "idPrefix": "are-you-planning-register",
+          "name": "are-you-planning-register",
           "items": [
-          {
-            "value": "registerSelf",
-            "text": "Register myself first",
-            checked: fieldVar == "registerSelf"
-          },
-          {
-              "value": "continue",
-              "text": "Continue with this registration",
-              checked: fieldVar == "continue"
+            {
+              "value": "Yes",
+              "text": "Yes",
+              checked: fieldVar == "Yes"
+            },
+            {
+              "value": "No",
+              "text": "No",
+              checked: fieldVar == "No"
             }
           ]
-       }) }}
+        }) }}
 
       {% endcall %}
 
@@ -102,6 +87,7 @@
       }) }}
 
     </form>
+
   </div>
 </div>
 

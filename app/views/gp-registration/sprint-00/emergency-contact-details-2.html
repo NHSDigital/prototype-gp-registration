@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = "Do they have an emergency contact?" %}
 {% else %}
   {% set heading = 'Do you have an emergency contact?' %}

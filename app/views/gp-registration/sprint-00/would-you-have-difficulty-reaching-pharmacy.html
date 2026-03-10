@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = 'Would ' + data['name-first-name'] + ' have serious difficulty travelling to or communicating with their nearest pharmacy?' %}
 {% else %}
   {% set heading = 'Would you have serious difficulty travelling to or communicating with your nearest pharmacy?' %}

@@ -25,7 +25,7 @@
   depending on previous errors, such as consent not being
   given.
 -->
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = ''+ data['name-first-name'] + '\'s previous address in the UK' %}
 {% else %}
   {% set heading = 'Your previous address in the UK' %}

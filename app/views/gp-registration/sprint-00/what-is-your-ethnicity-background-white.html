@@ -19,7 +19,7 @@
   depending on previous errors, such as consent not being
   given.
 -->
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = 'Which of the following best describes ' + data['name-first-name'] + '\'s White background?' %}
   {% set labelText = 'How would you describe their background? (optional)' %}
 {% else %}

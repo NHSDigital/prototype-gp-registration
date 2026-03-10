@@ -4,7 +4,7 @@
 {% set section = '2' %}
 
 <!-- Looks like this stopped involving conditional routing at some point. Comment left March 2026 -->
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set action = 'recently-moved-date' %}
 {% else %}
   {% set action = 'recently-moved-date' %}

@@ -5,7 +5,7 @@
 
 {% extends 'layout.html' %}
 
-{% if (data['who-is-being-registered'] === "dependant") %}
+{% if (data['who-is-registering'] === "dependant") %}
   {% set heading = 'Are you sure that ' + data['name-first-name'] + ' has no access to a phone or email?' %}
   {% set labelText = 'Yes, the patient does not have access to a phone or email' %}
   {% set hintText = 'It\'s important that the NHS and the patient\'s GP surgery have a convenient way of contacting them about this application, appointments, prescriptions or other health services.' %}

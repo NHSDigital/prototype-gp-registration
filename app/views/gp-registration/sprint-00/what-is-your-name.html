@@ -3,13 +3,7 @@
 {% set feedbackType = 'step' %}
 {% set section = '1' %}
 
-{% if (data['who-is-registering'] === "dependant") %}
-  {% set heading = 'What is the name of the person you are registering?' %}
-  {% set link = 'carer-details' %}
-{% else %}
-  {% set heading = 'What is your name?' %}
-  {% set link = 'continue-with-nhs-login' %}
-{% endif %}
+
 
 {% if (data['return'] === "true") %}
   {% set link = 'check-answers-1' %}
@@ -36,7 +30,13 @@
   depending on previous errors, such as consent not being
   given.
 -->
-{% set heading = "What is your name?" %}
+{% if (data['who-is-registering'] === "dependant") %}
+  {% set heading = 'What is the name of the person you are registering?' %}
+  {% set link = 'carer-details' %}
+{% else %}
+  {% set heading = 'What is your name?' %}
+  {% set link = 'continue-with-nhs-login' %}
+{% endif %}
     
 
 <!--
