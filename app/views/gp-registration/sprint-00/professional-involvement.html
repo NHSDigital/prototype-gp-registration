@@ -1,21 +1,7 @@
-{% set serviceHome = '/live/start' %}
+<!-- Set any variables here -->
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
 {% set section = '2' %}
-
-{% extends 'layout.html' %}
-
-{% if (data['who-is-registering'] === "dependant") %}
-  {% set heading = 'Is anyone else involved in ' + data['name-first-name'] + '\'s care?' %}
-  {% set hintText = "This will help the GP understand the patient's care needs." %}
-{% else %}
-  {% set heading = 'Is anyone else involved in your care?' %}
-  {% set hintText = "This will help the GP understand your care needs." %}
-{% endif %}
-
-{% block pageTitle %}
-  {{ heading }} - {{ data.presets[0].servicename }} - NHS
-{% endblock %}
 
 {% if (data['schooling'][0] === 'None') %}
   {% set link = 'what-schooling-do-you-have' %}
@@ -23,14 +9,59 @@
   {% set link = 'schooling-details' %}
 {% endif %}
 
-{% block outerContent %}
-  {{ backLink({
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
+{% if (data['who-is-registering'] === "dependant") %}
+  {% set heading = 'Is anyone else involved in ' + data['name-first-name'] + '\'s care?' %}
+  {% set hintText = "This will help the GP understand the patient's care needs." %}
+{% else %}
+  {% set heading = 'Is anyone else involved in your care?' %}
+  {% set hintText = "This will help the GP understand your care needs." %}
+{% endif %}
+    
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
+
+
+<!-- For adding a phase banner, breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../includes/phase-banner.html' %}
+
+
+{{ backLink({
     "href": link,
-    "text": "Go back",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
-  }) }}
+    "text": "Go back"
+  })
+}}
+
 {% endblock %}
 
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
       <div class="nhsuk-grid-row">
@@ -39,53 +70,56 @@
 
             {% include 'live/includes/step.html' %}
 
+            {% set fieldVar = data['health-contact'] | default([]) %}
+
             {{ checkboxes({
-                "idPrefix": "health-contact",
-                "name": "health-contact",
-                "fieldset": {
-                  "legend": {
-                    "text": heading,
-                    "classes": "nhsuk-fieldset__legend--l",
-                    isPageHeading: true
-                  }
-                },
-                "hint": {
-                  "text": hintText
-                },
-                items: [
-                  {
-                    value: "Hospital specialist or consultant",
-                    text: "Hospital specialist or consultant",
-                    checked: checked("health-contact", "hospital-specialist"),
-                    exclusiveGroup: "care-list"
-                  },
-                  {
-                    value: "Health worker",
-                    text: "Health visitor",
-                    checked: checked("health-contact", "health-worker"),
-                    exclusiveGroup: "care-list"
-                  },
-                  {
-                    value: "Social worker",
-                    text: "Social worker",
-                    checked: checked("health-contact", "social-worker"),
-                    exclusiveGroup: "care-list"
-                  },
-                  {
-                    value: "Other health professional",
-                    text: "Other health professional",
-                    checked: checked("health-contact", "other"),
-                    exclusiveGroup: "care-list"
-                  },
-                  {
-                    value: "none",
-                    text: "None of the above",
-                    checked: checked("health-contact", "none"),
-                    exclusive: true,
-                    exclusiveGroup: "care-list"
-                  }
-                ]
-              }) }}
+  "idPrefix": "health-contact",
+  "name": "health-contact",
+  "fieldset": {
+    "legend": {
+      "text": heading,
+      "classes": "nhsuk-fieldset__legend--l",
+      "isPageHeading": true
+    }
+  },
+  "hint": {
+    "text": hintText
+  },
+  "items": [
+    {
+      "value": "Hospital specialist or consultant",
+      "text": "Hospital specialist or consultant",
+      "checked": ("Hospital specialist or consultant" in fieldVar),
+      "exclusiveGroup": "care-list"
+    },
+    {
+      "value": "Health worker",
+      "text": "Health worker",
+      "checked": ("Health worker" in fieldVar),
+      "exclusiveGroup": "care-list"
+    },
+    {
+      "value": "Social worker",
+      "text": "Social worker",
+      "checked": ("Social worker" in fieldVar),
+      "exclusiveGroup": "care-list"
+    },
+    {
+      "value": "Other health professional",
+      "text": "Other health professional",
+      "checked": ("Other health professional" in fieldVar),
+      "exclusiveGroup": "care-list"
+    },
+    {
+      "value": "none",
+      "text": "None of the above",
+      "exclusive": true,
+      "checked": ("none" in fieldVar),
+      "exclusiveGroup": "care-list"
+    }
+  ]
+}) }}
+
 
             {{ button({
               "text": "Continue"
@@ -98,8 +132,3 @@
 {% include 'live/includes/devmode.html' %}
 
 {% endblock %}
-
-{% block footer %}
-{% include 'live/includes/footer.html' %}
-{% endblock %}
-
