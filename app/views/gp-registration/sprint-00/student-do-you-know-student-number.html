@@ -1,10 +1,24 @@
-{% set serviceHome = '/live/start' %}
+<!-- Set any variables here -->
 {% set servicePhase = 'beta' %}
 {% set feedbackType = 'step' %}
 {% set section = '2' %}
 
-{% extends 'layout.html' %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
 {% if (data['who-is-registering'] === "dependant") %}
   {% set heading = 'Does ' + data['name-first-name'] + '\'s have a student ID number?' %}
   {% set hint1 = 'Student ID numbers can usually be found on official documentation from the university' %}
@@ -13,24 +27,41 @@
   {% set hint1 = 'Student ID numbers can usually be found on official documentation from the university' %}
 {% endif %}
 
-{% block pageTitle %}
-  {{ heading }} - {{ data.presets[0].servicename }} - NHS
-{% endblock %}
+    
 
-{% block outerContent %}
-  {{ backLink({
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
+
+
+<!-- For adding a phase banner, breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../includes/phase-banner.html' %}
+
+{{ backLink({
     "href": "student-are-you-student",
-    "text": "Go back",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
-  }) }}
+    "text": "Go back"
+  })
+}}
+
 {% endblock %}
 
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-          <form action="" method="post" autocomplete="off">
+          {% set fieldVar = data['do-you-student-id'] %}
+          <form action="{{ basePath }}/student-do-you-know-student-number-answer" method="post" autocomplete="off">
 
             {% include 'live/includes/step.html' %}
 
@@ -52,24 +83,31 @@
               "name": "do-you-student-id",
               "items": [
                 {
-                  "value": "Yes~/live/student-what-is-your-student-number",
+                  "value": "Yes",
                   "text": "Yes",
-                  "checked": checked("do-you-student-id", "Yes")
+                  checked: fieldVar == "Yes"
                 },
                 {
-                  "value": "No~/live/student-course-end-date",
+                  "value": "No",
                   "text": "No",
-                  "checked": checked("do-you-student-id", "No")
+                  checked: fieldVar == "No"
                 }
               ]
             }) }}
 
             {% endcall %}
 
-            {{ details({
-              "text": "Why are you asking this?",
-              "HTML": "<p>This information will be used to confirm you are a student.</p>"
-            }) }}
+       
+
+
+            {% from "details/macro.njk" import details %}
+
+            {% call details({
+              summaryText: "Why are you asking this?"
+            }) %}
+              <p>This information will be used to confirm you are a student.</p>
+            {% endcall %}
+
 
             {{ button({
               "text": "Continue"
@@ -81,8 +119,4 @@
 
 {% include 'live/includes/devmode.html' %}
 
-{% endblock %}
-
-{% block footer %}
-  {% include 'live/includes/footer.html' %}
 {% endblock %}

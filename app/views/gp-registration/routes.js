@@ -1413,4 +1413,211 @@ router.post('/:sprint/apply-self-first-answer', (req, res) => {
 })
 
 
+
+// ===========================
+// WHAT SCHOOLING DO YOU HAVE
+// ===========================
+
+// GET
+router.get('/:sprint/what-schooling-do-you-have', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/what-schooling-do-you-have`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/what-schooling-do-you-have-answer', (req, res) => {
+  const sprint = req.params.sprint
+  let schooling = req.body['schooling']
+
+  // Ensure schooling is always an array
+  if (!Array.isArray(schooling)) {
+    schooling = [schooling]
+  }
+
+  req.session.data['schooling'] = schooling
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-1')
+  }
+
+  // Routing logic
+  if (schooling.includes('None')) {
+    sprintRedirect(res, sprint, 'professional-involvement')
+  } else {
+    sprintRedirect(res, sprint, 'schooling-details')
+  }
+})
+
+
+// ============================
+// STUDENT - ARE YOU A STUDENT
+// ============================
+
+// GET
+router.get('/:sprint/student-are-you-student', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/student-are-you-student`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/student-are-you-student-answer', (req, res) => {
+  const sprint = req.params.sprint
+  const answer = req.body['are-you-student']
+  req.session.data['are-you-student'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'student-do-you-know-student-number')
+  } else {
+    sprintRedirect(res, sprint, 'do-you-current-address')
+  }
+})
+
+
+// =====================================
+// STUDENT - DO YOU KNOW STUDENT NUMBER
+// =====================================
+
+// GET
+router.get('/:sprint/student-do-you-know-student-number', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/student-do-you-know-student-number`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/student-do-you-know-student-number-answer', (req, res) => {
+  const sprint = req.params.sprint
+  const answer = req.body['do-you-student-id']
+  req.session.data['do-you-student-id'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'student-what-is-your-student-number')
+  } else {
+    sprintRedirect(res, sprint, 'student-course-end-date')
+  }
+})
+
+
+// =================================================
+// STUDENT - WHAT IS YOUR CURRENT ADDRESS SELECTION 
+// =================================================
+
+// GET
+router.get('/:sprint/student-what-is-your-current-address-selection', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/student-what-is-your-current-address-selection`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/student-what-is-your-current-address-selection-answer', (req, res) => {
+  const sprint = req.params.sprint
+  const answer = req.body['student-select-current-address']
+  req.session.data['student-select-current-address'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'I cannot find the address on the list') {
+    sprintRedirect(res, sprint, 'student-what-is-your-current-address-manual')
+  } else {
+    sprintRedirect(res, sprint, 'student-do-you-room-number')
+  }
+})
+
+
+// ======================================
+// STUDENT - WHAT IS YOUR ADDRESS MANUAL 
+// ======================================
+
+// GET
+router.get('/:sprint/student-what-is-your-current-address-manual', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/student-what-is-your-current-address-manual`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/student-what-is-your-current-address-manual-answer', (req, res) => {
+  const sprint = req.params.sprint
+
+  // Save the manually entered address fields to session
+  req.session.data['manual-address-line-1'] = req.body['manual-address-line-1']
+  req.session.data['manual-address-line-2'] = req.body['manual-address-line-2']
+  req.session.data['manual-address-town'] = req.body['manual-address-town']
+  req.session.data['manual-address-postcode'] = req.body['manual-address-postcode']
+  req.session.data['manual-address-country'] = req.body['manual-address-country']
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  // Conditional routing based on previous answers
+  let nextPage = ''
+  if (req.session.data['out-of-area'] === 'out-of-area') {
+    nextPage = 'current-address-out-of-area'
+  } else if (req.session.data['user-auth'] === 'p9') {
+    nextPage = 'confirm-contact-details'
+  } else {
+    nextPage = 'how-can-we-contact-inputs'
+  }
+
+  sprintRedirect(res, sprint, nextPage)
+})
+
+
+// ====================================
+// STUDENT - DO YOU HAVE A ROOM NUMBER
+// ====================================
+
+// GET
+router.get('/:sprint/student-do-you-room-number', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/student-do-you-room-number`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/student-do-you-room-number-answer', (req, res) => {
+  const sprint = req.params.sprint
+  const answer = req.body['student-do-you-room-number']
+
+  req.session.data['student-do-you-room-number'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'Yes') {
+    sprintRedirect(res, sprint, 'student-what-is-your-room-number')
+  } else {
+    sprintRedirect(res, sprint, 'how-can-we-contact-inputs')
+  }
+})
+
+
+
 module.exports = router;
