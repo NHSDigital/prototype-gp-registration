@@ -1,0 +1,153 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'mpr/_layout.html' %}
+{% from "panel/macro.njk" import panel %}
+{% from "inset-text/macro.njk" import insetText %}
+{% from "summary-list/macro.njk" import summaryList %}
+{% from "button/macro.njk" import button %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Sam Smith rejected - GP registrations portal - NHS" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+<!-- Panel -->
+{% set panelHtml %}
+  <p class="nhsuk-body-l">Sam Smith has not been added to your patient list</p>
+{% endset %}
+
+{{ panel({
+  titleText: "Rejected",
+  titleSize: "2",
+  classes: "nhsuk-panel--interruption",
+  html: panelHtml
+}) }}
+
+<!-- Reason + detail -->
+{% set rejectReasonLabel = (data['reject-reason'] or '').split('~')[0] %}
+{% if rejectReasonLabel == 'Other' %}
+  {% set rejectReasonLabel = 'Other reasonable grounds' %}
+{% endif %}
+<h3 class="nhsuk-heading-s">
+  <span class="nhsuk-caption-m">Reason</span>
+  {{ rejectReasonLabel }}
+</h3>
+
+{% if data['reason-details'] and data['reason-details'] | trim %}
+  {% set insetTextHtml %}
+    <p>{{ data['reason-details'] }}</p>
+  {% endset %}
+
+  {{ insetText({
+    html: insetTextHtml
+  }) }}
+{% endif %}
+
+<!-- Guidance -->
+<h2 class="nhsuk-heading-l">What you need to do next</h2>
+<p class="nhsuk-body">You must tell the patient in writing within 14 days and include the reasons for refusal in your letter. Follow your surgery's relevant process.</p>
+<p class="nhsuk-body">Use these details to contact the patient:</p>
+
+<!-- Patient details -->
+{{ summaryList({
+  rows: [
+    {
+      key: {
+        text: "Name"
+      },
+      value: {
+        text: "Sam Smith"
+      }
+    },
+    {
+      key: {
+        text: "NHS number"
+      },
+      value: {
+        text: "123 456 7890"
+      }
+    },
+    {
+      key: {
+        text: "Date of birth"
+      },
+      value: {
+        text: "15 March 1984"
+      }
+    },
+    {
+      key: {
+        text: "Home telephone"
+      },
+      value: {
+        html: "0300 303 477"
+      }
+    },
+    {
+      key: {
+        text: "Mobile telephone"
+      },
+      value: {
+        html: "07700 900 362"
+      }
+    },
+    {
+      key: {
+        text: "Email"
+      },
+      value: {
+        html: "samsmith@hotmail.com"
+      }
+    },
+    {
+      key: {
+        text: "Contact information"
+      },
+      value: {
+        html: "73 Roman Rd<br>Leeds<br> LS2 5ZN"
+      }
+    }
+  ]
+}) }}
+
+<!-- Actions -->
+<div class="nhsuk-button-group">
+  <a class="nhsuk-button" href="/mpr/sprint-24/registrations-new-1" role="button" draggable="false">
+    Back to new registrations
+  </a>
+
+  <a class="nhsuk-button nhsuk-button--secondary" href="/mpr/sprint-24/dashboard" role="button" draggable="false">
+    Back to dashboard
+  </a>
+</div>
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}

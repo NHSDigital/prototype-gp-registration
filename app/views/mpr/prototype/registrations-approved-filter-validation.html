@@ -1,0 +1,338 @@
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'mpr/_layout.html' %}
+{% from "error-summary/macro.njk" import errorSummary %}
+{% from "button/macro.njk" import button %}
+{% from "input/macro.njk" import input %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Approved registrations - GP registrations portal - NHS" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{{ backLink({
+    href: "dashboard",
+    text: "Return to dashboard"
+  }) }}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+        {{ errorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              text: "Search term must be 50 characters or less",
+              href: "#find-patient"
+            }
+          ]
+        }) }}
+
+
+          <h1 class="nhsuk-heading-xl">Approved registrations</h1>
+          <p>View details of approved registrations from the past 90 days.</p>
+
+{{ input({
+  label: {
+    text: "Find a patient"
+  },
+  hint: {
+    text: "Search registrations by name or NHS number"
+  },
+  id: "find-patient",
+  name: "findPatient",
+  value: "Smithson McDaniel-Winchesterson",
+  classes: "nhsuk-input--width-20 nhsuk-input--code",
+  errorMessage: {
+    text: "Search term must be 50 characters or less"
+  },
+  formGroup: {
+    afterInput: {
+      html: 
+      '<a class="nhsuk-button nhsuk-button--small" href="registrations-approved-filter" role="button" draggable="false">Search</a>' 
+      ~ '<a class="nhsuk-button nhsuk-button--small nhsuk-button--secondary" href="registrations-approved-1" role="button" draggable="false">Clear</a>'
+    }
+  }
+}) }}
+
+          <table role="table" class="nhsuk-table-responsive">
+            <thead class="nhsuk-table__head">
+              <tr role="row">
+              
+                <th role="columnheader" scope="col" class="govuk-table__header" aria-sort="none">
+                  <a href="#">
+                    <button type="button" data-index="0">Name<svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                      <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                      </svg>
+                    </button>
+                  </a>
+                </th>
+              
+                <th role="columnheader" scope="col" class="govuk-table__header" aria-sort="none">
+                  <button type="button" data-index="1">NHS number<svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                    <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                    </svg>
+                  </button>
+                </th>
+              
+                <th role="columnheader" scope="col" class="govuk-table__header" aria-sort="none">
+                  <button type="button" data-index="2">Approved by<svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                    <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                    </svg>
+                  </button>
+                </th>
+              
+                <th role="columnheader" scope="col" class="govuk-table__header govuk-table__header--numeric" aria-sort="none">
+                  <button type="button" data-index="3">Date<svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                    <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                    </svg>
+                  </button>
+                </th>
+
+                <th role="columnheader" class="" scope="col"></th>
+              
+              </tr>
+            </thead>
+
+            <style>
+              .govuk-table__header {
+                padding: 10px 20px 10px 0;
+                text-align: left;
+                vertical-align: top;
+              }
+
+              [aria-sort] button, [aria-sort] button:hover {
+                align-items: center;
+                background-color: initial;
+                border-width: 0;
+                box-shadow: 0 0 0 0;
+                color: #005ea5;
+                cursor: pointer;
+                display: inline-flex;
+                font-family: inherit;
+                font-size: inherit;
+                font-size: 1em;
+                font-weight: inherit;
+                margin: 0;
+                padding: 0;
+                position: relative;
+                text-align: inherit;
+              }
+            </style>
+
+            <tbody class="nhsuk-table__body">
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span><a href="patient-detail-approved">Sam Smith</a>
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">NHS number</span>123 456 7890
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Approved by</span>Dr Gary Sanchez
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Date</span>4 Mar 2026
+                </td>
+              </tr>
+
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span><a href="#">Jane Jones</a>
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">NHS number</span>123 456 7891
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Approved by</span>Dr Gary Sanchez
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Date</span>3 Mar 2026
+                </td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span><a href="#">Justin Girdler</a>
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">NHS number</span>123 456 7892
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Approved by</span>Valerie Westfield
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Date</span>2 Mar 2026
+                </td>
+              </tr>
+
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span><a href="#">Louise Ednie</a>
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">NHS number</span>123 456 7893
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Approved by</span>Dr Gary Sanchez
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Date</span>1 Mar 2026
+                </td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span><a href="#">Victoria Shirt</a>
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">NHS number</span>123 456 7894
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Approved by</span>Dr Gary Sanchez
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Date</span>28 Feb 2026
+                </td>
+              </tr>
+
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span><a href="#">Philip Wilson</a>
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">NHS number</span>123 456 7895
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Approved by</span>Valerie Westfield
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Date</span>27 Feb 2026
+                </td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span><a href="#">James Briggs</a>
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">NHS number</span>123 456 7896
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Approved by</span>Valerie Westfield
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Date</span>26 Feb 2026
+                </td>
+              </tr>
+
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Name</span><a href="#">Philip Muggeridge</a>
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">NHS number</span>123 456 7897
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Approved by</span>Dr Gary Sanchez
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Date</span>25 Feb 2026
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+          <nav class="nhsuk-pagination" role="navigation" aria-label="Pagination">
+            <ul class="nhsuk-list nhsuk-pagination__list">
+              <!--<li class="gpreg-pagination-item--previous">
+                <a class="nhsuk-pagination__link nhsuk-pagination__link--prev" href="registrations-approved-1">
+                  <span class="nhsuk-pagination__title">Previous<span class="nhsuk-u-visually-hidden"> page</span></span>
+                  <svg class="nhsuk-icon gpreg-icon--arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                    <path d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
+                  </svg>
+                </a>
+              </li>-->
+              <li class="gpreg-pagination-item--next">
+                <a class="nhsuk-pagination__link nhsuk-pagination__link--next" href="registrations-approved-2">
+                  <span class="nhsuk-pagination__title">Next<span class="nhsuk-u-visually-hidden"> page</span></span>
+                  <svg class="nhsuk-icon gpreg-icon--arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                    <path d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <h2 class="nhsuk-heading-l nhsuk-u-padding-top-6">Get help using the service</h2>
+          <p>Raise a ServiceNow ticket if you need help or have a question about the service.</p>
+
+  </div>
+</div>
+
+<style>
+  .gpreg-pagination-item--previous {
+    float: left;
+    margin-right: 32px;
+    padding-left: 32px;
+  }
+
+  .gpreg-icon--arrow-left {
+    position: absolute;
+    top: -2px;
+    left: -38px;
+  }
+
+  .gpreg-pagination-item--next {
+    float: left;
+  }
+
+  .gpreg-icon--arrow-right {
+    position: absolute;
+    top: -2px;
+    right: -38px;
+  }
+</style>
+
+
+
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+  <script>
+    (function () {
+      var clearButton = document.getElementById('clear-filter');
+      var filterInput = document.getElementById('find-patient') || document.querySelector('input[name="findPatient"]');
+
+      if (!clearButton || !filterInput) return;
+
+      clearButton.addEventListener('click', function () {
+        filterInput.value = '';
+        filterInput.focus();
+      });
+    })();
+  </script>
+
+{% endblock %}
