@@ -23,6 +23,34 @@
 <!-- For adding a breadcrumb or back link -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block beforeContent %}
+<style>
+  .app-button--cis2 {
+      align-items: center;
+      display: inline-flex;
+      gap: 16px;
+  }
+  .app-button--cis2:link {
+      background-color: #005eb8;
+      box-shadow: 0 4px 0 #003087;
+  }
+  .app-button--cis2:visited {
+      background-color: #005eb8;
+      box-shadow: 0 4px 0 #003087;
+  }
+  .app-button--cis2:hover {
+    background-color: #1e569b;
+    box-shadow: 0 4px 0 #002f87;
+  }
+  .app-button--cis2:active {
+    background-color: #1e569b !important;
+    box-shadow: none;
+  }
+  .app-button--cis2:focus {
+    background-color: #ffeb3b;
+    box-shadow: 0 4px 0 #212b32;
+    color: #212b32;
+  }
+</style>
 
 {% endblock %}
 
@@ -32,11 +60,6 @@
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-
-          <!--{{ backLink({
-            text: "Return to Manage your profile",
-            href: "/gp/gp-profile-manager-manage"
-        }) }}-->
 
           <h1 class="nhsuk-heading-xl">Manage patient registrations</h1>
           <p>Use this to manage registration applications from patients that have had their identity verified.</p>
