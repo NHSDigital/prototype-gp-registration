@@ -1,0 +1,58 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Declaration - Patient removals - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "javascript:history.go(-1)",
+      text: "Go back"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">
+        <span class="nhsuk-caption-l">
+          Remove a patient from your practice list
+        </span>
+        Declarations
+      </h1>
+
+      <form method="post" action="/mpr-removals/main/8-day/warning-answer">
+
+        {{ radios({
+          idPrefix: "8dayWarning",
+          name: "8dayWarning",
+          fieldset: {
+            legend: {
+              text: "Has the patient received a written warning within the past 12 months explaining that they were at risk of removal?",
+              size: "m"
+            }
+          },
+          hint: {
+            html: "See <a href=\"https://www.england.nhs.uk/long-read/primary-medical-services-policy-and-guidance-manual-pgm-2/#6-4-contract-regulations-relating-to-removal-at-the-request-of-the-contractor\" class=\"nhsuk-link nhsuk-link--no-visited-state\" target=\"_blank\">Section 6.4.1 of the NHS England Primary Medical Care Policy and Guidance Manual (opens in a new tab)</a> for guidance."
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ button({ text: 'Continue' }) }}
+      </form>
+
+     
+    </div>
+  </div>
+
+{% endblock %}
