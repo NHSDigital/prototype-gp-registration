@@ -1,0 +1,61 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Declaration - Patient removals - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "javascript:history.go(-1)",
+      text: "Go back"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="nhsuk-heading-xl">
+    <span class="nhsuk-caption-l">
+      Remove a patient from your practice list
+    </span>
+    Declaration
+  </h1>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h2 class="nhsuk-heading-m">About 8-day removals</h2>
+
+      <p>Removing a patient as a result of a breakdown in relationship between the GP practice and the patient will be processed as an 8-day removal. The patient will be deducted and asked to register with a new practice.</p>
+        
+      <p>Patient behaviours which may lead to an 8-day removal request may include but are not limited to:</p>
+    
+      <ul>
+        <li>using offensive language or swearing at practice staff or other service users</li>
+        <li>racial abuse</li>
+        <li>sexual harassment</li>
+        <li>unnecessarily persistent or unrealistic service demands that cause disruption</li>
+        <li>causing damage to practice premises or to the property of staff or other service users</li>
+        <li>stealing from practice premises, staff or other service users</li>
+        <li>obtaining drugs and/or medical services fraudulently</li>
+        <li>repeated, unjustified non-attendance of appointments.</li>
+      </ul>
+
+      <h2 class="nhsuk-heading-m">What to consider</h2>
+
+      <p>Before submitting a request you should ensure that the criteria outlined in <a target="_blank" href="https://www.england.nhs.uk/long-read/primary-medical-services-policy-and-guidance-manual-pgm-2/#6-managing-non-violent-patient-behaviours-which-lead-to-removals-from-the-list-at-the-request-of-the-contractor-including-protecting-against-discrimination-harassment-or-victimisation">Section 6 of the NHS England Primary Medical Care Policy and Guidance Manual (opens in a new tab)</a> has been met.</p>
+
+      <h2 class="nhsuk-heading-m">Declaration</h2>
+
+      <p>By continuing with the removal you confirm that the practice has carefully considered the circumstances of the incident, and the practice can confirm that it has assured itself that the removal requested here is not as a direct result of the patients protected characteristics and key past medical history including mental illness, learning disability and neurodiversity.</p>
+
+      
+      <div class="nhsuk-u-padding-bottom-6">
+        {{ button({
+          "text": "Confirm and continue",
+          "href": "/mpr-removals/main/8-day-warning"
+        }) }}
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
