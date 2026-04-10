@@ -1,0 +1,74 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Removal reason - Patient removals - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "javascript:history.go(-1)",
+      text: "Go back"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form method="post" action="/mpr-removals/main/confirm-patient">
+
+        {{ radios({
+          idPrefix: "removalReason",
+          name: "removalReason",
+          fieldset: {
+            legend: {
+              html: "<span class=\"nhsuk-caption-l\">Remove a patient from your practice list</span> Removal reason",
+              size: "xl",
+              isPageHeading: true
+            }
+          },
+          items: [
+            {
+              value: "OPA",
+              text: "Moved outside practice boundary"
+            },
+            {
+              value: "RFI",
+              text: "Left education establishment"
+            },
+            {
+              value: "EMB",
+              text: "Moved abroad (embarkation)"
+            },
+            {
+              value: "DEA",
+              text: "Death"
+            },
+            {
+              value: "RDI",
+              text: "Police incident requiring urgent removal"
+            },
+            {
+              value: "RDR",
+              text: "Breakdown of relationship",
+              hint: {
+                text: "Due to inappropriate and unacceptable patient behaviours for example violent, threatening, or abusive behaviour towards staff or patients."
+              }
+            },
+            {
+              value: "DNA",
+              text: "Repeated, unjustified non-attendance of appointments"
+            },
+            {
+              value: "RPR",
+              text: "Removal at patient's request"
+            }
+          ]
+        }) }}
+
+        {{ button({ text: 'Continue' }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
