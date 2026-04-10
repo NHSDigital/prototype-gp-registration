@@ -1,0 +1,92 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Confirm patient - Patient removals - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "javascript:history.go(-1)",
+      text: "Go back"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="nhsuk-heading-xl">
+    <span class="nhsuk-caption-l">
+      Remove a patient from your practice list
+    </span>
+    Confirm patient
+  </h1>
+
+  <p>Check the details below to confirm you have found the correct patient.</p>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: "Karen Francis"
+            }
+          },
+          {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: "15 March 1984"
+            }
+          },
+          {
+            key: {
+              text: "NHS number"
+            },
+            value: {
+              text: "123 456 7890"
+            }
+          },
+          {
+            key: {
+              text: "Home address postcode"
+            },
+            value: {
+              text: "LS2 5ZN"
+            }
+          },
+          {
+            key: {
+              text: "Registered GP practice"
+            },
+            value: {
+              html: "Kingswood Surgery<br>Kendell Street<br>Leeds<br> LS2 4SY"
+            }
+          },
+          {
+            key: {
+              text: "Registration date"
+            },
+            value: {
+              text: "6 August 2019"
+            }
+          }
+        ]
+      }) }}
+
+      <div class="nhsuk-button-group nhsuk-u-padding-bottom-6">
+        {{ button({
+          "text": "Continue",
+          "href": "/mpr-removals/main/removal-reason"
+        }) }}
+
+        <a href="javascript:history.go(-1)" class="nhsuk-link">Go back</a>
+        
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
