@@ -38,34 +38,20 @@
         <div class="nhsuk-grid-column-full">
 
       
-          <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-1">Sam Smith</h1>
-          <p class="nhsuk-body"><strong>On hold</strong> by Gary Sanchez, Friday 20 March 2026</p>
-          
-          <!-- Reason + detail -->
-          <h3 class="nhsuk-heading-s">
-            <span class="nhsuk-caption-m">Reason</span>
-            Other reasonable grounds
-          </h3>
-          
-          {% set insetTextHtml %}
-            <p>Awaiting a mobile phone number for this customer</p>
-          {% endset %}
-          {{ insetText({
-            html: insetTextHtml
-          }) }}
-
-          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+          <h1 class="nhsuk-heading-l">Sam Smith</h1>
           
           <!-- Important information -->
           <p class="nhsuk-body nhsuk-u-margin-bottom-3"><strong class="nhsuk-tag">Important information</strong></p>
           <details class="nhsuk-details">
             <summary class="nhsuk-details__summary">
               <span class="nhsuk-details__summary-text">
-                View 1 message
+                View 3 messages
               </span>
             </summary>
             <div class="nhsuk-details__text">
-              <p>Patient has an 8-day removal from your practice on their record</p>
+              <p>Patient has an 8-day removal from your practice on their record<br />
+              Patient has a carer<br />
+              Patient is a veteran</p>
             </div>
           </details>
 
@@ -78,23 +64,6 @@
           <p class="nhsuk-u-margin-bottom-0">Postcode</p>
           <p class="nhsuk-heading-s nhsuk-u-padding-top-0">ZZ99 3CZ</p>
           <p class="nhsuk-body">Approving this registration will update the patient's NHS record on the Spine.</p>
-          
-          <!-- PDS update message -->
-          <div class="nhsuk-card nhsuk-card--warning">
-            <div class="nhsuk-card__content">
-              <h3 class="nhsuk-card__heading">
-                <span role="text">
-                  <span class="nhsuk-u-visually-hidden">Important:</span> Some of the patient's details have changed
-                </span>
-              </h3>
-              <p class="nhsuk-card__description nhsuk-u-padding-bottom-3">Some of the patient's details do not match the information held in their NHS record on the Spine:</p>
-              <ul class="nhsuk-list nhsuk-list--bullet">
-                <li>name</li>
-                <li>date of birth</li>
-              </ul>
-              <p class="nhsuk-card__description">Check these details before you action the registration. Contact the patient using the contact details they gave in their registration application.</p>
-            </div>
-          </div>
 
           <div style="display: flex; height: 100%; margin-bottom: 48px;">
             <a class="nhsuk-button" style="margin-top:auto; margin-bottom:auto; margin-left:0; margin-right:24px;" href="confirm-approved">Approve</a>
