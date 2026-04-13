@@ -1,0 +1,64 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'mpr/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Latest service updates - Manage patient registrations - NHS" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <h1 class="nhsuk-heading-l">Latest service updates</h1>
+          <p class="nhsuk-lede-text">Find out about what we're working on to improve Manage patient registrations.</p>
+
+          <h2 class="nhsuk-heading-m">What's new</h2>
+
+          <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                23 March 2026
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <p>Version 1.34</p>
+              <ul>
+                <li>we released a feature that lets practice staff update a patient's NHS record on the Spine when they approve a registration.</li>
+                <li>we fixed a bug so that staff are not signed out too frequently.</li>
+                <li>we added a link to guidance on Manage patient registrations to the start page of the service and the registrations dashboard.</li>
+              </ul>
+
+            </div>
+          </details>
+
+
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+{% endblock %}
