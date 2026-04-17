@@ -25,7 +25,35 @@
         "href": "/mpr-removals/main/dashboard"
       }) }}
 
+      <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+      <h2 class="nhsuk-heading-m">Sprint 2 (2 Apr 2026 - 15 Apr 2026)</h2>
+
+      {% call details({
+        summaryText: "8-day removal MVP journey",
+        classes: "nhsuk-expander"
+      }) %}
+        <p>This sprint delivers an MVP prototype journey for 8-day removals.</p>
+
+        <h3 class="nhsuk-heading-s">What was added</h3>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>Dashboard entry point and patient search step.</li>
+          <li>Confirm patient, removal reason, 8-day declarations and warning pages.</li>
+          <li>Check answers page and confirmation page.</li>
+        </ul>
+
+        <h3 class="nhsuk-heading-s">Details</h3>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>NHS number search input is formatted to the NHS style.</li>
+          <li>Check answers content is dynamic and reflects submitted data.</li>
+          <li>Patient warning date input is formatted into a readable long date.</li>
+          <li>Confirmation displays an effective deduction date set to 8 days from today.</li>
+        </ul>
+        
+      {% endcall %}
+
     </div>
+
   </div>  
 
 {% endblock %}
