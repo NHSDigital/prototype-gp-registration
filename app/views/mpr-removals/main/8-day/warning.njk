@@ -1,6 +1,6 @@
 {% extends 'mpr/_layout.html' %}
 
-{% set pageName = "Declaration - Patient removals - Manage patient registrations - NHS" %}
+{% set pageName = "Patient warning - Patient removals - Manage patient registrations - NHS" %}
 
 {% block beforeContent %}
   {{ backLink({
@@ -19,10 +19,70 @@
         <span class="nhsuk-caption-l">
           Remove a patient from your practice list
         </span>
-        Declarations
+        Patient warning
       </h1>
 
-      <form method="post" action="/mpr-removals/main/8-day/warning-answer">
+      <form method="post" action="/mpr-removals/main/check-answers">
+
+        {% set dateHtml %}
+          {{ dateInput({
+            id: "8dayWarningDate",
+            namePrefix: "8dayWarningDate",
+            fieldset: {
+              legend: {
+                text: "When did the patient receive a written warning?",
+                size: "s"
+              }
+            },
+            hint: {
+              text: "For example, 18 3 2026"
+            },
+            items: [
+              {
+                name: "day",
+                classes: "nhsuk-input--width-2"
+              },
+              {
+                name: "month",
+                classes: "nhsuk-input--width-2"
+              },
+              {
+                name: "year",
+                classes: "nhsuk-input--width-4"
+              }
+            ]
+          }) }}
+        {% endset -%}
+
+        {% set reasonsHtml %}
+          {{ checkboxes({
+            idPrefix: "8DayWarningReasons",
+            name: "8DayWarningReasons",
+            fieldset: {
+              legend: {
+                text: "Why was it not possible or appropriate to give the patient a written warning?",
+                size: "s"
+              }
+            },
+            hint: {
+              text: "Select all that apply"
+            },
+            items: [
+              {
+                value: "health",
+                text: "Such a warning would be harmful to the patient’s physical or mental health"
+              },
+              {
+                value: "safety",
+                text: "Such a warning would put the safety of others at risk"
+              },
+              {
+                value: "practicality",
+                text: "It was not practical for a warning to be given to the patient"
+              }
+            ]
+          }) }}
+        {% endset -%}
 
         {{ radios({
           idPrefix: "8dayWarning",
@@ -39,11 +99,17 @@
           items: [
             {
               value: "yes",
-              text: "Yes"
+              text: "Yes",
+              conditional: {
+                html: dateHtml
+              }
             },
             {
               value: "no",
-              text: "No"
+              text: "No",
+              conditional: {
+                html: reasonsHtml
+              }
             }
           ]
         }) }}

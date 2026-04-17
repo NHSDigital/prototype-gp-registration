@@ -1,0 +1,30 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Removal submitted - Manage patient registrations - NHS" %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      {{ panel({
+        titleText: 'Removal request submitted',
+        text: 'Reference: RMR-000000'
+      }) }}
+
+      <h1 class="nhsuk-heading-l nhsuk-u-padding-top-4">What happens next</h1>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>A pending deduction has been set with an effective date 8 days from now.</li>
+        <li>The patient will receive a notification letter issued by first-class post.</li>
+        <li>Your practice will receive confirmation on the day of removal.</li>
+      </ul>
+
+      <p class="nhsuk-body">Effective deduction date: <strong>{{ data.journey01.effectiveDate }}</strong></p>
+
+      {{ button({
+        text: "Return to dashboard",
+        classes: "nhsuk-button--secondary nhsuk-u-margin-top-4",
+        href: "/mpr-removals/main/dashboard"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
