@@ -25,7 +25,41 @@
         "href": "/mpr-removals/main/dashboard"
       }) }}
 
+      <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+      <h2 class="nhsuk-heading-m">Sprint 2 (2 Apr 2026 - 15 Apr 2026)</h2>
+
+      {% call details({
+        summaryText: "8-day removal MVP journey",
+        classes: "nhsuk-expander"
+      }) %}
+        <p>This sprint delivers an MVP prototype journey for 8-day removals.</p>
+
+        <p>This is the most common 8 day removal journey and represents the core happy path. A Practice Administrator initiates a removal for a patient where the GP–patient relationship has irretrievably broken down, typically following repeated incidents such as persistent non-attendance or unacceptable behaviour that falls short of violence, and where the practice issued a written warning within the previous 12 months.</p>
+
+        <p>Previously, this flow required the practice to submit a request to PCSE via an online form or email, with PCSE then validating and processing the deduction. The intended change removes PCSE from routine processing and places this workflow directly in the hands of practices through Manage Patient Registrations. The system enforces all policy checkpoints inline so the administrator cannot submit unless required declarations are confirmed, replicating the assurance function that PCSE previously performed manually.
+
+        <p>This journey establishes the baseline interaction pattern that all other 8 day removal journeys extend or vary.</p>
+
+        <h3 class="nhsuk-heading-s">What was added</h3>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>Dashboard entry point and patient search step.</li>
+          <li>Confirm patient, removal reason, 8-day declarations and warning pages.</li>
+          <li>Check answers page and confirmation page.</li>
+        </ul>
+
+        <h3 class="nhsuk-heading-s">Details</h3>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>NHS number search input is formatted to the NHS style.</li>
+          <li>Check answers content is dynamic and reflects submitted data.</li>
+          <li>Patient warning date input is formatted into a readable long date.</li>
+          <li>Confirmation displays an effective deduction date set to 8 days from today.</li>
+        </ul>
+
+      {% endcall %}
+
     </div>
+
   </div>  
 
 {% endblock %}
