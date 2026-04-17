@@ -26,8 +26,8 @@
 
         {% set dateHtml %}
           {{ dateInput({
-            id: "8dayWarningDate",
-            namePrefix: "8dayWarningDate",
+            id: "eightDayWarningDate",
+            namePrefix: "eightDayWarningDate",
             fieldset: {
               legend: {
                 text: "When did the patient receive a written warning?",
@@ -40,15 +40,18 @@
             items: [
               {
                 name: "day",
-                classes: "nhsuk-input--width-2"
+                classes: "nhsuk-input--width-2",
+                value: data.eightDayWarningDate['day']
               },
               {
                 name: "month",
-                classes: "nhsuk-input--width-2"
+                classes: "nhsuk-input--width-2",
+                value: data.eightDayWarningDate['month']
               },
               {
                 name: "year",
-                classes: "nhsuk-input--width-4"
+                classes: "nhsuk-input--width-4",
+                value: data.eightDayWarningDate['year']
               }
             ]
           }) }}
@@ -56,28 +59,29 @@
 
         {% set reasonsHtml %}
           {{ checkboxes({
-            idPrefix: "8DayWarningReasons",
-            name: "8DayWarningReasons",
+            idPrefix: "eightDayWarningReasons",
+            name: "eightDayWarningReasons",
             fieldset: {
               legend: {
                 text: "Why was it not possible or appropriate to give the patient a written warning?",
                 size: "s"
               }
             },
+            values: data.eightDayWarningReasons,
             hint: {
               text: "Select all that apply"
             },
             items: [
               {
-                value: "health",
+                value: "Such a warning would be harmful to the patient’s physical or mental health",
                 text: "Such a warning would be harmful to the patient’s physical or mental health"
               },
               {
-                value: "safety",
+                value: "Such a warning would put the safety of others at risk",
                 text: "Such a warning would put the safety of others at risk"
               },
               {
-                value: "practicality",
+                value: "It was not practical for a warning to be given to the patient",
                 text: "It was not practical for a warning to be given to the patient"
               }
             ]
@@ -85,8 +89,8 @@
         {% endset -%}
 
         {{ radios({
-          idPrefix: "8dayWarning",
-          name: "8dayWarning",
+          idPrefix: "eightDayWarning",
+          name: "eightDayWarning",
           fieldset: {
             legend: {
               text: "Has the patient received a written warning within the past 12 months explaining that they were at risk of removal?",
@@ -96,16 +100,17 @@
           hint: {
             html: "See <a href=\"https://www.england.nhs.uk/long-read/primary-medical-services-policy-and-guidance-manual-pgm-2/#6-4-contract-regulations-relating-to-removal-at-the-request-of-the-contractor\" class=\"nhsuk-link nhsuk-link--no-visited-state\" target=\"_blank\">Section 6.4.1 of the NHS England Primary Medical Care Policy and Guidance Manual (opens in a new tab)</a> for guidance."
           },
+          value: data.eightDayWarning,
           items: [
             {
-              value: "yes",
+              value: "Yes",
               text: "Yes",
               conditional: {
                 html: dateHtml
               }
             },
             {
-              value: "no",
+              value: "No",
               text: "No",
               conditional: {
                 html: reasonsHtml

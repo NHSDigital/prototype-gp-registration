@@ -12,6 +12,20 @@
 
 {% block content %}
 
+  {% set writtenWarningDetail = data.eightDayWarningDateFormatted %}
+  {% set writtenWarningKey = "Date of written warning" %}
+  {% if data.eightDayWarning != 'Yes' %}
+    {% set writtenWarningDetail = '<ul class="nhsuk-list nhsuk-list--bullet">' %}
+    {% for reason in (data.eightDayWarningReasons or []) %}
+      {% set reasonText = reason.text or reason.value or reason %}
+      {% if reasonText and reasonText != '_unchecked' %}
+        {% set writtenWarningDetail = writtenWarningDetail + '<li>' + (reasonText | escape) + '</li>' %}
+      {% endif %}
+    {% endfor %}
+    {% set writtenWarningDetail = writtenWarningDetail + '</ul>' %}
+    {% set writtenWarningKey = "Reason(s) for no written warning" %}
+  {% endif %}
+
   <h1 class="nhsuk-heading-xl">
     <span class="nhsuk-caption-l">
       Remove a patient from your practice list
@@ -91,7 +105,7 @@
               text: "Reason for removal"
             },
             value: {
-              text: "Breakdown of relationship"
+              text: data.removalReason
             },
             actions: {
               items: [
@@ -108,12 +122,12 @@
               text: "Written warning given within past 12 months"
             },
             value: {
-              text: "Yes"
+              text: data.eightDayWarning
             },
             actions: {
               items: [
                 {
-                  href: "/mpr-removals/main/warning",
+                  href: "/mpr-removals/main/8-day/warning",
                   text: "Change",
                   visuallyHiddenText: "written warning given within past 12 months"
                 }
@@ -122,17 +136,17 @@
           },
           {
              key: {
-              text: "Date of written warning"
+              text: writtenWarningKey
             },
             value: {
-              text: "18 March 2026"
+              html: writtenWarningDetail
             },
             actions: {
               items: [
                 {
-                  href: "/mpr-removals/main/warning-date",
-                  text: "Change",
-                  visuallyHiddenText: "date of written warning"
+                  href: "/mpr-removals/main/8-day/warning",
+                  text: "Change ",
+                  visuallyHiddenText: writtenWarningKey
                 }
               ]
             }
@@ -140,10 +154,11 @@
         ]
       }) }}
 
-      {{ button({
-        href: "/mpr-removals/main/confirmation",
-        text: 'Remove patient' 
-      }) }}
+      <form method="post" action="/mpr-removals/main/confirmation">
+        {{ button({
+          text: 'Remove patient' 
+        }) }}
+      </form>
     </div>
   </div>
 

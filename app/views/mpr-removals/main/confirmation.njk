@@ -17,13 +17,14 @@
         <li>Your practice will receive confirmation on the day of removal.</li>
       </ul>
 
-      <p class="nhsuk-body">Effective deduction date: <strong>{{ data.journey01.effectiveDate }}</strong></p>
+      <p class="nhsuk-body">Effective deduction date: <strong>{{ data.removalDate }}</strong></p>
 
-      {{ button({
-        text: "Return to dashboard",
-        classes: "nhsuk-button--secondary nhsuk-u-margin-top-4",
-        href: "/mpr-removals/main/dashboard"
-      }) }}
+      <form method="post" action="/mpr-removals/main/reset">
+        {{ button({
+          text: "Return to dashboard",
+          classes: "nhsuk-button--secondary nhsuk-u-margin-top-4"
+        }) }}
+      </form>
 
     </div>
   </div>
