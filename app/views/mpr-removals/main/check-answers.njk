@@ -1,0 +1,147 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Check your answers - Patient removals - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "javascript:history.go(-1)",
+      text: "Go back"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="nhsuk-heading-xl">
+    <span class="nhsuk-caption-l">
+      Remove a patient from your practice list
+    </span>
+    Check your answers
+  </h1>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <p>Check the information below is correct before you remove the patient from your practice list.</p>
+
+      {{ summaryList({
+        card: {
+          heading: "Patient details",
+          headingSize: "m",
+          actions: {
+            items: [
+              {
+                text: "Change patient",
+                href: "/mpr-removals/main/patient-search"
+              }
+            ]
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: "Karen Francis"
+            }
+          },
+          {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: "15 March 1984"
+            }
+          },
+          {
+            key: {
+              text: "NHS number"
+            },
+            value: {
+              text: "123 456 7890"
+            }
+          },
+          {
+            key: {
+              text: "Home address postcode"
+            },
+            value: {
+              text: "LS2 5ZN"
+            }
+          }
+        ]
+      }) }}
+
+      {{ summaryList({
+        card: {
+          heading: "Removal information",
+          headingSize: "m"
+        },
+        rows: [
+          {
+            key: {
+              text: "Removal type"
+            },
+            value: {
+              text: "8-day removal"
+            }
+          },
+          {
+            key: {
+              text: "Reason for removal"
+            },
+            value: {
+              text: "Breakdown of relationship"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/mpr-removals/main/removal-reason",
+                  text: "Change",
+                  visuallyHiddenText: "removal reason"
+                }
+              ]
+            }
+          },
+          {
+             key: {
+              text: "Written warning given within past 12 months"
+            },
+            value: {
+              text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/mpr-removals/main/warning",
+                  text: "Change",
+                  visuallyHiddenText: "written warning given within past 12 months"
+                }
+              ]
+            }
+          },
+          {
+             key: {
+              text: "Date of written warning"
+            },
+            value: {
+              text: "18 March 2026"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/mpr-removals/main/warning-date",
+                  text: "Change",
+                  visuallyHiddenText: "date of written warning"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      {{ button({ text: 'Remove patient' }) }}
+    </div>
+  </div>
+
+{% endblock %}

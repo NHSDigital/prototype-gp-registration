@@ -4,7 +4,7 @@
 
 {% block beforeContent %}
   {{ backLink({
-      href: "javascript:history.go(-1)",
+      href: "/mpr-removals/main/8-day/warning",
       text: "Go back"
     }) 
   }}
@@ -24,30 +24,30 @@
 
       <form method="post" action="/mpr-removals/main/check-answers">
 
-        {{ dateInput({
-          id: "8dayWarningDate",
-          namePrefix: "8dayWarningDate",
+        {{ checkboxes({
+          idPrefix: "8DayWarningReasons",
+          name: "8DayWarningReasons",
           fieldset: {
             legend: {
-              text: "When did the patient receive a written warning?",
+              text: "Why was it not possible or appropriate to give the patient a written warning?",
               size: "m"
             }
           },
           hint: {
-            text: "For example, 18 3 2026"
+            text: "Select all that apply"
           },
           items: [
             {
-              name: "day",
-              classes: "nhsuk-input--width-2"
+              value: "health",
+              text: "Such a warning would be harmful to the patient’s physical or mental health"
             },
             {
-              name: "month",
-              classes: "nhsuk-input--width-2"
+              value: "safety",
+              text: "Such a warning would put the safety of others at risk"
             },
             {
-              name: "year",
-              classes: "nhsuk-input--width-4"
+              value: "practicality",
+              text: "It was not practical for a warning to be given to the patient"
             }
           ]
         }) }}

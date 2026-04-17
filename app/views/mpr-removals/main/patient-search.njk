@@ -4,7 +4,7 @@
 
 {% block beforeContent %}
   {{ backLink({
-      href: "javascript:history.go(-1)",
+      href: "/mpr-removals/main/dashboard",
       text: "Go back"
     }) 
   }}
@@ -21,7 +21,7 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      <form method="post" action="/mpr-removals/main/confirm-patient">
+      <form method="post" action="/mpr-removals/main/confirm-patient" class="nhsuk-u-padding-bottom-6">
         {{ input({
           label: {
             text: 'NHS number'
@@ -37,7 +37,9 @@
         {{ button({ text: 'Search' }) }}
       </form>
 
-      <p class="nhsuk-u-padding-top-6">If you don’t have the patient’s NHS number, you can <a href="/mpr-removals/main/patient-search-name-dob" class="nhsuk-link nhsuk-link--no-visited-state">search using their name and date of birth</a> instead.
+      <h2 class="nhsuk-heading-m">Search by name and date of birth</h2>
+
+      <p>If you don’t have the patient’s NHS number, you can <a href="/mpr-removals/main/patient-search-name-dob" class="nhsuk-link nhsuk-link--no-visited-state">search using their name and date of birth</a> instead.
       </p>
 
     </div>
