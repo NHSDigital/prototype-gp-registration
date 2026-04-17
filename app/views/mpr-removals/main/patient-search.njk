@@ -1,0 +1,48 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Find patient - Patient removals - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "/mpr-removals/main/dashboard",
+      text: "Go back"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="nhsuk-heading-xl">
+    <span class="nhsuk-caption-l">
+      Remove a patient from your practice list
+    </span>
+    Find patient
+  </h1>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form method="post" action="/mpr-removals/main/confirm-patient" class="nhsuk-u-padding-bottom-6">
+        {{ input({
+          label: {
+            text: 'NHS number'
+          },
+          id: 'nhsNumberSearch',
+          name: 'nhsNumberSearch',
+          value: data.nhsNumberSearch,
+          classes: "nhsuk-input--width-10 nhsuk-input--code",
+          inputmode: "numeric",
+          spellcheck: false
+        }) }}
+
+        {{ button({ text: 'Search' }) }}
+      </form>
+
+      <h2 class="nhsuk-heading-m">Search by name and date of birth</h2>
+
+      <p>If you don’t have the patient’s NHS number, you can <a href="/mpr-removals/main/patient-search-name-dob" class="nhsuk-link nhsuk-link--no-visited-state">search using their name and date of birth</a> instead.
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

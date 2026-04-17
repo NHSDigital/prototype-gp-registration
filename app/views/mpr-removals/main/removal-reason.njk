@@ -1,0 +1,75 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Removal reason - Patient removals - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "/mpr-removals/main/confirm-patient",
+      text: "Go back"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form method="post" action="/mpr-removals/main/8-day/declarations">
+
+        {{ radios({
+          idPrefix: "removalReason",
+          name: "removalReason",
+          fieldset: {
+            legend: {
+              html: "<span class=\"nhsuk-caption-l\">Remove a patient from your practice list</span> Removal reason",
+              size: "xl",
+              isPageHeading: true
+            }
+          },
+          value: data.removalReason,
+          items: [
+            {
+              value: "Moved outside practice boundary",
+              text: "Moved outside practice boundary"
+            },
+            {
+              value: "Left education establishment",
+              text: "Left education establishment"
+            },
+            {
+              value: "Moved abroad (embarkation)",
+              text: "Moved abroad (embarkation)"
+            },
+            {
+              value: "Death",
+              text: "Death"
+            },
+            {
+              value: "Police incident requiring urgent removal",
+              text: "Police incident requiring urgent removal"
+            },
+            {
+              value: "Breakdown of relationship",
+              text: "Breakdown of relationship",
+              hint: {
+                text: "Due to inappropriate and unacceptable patient behaviours for example violent, threatening, or abusive behaviour towards staff or patients."
+              }
+            },
+            {
+              value: "Repeated, unjustified non-attendance of appointments",
+              text: "Repeated, unjustified non-attendance of appointments"
+            },
+            {
+              value: "Removal at patient's request",
+              text: "Removal at patient's request"
+            }
+          ]
+        }) }}
+
+        {{ button({ text: 'Continue' }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

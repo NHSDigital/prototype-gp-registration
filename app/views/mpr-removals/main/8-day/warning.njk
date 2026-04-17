@@ -1,0 +1,129 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Patient warning - Patient removals - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "/mpr-removals/main/8-day/declarations",
+      text: "Go back"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">
+        <span class="nhsuk-caption-l">
+          Remove a patient from your practice list
+        </span>
+        Patient warning
+      </h1>
+
+      <form method="post" action="/mpr-removals/main/check-answers">
+
+        {% set dateHtml %}
+          {{ dateInput({
+            id: "eightDayWarningDate",
+            namePrefix: "eightDayWarningDate",
+            fieldset: {
+              legend: {
+                text: "When did the patient receive a written warning?",
+                size: "s"
+              }
+            },
+            hint: {
+              text: "For example, 18 3 2026"
+            },
+            items: [
+              {
+                name: "day",
+                classes: "nhsuk-input--width-2",
+                value: data.eightDayWarningDate['day']
+              },
+              {
+                name: "month",
+                classes: "nhsuk-input--width-2",
+                value: data.eightDayWarningDate['month']
+              },
+              {
+                name: "year",
+                classes: "nhsuk-input--width-4",
+                value: data.eightDayWarningDate['year']
+              }
+            ]
+          }) }}
+        {% endset -%}
+
+        {% set reasonsHtml %}
+          {{ checkboxes({
+            idPrefix: "eightDayWarningReasons",
+            name: "eightDayWarningReasons",
+            fieldset: {
+              legend: {
+                text: "Why was it not possible or appropriate to give the patient a written warning?",
+                size: "s"
+              }
+            },
+            values: data.eightDayWarningReasons,
+            hint: {
+              text: "Select all that apply"
+            },
+            items: [
+              {
+                value: "Such a warning would be harmful to the patient’s physical or mental health",
+                text: "Such a warning would be harmful to the patient’s physical or mental health"
+              },
+              {
+                value: "Such a warning would put the safety of others at risk",
+                text: "Such a warning would put the safety of others at risk"
+              },
+              {
+                value: "It was not practical for a warning to be given to the patient",
+                text: "It was not practical for a warning to be given to the patient"
+              }
+            ]
+          }) }}
+        {% endset -%}
+
+        {{ radios({
+          idPrefix: "eightDayWarning",
+          name: "eightDayWarning",
+          fieldset: {
+            legend: {
+              text: "Has the patient received a written warning within the past 12 months explaining that they were at risk of removal?",
+              size: "m"
+            }
+          },
+          hint: {
+            html: "See <a href=\"https://www.england.nhs.uk/long-read/primary-medical-services-policy-and-guidance-manual-pgm-2/#6-4-contract-regulations-relating-to-removal-at-the-request-of-the-contractor\" class=\"nhsuk-link nhsuk-link--no-visited-state\" target=\"_blank\">Section 6.4.1 of the NHS England Primary Medical Care Policy and Guidance Manual (opens in a new tab)</a> for guidance."
+          },
+          value: data.eightDayWarning,
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: dateHtml
+              }
+            },
+            {
+              value: "No",
+              text: "No",
+              conditional: {
+                html: reasonsHtml
+              }
+            }
+          ]
+        }) }}
+
+        {{ button({ text: 'Continue' }) }}
+      </form>
+
+     
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Patient removals - Manage patient registrations - NHS" %}
+
+{% block content %}
+
+  <h1 class="nhsuk-heading-xl">Patient removals</h1>
+
+  <h2 class="nhsuk-heading-m">Patient removal history</h2>
+  <p>View and manage pending and completed removals from the last 90 days.</p>
+
+  <ul class="nhsuk-grid-row nhsuk-card-group">
+    <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+      {% call card({
+        clickable: true,
+        heading: "3",
+        headingClasses: "nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1",
+        headingVisuallyHiddenText: "Pending"
+      }) %}
+        <a href="/mpr-removals/main/pending-removals" class="nhsuk-card__link">Pending</a>
+      {% endcall %}
+    </li>
+    <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+      {% call card({
+        clickable: true,
+        heading: "84",
+        headingClasses: "nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1",
+        headingVisuallyHiddenText: "Completed"
+      }) %}
+        <a href="/mpr-removals/main/completed-removals" class="nhsuk-card__link">Completed</a>
+      {% endcall %}
+    </li>
+  </ul>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h2 class="nhsuk-heading-m">Remove a patient from your practice list</h2>
+
+      <p>To remove a patient from your practice list, you will need to search for the patient and select a reason for their removal.</p>
+
+      <p>The patient removals process covers all scenarios, including:</p>
+      <ul>
+        <li>immediate removals for violent or aggressive behaviour</li>
+        <li>eight-day removals following a breakdown in the patient–practice relationship</li>
+        <li>out-of-area deductions</li>
+        <li>patient-requested removals</li>
+      </ul>
+
+      <div class="nhsuk-u-padding-bottom-6">
+        {{ button({
+          "text": "Start new removal",
+          "href": "/mpr-removals/main/patient-search"
+        }) }}
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

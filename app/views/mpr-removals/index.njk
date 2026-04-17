@@ -1,0 +1,31 @@
+{% extends 'mpr/_layout.html' %}
+
+{% block beforeContent %}
+{{ backLink({
+    href: "/",
+    text: "Go back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-xl">
+        <span class="nhsuk-caption-l">
+          Prototype
+        </span>
+        Manage patient registrations: removals
+      </h1>
+
+      <p>GPs use this service to remove patients from their practice list.</p>
+
+      {{ button({
+        "text": "View prototype",
+        "href": "/mpr-removals/main/dashboard"
+      }) }}
+
+    </div>
+  </div>  
+
+{% endblock %}

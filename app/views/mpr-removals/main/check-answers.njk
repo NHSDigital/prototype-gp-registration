@@ -1,0 +1,165 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Check your answers - Patient removals - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "javascript:history.go(-1)",
+      text: "Go back"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  {% set writtenWarningDetail = data.eightDayWarningDateFormatted %}
+  {% set writtenWarningKey = "Date of written warning" %}
+  {% if data.eightDayWarning != 'Yes' %}
+    {% set writtenWarningDetail = '<ul class="nhsuk-list nhsuk-list--bullet">' %}
+    {% for reason in (data.eightDayWarningReasons or []) %}
+      {% set reasonText = reason.text or reason.value or reason %}
+      {% if reasonText and reasonText != '_unchecked' %}
+        {% set writtenWarningDetail = writtenWarningDetail + '<li>' + (reasonText | escape) + '</li>' %}
+      {% endif %}
+    {% endfor %}
+    {% set writtenWarningDetail = writtenWarningDetail + '</ul>' %}
+    {% set writtenWarningKey = "Reason(s) for no written warning" %}
+  {% endif %}
+
+  <h1 class="nhsuk-heading-xl">
+    <span class="nhsuk-caption-l">
+      Remove a patient from your practice list
+    </span>
+    Check your answers
+  </h1>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <p>Check the information below is correct before you remove the patient from your practice list.</p>
+
+      {{ summaryList({
+        card: {
+          heading: "Patient details",
+          headingSize: "m",
+          actions: {
+            items: [
+              {
+                text: "Change patient",
+                href: "/mpr-removals/main/patient-search"
+              }
+            ]
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: "Karen Francis"
+            }
+          },
+          {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: "15 March 1984"
+            }
+          },
+          {
+            key: {
+              text: "NHS number"
+            },
+            value: {
+              text: data.nhsNumberSearch
+            }
+          },
+          {
+            key: {
+              text: "Home address postcode"
+            },
+            value: {
+              text: "LS2 5ZN"
+            }
+          }
+        ]
+      }) }}
+
+      {{ summaryList({
+        card: {
+          heading: "Removal information",
+          headingSize: "m"
+        },
+        rows: [
+          {
+            key: {
+              text: "Removal type"
+            },
+            value: {
+              text: "8-day removal"
+            }
+          },
+          {
+            key: {
+              text: "Reason for removal"
+            },
+            value: {
+              text: data.removalReason
+            },
+            actions: {
+              items: [
+                {
+                  href: "/mpr-removals/main/removal-reason",
+                  text: "Change",
+                  visuallyHiddenText: "removal reason"
+                }
+              ]
+            }
+          },
+          {
+             key: {
+              text: "Written warning given within past 12 months"
+            },
+            value: {
+              text: data.eightDayWarning
+            },
+            actions: {
+              items: [
+                {
+                  href: "/mpr-removals/main/8-day/warning",
+                  text: "Change",
+                  visuallyHiddenText: "written warning given within past 12 months"
+                }
+              ]
+            }
+          },
+          {
+             key: {
+              text: writtenWarningKey
+            },
+            value: {
+              html: writtenWarningDetail
+            },
+            actions: {
+              items: [
+                {
+                  href: "/mpr-removals/main/8-day/warning",
+                  text: "Change ",
+                  visuallyHiddenText: writtenWarningKey
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form method="post" action="/mpr-removals/main/confirmation">
+        {{ button({
+          text: 'Remove patient' 
+        }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

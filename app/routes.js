@@ -16,11 +16,13 @@ router.use((req, res, next) => {
 const addressUpdateRoutes = require('./views/address-update/routes');
 const gpRegistrationRoutes = require('./views/gp-registration/routes');
 const mprRoutes = require('./views/mpr/routes');
+const mprRemovalsRoutes = require('./views/mpr-removals/routes');
 
 // Mount sprint routes
 router.use('/address-update', addressUpdateRoutes);
 router.use('/gp-registration', gpRegistrationRoutes);
 router.use('/mpr', mprRoutes);
+router.use('/mpr-removals', mprRemovalsRoutes);
 
 // Example: Dev / utility routes
 router.get('/clear-data', (req, res) => {
