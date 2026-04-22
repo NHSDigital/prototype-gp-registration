@@ -1,0 +1,128 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'mpr/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "GP portal - NHS" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{{ backLink({
+    href: "javascript:history.go(-1)",
+    text: "Go back"
+  }) 
+}}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+          <!--{{ backLink({
+            text: "Return to Manage your profile",
+            href: "/gp/gp-profile-manager-manage"
+        }) }}-->
+
+          <span class="nhsuk-caption-m">In the past 90 days</span>
+          <h1 class="nhsuk-heading-xl">	Patient registrations</h1>
+
+          <ul class="nhsuk-grid-row nhsuk-card-group">
+            <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+
+              <div class="nhsuk-card nhsuk-card--clickable">
+                <div class="nhsuk-card__content">
+                  <p class="nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1">8 <span class="nhsuk-u-visually-hidden">New</span></p>
+                  <p><a href="registrations-new-1" class="nhsuk-card__link nhsuk-u-font-weight-normal nhsuk-u-font-size-19 nhsuk-link--no-visited-state">New</a></p>
+                </div>
+              </div>
+
+            </li>
+            <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+
+              <div class="nhsuk-card nhsuk-card--clickable">
+                <div class="nhsuk-card__content">
+                  <p class="nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1">0 <span class="nhsuk-u-visually-hidden">Under review</span></p>
+                  <p><a href="registrations-under-review-empty" class="nhsuk-card__link nhsuk-u-font-weight-normal nhsuk-u-font-size-19 nhsuk-link--no-visited-state">Under review</a></p>
+                </div>
+              </div>
+
+            </li>
+            <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+
+              <div class="nhsuk-card nhsuk-card--clickable">
+                <div class="nhsuk-card__content">
+                  <p class="nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1">237 <span class="nhsuk-u-visually-hidden">Accepted</span></p>
+                  <p><a href="not-included" class="nhsuk-card__link nhsuk-u-font-weight-normal nhsuk-u-font-size-19 nhsuk-link--no-visited-state">Approved</a></p>
+                </div>
+              </div>
+
+            </li>
+            <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+
+              <div class="nhsuk-card nhsuk-card--clickable">
+                <div class="nhsuk-card__content">
+                  <p class="nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1">2 <span class="nhsuk-u-visually-hidden">Rejected</span></p>
+                  <p><a href="not-included" class="nhsuk-card__link nhsuk-u-font-weight-normal nhsuk-u-font-size-19 nhsuk-link--no-visited-state">Rejected</a></p>
+                </div>
+              </div>
+
+            </li>
+          </ul>
+
+          <ul class="nhsuk-grid-row nhsuk-card-group">
+            <li class="nhsuk-grid-column-two-thirds nhsuk-card-group__item">
+              <div class="nhsuk-card nhsuk-card--secondary">
+                <div class="nhsuk-card__content">
+                  <h2 class="nhsuk-card__heading nhsuk-heading-m">
+                    Latest service updates
+                  </h2>
+                  <p>Get information about the <a href="latest-service-updates" class="nhsuk-link" target="_blank">latest updates, fixes and features</a> (link opens in a new tab).</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <ul class="nhsuk-grid-row nhsuk-card-group">
+            <li class="nhsuk-grid-column-two-thirds nhsuk-card-group__item">
+              <div class="nhsuk-card nhsuk-card--secondary">
+                <div class="nhsuk-card__content">
+                  <h2 class="nhsuk-card__heading nhsuk-heading-m">
+                    Support and guidance
+                  </h2>
+                  <p>Get guidance on <a href="https://digital.nhs.uk/services/register-with-a-gp-surgery-service/about-manage-patient-registrations-feature" target="_blank">Manage patient registrations</a> and how it works (link opens in a new tab).</p>
+                  <p><a href="https://nhsdigitallive.service-now.com/csm?id=sc_category&sys_id=0f4c30ab973792d0dd80f2df9153afcf&catalog_id=65bcd377c3011200b12d9f2974d3aea0" class="nhsuk-link">Raise a ServiceNow ticket</a> if you need help or have a question about the service.</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}
