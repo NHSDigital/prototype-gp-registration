@@ -3,6 +3,86 @@
 
 // Add your custom CSS/Sass styles below.
 
+// MOJ Timeline styles
+.moj-timeline {
+  position: relative;
+  margin-bottom: 30px;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: #005eb8; // NHS blue
+  }
+}
+
+.moj-timeline__item {
+  position: relative;
+  padding-bottom: 45px;
+  padding-left: 30px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 15px;
+    height: 5px;
+    background-color: #005eb8;
+  }
+}
+
+.moj-timeline__title {
+  display: inline;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.moj-timeline__byline {
+  display: inline;
+  margin: 0;
+  color: #6f777b;
+  font-size: 19px;
+}
+
+.moj-timeline__date {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 16px;
+}
+
+.moj-timeline__description {
+  margin-top: 30px;
+  font-size: 19px;
+}
+
+.moj-timeline__documents {
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.moj-timeline__document-item {
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.moj-timeline__document-icon {
+  margin-top: 4px;
+  margin-right: 4px;
+  float: left;
+  fill: currentcolor;
+}
+
+
+
 
 
  .nhsuk-header__container {
