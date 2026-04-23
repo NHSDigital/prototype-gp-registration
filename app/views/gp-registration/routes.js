@@ -1220,7 +1220,7 @@ router.post('/:sprint/do-you-smoke-answer', (req, res) => {
   if (answer === 'Yes') {
     sprintRedirect(res, sprint, 'do-you-smoke-type')
   } else {
-    sprintRedirect(res, sprint, 'scr')
+    sprintRedirect(res, sprint, 'blood-testing')
   }
 })
 
@@ -1285,6 +1285,36 @@ router.post('/:sprint/blood-testing-answer', (req, res) => {
     sprintRedirect(res, sprint, 'scr')
   } else {
     sprintRedirect(res, sprint, 'blood-inquiry')
+  }
+})
+
+// ==============
+// ORGAN DONATION
+// ==============
+
+// GET
+router.get('/:sprint/donating-your-organs-and-tissue', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/donating-your-organs-and-tissue`, {
+    data: req.session.data || {}
+  })
+})
+
+// POST
+router.post('/:sprint/donating-your-organs-and-tissue-answer', (req, res) => {
+  const sprint = req.params.sprint
+  const answer = req.body['organDonor']
+  req.session.data['organDonor'] = answer
+
+  // If returning from check answers
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'Some') {
+    sprintRedirect(res, sprint, 'organ-select')
+  } else {
+    sprintRedirect(res, sprint, 'scr')
   }
 })
 
