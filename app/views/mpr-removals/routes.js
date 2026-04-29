@@ -1,54 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const formatNhsNumber = (input = '') => {
-	const digits = String(input).replace(/\D/g, '').slice(0, 10);
-
-	if (digits.length <= 3) {
-		return digits;
-	}
-
-	if (digits.length <= 6) {
-		return `${digits.slice(0, 3)} ${digits.slice(3)}`;
-	}
-
-	return `${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6)}`;
-};
-
-const formatLongDate = (dayInput = '', monthInput = '', yearInput = '') => {
-	const day = Number.parseInt(String(dayInput), 10);
-	const month = Number.parseInt(String(monthInput), 10);
-	const year = Number.parseInt(String(yearInput), 10);
-	const defaultDate = '2 Feb 2026';
-
-	if (!Number.isInteger(day) || !Number.isInteger(month) || !Number.isInteger(year)) {
-		return defaultDate; // Default date for testing purposes
-	}
-
-	if (month < 1 || month > 12 || day < 1 || year < 1000) {
-		return defaultDate;
-	}
-
-	const date = new Date(year, month - 1, day);
-	const isValidDate =
-		date.getFullYear() === year &&
-		date.getMonth() === month - 1 &&
-		date.getDate() === day;
-
-	if (!isValidDate) {
-		return defaultDate;
-	}
-
-	const monthName = date.toLocaleString('en-GB', { month: 'long' });
-	return `${day} ${monthName} ${year}`;
-};
-
-const formatDateForDisplay = (date) => {
-	const day = date.getDate();
-	const monthName = date.toLocaleString('en-GB', { month: 'long' });
-	const year = date.getFullYear();
-	return `${day} ${monthName} ${year}`;
-};
+const formatNhsNumber = require('./routes-helpers-js/formatNhsNumber');
+const formatLongDate = require('./routes-helpers-js/formatLongDate');
+const formatDateForDisplay = require('./routes-helpers-js/formatDateForDisplay');
 
 router.post('/main/confirm-patient', (req, res) => {
 	const formattedNhsNumberSearch = formatNhsNumber(req.body.nhsNumberSearch);
