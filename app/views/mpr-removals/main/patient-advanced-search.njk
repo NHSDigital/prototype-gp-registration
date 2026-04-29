@@ -1,0 +1,137 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Find patient by name and date of birth - Patient removals - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "/mpr-removals/main/patient-search",
+      text: "Find patient by NHS number"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  {% set searchGivenName = (data.searchGivenName or '') | trim %}
+  {% set searchFamilyName = (data.searchFamilyName or '') | trim %}
+  {% set searchDobDay = (data.searchDob.day if data.searchDob else '') | trim %}
+  {% set searchDobMonth = (data.searchDob.month if data.searchDob else '') | trim %}
+  {% set searchDobYear = (data.searchDob.year if data.searchDob else '') | trim %}
+  {% set hasSearchCriteria = searchGivenName or searchFamilyName or searchDobDay or searchDobMonth or searchDobYear %}
+
+  <h1 class="nhsuk-heading-xl">
+    <span class="nhsuk-caption-l">
+      Remove a patient from your practice list
+    </span>
+    Find patient by name and date of birth
+  </h1>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form method="post" id="form-advanced-search" action="/mpr-removals/main/patient-advanced-search" class="nhsuk-u-padding-bottom-6">
+        {{ input({
+          label: {
+            text: 'Given name'
+          },
+          id: 'searchGivenName',
+          name: 'searchGivenName',
+          value: data.searchGivenName,
+          classes: "nhsuk-input--width-20",
+          spellcheck: false
+        }) }}
+
+        {{ input({
+          label: {
+            text: 'Family name'
+          },
+          id: 'searchFamilyName',
+          name: 'searchFamilyName',
+          value: data.searchFamilyName,
+          classes: "nhsuk-input--width-20",
+          spellcheck: false
+        }) }}
+
+        {{ dateInput({
+            id: "searchDob",
+            namePrefix: "searchDob",
+            fieldset: {
+              legend: {
+                text: "Date of birth",
+                size: "s",
+                classes: "nhsuk-u-font-weight-normal"
+              }
+            },
+            hint: {
+              text: "For example, 18 3 2026"
+            },
+            items: [
+              {
+                name: "day",
+                classes: "nhsuk-input--width-2",
+                value: data.searchDob['day']
+              },
+              {
+                name: "month",
+                classes: "nhsuk-input--width-2",
+                value: data.searchDob['month']
+              },
+              {
+                name: "year",
+                classes: "nhsuk-input--width-4",
+                value: data.searchDob['year']
+              }
+            ]
+          }) }}
+
+        <div class="nhsuk-button-group">
+          {{ button({ text: 'Search' }) }}
+
+          <a href="javascript:document.getElementById('form-advanced-search').reset();" class="nhsuk-link">Clear</a>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  {% if hasSearchCriteria %}
+    {{ table({
+      caption: "Search results",
+      responsive: true,
+      head: [
+        {
+          text: "NHS Number"
+        },
+        {
+          text: "Name"
+        },
+        {
+          text: "Date of birth"
+        },
+        {
+          text: "Registered GP"
+        }
+      ],
+      rows: [
+        [
+          {
+            header: "NHS Number",
+            html: '<a href="/mpr-removals/main/set-nhs-number">987 654 3210</a>'
+          },
+          {
+            header: "Name",
+            text: "Karen Francis"
+          },
+          {
+            header: "Date of birth",
+            text: "15 March 1984"
+          },
+          {
+            header: "Registered GP",
+            text: "Kingswood Surgery, LS2 4SY"
+          }
+        ]
+      ]
+    }) }}
+  {% endif %}
+
+{% endblock %}

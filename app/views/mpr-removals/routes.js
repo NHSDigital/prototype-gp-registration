@@ -5,6 +5,14 @@ const formatNhsNumber = require('./routes-helpers-js/formatNhsNumber');
 const formatLongDate = require('./routes-helpers-js/formatLongDate');
 const formatDateForDisplay = require('./routes-helpers-js/formatDateForDisplay');
 
+router.get('/main/set-nhs-number', (req, res) => {
+	req.session.data = req.session.data || {};
+	req.session.data.nhsNumberSearch = '987 654 3210';
+
+	return res.redirect('/mpr-removals/main/confirm-patient');
+});
+
+
 router.post('/main/confirm-patient', (req, res) => {
 	const formattedNhsNumberSearch = formatNhsNumber(req.body.nhsNumberSearch);
 
