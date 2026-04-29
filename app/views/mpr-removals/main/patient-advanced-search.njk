@@ -52,43 +52,43 @@
         }) }}
 
         {{ dateInput({
-            id: "searchDob",
-            namePrefix: "searchDob",
-            fieldset: {
-              legend: {
-                text: "Date of birth",
-                size: "s",
-                classes: "nhsuk-u-font-weight-normal"
-              }
+          id: "searchDob",
+          namePrefix: "searchDob",
+          fieldset: {
+            legend: {
+              text: "Date of birth",
+              size: "s",
+              classes: "nhsuk-u-font-weight-normal"
+            }
+          },
+          hint: {
+            text: "For example, 18 3 2026"
+          },
+          items: [
+            {
+              name: "day",
+              classes: "nhsuk-input--width-2",
+              value: data.searchDob['day']
             },
-            hint: {
-              text: "For example, 18 3 2026"
+            {
+              name: "month",
+              classes: "nhsuk-input--width-2",
+              value: data.searchDob['month']
             },
-            items: [
-              {
-                name: "day",
-                classes: "nhsuk-input--width-2",
-                value: data.searchDob['day']
-              },
-              {
-                name: "month",
-                classes: "nhsuk-input--width-2",
-                value: data.searchDob['month']
-              },
-              {
-                name: "year",
-                classes: "nhsuk-input--width-4",
-                value: data.searchDob['year']
-              }
-            ]
-          }) }}
+            {
+              name: "year",
+              classes: "nhsuk-input--width-4",
+              value: data.searchDob['year']
+            }
+          ]
+        }) }}
 
         <div class="nhsuk-button-group">
           {{ button({ text: 'Search' }) }}
 
-          <a href="javascript:document.getElementById('form-advanced-search').reset();" class="nhsuk-link">Clear</a>
-        </form>
-      </div>
+          <a href="/mpr-removals/main/patient-advanced-search/clear" class="nhsuk-link">Clear</a>
+        </div>
+      </form>
 
     </div>
   </div>

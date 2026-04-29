@@ -12,6 +12,25 @@ router.get('/main/set-nhs-number', (req, res) => {
 	return res.redirect('/mpr-removals/main/confirm-patient');
 });
 
+router.get('/main/patient-advanced-search/clear', (req, res) => {
+	req.session.data = req.session.data || {};
+
+	const patientAdvancedSearchKeys = [
+		'searchGivenName',
+		'searchFamilyName',
+		'searchDob',
+		'searchDob-day',
+		'searchDob-month',
+		'searchDob-year'
+	];
+
+	patientAdvancedSearchKeys.forEach((key) => {
+		delete req.session.data[key];
+	});
+
+	return res.redirect('/mpr-removals/main/patient-advanced-search');
+});
+
 
 router.post('/main/confirm-patient', (req, res) => {
 	const formattedNhsNumberSearch = formatNhsNumber(req.body.nhsNumberSearch);
