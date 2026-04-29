@@ -4,6 +4,10 @@
 module.exports = function (env) {
   const filters = {}
 
+  // Add MOJ filters
+  const mojFilters = require('@ministryofjustice/frontend/moj/filters/all')()
+  Object.assign(filters, mojFilters)
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:

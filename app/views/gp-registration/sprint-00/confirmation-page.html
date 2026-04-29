@@ -1,21 +1,55 @@
-{% set serviceHome = '/live/start' %}
+<!-- Set any variables here -->
 {% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
 
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
-{% extends 'layout.html' %}
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
 
 {% set heading = 'Application complete' %}
-
-{% block pageTitle %}
-  {{ heading }} - {{ data.presets[0].servicename }} - NHS
-{% endblock %}
+    
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
 
 {% set emailLink = ['gp-email-3', 'Email to GP'] %}
 {% set emailLink2 = ['patient-submission-email', 'Email to patient'] %}
 
+
+<!-- For adding a phase banner, breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block beforeContent %}
+
+{% include '../includes/phase-banner.html' %}
+
+{{ backLink({
+    "href": link,
+    "text": "Go back"
+  }) }}
+
 {% endblock %}
 
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
 <div class="nhsuk-grid-row">
@@ -104,12 +138,12 @@
 
         </form>
 
-          <div class="nhsuk-inset-text">
+          <!--<div class="nhsuk-inset-text">
             <h3 class="nhsuk-heading-s">Save up to nine lives as an organ donor</h3>
             <span class="nhsuk-u-visually-hidden">Information: </span>
             <p><p>You can register a decision to donate your organs and tissue when you die, regardless of your age or medical conditions.</p>
             <p><a href="https://www.organdonation.nhs.uk/?utm_source=england_gp_new_patient_registration&utm_medium=referral&utm_campaign=partner&utm_content=organs_web&utm_term=allaudiences" target="_blank" rel="noopener noreferrer" title="External website">Find out more about organ donation (opens in a new tab)</a>.</p>
-          </div>
+          </div>-->
 
 <!--     <p class="nhsuk-u-font-size-14">Skip to: <a href="/emails/patient-submission-email">Patient email</p>-->
 
@@ -118,8 +152,4 @@
 
 {% include 'live/includes/devmode.html' %}
 
-{% endblock %}
-
-{% block footer %}
-  {% include 'live/includes/footer.html' %}
 {% endblock %}
