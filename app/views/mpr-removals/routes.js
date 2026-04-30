@@ -7,25 +7,20 @@ const formatDateForDisplay = require('./routes-helpers-js/formatDateForDisplay')
 
 router.get('/main/set-nhs-number', (req, res) => {
 	req.session.data = req.session.data || {};
-	req.session.data.nhsNumberSearch = '987 654 3210';
+	req.session.data.search = req.session.data.search || {};
+	req.session.data.search.nhsNumber = '987 654 3210';
 
 	return res.redirect('/mpr-removals/main/confirm-patient');
 });
 
 router.get('/main/patient-advanced-search/clear', (req, res) => {
 	req.session.data = req.session.data || {};
+	req.session.data.search = req.session.data.search || {};
 
-	const patientAdvancedSearchKeys = [
-		'searchGivenName',
-		'searchFamilyName',
-		'searchDob',
-		'searchDob-day',
-		'searchDob-month',
-		'searchDob-year'
-	];
+	const patientAdvancedSearchKeys = ['givenName', 'familyName', 'dob'];
 
 	patientAdvancedSearchKeys.forEach((key) => {
-		delete req.session.data[key];
+		delete req.session.data.search[key];
 	});
 
 	return res.redirect('/mpr-removals/main/patient-advanced-search');
@@ -33,10 +28,13 @@ router.get('/main/patient-advanced-search/clear', (req, res) => {
 
 
 router.post('/main/confirm-patient', (req, res) => {
-	const formattedNhsNumberSearch = formatNhsNumber(req.body.nhsNumberSearch);
+	const nhsNumberSearch = req.body.search.nhsNumber;
+	const formattedNhsNumberSearch = formatNhsNumber(nhsNumberSearch);
 
 	req.session.data = req.session.data || {};
-	req.session.data.nhsNumberSearch = formattedNhsNumberSearch;
+	req.session.data.search = req.session.data.search || {};
+	req.session.data.search.nhsNumber = formattedNhsNumberSearch;
+	delete req.session.data.nhsNumberSearch;
 
 	return res.redirect('/mpr-removals/main/confirm-patient');
 });
@@ -67,7 +65,6 @@ router.get('/main/reset', (req, res) => {
 	req.session.data = req.session.data || {};
 
 	const mprRemovalsKeys = [
-		'nhsNumberSearch',
 		'removalReason',
 		'eightDayWarning',
 		'eightDayWarningReasons',
@@ -81,6 +78,8 @@ router.get('/main/reset', (req, res) => {
 	mprRemovalsKeys.forEach((key) => {
 		delete req.session.data[key];
 	});
+
+	delete req.session.data.search;
 
 	return res.redirect('/mpr-removals/main/dashboard');
 });

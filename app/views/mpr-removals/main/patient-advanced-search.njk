@@ -12,11 +12,13 @@
 
 {% block content %}
 
-  {% set searchGivenName = (data.searchGivenName or '') | trim %}
-  {% set searchFamilyName = (data.searchFamilyName or '') | trim %}
-  {% set searchDobDay = (data.searchDob.day if data.searchDob else '') | trim %}
-  {% set searchDobMonth = (data.searchDob.month if data.searchDob else '') | trim %}
-  {% set searchDobYear = (data.searchDob.year if data.searchDob else '') | trim %}
+  {% set search = data.search or {} %}
+  {% set searchDob = search.dob or {} %}
+  {% set searchGivenName = (search.givenName or '') | trim %}
+  {% set searchFamilyName = (search.familyName or '') | trim %}
+  {% set searchDobDay = (searchDob.day or '') | trim %}
+  {% set searchDobMonth = (searchDob.month or '') | trim %}
+  {% set searchDobYear = (searchDob.year or '') | trim %}
   {% set hasSearchCriteria = searchGivenName or searchFamilyName or searchDobDay or searchDobMonth or searchDobYear %}
 
   <h1 class="nhsuk-heading-xl">
@@ -34,8 +36,8 @@
             text: 'Given name'
           },
           id: 'searchGivenName',
-          name: 'searchGivenName',
-          value: data.searchGivenName,
+          name: 'search[givenName]',
+          value: searchGivenName,
           classes: "nhsuk-input--width-20",
           spellcheck: false
         }) }}
@@ -45,15 +47,15 @@
             text: 'Family name'
           },
           id: 'searchFamilyName',
-          name: 'searchFamilyName',
-          value: data.searchFamilyName,
+          name: 'search[familyName]',
+          value: searchFamilyName,
           classes: "nhsuk-input--width-20",
           spellcheck: false
         }) }}
 
         {{ dateInput({
           id: "searchDob",
-          namePrefix: "searchDob",
+          namePrefix: "search[dob]",
           fieldset: {
             legend: {
               text: "Date of birth",
@@ -68,17 +70,17 @@
             {
               name: "day",
               classes: "nhsuk-input--width-2",
-              value: data.searchDob['day']
+              value: searchDobDay
             },
             {
               name: "month",
               classes: "nhsuk-input--width-2",
-              value: data.searchDob['month']
+              value: searchDobMonth
             },
             {
               name: "year",
               classes: "nhsuk-input--width-4",
-              value: data.searchDob['year']
+              value: searchDobYear
             }
           ]
         }) }}
