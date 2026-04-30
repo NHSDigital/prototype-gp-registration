@@ -4,6 +4,21 @@ const router = express.Router();
 const formatNhsNumber = require('./routes-helpers-js/formatNhsNumber');
 const formatLongDate = require('./routes-helpers-js/formatLongDate');
 const formatDateForDisplay = require('./routes-helpers-js/formatDateForDisplay');
+const completedRemovals = require('./data/completed-removals');
+
+router.get('/main/completed-removals', (req, res) => {
+	req.session.data = req.session.data || {};
+	
+	const sortedCompletedRemovals = Object.fromEntries(
+		Object.entries(completedRemovals).sort(([, a], [, b]) => {
+			return new Date(b.deductionDate) - new Date(a.deductionDate);
+		})
+	);
+
+	req.session.data.completedRemovals = sortedCompletedRemovals;
+
+	return res.render('mpr-removals/main/completed-removals.njk');
+});
 
 router.get('/main/set-nhs-number', (req, res) => {
 	req.session.data = req.session.data || {};
