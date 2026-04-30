@@ -401,4 +401,8 @@ const completedRemovals = {
   }
 };
 
-module.exports = completedRemovals;
+module.exports = Object.fromEntries(
+  Object.entries(completedRemovals).sort(([, a], [, b]) => {
+    return new Date(b.deductionDate) - new Date(a.deductionDate);
+  })
+);

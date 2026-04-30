@@ -9,15 +9,20 @@
   <h2 class="nhsuk-heading-m">Patient deduction history</h2>
   <p>View and manage pending and completed deductions from the last 90 days.</p>
 
+  {% set pendingRemovalsCount = 3 %}
+  {% if data.pendingRemovals %}
+    {% set pendingRemovalsCount = data.pendingRemovals|length %}
+  {% endif %}
+
   <ul class="nhsuk-grid-row nhsuk-card-group">
     <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
       {% call card({
         clickable: true,
-        heading: "3",
+        heading: pendingRemovalsCount,
         headingClasses: "nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1",
         headingVisuallyHiddenText: "Pending"
       }) %}
-        <a href="#" class="nhsuk-card__link">Pending</a>
+        <a href="/mpr-removals/main/pending-removals" class="nhsuk-card__link">Pending</a>
       {% endcall %}
     </li>
     <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
