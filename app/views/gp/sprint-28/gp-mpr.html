@@ -1,0 +1,111 @@
+<!-- Set any variables here -->
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+{% set heading = 'Manage patient registrations' %}
+{% set pageName = 'Manage patient registrations - GP registration service - NHS' %}
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+<!-- In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- For adding a breadcrumb, phase banner or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{{ backLink({
+  "href": "javascript:history.go(-1)",
+  "text": "Go back"
+}) }}
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="#" method="post" autocomplete="off" id="mpr-form">
+
+          {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": false
+              }
+            }) %}
+
+          <p class="nhsuk-body">If you turn on auto registration, you will also get access to Manage patient registrations. This is a web portal that lets you view incoming registrations and approve or reject them.</p>
+          <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-3">Auto registration</h3>
+          <p class="nhsuk-body">Auto registration matches patients to their NHS record and creates a record for you in your clinical systems. It can help you save time and effort during the registration process. This is because you will not have to manually enter any information.</p>
+
+          {% from "radios/macro.njk" import radios %}
+
+          {{ radios({
+            idPrefix: "mpr",
+            name: "mpr",
+            classes: "nhsuk-radios--inline",
+            fieldset: {
+              legend: {
+                text: "Do you want to turn on Manage patient registrations?",
+                size: "s",
+                isPageHeading: false
+              }
+            },
+            items: [
+              {
+                value: "yes",
+                text: "Yes"
+              },
+              {
+                value: "no",
+                text: "No"
+              }
+            ]
+          }) }}
+
+
+          {% endcall %}
+
+          {{ button({
+              "text": "Continue"
+            }) }}
+
+        </form>
+
+      </div>
+    </div>
+
+    <script>
+      (function() {
+        var form = document.getElementById('mpr-form');
+        var radios = document.querySelectorAll('input[name="mpr"]');
+
+        function updateAction() {
+          var selected = document.querySelector('input[name="mpr"]:checked');
+          if (selected) {
+            form.setAttribute('action', selected.value === 'yes' ? 'gp-branch-mpr-active' : 'gp-branch-mpr-paused');
+          }
+        }
+
+        radios.forEach(function(radio) {
+          radio.addEventListener('change', updateAction);
+        });
+
+        // Set initial action based on current selection
+        updateAction();
+      })();
+    </script>
+
+      </div>
+    </div>
+
+{% endblock %}
