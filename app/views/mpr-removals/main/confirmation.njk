@@ -3,6 +3,7 @@
 {% set pageName = "Removal submitted - Manage patient registrations - NHS" %}
 
 {% block content %}
+  {% set newRemoval = data.newRemoval or {} %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
       {{ panel({
@@ -17,7 +18,7 @@
         <li>Your practice will receive confirmation on the day of removal.</li>
       </ul>
 
-      <p class="nhsuk-body">Effective deduction date: <strong>{{ data.removalDate }}</strong></p>
+      <p class="nhsuk-body">Effective deduction date: <strong>{{ newRemoval.removalDate }}</strong></p>
 
       <form method="post" action="/mpr-removals/main/reset">
         {{ button({

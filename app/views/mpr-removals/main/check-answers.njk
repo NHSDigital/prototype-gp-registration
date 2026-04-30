@@ -12,11 +12,12 @@
 
 {% block content %}
 
-  {% set writtenWarningDetail = data.eightDayWarningDateFormatted %}
+  {% set newRemoval = data.newRemoval or {} %}
+  {% set writtenWarningDetail = newRemoval.eightDayWarningDateFormatted %}
   {% set writtenWarningKey = "Date of written warning" %}
-  {% if data.eightDayWarning != 'Yes' %}
+  {% if newRemoval.eightDayWarning != 'Yes' %}
     {% set writtenWarningDetail = '<ul class="nhsuk-list nhsuk-list--bullet">' %}
-    {% for reason in (data.eightDayWarningReasons or []) %}
+    {% for reason in (newRemoval.eightDayWarningReasons or []) %}
       {% set reasonText = reason.text or reason.value or reason %}
       {% if reasonText and reasonText != '_unchecked' %}
         {% set writtenWarningDetail = writtenWarningDetail + '<li>' + (reasonText | escape) + '</li>' %}
@@ -105,7 +106,7 @@
               text: "Reason for removal"
             },
             value: {
-              text: data.removalReason
+              text: newRemoval.removalReason
             },
             actions: {
               items: [
@@ -122,7 +123,7 @@
               text: "Written warning given within past 12 months"
             },
             value: {
-              text: data.eightDayWarning
+              text: newRemoval.eightDayWarning
             },
             actions: {
               items: [

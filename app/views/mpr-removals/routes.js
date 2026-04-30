@@ -40,13 +40,15 @@ router.post('/main/confirm-patient', (req, res) => {
 });
 
 router.post('/main/check-answers', (req, res) => {
-	const day = req.body.eightDayWarningDate['day'];
-	const month = req.body.eightDayWarningDate['month'];
-	const year = req.body.eightDayWarningDate['year'];
+	const warningDate = (req.body.newRemoval && req.body.newRemoval.eightDayWarningDate) || {};
+	const day = warningDate['day'];
+	const month = warningDate['month'];
+	const year = warningDate['year'];
 	const formattedWarningDate = formatLongDate(day, month, year);
 
 	req.session.data = req.session.data || {};
-	req.session.data.eightDayWarningDateFormatted = formattedWarningDate;
+	req.session.data.newRemoval = req.session.data.newRemoval || {};
+	req.session.data.newRemoval.eightDayWarningDateFormatted = formattedWarningDate;
 
 	return res.redirect('/mpr-removals/main/check-answers');
 });
@@ -56,7 +58,8 @@ router.post('/main/confirmation', (req, res) => {
 	removalDate.setDate(removalDate.getDate() + 8);
 
 	req.session.data = req.session.data || {};
-	req.session.data.removalDate = formatDateForDisplay(removalDate);
+	req.session.data.newRemoval = req.session.data.newRemoval || {};
+	req.session.data.newRemoval.removalDate = formatDateForDisplay(removalDate);
 
 	return res.redirect('/mpr-removals/main/confirmation');
 });
@@ -64,22 +67,8 @@ router.post('/main/confirmation', (req, res) => {
 router.get('/main/reset', (req, res) => {
 	req.session.data = req.session.data || {};
 
-	const mprRemovalsKeys = [
-		'removalReason',
-		'eightDayWarning',
-		'eightDayWarningReasons',
-		'eightDayWarningDate',
-		'eightDayWarningDate-day',
-		'eightDayWarningDate-month',
-		'eightDayWarningDate-year',
-		'eightDayWarningDateFormatted'
-	];
-
-	mprRemovalsKeys.forEach((key) => {
-		delete req.session.data[key];
-	});
-
 	delete req.session.data.search;
+	delete req.session.data.newRemoval;
 
 	return res.redirect('/mpr-removals/main/dashboard');
 });
