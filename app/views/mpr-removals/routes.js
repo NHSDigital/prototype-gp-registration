@@ -56,16 +56,36 @@ router.post('/main/check-answers', (req, res) => {
 router.post('/main/confirmation', (req, res) => {
 	const removalDate = new Date();
 	removalDate.setDate(removalDate.getDate() + 8);
+	const createdDate = new Date();
+	const pendingRemovalReference = 'RMR-574820';
 
 	req.session.data = req.session.data || {};
 	req.session.data.newRemoval = req.session.data.newRemoval || {};
 	req.session.data.newRemoval.removalDate = formatDateForDisplay(removalDate);
+	req.session.data.pendingRemovals = req.session.data.pendingRemovals || {};
+
+	req.session.data.pendingRemovals[pendingRemovalReference] = {
+		firstName: 'Karen',
+		lastName: 'Francis',
+		nhsNumber: req.session.data.search && req.session.data.search.nhsNumber,
+		deductionReason: req.session.data.newRemoval.deductionReason,
+		createdDate: formatDateForDisplay(createdDate),
+		deductionDate: req.session.data.newRemoval.removalDate
+	};
+
+	req.session.data.pendingRemovals = Object.fromEntries(
+		Object.entries(req.session.data.pendingRemovals).sort(([, a], [, b]) => {
+			return new Date(a.deductionDate) - new Date(b.deductionDate);
+		})
+	);
 
 	return res.redirect('/mpr-removals/main/confirmation');
 });
 
 router.get('/main/reset', (req, res) => {
 	req.session.data = req.session.data || {};
+
+	
 
 	delete req.session.data.search;
 	delete req.session.data.newRemoval;
