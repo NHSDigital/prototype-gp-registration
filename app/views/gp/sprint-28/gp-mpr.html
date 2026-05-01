@@ -43,9 +43,35 @@
               }
             }) %}
 
-          <p class="nhsuk-body">If you turn on auto registration, you will also get access to Manage patient registrations. This is a web portal that lets you view incoming registrations and approve or reject them.</p>
-          <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-3">Auto registration</h3>
+          <p class="nhsuk-body">Manage patient registrations is a new feature that lets you:</p>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+            <li>view incoming patient registrations</li>
+            <li>review the information the patient gave in the online form</li>
+            <li>approve or reject patients</li>
+            <li>view details of patients you approved or rejected in the last 90 days</li>
+          </ul>
+          <p class="nhsuk-body">If you choose to turn on Manage patient registrations, you will also get access to  auto registration.</p>
+
+          <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-3">Auto registration</h2>
           <p class="nhsuk-body">Auto registration matches patients to their NHS record and creates a record for you in your clinical systems. It can help you save time and effort during the registration process. This is because you will not have to manually enter any information.</p>
+
+          {% from "details/macro.njk" import details %}
+
+          {% call details({
+            summaryText: "View patient criteria for auto registration"
+          }) %}
+            <p>These patients are:</p>
+            <ul>
+              <li>aged 18 or older</li>
+              <li>in your practice catchment area</li>
+              <li>using NHS login to apply</li>
+              <li>transferring from another practice in England</li>
+            </ul>
+            <p>They will not have a Special Allocation Scheme (SAS) marker, 1-day, or 8-day removal on their record.</p>
+          {% endcall %}
+
+          <p class="nhsuk-body">It can help you save time and effort during the registration process. This is because you will not have to manually enter any information.</p>
+          <p class="nhsuk-body">You cannot turn off auto registration without turning off Manage patient registrations.</p>
 
           {% from "radios/macro.njk" import radios %}
 
