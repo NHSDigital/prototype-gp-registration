@@ -18,7 +18,6 @@ router.get('/main/patient-advanced-search/clear', (req, res) => {
 	req.session.data.search = req.session.data.search || {};
 
 	const patientAdvancedSearchKeys = ['givenName', 'familyName', 'dob'];
-
 	patientAdvancedSearchKeys.forEach((key) => {
 		delete req.session.data.search[key];
 	});
@@ -55,10 +54,11 @@ router.post('/main/check-answers', (req, res) => {
 
 router.post('/main/confirmation', (req, res) => {
 	const removalDate = new Date();
-	removalDate.setDate(removalDate.getDate() + 8);
 	const createdDate = new Date();
 	const pendingRemovalReference = 'RMR-574820';
 
+	removalDate.setDate(removalDate.getDate() + 8);
+	
 	req.session.data = req.session.data || {};
 	req.session.data.newRemoval = req.session.data.newRemoval || {};
 	req.session.data.newRemoval.removalDate = formatDateForDisplay(removalDate);
@@ -85,14 +85,10 @@ router.post('/main/confirmation', (req, res) => {
 router.get('/main/reset', (req, res) => {
 	req.session.data = req.session.data || {};
 
-	
-
 	delete req.session.data.search;
 	delete req.session.data.newRemoval;
 
 	return res.redirect('/mpr-removals/main/dashboard');
 });
-
-
 
 module.exports = router;

@@ -18,8 +18,6 @@ You are responsible for generating consistent screenshot sets for prototype revi
 
 ## Default viewports
 
-- mobile: 390x844
-- tablet: 768x1024
 - desktop: 1440x900
 
 ## Naming format

@@ -1,6 +1,6 @@
 {% extends 'mpr/_layout.html' %}
 
-{% set pageName = "Check your answers - Patient removals - Manage patient registrations - NHS" %}
+{% set pageName = "Check your answers - Patient deductions - Manage patient registrations - NHS" %}
 
 {% block beforeContent %}
   {{ backLink({
@@ -29,14 +29,14 @@
 
   <h1 class="nhsuk-heading-xl">
     <span class="nhsuk-caption-l">
-      Remove a patient from your practice list
+      Deduct a patient from your practice list
     </span>
     Check your answers
   </h1>
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      <p>Check the information below is correct before you remove the patient from your practice list.</p>
+      <p>Check the information below is correct before you deduct the patient from your practice list.</p>
 
       {{ summaryList({
         card: {
@@ -89,13 +89,13 @@
 
       {{ summaryList({
         card: {
-          heading: "Removal information",
+          heading: "Deduction information",
           headingSize: "m"
         },
         rows: [
           {
             key: {
-              text: "Removal type"
+              text: "Deduction type"
             },
             value: {
               text: "8-day removal"
@@ -103,7 +103,7 @@
           },
           {
             key: {
-              text: "Reason for removal"
+              text: "Reason for deduction"
             },
             value: {
               text: newRemoval.removalReason
@@ -113,7 +113,7 @@
                 {
                   href: "/mpr-removals/main/removal-reason",
                   text: "Change",
-                  visuallyHiddenText: "removal reason"
+                  visuallyHiddenText: "deduction reason"
                 }
               ]
             }
@@ -157,7 +157,7 @@
 
       <form method="post" action="/mpr-removals/main/confirmation">
         {{ button({
-          text: 'Remove patient' 
+          text: 'Confirm and deduct patient' 
         }) }}
       </form>
     </div>
