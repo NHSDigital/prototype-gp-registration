@@ -1,6 +1,6 @@
 {% extends 'mpr/_layout.html' %}
 
-{% set pageName = "Find patient - Patient removals - Manage patient registrations - NHS" %}
+{% set pageName = "Find patient - Patient deductions - Manage patient registrations - NHS" %}
 
 {% block beforeContent %}
   {{ backLink({
@@ -14,7 +14,7 @@
 
   <h1 class="nhsuk-heading-xl">
     <span class="nhsuk-caption-l">
-      Remove a patient from your practice list
+      Deduct a patient from your practice list
     </span>
     Find patient
   </h1>
@@ -27,8 +27,8 @@
             text: 'NHS number'
           },
           id: 'nhsNumberSearch',
-          name: 'nhsNumberSearch',
-          value: data.nhsNumberSearch,
+          name: 'search[nhsNumber]',
+          value: data.search.nhsNumber,
           classes: "nhsuk-input--width-10 nhsuk-input--code",
           inputmode: "numeric",
           spellcheck: false
@@ -39,7 +39,7 @@
 
       <h2 class="nhsuk-heading-m">Search by name and date of birth</h2>
 
-      <p>If you don’t have the patient’s NHS number, you can <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">search using their name and date of birth</a> instead.
+      <p>If you don’t have the patient’s NHS number, you can <a href="/mpr-removals/main/patient-advanced-search" class="nhsuk-link nhsuk-link--no-visited-state">search using their name and date of birth</a> instead.
       </p>
 
     </div>

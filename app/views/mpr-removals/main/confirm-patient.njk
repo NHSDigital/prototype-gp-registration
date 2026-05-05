@@ -1,6 +1,6 @@
 {% extends 'mpr/_layout.html' %}
 
-{% set pageName = "Confirm patient - Patient removals - Manage patient registrations - NHS" %}
+{% set pageName = "Confirm patient - Patient deductions - Manage patient registrations - NHS" %}
 
 {% block beforeContent %}
   {{ backLink({
@@ -14,7 +14,7 @@
 
   <h1 class="nhsuk-heading-xl">
     <span class="nhsuk-caption-l">
-      Remove a patient from your practice list
+      Deduct a patient from your practice list
     </span>
     Confirm patient
   </h1>
@@ -46,7 +46,7 @@
               text: "NHS number"
             },
             value: {
-              text: data.nhsNumberSearch
+              text: data.search.nhsNumber
             }
           },
           {

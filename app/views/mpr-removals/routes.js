@@ -1,82 +1,83 @@
 const express = require('express');
 const router = express.Router();
 
-const formatNhsNumber = (input = '') => {
-	const digits = String(input).replace(/\D/g, '').slice(0, 10);
+const formatNhsNumber = require('./routes-helpers-js/formatNhsNumber');
+const formatLongDate = require('./routes-helpers-js/formatLongDate');
+const formatDateForDisplay = require('./routes-helpers-js/formatDateForDisplay');
 
-	if (digits.length <= 3) {
-		return digits;
-	}
+router.get('/main/set-nhs-number', (req, res) => {
+	req.session.data = req.session.data || {};
+	req.session.data.search = req.session.data.search || {};
+	req.session.data.search.nhsNumber = '987 654 3210';
 
-	if (digits.length <= 6) {
-		return `${digits.slice(0, 3)} ${digits.slice(3)}`;
-	}
+	return res.redirect('/mpr-removals/main/confirm-patient');
+});
 
-	return `${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6)}`;
-};
+router.get('/main/patient-advanced-search/clear', (req, res) => {
+	req.session.data = req.session.data || {};
+	req.session.data.search = req.session.data.search || {};
 
-const formatLongDate = (dayInput = '', monthInput = '', yearInput = '') => {
-	const day = Number.parseInt(String(dayInput), 10);
-	const month = Number.parseInt(String(monthInput), 10);
-	const year = Number.parseInt(String(yearInput), 10);
-	const defaultDate = '2 Feb 2026';
+	const patientAdvancedSearchKeys = ['givenName', 'familyName', 'dob'];
+	patientAdvancedSearchKeys.forEach((key) => {
+		delete req.session.data.search[key];
+	});
 
-	if (!Number.isInteger(day) || !Number.isInteger(month) || !Number.isInteger(year)) {
-		return defaultDate; // Default date for testing purposes
-	}
+	return res.redirect('/mpr-removals/main/patient-advanced-search');
+});
 
-	if (month < 1 || month > 12 || day < 1 || year < 1000) {
-		return defaultDate;
-	}
-
-	const date = new Date(year, month - 1, day);
-	const isValidDate =
-		date.getFullYear() === year &&
-		date.getMonth() === month - 1 &&
-		date.getDate() === day;
-
-	if (!isValidDate) {
-		return defaultDate;
-	}
-
-	const monthName = date.toLocaleString('en-GB', { month: 'long' });
-	return `${day} ${monthName} ${year}`;
-};
-
-const formatDateForDisplay = (date) => {
-	const day = date.getDate();
-	const monthName = date.toLocaleString('en-GB', { month: 'long' });
-	const year = date.getFullYear();
-	return `${day} ${monthName} ${year}`;
-};
 
 router.post('/main/confirm-patient', (req, res) => {
-	const formattedNhsNumberSearch = formatNhsNumber(req.body.nhsNumberSearch);
+	const nhsNumberSearch = req.body.search.nhsNumber;
+	const formattedNhsNumberSearch = formatNhsNumber(nhsNumberSearch);
 
 	req.session.data = req.session.data || {};
-	req.session.data.nhsNumberSearch = formattedNhsNumberSearch;
+	req.session.data.search = req.session.data.search || {};
+	req.session.data.search.nhsNumber = formattedNhsNumberSearch;
+	delete req.session.data.nhsNumberSearch;
 
 	return res.redirect('/mpr-removals/main/confirm-patient');
 });
 
 router.post('/main/check-answers', (req, res) => {
-	const day = req.body.eightDayWarningDate['day'];
-	const month = req.body.eightDayWarningDate['month'];
-	const year = req.body.eightDayWarningDate['year'];
+	const warningDate = (req.body.newRemoval && req.body.newRemoval.eightDayWarningDate) || {};
+	const day = warningDate['day'];
+	const month = warningDate['month'];
+	const year = warningDate['year'];
 	const formattedWarningDate = formatLongDate(day, month, year);
 
 	req.session.data = req.session.data || {};
-	req.session.data.eightDayWarningDateFormatted = formattedWarningDate;
+	req.session.data.newRemoval = req.session.data.newRemoval || {};
+	req.session.data.newRemoval.eightDayWarningDateFormatted = formattedWarningDate;
 
 	return res.redirect('/mpr-removals/main/check-answers');
 });
 
 router.post('/main/confirmation', (req, res) => {
 	const removalDate = new Date();
-	removalDate.setDate(removalDate.getDate() + 8);
+	const createdDate = new Date();
+	const pendingRemovalReference = 'RMR-574820';
 
+	removalDate.setDate(removalDate.getDate() + 8);
+	
 	req.session.data = req.session.data || {};
-	req.session.data.removalDate = formatDateForDisplay(removalDate);
+	req.session.data.newRemoval = req.session.data.newRemoval || {};
+	req.session.data.newRemoval.removalDate = formatDateForDisplay(removalDate);
+	req.session.data.pendingRemovals = req.session.data.pendingRemovals || {};
+
+	req.session.data.pendingRemovals[pendingRemovalReference] = {
+		firstName: 'Karen',
+		lastName: 'Francis',
+		nhsNumber: req.session.data.search && req.session.data.search.nhsNumber,
+		deductionReason: req.session.data.newRemoval.deductionReason,
+		createdDate: formatDateForDisplay(createdDate),
+		deductionDate: req.session.data.newRemoval.removalDate
+	};
+
+	req.session.data.pendingRemovals = Object.fromEntries(
+		Object.entries(req.session.data.pendingRemovals).sort(([, a], [, b]) => {
+			return new Date(a.deductionDate) - new Date(b.deductionDate);
+		})
+	);
 
 	return res.redirect('/mpr-removals/main/confirmation');
 });
@@ -84,25 +85,10 @@ router.post('/main/confirmation', (req, res) => {
 router.get('/main/reset', (req, res) => {
 	req.session.data = req.session.data || {};
 
-	const mprRemovalsKeys = [
-		'nhsNumberSearch',
-		'removalReason',
-		'eightDayWarning',
-		'eightDayWarningReasons',
-		'eightDayWarningDate',
-		'eightDayWarningDate-day',
-		'eightDayWarningDate-month',
-		'eightDayWarningDate-year',
-		'eightDayWarningDateFormatted'
-	];
-
-	mprRemovalsKeys.forEach((key) => {
-		delete req.session.data[key];
-	});
+	delete req.session.data.search;
+	delete req.session.data.newRemoval;
 
 	return res.redirect('/mpr-removals/main/dashboard');
 });
-
-
 
 module.exports = router;

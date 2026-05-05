@@ -1,23 +1,28 @@
 {% extends 'mpr/_layout.html' %}
 
-{% set pageName = "Patient removals - Manage patient registrations - NHS" %}
+{% set pageName = "Patient deductions - Manage patient registrations - NHS" %}
 
 {% block content %}
 
-  <h1 class="nhsuk-heading-xl">Patient removals</h1>
+  <h1 class="nhsuk-heading-xl">Patient deductions</h1>
 
-  <h2 class="nhsuk-heading-m">Patient removal history</h2>
-  <p>View and manage pending and completed removals from the last 90 days.</p>
+  <h2 class="nhsuk-heading-m">Patient deduction history</h2>
+  <p>View and manage pending and completed deductions from the last 90 days.</p>
+
+  {% set pendingRemovalsCount = 3 %}
+  {% if data.pendingRemovals %}
+    {% set pendingRemovalsCount = data.pendingRemovals|length %}
+  {% endif %}
 
   <ul class="nhsuk-grid-row nhsuk-card-group">
     <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
       {% call card({
         clickable: true,
-        heading: "3",
+        heading: pendingRemovalsCount,
         headingClasses: "nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1",
         headingVisuallyHiddenText: "Pending"
       }) %}
-        <a href="#" class="nhsuk-card__link">Pending</a>
+        <a href="/mpr-removals/main/pending-removals" class="nhsuk-card__link">Pending</a>
       {% endcall %}
     </li>
     <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
@@ -27,7 +32,7 @@
         headingClasses: "nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1",
         headingVisuallyHiddenText: "Completed"
       }) %}
-        <a href="#" class="nhsuk-card__link">Completed</a>
+        <a href="/mpr-removals/main/completed-removals" class="nhsuk-card__link">Completed</a>
       {% endcall %}
     </li>
   </ul>
@@ -35,11 +40,11 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h2 class="nhsuk-heading-m">Remove a patient from your practice list</h2>
+      <h2 class="nhsuk-heading-m">Deduct a patient from your practice list</h2>
 
-      <p>To remove a patient from your practice list, you will need to search for the patient and select a reason for their removal.</p>
+      <p>To deduct a patient from your practice list, you will need to search for the patient and select a reason for their deduction.</p>
 
-      <p>The patient removals process covers all scenarios, including:</p>
+      <p>The patient deductions process covers all scenarios, including:</p>
       <ul>
         <li>immediate removals for violent or aggressive behaviour</li>
         <li>eight-day removals following a breakdown in the patient–practice relationship</li>
@@ -49,7 +54,7 @@
 
       <div class="nhsuk-u-padding-bottom-6">
         {{ button({
-          "text": "Start new removal",
+          "text": "Start new deduction",
           "href": "/mpr-removals/main/patient-search"
         }) }}
       </div>

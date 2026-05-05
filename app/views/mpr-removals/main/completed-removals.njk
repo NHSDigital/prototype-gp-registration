@@ -1,0 +1,81 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Completed deductions - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "/mpr-removals/main/dashboard",
+      text: "Go back"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="nhsuk-heading-xl">Completed deductions</h1>
+
+  <p>Patients deducted from your practice list in the last 90 days.</p>
+
+  {% set completedRemovalRows = [] %}
+  {% for ref, removal in data.completedRemovals %}
+    {% set completedRemovalRows = completedRemovalRows.concat([[
+      {
+        html: '<a href="/mpr-removals/main/completed-removals/' + ref + '">' + ref + '</a>'
+      },
+      {
+        text: removal.firstName + ' ' + removal.lastName
+      },
+      {
+        text: removal.nhsNumber
+      },
+      {
+        text: removal.createdDate
+      },
+      {
+        text: removal.deductionDate
+      }
+    ]]) %}
+  {% endfor %}
+
+  {{ table({
+    responsive: true,
+    head: [
+      {
+        text: "Reference number"
+      },
+      {
+        text: "Patient name"
+      },
+      {
+        text: "NHS number"
+      },
+      {
+        text: "Requested date"
+      },
+      {
+        text: "Removal date"
+      }
+    ],
+    rows: completedRemovalRows
+  }) }}
+
+  {{ pagination({
+    next: {
+      href: "#"
+    },
+    items: [
+      {
+        number: 1,
+        current: true,
+        href: "#"
+      },
+      {
+        number: 2,
+        href: "#"
+      },
+      {
+        number: 3,
+        href: "#"
+      }
+    ]
+  }) }}
+{% endblock %}

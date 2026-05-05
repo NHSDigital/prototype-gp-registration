@@ -1,6 +1,6 @@
 {% extends 'mpr/_layout.html' %}
 
-{% set pageName = "Patient warning - Patient removals - Manage patient registrations - NHS" %}
+{% set pageName = "Patient warning - Patient deductions - Manage patient registrations - NHS" %}
 
 {% block beforeContent %}
   {{ backLink({
@@ -12,12 +12,15 @@
 
 {% block content %}
 
+  {% set newRemoval = data.newRemoval or {} %}
+  {% set warningDate = newRemoval.eightDayWarningDate or {} %}
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1 class="nhsuk-heading-xl">
         <span class="nhsuk-caption-l">
-          Remove a patient from your practice list
+          Deduct a patient from your practice list
         </span>
         Patient warning
       </h1>
@@ -27,7 +30,7 @@
         {% set dateHtml %}
           {{ dateInput({
             id: "eightDayWarningDate",
-            namePrefix: "eightDayWarningDate",
+            namePrefix: "newRemoval[eightDayWarningDate]",
             fieldset: {
               legend: {
                 text: "When did the patient receive a written warning?",
@@ -41,17 +44,17 @@
               {
                 name: "day",
                 classes: "nhsuk-input--width-2",
-                value: data.eightDayWarningDate['day']
+                value: warningDate['day']
               },
               {
                 name: "month",
                 classes: "nhsuk-input--width-2",
-                value: data.eightDayWarningDate['month']
+                value: warningDate['month']
               },
               {
                 name: "year",
                 classes: "nhsuk-input--width-4",
-                value: data.eightDayWarningDate['year']
+                value: warningDate['year']
               }
             ]
           }) }}
@@ -60,14 +63,14 @@
         {% set reasonsHtml %}
           {{ checkboxes({
             idPrefix: "eightDayWarningReasons",
-            name: "eightDayWarningReasons",
+            name: "newRemoval[eightDayWarningReasons]",
             fieldset: {
               legend: {
                 text: "Why was it not possible or appropriate to give the patient a written warning?",
                 size: "s"
               }
             },
-            values: data.eightDayWarningReasons,
+            values: newRemoval.eightDayWarningReasons,
             hint: {
               text: "Select all that apply"
             },
@@ -90,7 +93,7 @@
 
         {{ radios({
           idPrefix: "eightDayWarning",
-          name: "eightDayWarning",
+          name: "newRemoval[eightDayWarning]",
           fieldset: {
             legend: {
               text: "Has the patient received a written warning within the past 12 months explaining that they were at risk of removal?",
@@ -100,7 +103,7 @@
           hint: {
             html: "See <a href=\"https://www.england.nhs.uk/long-read/primary-medical-services-policy-and-guidance-manual-pgm-2/#6-4-contract-regulations-relating-to-removal-at-the-request-of-the-contractor\" class=\"nhsuk-link nhsuk-link--no-visited-state\" target=\"_blank\">Section 6.4.1 of the NHS England Primary Medical Care Policy and Guidance Manual (opens in a new tab)</a> for guidance."
           },
-          value: data.eightDayWarning,
+          value: newRemoval.eightDayWarning,
           items: [
             {
               value: "Yes",
