@@ -13,6 +13,12 @@
 {% block content %}
 
   {% set newRemoval = data.newRemoval or {} %}
+  {% set incident = newRemoval.incident or {} %}
+  {% set incidentDate = incident.date or {} %}
+  {% set incidentTime = incident.time or {} %}
+  {% set policeReport = newRemoval.policeReport or {} %}
+  {% set policeReportDate = policeReport.date or {} %}
+
   {% set writtenWarningDetail = newRemoval.eightDayWarningDateFormatted %}
   {% set writtenWarningKey = "Date of written warning" %}
   {% if newRemoval.eightDayWarning != 'Yes' %}
@@ -87,73 +93,141 @@
         ]
       }) }}
 
-      {{ summaryList({
-        card: {
-          heading: "Deduction information",
-          headingSize: "m"
-        },
-        rows: [
-          {
-            key: {
-              text: "Deduction type"
-            },
-            value: {
-              text: "8-day removal"
-            }
+      {% if newRemoval.type == 'Immediate removal (Special allocation scheme)' %}
+
+        {{ summaryList({
+          card: {
+            heading: "Removal information",
+            headingSize: "m"
           },
-          {
-            key: {
-              text: "Reason for deduction"
+          rows: [
+            {
+              key: { text: "Removal type" },
+              value: { text: newRemoval.type }
             },
-            value: {
-              text: newRemoval.removalReason
+            {
+              key: { text: "Reason for removal" },
+              value: { text: newRemoval.deductionReason },
+              actions: {
+                items: [{ href: "/mpr-removals/main/removal-reason", text: "Change", visuallyHiddenText: "reason for removal" }]
+              }
             },
-            actions: {
-              items: [
-                {
-                  href: "/mpr-removals/main/removal-reason",
-                  text: "Change",
-                  visuallyHiddenText: "deduction reason"
-                }
-              ]
+            {
+              key: { text: "Nature of incident" },
+              value: { text: newRemoval.incidentType },
+              actions: {
+                items: [{ href: "/mpr-removals/main/sas/incident-type", text: "Change", visuallyHiddenText: "nature of incident" }]
+              }
+            },
+            {
+              key: { text: "Reported to the police" },
+              value: { text: newRemoval.reportedToPolice },
+              actions: {
+                items: [{ href: "/mpr-removals/main/sas/police-report", text: "Change", visuallyHiddenText: "reported to the police" }]
+              }
             }
+          ]
+        }) }}
+
+        {% if newRemoval.reportedToPolice == 'Yes' %}
+          {{ summaryList({
+            card: {
+              heading: "Police report details",
+              headingSize: "m"
+            },
+            rows: [
+              {
+                key: { text: "Date reported to police" },
+                value: { text: newRemoval.policeReportDateFormatted },
+                actions: {
+                  items: [{ href: "/mpr-removals/main/sas/police-details", text: "Change", visuallyHiddenText: "date reported to police" }]
+                }
+              },
+              {
+                key: { text: "Police Incident Number" },
+                value: { text: policeReport.number },
+                actions: {
+                  items: [{ href: "/mpr-removals/main/sas/police-details", text: "Change", visuallyHiddenText: "police incident number" }]
+                }
+              }
+            ]
+          }) }}
+        {% endif %}
+
+        {{ summaryList({
+          card: {
+            heading: "Incident details",
+            headingSize: "m"
           },
-          {
-             key: {
-              text: "Written warning given within past 12 months"
+          rows: [
+            {
+              key: { text: "Date of incident" },
+              value: { text: newRemoval.incidentDateFormatted },
+              actions: {
+                items: [{ href: "/mpr-removals/main/sas/incident-details", text: "Change", visuallyHiddenText: "date of incident" }]
+              }
             },
-            value: {
-              text: newRemoval.eightDayWarning
+            {
+              key: { text: "Time of incident" },
+              value: { text: incidentTime.hour + ':' + incidentTime.minute },
+              actions: {
+                items: [{ href: "/mpr-removals/main/sas/incident-details", text: "Change", visuallyHiddenText: "time of incident" }]
+              }
             },
-            actions: {
-              items: [
-                {
-                  href: "/mpr-removals/main/8-day/warning",
-                  text: "Change",
-                  visuallyHiddenText: "written warning given within past 12 months"
-                }
-              ]
+            {
+              key: { text: "Location of incident" },
+              value: { text: incident.location },
+              actions: {
+                items: [{ href: "/mpr-removals/main/sas/incident-details", text: "Change", visuallyHiddenText: "location of incident" }]
+              }
+            },
+            {
+              key: { text: "Description of incident" },
+              value: { text: incident.description },
+              actions: {
+                items: [{ href: "/mpr-removals/main/sas/incident-details", text: "Change", visuallyHiddenText: "description of incident" }]
+              }
             }
+          ]
+        }) }}
+
+      {% else %}
+
+        {{ summaryList({
+          card: {
+            heading: "Deduction information",
+            headingSize: "m"
           },
-          {
-             key: {
-              text: writtenWarningKey
+          rows: [
+            {
+              key: { text: "Deduction type" },
+              value: { text: newRemoval.type }
             },
-            value: {
-              html: writtenWarningDetail
+            {
+              key: { text: "Reason for deduction" },
+              value: { text: newRemoval.deductionReason },
+              actions: {
+                items: [{ href: "/mpr-removals/main/removal-reason", text: "Change", visuallyHiddenText: "deduction reason" }]
+              }
             },
-            actions: {
-              items: [
-                {
-                  href: "/mpr-removals/main/8-day/warning",
-                  text: "Change ",
-                  visuallyHiddenText: writtenWarningKey
-                }
-              ]
+            {
+              key: { text: "Written warning given within past 12 months" },
+              value: { text: newRemoval.eightDayWarning },
+              actions: {
+                items: [{ href: "/mpr-removals/main/8-day/warning", text: "Change", visuallyHiddenText: "written warning given within past 12 months" }]
+              }
+            },
+            {
+              key: { text: writtenWarningKey },
+              value: { html: writtenWarningDetail },
+              actions: {
+                items: [{ href: "/mpr-removals/main/8-day/warning", text: "Change", visuallyHiddenText: writtenWarningKey }]
+              }
             }
-          }
-        ]
-      }) }}
+          ]
+        }) }}
+
+      {% endif %}
 
       <form method="post" action="/mpr-removals/main/confirmation">
         {{ button({

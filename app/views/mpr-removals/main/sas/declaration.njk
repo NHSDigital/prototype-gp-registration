@@ -1,0 +1,60 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Declaration - Patient deductions - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "/mpr-removals/main/removal-reason",
+      text: "Go back"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="nhsuk-heading-xl">
+    <span class="nhsuk-caption-l">
+      Immediate (SAS) removal
+    </span>
+    Declaration
+  </h1>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h2 class="nhsuk-heading-m">About Immediate (SAS) removals</h2>
+
+      <p>Completion of this form will result in the removal of the patient from your practice list within 24 hours. The patient will then be placed on the Special Allocation Scheme (SAS).</p>
+
+      <p>The Special Allocation Scheme (SAS) is an NHS England process designed to protect GP staff, other patients, and the public when a patient has shown <strong>violent, aggressive, or threatening behaviour</strong>. This includes incidents where the patient has committed an act of violence against a member of staff or another patient, or has behaved in such a way that those persons have feared for their safety.</p>
+
+      <h2 class="nhsuk-heading-m">What to consider</h2>
+
+      <h3 class="nhsuk-heading-s">Criteria for removal</h3>
+
+      <p>The reporting practice is responsible for determining if a patient meets the criteria for immediate removal.</p>
+      <p>Before submitting a request you should ensure that the criteria outlined in <a target="_blank" href="https://www.england.nhs.uk/long-read/primary-medical-services-policy-and-guidance-manual-pgm-2/#7-managing-violent-patients-special-allocation-scheme">Section 7 of the NHS England Primary Medical Care Policy and Guidance Manual (opens in a new tab)</a> has been met.</p>
+
+      <h3 class="nhsuk-heading-s">Police Incident Number</h3>
+
+      <p>The incident must have been reported to the Police for the immediate removal to be processed.</p>
+
+      <p>You will need to provide the Police Incident Number. If you don't have one yet, you will need to provide it within 7 days.</p>
+
+
+      <h2 class="nhsuk-heading-m">Declaration</h2>
+
+      <p>By continuing with the removal you confirm that the practice has carefully considered the circumstances of the incident, and the practice can confirm that it has assured itself that the removal is not as a direct result of the patients protected characteristics and key past medical history including mental illness, learning disability and neurodiversity.</p>
+
+      
+      <div class="nhsuk-u-padding-bottom-6">
+        {{ button({
+          "text": "Confirm and continue",
+          "href": "/mpr-removals/main/sas/incident-type"
+        }) }}
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

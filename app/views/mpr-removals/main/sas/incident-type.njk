@@ -1,0 +1,68 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Incident type - Immediate (SAS) removal - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "/mpr-removals/main/sas/declaration",
+      text: "Go back"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form method="post" action="/mpr-removals/main/sas/police-report">
+
+        {{ radios({
+          idPrefix: "incidentType",
+          name: "newRemoval[incidentType]",
+          fieldset: {
+            legend: {
+              html: "<span class=\"nhsuk-caption-l\">Immediate (SAS) removal</span> What was the nature of the incident?",
+              size: "xl",
+              isPageHeading: true
+            }
+          },
+          value: data.newRemoval.incidentType,
+          items: [
+            {
+              value: "Threatening behaviour",
+              text: "Threatening behaviour",
+              hint: {
+                text: "Any verbal or gestured threats of physical harm, property damage, or \"revenge.\" Offensive language alone does not usually qualify unless it includes a direct threat."
+              }
+            },
+            {
+              value: "Physical violence",
+              text: "Physical violence",
+              hint: {
+                text: "Intentionally or recklessly causing physical harm or a direct threat to safety, for example, striking, grabbing, or throwing objects at staff or others."
+              }
+            },
+            {
+              value: "Aggravated physical violence",
+              text: "Aggravated physical violence",
+              hint: {
+                text: "Use of a weapon (or any object as a weapon) to attack, attempt an assault, or intentionally intimidate staff and others."
+              }
+            },
+            {
+              value: "Vandalism",
+              text: "Vandalism",
+              hint: {
+                text: "Deliberate damage or destruction of property with an intention to intimidate or cause harm."
+              }
+            }
+          ]
+        }) }}
+
+        {{ button({ text: 'Continue' }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
