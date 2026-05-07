@@ -1,0 +1,54 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Incident type - Immediate (SAS) removal - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "/mpr-removals/main/sas/incident-type",
+      text: "Go back"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form method="post" action="/mpr-removals/main/sas/police-report-routing">
+
+        {{ radios({
+          idPrefix: "reportedToPolice",
+          name: "newRemoval[reportedToPolice]",
+          fieldset: {
+            legend: {
+              html: "<span class=\"nhsuk-caption-l\">Immediate (SAS) removal</span> Has the incident been reported to the police?",
+              size: "xl",
+              isPageHeading: true
+            }
+          },
+          value: data.newRemoval.reportedToPolice,
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              hint: {
+                text: "You will need to provide the Police Incident Number. If you don't have one yet, you will need to provide it within 7 days."
+              }
+            },
+            {
+              value: "No",
+              text: "No",
+              hint: {
+                text: "If the incident hasn't been reported to the police or it happened over 7 days ago, an immediate removal can only proceed in exceptional circumstances. In these cases, an approval form will be sent to the relevant authority (ICB/NHSE) for authorisation."
+              }
+            }
+          ]
+        }) }}
+
+        {{ button({ text: 'Continue' }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

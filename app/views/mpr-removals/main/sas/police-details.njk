@@ -1,0 +1,77 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Incident details - Immediate (SAS) removal - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "/mpr-removals/main/sas/police-report",
+      text: "Go back"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="nhsuk-heading-xl">
+    <span class="nhsuk-caption-l">
+      Immediate (SAS) removal
+    </span>
+    Police report details
+  </h1>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form method="post" action="/mpr-removals/main/sas/incident-details">
+
+        {{ dateInput({
+          id: "policeReportDate",
+          namePrefix: "newRemoval[policeReport][date]",
+          fieldset: {
+            legend: {
+              text: "When was the incident reported to the police?",
+              size: "s"
+            }
+          },
+          hint: {
+            text: "For example, 18 3 2026"
+          },
+          items: [
+            {
+              name: "day",
+              classes: "nhsuk-input--width-2",
+              value: data.newRemoval.policeReport.date.day
+            },
+            {
+              name: "month",
+              classes: "nhsuk-input--width-2",
+              value: data.newRemoval.policeReport.date.month
+            },
+            {
+              name: "year",
+              classes: "nhsuk-input--width-4",
+              value: data.newRemoval.policeReport.date.year
+            }
+          ]
+        }) }}
+
+        {{ input({
+          id: "PoliceIncidentNumber",
+          name: "newRemoval[policeReport][number]",
+          label: {
+            text: "Police Incident Number",
+            size: "s"
+          },
+          hint: {
+            text: "If you don't have one yet, you will need to provide it within 7 days."
+          },
+          classes: "nhsuk-input--width-10",
+          value: data.newRemoval.policeReport.number
+        }) }}
+
+        {{ button({ text: 'Continue' }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -38,16 +38,47 @@ router.post('/main/confirm-patient', (req, res) => {
 	return res.redirect('/mpr-removals/main/confirm-patient');
 });
 
+router.post('/main/removal-reason-routing', (req, res) => {
+	const deductionReason = req.body.newRemoval && req.body.newRemoval.deductionReason;
+	req.session.data = req.session.data || {};
+	req.session.data.newRemoval = req.session.data.newRemoval || {};
+
+	if (deductionReason === 'Police incident requiring urgent removal') {
+		req.session.data.newRemoval.type = 'Immediate removal (Special allocation scheme)';
+		return res.redirect('/mpr-removals/main/sas/declaration');
+	}
+
+	req.session.data.newRemoval.type = '8-day removal';
+	return res.redirect('/mpr-removals/main/8-day/declarations');
+});
+
+router.post('/main/sas/police-report-routing', (req, res) => {
+	const reportedToPolice = req.body.newRemoval && req.body.newRemoval.reportedToPolice;
+
+	if (reportedToPolice === 'Yes') {
+		return res.redirect('/mpr-removals/main/sas/police-details');
+	}
+
+	return res.redirect('/mpr-removals/main/sas/incident-details');
+});
+
 router.post('/main/check-answers', (req, res) => {
-	const warningDate = (req.body.newRemoval && req.body.newRemoval.eightDayWarningDate) || {};
-	const day = warningDate['day'];
-	const month = warningDate['month'];
-	const year = warningDate['year'];
-	const formattedWarningDate = formatLongDate(day, month, year);
+	const newRemoval = req.body.newRemoval || {};
+
+	const warningDate = newRemoval.eightDayWarningDate || {};
+	const formattedWarningDate = formatLongDate(warningDate.day, warningDate.month, warningDate.year);
+
+	const policeReportDate = (newRemoval.policeReport && newRemoval.policeReport.date) || {};
+	const formattedPoliceReportDate = formatLongDate(policeReportDate.day, policeReportDate.month, policeReportDate.year);
+
+	const incidentDate = (newRemoval.incident && newRemoval.incident.date) || {};
+	const formattedIncidentDate = formatLongDate(incidentDate.day, incidentDate.month, incidentDate.year);
 
 	req.session.data = req.session.data || {};
 	req.session.data.newRemoval = req.session.data.newRemoval || {};
 	req.session.data.newRemoval.eightDayWarningDateFormatted = formattedWarningDate;
+	req.session.data.newRemoval.policeReportDateFormatted = formattedPoliceReportDate;
+	req.session.data.newRemoval.incidentDateFormatted = formattedIncidentDate;
 
 	return res.redirect('/mpr-removals/main/check-answers');
 });
@@ -56,11 +87,17 @@ router.post('/main/confirmation', (req, res) => {
 	const removalDate = new Date();
 	const createdDate = new Date();
 	const pendingRemovalReference = 'RMR-574820';
-
-	removalDate.setDate(removalDate.getDate() + 8);
 	
 	req.session.data = req.session.data || {};
 	req.session.data.newRemoval = req.session.data.newRemoval || {};
+
+	if (req.session.data.newRemoval.type === 'Immediate removal (Special allocation scheme)') {
+		removalDate.setDate(createdDate.getDate() + 1);
+	}
+	else {
+		removalDate.setDate(createdDate.getDate() + 8);
+	}
+
 	req.session.data.newRemoval.removalDate = formatDateForDisplay(removalDate);
 	req.session.data.pendingRemovals = req.session.data.pendingRemovals || {};
 

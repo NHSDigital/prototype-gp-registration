@@ -12,11 +12,22 @@
       }) }}
 
       <h1 class="nhsuk-heading-l nhsuk-u-padding-top-4">What happens next</h1>
-      <ul class="nhsuk-list nhsuk-list--bullet">
-        <li>A pending deduction has been set with an effective date 8 days from now.</li>
-        <li>The patient will receive a notification letter issued by first-class post.</li>
-        <li>Your practice will receive confirmation on the day of deduction.</li>
-      </ul>
+
+      {% if data.newRemoval.type == 'Immediate removal (Special allocation scheme)' %}
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>A pending deduction has been set with tomorrow as the effective date.</li>
+          <li>The patient will be allocated to a specific GP Practice who manage Special Allocation Scheme (SAS) Patients.</li>
+          <li>The patient will receive a notification letter issued by first-class post.</li>
+          <li>The patient will be advised in the letter that they must not contact or attend your practice.</li>
+          <li>Your practice will receive confirmation on the day of deduction.</li>
+        </ul>
+      {% else %}
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>A pending deduction has been set with an effective date 8 days from now.</li>
+          <li>The patient will receive a notification letter issued by first-class post.</li>
+          <li>Your practice will receive confirmation on the day of deduction.</li>
+        </ul>
+      {% endif %}
 
       <p class="nhsuk-body">Effective deduction date: <strong>{{ newRemoval.removalDate }}</strong></p>
 

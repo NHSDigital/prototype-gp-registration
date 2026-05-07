@@ -1,0 +1,121 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Incident details - Immediate (SAS) removal - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "javascript:history.back()",
+      text: "Go back"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="nhsuk-heading-xl">
+    <span class="nhsuk-caption-l">
+      Immediate (SAS) removal
+    </span>
+    Incident details
+  </h1>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form method="post" action="/mpr-removals/main/check-answers">
+
+        {{ dateInput({
+          id: "incidentDate",
+          namePrefix: "newRemoval[incident][date]",
+          fieldset: {
+            legend: {
+              text: "Date of incident",
+              size: "s"
+            }
+          },
+          hint: {
+            text: "For example, 18 3 2026"
+          },
+          items: [
+            {
+              name: "day",
+              classes: "nhsuk-input--width-2",
+              value: data.newRemoval.incident.date.day
+            },
+            {
+              name: "month",
+              classes: "nhsuk-input--width-2",
+              value: data.newRemoval.incident.date.month
+            },
+            {
+              name: "year",
+              classes: "nhsuk-input--width-4",
+              value: data.newRemoval.incident.date.year
+            }
+          ]
+        }) }}
+
+        {{ dateInput({
+          id: "incidentTime",
+          namePrefix: "newRemoval[incident][time]",
+          fieldset: {
+            legend: {
+              text: "Time of incident",
+              size: "s"
+            }
+          },
+          hint: {
+            text: "Use 24-hour format. For example, 14:30."
+          },
+          items: [
+            {
+              name: "hour",
+              classes: "nhsuk-input--width-2",
+              value: data.newRemoval.incident.time.hour
+            },
+            {
+              name: "minute",
+              classes: "nhsuk-input--width-2",
+              value: data.newRemoval.incident.time.minute
+            }
+          ]
+        }) }}
+
+        {{ radios({
+          idPrefix: "incidentLocation",
+          name: "newRemoval[incident][location]",
+          fieldset: {
+            legend: {
+              text: "Where did the incident happen?",
+              size: "s"
+            }
+          },
+          value: data.newRemoval.incident.location,
+          items: [
+            {
+              value: "At the practice",
+              text: "At the practice"
+            },
+            {
+              value: "At the patient's address",
+              text: "At the patient's address"
+            }
+          ]
+        }) }}
+
+        {{ textarea({
+          id: "incidentDescription",
+          name: "newRemoval[incident][description]",
+          label: {
+            text: "Provide a detailed description of the incident",
+            size: "s"
+          },
+          value: data.newRemoval.incident.description
+        }) }}
+
+        {{ button({ text: 'Continue' }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
