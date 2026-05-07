@@ -30,6 +30,45 @@
       <h2 class="nhsuk-heading-m">Sprint 4 (28 Apr 2026 - 12 May 2026)</h2>
 
       {% call details({
+        summaryText: "Immediate (SAS) removal MVP journey",
+        classes: "nhsuk-expander"
+      }) %}
+
+        <p>Introduces a new journey for Immediate Removals (SAS) in the MPR prototype.</p>
+
+        <p>The Special Allocation Scheme (SAS), formerly known as the Violent Patient Scheme, manages the immediate removal of patients from GP practices due to violent, aggressive, or threatening behavior. Its primary purpose is to ensure the safety of healthcare staff and other patients while fulfilling the NHS mandate to provide medical care to all individuals.</p>
+
+        <p>The current process is as follows:</p>
+
+        <ol>
+          <li><strong>Incident & Reporting:</strong> The GP practice must report the incident to the police.</li>
+          <li><strong>Request Submission:</strong> The practice submits a removal request to Primary Care Support England (PCSE) via an online form, email, or phone. A police incident number is required (immediately or within 7 days).</li>
+          <li><strong>Validation:</strong> PCSE validates the request. If the criteria are met, the removal is processed within 24 hours.</li>
+          <li><strong>Patient Notification:</strong> PCSE notifies the patient via letter that they have been removed and placed on the SAS. They are prohibited from contacting their former practice.</li>
+          <li><strong>Allocation:</strong> The patient is assigned to a designated SAS provider where they can still access full primary care services.</li>
+        </ol>
+
+        <h3 class="nhsuk-heading-s">What was added</h3>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>SAS declaration screen</li>
+          <li>Form flow that captures:</li>
+          <ul>
+            <li>Nature of the incident</li>
+            <li>Incident details</li>
+            <li>Whether the incident was reported to the police</li>
+            <li>Police report details</li>
+          </ul>
+        </ul>
+
+        <h3 class="nhsuk-heading-s">What was updated</h3>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li><strong>Updated:</strong> Check answers, confirmation, and removal reason screens to support SAS flow.</li>
+          <li><strong>Routing:</strong> Enhanced <code>routes.js</code> to support the new SAS journey and integrate with existing flows.</li>
+        </ul>
+
+      {% endcall %}
+      
+      {% call details({
         summaryText: "Extending 8-day removal journey",
         classes: "nhsuk-expander"
       }) %}
