@@ -59,7 +59,6 @@
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block beforeContent %}
 
-{% include '../includes/phase-banner.html' %}
 
 {{ backLink({
     "href": "what-is-your-current-address",
@@ -89,10 +88,26 @@
             }) %}
 
             {% if (data['who-is-registering'] === "dependant") %}
-            <p>The NHS and GP surgery can use these details to call, text or email about health care services for the person you are registering.</p>
-            {% else %}
-            <p>The NHS and your GP surgery can use these details to call, text or email you about health care services.</p>
-            {% endif %}
+            <p>
+    The NHS and Trinity Court Surgery (Demo GP Practice) may need to contact you about:
+  </p>
+  <ul class="nhsuk-list nhsuk-list--bullet">
+    <li>this registration</li>
+    <li>screening and other healthcare services</li>
+  </ul>
+  <p>Your details will not be shared with anyone outside of your GP surgery or the NHS.</p>
+{% else %}
+  <p>
+  The NHS and Trinity Court Surgery (Demo GP Practice) may need to contact you about:
+</p>
+<ul class="nhsuk-list nhsuk-list--bullet" style="margin-left: 2em;">
+  <li>this registration</li>
+  <li>screening and other healthcare services</li>
+</ul>
+<p>
+  Your details will not be shared with anyone outside of your GP surgery or the NHS.
+</p>
+{% endif %}
 
             {{ input({
               label: {
@@ -131,7 +146,14 @@
             {{ button({
                 "text": "Continue"
               }) }}
-
+<p>
+  Would you like to
+  <a class="nhsuk-link" href="/gp-registration/sprint-00/feedback-page" target="_blank" rel="noopener">
+  give feedback (opens in a new tab)
+  <span class="nhsuk-u-visually-hidden">(opens in a new tab)</span>
+  </a>
+  about this page?
+</p>
           </form>
 
         </div>

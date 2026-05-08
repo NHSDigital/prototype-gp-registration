@@ -42,7 +42,6 @@
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block beforeContent %}
 
-{% include '../includes/phase-banner.html' %}
 
 {{ backLink({
     "href": link,
@@ -80,17 +79,17 @@
               "items": [
                 {
                   "value": "Yes",
-                  "text": "High Street pharmacy",
+                  "text": "High Street Pharmacy",
                   "hint": {
-                    "text": "You can collect your prescription items in person from a pharmacy near to you. They may also deliver."
+                    "text": "Collect prescription items from a pharmacy close to your home, new GP surgery or somewhere else. They may also deliver."
                   },
                   checked: fieldVar == "Yes"
                 },
                 {
                   "value": "No",
-                  "text": "Online-only pharmacy",
+                  "text": "Online-only Pharmacy",
                   "hint": {
-                    "text": "These send your prescription items to you in the post. It's not possible for you to choose an online-only pharmacy during this registration process. You need to register directly with them instead."
+                    "text": "Your prescription items are sent to you in the post."
                   },
                   checked: fieldVar == "No"
                 }
@@ -100,7 +99,14 @@
             {{ button({
               "text": "Continue"
             }) }}
-
+<p>
+  Would you like to
+  <a class="nhsuk-link" href="/gp-registration/sprint-00/feedback-page" target="_blank" rel="noopener">
+  give feedback (opens in a new tab)
+  <span class="nhsuk-u-visually-hidden">(opens in a new tab)</span>
+  </a>
+  about this page?
+</p>
           </form>
         </div>
        </div>

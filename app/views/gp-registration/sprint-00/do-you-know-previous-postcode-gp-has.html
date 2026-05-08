@@ -40,7 +40,6 @@
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block beforeContent %}
 
-{% include '../includes/phase-banner.html' %}
 
  {{ backLink({
     "href": "what-is-your-gp-address-selection",
@@ -93,7 +92,14 @@
           {{ button({
             "text": "Continue"
           }) }}
-
+<p>
+  Would you like to
+  <a class="nhsuk-link" href="/gp-registration/sprint-00/feedback-page" target="_blank" rel="noopener">
+  give feedback (opens in a new tab)
+  <span class="nhsuk-u-visually-hidden">(opens in a new tab)</span>
+  </a>
+  about this page?
+</p>
         </form>
       </div>
     </div>
