@@ -40,37 +40,86 @@
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 
  
-
 {% block footer %}
 
-   {{ footer({
-    meta: {
-      items: [
-        {
-          href: "/legal/terms",
-          text: "Terms and conditions",
-          attributes: { target: "_blank" }
-        },
-        {
-          href: "/legal/cookies",
-          text: "Cookies policy",
-          attributes: { target: "_blank" }
-        },
-         {
-          href: "/legal/privacy",
-          text: "Privacy policy",
-          attributes: { target: "_blank" }
-        },
-        {
-          href: "/legal/accessibility-statement",
-          text: "Accessibility statement",
-          attributes: { target: "_blank" }
-        }
-      ]
-    }
-  }) }}
+<style>
+  /* Grey text */
+  .footer-grey,
+  .footer-grey a {
+    color: #4c6272;
+  }
 
-  
+  /* Top row: helper text left, version block right */
+  .footer-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.25rem; /* reduced from 1rem → removes big gap */
+    flex-wrap: wrap;
+  }
+
+  /* Version block split over two lines */
+  .footer-version {
+    text-align: right;
+    white-space: nowrap;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  /* Horizontal links */
+  .nhsuk-footer__list--inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    list-style: none;
+    padding-left: 0;
+    margin: 0; /* removes extra NHS default spacing */
+  }
+
+  /* Remove default NHS paragraph spacing */
+  .footer-top-row p {
+    margin: 0;
+  }
+</style>
+
+<footer class="nhsuk-footer footer-grey" id="nhsuk-footer" role="contentinfo">
+  <div class="nhsuk-width-container">
+
+    <!-- TOP ROW -->
+    <div class="footer-top-row">
+      <p class="nhsuk-body-s">
+        The following links open in a new tab.
+      </p>
+
+      <p class="nhsuk-footer__copyright footer-version">
+        © NHS England 2026<br>
+        VERSION: 7.25
+      </p>
+    </div>
+
+    <!-- LINKS ROW -->
+    <ul class="nhsuk-footer__list nhsuk-footer__list--inline">
+      <li class="nhsuk-footer__list-item"><a class="nhsuk-footer__list-item-link" href="terms-of-use" target="_blank" rel="noopener">Terms of use</a></li>
+      <li class="nhsuk-footer__list-item"><a class="nhsuk-footer__list-item-link" href="cookies" target="_blank" rel="noopener">Cookies</a></li>
+      <li class="nhsuk-footer__list-item"><a class="nhsuk-footer__list-item-link" href="privacy-notice" target="_blank" rel="noopener">Privacy notice</a></li>
+      <li class="nhsuk-footer__list-item"><a class="nhsuk-footer__list-item-link" href="accessibility" target="_blank" rel="noopener">Accessibility</a></li>
+    </ul>
+
+  </div>
+</footer>
+
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
