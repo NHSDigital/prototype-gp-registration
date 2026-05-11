@@ -44,7 +44,6 @@
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block beforeContent %}
 
-{% include '../includes/phase-banner.html' %}
 
 {{ backLink({
     "href": "how-often-do-you-drink-alcohol",
@@ -72,16 +71,6 @@
                 "isPageHeading": true
               }
             }) %}
-
-            {{ input({
-                label: {
-                  "text": "Enter number of units. For example, 2.5"
-                },
-                "classes": "nhsuk-input--width-4",
-                "id": "units",
-                "name": "units",
-                "value": data['units']
-              }) }}
 
             {% endcall %}
 
@@ -158,11 +147,31 @@
                   </tbody>
                 </table>
             </details>
-
-            {{ button({
+{{ input({
+  "label": {
+    "text": ""
+  },
+  "hint": {
+    "text": "Enter number of units. For example, 2.5",
+    "classes": "nhsuk-hint"
+  },
+  "classes": "nhsuk-input--width-10",
+  "id": "units",
+  "name": "units",
+  "value": data['units']
+}) }}
+{{ button({
               "text": "Continue"
             }) }}
 
+<p>
+  Would you like to
+  <a class="nhsuk-link" href="/gp-registration/sprint-00/feedback-page" target="_blank" rel="noopener">
+  give feedback (opens in a new tab)
+  <span class="nhsuk-u-visually-hidden">(opens in a new tab)</span>
+  </a>
+  about this page?
+</p>
           </form>
         </div>
        </div>
