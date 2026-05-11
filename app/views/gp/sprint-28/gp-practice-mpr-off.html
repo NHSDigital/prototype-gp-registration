@@ -16,7 +16,7 @@ Name of surgery to be displayed here - GP registration service - NHS
 
     <form action="gp-reg-complete" autocomplete="off" method="post">
 
-      <h1 class="nhsuk-heading">{{ data['practiceName'] or 'Name of surgery to be displayed here' }}</h1>
+      <h1 class="nhsuk-heading">{{ data['practiceName'] or 'Litchdon Medical Centre' }}</h1>
 
       <dl class="nhsuk-summary-list">
 
@@ -41,9 +41,13 @@ Name of surgery to be displayed here - GP registration service - NHS
             Manage patient registrations
           </dt>
           <dd class="nhsuk-summary-list__value">
-            <strong class="nhsuk-tag">Active</strong>
+            <strong class="nhsuk-tag nhsuk-tag--grey">Off</strong>
           </dd>
-          <dd class="nhsuk-summary-list__actions"></dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="/gp/sprint-28/gp-mpr">Change
+              <span class="nhsuk-u-visually-hidden">Auto registration</span>
+            </a>
+          </dd>
         </div>
 
         <!-- Additional services -->
@@ -74,7 +78,8 @@ Name of surgery to be displayed here - GP registration service - NHS
   <div class="nhsuk-grid-column-two-thirds">
     <h2 class="nhsuk-heading-m">What do these settings do?</h2>
     <h3 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Manage patient registrations</h3>
-    <p class="nhsuk-body">Verifies a patient's identity and matches them to their NHS record in the Personal Demographic Service (PDS). The patient is then automatically registered with your surgery.</p>
+    <p class="nhsuk-body">This is a hub that lets you review new patient registrations, and approve or reject them.</p>
+    <p class="nhsuk-body">If you choose to turn on Manage patient registrations, you will also get access to auto registration.</p>
   </div>
 </div>
 
