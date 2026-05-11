@@ -51,6 +51,7 @@
             <li>view details of patients you approved or rejected in the last 90 days</li>
           </ul>
           <p class="nhsuk-body">If you choose to turn on Manage patient registrations, you will also get access to  auto registration.</p>
+          <p class="nhsuk-body">Your branch sites will also get access to Manage patient registrations if you turn on the service.</p>
 
           <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-3">Auto registration</h2>
           <p class="nhsuk-body">Auto registration matches patients to their NHS record and creates a record for them in your clinical systems. It helps save you time and effort during the registration process. You will find these registrations in the Manage patient registrations hub.</p>
@@ -118,7 +119,7 @@
         function updateAction() {
           var selected = document.querySelector('input[name="mpr"]:checked');
           if (selected) {
-            form.setAttribute('action', selected.value === 'yes' ? 'gp-branch-mpr-active' : 'gp-branch-mpr-paused');
+            form.setAttribute('action', selected.value === 'yes' ? 'gp-practice-mpr-on' : 'gp-practice-mpr-off');
           }
         }
 
