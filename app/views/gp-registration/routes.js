@@ -1253,7 +1253,7 @@ router.post('/:sprint/do-you-smoke-type-answer', (req, res) => {
   } else if (answer === 'I used to smoke') {
     sprintRedirect(res, sprint, 'do-you-smoke-date')
   } else {
-    sprintRedirect(res, sprint, 'scr')
+    sprintRedirect(res, sprint, 'blood-testing')
   }
 })
 
@@ -1281,10 +1281,10 @@ router.post('/:sprint/blood-testing-answer', (req, res) => {
     return sprintRedirect(res, sprint, 'check-answers-b')
   }
 
-  if (answer === 'No') {
-    sprintRedirect(res, sprint, 'scr')
-  } else {
+  if (answer === 'Yes') {
     sprintRedirect(res, sprint, 'blood-inquiry')
+  } else {
+    sprintRedirect(res, sprint, 'donating-your-organs-and-tissue')
   }
 })
 
