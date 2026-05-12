@@ -1216,7 +1216,44 @@
 
            <div class="nhsuk-summary-list__row">
              <dt class="nhsuk-summary-list__key">
-               Do you want important information from your GP record to be available to other health and care professionals
+               Would you like to donate your organs and tissue?
+             </dt>
+             <dd class="nhsuk-summary-list__value">
+               {{ data['organDonor'] }}
+             </dd>
+             <dd class="nhsuk-summary-list__actions">
+               <a href="donating-your-organs-and-tissue?return=true">
+                 Change<span class="nhsuk-u-visually-hidden"> details about your organs and tissue</span>
+               </a>
+             </dd>
+           </div>
+
+           {% if data['organDonor'] == 'Some' %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Select which organs and tissue you would like to donate
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Kidneys: {{ data['kidney-select'] }}<br />
+              Corneas: {{ data['corneas-select'] }}<br />
+              Heart: {{ data['heart-select'] }}<br />
+              Lungs: {{ data['lungs-select'] }}<br />
+              Liver: {{ data['liver-select'] }}<br />
+              Pancreas: {{ data['pancreas-select'] }}<br />
+              Tissue: {{ data['tissue-select'] }}<br />
+              Small bowel: {{ data['small-bowel-select'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="blood-testing">
+                Change<span class="nhsuk-u-visually-hidden"> the organs and tissue you would like to donate</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+
+           <div class="nhsuk-summary-list__row">
+             <dt class="nhsuk-summary-list__key">
+               Do you want important information from your GP record to be available to other health and care professionals?
              </dt>
              <dd class="nhsuk-summary-list__value">
                {{ data['scr'] }}
