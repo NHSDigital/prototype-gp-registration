@@ -13,7 +13,7 @@
 <!-- Page heading -->
 {% if (data['who-is-registering'] === "dependant") %}
   {% set heading = "What is " + data['name-first-name'] + "'s height?" %} {% else %}
-  {% set heading = 'What is your height?' %} {% endif %}
+  {% set heading = 'What is your height? (optional)' %} {% endif %}
 
 {% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
 
@@ -36,73 +36,41 @@
 
     <form action="weight" method="post" autocomplete="off">
 
-      {% include 'live/includes/step.html' %}
 
-      {# Multi-line HTML for feet and inches #}
-      {% set feetInchesHtml %}
-      <div class="nhsuk-form-group" style="display:flex; gap:1rem; align-items:flex-end;">
-        <div>
-          <label class="nhsuk-label" for="height-feet">Feet</label>
-          <input class="nhsuk-input nhsuk-input--width-5" id="height-feet" name="height-feet" type="number" value="{{ data['height-feet'] }}">
+      <fieldset class="nhsuk-fieldset">
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+          {{ heading }}
+        </legend>
+        <span class="nhsuk-hint">The GP surgery may use this information to give you health guidance and support.</span>
+        <span class="nhsuk-hint nhsuk-u-margin-top-2"></span>
+
+        <!-- FEET AND INCHES section: visible by default -->
+        <div id="feet-inches-section" class="nhsuk-form-group nhsuk-u-margin-top-4">
+          <div style="display: flex; gap: 1rem; align-items: flex-end;">
+            <div>
+              <label class="nhsuk-label" for="height-feet">Feet</label>
+              <input class="nhsuk-input" style="width: 5em;" id="height-feet" name="height-feet" type="number" min="0" max="8" />
+            </div>
+            <div>
+              <label class="nhsuk-label" for="height-inches">Inches</label>
+              <input class="nhsuk-input" style="width: 5em;" id="height-inches" name="height-inches" type="number" min="0" max="11" />
+            </div>
+          </div>
         </div>
-        <div>
-          <label class="nhsuk-label" for="height-inches">Inches</label>
-          <input class="nhsuk-input nhsuk-input--width-5" id="height-inches" name="height-inches" type="number" value="{{ data['height-inches'] }}">
+
+        <!-- CENTIMETRES section: hidden by default -->
+        <div id="centimetres-section" class="nhsuk-form-group nhsuk-u-margin-top-4" style="display: none;">
+          <label class="nhsuk-label" for="height-centimetres">Height in centimetres</label>
+          <input class="nhsuk-input" style="width: 7em;" id="height-centimetres" name="height-centimetres" type="number" min="30" max="300" />
         </div>
-      </div>
-      {% endset %}
 
-      {# Multi-line HTML for centimetres #}
-      {% set centimetresHtml %}
-      <div class="nhsuk-form-group">
-        <label class="nhsuk-label" for="height-centimetres">Centimetres</label>
-        <input class="nhsuk-input nhsuk-input--width-10"
-               id="height-centimetres"
-               name="height-centimetres"
-               type="number"
-               inputmode="numeric"
-               min="30"
-               max="300"
-               value="{{ data['height-centimetres'] }}">
-      </div>
-      {% endset %}
+        <!-- Toggle link -->
+        <p class="nhsuk-u-margin-top-3">
+          <a id="height-unit-skip" role="button" tabindex="0" class="nhsuk-link" href="#">Switch to centimetres</a>
+        </p>
+      </fieldset>
 
-      {{ radios({
-        "idPrefix": "height-unit",
-        "name": "height-unit",
-        "fieldset": {
-          "legend": {
-            "text": heading,
-            "classes": "nhsuk-fieldset__legend--l",
-            "isPageHeading": true
-          }
-        },
-        "hint": { "text": "This question is optional" },
-        "items": [
-          {
-            "value": "feet-inches",
-            "text": "Feet and inches",
-            "checked": data['height-unit'] == "feet-inches",
-            "conditional": { "html": feetInchesHtml }
-          },
-          {
-            "value": "centimetres",
-            "text": "Centimetres",
-            "checked": data['height-unit'] == "centimetres",
-            "conditional": { "html": centimetresHtml }
-          }
-        ]
-      }) }}
-
-      {% from "details/macro.njk" import details %}
-
-      {% call details({
-        summaryText: "Why are you asking this?"
-      }) %}
-      <p>The GP surgery may use this information to give you health guidance and support.</p>
-      {% endcall %}
-
-      {{ button({ "text": "Continue" }) }}
+      <button class="nhsuk-button" type="submit">Continue</button>
 
     </form>
 
@@ -115,15 +83,47 @@
 
 {% block pageScripts %}
 <script>
-  $('#enter-address-manually-link').click(function () {
-    $('#current-address-lookup-container').addClass("hidden-section");
-    $('.current-address-form').removeClass("hidden-section");
-  });
+  (function () {
+    function initHeightToggle() {
+      var toggleLink = document.getElementById('height-unit-skip');
+      var feetInchesSection = document.getElementById('feet-inches-section');
+      var centimetresSection = document.getElementById('centimetres-section');
+      var heightFeetInput = document.getElementById('height-feet');
+      var heightCentimetresInput = document.getElementById('height-centimetres');
 
-  $('#use-postcode-lookup-link').click(function () {
-    $('#current-address-lookup-container').removeClass("hidden-section");
-    $('#select-address-section').addClass("hidden-section");
-    $('.current-address-form').addClass("hidden-section");
-  });
+      if (!toggleLink || !feetInchesSection || !centimetresSection) {
+        return;
+      }
+
+      function toggleUnits(event) {
+        event.preventDefault();
+        var showingCentimetres = centimetresSection.style.display !== 'none';
+        if (showingCentimetres) {
+          centimetresSection.style.display = 'none';
+          feetInchesSection.style.display = '';
+          toggleLink.textContent = 'Switch to centimetres';
+          if (heightFeetInput) heightFeetInput.focus();
+        } else {
+          feetInchesSection.style.display = 'none';
+          centimetresSection.style.display = '';
+          toggleLink.textContent = 'Switch to feet and inches';
+          if (heightCentimetresInput) heightCentimetresInput.focus();
+        }
+      }
+
+      toggleLink.addEventListener('click', toggleUnits);
+      toggleLink.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          toggleUnits(event);
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initHeightToggle);
+    } else {
+      initHeightToggle();
+    }
+  })();
 </script>
 {% endblock %}

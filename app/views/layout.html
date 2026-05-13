@@ -109,7 +109,11 @@
 </footer>
 
 {% endblock %}
-
+{% block bodyEnd %}
+  {{ super() }}
+  {% include "includes/scripts.html" %}
+  {% block pageScripts %}{% endblock %}
+{% endblock %}
 
 
 
