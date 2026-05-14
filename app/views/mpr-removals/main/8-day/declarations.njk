@@ -1,10 +1,10 @@
 {% extends 'mpr/_layout.html' %}
 
-{% set pageName = "Declaration - Patient deductions - Manage patient registrations - NHS" %}
+{% set pageName = "Declaration - Patient removals - Manage patient registrations - NHS" %}
 
 {% block beforeContent %}
   {{ backLink({
-      href: "/mpr-removals/main/removal-reason",
+      href: "/mpr-removals/main/removal-type",
       text: "Go back"
     }) 
   }}
@@ -51,7 +51,7 @@
       <div class="nhsuk-u-padding-bottom-6">
         {{ button({
           "text": "Confirm and continue",
-          "href": "/mpr-removals/main/8-day/warning"
+          "href": "/mpr-removals/main/8-day/removal-reason"
         }) }}
       </div>
 

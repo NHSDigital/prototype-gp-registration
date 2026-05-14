@@ -1,6 +1,6 @@
 {% extends 'mpr/_layout.html' %}
 
-{% set pageName = "Confirm patient - Patient deductions - Manage patient registrations - NHS" %}
+{% set pageName = "Confirm patient - Patient removals - Manage patient registrations - NHS" %}
 
 {% block beforeContent %}
   {{ backLink({
@@ -14,7 +14,7 @@
 
   <h1 class="nhsuk-heading-xl">
     <span class="nhsuk-caption-l">
-      Deduct a patient from your practice list
+      Remove a patient from your practice list
     </span>
     Confirm patient
   </h1>
@@ -79,7 +79,7 @@
       <div class="nhsuk-button-group nhsuk-u-padding-bottom-6">
         {{ button({
           "text": "Continue",
-          "href": "/mpr-removals/main/removal-reason"
+          "href": "/mpr-removals/main/removal-type"
         }) }}
 
         <a href="javascript:history.go(-1)" class="nhsuk-link">Go back</a>

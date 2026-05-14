@@ -16,6 +16,18 @@
     <div class="nhsuk-grid-column-two-thirds">
       <form method="post" action="/mpr-removals/main/sas/police-report">
 
+        {% set otherHtml  %}
+          {{ textarea({
+            name: "newRemoval[otherReason]",
+            id: "other-reason",
+            rows: "3",
+            label: {
+              text: "Please specify"
+            },
+            value: data.newRemoval.otherReason
+          }) }}
+        {% endset -%}
+
         {{ radios({
           idPrefix: "incidentType",
           name: "newRemoval[incidentType]",
@@ -50,10 +62,24 @@
               }
             },
             {
-              value: "Vandalism",
-              text: "Vandalism",
+              value: "Vandalism to premises",
+              text: "Vandalism to premises",
               hint: {
                 text: "Deliberate damage or destruction of property with an intention to intimidate or cause harm."
+              }
+            },
+            {
+              value: "Vandalism to vehicle",
+              text: "Vandalism to vehicle",
+              hint: {
+                text: "Deliberate damage or destruction of vehicle(s) with an intention to intimidate or cause harm."
+              }
+            },
+            {
+              value: "Other",
+              text: "Other",
+              conditional: {
+                html: otherHtml
               }
             }
           ]

@@ -103,14 +103,6 @@ const completedRemovals = {
     createdDate: "6 February 2026",
     deductionDate: "6 February 2026"
   },
-  'RMR-767386': {
-    firstName: "Freya",
-    lastName: "Kelly",
-    nhsNumber: "182 714 6052",
-    deductionReason: "Police incident requiring urgent removal",
-    createdDate: "28 March 2026",
-    deductionDate: "28 March 2026"
-  },
   'RMR-608093': {
     firstName: "Theo",
     lastName: "Dixon",
@@ -118,14 +110,6 @@ const completedRemovals = {
     deductionReason: "Breakdown of relationship",
     createdDate: "17 March 2026",
     deductionDate: "25 March 2026"
-  },
-  'RMR-443686': {
-    firstName: "Grace",
-    lastName: "Bell",
-    nhsNumber: "668 716 6093",
-    deductionReason: "Repeated, unjustified non-attendance of appointments",
-    createdDate: "9 April 2026",
-    deductionDate: "17 April 2026"
   },
   'RMR-794737': {
     firstName: "Jack",
@@ -167,30 +151,6 @@ const completedRemovals = {
     createdDate: "22 April 2026",
     deductionDate: "22 April 2026"
   },
-  'RMR-334764': {
-    firstName: "Ella",
-    lastName: "Robinson",
-    nhsNumber: "934 586 9573",
-    deductionReason: "Police incident requiring urgent removal",
-    createdDate: "15 February 2026",
-    deductionDate: "15 February 2026"
-  },
-  'RMR-646277': {
-    firstName: "Alfie",
-    lastName: "Hughes",
-    nhsNumber: "834 990 1799",
-    deductionReason: "Breakdown of relationship",
-    createdDate: "30 January 2026",
-    deductionDate: "7 February 2026"
-  },
-  'RMR-637238': {
-    firstName: "Ruby",
-    lastName: "Hall",
-    nhsNumber: "198 331 1774",
-    deductionReason: "Repeated, unjustified non-attendance of appointments",
-    createdDate: "6 February 2026",
-    deductionDate: "14 February 2026"
-  },
   'RMR-985498': {
     firstName: "Thomas",
     lastName: "Jackson",
@@ -230,30 +190,6 @@ const completedRemovals = {
     deductionReason: "Death",
     createdDate: "31 March 2026",
     deductionDate: "31 March 2026"
-  },
-  'RMR-314772': {
-    firstName: "Rosie",
-    lastName: "Webb",
-    nhsNumber: "655 935 7767",
-    deductionReason: "Police incident requiring urgent removal",
-    createdDate: "3 February 2026",
-    deductionDate: "3 February 2026"
-  },
-  'RMR-407543': {
-    firstName: "Henry",
-    lastName: "Miller",
-    nhsNumber: "985 872 2680",
-    deductionReason: "Breakdown of relationship",
-    createdDate: "20 March 2026",
-    deductionDate: "28 March 2026"
-  },
-  'RMR-432278': {
-    firstName: "Daisy",
-    lastName: "Shaw",
-    nhsNumber: "335 394 0960",
-    deductionReason: "Repeated, unjustified non-attendance of appointments",
-    createdDate: "1 February 2026",
-    deductionDate: "9 February 2026"
   },
   'RMR-702811': {
     firstName: "James",
@@ -295,30 +231,6 @@ const completedRemovals = {
     createdDate: "15 March 2026",
     deductionDate: "15 March 2026"
   },
-  'RMR-286493': {
-    firstName: "Alice",
-    lastName: "Walker",
-    nhsNumber: "367 231 8108",
-    deductionReason: "Police incident requiring urgent removal",
-    createdDate: "13 April 2026",
-    deductionDate: "13 April 2026"
-  },
-  'RMR-734649': {
-    firstName: "Mason",
-    lastName: "White",
-    nhsNumber: "695 347 0283",
-    deductionReason: "Breakdown of relationship",
-    createdDate: "2 April 2026",
-    deductionDate: "10 April 2026"
-  },
-  'RMR-820640': {
-    firstName: "Matilda",
-    lastName: "Green",
-    nhsNumber: "916 265 5388",
-    deductionReason: "Repeated, unjustified non-attendance of appointments",
-    createdDate: "3 February 2026",
-    deductionDate: "11 February 2026"
-  },
   'RMR-693846': {
     firstName: "Archie",
     lastName: "Clarke",
@@ -359,30 +271,6 @@ const completedRemovals = {
     createdDate: "14 March 2026",
     deductionDate: "14 March 2026"
   },
-  'RMR-691344': {
-    firstName: "Chloe",
-    lastName: "Price",
-    nhsNumber: "915 173 9593",
-    deductionReason: "Police incident requiring urgent removal",
-    createdDate: "27 April 2026",
-    deductionDate: "27 April 2026"
-  },
-  'RMR-379498': {
-    firstName: "Edward",
-    lastName: "Bailey",
-    nhsNumber: "723 912 3103",
-    deductionReason: "Breakdown of relationship",
-    createdDate: "8 February 2026",
-    deductionDate: "16 February 2026"
-  },
-  'RMR-540407': {
-    firstName: "Millie",
-    lastName: "Murphy",
-    nhsNumber: "273 288 2976",
-    deductionReason: "Repeated, unjustified non-attendance of appointments",
-    createdDate: "3 April 2026",
-    deductionDate: "11 April 2026"
-  },
   'RMR-403316': {
     firstName: "Benjamin",
     lastName: "Cook",
@@ -402,7 +290,13 @@ const completedRemovals = {
 };
 
 module.exports = Object.fromEntries(
-  Object.entries(completedRemovals).sort(([, a], [, b]) => {
-    return new Date(b.deductionDate) - new Date(a.deductionDate);
-  })
+  Object.entries(completedRemovals)
+    .filter(([, entry]) => [
+      'Police incident requiring urgent removal',
+      'Repeated, unjustified non-attendance of appointments',
+      'Breakdown of relationship'
+    ].includes(entry.deductionReason))
+    .sort(([, a], [, b]) => {
+      return new Date(b.deductionDate) - new Date(a.deductionDate);
+    })
 );

@@ -1,6 +1,6 @@
 {% extends 'mpr/_layout.html' %}
 
-{% set pageName = "Pending deductions - Manage patient registrations - NHS" %}
+{% set pageName = "Pending removals - Manage patient registrations - NHS" %}
 
 {% block beforeContent %}
   {{ backLink({
@@ -12,9 +12,9 @@
 
 {% block content %}
 
-  <h1 class="nhsuk-heading-xl">Pending deductions</h1>
+  <h1 class="nhsuk-heading-xl">Pending removals</h1>
 
-  <p>Patients pending deduction from your practice list.</p>
+  <p>Patients pending removal from your practice list.</p>
 
   {% set pendingRemovalRows = [] %}
   {% for ref, removal in data.pendingRemovals %}
