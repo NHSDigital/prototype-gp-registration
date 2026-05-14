@@ -38,17 +38,12 @@ router.post('/main/confirm-patient', (req, res) => {
 	return res.redirect('/mpr-removals/main/confirm-patient');
 });
 
-router.post('/main/removal-reason-routing', (req, res) => {
-	const deductionReason = req.body.newRemoval && req.body.newRemoval.deductionReason;
-	req.session.data = req.session.data || {};
-	req.session.data.newRemoval = req.session.data.newRemoval || {};
+router.post('/main/removal-type-routing', (req, res) => {
+	const removalType = req.body.newRemoval && req.body.newRemoval.type;
 
-	if (deductionReason === 'Police incident requiring urgent removal') {
-		req.session.data.newRemoval.type = 'Immediate removal (Special allocation scheme)';
+	if (removalType === 'Immediate removal (Special allocation scheme)') {
 		return res.redirect('/mpr-removals/main/sas/declaration');
 	}
-
-	req.session.data.newRemoval.type = '8-day removal';
 	return res.redirect('/mpr-removals/main/8-day/declarations');
 });
 

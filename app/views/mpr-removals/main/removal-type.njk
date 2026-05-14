@@ -1,0 +1,57 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Removal type - Patient removals - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "/mpr-removals/main/confirm-patient",
+      text: "Go back"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  {% set newRemoval = data.newRemoval or {} %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form method="post" action="/mpr-removals/main/removal-type-routing">
+
+        {{ radios({
+          idPrefix: "removalType",
+          name: "newRemoval[type]",
+          fieldset: {
+            legend: {
+              html: "<span class=\"nhsuk-caption-l\">Remove a patient from your practice list</span> Removal type",
+              size: "xl",
+              isPageHeading: true
+            }
+          },
+          value: newRemoval.type,
+          items: [
+            {
+              value: "8-day removal",
+              text: "8-day removal",
+              hint: {
+                text: "The patient will be deducted and asked to register with a new practice."
+              }
+            },
+            {
+              value: "Immediate removal (Special allocation scheme)",
+              text: "Immediate removal",
+              hint: {
+                text: "The patient will be deducted and added to the Special Allocation Scheme (SAS)."
+              }
+              
+            }
+          ]
+        }) }}
+
+        {{ button({ text: 'Continue' }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

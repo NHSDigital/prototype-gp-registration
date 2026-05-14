@@ -1,0 +1,72 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "Removal reason - Patient removals - Manage patient registrations - NHS" %}
+
+{% block beforeContent %}
+  {{ backLink({
+      href: "/mpr-removals/main/8-day/declarations",
+      text: "Go back"
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  {% set newRemoval = data.newRemoval or {} %}
+
+  {% set otherHtml  %}
+    {{ textarea({
+      name: "newRemoval[otherReason]",
+      id: "other-reason",
+      rows: "3",
+      label: {
+        text: "Please specify"
+      },
+      value: data.newRemoval.otherReason
+    }) }}
+  {% endset -%}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form method="post" action="/mpr-removals/main/8-day/warning">
+
+        {{ radios({
+          idPrefix: "deductionReason",
+          name: "newRemoval[deductionReason]",
+          fieldset: {
+            legend: {
+              html: "<span class=\"nhsuk-caption-l\">8-day removal</span> Removal reason",
+              size: "xl",
+              isPageHeading: true
+            }
+          },
+          value: newRemoval.deductionReason,
+          items: [
+            {
+              value: "Breakdown of relationship",
+              text: "Breakdown of relationship",
+              hint: {
+                text: "Due to inappropriate and unacceptable patient behaviours for example threatening or abusive behaviour towards staff or patients."
+              }
+            },
+            {
+              value: "Repeated, unjustified non-attendance of appointments",
+              text: "Repeated, unjustified non-attendance of appointments"
+            },
+            {
+              value: "Other",
+              text: "Other",
+              conditional: {
+                html: otherHtml
+              }
+            }
+          ]
+        }) }}
+
+        {{ button({ text: 'Continue' }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

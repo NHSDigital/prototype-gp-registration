@@ -1,6 +1,6 @@
 {% extends 'mpr/_layout.html' %}
 
-{% set pageName = "Check your answers - Patient deductions - Manage patient registrations - NHS" %}
+{% set pageName = "Check your answers - Patient removals - Manage patient registrations - NHS" %}
 
 {% block beforeContent %}
   {{ backLink({
@@ -35,14 +35,14 @@
 
   <h1 class="nhsuk-heading-xl">
     <span class="nhsuk-caption-l">
-      Deduct a patient from your practice list
+      Remove a patient from your practice list
     </span>
     Check your answers
   </h1>
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      <p>Check the information below is correct before you deduct the patient from your practice list.</p>
+      <p>Check the information below is correct before you remove the patient from your practice list.</p>
 
       {{ summaryList({
         card: {
@@ -95,38 +95,49 @@
 
       {% if newRemoval.type == 'Immediate removal (Special allocation scheme)' %}
 
+        {% set removalRows = [
+          {
+            key: { text: "Removal type" },
+            value: { text: newRemoval.type },
+            actions: {
+              items: [{ href: "/mpr-removals/main/removal-type", text: "Change", visuallyHiddenText: "removal type" }]
+            }
+          },
+          {
+            key: { text: "Nature of incident" },
+            value: { text: newRemoval.incidentType },
+            actions: {
+              items: [{ href: "/mpr-removals/main/sas/incident-type", text: "Change", visuallyHiddenText: "nature of incident" }]
+            }
+          }
+        ] %}
+        {% if newRemoval.incidentType == 'Other' %}
+          {% set removalRows = removalRows.concat([
+            {
+              key: { text: "Other reason" },
+              value: { text: newRemoval.otherReason },
+              actions: {
+                items: [{ href: "/mpr-removals/main/sas/incident-type", text: "Change", visuallyHiddenText: "other reason" }]
+              }
+            }
+          ]) %}
+        {% endif %}
+        {% set removalRows = removalRows.concat([
+          {
+            key: { text: "Reported to the police" },
+            value: { text: newRemoval.reportedToPolice },
+            actions: {
+              items: [{ href: "/mpr-removals/main/sas/police-report", text: "Change", visuallyHiddenText: "reported to the police" }]
+            }
+          }
+        ]) %}
+
         {{ summaryList({
           card: {
             heading: "Removal information",
             headingSize: "m"
           },
-          rows: [
-            {
-              key: { text: "Removal type" },
-              value: { text: newRemoval.type }
-            },
-            {
-              key: { text: "Reason for removal" },
-              value: { text: newRemoval.deductionReason },
-              actions: {
-                items: [{ href: "/mpr-removals/main/removal-reason", text: "Change", visuallyHiddenText: "reason for removal" }]
-              }
-            },
-            {
-              key: { text: "Nature of incident" },
-              value: { text: newRemoval.incidentType },
-              actions: {
-                items: [{ href: "/mpr-removals/main/sas/incident-type", text: "Change", visuallyHiddenText: "nature of incident" }]
-              }
-            },
-            {
-              key: { text: "Reported to the police" },
-              value: { text: newRemoval.reportedToPolice },
-              actions: {
-                items: [{ href: "/mpr-removals/main/sas/police-report", text: "Change", visuallyHiddenText: "reported to the police" }]
-              }
-            }
-          ]
+          rows: removalRows
         }) }}
 
         {% if newRemoval.reportedToPolice == 'Yes' %}
@@ -192,39 +203,57 @@
         }) }}
 
       {% else %}
+        {% set removalRows = [
+          {
+            key: { text: "Removal type" },
+            value: { text: newRemoval.type },
+            actions: {
+              items: [{ href: "/mpr-removals/main/removal-type", text: "Change", visuallyHiddenText: "removal type" }]
+            }
+          },
+          {
+            key: { text: "Reason for removal" },
+            value: { text: newRemoval.deductionReason },
+            actions: {
+              items: [{ href: "/mpr-removals/main/8-day/removal-reason", text: "Change", visuallyHiddenText: "reason for removal" }]
+            }
+          }
+        ] %}
+        {% if newRemoval.deductionReason == 'Other' %}
+          {% set removalRows = removalRows.concat([
+            {
+              key: { text: "Other reason" },
+              value: { text: newRemoval.otherReason },
+              actions: {
+                items: [{ href: "/mpr-removals/main/8-day/removal-reason", text: "Change", visuallyHiddenText: "other reason" }]
+              }
+            }
+          ]) %}
+        {% endif %} 
+
+        {% set removalRows = removalRows.concat([
+          {
+            key: { text: "Written warning given within past 12 months" },
+            value: { text: newRemoval.eightDayWarning },
+            actions: {
+              items: [{ href: "/mpr-removals/main/8-day/warning", text: "Change", visuallyHiddenText: "written warning given within past 12 months" }]
+            }
+          },
+          {
+            key: { text: writtenWarningKey },
+            value: { html: writtenWarningDetail },
+            actions: {
+              items: [{ href: "/mpr-removals/main/8-day/warning", text: "Change", visuallyHiddenText: writtenWarningKey }]
+            }
+          }
+        ]) %}
 
         {{ summaryList({
           card: {
-            heading: "Deduction information",
+            heading: "Removal information",
             headingSize: "m"
           },
-          rows: [
-            {
-              key: { text: "Deduction type" },
-              value: { text: newRemoval.type }
-            },
-            {
-              key: { text: "Reason for deduction" },
-              value: { text: newRemoval.deductionReason },
-              actions: {
-                items: [{ href: "/mpr-removals/main/removal-reason", text: "Change", visuallyHiddenText: "deduction reason" }]
-              }
-            },
-            {
-              key: { text: "Written warning given within past 12 months" },
-              value: { text: newRemoval.eightDayWarning },
-              actions: {
-                items: [{ href: "/mpr-removals/main/8-day/warning", text: "Change", visuallyHiddenText: "written warning given within past 12 months" }]
-              }
-            },
-            {
-              key: { text: writtenWarningKey },
-              value: { html: writtenWarningDetail },
-              actions: {
-                items: [{ href: "/mpr-removals/main/8-day/warning", text: "Change", visuallyHiddenText: writtenWarningKey }]
-              }
-            }
-          ]
+          rows: removalRows
         }) }}
 
       {% endif %}
