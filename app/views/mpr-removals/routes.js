@@ -58,7 +58,7 @@ router.post('/main/sas/police-report-routing', (req, res) => {
 });
 
 router.post('/main/check-answers', (req, res) => {
-	const newRemoval = req.body.newRemoval || {};
+	const newRemoval = (req.session.data && req.session.data.newRemoval) || {};
 
 	const warningDate = newRemoval.eightDayWarningDate || {};
 	const formattedWarningDate = formatLongDate(warningDate.day, warningDate.month, warningDate.year);
@@ -69,11 +69,9 @@ router.post('/main/check-answers', (req, res) => {
 	const incidentDate = (newRemoval.incident && newRemoval.incident.date) || {};
 	const formattedIncidentDate = formatLongDate(incidentDate.day, incidentDate.month, incidentDate.year);
 
-	req.session.data = req.session.data || {};
-	req.session.data.newRemoval = req.session.data.newRemoval || {};
-	req.session.data.newRemoval.eightDayWarningDateFormatted = formattedWarningDate;
-	req.session.data.newRemoval.policeReportDateFormatted = formattedPoliceReportDate;
-	req.session.data.newRemoval.incidentDateFormatted = formattedIncidentDate;
+	newRemoval.eightDayWarningDateFormatted = formattedWarningDate;
+	newRemoval.policeReportDateFormatted = formattedPoliceReportDate;
+	newRemoval.incidentDateFormatted = formattedIncidentDate;
 
 	return res.redirect('/mpr-removals/main/check-answers');
 });
