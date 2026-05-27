@@ -55,9 +55,9 @@
           {% include 'live/includes/step.html' %}
           <h1 class="nhsuk-heading-l">Donating your organs and tissue</h1>
 
-          <p class="nhsuk-body">Organ donation is when you decide to give an organ or tissue to someone else. You can donate organs and tissue while you are alive or after you have died.</p>
-          <p class="nhsuk-body">You do not have to make a decision right now. You can <a href="https://www.organdonation.nhs.uk/register-your-decision/" target="_blank">register your decision on the NHS organ donation website (link opens in a new tab)</a> at any time.</p>
-          <p class="nhsuk-body">The Register with a GP surgery service does not store any data related to your organ donation choices.</p>
+          <p class="nhsuk-body">Organ donation is when you decide to give an organ or tissue to someone else. This is done after death.</p>
+          <p class="nhsuk-body">By registering your organ donation decision now, you consent to NHS England sharing your information with NHS Blood and Transplant to be recorded on the NHS Organ Donor Register. <a class="nhsuk-link" href="https://www.organdonation.nhs.uk/privacy-statement/" target="_blank">View their privacy statement (link opens in a new tab)</a> to see how your data is used to support the NHS Organ Donor Register.</p>
+          <p class="nhsuk-body">You can also register or update your decision at any time on the NHS Organ Donation website.</p>
 
           {% set fieldVar = data['organDonor'] %}
           <form action=" {{ basePath }}/donating-your-organs-and-tissue-answer" method="post" autocomplete="off">
@@ -96,6 +96,14 @@
                         text: "Register your decision later on the NHS organ donation website"
                       },
                 checked: fieldVar == "Later"
+              },
+              {
+                divider: "or"
+              },
+              {
+                "value": "No",
+                "text": "No, none of my organs and tissue",
+                checked: fieldVar == "No"
               }
               ]
             }) }}

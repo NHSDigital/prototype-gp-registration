@@ -61,81 +61,12 @@
           <form action="scr" method="post" autocomplete="off">
 
           {{ radios({
-            idPrefix: "kidney-select",
-            name: "kidney-select",
-            classes: "nhsuk-radios--inline",
-            fieldset: {
-              legend: {
-                text: "Kidneys",
-                size: "m",
-                isPageHeading: true
-              }
-            },
-            items: [
-              {
-                value: "Yes",
-                text: "Yes"
-              },
-              {
-                value: "No",
-                text: "No"
-              }
-            ]
-          }) }}
-
-          {{ radios({
-            idPrefix: "corneas-select",
-            name: "corneas-select",
-            classes: "nhsuk-radios--inline",
-            fieldset: {
-              legend: {
-                text: "Corneas",
-                size: "m",
-                isPageHeading: true
-              }
-            },
-            items: [
-              {
-                value: "Yes",
-                text: "Yes"
-              },
-              {
-                value: "No",
-                text: "No"
-              }
-            ]
-          }) }}
-
-          {{ radios({
             idPrefix: "heart-select",
             name: "heart-select",
             classes: "nhsuk-radios--inline",
             fieldset: {
               legend: {
                 text: "Heart",
-                size: "m",
-                isPageHeading: true
-              }
-            },
-            items: [
-              {
-                value: "Yes",
-                text: "Yes"
-              },
-              {
-                value: "No",
-                text: "No"
-              }
-            ]
-          }) }}
-
-          {{ radios({
-            idPrefix: "lungs-select",
-            name: "lungs-select",
-            classes: "nhsuk-radios--inline",
-            fieldset: {
-              legend: {
-                text: "Lungs",
                 size: "m",
                 isPageHeading: true
               }
@@ -176,6 +107,52 @@
           }) }}
 
           {{ radios({
+            idPrefix: "kidney-select",
+            name: "kidney-select",
+            classes: "nhsuk-radios--inline",
+            fieldset: {
+              legend: {
+                text: "Kidneys",
+                size: "m",
+                isPageHeading: true
+              }
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes"
+              },
+              {
+                value: "No",
+                text: "No"
+              }
+            ]
+          }) }}
+
+          {{ radios({
+            idPrefix: "lungs-select",
+            name: "lungs-select",
+            classes: "nhsuk-radios--inline",
+            fieldset: {
+              legend: {
+                text: "Lungs",
+                size: "m",
+                isPageHeading: true
+              }
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes"
+              },
+              {
+                value: "No",
+                text: "No"
+              }
+            ]
+          }) }}
+
+          {{ radios({
             idPrefix: "pancreas-select",
             name: "pancreas-select",
             classes: "nhsuk-radios--inline",
@@ -199,12 +176,12 @@
           }) }}
 
           {{ radios({
-            idPrefix: "tissue-select",
-            name: "tissue-select",
+            idPrefix: "small-bowel-select",
+            name: "small-bowel-select",
             classes: "nhsuk-radios--inline",
             fieldset: {
               legend: {
-                text: "Tissue",
+                text: "Small bowel",
                 size: "m",
                 isPageHeading: true
               }
@@ -222,12 +199,35 @@
           }) }}
 
           {{ radios({
-            idPrefix: "small-bowel-select",
-            name: "small-bowel-select",
+            idPrefix: "corneas-select",
+            name: "corneas-select",
             classes: "nhsuk-radios--inline",
             fieldset: {
               legend: {
-                text: "Small bowel",
+                text: "Corneas",
+                size: "m",
+                isPageHeading: true
+              }
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes"
+              },
+              {
+                value: "No",
+                text: "No"
+              }
+            ]
+          }) }}
+
+          {{ radios({
+            idPrefix: "tissue-select",
+            name: "tissue-select",
+            classes: "nhsuk-radios--inline",
+            fieldset: {
+              legend: {
+                text: "Tissue",
                 size: "m",
                 isPageHeading: true
               }
