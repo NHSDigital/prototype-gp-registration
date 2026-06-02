@@ -24,8 +24,8 @@
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block beforeContent %}
 {{ backLink({
-    href: "registrations-new-1",
-    text: "Back to new registrations"
+    href: "registrations-under-review",
+    text: "Back to registrations under review"
   })
 }}
 {% endblock %}
@@ -38,9 +38,13 @@
         <div class="nhsuk-grid-column-full">
 
       
-          <h1 class="nhsuk-heading-l">Sam Smith</h1>
+          <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">Sam Smith</h1>
+          <p class="nhsuk-body nhsuk-u-margin-bottom-2"><strong>Placed under review</strong> by Gary Sanchez, Friday 20 March 2026</p>
+          <p class="nhsuk-body"><a href="patient-notes-1" class="nhsuk-link">View and add notes</a></p>
 
-          <p class="nhsuk-u-margin-bottom-0">NHS number</p>
+          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+          <p class="nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-0">NHS number</p>
           <p class="nhsuk-heading-s nhsuk-u-padding-top-0">123 456 7890</p>
           <p class="nhsuk-u-margin-bottom-0">Date of birth</p>
           <p class="nhsuk-heading-s nhsuk-u-padding-top-0">1 January 1990</p>
@@ -49,30 +53,13 @@
           <p class="nhsuk-u-margin-bottom-0">Postcode</p>
           <p class="nhsuk-heading-s nhsuk-u-padding-top-0">ZZ99 3CZ</p>
           <p class="nhsuk-u-margin-bottom-0">Branch site</p>
-          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">Spa Surgery, ZZ99 6PY</p>
-          <p class="nhsuk-body">Approving this registration will update the patient's NHS record on the Spine.</p>
-
-          <div class="nhsuk-card nhsuk-card--warning">
-            <div class="nhsuk-card__content">
-              <h3 class="nhsuk-card__heading">
-              <span role="text">
-                You cannot action this registration
-              </span>
-              </h3>
-              <p class="nhsuk-card__description">You will need to process this registration manually.</p>
-              <br>
-              <h2 class="nhsuk-heading-m">If you approve this patient</h2>
-              <p class="nhsuk-card__description">Create a new patient record in your clinical supplier systems and add the patient information from this page, then select Mark as manually approved.</p>
-              <br>
-              <h2 class="nhsuk-heading-m">If you reject this patient</h2>
-              <p class="nhsuk-card__description">Choose the appropriate rejection reason and reject the registration. You will need to inform the patient of your decision.</p>
-            </div>
-          </div>
+          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">Spa Surgery, LS23 6PY</p>
+          <p class="nhsuk-body nhsuk-u-margin-top-6">Approving this registration will update the patient's NHS record on the Spine.</p>
 
           <!-- Actions -->
           <div class="nhsuk-button-group">
             <a class="nhsuk-button" href="confirm-approved" role="button" draggable="false">
-              Mark as manually approved
+              Approve
             </a>
             <p class="nhsuk-body"><a href="reject-reasons" style="margin-top:auto; margin-bottom:auto; margin-left:0; margin-right:0;">Reject this registration</a></p>
           </div>
