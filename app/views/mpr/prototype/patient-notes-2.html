@@ -1,0 +1,81 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'mpr/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Notes for Sam Smith - GP registrations portal - NHS" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{{ backLink({
+    href: "patient-detail-under-review-note-added",
+    text: "Back to patient details"
+  })
+}}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <h1 class="nhsuk-heading-l">Notes for Sam Smith</h1>
+
+          <!-- Timeline -->
+          <div class="moj-timeline">
+            
+            <div class="moj-timeline__item">
+              <div class="moj-timeline__header">
+                <h2 class="moj-timeline__title">Note added</h2>
+                <p class="moj-timeline__byline">by Martina Dolores</p>
+              </div>
+              <p class="moj-timeline__date">
+                <time datetime="2026-03-23T12:32:00.000Z">Monday 23 March 2026 at 12:32pm</time>
+              </p>
+              <div class="moj-timeline__description">{{ data['add-note-detail'] }}</div>
+            </div>
+
+            <div class="moj-timeline__item">
+              <div class="moj-timeline__header">
+                <h2 class="moj-timeline__title">Placed under review</h2>
+                <p class="moj-timeline__byline">by Gary Sanchez</p>
+              </div>
+              <p class="moj-timeline__date">
+                <time datetime="2026-03-20T09:12:00.000Z">Friday 20 March 2026 at 9:12am</time>
+              </p>
+              <div class="moj-timeline__description">{{ data['under-review-reason'] }}</div>
+            </div>
+
+          </div>
+
+          <!-- Actions -->
+          <div style="display: flex; height: 100%; margin-bottom: 48px;">
+            <a class="nhsuk-button" style="margin: auto 24px auto 0;" href="add-patient-note">Add a note</a>
+          </div>
+
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+{% endblock %}
