@@ -84,12 +84,12 @@
           }) }}
 
           {{ radios({
-            idPrefix: "liver-select",
-            name: "liver-select",
+            idPrefix: "kidney-select",
+            name: "kidney-select",
             classes: "nhsuk-radios--inline",
             fieldset: {
               legend: {
-                text: "Liver",
+                text: "Kidneys",
                 size: "m",
                 isPageHeading: true
               }
@@ -107,12 +107,12 @@
           }) }}
 
           {{ radios({
-            idPrefix: "kidney-select",
-            name: "kidney-select",
+            idPrefix: "liver-select",
+            name: "liver-select",
             classes: "nhsuk-radios--inline",
             fieldset: {
               legend: {
-                text: "Kidneys",
+                text: "Liver",
                 size: "m",
                 isPageHeading: true
               }
@@ -243,7 +243,6 @@
               }
             ]
           }) }}
-
 
           {{ button({
             "text": "Continue"

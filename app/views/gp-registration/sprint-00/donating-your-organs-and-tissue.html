@@ -55,8 +55,8 @@
           {% include 'live/includes/step.html' %}
           <h1 class="nhsuk-heading-l">Donating your organs and tissue</h1>
 
-          <p class="nhsuk-body">Organ donation is when you decide to give an organ or tissue to someone else. This is done after death.</p>
-          <p class="nhsuk-body">By registering your organ donation decision now, you consent to NHS England sharing your information with NHS Blood and Transplant to be recorded on the NHS Organ Donor Register. <a class="nhsuk-link" href="https://www.organdonation.nhs.uk/privacy-statement/" target="_blank">View their privacy statement (link opens in a new tab)</a> to see how your data is used.</p>
+          <p class="nhsuk-body">Organ donation is when you decide to give organs or tissue to someone else after death.</p>
+          <p class="nhsuk-body">By registering your organ donation decision now, you consent to NHS England sharing your information with NHS Blood and Transplant to be recorded on the NHS Organ Donor Register. <a class="nhsuk-link" href="https://www.organdonation.nhs.uk/privacy-statement/" target="_blank">View their privacy statement (link opens in a new tab)</a> to see how your data is used to support the NHS Organ Donor Register.</p>
           <p class="nhsuk-body">You can also register or update your decision at any time on the NHS Organ Donation website.</p>
 
           {% set fieldVar = data['organDonor'] %}
@@ -90,20 +90,23 @@
                 checked: fieldVar == "Some"
               },
               {
+                "value": "No",
+                "text": "No, none of my organs and tissue",
+                hint: {
+                        text: "Register your decision not to donate"
+                      },
+                checked: fieldVar == "No"
+              },
+              {
+                divider: "or"
+              },
+              {
                 "value": "Later",
                 "text": "I do not want to make this decision now",
                 hint: {
                         text: "Register your decision later on the NHS organ donation website"
                       },
                 checked: fieldVar == "Later"
-              },
-              {
-                divider: "or"
-              },
-              {
-                "value": "No",
-                "text": "No, none of my organs and tissue",
-                checked: fieldVar == "No"
               }
               ]
             }) }}
