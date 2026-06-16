@@ -1,0 +1,257 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'mpr/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Beryl Smith - GP registrations portal - NHS" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{{ backLink({
+    href: "registrations-new-1",
+    text: "Back"
+  })
+}}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <span class="nhsuk-caption-xl">Household (6 patients)</span>
+          <h1 class="nhsuk-heading-xl">Liverpool Rd, Manchester M3 4JP</h1>
+
+          <!-- Learn more -->
+          <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                Learn more about households
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <p class="nhsuk-body">Households may contain patients that:</p>
+              <ul class="nhsuk-list nhsuk-list--bullet">
+                <li>have registered in a single session</li>
+                <li>be part of a family (for example, a parent and children)</li>
+                <li>live at the same address</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- New registrations -->
+          <ul class="nhsuk-grid-row nhsuk-card-group">
+            <li class="nhsuk-grid-column-full nhsuk-card-group__item">
+              <div class="nhsuk-card">
+                <div class="nhsuk-card__content">
+                  <h2 class="nhsuk-card__heading nhsuk-heading-m">New registrations</h2>
+
+                  <table class="nhsuk-table">
+                    <thead class="nhsuk-table__head">
+                      <tr class="nhsuk-table__row">
+                        <th scope="col" class="nhsuk-table__header">
+                          Patient
+                        </th>
+                        <th scope="col" class="nhsuk-table__header nhsuk-table__header">
+                          Relationship
+                        </th>
+                        <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">
+                          Age
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="nhsuk-table__body">
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <a href="#">Morgan Tonight</a>
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell">
+                          Parent
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+                          38
+                        </td>
+                      </tr>
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <a href="#">Alicia Chesterfield</a>
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell">
+                          Child
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+                          6
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Registrations under review -->
+          <ul class="nhsuk-grid-row nhsuk-card-group">
+            <li class="nhsuk-grid-column-full nhsuk-card-group__item">
+              <div class="nhsuk-card">
+                <div class="nhsuk-card__content">
+                  <h2 class="nhsuk-card__heading nhsuk-heading-m">Registrations under review</h2>
+
+                  <table class="nhsuk-table">
+                    <thead class="nhsuk-table__head">
+                      <tr class="nhsuk-table__row">
+                        <th scope="col" class="nhsuk-table__header">
+                          Patient
+                        </th>
+                        <th scope="col" class="nhsuk-table__header nhsuk-table__header">
+                          Relationship
+                        </th>
+                        <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">
+                          Age
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="nhsuk-table__body">
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <a href="#">Graham Language</a>
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell">
+                          Unknown
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+                          42
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Approved registrations -->
+          <ul class="nhsuk-grid-row nhsuk-card-group">
+            <li class="nhsuk-grid-column-full nhsuk-card-group__item">
+              <div class="nhsuk-card">
+                <div class="nhsuk-card__content">
+                  <h2 class="nhsuk-card__heading nhsuk-heading-m">Approved registrations</h2>
+
+                  <table class="nhsuk-table">
+                    <thead class="nhsuk-table__head">
+                      <tr class="nhsuk-table__row">
+                        <th scope="col" class="nhsuk-table__header">
+                          Patient
+                        </th>
+                        <th scope="col" class="nhsuk-table__header nhsuk-table__header">
+                          Relationship
+                        </th>
+                        <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">
+                          Age
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="nhsuk-table__body">
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <a href="#">Cynthia Chesterfield</a>
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell">
+                          Grandparent
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+                          76
+                        </td>
+                      </tr>
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <a href="#">Perry Chesterfield</a>
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell">
+                          Grandparent
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+                          77
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Rejected registrations -->
+          <ul class="nhsuk-grid-row nhsuk-card-group">
+            <li class="nhsuk-grid-column-full nhsuk-card-group__item">
+              <div class="nhsuk-card">
+                <div class="nhsuk-card__content">
+                  <h2 class="nhsuk-card__heading nhsuk-heading-m">Rejected registrations</h2>
+
+                  <table class="nhsuk-table">
+                    <thead class="nhsuk-table__head">
+                      <tr class="nhsuk-table__row">
+                        <th scope="col" class="nhsuk-table__header">
+                          Patient
+                        </th>
+                        <th scope="col" class="nhsuk-table__header nhsuk-table__header">
+                          Relationship
+                        </th>
+                        <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">
+                          Age
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="nhsuk-table__body">
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <a href="#">Gavin Chesterfield</a>
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell">
+                          Parent
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+                          35
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+            </li>
+          </ul>
+
+
+        </div>
+      </div>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}

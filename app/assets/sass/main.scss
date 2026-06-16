@@ -81,6 +81,21 @@
   fill: currentcolor;
 }
 
+// Household styles for registration tables
+.patient-group {
+  border-left: 4px solid #d8dde0;
+}
+.patient-group td:first-of-type {
+  padding-left: 20px;
+}
+.patient-group th, .patient-group td, .patient-group-heading th, .patient-group-heading td {
+  padding-top: 10px;
+  border-bottom: none;
+}
+.patient-last-in-group th, .patient-last-in-group td {
+  border-bottom: 1px solid #d8dde0;
+}
+
 
 
 
