@@ -33,7 +33,7 @@
     {% set heading = "Does " + data['name-first-name'] + " have a carer?" %}
   {% endif %}
 {% else %}
-  {% set heading = 'Do you have a carer?' %}
+  {% set heading = 'Carers' %}
 {% endif %}
 
     
@@ -70,53 +70,57 @@
         <div class="nhsuk-grid-column-two-thirds">
 
           {% set fieldVar = data['need-carer'] %}
-          <form action="{{ basePath }}/do-you-have-a-carer-answer" method="post" autocomplete="off">
+<form action="{{ basePath }}/do-you-have-a-carer-answer" method="post" autocomplete="off">
 
-            {% include 'live/includes/step.html' %}
+  {% include 'live/includes/step.html' %}
 
-            {{ radios({
-              "idPrefix": "need-carer",
-              "name": "need-carer",
-              "fieldset": {
-                "legend": {
-                  "text": heading,
-                  "classes": "nhsuk-fieldset__legend--l",
-                  "isPageHeading": "true"
-                }
-              },
-              "hint": {
-                "text": "A carer looks after you because you are not able to look after yourself. This could be because of illness, disability or addiction. Your carer can be an adult or child, family member or friend. They can be paid or unpaid, but may get benefits."
-              },
-              "items": [
-                {
-                  "value": "Yes",
-                  "text": "Yes",
-                  checked: fieldVar == "Yes"
-                },
-                {
-                  "value": "No",
-                  "text": "No",
-                  checked: fieldVar == "No"
-                },
-                {
-                  "divider": "or"
-                },
-                {
-                  "value": "Prefer not to say",
-                  "text": "Prefer not to say",
-                  checked: fieldVar == "Prefer not to say"
-                }
-              ]
+            {% call fieldset({
+              legend: {
+                "text": heading,
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "A carer looks after a family member or friend who is not able to look after themselves. This could be because they have long-term physical or mental health conditions or illnesses, or problems related to old age.\nCarers can be adults or children. They can be paid, unpaid, or getting benefits for being a carer."
             }) }}
 
-         
+  <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6">Does someone look after you?</h2>
 
+  {{ radios({
+    "idPrefix": "need-carer",
+    "name": "need-carer",
+    "items": [
+      {
+        "value": "Yes",
+        "text": "Yes",
+        checked: fieldVar == "Yes"
+      },
+      {
+        "value": "No",
+        "text": "No",
+        checked: fieldVar == "No"
+      },
+      {
+        "divider": "or"
+      },
+      {
+        "value": "Prefer not to say",
+        "text": "Prefer not to say",
+        checked: fieldVar == "Prefer not to say"
+      }
+    ]
+  }) }}
 
-            {{ button({
-              "text": "Continue"
-            }) }}
+            {% endcall %}
 
-          </form>
+  {{ button({
+    "text": "Continue"
+  }) }}
+
+</form>
+
         </div>
        </div>
 
