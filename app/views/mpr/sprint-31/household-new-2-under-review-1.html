@@ -24,8 +24,8 @@
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block beforeContent %}
 {{ backLink({
-    href: "registrations-new-1",
-    text: "Back to new registrations"
+    href: "registrations-under-review",
+    text: "Back to registrations under review"
   })
 }}
 {% endblock %}
@@ -81,17 +81,6 @@
                     <tbody class="nhsuk-table__body">
                       <tr class="nhsuk-table__row">
                         <td class="nhsuk-table__cell">
-                          <a href="patient-detail-new-household-1">Beryl Smith</a>
-                        </td>
-                        <td class="nhsuk-table__cell nhsuk-table__cell">
-                          Parent
-                        </td>
-                        <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
-                          32
-                        </td>
-                      </tr>
-                      <tr class="nhsuk-table__row">
-                        <td class="nhsuk-table__cell">
                           <a href="patient-detail-new-household-2">Rosie McNickell</a>
                         </td>
                         <td class="nhsuk-table__cell nhsuk-table__cell">
@@ -110,6 +99,47 @@
                         </td>
                         <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
                           2
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Under review registrations -->
+          <ul class="nhsuk-grid-row nhsuk-card-group">
+            <li class="nhsuk-grid-column-full nhsuk-card-group__item">
+              <div class="nhsuk-card">
+                <div class="nhsuk-card__content">
+                  <h2 class="nhsuk-card__heading nhsuk-heading-m">Registrations under review</h2>
+
+                  <table class="nhsuk-table">
+                    <thead class="nhsuk-table__head">
+                      <tr class="nhsuk-table__row">
+                        <th scope="col" class="nhsuk-table__header">
+                          Patient
+                        </th>
+                        <th scope="col" class="nhsuk-table__header nhsuk-table__header">
+                          Relationship
+                        </th>
+                        <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">
+                          Age
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="nhsuk-table__body">
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <a href="#">Beryl Smith</a>
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell">
+                          Parent
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+                          32
                         </td>
                       </tr>
                     </tbody>
