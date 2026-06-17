@@ -33,7 +33,7 @@
 {% if (data['who-is-registering'] === "dependant") %}
   {% set heading = "Is " + data['name-first-name'] + " a carer?" %}
 {% else %}
-  {% set heading = 'Are you a carer?' %}
+  {% set heading = 'Looking after someone' %}
 {% endif %}
 
     
@@ -82,8 +82,11 @@
             }) %}
 
             {{ hint({
-              "text": "A carer looks after a family member or friend who is not able to look after themselves. This could be because of illness, disability or addiction. Carers can be adults or children. They can be paid or unpaid, but may get benefits."
+              "text": "A carer looks after a family member or friend who is not able to look after themselves. This could be because they have long-term physical or mental health conditions or illnesses, or problems related to old age.
+Carers can be adults or children. They can be paid, unpaid, or getting benefits for being a carer."
             }) }}
+
+  <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6">Are you a carer?</h2>
 
             {{ radios({
               "idPrefix": "are-carer",
