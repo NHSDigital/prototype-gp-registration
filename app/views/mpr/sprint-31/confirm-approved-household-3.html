@@ -18,7 +18,7 @@
   service name is needed. You can also reuse this variable
   within the <h1>, where they are the same.
 -->
-{% set pageName = "Rosie McNickell accepted - GP registrations portal - NHS" %}
+{% set pageName = "Rory McNickell accepted - GP registrations portal - NHS" %}
 
 <!-- For adding a breadcrumb or back link -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
@@ -37,7 +37,7 @@
           <h1 class="nhsuk-heading-xl">
             Approved
           </h1>
-          <p class="nhsuk-body-l">Rosie McNickell has been added to your patient list</p>
+          <p class="nhsuk-body-l">Rory McNickell has been added to your patient list</p>
         </div>
 
         <!-- Guidance -->
@@ -47,14 +47,19 @@
         <p class="nhsuk-body">Follow your surgery's guidance for managing newly registered patients.</p>
 
         <!-- Household -->
-        <h2 class="nhsuk-heading-s nhsuk-u-margin-bottom-3">You need to review 1 more patient in this household</h2>
-        <p class="nhsuk-body nhsuk-u-margin-bottom-3"><a href="household-new-1-approved-2" class="govuk-link">View household</a></p>
-        <a class="nhsuk-action-link" href="patient-detail-new-household-3">
-          <svg class="nhsuk-icon nhsuk-icon--arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
-            <path d="M12 2a10 10 0 0 0-10 9h11.7l-4-4a1 1 0 0 1 1.5-1.4l5.6 5.7a1 1 0 0 1 0 1.4l-5.6 5.7a1 1 0 0 1-1.5 0 1 1 0 0 1 0-1.4l4-4H2A10 10 0 1 0 12 2z" />
-          </svg>
-          <span class="nhsuk-action-link__text">View next patient</span>
-        </a>
+        <h2 class="nhsuk-heading-s nhsuk-u-margin-bottom-3">You have actioned all registrations in this household</h2>
+        <p class="nhsuk-body nhsuk-u-margin-bottom-6"><a href="household-approved-3" class="govuk-link">View household</a></p>
+
+        <!-- Actions -->
+        <div class="nhsuk-button-group">
+          <a class="nhsuk-button" href="registrations-new-group-removed" role="button" draggable="false">
+            Back to new registrations
+          </a>
+
+          <a class="nhsuk-button nhsuk-button--secondary" href="#" role="button" draggable="false">
+            Back to dashboard
+          </a>
+        </div>
 
         </div>
       </div>     
