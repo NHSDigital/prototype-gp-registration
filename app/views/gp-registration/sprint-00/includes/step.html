@@ -21,6 +21,9 @@
 {% endif %}
 
 {% if text %}
+<div aria-live="polite" class="nhsuk-u-visually-hidden">
+  {{ text }}
+</div>
     {{ hint({
     "text": text,
     "classes": "nhsuk-u-margin-bottom-2"
