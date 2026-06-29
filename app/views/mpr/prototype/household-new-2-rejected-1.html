@@ -1,0 +1,159 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'mpr/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Household (3 patients), Princes Ave, Roundhay, Leeds LS8 2ER - GP registrations portal - NHS" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{{ backLink({
+    href: "registrations-new-1",
+    text: "Back to new registrations"
+  })
+}}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <span class="nhsuk-caption-xl">Household (3 patients)</span>
+          <h1 class="nhsuk-heading-xl">Princes Ave, Roundhay, Leeds LS8 2ER</h1>
+
+          <!-- What is a household? -->
+          <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                What is a household?
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <p class="nhsuk-body">A household means a parent and their dependent children.</p>
+            </div>
+          </details>
+
+          <!-- New registrations -->
+          <ul class="nhsuk-grid-row nhsuk-card-group">
+            <li class="nhsuk-grid-column-full nhsuk-card-group__item">
+              <div class="nhsuk-card">
+                <div class="nhsuk-card__content">
+                  <h2 class="nhsuk-card__heading nhsuk-heading-m">New registrations</h2>
+
+                  <table class="nhsuk-table">
+                    <thead class="nhsuk-table__head">
+                      <tr class="nhsuk-table__row">
+                        <th scope="col" class="nhsuk-table__header">
+                          Patient
+                        </th>
+                        <th scope="col" class="nhsuk-table__header nhsuk-table__header">
+                          Relationship
+                        </th>
+                        <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">
+                          Age
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="nhsuk-table__body">
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <a href="patient-detail-new-household-2">Rosie McNickell</a>
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell">
+                          Child
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+                          4
+                        </td>
+                      </tr>
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <a href="patient-detail-new-household-3">Rory McNickell</a>
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell">
+                          Child
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+                          2
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Rejected registrations -->
+          <ul class="nhsuk-grid-row nhsuk-card-group">
+            <li class="nhsuk-grid-column-full nhsuk-card-group__item">
+              <div class="nhsuk-card">
+                <div class="nhsuk-card__content">
+                  <h2 class="nhsuk-card__heading nhsuk-heading-m">Rejected registrations</h2>
+
+                  <table class="nhsuk-table">
+                    <thead class="nhsuk-table__head">
+                      <tr class="nhsuk-table__row">
+                        <th scope="col" class="nhsuk-table__header">
+                          Patient
+                        </th>
+                        <th scope="col" class="nhsuk-table__header nhsuk-table__header">
+                          Relationship
+                        </th>
+                        <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">
+                          Age
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="nhsuk-table__body">
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <a href="#">Beryl Smith</a>
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell">
+                          Parent
+                        </td>
+                        <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+                          32
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+            </li>
+          </ul>
+
+
+        </div>
+      </div>
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+
+
+{% endblock %}
