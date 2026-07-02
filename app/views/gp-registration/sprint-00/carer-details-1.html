@@ -90,18 +90,11 @@
                 "value": data['carer-last-name']
               }) }}
 
-            {{ input({
-                label: {
-                  "text": "Relationship to you"
-                },
-                "hint": {
-                  "text": "For example, they are a family member or friend."
-                },
-                "classes": "nhsuk-u-width-two-thirds",
-                "id": "carer-relationship",
-                "name": "carer-relationship",
-                "value": data['carer-relationship']
-              }) }}
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="carer-relationship">Relationship to you</label>
+              <p class="nhsuk-body nhsuk-u-margin-bottom-2">For example, they are a family member or friend.</p>
+              <input class="nhsuk-input nhsuk-u-width-two-thirds" id="carer-relationship" name="carer-relationship" type="text" value="{{ data['carer-relationship'] }}">
+            </div>
 
 
               {{ input({

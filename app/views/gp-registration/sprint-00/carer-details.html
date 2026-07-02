@@ -54,14 +54,11 @@
             "value": data['carer-last-name'] | default('')
         }) }}
 
-        {{ input({
-            label: { "text": "Relationship to the person being registered" },
-            "hint": { "text": "For example, you are a family member or friend." },
-            "classes": "nhsuk-u-width-two-thirds",
-            "id": "carer-relationship",
-            "name": "carer-relationship",
-            "value": data['carer-relationship'] | default('')
-        }) }}
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="carer-relationship">Relationship to the person being registered</label>
+          <p class="nhsuk-body nhsuk-u-margin-bottom-2">For example, you are a family member or friend.</p>
+          <input class="nhsuk-input nhsuk-u-width-two-thirds" id="carer-relationship" name="carer-relationship" type="text" value="{{ data['carer-relationship'] | default('') }}">
+        </div>
 
         <label class="nhsuk-label" for="carer-dob-day">Date of birth (optional)</label>
         <div class="nhsuk-date-input">
@@ -76,15 +73,17 @@
           </div>
         </div>
 
-        {{ input({
-            label: { "text": "Contact telephone number" },
-            "classes": "nhsuk-u-width-one-third",
-            "id": "carer-telephone",
-            "name": "carer-telephone",
-            "autocomplete": "tel",
-            "spellcheck": false,
-            "value": data['carer-telephone'] | default('')
-        }) }}
+        <div class="nhsuk-u-margin-top-3">
+          {{ input({
+              label: { "text": "Contact telephone number" },
+              "classes": "nhsuk-u-width-one-third",
+              "id": "carer-telephone",
+              "name": "carer-telephone",
+              "autocomplete": "tel",
+              "spellcheck": false,
+              "value": data['carer-telephone'] | default('')
+          }) }}
+        </div>
 
       {% endcall %}
 
