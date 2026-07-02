@@ -28,10 +28,10 @@
 -->
 {% if (data['who-is-registering'] === "dependant") %}
   {% set heading = "Does " + data['name-first-name'] + " currently take any prescription medication?" %}
-  {% set hintText = '<p>This should include prescriptions for contraception or any medicines from abroad. This will help the GP have these ready for the patient.</p>' %}
+  {% set hintText = 'This should include prescriptions for contraception or any medicines from abroad. This will help the GP have these ready for the patient.' %}
 {% else %}
   {% set heading = 'Do you currently take any prescription medication?' %}
-  {% set hintText = '<p>This should include prescriptions for contraception or any medicines from abroad. This will help the GP have these ready for the patient.</p>' %}
+  {% set hintText = 'This should include prescriptions for contraception or any medicines from abroad. This will help the GP have these ready for the patient.' %}
 {% endif %}
 
     
@@ -80,9 +80,7 @@
               }
             }) %}
 
-            {{ hint({
-              "html": hintText
-            }) }}
+            <p class="nhsuk-body nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-4">{{ hintText }}</p>
 
             {{ radios({
               "idPrefix": "takes-prescription-meds",
