@@ -37,9 +37,8 @@
 {% block content %}
 
       <div class="nhsuk-grid-row">
-        
-        <div class="nhsuk-grid-column-full">
 
+        <div class="nhsuk-grid-column-two-thirds">
           <!-- Task notification -->
           {% from "notification-banner/macro.njk" import notificationBanner %}
 
@@ -53,6 +52,9 @@
           {{ notificationBanner({
             html: html
           }) }}
+        </div>
+        
+        <div class="nhsuk-grid-column-full">
 
           <span class="nhsuk-caption-m">In the last 90 days</span>
           <h1 class="nhsuk-heading-xl">	Patient registrations</h1>
