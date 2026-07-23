@@ -18,11 +18,16 @@
   service name is needed. You can also reuse this variable
   within the <h1>, where they are the same.
 -->
-{% set pageName = "Rosie McNickell accepted - GP registrations portal - NHS" %}
+{% set pageName = "Place 3 patients under review - GP registrations portal - NHS" %}
 
 <!-- For adding a breadcrumb or back link -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block beforeContent %}
+  {{ backLink({
+    href: "household-new-3",
+    text: "Back to household"
+  })
+}}
 {% endblock %}
 
 <!-- For adding page content -->
@@ -32,30 +37,44 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
 
-       
-        <div class="nhsuk-panel nhsuk-panel--confirmation">
-          <h1 class="nhsuk-heading-xl">
-            Approved
-          </h1>
-          <p class="nhsuk-body-l">Rosie McNickell has been added to your patient list</p>
+          <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-3">Why are you placing 3 patients under review?</h1>
+          <span class="nhsuk-caption-xl nhsuk-u-margin-bottom-5">Princes Ave, Roundhay, Leeds LS8 2ER</span>
+          
+          <!-- Patient list -->
+          <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1">Patients</h3>
+          <ul class="nhsuk-list">
+            <li>Beryl Smith</li>
+            <li>Rosie McNickell</li>
+            <li>Rory McNickell</li>
+          </ul>
+    
+            <form action="confirm-under-review-batch-3" method="post" autocomplete="off">
+
+            {% call fieldset({
+            }) %}
+
+            {{ textarea({
+              "name": "under-review-reason",
+              "id": "under-review-reason",
+              "label": {
+                "text": "Give a brief description of the reason"
+                }
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+    
+          </div>
         </div>
 
-        <!-- Guidance -->
-        <h2 class="nhsuk-heading-l">What happens next</h2>
-        <p class="nhsuk-body">A record will be created for the patient in your clinical systems. This usually takes about 10 minutes.</p>
-        <p class="nhsuk-body">The patient's NHS record on the Spine will be updated.</p>
-        <p class="nhsuk-body">Follow your surgery's guidance for managing newly registered patients.</p>
-
-        <!-- Household -->
-        <h2 class="nhsuk-heading-s nhsuk-u-margin-bottom-3">You need to review 1 more patient in this household</h2>
-        <div class="nhsuk-button-group nhsuk-u-margin-bottom-7">
-          <a class="nhsuk-button" href="household-new-1-approved-2" role="button" draggable="false">
-            View household
-          </a>
         </div>
+      </div>
 
-        </div>
-      </div>     
 
 
 {% endblock %}

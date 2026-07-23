@@ -52,6 +52,13 @@
             </div>
           </details>
 
+          {% from "warning-callout/macro.njk" import warningCallout %}
+
+          {{ warningCallout({
+            heading: "Check each registration individually",
+            text: "This is because 1 or more registrations in this household need to be reviewed."
+          }) }}
+
           <!-- New registrations -->
           <ul class="nhsuk-grid-row nhsuk-card-group">
             <li class="nhsuk-grid-column-full nhsuk-card-group__item">
@@ -76,13 +83,24 @@
                     <tbody class="nhsuk-table__body">
                       <tr class="nhsuk-table__row">
                         <td class="nhsuk-table__cell">
+                          <a href="patient-detail-new-household-1">Beryl Smith</a>
+                        </td>
+                        <!--<td class="nhsuk-table__cell nhsuk-table__cell">
+                          Parent
+                        </td>-->
+                        <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+                          32
+                        </td>
+                      </tr>
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
                           <a href="patient-detail-new-household-2">Rosie McNickell</a>
                         </td>
                         <!--<td class="nhsuk-table__cell nhsuk-table__cell">
                           Child
                         </td>-->
                         <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
-                          6 weeks
+                          4
                         </td>
                       </tr>
                       <tr class="nhsuk-table__row">
@@ -93,7 +111,7 @@
                           Child
                         </td>-->
                         <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
-                          8 months
+                          2
                         </td>
                       </tr>
                     </tbody>
@@ -103,61 +121,6 @@
               </div>
             </li>
           </ul>
-
-          <!-- Batch actions -->
-          <div class="nhsuk-button-group">
-            <a class="nhsuk-button nhsuk-u-margin-bottom-0" href="approve-batch-2" role="button" draggable="false">
-              Approve all new patients
-            </a>
-            <a class="nhsuk-button nhsuk-u-margin-bottom-0 nhsuk-button--secondary" href="under-review-reason-batch-2" role="button" draggable="false">
-              Place all under review
-            </a>
-          </div>
-
-          <!-- Section break (only included when displaying registrations other than 'New')-->
-          <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
-
-          <!-- Under review registrations -->
-          <ul class="nhsuk-grid-row nhsuk-card-group">
-            <li class="nhsuk-grid-column-full nhsuk-card-group__item">
-              <div class="nhsuk-card">
-                <div class="nhsuk-card__content">
-                  <h2 class="nhsuk-card__heading nhsuk-heading-m">Registrations under review</h2>
-
-                  <table class="nhsuk-table">
-                    <thead class="nhsuk-table__head">
-                      <tr class="nhsuk-table__row">
-                        <th scope="col" class="nhsuk-table__header">
-                          Patient
-                        </th>
-                        <!--<th scope="col" class="nhsuk-table__header nhsuk-table__header">
-                          Relationship
-                        </th>-->
-                        <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">
-                          Age
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody class="nhsuk-table__body">
-                      <tr class="nhsuk-table__row">
-                        <td class="nhsuk-table__cell">
-                          <a href="patient-detail-new-household-1">Beryl Smith</a>
-                        </td>
-                        <!--<td class="nhsuk-table__cell nhsuk-table__cell">
-                          Parent
-                        </td>-->
-                        <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
-                          36 years
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </div>
-              </div>
-            </li>
-          </ul>
-
 
         </div>
       </div>
