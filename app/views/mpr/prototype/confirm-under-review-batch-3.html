@@ -26,14 +26,16 @@
 
 <!-- For adding a breadcrumb or back link -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
-
+{% block beforeContent %}
+<a class="nhsuk-skip-link" href="#maincontent">Skip to main content</a>
+{% endblock %}
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-<h1 class="nhsuk-heading-l">Beryl Smith has been placed under review</h1>
+<h1 class="nhsuk-heading-l">3 patients have been placed under review</h1>
 <p class="nhsuk-body nhsuk-u-margin-bottom-2"><strong>Placed under review</strong> by Gary Sanchez, Friday 20 March 2026</p>
 <!-- Reason -->
 {% if data['under-review-reason'] and data['under-review-reason'] | trim %}
@@ -46,16 +48,16 @@
   }) }}
 {% endif %}
 
-      <!-- Household -->
-        <h2 class="nhsuk-heading-s nhsuk-u-margin-bottom-3">You need to review 2 more patients in this household</h2>
-        <div class="nhsuk-button-group nhsuk-u-margin-bottom-7">
-          <a class="nhsuk-button" href="household-new-2-under-review-2" role="button" draggable="false">
-            View household
-          </a>
-          <a class="nhsuk-button nhsuk-button--secondary" href="under-review-reason-batch-2" role="button" draggable="false">
-            Place all under review
-          </a>
-        </div>
+<!-- Actions -->
+<div class="nhsuk-button-group">
+  <a class="nhsuk-button" href="registrations-new-1" role="button" draggable="false">
+    Back to new registrations
+  </a>
+
+  <a class="nhsuk-button nhsuk-button--secondary" href="dashboard" role="button" draggable="false">
+    Back to dashboard
+  </a>
+</div>
 
     </div>
   </div>

@@ -18,11 +18,12 @@
   service name is needed. You can also reuse this variable
   within the <h1>, where they are the same.
 -->
-{% set pageName = "Beryl Smith accepted - GP registrations portal - NHS" %}
+{% set pageName = "3 patients approved - GP registrations portal - NHS" %}
 
 <!-- For adding a breadcrumb or back link -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block beforeContent %}
+<a class="nhsuk-skip-link" href="#maincontent">Skip to main content</a>
 {% endblock %}
 
 <!-- For adding page content -->
@@ -37,25 +38,25 @@
           <h1 class="nhsuk-heading-xl">
             Approved
           </h1>
-          <p class="nhsuk-body-l">Beryl Smith has been added to your patient list</p>
+          <p class="nhsuk-body-l">3 patients have been added to your patient list</p>
         </div>
 
         <!-- Guidance -->
-        <h2 class="nhsuk-heading-l">What happens next</h2>
-        <p class="nhsuk-body">A record will be created for the patient in your clinical systems. This usually takes about 10 minutes.</p>
-        <p class="nhsuk-body">The patient's NHS record on the Spine will be updated.</p>
-        <p class="nhsuk-body">Follow your surgery's guidance for managing newly registered patients.</p>
+<h2 class="nhsuk-heading-l">What happens next</h2>
+<p class="nhsuk-body">Records for Beryl Smith, Rosie McNickell and Rory McNickell will be created in your clinical systems. This usually takes about 10 minutes.</p>
+<p class="nhsuk-body">The patients' NHS records on the Spine will be updated.</p>
+<p class="nhsuk-body">Follow your surgery's guidance for managing newly registered patients.</p>
 
-        <!-- Household -->
-        <h2 class="nhsuk-heading-s nhsuk-u-margin-bottom-3">You need to review 2 more patients in this household</h2>
-        <div class="nhsuk-button-group nhsuk-u-margin-bottom-7">
-          <a class="nhsuk-button" href="household-new-2-approved-1" role="button" draggable="false">
-            View household
-          </a>
-          <a class="nhsuk-button nhsuk-button--secondary" href="approve-batch-2" role="button" draggable="false">
-            Approve all new patients
-          </a>
-        </div>
+<!-- Actions -->
+<div class="nhsuk-button-group">
+  <a class="nhsuk-button" href="/mpr/prototype/registrations-new-1" role="button" draggable="false">
+    Back to new registrations
+  </a>
+
+  <a class="nhsuk-button nhsuk-button--secondary" href="/mpr/prototype/dashboard" role="button" draggable="false">
+    Back to dashboard
+  </a>
+</div>
 
         </div>
       </div>     
