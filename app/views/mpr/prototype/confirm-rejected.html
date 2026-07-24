@@ -73,67 +73,81 @@
 <p class="nhsuk-body">You must tell the patient in writing within 14 days and include the reasons for refusal in your letter. Follow your surgery's relevant process.</p>
 <p class="nhsuk-body">Use these details to contact the patient:</p>
 
-<!-- Patient details -->
-{{ summaryList({
-  rows: [
-    {
-      key: {
-        text: "Name"
-      },
-      value: {
-        text: "Sam Smith"
-      }
-    },
-    {
-      key: {
-        text: "NHS number"
-      },
-      value: {
-        text: "123 456 7890"
-      }
-    },
-    {
-      key: {
-        text: "Date of birth"
-      },
-      value: {
-        text: "15 March 1984"
-      }
-    },
-    {
-      key: {
-        text: "Home telephone"
-      },
-      value: {
-        html: "0300 303 477"
-      }
-    },
-    {
-      key: {
-        text: "Mobile telephone"
-      },
-      value: {
-        html: "07700 900 362"
-      }
-    },
-    {
-      key: {
-        text: "Email"
-      },
-      value: {
-        html: "samsmith@hotmail.com"
-      }
-    },
-    {
-      key: {
-        text: "Contact information"
-      },
-      value: {
-        html: "73 Roman Rd<br>Leeds<br> LS2 5ZN"
-      }
-    }
-  ]
-}) }}
+<!-- Name and address -->
+<dl class="nhsuk-summary-list">
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Sam Smith
+    </dd>
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Address
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      73 Roman Rd<br>Leeds<br> LS2 5ZN
+    </dd>
+  </div>
+</dl>
+
+<!-- More details -->
+<details class="nhsuk-details nhsuk-expander">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      More patient details
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          NHS number
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          123 456 7890
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Date of birth
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          15 March 1984
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Home telephone
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          0300 303 477
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Mobile telephone
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          07700 900362
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Email
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          samsmith@hotmail.com
+        </dd>
+      </div>
+    </dl>
+
+  </div>
+</details>
+
 
 <!-- Actions -->
 <div class="nhsuk-button-group">
