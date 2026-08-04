@@ -28,7 +28,7 @@
 {% if (data['who-is-registering'] === "dependant") %}
   {% set heading = ''+ data['name-first-name'] + '\'s previous address in the UK' %}
 {% else %}
-  {% set heading = 'Your previous address in the UK' %}
+  {% set heading = 'Have you ever lived at a previous UK address?' %}
 {% endif %}
     
 
@@ -76,12 +76,7 @@
               }
             }) %}
 
-            <p>This is the address of where you were living before your current address. Even if this was temporary accommodation. Your new GP surgery will use this information to see if you have an existing medical record.</p>
-            {% if (data['who-is-being-registered'] === "dependant") %}
-            <h2 style="font-size: 1.5rem; padding-top: 0;">Does {{ data['name-first-name']}} have a previous address in the UK?</h2>
-            {% else %}
-              <h2 style="font-size: 1.5rem; padding-top: 0;">Do you have a previous address in the UK?</h2>
-            {% endif %}
+            <p class="nhsuk-hint">Select one option</p>
 
           {{ radios({
             "idPrefix": "do-you-previous-address",
