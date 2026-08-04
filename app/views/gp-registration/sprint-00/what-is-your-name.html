@@ -34,7 +34,7 @@
   {% set heading = 'What is the name of the person you are registering?' %}
   {% set link = 'carer-details' %}
 {% else %}
-  {% set heading = 'What is your name?' %}
+  {% set heading = 'What is your legal name?' %}
   {% set link = 'continue-with-nhs-login' %}
 {% endif %}
     
@@ -83,6 +83,8 @@
                 "isPageHeading": true
               }
             }) %}
+
+            <p class="nhsuk-body">Enter your name as it appears on your passport or other legal documents.</p>
 
             <div class="nhsuk-select__wrapper-outer">
               <div class="nhsuk-select__wrapper">
