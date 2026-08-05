@@ -28,7 +28,7 @@
 {% if (data['who-is-being-registered'] === "dependant") %}
   {% set heading = "Is " + data['name-first-name'] + " registered with the Defence Medical Services?" %}
 {% else %}
-  {% set heading = 'Are you registered with the Defence Medical Services?' %}
+  {% set heading = 'Have you ever been in the UK Armed Forces or Armed Forces Reserves?' %}
 {% endif %}
     
 
@@ -77,7 +77,7 @@
               }) %}
 
               {{ hint({
-                "text": "You may be registered with the Defence Medical Services (DMS) if you or a family member were in the UK armed forces and this is the first time you are registering with an NHS GP since you or they left service.",
+                "text": "Select one option",
                 "classes": "nhsuk-u-margin-bottom-4"
               }) }}
 
@@ -99,18 +99,6 @@
                 ]
               }) }}
 
-              {% endcall %}
-
-             
-              {% from "details/macro.njk" import details %}
-
-              {% call details({
-                summaryText: "Why are you asking this?"
-                })
-              %}
-              <p>This helps us understand where to request your medical record from.</p>
-              <p>If you have previously been a member of the UK armed forces you may also be able to access additional services for former service members.</p>
-  
               {% endcall %}
 
               {{ button({

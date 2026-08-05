@@ -1,0 +1,81 @@
+<!-- Set any variables here -->
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% set heading = 'Has a family member ever been in the UK Armed Forces or Armed Forces Reserves?' %}
+
+{% extends 'gp-registration/_layout.html' %}
+
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
+
+{% block beforeContent %}
+
+{% include '../includes/phase-banner.html' %}
+
+{{ backLink({
+    "href": "are-you-a-member-of-armed-forces",
+    "text": "Go back"
+  })
+}}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {% set fieldVar = data['has-family-member-ever-been-in-armed-forces'] %}
+          <form action="{{ basePath }}/has-family-member-ever-been-in-armed-forces-answer" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "A family member is defined as a spouse, civil partner, or a child.",
+              "classes": "nhsuk-u-margin-bottom-5"
+            }) }}
+
+            {{ hint({
+              "text": "Select one option",
+              "classes": "nhsuk-u-margin-bottom-4"
+            }) }}
+
+            {{ radios({
+              "idPrefix": "has-family-member-ever-been-in-armed-forces",
+              "name": "has-family-member-ever-been-in-armed-forces",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: fieldVar == "Yes"
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: fieldVar == "No"
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}

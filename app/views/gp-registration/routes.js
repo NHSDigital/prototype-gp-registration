@@ -530,11 +530,65 @@ router.post('/:sprint/are-you-a-member-of-armed-forces-answer', (req, res) => {
     return sprintRedirect(res, sprint, 'check-answers-b')
   }
 
+  if (sprint === 'sprint-00') {
+    return sprintRedirect(res, sprint, 'has-family-member-ever-been-in-armed-forces')
+  }
+
   if (answer === 'Yes') {
     sprintRedirect(res, sprint, 'are-you-a-member-of-armed-forces-details')
   } else {
     sprintRedirect(res, sprint, 'do-you-have-emergency-contact')
   }
+
+})
+
+router.get('/:sprint/has-family-member-ever-been-in-armed-forces', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/has-family-member-ever-been-in-armed-forces`, {
+    data: req.session.data || {}
+  })
+})
+
+
+router.post('/:sprint/has-family-member-ever-been-in-armed-forces-answer', (req, res) => {
+
+  const sprint = req.params.sprint
+  const answer = req.body['has-family-member-ever-been-in-armed-forces']
+  req.session.data['has-family-member-ever-been-in-armed-forces'] = answer
+
+  // If returning from check answers, always go back there
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  if (answer === 'No') {
+    sprintRedirect(res, sprint, 'do-you-have-emergency-contact')
+  } else {
+    sprintRedirect(res, sprint, 'are-you-a-member-of-armed-forces-details')
+  }
+
+})
+
+router.get('/:sprint/are-they-currently-active-in-armed-forces', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/are-they-currently-active-in-armed-forces`, {
+    data: req.session.data || {}
+  })
+})
+
+
+router.post('/:sprint/are-they-currently-active-in-armed-forces-answer', (req, res) => {
+
+  const sprint = req.params.sprint
+  const answer = req.body['are-they-currently-active-in-armed-forces']
+  req.session.data['are-they-currently-active-in-armed-forces'] = answer
+
+  // If returning from check answers, always go back there
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = ''
+    return sprintRedirect(res, sprint, 'check-answers-b')
+  }
+
+  sprintRedirect(res, sprint, 'do-you-have-emergency-contact')
 
 })
 
