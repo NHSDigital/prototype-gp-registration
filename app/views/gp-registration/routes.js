@@ -709,11 +709,59 @@ router.post('/:sprint/do-you-previous-address-answer', (req, res) => {
  
   if (answer === 'Yes') {
     sprintRedirect(res, sprint, 'what-is-your-previous-address-manual');
+  } else if (sprint === 'sprint-00') {
+    sprintRedirect(res, sprint, 'have-you-had-all-vaccinations');
   } else if (under18) {
     sprintRedirect(res, sprint, 'are-you-immunised');
   } else {
     sprintRedirect(res, sprint, 'do-you-have-existing-conditions');
   }
+})
+
+// ============================================
+// HAVE YOU HAD ALL ELIGIBLE VACCINATIONS IN UK
+// ============================================
+
+// GET
+router.get('/:sprint/have-you-had-all-vaccinations', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/have-you-had-all-vaccinations`, {
+    data: req.session.data || {}
+  });
+});
+
+// POST
+router.post('/:sprint/have-you-had-all-vaccinations-answer', (req, res) => {
+  const sprint = req.params.sprint;
+
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = '';
+    return sprintRedirect(res, sprint, 'check-answers-b');
+  }
+
+  sprintRedirect(res, sprint, 'did-you-get-all-your-vaccinations-in-the-uk');
+})
+
+// =======================================
+// DID YOU GET ALL YOUR UK VACCINATIONS
+// =======================================
+
+// GET
+router.get('/:sprint/did-you-get-all-your-vaccinations-in-the-uk', (req, res) => {
+  res.render(`gp-registration/${req.params.sprint}/did-you-get-all-your-vaccinations-in-the-uk`, {
+    data: req.session.data || {}
+  });
+});
+
+// POST
+router.post('/:sprint/did-you-get-all-your-vaccinations-in-the-uk-answer', (req, res) => {
+  const sprint = req.params.sprint;
+
+  if (req.session.data['return'] === 'true') {
+    req.session.data['return'] = '';
+    return sprintRedirect(res, sprint, 'check-answers-b');
+  }
+
+  sprintRedirect(res, sprint, 'do-you-have-existing-conditions');
 })
 
 // =====================================================

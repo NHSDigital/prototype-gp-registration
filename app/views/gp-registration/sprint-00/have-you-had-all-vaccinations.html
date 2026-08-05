@@ -1,0 +1,86 @@
+<!-- Set any variables here -->
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% set heading = 'Have you had all the vaccinations you are eligible for in the UK?' %}
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
+
+{% block beforeContent %}
+
+{% include '../includes/phase-banner.html' %}
+
+{{ backLink({
+    "href": "do-you-previous-address",
+    "text": "Go back"
+  })
+}}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {% set fieldVar = data['have-you-had-all-vaccinations'] %}
+          <form action="{{ basePath }}/have-you-had-all-vaccinations-answer" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            {{ hint({
+              "text": "These are vaccinations or immunisations received at school or from a GP, either in the UK or abroad."
+            }) }}
+
+            <p class="nhsuk-hint">Select one option</p>
+
+            {{ radios({
+              "idPrefix": "have-you-had-all-vaccinations",
+              "name": "have-you-had-all-vaccinations",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: fieldVar == "Yes"
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: fieldVar == "No"
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "Prefer not to say",
+                  "text": "Prefer not to say",
+                  checked: fieldVar == "Prefer not to say"
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}

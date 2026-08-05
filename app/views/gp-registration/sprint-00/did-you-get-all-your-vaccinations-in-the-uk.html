@@ -1,0 +1,82 @@
+<!-- Set any variables here -->
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+{% set heading = 'Did you get all your vaccinations in the UK?' %}
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
+
+{% block beforeContent %}
+
+{% include '../includes/phase-banner.html' %}
+
+{{ backLink({
+    "href": "have-you-had-all-vaccinations",
+    "text": "Go back"
+  })
+}}
+
+{% endblock %}
+
+{% block content %}
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          {% set fieldVar = data['did-you-get-all-your-vaccinations-in-the-uk'] %}
+          <form action="{{ basePath }}/did-you-get-all-your-vaccinations-in-the-uk-answer" method="post" autocomplete="off">
+
+            {% include 'live/includes/step.html' %}
+
+            {% call fieldset({
+              legend: {
+                text: heading,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+            <p class="nhsuk-hint">Select one option</p>
+
+            {{ radios({
+              "idPrefix": "did-you-get-all-your-vaccinations-in-the-uk",
+              "name": "did-you-get-all-your-vaccinations-in-the-uk",
+              "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes",
+                  checked: fieldVar == "Yes"
+                },
+                {
+                  "value": "No",
+                  "text": "No",
+                  checked: fieldVar == "No"
+                },
+                {
+                  "divider": "or"
+                },
+                {
+                  "value": "I don't know",
+                  "text": "I don't know",
+                  checked: fieldVar == "I don't know"
+                }
+              ]
+            }) }}
+
+            {% endcall %}
+
+            {{ button({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
