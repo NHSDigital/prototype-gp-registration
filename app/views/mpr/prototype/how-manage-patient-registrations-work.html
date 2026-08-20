@@ -1,0 +1,30 @@
+{% extends 'mpr/_layout.html' %}
+
+{% set pageName = "How Manage patient registrations works" %}
+
+{% block beforeContent %}
+{{ backLink({
+    href: "login",
+    text: "Back"
+  })
+}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <h1 class="nhsuk-heading-l">How Manage patient registrations work</h1>
+    <p class="nhsuk-body">Get guidance on how to use the service.</p>
+    <h2 class="nhsuk-heading-m">What Manage patient registrations does</h2>
+    <p class="nhsuk-body">Manage patient registrations (MPR) is a new service from NHS England.</p>
+    <p class="nhsuk-body">This service is a portal that lets you:</p>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li>view incoming patient registrations</li>
+      <li>review the information a patient gave in the online form</li>
+      <li>approve or reject patients</li>
+      <li>view details of patients you approved or rejected in the last 90 days</li>
+    </ul>
+    <p class="nhsuk-body">It will create a record for the patient in your clinical systems if you accept their registration.</p>
+  </div>
+</div>
+{% endblock %}
