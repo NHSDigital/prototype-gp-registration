@@ -76,6 +76,12 @@
           <p class="nhsuk-u-margin-bottom-0">Date</p>
           <p class="nhsuk-heading-s nhsuk-u-padding-top-0">4 Mar 2026</p>
 
+          <div class="nhsuk-u-margin-bottom-3">
+            <button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0" id="expandCollapseAll" type="button" data-module="nhsuk-button">
+              Expand all
+            </button>
+          </div>
+
           <details class="nhsuk-details nhsuk-expander">
             <summary class="nhsuk-details__summary">
               <span class="nhsuk-details__summary-text">
@@ -271,6 +277,45 @@
 {% endblock %}
 
 {% block pageScripts %}
+
+<script>
+  (function () {
+    var button = document.getElementById('expandCollapseAll');
+    var expanders = Array.prototype.slice.call(document.querySelectorAll('.nhsuk-details.nhsuk-expander'));
+
+    if (!button || !expanders.length) {
+      return;
+    }
+
+    function areAllExpanded() {
+      return expanders.every(function (expander) {
+        return expander.open;
+      });
+    }
+
+    function updateButtonLabel() {
+      var allExpanded = areAllExpanded();
+      button.textContent = allExpanded ? 'Collapse all' : 'Expand all';
+      button.setAttribute('aria-label', allExpanded ? 'Collapse all sections' : 'Expand all sections');
+    }
+
+    button.addEventListener('click', function () {
+      var shouldExpandAll = !areAllExpanded();
+
+      expanders.forEach(function (expander) {
+        expander.open = shouldExpandAll;
+      });
+
+      updateButtonLabel();
+    });
+
+    expanders.forEach(function (expander) {
+      expander.addEventListener('toggle', updateButtonLabel);
+    });
+
+    updateButtonLabel();
+  })();
+</script>
 
 
 {% endblock %}
