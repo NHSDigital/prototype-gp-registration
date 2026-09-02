@@ -4,6 +4,7 @@
 
 <!-- Extends the layout from /app/views/layout.html -->
 {% extends 'mpr/_layout.html' %}
+{% from "inset-text/macro.njk" import insetText %}
 
 <!--
   In /app/views/layout.html you can:
@@ -53,18 +54,15 @@
           <p class="nhsuk-heading-s nhsuk-u-padding-top-0">Spa Surgery, ZZ99 6PY</p>
           <p class="nhsuk-body">Approving this registration will update the patient's NHS record on the Spine.</p>
 
-          <div class="nhsuk-card nhsuk-card--warning">
-            <div class="nhsuk-card__content">
-              <h3 class="nhsuk-card__heading">
-              <span role="text">
-                Patient's NHS number has changed
-              </span>
-              </h3>
-              <p class="nhsuk-card__description">This patient's NHS number has changed since they applied to register at your practice.</p>
-              <br>
-              <p class="nhsuk-card__description">If you approve this patient, their record in your clinical systems will have the new NHS number.</p>
-            </div>
-          </div>
+          {% set insetTextHtml %}
+            <h3 class="nhsuk-heading-s">Patient's NHS number has changed</h3>
+            <p>This patient's NHS number has changed since they applied to register at your practice.</p>
+            <p>If you approve this patient, their record in your clinical systems will have the new NHS number.</p>
+          {% endset %}
+
+          {{ insetText({
+            html: insetTextHtml
+          }) }}
 
           <!-- Actions -->
           <div class="nhsuk-button-group">
