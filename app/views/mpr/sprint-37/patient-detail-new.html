@@ -24,7 +24,6 @@
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block beforeContent %}
 <a class="nhsuk-skip-link" href="#maincontent">Skip to main content</a>
-
 {{ backLink({
     href: "registrations-new-1",
     text: "Back to new registrations"
@@ -41,14 +40,26 @@
 
       
           <h1 class="nhsuk-heading-l">Sam Smith</h1>
-          <p class="nhsuk-body"><a href="patient-detail-new-printable" class="nhsuk-link">View printable version</a></p>
+          
+          <!-- Important information -->
+          <p class="nhsuk-body nhsuk-u-margin-bottom-3"><strong class="nhsuk-tag">Out of catchment</strong></p>
+          <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                View 1 message
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <p>This registration is Out of catchment (OOC) - the patient lives outside your catchment.</p>
+            </div>
+          </details>
 
           <p class="nhsuk-u-margin-bottom-0">NHS number</p>
           <p class="nhsuk-heading-s nhsuk-u-padding-top-0">123 456 7890</p>
           <p class="nhsuk-u-margin-bottom-0">Age</p>
-          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">36 years</p>
+          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">26 years</p>
           <p class="nhsuk-u-margin-bottom-0">Date of birth</p>
-          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">1 January 1990</p>
+          <p class="nhsuk-heading-s nhsuk-u-padding-top-0">1 January 2000</p>
           <p class="nhsuk-u-margin-bottom-0">Sex</p>
           <p class="nhsuk-heading-s nhsuk-u-padding-top-0">Male</p>
           <p class="nhsuk-u-margin-bottom-0">Postcode</p>
@@ -59,7 +70,7 @@
 
           <!-- Actions -->
           <div class="nhsuk-button-group">
-            <a class="nhsuk-button" href="confirm-approved" role="button" draggable="false">
+            <a class="nhsuk-button" href="out-of-catchment-decision.html" role="button" draggable="false">
               Approve
             </a>
             <a class="nhsuk-button nhsuk-button--secondary" href="under-review-reason" role="button" draggable="false">
@@ -69,14 +80,11 @@
           <p class="nhsuk-body"><a href="reject-reasons" style="margin-top:auto; margin-bottom:auto; margin-left:0; margin-right:0;">Reject this registration</a></p>
           <br />
 
-          <button
-            class="nhsuk-button nhsuk-button--secondary"
-            data-module="nhsuk-button"
-            id="toggle-all-sections"
-            type="button"
-            aria-expanded="false">
-            Expand all sections
-          </button>
+          <div class="nhsuk-u-margin-bottom-3">
+            <button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0" id="expandCollapseAll" type="button" data-module="nhsuk-button">
+              Expand all
+            </button>
+          </div>
 
           <details class="nhsuk-details nhsuk-expander">
             <summary class="nhsuk-details__summary">
@@ -101,7 +109,7 @@
                     Registration type
                   </dt>
                   <dd class="nhsuk-summary-list__value">
-                    {{ data['nhs-number'] or 'First acceptance registration' }}
+                    {{ data['nhs-number'] or 'First time registration' }}
                   </dd>
                 </div>
             
@@ -1197,43 +1205,41 @@
 
 <script>
   (function () {
-    var toggleAllButton = document.getElementById('toggle-all-sections')
-    var detailsSections = Array.prototype.slice.call(
-      document.querySelectorAll('details.nhsuk-details')
-    )
+    var button = document.getElementById('expandCollapseAll');
+    var expanders = Array.prototype.slice.call(document.querySelectorAll('.nhsuk-details.nhsuk-expander'));
 
-    if (!toggleAllButton || detailsSections.length === 0) {
-      return
+    if (!button || !expanders.length) {
+      return;
     }
 
-    function areAllSectionsExpanded() {
-      return detailsSections.every(function (section) {
-        return section.open
-      })
+    function areAllExpanded() {
+      return expanders.every(function (expander) {
+        return expander.open;
+      });
     }
 
-    function updateToggleButtonState() {
-      var expanded = areAllSectionsExpanded()
-      toggleAllButton.setAttribute('aria-expanded', expanded ? 'true' : 'false')
-      toggleAllButton.textContent = expanded
-        ? 'Collapse all sections'
-        : 'Expand all sections'
+    function updateButtonLabel() {
+      var allExpanded = areAllExpanded();
+      button.textContent = allExpanded ? 'Collapse all' : 'Expand all';
+      button.setAttribute('aria-label', allExpanded ? 'Collapse all sections' : 'Expand all sections');
     }
 
-    toggleAllButton.addEventListener('click', function () {
-      var shouldExpandAll = !areAllSectionsExpanded()
-      detailsSections.forEach(function (section) {
-        section.open = shouldExpandAll
-      })
-      updateToggleButtonState()
-    })
+    button.addEventListener('click', function () {
+      var shouldExpandAll = !areAllExpanded();
 
-    detailsSections.forEach(function (section) {
-      section.addEventListener('toggle', updateToggleButtonState)
-    })
+      expanders.forEach(function (expander) {
+        expander.open = shouldExpandAll;
+      });
 
-    updateToggleButtonState()
-  })()
+      updateButtonLabel();
+    });
+
+    expanders.forEach(function (expander) {
+      expander.addEventListener('toggle', updateButtonLabel);
+    });
+
+    updateButtonLabel();
+  })();
 </script>
 
 
