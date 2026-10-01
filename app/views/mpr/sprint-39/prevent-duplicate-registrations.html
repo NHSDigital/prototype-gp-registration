@@ -1,0 +1,36 @@
+{% extends 'gp-registration/_layout.html' %}
+
+{% set pageName = "You've already submitted a GP registration - NHS" %}
+
+{% block beforeContent %}
+<a class="nhsuk-skip-link" href="#maincontent">Skip to main content</a>
+{{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back"
+  })
+}}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      {{ fieldset({
+        "legend": {
+          "text": "You’ve already submitted a GP registration",
+          "classes": "nhsuk-fieldset__legend--xl",
+          "isPageHeading": true
+        }
+      }) }}
+      <p>You submitted a GP registration in the last 24 hours.</p>
+      <p><strong>You can only register with one GP practice at a time.</strong></p>
+      <p>If you submit this registration, it will replace the registration you submitted previously.</p>
+
+      <div class="nhsuk-button-group">
+        {{ button({
+          "text": "Accept and submit",
+          "href": "confirmation-page"
+        }) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}
