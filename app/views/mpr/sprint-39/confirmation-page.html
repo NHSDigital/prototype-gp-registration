@@ -1,0 +1,150 @@
+<!-- Set any variables here -->
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '3' %}
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
+
+{% set heading = 'Application complete' %}
+    
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Register with a GP surgery - " + heading + " - NHS" %}
+
+{% set emailLink = ['gp-email-3', 'Email to GP'] %}
+{% set emailLink2 = ['patient-submission-email', 'Email to patient'] %}
+
+
+<!-- For adding a phase banner, breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../../gp-registration/includes/phase-banner.html' %}
+
+{{ backLink({
+    "href": link,
+    "text": "Go back"
+  }) }}
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <div class="nhsuk-panel nhsuk-panel--confirmation">
+      <h1 class="nhsuk-heading-xl">
+        Application complete
+      </h1>
+      <p class="nhsuk-body-l">
+        Make a note of this reference number: <strong>HDJ2123F</strong>
+      </p>
+    </div>
+
+      <p>These details have been sent to <!--{{ data.presets[0].gpsurgery }}-->Lordship Lane surgery. Registration usually takes about 5 days.</p>
+      <p>Do not complete another registration for yourself until you have received confirmation from [Surgery name].</p>
+      <p>If you need non-emergency medical help now visit <a href="https://111.nhs.uk/">NHS 111 online</a></p>
+      
+
+      <h2>Registering someone else</h2>
+      <p>If you would like to register a family member or someone else at this surgery, <a href="start">start another registration</a>.</p>
+
+      <h2>The GP surgery would like to ask a few more questions about your health</h2>
+      <p>This information will help the surgery with your ongoing healthcare.</p>
+      <p><a href="confirmation-page-local-form-exit">Answer more health questions</a></p>
+
+          <form action="confirmation-page-thank-you" autocomplete="off" method="post" style="margin-top: 48px;">
+
+          {% call fieldset({
+            legend: {
+              "text": "Overall, how did you feel about the service you received today?",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": false
+            }
+          }) %}
+
+          {{ radios({
+            "idPrefix": "satisfied",
+            "name": "satisfied",
+            "items": [
+              {
+                "value": "Very satisfied",
+                "text": "Very satisfied"
+              },
+              {
+                "value": "Satisfied",
+                "text": "Satisfied"
+              },
+              {
+                "value": "Neither satisfied or dissatisfied",
+                "text": "Neither satisfied or dissatisfied"
+              },
+              {
+                "value": "Dissatisfied",
+                "text": "Dissatisfied"
+              },
+              {
+                "value": "Very dissatisfied",
+                "text": "Very dissatisfied"
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+          <fieldset class="nhsuk-fieldset">
+            <div class="nhsuk-form-group"><label class="nhsuk-label" for="feedback" id="feedback--label">How can we improve this service?</label>
+              <div class="nhsuk-hint" id="feedback--hint">Do not include confidential or medical information in your
+                message. For example, your NHS number, date of birth, medical diagnosis or medical history.
+              </div>
+              <textarea aria-describedby="feedback--hint"  aria-labelledby="feedback--label" autocomplete="off"
+                        class="nhsuk-textarea" id="feedback" list="autocompleteOff" maxlength="2000" name="feedback"
+                        rows="8"></textarea></div>
+          </fieldset>
+
+          <input type="hidden" name="feedback-type" value="final" />
+
+          <button aria-disabled="false" class="nhsuk-button" id="submit-provide-feedback" type="submit">
+            Send feedback
+          </button>
+
+        </form>
+
+          <!--<div class="nhsuk-inset-text">
+            <h3 class="nhsuk-heading-s">Save up to nine lives as an organ donor</h3>
+            <span class="nhsuk-u-visually-hidden">Information: </span>
+            <p><p>You can register a decision to donate your organs and tissue when you die, regardless of your age or medical conditions.</p>
+            <p><a href="https://www.organdonation.nhs.uk/?utm_source=england_gp_new_patient_registration&utm_medium=referral&utm_campaign=partner&utm_content=organs_web&utm_term=allaudiences" target="_blank" rel="noopener noreferrer" title="External website">Find out more about organ donation (opens in a new tab)</a>.</p>
+          </div>-->
+
+<!--     <p class="nhsuk-u-font-size-14">Skip to: <a href="/emails/patient-submission-email">Patient email</p>-->
+
+      </div>
+    </div>
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}
