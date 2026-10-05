@@ -1,0 +1,127 @@
+<!-- Set any variables here -->
+{% set servicePhase = 'beta' %}
+{% set feedbackType = 'step' %}
+{% set section = '2' %}
+
+{% if (data['select-gp-address']) %}
+  {% set link = 'what-is-your-gp-address-selection' %}
+{% else %}
+  {% set link = 'what-is-your-gp-address-manual' %}
+{% endif %}
+
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'gp-registration/_layout.html' %}
+
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page heading, which may vary 
+  depending on previous errors, such as consent not being
+  given.
+-->
+{% set heading = 'You may already be registered with [Current GP Name]' %}
+
+    
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+<!-- For adding a phase banner, breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+
+{% include '../../gp-registration/includes/phase-banner.html' %}
+
+{% if (data['user-auth'] !== "p9") %}
+    {{ backLink({
+      "href": link,
+      "text": "Go back"
+    })
+  }}
+{% endif %}
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+    <p>We found a possible existing GP registration.</p>
+    <p>You can continue to register with <strong>[New GP Name]</strong> if you want to change GP surgeries.</p>
+    <p>If your registration with <strong>[New GP Name]</strong> is accepted, your registration will be transferred and you will no longer be registered with <strong>[Current GP Name]</strong>.</p>
+
+    <div class="nhsuk-button-group">
+      {{ button({
+        "text": "Continue with registration",
+        "href": "check-answers-b"
+      }) }}
+      <a class="nhsuk-link" href="{{ link }}">Cancel and keep my current GP</a>
+    </div>
+
+  </div>
+</div>
+
+{# DEVMODE SCENARIOS #}
+{% if data['devMode'] === 'true' %}
+<details class="nhsuk-details dev-mode dev-mode--routing" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+      <span class="nhsuk-details__summary-text">
+        Page variations
+      </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h2 class="nhsuk-heading-m">Repeat registration</h2>
+
+    <h3 class="nhsuk-heading-s">NHS login p9</h3>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="already-registered?ods-match=main&user-auth=p9&who-is-being-registered=myself">ODS code matches current practice</a>
+      </li>
+      <li>
+        <a href="already-registered?ods-match=branch&user-auth=p9&who-is-being-registered=myself">ODS code matches a branch of the main practice</a>
+      </li>
+    </ul>
+
+    <h3 class="nhsuk-heading-s">NHS login p5/p0 & Non login users</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="already-registered?ods-match=main&user-auth=p5&who-is-being-registered=myself">ODS code matches current practice</a>
+      </li>
+      <li>
+        <a href="already-registered?ods-match=branch&user-auth=p5&who-is-being-registered=myself">ODS code matches a branch of the main practice</a>
+      </li>
+    </ul>
+
+    <h3 class="nhsuk-heading-s">Dependant</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="already-registered?ods-match=main&user-auth=none&who-is-being-registered=dependant&relation=Parent%20or%20guardian">ODS code matches current practice</a>
+      </li>
+      <li>
+        <a href="already-registered?ods-match=branch&user-auth=none&who-is-being-registered=dependant&relation=Parent%20or%20guardian">ODS code matches a branch of the main practice</a>
+      </li>
+    </ul>
+  </div>
+</details>
+{% endif %}
+
+{% include 'live/includes/devmode.html' %}
+
+{% endblock %}

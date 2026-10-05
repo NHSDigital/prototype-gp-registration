@@ -16,16 +16,16 @@
     <div class="nhsuk-grid-column-two-thirds">
       {{ fieldset({
         "legend": {
-          "text": "You’ve already submitted a GP registration",
-          "classes": "nhsuk-fieldset__legend--xl",
+          "text": "You have already submitted a GP registration",
+          "classes": "nhsuk-fieldset__legend--l",
           "isPageHeading": true
         }
       }) }}
-      <p>You submitted a GP registration in the last 24 hours.</p>
+      <p class="nhsuk-u-margin-top-3">You have submitted an application to [GP Surgery name] within the last 24 hours.</p>
       <p><strong>You can only register with one GP practice at a time.</strong></p>
-      <p>If you submit this registration, it will replace the registration you submitted previously.</p>
+      <p>Submitting this application will replace your previous registration</p>
 
-      <div class="nhsuk-button-group">
+      <div class="nhsuk-button-group nhsuk-u-margin-top-6">
         {{ button({
           "text": "Accept and submit",
           "href": "confirmation-page"
