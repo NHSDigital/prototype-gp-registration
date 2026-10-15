@@ -50,8 +50,7 @@
               </span>
             </summary>
             <div class="nhsuk-details__text">
-              <p>This patient's address has been matched to a possible Residential Institute.</p>
-              <p>This was identified by the address information they supplied</p>
+              <p>This patient's address has been matched to a possible nursing or care home (Residential institute)</p>
             </div>
           </details>
 
@@ -68,7 +67,35 @@
           <p class="nhsuk-u-margin-bottom-0">Branch site</p>
           <p class="nhsuk-heading-s nhsuk-u-padding-top-0">Spa Surgery, ZZ99 6PY</p>
 
-          <p class="nhsuk-body">Approving this registration will update the patient's NHS record on the Spine.</p>
+          <div class="nhsuk-u-margin-top-6">
+          {% set residentialInstitute = data['residential-institute'] %}
+          {% call fieldset({
+            legend: {
+              text: "Is this patient in a nursing or care home?",
+              classes: "nhsuk-fieldset__legend--m"
+            }
+          }) %}
+          {{ radios({
+            "idPrefix": "residential-institute",
+            "name": "residential-institute",
+            "hint": {
+              "text": "You should confirm if the patient is getting care in a residential home"
+            },
+            "items": [
+              {
+                "value": "Yes",
+                "text": "Yes",
+                "checked": residentialInstitute == "Yes"
+              },
+              {
+                "value": "No",
+                "text": "No",
+                "checked": residentialInstitute == "No"
+              }
+            ]
+          }) }}
+          {% endcall %}
+          </div>
 
           <!-- Actions -->
           <div class="nhsuk-button-group">
