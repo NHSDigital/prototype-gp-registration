@@ -7,6 +7,18 @@ router.use('/:sprint', (req, res, next) => {
   next();
 });
 
+router.post('/redmoor/patient-detail-new-residential-institute', (req, res) => {
+  const answer = req.body['patient-in-nursing-or-care-home'];
+
+  if (answer !== 'yes' && answer !== 'no') {
+    return res.status(400).render('mpr/redmoor/patient-detail-new-residential-institute', {
+      careHomeError: true
+    });
+  }
+
+  return res.redirect('/mpr/redmoor/confirm-approved');
+});
+
 // Reject reasons routing
 router.post('/:sprint/confirm-rejected', (req, res) => {
   const selected = req.body['reject-reason'] || '';
