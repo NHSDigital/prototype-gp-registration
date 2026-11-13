@@ -1,0 +1,50 @@
+{% extends 'mpr/redmoor/_layout.html' %}
+
+{% set pageName = "How do you want to process this registration?" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "patient-detail-new",
+    text: "Back to patient details"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-l">How do you want to process this registration?</h1>
+
+      <p>Only register out of area patients after you have confirmed care arrangements with them and when you have assurance from the regional team and Integrated Care System (ICS) that care is covered where they live.</p>
+
+      <form action="confirm-approved" method="post">
+        {{ radios({
+          idPrefix: "out-of-area-registration-type",
+          name: "out-of-area-registration-type",
+          fieldset: {
+            legend: {
+              text: "Select one option",
+              classes: "nhsuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "out-of-area-scheme",
+              text: "Approve on the Out of Area Scheme",
+              attributes: { required: true }
+            },
+            {
+              value: "full-registration",
+              text: "Approve as a full registration",
+              attributes: { required: true }
+            }
+          ]
+        }) }}
+
+        <div class="nhsuk-button-group">
+          {{ button({ text: "Approve" }) }}
+          <a href="patient-detail-new">Back</a>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
