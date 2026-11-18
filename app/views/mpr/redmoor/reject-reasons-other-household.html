@@ -1,0 +1,36 @@
+{% extends 'mpr/redmoor/_layout.html' %}
+
+{% set pageName = "Beryl Smith - GP registrations portal - NHS" %}
+
+{% block beforeContent %}
+<a class="nhsuk-skip-link" href="#maincontent">Skip to main content</a>
+{{ backLink({
+  href: "reject-reason-household",
+  text: "Go back"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <form action="confirm-rejected-household" method="post" autocomplete="off">
+      {% call fieldset({
+        legend: {
+          text: "About the other reasonable grounds",
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+        {{ textarea({
+          "name": "reason-details",
+          "id": "reason-details",
+          "label": {
+            "text": "Give a brief description of the reasonable grounds"
+          }
+        }) }}
+      {% endcall %}
+      {{ button({ "text": "Continue" }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}
