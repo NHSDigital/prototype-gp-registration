@@ -81,5 +81,8 @@ window.NHSUK.Modules = window.NHSUK.Modules || {};
   Modules.ShowPassword = ShowPassword
 })(window.NHSUK.Modules)
 
-window.NHSUK.Modules.ShowPassword.prototype.constructor(window.document.querySelector(".gem-c-show-password"))
-window.NHSUK.Modules.ShowPassword.prototype.init()
+var showPasswordModule = window.document.querySelector(".gem-c-show-password")
+if (showPasswordModule) {
+  var showPassword = new window.NHSUK.Modules.ShowPassword(showPasswordModule)
+  showPassword.init()
+}
